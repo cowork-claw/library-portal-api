@@ -1,0 +1,104 @@
+{
+  "HUM3051": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Automobile",
+      "scraped_at": "2025-07-07T17:36:01.952844",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Automobile/Engineering%20Economics%20and%20Financial%20Management%20%28HUM%203051%29%20RCS.pdf",
+      "year": 2022,
+      "file_name": "Engineering Economics and Financial Management (HUM 3051) RCS.pdf",
+      "program": "Automobile Engineering",
+      "subject_code": "HUM3051",
+      "paper_type": "Regular",
+      "display_title": "Engineering Economics And Financial Management (Hum 3051) Rcs",
+      "semester": 5,
+      "program_name": "BTech Automobile Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Automobile Engineering",
+      "college": null,
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "HUM3051",
+      "course_name": "Engineering Economics and Financial Management",
+      "subject_name": "Engineering Economics and Financial Management",
+      "curriculum_context": {
+        "curriculum_id": "cse_year3_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "HUM3051",
+        "paper_name": "Engineering Economics and Financial Management",
+        "year": 2022,
+        "semester": 5,
+        "matched": true,
+        "match_source": "name_exact",
+        "confidence": 1.0,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "HUM 3102",
+            "curriculum_name": "Engineering Economics and Financial Management",
+            "program": "CSE",
+            "semester": "6"
+          }
+        ]
+      }
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Automobile",
+      "scraped_at": "2025-07-07T17:36:01.954791",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Automobile/Enginering%20Economica%20and%20Financial%20Management%20%28HUM%203051%29%20%28Makeup%29.pdf",
+      "year": 2022,
+      "file_name": "Enginering Economica and Financial Management (HUM 3051) (Makeup).pdf",
+      "program": "Automobile Engineering",
+      "subject_code": "HUM3051",
+      "paper_type": "Makeup",
+      "display_title": "Enginering Economica And Financial Management (Hum 3051) (Makeup)",
+      "semester": 5,
+      "program_name": "BTech Automobile Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Automobile Engineering",
+      "college": null,
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "HUM3051",
+      "course_name": "Enginering Economica and Financial Management",
+      "subject_name": "Enginering Economica and Financial Management",
+      "curriculum_context": {
+        "curriculum_id": "cse_year3_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "HUM3051",
+        "paper_name": "Enginering Economica and Financial Management",
+        "year": 2022,
+        "semester": 5,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.967032967032967,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "HUM 3102",
+            "curriculum_name": "Engineering Economics and Financial Management",
+            "program": "CSE",
+            "semester": "6"
+          }
+        ]
+      }
+    }
+  ]
+}

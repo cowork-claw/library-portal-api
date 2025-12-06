@@ -1,0 +1,920 @@
+{
+  "BME2153": [
+    {
+      "path": "2023 / Dec 2022 - Jan 2023 / B.Tech / I Sem",
+      "scraped_at": "2025-07-07T17:37:08.233252",
+      "url": "https://libportal.manipal.edu/RootFolder/2023/Dec%202022%20-%20Jan%202023/B.Tech/I%20Sem/Digital%20Electronics%20%28BME%202153%29.pdf",
+      "year": 2023,
+      "program": "B.Tech",
+      "semester": 3,
+      "file_name": "Digital Electronics (BME 2153).pdf",
+      "subject_code": "BME2153",
+      "paper_type": "Regular",
+      "display_title": "Digital Electronics (Bme 2153)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "BME2153",
+      "course_name": "Digital Electronics",
+      "subject_name": "Digital Electronics",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2023
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "BME4059": [
+    {
+      "path": "2022 / June-Jul 22 QP / VI Sem / Biomedical",
+      "scraped_at": "2025-07-07T17:34:51.377454",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/VI%20Sem/Biomedical/Artificial%20Neural%20Networks%20%28BME%204059%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Artificial Neural Networks (BME 4059).pdf",
+      "program": "Biomedical Engineering",
+      "subject_code": "BME4059",
+      "paper_type": "Regular",
+      "display_title": "Artificial Neural Networks (Bme 4059)",
+      "program_name": "BTech Biomedical Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Biomedical Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "BME4059",
+      "course_name": "Artificial Neural Networks",
+      "subject_name": "Artificial Neural Networks",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "BME3251": [
+    {
+      "path": "2022 / June-Jul 22 QP / VI Sem / Biomedical",
+      "scraped_at": "2025-07-07T17:34:51.377954",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/VI%20Sem/Biomedical/Basic%20Clinical%20Science%20%28BME%203251%29%20II%20.pdf",
+      "year": 2022,
+      "semester": 6,
+      "file_name": "Basic Clinical Science (BME 3251) II .pdf",
+      "program": "Biomedical Engineering",
+      "subject_code": "BME3251",
+      "paper_type": "Regular",
+      "display_title": "Basic Clinical Science (Bme 3251) Ii ",
+      "program_name": "BTech Biomedical Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Biomedical Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "BME3251",
+      "course_name": "Basic Clinical Science",
+      "subject_name": "Basic Clinical Science",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / VI Sem / Biomedical",
+      "scraped_at": "2025-07-07T17:34:51.378428",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/VI%20Sem/Biomedical/Basic%20Clinical%20Science%20-II%20%28BME%203251%29%20%28Make%20up%29.pdf",
+      "year": 2022,
+      "semester": 6,
+      "file_name": "Basic Clinical Science -II (BME 3251) (Make up).pdf",
+      "program": "Biomedical Engineering",
+      "subject_code": "BME3251",
+      "paper_type": "Makeup",
+      "display_title": "Basic Clinical Science -Ii (Bme 3251) (Make Up)",
+      "program_name": "BTech Biomedical Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Biomedical Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "BME3251",
+      "course_name": "Basic Clinical Science -II",
+      "subject_name": "Basic Clinical Science -II",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "BME4051": [
+    {
+      "path": "2022 / June-Jul 22 QP / VI Sem / Biomedical",
+      "scraped_at": "2025-07-07T17:34:51.378890",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/VI%20Sem/Biomedical/Biomaterials%20%28BME%204051%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Biomaterials (BME 4051).pdf",
+      "program": "Biomedical Engineering",
+      "subject_code": "BME4051",
+      "paper_type": "Regular",
+      "display_title": "Biomaterials (Bme 4051)",
+      "program_name": "BTech Biomedical Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Biomedical Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "BME4051",
+      "course_name": "Biomaterials",
+      "subject_name": "Biomaterials",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "BME2251": [
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / Biomedical",
+      "scraped_at": "2025-07-07T17:34:24.084262",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/Biomedical/Biomechanics%20%28BME%202251%29%28Make%20up%29.pdf",
+      "year": 2022,
+      "file_name": "Biomechanics (BME 2251)(Make up).pdf",
+      "program": "Biomedical Engineering",
+      "subject_code": "BME2251",
+      "paper_type": "Makeup",
+      "display_title": "Biomechanics (Bme 2251)(Make Up)",
+      "semester": 4,
+      "program_name": "BTech Biomedical Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Biomedical Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "BME2251",
+      "course_name": "Biomechanics",
+      "subject_name": "Biomechanics",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "BME2252": [
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / Humanities and Managemenet",
+      "scraped_at": "2025-07-07T17:34:17.546452",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/Humanities%20and%20Managemenet/Biomechanics%20%28BME%202252%29.pdf",
+      "year": 2022,
+      "file_name": "Biomechanics (BME 2252).pdf",
+      "program": null,
+      "subject_code": "BME2252",
+      "paper_type": "Regular",
+      "display_title": "Biomechanics (Bme 2252)",
+      "semester": 4,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "BME2252",
+      "course_name": "Biomechanics",
+      "subject_name": "Biomechanics",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / Humanities and Managemenet",
+      "scraped_at": "2025-07-07T17:34:17.546870",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/Humanities%20and%20Managemenet/Biomedical%20Instrumentation%20%28BME%202252%29.pdf",
+      "year": 2022,
+      "file_name": "Biomedical Instrumentation (BME 2252).pdf",
+      "program": null,
+      "subject_code": "BME2252",
+      "paper_type": "Regular",
+      "display_title": "Biomedical Instrumentation (Bme 2252)",
+      "semester": 4,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "BME2252",
+      "course_name": "Biomedical Instrumentation",
+      "subject_name": "Biomedical Instrumentation",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / Biomedical",
+      "scraped_at": "2025-07-07T17:34:24.088551",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/Biomedical/Biomedical%20Instrumentation-I%20%28BME%202252%29%28Make%20Up%29.pdf",
+      "year": 2022,
+      "file_name": "Biomedical Instrumentation-I (BME 2252)(Make Up).pdf",
+      "program": "Biomedical Engineering",
+      "subject_code": "BME2252",
+      "paper_type": "Makeup",
+      "display_title": "Biomedical Instrumentation-I (Bme 2252)(Make Up)",
+      "semester": 4,
+      "program_name": "BTech Biomedical Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Biomedical Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "BME2252",
+      "course_name": "Biomedical Instrumentation-I",
+      "subject_name": "Biomedical Instrumentation-I",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "BME4301": [
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / Biomedical",
+      "scraped_at": "2025-07-07T17:34:24.086600",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/Biomedical/Biomedical%20Instrumentation%20%28BME%204301%29%20%28Make%20Up%29.pdf",
+      "year": 2022,
+      "file_name": "Biomedical Instrumentation (BME 4301) (Make Up).pdf",
+      "program": "Biomedical Engineering",
+      "subject_code": "BME4301",
+      "paper_type": "Makeup",
+      "display_title": "Biomedical Instrumentation (Bme 4301) (Make Up)",
+      "semester": 7,
+      "program_name": "BTech Biomedical Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Biomedical Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "BME4301",
+      "course_name": "Biomedical Instrumentation",
+      "subject_name": "Biomedical Instrumentation",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / Humanities and Managemenet",
+      "scraped_at": "2025-07-07T17:34:17.547291",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/Humanities%20and%20Managemenet/Biomedical%20Instrumentation%20%28BME%204301%29.pdf",
+      "year": 2022,
+      "file_name": "Biomedical Instrumentation (BME 4301).pdf",
+      "program": null,
+      "subject_code": "BME4301",
+      "paper_type": "Regular",
+      "display_title": "Biomedical Instrumentation (Bme 4301)",
+      "semester": 7,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "BME4301",
+      "course_name": "Biomedical Instrumentation",
+      "subject_name": "Biomedical Instrumentation",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "BME3252": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / I Sem",
+      "scraped_at": "2025-07-07T16:49:12.881929",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/I%20Sem/Digital%20Image%20Processing%20%28BME%203252%29%28Make%20up%29.pdf",
+      "year": 2022,
+      "semester": 6,
+      "file_name": "Digital Image Processing (BME 3252)(Make up).pdf",
+      "program": null,
+      "subject_code": "BME3252",
+      "paper_type": "Makeup",
+      "display_title": "Digital Image Processing (Bme 3252)(Make Up)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "BME3252",
+      "course_name": "Digital Image Processing",
+      "subject_name": "Digital Image Processing",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 2021-Jan 2022 / B.Tech / I Sem",
+      "scraped_at": "2025-07-07T17:36:23.161144",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%202021-Jan%202022/B.Tech/I%20Sem/Digital%20Image%20Processing%20%28BME%203252%29%28Make%20up%29.pdf",
+      "year": 2022,
+      "program": "B.Tech",
+      "semester": 6,
+      "file_name": "Digital Image Processing (BME 3252)(Make up).pdf",
+      "subject_code": "BME3252",
+      "paper_type": "Makeup",
+      "display_title": "Digital Image Processing (Bme 3252)(Make Up)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "BME3252",
+      "course_name": "Digital Image Processing",
+      "subject_name": "Digital Image Processing",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / VI Sem / Biomedical",
+      "scraped_at": "2025-07-07T17:34:51.379357",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/VI%20Sem/Biomedical/Digital%20Image%20Processing%20%28BME%203252%29.pdf",
+      "year": 2022,
+      "semester": 6,
+      "file_name": "Digital Image Processing (BME 3252).pdf",
+      "program": "Biomedical Engineering",
+      "subject_code": "BME3252",
+      "paper_type": "Regular",
+      "display_title": "Digital Image Processing (Bme 3252)",
+      "program_name": "BTech Biomedical Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Biomedical Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "BME3252",
+      "course_name": "Digital Image Processing",
+      "subject_name": "Digital Image Processing",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "BME2253": [
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / Biomedical",
+      "scraped_at": "2025-07-07T17:34:24.090527",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/Biomedical/Digital%20System%20Deisgn%20%28BME%202253%29%20%28Make%20Up%29.pdf",
+      "year": 2022,
+      "file_name": "Digital System Deisgn (BME 2253) (Make Up).pdf",
+      "program": "Biomedical Engineering",
+      "subject_code": "BME2253",
+      "paper_type": "Makeup",
+      "display_title": "Digital System Deisgn (Bme 2253) (Make Up)",
+      "semester": 4,
+      "program_name": "BTech Biomedical Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Biomedical Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "BME2253",
+      "course_name": "Digital System Deisgn",
+      "subject_name": "Digital System Deisgn",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / Humanities and Managemenet",
+      "scraped_at": "2025-07-07T17:34:17.547738",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/Humanities%20and%20Managemenet/Digital%20System%20Design%20%28BME%202253%29.pdf",
+      "year": 2022,
+      "file_name": "Digital System Design (BME 2253).pdf",
+      "program": null,
+      "subject_code": "BME2253",
+      "paper_type": "Regular",
+      "display_title": "Digital System Design (Bme 2253)",
+      "semester": 4,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "BME2253",
+      "course_name": "Digital System Design",
+      "subject_name": "Digital System Design",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "BME4063": [
+    {
+      "path": "2022 / June-Jul 22 QP / VI Sem / Biomedical",
+      "scraped_at": "2025-07-07T17:34:51.379818",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/VI%20Sem/Biomedical/Drug%20Delivery%20%28BME%204063%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Drug Delivery (BME 4063).pdf",
+      "program": "Biomedical Engineering",
+      "subject_code": "BME4063",
+      "paper_type": "Regular",
+      "display_title": "Drug Delivery (Bme 4063)",
+      "program_name": "BTech Biomedical Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Biomedical Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "BME4063",
+      "course_name": "Drug Delivery",
+      "subject_name": "Drug Delivery",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "BME2254": [
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / Biomedical",
+      "scraped_at": "2025-07-07T17:34:24.092481",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/Biomedical/Integrated%20Circuit%20Systems%20%28BME%202254%29%28Make%20Up%29.pdf",
+      "year": 2022,
+      "file_name": "Integrated Circuit Systems (BME 2254)(Make Up).pdf",
+      "program": "Biomedical Engineering",
+      "subject_code": "BME2254",
+      "paper_type": "Makeup",
+      "display_title": "Integrated Circuit Systems (Bme 2254)(Make Up)",
+      "semester": 4,
+      "program_name": "BTech Biomedical Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Biomedical Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "BME2254",
+      "course_name": "Integrated Circuit Systems",
+      "subject_name": "Integrated Circuit Systems",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / Humanities and Managemenet",
+      "scraped_at": "2025-07-07T17:34:17.548741",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/Humanities%20and%20Managemenet/Integrated%20Circuit%20Systems%20%28BME%202254%29.pdf",
+      "year": 2022,
+      "file_name": "Integrated Circuit Systems (BME 2254).pdf",
+      "program": null,
+      "subject_code": "BME2254",
+      "paper_type": "Regular",
+      "display_title": "Integrated Circuit Systems (Bme 2254)",
+      "semester": 4,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "BME2254",
+      "course_name": "Integrated Circuit Systems",
+      "subject_name": "Integrated Circuit Systems",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "BME4305": [
+    {
+      "path": "2022 / June-Jul 22 QP / VI Sem / Biomedical",
+      "scraped_at": "2025-07-07T17:34:51.380275",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/VI%20Sem/Biomedical/Introduction%20to%20Nanootechnology%20and%20Characterization%20Techniques%20%28BME%204305%29%20%28Make%20up%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Introduction to Nanootechnology and Characterization Techniques (BME 4305) (Make up).pdf",
+      "program": "Biomedical Engineering",
+      "subject_code": "BME4305",
+      "paper_type": "Makeup",
+      "display_title": "Introduction To Nanootechnology And Characterization Techniques (Bme 4305) (Make Up)",
+      "program_name": "BTech Biomedical Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Biomedical Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "BME4305",
+      "course_name": "Introduction to Nanootechnology and Characterization Techniques",
+      "subject_name": "Introduction to Nanootechnology and Characterization Techniques",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / I Sem",
+      "scraped_at": "2025-07-07T16:49:12.883044",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/I%20Sem/Introduction%20to%20Nanotechnology%20and%20Characterization%20Techniques%20%28BME%204305%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Introduction to Nanotechnology and Characterization Techniques (BME 4305).pdf",
+      "program": null,
+      "subject_code": "BME4305",
+      "paper_type": "Regular",
+      "display_title": "Introduction To Nanotechnology And Characterization Techniques (Bme 4305)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "BME4305",
+      "course_name": "Introduction to Nanotechnology and Characterization Techniques",
+      "subject_name": "Introduction to Nanotechnology and Characterization Techniques",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 2021-Jan 2022 / B.Tech / I Sem",
+      "scraped_at": "2025-07-07T17:36:23.161933",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%202021-Jan%202022/B.Tech/I%20Sem/Introduction%20to%20Nanotechnology%20and%20Characterization%20Techniques%20%28BME%204305%29.pdf",
+      "year": 2022,
+      "program": "B.Tech",
+      "semester": 7,
+      "file_name": "Introduction to Nanotechnology and Characterization Techniques (BME 4305).pdf",
+      "subject_code": "BME4305",
+      "paper_type": "Regular",
+      "display_title": "Introduction To Nanotechnology And Characterization Techniques (Bme 4305)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "BME4305",
+      "course_name": "Introduction to Nanotechnology and Characterization Techniques",
+      "subject_name": "Introduction to Nanotechnology and Characterization Techniques",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "BME4054": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / I Sem",
+      "scraped_at": "2025-07-07T16:49:12.883859",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/I%20Sem/Material%20Science%20for%20Biomedical%20Engineers%20%28BME%204054%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Material Science for Biomedical Engineers (BME 4054).pdf",
+      "program": null,
+      "subject_code": "BME4054",
+      "paper_type": "Regular",
+      "display_title": "Material Science For Biomedical Engineers (Bme 4054)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "BME4054",
+      "course_name": "Material Science for Biomedical Engineers",
+      "subject_name": "Material Science for Biomedical Engineers",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 2021-Jan 2022 / B.Tech / I Sem",
+      "scraped_at": "2025-07-07T17:36:23.162340",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%202021-Jan%202022/B.Tech/I%20Sem/Material%20Science%20for%20Biomedical%20Engineers%20%28BME%204054%29.pdf",
+      "year": 2022,
+      "program": "B.Tech",
+      "semester": 7,
+      "file_name": "Material Science for Biomedical Engineers (BME 4054).pdf",
+      "subject_code": "BME4054",
+      "paper_type": "Regular",
+      "display_title": "Material Science For Biomedical Engineers (Bme 4054)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "BME4054",
+      "course_name": "Material Science for Biomedical Engineers",
+      "subject_name": "Material Science for Biomedical Engineers",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "BME4303": [
+    {
+      "path": "2022 / June-Jul 22 QP / VI Sem / Biomedical",
+      "scraped_at": "2025-07-07T17:34:51.380745",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/VI%20Sem/Biomedical/Rehabilation%20Engineering%20%28BME%204303%29%20%28Make%20up%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Rehabilation Engineering (BME 4303) (Make up).pdf",
+      "program": "Biomedical Engineering",
+      "subject_code": "BME4303",
+      "paper_type": "Makeup",
+      "display_title": "Rehabilation Engineering (Bme 4303) (Make Up)",
+      "program_name": "BTech Biomedical Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Biomedical Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "BME4303",
+      "course_name": "Rehabilation Engineering",
+      "subject_name": "Rehabilation Engineering",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / VI Sem / Biomedical",
+      "scraped_at": "2025-07-07T17:34:51.381204",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/VI%20Sem/Biomedical/Rehabilation%20Engineering%20%28BME%204303%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Rehabilation Engineering (BME 4303).pdf",
+      "program": "Biomedical Engineering",
+      "subject_code": "BME4303",
+      "paper_type": "Regular",
+      "display_title": "Rehabilation Engineering (Bme 4303)",
+      "program_name": "BTech Biomedical Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Biomedical Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "BME4303",
+      "course_name": "Rehabilation Engineering",
+      "subject_name": "Rehabilation Engineering",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ]
+}

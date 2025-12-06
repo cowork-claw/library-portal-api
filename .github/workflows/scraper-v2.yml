@@ -1,0 +1,155 @@
+name: Library Portal V2 Scraper
+
+on:
+  # Weekly schedule - Sunday 2 AM UTC
+  schedule:
+    - cron: '0 2 * * 0'
+  
+  # Manual trigger
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (no changes)'
+        required: false
+        default: 'false'
+        type: boolean
+
+env:
+  PYTHON_VERSION: '3.11'
+
+jobs:
+  scrape-and-process:
+    name: Scrape and Categorize Papers
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+      
+      - name: 🐍 Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+      
+      - name: 📦 Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+      
+      - name: 🔍 Pre-scrape validation
+        run: |
+          echo "📊 Current data status:"
+          python -c "
+          import json
+          from pathlib import Path
+          data_dir = Path('data/classified/organized')
+          papers = 0
+          files = 0
+          for f in data_dir.rglob('*.json'):
+            files += 1
+            with open(f) as fp:
+              data = json.load(fp)
+              for course in data.values():
+                papers += len(course)
+          print(f'  Files: {files}')
+          print(f'  Papers: {papers}')
+          "
+      
+      - name: 🕷️ Run Scraper (2025+ only)
+        run: |
+          cd scraper
+          echo "🎯 Target year threshold: 2025+"
+          echo "🚫 Blacklisted years: 2006-2024"
+          scrapy crawl question_papers_enhanced -O scraped_output.json 2>&1 | tail -50
+        continue-on-error: true
+      
+      - name: 📊 Check scraper output
+        id: check_output
+        run: |
+          if [ -f "scraper/scraped_output.json" ]; then
+            count=$(python -c "import json; print(len(json.load(open('scraper/scraped_output.json'))))")
+            echo "Scraped $count new papers"
+            echo "new_papers=$count" >> $GITHUB_OUTPUT
+            if [ "$count" -gt 0 ]; then
+              echo "has_new=true" >> $GITHUB_OUTPUT
+            else
+              echo "has_new=false" >> $GITHUB_OUTPUT
+            fi
+          else
+            echo "No scraped output file found"
+            echo "has_new=false" >> $GITHUB_OUTPUT
+            echo "new_papers=0" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: 🏷️ Categorize New Papers
+        if: steps.check_output.outputs.has_new == 'true'
+        run: |
+          if [ "${{ github.event.inputs.dry_run }}" == "true" ]; then
+            echo "🔄 DRY RUN MODE"
+            python scripts/processing/run_categorizer.py scraper/scraped_output.json --dry-run
+          else
+            python scripts/processing/run_categorizer.py scraper/scraped_output.json
+          fi
+      
+      - name: ✅ Validate Data Integrity
+        run: python scripts/processing/validate_data.py
+      
+      - name: 📝 Commit Changes
+        if: steps.check_output.outputs.has_new == 'true' && github.event.inputs.dry_run != 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          
+          git add data/classified/organized/
+          git add scraper/scrape_log.json
+          git add staging/pending_review.json
+          
+          # Check if there are changes to commit
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            CURRENT_DATE=$(date +%Y-%m-%d)
+            NEW_PAPERS=${{ steps.check_output.outputs.new_papers }}
+            git commit -m "📚 Auto-update: Added $NEW_PAPERS papers ($CURRENT_DATE)"
+            git push
+          fi
+      
+      - name: ⚠️ Check Staging Queue
+        run: |
+          if [ -f "staging/pending_review.json" ]; then
+            count=$(python -c "import json; papers = json.load(open('staging/pending_review.json')).get('papers', []); print(len([p for p in papers if not p.get('reviewed', False)]))")
+            if [ "$count" -gt 0 ]; then
+              echo "::warning::$count papers need manual review in staging/pending_review.json"
+            else
+              echo "✅ No papers pending manual review"
+            fi
+          else
+            echo "✅ No staging file (no pending reviews)"
+          fi
+      
+      - name: 📊 Summary
+        run: |
+          echo "## 📚 Scraper Run Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Date**: $(date +%Y-%m-%d)" >> $GITHUB_STEP_SUMMARY
+          echo "- **New papers found**: ${{ steps.check_output.outputs.new_papers }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Mode**: ${{ github.event.inputs.dry_run == 'true' && 'Dry Run' || 'Live' }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Final data count
+          python -c "
+          import json
+          from pathlib import Path
+          data_dir = Path('data/classified/organized')
+          papers = 0
+          for f in data_dir.rglob('*.json'):
+            with open(f) as fp:
+              data = json.load(fp)
+              for course in data.values():
+                papers += len(course)
+          print(f'- **Total papers**: {papers}')
+          " >> $GITHUB_STEP_SUMMARY

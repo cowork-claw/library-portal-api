@@ -1,0 +1,3168 @@
+{
+  "HUM3051": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Aeronuatical",
+      "scraped_at": "2025-07-07T17:36:03.271669",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Aeronuatical/Engineering%20Economica%20and%20Financial%20Managemenet%20%28HUM%20305%28Makeup%291%29RCS.pdf",
+      "year": 2022,
+      "file_name": "Engineering Economica and Financial Managemenet (HUM 305(Makeup)1)RCS.pdf",
+      "program": null,
+      "subject_code": "HUM305",
+      "paper_type": "Makeup",
+      "display_title": "Engineering Economica And Financial Managemenet (Hum 305(Makeup)1)Rcs",
+      "semester": 5,
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "HUM305",
+      "course_name": "Engineering Economics and Financial Management",
+      "subject_name": "Engineering Economica and Financial Managemenet (",
+      "curriculum_context": {
+        "curriculum_id": "cse_year3_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "HUM305",
+        "paper_name": "Engineering Economica and Financial Managemenet (",
+        "year": 2022,
+        "semester": 5,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.9473684210526315,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "HUM 3102",
+            "curriculum_name": "Engineering Economics and Financial Management",
+            "program": "CSE",
+            "semester": "6"
+          }
+        ]
+      },
+      "original_code": "HUM305"
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Humanities and Management",
+      "scraped_at": "2025-07-07T17:35:53.839687",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Humanities%20and%20Management/Engineering%20Economics%20and%20Finacial%20Management%20%28HUM%203051%29%20%28Makeup%29.pdf",
+      "year": 2022,
+      "file_name": "Engineering Economics and Finacial Management (HUM 3051) (Makeup).pdf",
+      "program": "Humanities and Management",
+      "subject_code": "HUM3051",
+      "paper_type": "Makeup",
+      "display_title": "Engineering Economics And Finacial Management (Hum 3051) (Makeup)",
+      "semester": 5,
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "HUM3051",
+      "course_name": "Engineering Economics and Finacial Management",
+      "subject_name": "Engineering Economics and Finacial Management",
+      "curriculum_context": {
+        "curriculum_id": "cse_year3_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "HUM3051",
+        "paper_name": "Engineering Economics and Finacial Management",
+        "year": 2022,
+        "semester": 5,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.989010989010989,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "HUM 3102",
+            "curriculum_name": "Engineering Economics and Financial Management",
+            "program": "CSE",
+            "semester": "6"
+          }
+        ]
+      }
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / VI Sem / Humanities and Management",
+      "scraped_at": "2025-07-07T17:34:45.163727",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/VI%20Sem/Humanities%20and%20Management/Engineering%20Economics%20and%20Finacial%20Management%20%28HUM%203051%29%20.pdf",
+      "year": 2022,
+      "semester": 5,
+      "file_name": "Engineering Economics and Finacial Management (HUM 3051) .pdf",
+      "program": "Humanities and Management",
+      "subject_code": "HUM3051",
+      "paper_type": "Regular",
+      "display_title": "Engineering Economics And Finacial Management (Hum 3051) ",
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "HUM3051",
+      "course_name": "Engineering Economics and Finacial Management",
+      "subject_name": "Engineering Economics and Finacial Management",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "HUM3051",
+        "paper_name": "Engineering Economics and Finacial Management",
+        "year": 2022,
+        "semester": 1,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.989010989010989,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "HUM 3102",
+            "curriculum_name": "Engineering Economics and Financial Management",
+            "program": "CSE",
+            "semester": "6"
+          }
+        ]
+      }
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Humanities and Management",
+      "scraped_at": "2025-07-07T17:35:53.840111",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Humanities%20and%20Management/Engineering%20Economics%20and%20Finacial%20Management%20%28HUM%203051%29%20Online%20.pdf",
+      "year": 2022,
+      "file_name": "Engineering Economics and Finacial Management (HUM 3051) Online .pdf",
+      "program": "Humanities and Management",
+      "subject_code": "HUM3051",
+      "paper_type": "Regular",
+      "display_title": "Engineering Economics And Finacial Management (Hum 3051) Online ",
+      "semester": 5,
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "HUM3051",
+      "course_name": "Engineering Economics and Finacial Management",
+      "subject_name": "Engineering Economics and Finacial Management",
+      "curriculum_context": {
+        "curriculum_id": "cse_year3_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "HUM3051",
+        "paper_name": "Engineering Economics and Finacial Management",
+        "year": 2022,
+        "semester": 5,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.989010989010989,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "HUM 3102",
+            "curriculum_name": "Engineering Economics and Financial Management",
+            "program": "CSE",
+            "semester": "6"
+          }
+        ]
+      }
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / VI Sem / Humanities and Management",
+      "scraped_at": "2025-07-07T17:34:45.164787",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/VI%20Sem/Humanities%20and%20Management/Engineering%20Economics%20and%20Finacial%20Management%20%28HUM%203051%29%20jul%202022.pdf",
+      "year": 2022,
+      "semester": 5,
+      "file_name": "Engineering Economics and Finacial Management (HUM 3051) jul 2022.pdf",
+      "program": "Humanities and Management",
+      "subject_code": "HUM3051",
+      "paper_type": "Regular",
+      "display_title": "Engineering Economics And Finacial Management (Hum 3051) Jul 2022",
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "HUM3051",
+      "course_name": "Engineering Economics and Finacial Management",
+      "subject_name": "Engineering Economics and Finacial Management",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "HUM3051",
+        "paper_name": "Engineering Economics and Finacial Management",
+        "year": 2022,
+        "semester": 1,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.989010989010989,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "HUM 3102",
+            "curriculum_name": "Engineering Economics and Financial Management",
+            "program": "CSE",
+            "semester": "6"
+          }
+        ]
+      }
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Humanities and Management",
+      "scraped_at": "2025-07-07T17:35:53.840573",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Humanities%20and%20Management/Engineering%20Economics%20and%20Financial%20Managemenet%20%28HUM%203051%29%20%28Makeup%29%20.pdf",
+      "year": 2022,
+      "file_name": "Engineering Economics and Financial Managemenet (HUM 3051) (Makeup) .pdf",
+      "program": "Humanities and Management",
+      "subject_code": "HUM3051",
+      "paper_type": "Makeup",
+      "display_title": "Engineering Economics And Financial Managemenet (Hum 3051) (Makeup) ",
+      "semester": 5,
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "HUM3051",
+      "course_name": "Engineering Economics and Financial Managemenet",
+      "subject_name": "Engineering Economics and Financial Managemenet",
+      "curriculum_context": {
+        "curriculum_id": "cse_year3_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "HUM3051",
+        "paper_name": "Engineering Economics and Financial Managemenet",
+        "year": 2022,
+        "semester": 5,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.989247311827957,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "HUM 3102",
+            "curriculum_name": "Engineering Economics and Financial Management",
+            "program": "CSE",
+            "semester": "6"
+          }
+        ]
+      }
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Humanities and Management",
+      "scraped_at": "2025-07-07T17:35:53.840993",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Humanities%20and%20Management/Engineering%20Economics%20and%20Financial%20Managemenet%20%28HUM%203051%29%20%28Makeup%29%20PART%20A.pdf",
+      "year": 2022,
+      "file_name": "Engineering Economics and Financial Managemenet (HUM 3051) (Makeup) PART A.pdf",
+      "program": "Humanities and Management",
+      "subject_code": "HUM3051",
+      "paper_type": "Makeup",
+      "display_title": "Engineering Economics And Financial Managemenet (Hum 3051) (Makeup) Part A",
+      "semester": 5,
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "HUM3051",
+      "course_name": "Engineering Economics and Financial Managemenet",
+      "subject_name": "Engineering Economics and Financial Managemenet",
+      "curriculum_context": {
+        "curriculum_id": "cse_year3_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "HUM3051",
+        "paper_name": "Engineering Economics and Financial Managemenet",
+        "year": 2022,
+        "semester": 5,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.989247311827957,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "HUM 3102",
+            "curriculum_name": "Engineering Economics and Financial Management",
+            "program": "CSE",
+            "semester": "6"
+          }
+        ]
+      }
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Aeronuatical",
+      "scraped_at": "2025-07-07T17:36:03.273582",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Aeronuatical/Engineering%20Economics%20and%20Financial%20Management%20%28HUM%203051%29RCS.pdf",
+      "year": 2022,
+      "file_name": "Engineering Economics and Financial Management (HUM 3051)RCS.pdf",
+      "program": null,
+      "subject_code": "HUM3051",
+      "paper_type": "Regular",
+      "display_title": "Engineering Economics And Financial Management (Hum 3051)Rcs",
+      "semester": 5,
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "HUM3051",
+      "course_name": "Engineering Economics and Financial Management",
+      "subject_name": "Engineering Economics and Financial Management",
+      "curriculum_context": {
+        "curriculum_id": "cse_year3_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "HUM3051",
+        "paper_name": "Engineering Economics and Financial Management",
+        "year": 2022,
+        "semester": 5,
+        "matched": true,
+        "match_source": "name_exact",
+        "confidence": 1.0,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "HUM 3102",
+            "curriculum_name": "Engineering Economics and Financial Management",
+            "program": "CSE",
+            "semester": "6"
+          }
+        ]
+      }
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Automobile",
+      "scraped_at": "2025-07-07T17:36:01.952844",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Automobile/Engineering%20Economics%20and%20Financial%20Management%20%28HUM%203051%29%20RCS.pdf",
+      "year": 2022,
+      "file_name": "Engineering Economics and Financial Management (HUM 3051) RCS.pdf",
+      "program": "Automobile Engineering",
+      "subject_code": "HUM3051",
+      "paper_type": "Regular",
+      "display_title": "Engineering Economics And Financial Management (Hum 3051) Rcs",
+      "semester": 5,
+      "program_name": "BTech Automobile Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Automobile Engineering",
+      "college": null,
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "HUM3051",
+      "course_name": "Engineering Economics and Financial Management",
+      "subject_name": "Engineering Economics and Financial Management",
+      "curriculum_context": {
+        "curriculum_id": "cse_year3_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Mechatronics",
+      "scraped_at": "2025-07-07T17:35:50.406647",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Mechatronics/Engineering%20Economics%20n%20Financial%20Management%20%28HUM%203051%29.pdf",
+      "year": 2022,
+      "file_name": "Engineering Economics n Financial Management (HUM 3051).pdf",
+      "program": "Mechatronics",
+      "subject_code": "HUM3051",
+      "paper_type": "Regular",
+      "display_title": "Engineering Economics N Financial Management (Hum 3051)",
+      "semester": 5,
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "HUM3051",
+      "course_name": "Engineering Economics n Financial Management",
+      "subject_name": "Engineering Economics n Financial Management",
+      "curriculum_context": {
+        "curriculum_id": "cse_year3_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Automobile",
+      "scraped_at": "2025-07-07T17:36:01.954791",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Automobile/Enginering%20Economica%20and%20Financial%20Management%20%28HUM%203051%29%20%28Makeup%29.pdf",
+      "year": 2022,
+      "file_name": "Enginering Economica and Financial Management (HUM 3051) (Makeup).pdf",
+      "program": "Automobile Engineering",
+      "subject_code": "HUM3051",
+      "paper_type": "Makeup",
+      "display_title": "Enginering Economica And Financial Management (Hum 3051) (Makeup)",
+      "semester": 5,
+      "program_name": "BTech Automobile Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Automobile Engineering",
+      "college": null,
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "HUM3051",
+      "course_name": "Enginering Economica and Financial Management",
+      "subject_name": "Enginering Economica and Financial Management",
+      "curriculum_context": {
+        "curriculum_id": "cse_year3_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "MAT22XX": [
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / Mathematics",
+      "scraped_at": "2025-07-07T17:34:13.631513",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/Mathematics/Engineering%20Mathematics%20-IV%20%28MAT%202251%29%20%28Makeup%29.pdf",
+      "year": 2022,
+      "file_name": "Engineering Mathematics -IV (MAT 2251) (Makeup).pdf",
+      "program": "Mathematics",
+      "subject_code": "MAT2251",
+      "paper_type": "Makeup",
+      "display_title": "Engineering Mathematics -Iv (Mat 2251) (Makeup)",
+      "semester": 4,
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "MAT2251",
+      "course_name": "Engineering Mathematics IV",
+      "subject_name": "Engineering Mathematics -IV",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "MAT2251",
+        "paper_name": "Engineering Mathematics -IV",
+        "year": 2022,
+        "semester": 4,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.9811320754716981,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "MAT 2229",
+            "curriculum_name": "Engineering Mathematics IV",
+            "program": "IND",
+            "semester": "4"
+          }
+        ]
+      },
+      "original_code": "MAT2251"
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / Mathematics",
+      "scraped_at": "2025-07-07T17:34:13.632036",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/Mathematics/Engineering%20Mathematics%20-IV%20%28MAT%202251%29.pdf",
+      "year": 2022,
+      "file_name": "Engineering Mathematics -IV (MAT 2251).pdf",
+      "program": "Mathematics",
+      "subject_code": "MAT2251",
+      "paper_type": "Regular",
+      "display_title": "Engineering Mathematics -Iv (Mat 2251)",
+      "semester": 4,
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "MAT2251",
+      "course_name": "Engineering Mathematics IV",
+      "subject_name": "Engineering Mathematics -IV",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "MAT2251",
+        "paper_name": "Engineering Mathematics -IV",
+        "year": 2022,
+        "semester": 4,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.9811320754716981,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "MAT 2229",
+            "curriculum_name": "Engineering Mathematics IV",
+            "program": "IND",
+            "semester": "4"
+          }
+        ]
+      },
+      "original_code": "MAT2251"
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / Mathematics",
+      "scraped_at": "2025-07-07T17:34:13.632466",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/Mathematics/Engineering%20Mathematics%20-IV%20%28MAT%202253%29%20%28Makeup%29.pdf",
+      "year": 2022,
+      "file_name": "Engineering Mathematics -IV (MAT 2253) (Makeup).pdf",
+      "program": "Mathematics",
+      "subject_code": "MAT2253",
+      "paper_type": "Makeup",
+      "display_title": "Engineering Mathematics -Iv (Mat 2253) (Makeup)",
+      "semester": 4,
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "MAT2253",
+      "course_name": "Engineering Mathematics IV",
+      "subject_name": "Engineering Mathematics -IV",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "MAT2253",
+        "paper_name": "Engineering Mathematics -IV",
+        "year": 2022,
+        "semester": 4,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.9811320754716981,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "MAT 2229",
+            "curriculum_name": "Engineering Mathematics IV",
+            "program": "IND",
+            "semester": "4"
+          }
+        ]
+      },
+      "original_code": "MAT2253"
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / Mathematics",
+      "scraped_at": "2025-07-07T17:34:13.632859",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/Mathematics/Engineering%20Mathematics%20-IV%20%28MAT%202253%29.pdf",
+      "year": 2022,
+      "file_name": "Engineering Mathematics -IV (MAT 2253).pdf",
+      "program": "Mathematics",
+      "subject_code": "MAT2253",
+      "paper_type": "Regular",
+      "display_title": "Engineering Mathematics -Iv (Mat 2253)",
+      "semester": 4,
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "MAT2253",
+      "course_name": "Engineering Mathematics IV",
+      "subject_name": "Engineering Mathematics -IV",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "MAT2253",
+        "paper_name": "Engineering Mathematics -IV",
+        "year": 2022,
+        "semester": 4,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.9811320754716981,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "MAT 2229",
+            "curriculum_name": "Engineering Mathematics IV",
+            "program": "IND",
+            "semester": "4"
+          }
+        ]
+      },
+      "original_code": "MAT2253"
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / Mathematics",
+      "scraped_at": "2025-07-07T17:34:13.633253",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/Mathematics/Engineering%20Mathematics%20-IV%20%28MAT%202254%29%20%28Makeup%29.pdf",
+      "year": 2022,
+      "file_name": "Engineering Mathematics -IV (MAT 2254) (Makeup).pdf",
+      "program": "Mathematics",
+      "subject_code": "MAT2254",
+      "paper_type": "Makeup",
+      "display_title": "Engineering Mathematics -Iv (Mat 2254) (Makeup)",
+      "semester": 4,
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "MAT2254",
+      "course_name": "Engineering Mathematics IV",
+      "subject_name": "Engineering Mathematics -IV",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "MAT2254",
+        "paper_name": "Engineering Mathematics -IV",
+        "year": 2022,
+        "semester": 4,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.9811320754716981,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "MAT 2229",
+            "curriculum_name": "Engineering Mathematics IV",
+            "program": "IND",
+            "semester": "4"
+          }
+        ]
+      },
+      "original_code": "MAT2254"
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / Mathematics",
+      "scraped_at": "2025-07-07T17:34:13.633679",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/Mathematics/Engineering%20Mathematics%20-IV%20%28MAT%202254%29.pdf",
+      "year": 2022,
+      "file_name": "Engineering Mathematics -IV (MAT 2254).pdf",
+      "program": "Mathematics",
+      "subject_code": "MAT2254",
+      "paper_type": "Regular",
+      "display_title": "Engineering Mathematics -Iv (Mat 2254)",
+      "semester": 4,
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "MAT2254",
+      "course_name": "Engineering Mathematics IV",
+      "subject_name": "Engineering Mathematics -IV",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "MAT2254",
+        "paper_name": "Engineering Mathematics -IV",
+        "year": 2022,
+        "semester": 4,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.9811320754716981,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "MAT 2229",
+            "curriculum_name": "Engineering Mathematics IV",
+            "program": "IND",
+            "semester": "4"
+          }
+        ]
+      },
+      "original_code": "MAT2254"
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / Mathematics",
+      "scraped_at": "2025-07-07T17:34:13.634073",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/Mathematics/Engineering%20Mathematics%20-IV%20%28MAT%202255%29.pdf",
+      "year": 2022,
+      "file_name": "Engineering Mathematics -IV (MAT 2255).pdf",
+      "program": "Mathematics",
+      "subject_code": "MAT2255",
+      "paper_type": "Regular",
+      "display_title": "Engineering Mathematics -Iv (Mat 2255)",
+      "semester": 4,
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "MAT2255",
+      "course_name": "Engineering Mathematics IV",
+      "subject_name": "Engineering Mathematics -IV",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "MAT2255",
+        "paper_name": "Engineering Mathematics -IV",
+        "year": 2022,
+        "semester": 4,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.9811320754716981,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "MAT 2229",
+            "curriculum_name": "Engineering Mathematics IV",
+            "program": "IND",
+            "semester": "4"
+          }
+        ]
+      },
+      "original_code": "MAT2255"
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / Mathematics",
+      "scraped_at": "2025-07-07T17:34:13.639905",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/Mathematics/Enginering%20Mathematics-IV%20%28MAT%202255%29%28Makeup%29.pdf",
+      "year": 2022,
+      "file_name": "Enginering Mathematics-IV (MAT 2255)(Makeup).pdf",
+      "program": "Mathematics",
+      "subject_code": "MAT2255",
+      "paper_type": "Makeup",
+      "display_title": "Enginering Mathematics-Iv (Mat 2255)(Makeup)",
+      "semester": 4,
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "MAT2255",
+      "course_name": "Engineering Mathematics IV",
+      "subject_name": "Enginering Mathematics-IV",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "MAT2255",
+        "paper_name": "Enginering Mathematics-IV",
+        "year": 2022,
+        "semester": 4,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.9411764705882353,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "MAT 2229",
+            "curriculum_name": "Engineering Mathematics IV",
+            "program": "IND",
+            "semester": "4"
+          }
+        ]
+      },
+      "original_code": "MAT2255"
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / Mathematics",
+      "scraped_at": "2025-07-07T17:34:13.634503",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/Mathematics/Engineering%20Mathematics%20-IV%20%28MAT%202257%29%28Makeup%29.pdf",
+      "year": 2022,
+      "file_name": "Engineering Mathematics -IV (MAT 2257)(Makeup).pdf",
+      "program": "Mathematics",
+      "subject_code": "MAT2257",
+      "paper_type": "Makeup",
+      "display_title": "Engineering Mathematics -Iv (Mat 2257)(Makeup)",
+      "semester": 4,
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "MAT2257",
+      "course_name": "Engineering Mathematics IV",
+      "subject_name": "Engineering Mathematics -IV",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "MAT2257",
+        "paper_name": "Engineering Mathematics -IV",
+        "year": 2022,
+        "semester": 4,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.9811320754716981,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "MAT 2229",
+            "curriculum_name": "Engineering Mathematics IV",
+            "program": "IND",
+            "semester": "4"
+          }
+        ]
+      },
+      "original_code": "MAT2257"
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / Mathematics",
+      "scraped_at": "2025-07-07T17:34:13.634897",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/Mathematics/Engineering%20Mathematics%20-IV%20%28MAT%202257%29.pdf",
+      "year": 2022,
+      "file_name": "Engineering Mathematics -IV (MAT 2257).pdf",
+      "program": "Mathematics",
+      "subject_code": "MAT2257",
+      "paper_type": "Regular",
+      "display_title": "Engineering Mathematics -Iv (Mat 2257)",
+      "semester": 4,
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "MAT2257",
+      "course_name": "Engineering Mathematics IV",
+      "subject_name": "Engineering Mathematics -IV",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "MAT2257",
+        "paper_name": "Engineering Mathematics -IV",
+        "year": 2022,
+        "semester": 4,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.9811320754716981,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "MAT 2229",
+            "curriculum_name": "Engineering Mathematics IV",
+            "program": "IND",
+            "semester": "4"
+          }
+        ]
+      },
+      "original_code": "MAT2257"
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / Mathematics",
+      "scraped_at": "2025-07-07T17:34:13.635284",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/Mathematics/Engineering%20Mathematics-IV%20%28MAT%202252%29%20%28Makeup%29.pdf",
+      "year": 2022,
+      "file_name": "Engineering Mathematics-IV (MAT 2252) (Makeup).pdf",
+      "program": "Mathematics",
+      "subject_code": "MAT2252",
+      "paper_type": "Makeup",
+      "display_title": "Engineering Mathematics-Iv (Mat 2252) (Makeup)",
+      "semester": 4,
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "MAT2252",
+      "course_name": "Engineering Mathematics IV",
+      "subject_name": "Engineering Mathematics-IV",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "MAT2252",
+        "paper_name": "Engineering Mathematics-IV",
+        "year": 2022,
+        "semester": 4,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.9615384615384616,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "MAT 2229",
+            "curriculum_name": "Engineering Mathematics IV",
+            "program": "IND",
+            "semester": "4"
+          }
+        ]
+      },
+      "original_code": "MAT2252"
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / Mathematics",
+      "scraped_at": "2025-07-07T17:34:13.637735",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/Mathematics/Engineering%20Mathematics-IV%20%28MAT%202252%29.pdf",
+      "year": 2022,
+      "file_name": "Engineering Mathematics-IV (MAT 2252).pdf",
+      "program": "Mathematics",
+      "subject_code": "MAT2252",
+      "paper_type": "Regular",
+      "display_title": "Engineering Mathematics-Iv (Mat 2252)",
+      "semester": 4,
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "MAT2252",
+      "course_name": "Engineering Mathematics IV",
+      "subject_name": "Engineering Mathematics-IV",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "MAT2252",
+        "paper_name": "Engineering Mathematics-IV",
+        "year": 2022,
+        "semester": 4,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.9615384615384616,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "MAT 2229",
+            "curriculum_name": "Engineering Mathematics IV",
+            "program": "IND",
+            "semester": "4"
+          }
+        ]
+      },
+      "original_code": "MAT2252"
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / Mathematics",
+      "scraped_at": "2025-07-07T17:34:13.638215",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/Mathematics/Engineering%20Mathematics-IV%20%28MAT%202256%29%28Makeup%29.pdf",
+      "year": 2022,
+      "file_name": "Engineering Mathematics-IV (MAT 2256)(Makeup).pdf",
+      "program": "Mathematics",
+      "subject_code": "MAT2256",
+      "paper_type": "Makeup",
+      "display_title": "Engineering Mathematics-Iv (Mat 2256)(Makeup)",
+      "semester": 4,
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "MAT2256",
+      "course_name": "Engineering Mathematics IV",
+      "subject_name": "Engineering Mathematics-IV",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "MAT2256",
+        "paper_name": "Engineering Mathematics-IV",
+        "year": 2022,
+        "semester": 4,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.9615384615384616,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "MAT 2229",
+            "curriculum_name": "Engineering Mathematics IV",
+            "program": "IND",
+            "semester": "4"
+          }
+        ]
+      },
+      "original_code": "MAT2256"
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / Mathematics",
+      "scraped_at": "2025-07-07T17:34:13.638672",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/Mathematics/Engineering%20Mathematics-IV%20%28MAT%202256%29.pdf",
+      "year": 2022,
+      "file_name": "Engineering Mathematics-IV (MAT 2256).pdf",
+      "program": "Mathematics",
+      "subject_code": "MAT2256",
+      "paper_type": "Regular",
+      "display_title": "Engineering Mathematics-Iv (Mat 2256)",
+      "semester": 4,
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "MAT2256",
+      "course_name": "Engineering Mathematics IV",
+      "subject_name": "Engineering Mathematics-IV",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "MAT2256",
+        "paper_name": "Engineering Mathematics-IV",
+        "year": 2022,
+        "semester": 4,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.9615384615384616,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "MAT 2229",
+            "curriculum_name": "Engineering Mathematics IV",
+            "program": "IND",
+            "semester": "4"
+          }
+        ]
+      },
+      "original_code": "MAT2256"
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / Mathematics",
+      "scraped_at": "2025-07-07T17:34:13.639070",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/Mathematics/Engineering%20Mathematics-IV%20%28MAT%202258%29%28Makeup%29.pdf",
+      "year": 2022,
+      "file_name": "Engineering Mathematics-IV (MAT 2258)(Makeup).pdf",
+      "program": "Mathematics",
+      "subject_code": "MAT2258",
+      "paper_type": "Makeup",
+      "display_title": "Engineering Mathematics-Iv (Mat 2258)(Makeup)",
+      "semester": 4,
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "MAT2258",
+      "course_name": "Engineering Mathematics IV",
+      "subject_name": "Engineering Mathematics-IV",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "MAT2258",
+        "paper_name": "Engineering Mathematics-IV",
+        "year": 2022,
+        "semester": 4,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.9615384615384616,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "MAT 2229",
+            "curriculum_name": "Engineering Mathematics IV",
+            "program": "IND",
+            "semester": "4"
+          }
+        ]
+      },
+      "original_code": "MAT2258"
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / Mathematics",
+      "scraped_at": "2025-07-07T17:34:13.639509",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/Mathematics/Engineering%20Mathematics-IV%20%28MAT%202258%29.pdf",
+      "year": 2022,
+      "file_name": "Engineering Mathematics-IV (MAT 2258).pdf",
+      "program": "Mathematics",
+      "subject_code": "MAT2258",
+      "paper_type": "Regular",
+      "display_title": "Engineering Mathematics-Iv (Mat 2258)",
+      "semester": 4,
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "MAT2258",
+      "course_name": "Engineering Mathematics IV",
+      "subject_name": "Engineering Mathematics-IV",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "MAT2258",
+        "paper_name": "Engineering Mathematics-IV",
+        "year": 2022,
+        "semester": 4,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.9615384615384616,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "MAT 2229",
+            "curriculum_name": "Engineering Mathematics IV",
+            "program": "IND",
+            "semester": "4"
+          }
+        ]
+      },
+      "original_code": "MAT2258"
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / Mathematics",
+      "scraped_at": "2025-07-07T17:34:13.640304",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/Mathematics/Enginering%20Mathematics-IV%20%28MAT%202260%29%28Makeup%29.pdf",
+      "year": 2022,
+      "file_name": "Enginering Mathematics-IV (MAT 2260)(Makeup).pdf",
+      "program": "Mathematics",
+      "subject_code": "MAT2260",
+      "paper_type": "Makeup",
+      "display_title": "Enginering Mathematics-Iv (Mat 2260)(Makeup)",
+      "semester": 4,
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "MAT2260",
+      "course_name": "Engineering Mathematics IV",
+      "subject_name": "Enginering Mathematics-IV",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "MAT2260",
+        "paper_name": "Enginering Mathematics-IV",
+        "year": 2022,
+        "semester": 4,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.9411764705882353,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "MAT 2229",
+            "curriculum_name": "Engineering Mathematics IV",
+            "program": "IND",
+            "semester": "4"
+          }
+        ]
+      },
+      "original_code": "MAT2260"
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / Mathematics",
+      "scraped_at": "2025-07-07T17:34:13.640737",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/Mathematics/Enginering%20Mathematics-IV%20%28MAT%202260%29.pdf",
+      "year": 2022,
+      "file_name": "Enginering Mathematics-IV (MAT 2260).pdf",
+      "program": "Mathematics",
+      "subject_code": "MAT2260",
+      "paper_type": "Regular",
+      "display_title": "Enginering Mathematics-Iv (Mat 2260)",
+      "semester": 4,
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "MAT2260",
+      "course_name": "Engineering Mathematics IV",
+      "subject_name": "Enginering Mathematics-IV",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "MAT2260",
+        "paper_name": "Enginering Mathematics-IV",
+        "year": 2022,
+        "semester": 4,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.9411764705882353,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "MAT 2229",
+            "curriculum_name": "Engineering Mathematics IV",
+            "program": "IND",
+            "semester": "4"
+          }
+        ]
+      },
+      "original_code": "MAT2260"
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / Mathematics",
+      "scraped_at": "2025-07-07T17:34:13.641129",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/Mathematics/Enginering%20Mathematics-IV%20%28MAT%202261%29%28Makeup%29.pdf",
+      "year": 2022,
+      "file_name": "Enginering Mathematics-IV (MAT 2261)(Makeup).pdf",
+      "program": "Mathematics",
+      "subject_code": "MAT2261",
+      "paper_type": "Makeup",
+      "display_title": "Enginering Mathematics-Iv (Mat 2261)(Makeup)",
+      "semester": 4,
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "MAT2261",
+      "course_name": "Engineering Mathematics IV",
+      "subject_name": "Enginering Mathematics-IV",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "MAT2261",
+        "paper_name": "Enginering Mathematics-IV",
+        "year": 2022,
+        "semester": 4,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.9411764705882353,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "MAT 2229",
+            "curriculum_name": "Engineering Mathematics IV",
+            "program": "IND",
+            "semester": "4"
+          }
+        ]
+      },
+      "original_code": "MAT2261"
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / Mathematics",
+      "scraped_at": "2025-07-07T17:34:13.641567",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/Mathematics/Enginering%20Mathematics-IV%20%28MAT%202261%29.pdf",
+      "year": 2022,
+      "file_name": "Enginering Mathematics-IV (MAT 2261).pdf",
+      "program": "Mathematics",
+      "subject_code": "MAT2261",
+      "paper_type": "Regular",
+      "display_title": "Enginering Mathematics-Iv (Mat 2261)",
+      "semester": 4,
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "MAT2261",
+      "course_name": "Engineering Mathematics IV",
+      "subject_name": "Enginering Mathematics-IV",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "MAT2261",
+        "paper_name": "Enginering Mathematics-IV",
+        "year": 2022,
+        "semester": 4,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.9411764705882353,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "MAT 2229",
+            "curriculum_name": "Engineering Mathematics IV",
+            "program": "IND",
+            "semester": "4"
+          }
+        ]
+      },
+      "original_code": "MAT2261"
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / Mathematics",
+      "scraped_at": "2025-07-07T17:34:13.641974",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/Mathematics/Enginering%20Mathematics-IV%20%28MAT%202262%29%28Makeup%29.pdf",
+      "year": 2022,
+      "file_name": "Enginering Mathematics-IV (MAT 2262)(Makeup).pdf",
+      "program": "Mathematics",
+      "subject_code": "MAT2262",
+      "paper_type": "Makeup",
+      "display_title": "Enginering Mathematics-Iv (Mat 2262)(Makeup)",
+      "semester": 4,
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "MAT2262",
+      "course_name": "Engineering Mathematics IV",
+      "subject_name": "Enginering Mathematics-IV",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "MAT2262",
+        "paper_name": "Enginering Mathematics-IV",
+        "year": 2022,
+        "semester": 4,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.9411764705882353,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "MAT 2229",
+            "curriculum_name": "Engineering Mathematics IV",
+            "program": "IND",
+            "semester": "4"
+          }
+        ]
+      },
+      "original_code": "MAT2262"
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / Mathematics",
+      "scraped_at": "2025-07-07T17:34:13.643104",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/Mathematics/Enginering%20Mathematics-IV%20%28MAT%202262%29.pdf",
+      "year": 2022,
+      "file_name": "Enginering Mathematics-IV (MAT 2262).pdf",
+      "program": "Mathematics",
+      "subject_code": "MAT2262",
+      "paper_type": "Regular",
+      "display_title": "Enginering Mathematics-Iv (Mat 2262)",
+      "semester": 4,
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "MAT2262",
+      "course_name": "Engineering Mathematics IV",
+      "subject_name": "Enginering Mathematics-IV",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "MAT2262",
+        "paper_name": "Enginering Mathematics-IV",
+        "year": 2022,
+        "semester": 4,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.9411764705882353,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "MAT 2229",
+            "curriculum_name": "Engineering Mathematics IV",
+            "program": "IND",
+            "semester": "4"
+          }
+        ]
+      },
+      "original_code": "MAT2262"
+    }
+  ],
+  "HUM3052": [
+    {
+      "path": "2022 / June-Jul 22 QP / VI Sem / Humanities and Management",
+      "scraped_at": "2025-07-07T17:34:45.167598",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/VI%20Sem/Humanities%20and%20Management/Essentials%20of%20Managemenet%20%28HUM%203052%29%20RCS%20.pdf",
+      "year": 2022,
+      "semester": 5,
+      "file_name": "Essentials of Managemenet (HUM 3052) RCS .pdf",
+      "program": "Humanities and Management",
+      "subject_code": "HUM3052",
+      "paper_type": "Regular",
+      "display_title": "Essentials Of Managemenet (Hum 3052) Rcs ",
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "HUM3052",
+      "course_name": "Essentials of Management",
+      "subject_name": "Essentials of Managemenet",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "HUM3052",
+        "paper_name": "Essentials of Managemenet",
+        "year": 2022,
+        "semester": 1,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.9795918367346939,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "HUM 3101",
+            "curriculum_name": "Essentials of Management",
+            "program": "CSE",
+            "semester": "5"
+          }
+        ]
+      },
+      "original_code": "HUM3052"
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / VI Sem / Humanities and Management",
+      "scraped_at": "2025-07-07T17:34:45.166663",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/VI%20Sem/Humanities%20and%20Management/Essentials%20of%20Managemenet%20%28HUm%203052%29%20Online%20%28Makeup%29.pdf",
+      "year": 2022,
+      "semester": 5,
+      "file_name": "Essentials of Managemenet (HUm 3052) Online (Makeup).pdf",
+      "program": "Humanities and Management",
+      "subject_code": "HUM3052",
+      "paper_type": "Makeup",
+      "display_title": "Essentials Of Managemenet (Hum 3052) Online (Makeup)",
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "HUM3052",
+      "course_name": "Essentials of Management",
+      "subject_name": "Essentials of Managemenet",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "HUM3052",
+        "paper_name": "Essentials of Managemenet",
+        "year": 2022,
+        "semester": 1,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.9795918367346939,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "HUM 3101",
+            "curriculum_name": "Essentials of Management",
+            "program": "CSE",
+            "semester": "5"
+          }
+        ]
+      },
+      "original_code": "HUM3052"
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Humanities and Management",
+      "scraped_at": "2025-07-07T17:35:53.841453",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Humanities%20and%20Management/Essentials%20of%20Managemenet%20%28HUm%203052%29%20Online.pdf",
+      "year": 2022,
+      "file_name": "Essentials of Managemenet (HUm 3052) Online.pdf",
+      "program": "Humanities and Management",
+      "subject_code": "HUM3052",
+      "paper_type": "Regular",
+      "display_title": "Essentials Of Managemenet (Hum 3052) Online",
+      "semester": 5,
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "HUM3052",
+      "course_name": "Essentials of Management",
+      "subject_name": "Essentials of Managemenet",
+      "curriculum_context": {
+        "curriculum_id": "cse_year3_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "HUM3052",
+        "paper_name": "Essentials of Managemenet",
+        "year": 2022,
+        "semester": 5,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.9795918367346939,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "HUM 3101",
+            "curriculum_name": "Essentials of Management",
+            "program": "CSE",
+            "semester": "5"
+          }
+        ]
+      },
+      "original_code": "HUM3052"
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Humanities and Management",
+      "scraped_at": "2025-07-07T17:35:53.842076",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Humanities%20and%20Management/Essentials%20of%20Managemenet%20%28HUm%203052%29%28Makeup%29%20Online.pdf",
+      "year": 2022,
+      "file_name": "Essentials of Managemenet (HUm 3052)(Makeup) Online.pdf",
+      "program": "Humanities and Management",
+      "subject_code": "HUM3052",
+      "paper_type": "Makeup",
+      "display_title": "Essentials Of Managemenet (Hum 3052)(Makeup) Online",
+      "semester": 5,
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "HUM3052",
+      "course_name": "Essentials of Management",
+      "subject_name": "Essentials of Managemenet",
+      "curriculum_context": {
+        "curriculum_id": "cse_year3_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "HUM3052",
+        "paper_name": "Essentials of Managemenet",
+        "year": 2022,
+        "semester": 5,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.9795918367346939,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "HUM 3101",
+            "curriculum_name": "Essentials of Management",
+            "program": "CSE",
+            "semester": "5"
+          }
+        ]
+      },
+      "original_code": "HUM3052"
+    }
+  ],
+  "MAT2213": [
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / Mathematics",
+      "scraped_at": "2025-07-07T17:34:13.643565",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/Mathematics/Mathematical%20Foundation%20for%20Data%20Science%20%20-%20II%28MAT%202213%29.pdf",
+      "year": 2022,
+      "file_name": "Mathematical Foundation for Data Science  - II(MAT 2213).pdf",
+      "program": "Mathematics",
+      "subject_code": "MAT2213",
+      "paper_type": "Regular",
+      "display_title": "Mathematical Foundation For Data Science  - Ii(Mat 2213)",
+      "semester": 4,
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "MAT2213",
+      "course_name": "Mathematical Foundation for Data Science  - II",
+      "subject_name": "Mathematical Foundation for Data Science  - II",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "MAT2213",
+        "paper_name": "Mathematical Foundation for Data Science  - II",
+        "year": 2022,
+        "semester": 4,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.9555555555555556,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "MAT 2239",
+            "curriculum_name": "Mathematical Foundations for Data Science II",
+            "program": "DSE",
+            "semester": "4"
+          }
+        ]
+      }
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / Mathematics",
+      "scraped_at": "2025-07-07T17:34:13.643980",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/Mathematics/Mathematical%20Foundation%20for%20Data%20Science%20%20-II%28MAT%202213%29%20%28Makeup%29.pdf",
+      "year": 2022,
+      "file_name": "Mathematical Foundation for Data Science  -II(MAT 2213) (Makeup).pdf",
+      "program": "Mathematics",
+      "subject_code": "MAT2213",
+      "paper_type": "Makeup",
+      "display_title": "Mathematical Foundation For Data Science  -Ii(Mat 2213) (Makeup)",
+      "semester": 4,
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "MAT2213",
+      "course_name": "Mathematical Foundation for Data Science  -II",
+      "subject_name": "Mathematical Foundation for Data Science  -II",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "MAT2213",
+        "paper_name": "Mathematical Foundation for Data Science  -II",
+        "year": 2022,
+        "semester": 4,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.9662921348314607,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "MAT 2239",
+            "curriculum_name": "Mathematical Foundations for Data Science II",
+            "program": "DSE",
+            "semester": "4"
+          }
+        ]
+      }
+    }
+  ],
+  "MAT3151": [
+    {
+      "path": "2024 / Dec 2023-Jan 2024 / B.Tech / V Sem",
+      "scraped_at": "2025-07-07T17:37:44.036987",
+      "url": "https://libportal.manipal.edu/RootFolder/2024/Dec%202023-Jan%202024/B.Tech/V%20Sem/Mathematical%20Foundations%20for%20Data%20Science%20%28MAT%203151%29%28Makeup%29.pdf",
+      "year": 2024,
+      "program": "B.Tech",
+      "file_name": "Mathematical Foundations for Data Science (MAT 3151)(Makeup).pdf",
+      "subject_code": "MAT3151",
+      "paper_type": "Makeup",
+      "display_title": "Mathematical Foundations For Data Science (Mat 3151)(Makeup)",
+      "semester": 5,
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "MAT3151",
+      "course_name": "Mathematical Foundations for Data Science",
+      "subject_name": "Mathematical Foundations for Data Science",
+      "curriculum_context": {
+        "curriculum_id": "cse_year3_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2024 / Dec 2023-Jan 2024 / B.Tech / V Sem",
+      "scraped_at": "2025-07-07T17:37:44.037928",
+      "url": "https://libportal.manipal.edu/RootFolder/2024/Dec%202023-Jan%202024/B.Tech/V%20Sem/Mathematical%20Foundations%20for%20Data%20Science%20-III%20%28MAT%203151%29.pdf",
+      "year": 2024,
+      "program": "B.Tech",
+      "file_name": "Mathematical Foundations for Data Science -III (MAT 3151).pdf",
+      "subject_code": "MAT3151",
+      "paper_type": "Regular",
+      "display_title": "Mathematical Foundations For Data Science -Iii (Mat 3151)",
+      "semester": 5,
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "MAT3151",
+      "course_name": "Mathematical Foundations for Data Science -III",
+      "subject_name": "Mathematical Foundations for Data Science -III",
+      "curriculum_context": {
+        "curriculum_id": "cse_year3_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "CHM4001": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Chemical",
+      "scraped_at": "2025-07-07T17:36:13.185449",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Chemical/Analytical%20Technique%20and%20Instrumentation%20%28CHM%204001%29%20RCS%20.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Analytical Technique and Instrumentation (CHM 4001) RCS .pdf",
+      "program": "Chemical Engineering",
+      "subject_code": "CHM4001",
+      "paper_type": "Regular",
+      "display_title": "Analytical Technique And Instrumentation (Chm 4001) Rcs ",
+      "program_name": "BTech Chemical Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Chemical Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CHM4001",
+      "course_name": "Analytical Technique and Instrumentation",
+      "subject_name": "Analytical Technique and Instrumentation",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Chemical",
+      "scraped_at": "2025-07-07T17:36:13.186077",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Chemical/Analytical%20Technique%20and%20Instrumentation%20%28CHM%204001%29%20RCS%20PE.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Analytical Technique and Instrumentation (CHM 4001) RCS PE.pdf",
+      "program": "Chemical Engineering",
+      "subject_code": "CHM4001",
+      "paper_type": "Regular",
+      "display_title": "Analytical Technique And Instrumentation (Chm 4001) Rcs Pe",
+      "program_name": "BTech Chemical Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Chemical Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CHM4001",
+      "course_name": "Analytical Technique and Instrumentation",
+      "subject_name": "Analytical Technique and Instrumentation",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "CHM4053": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Chemical",
+      "scraped_at": "2025-07-07T17:36:13.186582",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Chemical/Analytical%20Techniques%20and%20Simulation%20%28CHM%204053%29%20RCS.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Analytical Techniques and Simulation (CHM 4053) RCS.pdf",
+      "program": "Chemical Engineering",
+      "subject_code": "CHM4053",
+      "paper_type": "Regular",
+      "display_title": "Analytical Techniques And Simulation (Chm 4053) Rcs",
+      "program_name": "BTech Chemical Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Chemical Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CHM4053",
+      "course_name": "Analytical Techniques and Simulation",
+      "subject_name": "Analytical Techniques and Simulation",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "HUM4313": [
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / Humanities and Managemenet",
+      "scraped_at": "2025-07-07T17:34:17.545981",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/Humanities%20and%20Managemenet/Analytical%20Writing%20%20%28HUM%204313%29.pdf",
+      "year": 2022,
+      "file_name": "Analytical Writing  (HUM 4313).pdf",
+      "program": null,
+      "subject_code": "HUM4313",
+      "paper_type": "Regular",
+      "display_title": "Analytical Writing  (Hum 4313)",
+      "semester": 7,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "HUM4313",
+      "course_name": "Analytical Writing",
+      "subject_name": "Analytical Writing",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "MAT5302": [
+    {
+      "path": "2022 / June-Jul 22 QP / VI Sem / Mathematics",
+      "scraped_at": "2025-07-07T17:34:41.661277",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/VI%20Sem/Mathematics/Applied%20Linear%20Algebra%28%20MAT%205302%29%28Makeup%29.pdf",
+      "year": 2022,
+      "semester": 8,
+      "file_name": "Applied Linear Algebra( MAT 5302)(Makeup).pdf",
+      "program": "Mathematics",
+      "subject_code": "MAT5302",
+      "paper_type": "Makeup",
+      "display_title": "Applied Linear Algebra( Mat 5302)(Makeup)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "MAT5302",
+      "course_name": "Applied Linear Algebra(",
+      "subject_name": "Applied Linear Algebra(",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / VI Sem / Mathematics",
+      "scraped_at": "2025-07-07T17:34:41.663399",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/VI%20Sem/Mathematics/Applied%20Linear%20Algebra%28%20MAT%205302%29.pdf",
+      "year": 2022,
+      "semester": 8,
+      "file_name": "Applied Linear Algebra( MAT 5302).pdf",
+      "program": "Mathematics",
+      "subject_code": "MAT5302",
+      "paper_type": "Regular",
+      "display_title": "Applied Linear Algebra( Mat 5302)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "MAT5302",
+      "course_name": "Applied Linear Algebra(",
+      "subject_name": "Applied Linear Algebra(",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "MAT4051": [
+    {
+      "path": "2022 / June-Jul 22 QP / VI Sem / Mathematics",
+      "scraped_at": "2025-07-07T17:34:41.664953",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/VI%20Sem/Mathematics/Applied%20Statistics%20and%20Time%20Series%20Analysis%20%28MAT_4051%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Applied Statistics and Time Series Analysis (MAT_4051).pdf",
+      "program": "Mathematics",
+      "subject_code": null,
+      "paper_type": "Regular",
+      "display_title": "Applied Statistics And Time Series Analysis (Mat 4051)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "MAT4051",
+      "course_name": "Applied Statistics and Time Series Analysis (MAT_4051)",
+      "subject_name": "Applied Statistics and Time Series Analysis (MAT_4051)",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "MAT4052": [
+    {
+      "path": "2022 / June-Jul 22 QP / VI Sem / Mathematics",
+      "scraped_at": "2025-07-07T17:34:41.666524",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/VI%20Sem/Mathematics/Computational%20Linear%20Algebra%20%28MAT%204052%29%20%28Makeup%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Computational Linear Algebra (MAT 4052) (Makeup).pdf",
+      "program": "Mathematics",
+      "subject_code": "MAT4052",
+      "paper_type": "Makeup",
+      "display_title": "Computational Linear Algebra (Mat 4052) (Makeup)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "MAT4052",
+      "course_name": "Computational Linear Algebra",
+      "subject_name": "Computational Linear Algebra",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / VI Sem / Mathematics",
+      "scraped_at": "2025-07-07T17:34:41.667833",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/VI%20Sem/Mathematics/Computational%20Linear%20Algebra%20%28MAT%204052%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Computational Linear Algebra (MAT 4052).pdf",
+      "program": "Mathematics",
+      "subject_code": "MAT4052",
+      "paper_type": "Regular",
+      "display_title": "Computational Linear Algebra (Mat 4052)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "MAT4052",
+      "course_name": "Computational Linear Algebra",
+      "subject_name": "Computational Linear Algebra",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "HUM4318": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Humanities and Management",
+      "scraped_at": "2025-07-07T17:35:53.838795",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Humanities%20and%20Management/Culture%20and%20Society%20in%20Literature%20%28HUM%204318%29.pdf",
+      "year": 2022,
+      "file_name": "Culture and Society in Literature (HUM 4318).pdf",
+      "program": "Humanities and Management",
+      "subject_code": "HUM4318",
+      "paper_type": "Regular",
+      "display_title": "Culture And Society In Literature (Hum 4318)",
+      "semester": 7,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "HUM4318",
+      "course_name": "Culture and Society in Literature",
+      "subject_name": "Culture and Society in Literature",
+      "curriculum_context": {
+        "curriculum_id": "cse_year3_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "MAT2151": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Automobile",
+      "scraped_at": "2025-07-07T17:35:33.789385",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Automobile/Engineering%20Mathematics%20-III%20%28MAT%202151%29%20RCS%20%20.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Engineering Mathematics -III (MAT 2151) RCS  .pdf",
+      "program": "Automobile Engineering",
+      "subject_code": "MAT2151",
+      "paper_type": "Regular",
+      "display_title": "Engineering Mathematics -Iii (Mat 2151) Rcs  ",
+      "program_name": "BTech Automobile Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Automobile Engineering",
+      "college": null,
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "MAT2151",
+      "course_name": "Engineering Mathematics -III",
+      "subject_name": "Engineering Mathematics -III",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Automobile",
+      "scraped_at": "2025-07-07T17:35:33.789814",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Automobile/Engineering%20Mathematics-%20IV%20%28%20MAT%202151%29%20%28Makeup%29%20-%202021.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Engineering Mathematics- IV ( MAT 2151) (Makeup) - 2021.pdf",
+      "program": "Automobile Engineering",
+      "subject_code": "MAT2151",
+      "paper_type": "Makeup",
+      "display_title": "Engineering Mathematics- Iv ( Mat 2151) (Makeup) - 2021",
+      "program_name": "BTech Automobile Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Automobile Engineering",
+      "college": null,
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "MAT2151",
+      "course_name": "Engineering Mathematics- IV (",
+      "subject_name": "Engineering Mathematics- IV (",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "HUM4062": [
+    {
+      "path": "2022 / June-Jul 22 QP / VI Sem / Humanities and Management",
+      "scraped_at": "2025-07-07T17:34:45.165722",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/VI%20Sem/Humanities%20and%20Management/Entrepreneurship%20%28HUM%204062%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Entrepreneurship (HUM 4062).pdf",
+      "program": "Humanities and Management",
+      "subject_code": "HUM4062",
+      "paper_type": "Regular",
+      "display_title": "Entrepreneurship (Hum 4062)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "HUM4062",
+      "course_name": "Entrepreneurship",
+      "subject_name": "Entrepreneurship",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "HUM4302": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Humanities and Management",
+      "scraped_at": "2025-07-07T17:35:53.842540",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Humanities%20and%20Management/Film%20Studies%20%28HUM%204302%29.pdf",
+      "year": 2022,
+      "file_name": "Film Studies (HUM 4302).pdf",
+      "program": "Humanities and Management",
+      "subject_code": "HUM4302",
+      "paper_type": "Regular",
+      "display_title": "Film Studies (Hum 4302)",
+      "semester": 7,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "HUM4302",
+      "course_name": "Film Studies",
+      "subject_name": "Film Studies",
+      "curriculum_context": {
+        "curriculum_id": "cse_year3_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "HUM4051": [
+    {
+      "path": "2022 / June-Jul 22 QP / VI Sem / Humanities and Management",
+      "scraped_at": "2025-07-07T17:34:45.168451",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/VI%20Sem/Humanities%20and%20Management/Finacial%20Management%20%28HUM%204051%29%28%20Make-Up%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Finacial Management (HUM 4051)( Make-Up).pdf",
+      "program": "Humanities and Management",
+      "subject_code": "HUM4051",
+      "paper_type": "Makeup",
+      "display_title": "Finacial Management (Hum 4051)( Make-Up)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "HUM4051",
+      "course_name": "Finacial Management",
+      "subject_name": "Finacial Management",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "HUM4059": [
+    {
+      "path": "2022 / June-Jul 22 QP / VI Sem / Humanities and Management",
+      "scraped_at": "2025-07-07T17:34:45.169166",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/VI%20Sem/Humanities%20and%20Management/Fintech%20Services%20%28HUM%204059%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Fintech Services (HUM 4059).pdf",
+      "program": "Humanities and Management",
+      "subject_code": "HUM4059",
+      "paper_type": "Regular",
+      "display_title": "Fintech Services (Hum 4059)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "HUM4059",
+      "course_name": "Fintech Services",
+      "subject_name": "Fintech Services",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "HUM3308": [
+    {
+      "path": "2022 / June-Jul 22 QP / VI Sem / Humanities and Management",
+      "scraped_at": "2025-07-07T17:34:45.169857",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/VI%20Sem/Humanities%20and%20Management/Graphic%20Novels%20History%2C%20Form%20and%20Culture%20%28HUM%203308%29.pdf",
+      "year": 2022,
+      "semester": 1,
+      "file_name": "Graphic Novels History, Form and Culture (HUM 3308).pdf",
+      "program": "Humanities and Management",
+      "subject_code": "HUM3308",
+      "paper_type": "Regular",
+      "display_title": "Graphic Novels History, Form And Culture (Hum 3308)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "HUM3308",
+      "course_name": "Graphic Novels History, Form and Culture",
+      "subject_name": "Graphic Novels History, Form and Culture",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "HUM4052": [
+    {
+      "path": "2022 / June-Jul 22 QP / VI Sem / Humanities and Management",
+      "scraped_at": "2025-07-07T17:34:45.170532",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/VI%20Sem/Humanities%20and%20Management/Human%20Resource%20Management%20%28HUM%204052%29%20%28Makeup%29%20.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Human Resource Management (HUM 4052) (Makeup) .pdf",
+      "program": "Humanities and Management",
+      "subject_code": "HUM4052",
+      "paper_type": "Makeup",
+      "display_title": "Human Resource Management (Hum 4052) (Makeup) ",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "HUM4052",
+      "course_name": "Human Resource Management",
+      "subject_name": "Human Resource Management",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / VI Sem / Humanities and Management",
+      "scraped_at": "2025-07-07T17:34:45.171244",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/VI%20Sem/Humanities%20and%20Management/Human%20Resource%20Management%20%28HUM%204052%29%20.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Human Resource Management (HUM 4052) .pdf",
+      "program": "Humanities and Management",
+      "subject_code": "HUM4052",
+      "paper_type": "Regular",
+      "display_title": "Human Resource Management (Hum 4052) ",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "HUM4052",
+      "course_name": "Human Resource Management",
+      "subject_name": "Human Resource Management",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "HUM4304": [
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / Humanities and Managemenet",
+      "scraped_at": "2025-07-07T17:34:17.548152",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/Humanities%20and%20Managemenet/Indo-European%20Intercultural%20Communication%20%28HUM%204304%29.pdf",
+      "year": 2022,
+      "file_name": "Indo-European Intercultural Communication (HUM 4304).pdf",
+      "program": null,
+      "subject_code": "HUM4304",
+      "paper_type": "Regular",
+      "display_title": "Indo-European Intercultural Communication (Hum 4304)",
+      "semester": 7,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "HUM4304",
+      "course_name": "Indo-European Intercultural Communication",
+      "subject_name": "Indo-European Intercultural Communication",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "HUM4305": [
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / Humanities and Managemenet",
+      "scraped_at": "2025-07-07T17:34:17.549196",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/Humanities%20and%20Managemenet/Interpretation%20of%20Literary%20Texts%20%28HUM%204305%29.pdf",
+      "year": 2022,
+      "file_name": "Interpretation of Literary Texts (HUM 4305).pdf",
+      "program": null,
+      "subject_code": "HUM4305",
+      "paper_type": "Regular",
+      "display_title": "Interpretation Of Literary Texts (Hum 4305)",
+      "semester": 7,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "HUM4305",
+      "course_name": "Interpretation of Literary Texts",
+      "subject_name": "Interpretation of Literary Texts",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "HUM4013": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Humanities and Management",
+      "scraped_at": "2025-07-07T17:36:08.238797",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Humanities%20and%20Management/Marketing%20Management%20%28HUM%204013%29%20%28Makeup%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Marketing Management (HUM 4013) (Makeup).pdf",
+      "program": "Humanities and Management",
+      "subject_code": "HUM4013",
+      "paper_type": "Makeup",
+      "display_title": "Marketing Management (Hum 4013) (Makeup)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "HUM4013",
+      "course_name": "Marketing Management",
+      "subject_name": "Marketing Management",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Humanities and Management",
+      "scraped_at": "2025-07-07T17:36:08.241245",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Humanities%20and%20Management/Marketing%20Management%20%28HUM%204013%29%20Online.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Marketing Management (HUM 4013) Online.pdf",
+      "program": "Humanities and Management",
+      "subject_code": "HUM4013",
+      "paper_type": "Regular",
+      "display_title": "Marketing Management (Hum 4013) Online",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "HUM4013",
+      "course_name": "Marketing Management",
+      "subject_name": "Marketing Management",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Humanities and Management",
+      "scraped_at": "2025-07-07T17:36:08.243320",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Humanities%20and%20Management/Marketing%20Management%20%28HUM%204013%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Marketing Management (HUM 4013).pdf",
+      "program": "Humanities and Management",
+      "subject_code": "HUM4013",
+      "paper_type": "Regular",
+      "display_title": "Marketing Management (Hum 4013)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "HUM4013",
+      "course_name": "Marketing Management",
+      "subject_name": "Marketing Management",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "MAT5305": [
+    {
+      "path": "2022 / June-Jul 22 QP / VI Sem / Mathematics",
+      "scraped_at": "2025-07-07T17:34:41.670037",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/VI%20Sem/Mathematics/Optimization%20Techniques%20%28MAT%205305%29%28Makeup%29.pdf",
+      "year": 2022,
+      "semester": 8,
+      "file_name": "Optimization Techniques (MAT 5305)(Makeup).pdf",
+      "program": "Mathematics",
+      "subject_code": "MAT5305",
+      "paper_type": "Makeup",
+      "display_title": "Optimization Techniques (Mat 5305)(Makeup)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "MAT5305",
+      "course_name": "Optimization Techniques",
+      "subject_name": "Optimization Techniques",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / VI Sem / Mathematics",
+      "scraped_at": "2025-07-07T17:34:41.671144",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/VI%20Sem/Mathematics/Optimization%20Techniques%20%28MAT%205305%29.pdf",
+      "year": 2022,
+      "semester": 8,
+      "file_name": "Optimization Techniques (MAT 5305).pdf",
+      "program": "Mathematics",
+      "subject_code": "MAT5305",
+      "paper_type": "Regular",
+      "display_title": "Optimization Techniques (Mat 5305)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "MAT5305",
+      "course_name": "Optimization Techniques",
+      "subject_name": "Optimization Techniques",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "HUM3306": [
+    {
+      "path": "2022 / June-Jul 22 QP / VI Sem / Humanities and Management",
+      "scraped_at": "2025-07-07T17:34:45.173902",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/VI%20Sem/Humanities%20and%20Management/Philosophy%2C%20Religion%20and%20Culture%20%28HUM%203306%29.pdf",
+      "year": 2022,
+      "semester": 1,
+      "file_name": "Philosophy, Religion and Culture (HUM 3306).pdf",
+      "program": "Humanities and Management",
+      "subject_code": "HUM3306",
+      "paper_type": "Regular",
+      "display_title": "Philosophy, Religion And Culture (Hum 3306)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "HUM3306",
+      "course_name": "Philosophy, Religion and Culture",
+      "subject_name": "Philosophy, Religion and Culture",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "CHM2151": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Chemical",
+      "scraped_at": "2025-07-07T17:35:29.970163",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Chemical/Physical%20and%20Organic%20Chemistry%20%28CHM%202151%29%20%28Makeup%29.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Physical and Organic Chemistry (CHM 2151) (Makeup).pdf",
+      "program": "Chemical Engineering",
+      "subject_code": "CHM2151",
+      "paper_type": "Makeup",
+      "display_title": "Physical And Organic Chemistry (Chm 2151) (Makeup)",
+      "program_name": "BTech Chemical Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Chemical Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CHM2151",
+      "course_name": "Physical and Organic Chemistry",
+      "subject_name": "Physical and Organic Chemistry",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Chemical",
+      "scraped_at": "2025-07-07T17:35:29.971398",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Chemical/Physical%20and%20Organic%20Chemistry%20%28CHM%202151%29%20RCS.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Physical and Organic Chemistry (CHM 2151) RCS.pdf",
+      "program": "Chemical Engineering",
+      "subject_code": "CHM2151",
+      "paper_type": "Regular",
+      "display_title": "Physical And Organic Chemistry (Chm 2151) Rcs",
+      "program_name": "BTech Chemical Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Chemical Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CHM2151",
+      "course_name": "Physical and Organic Chemistry",
+      "subject_name": "Physical and Organic Chemistry",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "HUM4316": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Humanities and Management",
+      "scraped_at": "2025-07-07T17:36:08.245317",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Humanities%20and%20Management/Social%20Ethics%20%28HUM%204316%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Social Ethics (HUM 4316).pdf",
+      "program": "Humanities and Management",
+      "subject_code": "HUM4316",
+      "paper_type": "Regular",
+      "display_title": "Social Ethics (Hum 4316)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "HUM4316",
+      "course_name": "Social Ethics",
+      "subject_name": "Social Ethics",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "MAT5306": [
+    {
+      "path": "2022 / June-Jul 22 QP / VI Sem / Mathematics",
+      "scraped_at": "2025-07-07T17:34:41.672236",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/VI%20Sem/Mathematics/Stochastic%20Processes%20and%20Reliability%20%28MAT%205306%29%20%28Make%20up%29.pdf",
+      "year": 2022,
+      "semester": 8,
+      "file_name": "Stochastic Processes and Reliability (MAT 5306) (Make up).pdf",
+      "program": "Mathematics",
+      "subject_code": "MAT5306",
+      "paper_type": "Makeup",
+      "display_title": "Stochastic Processes And Reliability (Mat 5306) (Make Up)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "MAT5306",
+      "course_name": "Stochastic Processes and Reliability",
+      "subject_name": "Stochastic Processes and Reliability",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / VI Sem / Mathematics",
+      "scraped_at": "2025-07-07T17:34:41.673835",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/VI%20Sem/Mathematics/Stochastic%20Processes%20and%20Reliability%20%28MAT%205306%29%20.pdf",
+      "year": 2022,
+      "semester": 8,
+      "file_name": "Stochastic Processes and Reliability (MAT 5306) .pdf",
+      "program": "Mathematics",
+      "subject_code": "MAT5306",
+      "paper_type": "Regular",
+      "display_title": "Stochastic Processes And Reliability (Mat 5306) ",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "MAT5306",
+      "course_name": "Stochastic Processes and Reliability",
+      "subject_name": "Stochastic Processes and Reliability",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ]
+}

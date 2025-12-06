@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Scrapy
+.scrapy
+*.log
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Dependencies
+*.egg-info/
+build/
+dist/
+
+# Data backups
+*_backup_*.json
+*.bak
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Runtime artifacts (do not commit)
+extracted_pdf_*.txt
+search_analytics_export.json
+logs/
+
+# Test files
+test_*.py
+
+# Node (if using any JS tools)
+node_modules/

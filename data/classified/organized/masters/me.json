@@ -1,0 +1,664 @@
+{
+  "VLS5101": [
+    {
+      "path": "2025 / Dec 24-Jan 2025 / SOIS / VLSI",
+      "scraped_at": "2025-07-07T17:38:26.793621",
+      "url": "https://libportal.manipal.edu/RootFolder/2025/Dec%2024-Jan%202025/SOIS/VLSI/Data%20Structures%20%28VLS%205101%29.pdf",
+      "year": 2025,
+      "file_name": "Data Structures (VLS 5101).pdf",
+      "program": "SOIS",
+      "subject_code": "VLS5101",
+      "paper_type": "Regular",
+      "display_title": "Data Structures (Vls 5101)",
+      "semester": 8,
+      "program_name": "M.E (Artificial Intelligence & Machine Learning)",
+      "degree_type": "M.E",
+      "specialization": "Artificial Intelligence & Machine Learning",
+      "college": "Manipal School of Information Sciences",
+      "program_category": "Postgraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "VLS5101",
+      "course_name": "Data Structures",
+      "subject_name": "Data Structures",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "VLS5101",
+        "paper_name": "Data Structures",
+        "year": 2025,
+        "semester": null,
+        "matched": true,
+        "match_source": "name_exact",
+        "confidence": 1.0,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "CSS 2101",
+            "curriculum_name": "Data Structures",
+            "program": "CSE",
+            "semester": "3"
+          }
+        ]
+      }
+    }
+  ],
+  "ESD5102": [
+    {
+      "path": "2025 / Dec 24-Jan 2025 / SOIS / EMB",
+      "scraped_at": "2025-07-07T17:38:29.405255",
+      "url": "https://libportal.manipal.edu/RootFolder/2025/Dec%2024-Jan%202025/SOIS/EMB/Data%20Structures%20and%20Algorithms%20%28ESD%205102%29.pdf",
+      "year": 2025,
+      "file_name": "Data Structures and Algorithms (ESD 5102).pdf",
+      "program": "SOIS",
+      "subject_code": "ESD5102",
+      "paper_type": "Regular",
+      "display_title": "Data Structures And Algorithms (Esd 5102)",
+      "semester": 8,
+      "program_name": "M.E (Artificial Intelligence & Machine Learning)",
+      "degree_type": "M.E",
+      "specialization": "Artificial Intelligence & Machine Learning",
+      "college": "Manipal School of Information Sciences",
+      "program_category": "Postgraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ESD5102",
+      "course_name": "Data Structures and Algorithms",
+      "subject_name": "Data Structures and Algorithms",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "ESD5102",
+        "paper_name": "Data Structures and Algorithms",
+        "year": 2025,
+        "semester": null,
+        "matched": true,
+        "match_source": "name_exact",
+        "confidence": 1.0,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "ICE 2128",
+            "curriculum_name": "Data Structures and Algorithms",
+            "program": "CPS",
+            "semester": "3"
+          }
+        ]
+      }
+    },
+    {
+      "path": "2025 / Dec 24-Jan 2025 / SOIS / CS",
+      "scraped_at": "2025-07-07T17:38:30.646894",
+      "url": "https://libportal.manipal.edu/RootFolder/2025/Dec%2024-Jan%202025/SOIS/CS/Data%20Structures%20and%20Algorithms%20%28ESD%205102%29.pdf",
+      "year": 2025,
+      "file_name": "Data Structures and Algorithms (ESD 5102).pdf",
+      "program": "SOIS",
+      "subject_code": "ESD5102",
+      "paper_type": "Regular",
+      "display_title": "Data Structures And Algorithms (Esd 5102)",
+      "semester": 8,
+      "program_name": "M.E (Artificial Intelligence & Machine Learning)",
+      "degree_type": "M.E",
+      "specialization": "Artificial Intelligence & Machine Learning",
+      "college": "Manipal School of Information Sciences",
+      "program_category": "Postgraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ESD5102",
+      "course_name": "Data Structures and Algorithms",
+      "subject_name": "Data Structures and Algorithms",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "ESD5102",
+        "paper_name": "Data Structures and Algorithms",
+        "year": 2025,
+        "semester": null,
+        "matched": true,
+        "match_source": "name_exact",
+        "confidence": 1.0,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "ICE 2128",
+            "curriculum_name": "Data Structures and Algorithms",
+            "program": "CPS",
+            "semester": "3"
+          }
+        ]
+      }
+    },
+    {
+      "path": "2024 / Dec 2023-Jan 2024 / SOIS / EMB",
+      "scraped_at": "2025-07-07T17:38:07.276232",
+      "url": "https://libportal.manipal.edu/RootFolder/2024/Dec%202023-Jan%202024/SOIS/EMB/Data%20Structures%20and%20Algorithms%20%28ESD%205102%29.pdf",
+      "year": 2024,
+      "file_name": "Data Structures and Algorithms (ESD 5102).pdf",
+      "program": "SOIS",
+      "subject_code": "ESD5102",
+      "paper_type": "Regular",
+      "display_title": "Data Structures And Algorithms (Esd 5102)",
+      "semester": 8,
+      "program_name": "M.E (Artificial Intelligence & Machine Learning)",
+      "degree_type": "M.E",
+      "specialization": "Artificial Intelligence & Machine Learning",
+      "college": "Manipal School of Information Sciences",
+      "program_category": "Postgraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ESD5102",
+      "course_name": "Data Structures and Algorithms",
+      "subject_name": "Data Structures and Algorithms",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "ESD5102",
+        "paper_name": "Data Structures and Algorithms",
+        "year": 2024,
+        "semester": null,
+        "matched": true,
+        "match_source": "name_exact",
+        "confidence": 1.0,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "ICE 2128",
+            "curriculum_name": "Data Structures and Algorithms",
+            "program": "CPS",
+            "semester": "3"
+          }
+        ]
+      }
+    },
+    {
+      "path": "2024 / Dec 2023-Jan 2024 / SOIS / CS",
+      "scraped_at": "2025-07-07T17:38:08.448057",
+      "url": "https://libportal.manipal.edu/RootFolder/2024/Dec%202023-Jan%202024/SOIS/CS/Data%20Structures%20and%20Algorithms%20%28ESD%205102%29.pdf",
+      "year": 2024,
+      "file_name": "Data Structures and Algorithms (ESD 5102).pdf",
+      "program": "SOIS",
+      "subject_code": "ESD5102",
+      "paper_type": "Regular",
+      "display_title": "Data Structures And Algorithms (Esd 5102)",
+      "semester": 8,
+      "program_name": "M.E (Artificial Intelligence & Machine Learning)",
+      "degree_type": "M.E",
+      "specialization": "Artificial Intelligence & Machine Learning",
+      "college": "Manipal School of Information Sciences",
+      "program_category": "Postgraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ESD5102",
+      "course_name": "Data Structures and Algorithms",
+      "subject_name": "Data Structures and Algorithms",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "ESD5102",
+        "paper_name": "Data Structures and Algorithms",
+        "year": 2024,
+        "semester": null,
+        "matched": true,
+        "match_source": "name_exact",
+        "confidence": 1.0,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "ICE 2128",
+            "curriculum_name": "Data Structures and Algorithms",
+            "program": "CPS",
+            "semester": "3"
+          }
+        ]
+      }
+    }
+  ],
+  "MVT5102": [
+    {
+      "path": "2025 / Dec 24-Jan 2025 / SOIS / MVT",
+      "scraped_at": "2025-07-07T17:38:28.197759",
+      "url": "https://libportal.manipal.edu/RootFolder/2025/Dec%2024-Jan%202025/SOIS/MVT/Digital%20VLSI%20Design%20%28MVT%205102%29.pdf",
+      "year": 2025,
+      "file_name": "Digital VLSI Design (MVT 5102).pdf",
+      "program": "SOIS",
+      "subject_code": "MVT5102",
+      "paper_type": "Regular",
+      "display_title": "Digital Vlsi Design (Mvt 5102)",
+      "semester": 8,
+      "program_name": "M.E (Artificial Intelligence & Machine Learning)",
+      "degree_type": "M.E",
+      "specialization": "Artificial Intelligence & Machine Learning",
+      "college": "Manipal School of Information Sciences",
+      "program_category": "Postgraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "MVT5102",
+      "course_name": "Digital VLSI Design",
+      "subject_name": "Digital VLSI Design",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "MVT5102",
+        "paper_name": "Digital VLSI Design",
+        "year": 2025,
+        "semester": null,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.8717948717948718,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "ICE 2126",
+            "curriculum_name": "Digital Logic Design",
+            "program": "CPS",
+            "semester": "3"
+          }
+        ]
+      }
+    },
+    {
+      "path": "2024 / Dec 2023-Jan 2024 / SOIS / MVT",
+      "scraped_at": "2025-07-07T17:38:06.233827",
+      "url": "https://libportal.manipal.edu/RootFolder/2024/Dec%202023-Jan%202024/SOIS/MVT/Digital%20VLSI%20Design%20%28MVT%205102%29.pdf",
+      "year": 2024,
+      "file_name": "Digital VLSI Design (MVT 5102).pdf",
+      "program": "SOIS",
+      "subject_code": "MVT5102",
+      "paper_type": "Regular",
+      "display_title": "Digital Vlsi Design (Mvt 5102)",
+      "semester": 8,
+      "program_name": "M.E (Artificial Intelligence & Machine Learning)",
+      "degree_type": "M.E",
+      "specialization": "Artificial Intelligence & Machine Learning",
+      "college": "Manipal School of Information Sciences",
+      "program_category": "Postgraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "MVT5102",
+      "course_name": "Digital VLSI Design",
+      "subject_name": "Digital VLSI Design",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "MVT5102",
+        "paper_name": "Digital VLSI Design",
+        "year": 2024,
+        "semester": null,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.8717948717948718,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "ICE 2126",
+            "curriculum_name": "Digital Logic Design",
+            "program": "CPS",
+            "semester": "3"
+          }
+        ]
+      }
+    }
+  ],
+  "BDA5103": [
+    {
+      "path": "2025 / Dec 24-Jan 2025 / SOIS / BDA",
+      "scraped_at": "2025-07-07T17:38:33.327838",
+      "url": "https://libportal.manipal.edu/RootFolder/2025/Dec%2024-Jan%202025/SOIS/BDA/Fundamentals%20of%20Machine%20Learning%20%28BDA%205103%29.pdf",
+      "year": 2025,
+      "file_name": "Fundamentals of Machine Learning (BDA 5103).pdf",
+      "program": "SOIS",
+      "subject_code": "BDA5103",
+      "paper_type": "Regular",
+      "display_title": "Fundamentals Of Machine Learning (Bda 5103)",
+      "semester": 8,
+      "program_name": "M.E (Artificial Intelligence & Machine Learning)",
+      "degree_type": "M.E",
+      "specialization": "Artificial Intelligence & Machine Learning",
+      "college": "Manipal School of Information Sciences",
+      "program_category": "Postgraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "BDA5103",
+      "course_name": "Fundamentals of Machine Learning",
+      "subject_name": "Fundamentals of Machine Learning",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "BDA5103",
+        "paper_name": "Fundamentals of Machine Learning",
+        "year": 2025,
+        "semester": null,
+        "matched": true,
+        "match_source": "name_exact",
+        "confidence": 1.0,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "DSE 2222",
+            "curriculum_name": "Fundamentals of Machine Learning",
+            "program": "DSE",
+            "semester": "4"
+          }
+        ]
+      }
+    },
+    {
+      "path": "2024 / Dec 2023-Jan 2024 / SOIS / BDA",
+      "scraped_at": "2025-07-07T17:38:11.076854",
+      "url": "https://libportal.manipal.edu/RootFolder/2024/Dec%202023-Jan%202024/SOIS/BDA/Fundamentals%20of%20Machine%20Learning%20%28BDA%205103%29.pdf",
+      "year": 2024,
+      "file_name": "Fundamentals of Machine Learning (BDA 5103).pdf",
+      "program": "SOIS",
+      "subject_code": "BDA5103",
+      "paper_type": "Regular",
+      "display_title": "Fundamentals Of Machine Learning (Bda 5103)",
+      "semester": 8,
+      "program_name": "M.E (Artificial Intelligence & Machine Learning)",
+      "degree_type": "M.E",
+      "specialization": "Artificial Intelligence & Machine Learning",
+      "college": "Manipal School of Information Sciences",
+      "program_category": "Postgraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "BDA5103",
+      "course_name": "Fundamentals of Machine Learning",
+      "subject_name": "Fundamentals of Machine Learning",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "BDA5103",
+        "paper_name": "Fundamentals of Machine Learning",
+        "year": 2024,
+        "semester": null,
+        "matched": true,
+        "match_source": "name_exact",
+        "confidence": 1.0,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "DSE 2222",
+            "curriculum_name": "Fundamentals of Machine Learning",
+            "program": "DSE",
+            "semester": "4"
+          }
+        ]
+      }
+    }
+  ],
+  "MVT5101": [
+    {
+      "path": "2025 / Dec 24-Jan 2025 / SOIS / MVT",
+      "scraped_at": "2025-07-07T17:38:28.204694",
+      "url": "https://libportal.manipal.edu/RootFolder/2025/Dec%2024-Jan%202025/SOIS/MVT/VLSI%20Fabrication%20Technology%20%28MVT%205101%29.pdf",
+      "year": 2025,
+      "file_name": "VLSI Fabrication Technology (MVT 5101).pdf",
+      "program": "SOIS",
+      "subject_code": "MVT5101",
+      "paper_type": "Regular",
+      "display_title": "Vlsi Fabrication Technology (Mvt 5101)",
+      "semester": 8,
+      "program_name": "M.E (Artificial Intelligence & Machine Learning)",
+      "degree_type": "M.E",
+      "specialization": "Artificial Intelligence & Machine Learning",
+      "college": "Manipal School of Information Sciences",
+      "program_category": "Postgraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "MVT5101",
+      "course_name": "VLSI Fabrication Technology",
+      "subject_name": "VLSI Fabrication Technology",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "MVT5101",
+        "paper_name": "VLSI Fabrication Technology",
+        "year": 2025,
+        "semester": null,
+        "matched": true,
+        "match_source": "name_exact",
+        "confidence": 1.0,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "ECE 3129",
+            "curriculum_name": "VLSI Fabrication Technology",
+            "program": "VLSI",
+            "semester": "5"
+          }
+        ]
+      }
+    },
+    {
+      "path": "2024 / Dec 2023-Jan 2024 / SOIS / MVT",
+      "scraped_at": "2025-07-07T17:38:06.241785",
+      "url": "https://libportal.manipal.edu/RootFolder/2024/Dec%202023-Jan%202024/SOIS/MVT/VLSI%20Fabrication%20Technology%20%28MVT%205101%29.pdf",
+      "year": 2024,
+      "file_name": "VLSI Fabrication Technology (MVT 5101).pdf",
+      "program": "SOIS",
+      "subject_code": "MVT5101",
+      "paper_type": "Regular",
+      "display_title": "Vlsi Fabrication Technology (Mvt 5101)",
+      "semester": 8,
+      "program_name": "M.E (Artificial Intelligence & Machine Learning)",
+      "degree_type": "M.E",
+      "specialization": "Artificial Intelligence & Machine Learning",
+      "college": "Manipal School of Information Sciences",
+      "program_category": "Postgraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "MVT5101",
+      "course_name": "VLSI Fabrication Technology",
+      "subject_name": "VLSI Fabrication Technology",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "MVT5101",
+        "paper_name": "VLSI Fabrication Technology",
+        "year": 2024,
+        "semester": null,
+        "matched": true,
+        "match_source": "name_exact",
+        "confidence": 1.0,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "ECE 3129",
+            "curriculum_name": "VLSI Fabrication Technology",
+            "program": "VLSI",
+            "semester": "5"
+          }
+        ]
+      }
+    }
+  ],
+  "ESD5001": [
+    {
+      "path": "2023 / May - Jun 2023 / MSIS / Big Data Analysis",
+      "scraped_at": "2025-07-07T17:37:00.611816",
+      "url": "https://libportal.manipal.edu/RootFolder/2023/May%20-%20Jun%202023/MSIS/Big%20Data%20Analysis/Digital%20Signal%20Processing%20%28ESD%205001%29%28Makeup%29.pdf",
+      "year": 2023,
+      "file_name": "Digital Signal Processing (ESD 5001)(Makeup).pdf",
+      "program": "MSIS",
+      "subject_code": "ESD5001",
+      "paper_type": "Makeup",
+      "display_title": "Digital Signal Processing (Esd 5001)(Makeup)",
+      "semester": 8,
+      "program_name": "M.E (Artificial Intelligence & Machine Learning)",
+      "degree_type": "M.E",
+      "specialization": "Artificial Intelligence & Machine Learning",
+      "college": "Manipal School of Information Sciences",
+      "program_category": "Postgraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "ESD5001",
+      "course_name": "Digital Signal Processing",
+      "subject_name": "Digital Signal Processing",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "ESD5001",
+        "paper_name": "Digital Signal Processing",
+        "year": 2023,
+        "semester": null,
+        "matched": true,
+        "match_source": "name_exact",
+        "confidence": 1.0,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "ICE 2224",
+            "curriculum_name": "Digital Signal Processing",
+            "program": "EIE",
+            "semester": "4"
+          }
+        ]
+      }
+    },
+    {
+      "path": "2023 / May - Jun 2023 / MSIS / Embedded Design",
+      "scraped_at": "2025-07-07T17:36:57.712694",
+      "url": "https://libportal.manipal.edu/RootFolder/2023/May%20-%20Jun%202023/MSIS/Embedded%20Design/Digital%20Signal%20Processing%20%5BESD%205001%5D.pdf",
+      "year": 2023,
+      "file_name": "Digital Signal Processing [ESD 5001].pdf",
+      "program": "MSIS",
+      "subject_code": "ESD5001",
+      "paper_type": "Regular",
+      "display_title": "Digital Signal Processing [Esd 5001]",
+      "semester": 8,
+      "program_name": "M.E (Artificial Intelligence & Machine Learning)",
+      "degree_type": "M.E",
+      "specialization": "Artificial Intelligence & Machine Learning",
+      "college": "Manipal School of Information Sciences",
+      "program_category": "Postgraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "ESD5001",
+      "course_name": "Digital Signal Processing [",
+      "subject_name": "Digital Signal Processing [",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "ESD5001",
+        "paper_name": "Digital Signal Processing [",
+        "year": 2023,
+        "semester": null,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.9615384615384616,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "ICE 2224",
+            "curriculum_name": "Digital Signal Processing",
+            "program": "EIE",
+            "semester": "4"
+          }
+        ]
+      }
+    }
+  ]
+}

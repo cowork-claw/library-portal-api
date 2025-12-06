@@ -1,0 +1,20 @@
+# Render.com Deployment Configuration
+# Library Portal API V2
+
+services:
+  - type: web
+    name: library-portal-api
+    env: python
+    plan: free  # Change to 'starter' or higher for production
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app_v2.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: LIBRARY_PORTAL_ENVIRONMENT
+        value: production
+      - key: LIBRARY_PORTAL_LOG_LEVEL
+        value: INFO
+      - key: LIBRARY_PORTAL_API_KEY
+        sync: false  # Set this manually in Render dashboard
+      - key: PYTHON_VERSION
+        value: "3.11"

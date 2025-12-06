@@ -1,0 +1,453 @@
+{
+  "CIE1073": [
+    {
+      "path": "2025 / Dec 24-Jan 2025 / B.Tech / I Sem",
+      "scraped_at": "2025-07-07T17:38:16.926425",
+      "url": "https://libportal.manipal.edu/RootFolder/2025/Dec%2024-Jan%202025/B.Tech/I%20Sem/Engineering%20Mechanics%20and%20Smart%20Buidlings%20%28CIE%201073%29.pdf",
+      "year": 2025,
+      "program": "B.Tech",
+      "semester": 1,
+      "file_name": "Engineering Mechanics and Smart Buidlings (CIE 1073).pdf",
+      "subject_code": "CIE1073",
+      "paper_type": "Regular",
+      "display_title": "Engineering Mechanics And Smart Buidlings (Cie 1073)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CIE1073",
+      "course_name": "Engineering Mechanics and Smart Buidlings",
+      "subject_name": "Engineering Mechanics and Smart Buidlings",
+      "curriculum_context": {
+        "curriculum_id": "first_year_cs_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2025
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "CIE1072": [
+    {
+      "path": "2025 / Dec 24-Jan 2025 / B.Tech / I Sem",
+      "scraped_at": "2025-07-07T17:38:16.928016",
+      "url": "https://libportal.manipal.edu/RootFolder/2025/Dec%2024-Jan%202025/B.Tech/I%20Sem/Environmental%20Studies%20%28CIE%201072%29.pdf",
+      "year": 2025,
+      "program": "B.Tech",
+      "semester": 2,
+      "file_name": "Environmental Studies (CIE 1072).pdf",
+      "subject_code": "CIE1072",
+      "paper_type": "Regular",
+      "display_title": "Environmental Studies (Cie 1072)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CIE1072",
+      "course_name": "Environmental Studies",
+      "subject_name": "Environmental Studies",
+      "curriculum_context": {
+        "curriculum_id": "first_year_cs_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2025,
+          2026,
+          2027,
+          2028,
+          2029
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2024 / May-June 2024 / B.Tech / II Sem",
+      "scraped_at": "2025-07-07T17:37:28.068594",
+      "url": "https://libportal.manipal.edu/RootFolder/2024/May-June%202024/B.Tech/II%20Sem/Enviornmental%20Studies%20%28CIE%201072%29%28Makeup%29.pdf",
+      "year": 2024,
+      "program": "B.Tech",
+      "semester": 2,
+      "file_name": "Enviornmental Studies (CIE 1072)(Makeup).pdf",
+      "subject_code": "CIE1072",
+      "paper_type": "Makeup",
+      "display_title": "Enviornmental Studies (Cie 1072)(Makeup)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "CIE1072",
+      "course_name": "Enviornmental Studies",
+      "subject_name": "Enviornmental Studies",
+      "curriculum_context": {
+        "curriculum_id": "first_year_cs_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2024,
+          2025,
+          2026,
+          2027,
+          2028,
+          2029
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2024 / May-June 2024 / B.Tech / II Sem",
+      "scraped_at": "2025-07-07T17:37:28.069392",
+      "url": "https://libportal.manipal.edu/RootFolder/2024/May-June%202024/B.Tech/II%20Sem/Enviornmental%20Studies%20%28CIE%201072%29.pdf",
+      "year": 2024,
+      "program": "B.Tech",
+      "semester": 2,
+      "file_name": "Enviornmental Studies (CIE 1072).pdf",
+      "subject_code": "CIE1072",
+      "paper_type": "Regular",
+      "display_title": "Enviornmental Studies (Cie 1072)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "CIE1072",
+      "course_name": "Enviornmental Studies",
+      "subject_name": "Enviornmental Studies",
+      "curriculum_context": {
+        "curriculum_id": "first_year_cs_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2024,
+          2025,
+          2026,
+          2027,
+          2028,
+          2029
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2024 / Dec 2023-Jan 2024 / B.Tech / I Sem",
+      "scraped_at": "2025-07-07T17:37:46.478167",
+      "url": "https://libportal.manipal.edu/RootFolder/2024/Dec%202023-Jan%202024/B.Tech/I%20Sem/Enviornmental%20Studies%20%28CIE%201072%29.pdf",
+      "year": 2024,
+      "program": "B.Tech",
+      "semester": 2,
+      "file_name": "Enviornmental Studies (CIE 1072).pdf",
+      "subject_code": "CIE1072",
+      "paper_type": "Regular",
+      "display_title": "Enviornmental Studies (Cie 1072)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CIE1072",
+      "course_name": "Enviornmental Studies",
+      "subject_name": "Enviornmental Studies",
+      "curriculum_context": {
+        "curriculum_id": "first_year_cs_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2024,
+          2025,
+          2026,
+          2027,
+          2028,
+          2029
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2023 / May - Jun 2023 / B.Tech / II Sem",
+      "scraped_at": "2025-07-07T17:36:42.249630",
+      "url": "https://libportal.manipal.edu/RootFolder/2023/May%20-%20Jun%202023/B.Tech/II%20Sem/Enviornmental%20Studies%20%28CIE%201072%29.pdf",
+      "year": 2023,
+      "program": "B.Tech",
+      "semester": 2,
+      "file_name": "Enviornmental Studies (CIE 1072).pdf",
+      "subject_code": "CIE1072",
+      "paper_type": "Regular",
+      "display_title": "Enviornmental Studies (Cie 1072)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "CIE1072",
+      "course_name": "Enviornmental Studies",
+      "subject_name": "Enviornmental Studies",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2023,
+          2024,
+          2025,
+          2026,
+          2027,
+          2028,
+          2029
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "CIE1071": [
+    {
+      "path": "2025 / Dec 24-Jan 2025 / B.Tech / I Sem",
+      "scraped_at": "2025-07-07T17:38:16.931250",
+      "url": "https://libportal.manipal.edu/RootFolder/2025/Dec%2024-Jan%202025/B.Tech/I%20Sem/Mechanics%20of%20Solids%20%20%28CIE%201071%29.pdf",
+      "year": 2025,
+      "program": "B.Tech",
+      "semester": 1,
+      "file_name": "Mechanics of Solids  (CIE 1071).pdf",
+      "subject_code": "CIE1071",
+      "paper_type": "Regular",
+      "display_title": "Mechanics Of Solids  (Cie 1071)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CIE1071",
+      "course_name": "Mechanics of Solids",
+      "subject_name": "Mechanics of Solids",
+      "curriculum_context": {
+        "curriculum_id": "first_year_cs_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2025
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2024 / May-June 2024 / B.Tech / II Sem",
+      "scraped_at": "2025-07-07T17:37:28.070181",
+      "url": "https://libportal.manipal.edu/RootFolder/2024/May-June%202024/B.Tech/II%20Sem/Mechanics%20of%20Solids%20%28CIE%201071%29%28Makeup%29.pdf",
+      "year": 2024,
+      "program": "B.Tech",
+      "semester": 1,
+      "file_name": "Mechanics of Solids (CIE 1071)(Makeup).pdf",
+      "subject_code": "CIE1071",
+      "paper_type": "Makeup",
+      "display_title": "Mechanics Of Solids (Cie 1071)(Makeup)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "CIE1071",
+      "course_name": "Mechanics of Solids",
+      "subject_name": "Mechanics of Solids",
+      "curriculum_context": {
+        "curriculum_id": "first_year_cs_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2024
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2024 / Dec 2023-Jan 2024 / B.Tech / I Sem",
+      "scraped_at": "2025-07-07T17:37:46.478795",
+      "url": "https://libportal.manipal.edu/RootFolder/2024/Dec%202023-Jan%202024/B.Tech/I%20Sem/Mechanics%20of%20Solids%20%28CIE%201071%29.pdf",
+      "year": 2024,
+      "program": "B.Tech",
+      "semester": 1,
+      "file_name": "Mechanics of Solids (CIE 1071).pdf",
+      "subject_code": "CIE1071",
+      "paper_type": "Regular",
+      "display_title": "Mechanics Of Solids (Cie 1071)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CIE1071",
+      "course_name": "Mechanics of Solids",
+      "subject_name": "Mechanics of Solids",
+      "curriculum_context": {
+        "curriculum_id": "first_year_cs_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2024
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2024 / May-June 2024 / B.Tech / II Sem",
+      "scraped_at": "2025-07-07T17:37:28.070988",
+      "url": "https://libportal.manipal.edu/RootFolder/2024/May-June%202024/B.Tech/II%20Sem/Mechanics%20of%20Solids%20%28CIE%201071%29R.pdf",
+      "year": 2024,
+      "program": "B.Tech",
+      "semester": 1,
+      "file_name": "Mechanics of Solids (CIE 1071)R.pdf",
+      "subject_code": "CIE1071",
+      "paper_type": "Regular",
+      "display_title": "Mechanics Of Solids (Cie 1071)R",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "CIE1071",
+      "course_name": "Mechanics of Solids",
+      "subject_name": "Mechanics of Solids",
+      "curriculum_context": {
+        "curriculum_id": "first_year_cs_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2024
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2023 / May - Jun 2023 / B.Tech / I Sem",
+      "scraped_at": "2025-07-07T17:36:43.574758",
+      "url": "https://libportal.manipal.edu/RootFolder/2023/May%20-%20Jun%202023/B.Tech/I%20Sem/Mechanics%20of%20Solid%20%28CIE%201071%29.pdf",
+      "year": 2023,
+      "program": "B.Tech",
+      "semester": 1,
+      "file_name": "Mechanics of Solid (CIE 1071).pdf",
+      "subject_code": "CIE1071",
+      "paper_type": "Regular",
+      "display_title": "Mechanics Of Solid (Cie 1071)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "CIE1071",
+      "course_name": "Mechanics of Solid",
+      "subject_name": "Mechanics of Solid",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2023
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2023 / May - Jun 2023 / B.Tech / I Sem",
+      "scraped_at": "2025-07-07T17:36:43.575379",
+      "url": "https://libportal.manipal.edu/RootFolder/2023/May%20-%20Jun%202023/B.Tech/I%20Sem/Mechanics%20of%20Solids%20%28CIE%201071%29%28Makeup%29.pdf",
+      "year": 2023,
+      "program": "B.Tech",
+      "semester": 1,
+      "file_name": "Mechanics of Solids (CIE 1071)(Makeup).pdf",
+      "subject_code": "CIE1071",
+      "paper_type": "Makeup",
+      "display_title": "Mechanics Of Solids (Cie 1071)(Makeup)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "CIE1071",
+      "course_name": "Mechanics of Solids",
+      "subject_name": "Mechanics of Solids",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2023
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ]
+}

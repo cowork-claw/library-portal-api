@@ -1,0 +1,39 @@
+{
+  "PHY1072": [
+    {
+      "path": "2025 / Dec 24-Jan 2025 / B.Tech / I Sem",
+      "scraped_at": "2025-07-07T17:38:16.918462",
+      "url": "https://libportal.manipal.edu/RootFolder/2025/Dec%2024-Jan%202025/B.Tech/I%20Sem/Applied%20Physics%20for%20Engineering%20%28PHY%201072%29.pdf",
+      "year": 2025,
+      "program": "B.Tech",
+      "semester": 2,
+      "file_name": "Applied Physics for Engineering (PHY 1072).pdf",
+      "subject_code": "PHY1072",
+      "paper_type": "Regular",
+      "display_title": "Applied Physics For Engineering (Phy 1072)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "PHY1072",
+      "course_name": "Applied Physics for Engineering",
+      "subject_name": "Applied Physics for Engineering",
+      "curriculum_context": {
+        "curriculum_id": "first_year_cs_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2025
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ]
+}

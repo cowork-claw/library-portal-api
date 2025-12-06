@@ -1,0 +1,1619 @@
+{
+  "MTE4059": [
+    {
+      "path": "2022 / June-Jul 22 QP / VI Sem / Mechatronics",
+      "scraped_at": "2025-07-07T17:34:40.310612",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/VI%20Sem/Mechatronics/Artificial%20Intelligence%20%28MTE%204059%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Artificial Intelligence (MTE 4059).pdf",
+      "program": "Mechatronics",
+      "subject_code": "MTE4059",
+      "paper_type": "Regular",
+      "display_title": "Artificial Intelligence (Mte 4059)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "MTE4059",
+      "course_name": "Artificial Intelligence",
+      "subject_name": "Artificial Intelligence",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "MTE2251": [
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / Mechatronics",
+      "scraped_at": "2025-07-07T17:34:12.292252",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/Mechatronics/Automated%20Manufacturing%20Systems%20%28MTE%202251%29.pdf",
+      "year": 2022,
+      "file_name": "Automated Manufacturing Systems (MTE 2251).pdf",
+      "program": "Mechatronics",
+      "subject_code": "MTE2251",
+      "paper_type": "Regular",
+      "display_title": "Automated Manufacturing Systems (Mte 2251)",
+      "semester": 4,
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "MTE2251",
+      "course_name": "Automated Manufacturing Systems",
+      "subject_name": "Automated Manufacturing Systems",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "MTE3251": [
+    {
+      "path": "2022 / June-Jul 22 QP / VI Sem / Mechatronics",
+      "scraped_at": "2025-07-07T17:34:40.311105",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/VI%20Sem/Mechatronics/Automobile%20Engineering%20%28MTE_3251%29%28Makeup%29.pdf",
+      "year": 2022,
+      "semester": 6,
+      "file_name": "Automobile Engineering (MTE_3251)(Makeup).pdf",
+      "program": "Mechatronics",
+      "subject_code": null,
+      "paper_type": "Makeup",
+      "display_title": "Automobile Engineering (Mte 3251)(Makeup)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "MTE3251",
+      "course_name": "Automobile Engineering (MTE_3251)(Makeup)",
+      "subject_name": "Automobile Engineering (MTE_3251)(Makeup)",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / VI Sem / Mechatronics",
+      "scraped_at": "2025-07-07T17:34:40.311544",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/VI%20Sem/Mechatronics/Automobile%20Engineering%20%28MTE_3251%29.pdf",
+      "year": 2022,
+      "semester": 6,
+      "file_name": "Automobile Engineering (MTE_3251).pdf",
+      "program": "Mechatronics",
+      "subject_code": null,
+      "paper_type": "Regular",
+      "display_title": "Automobile Engineering (Mte 3251)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "MTE3251",
+      "course_name": "Automobile Engineering (MTE_3251)",
+      "subject_name": "Automobile Engineering (MTE_3251)",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "MTE2151": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Mechatronics",
+      "scraped_at": "2025-07-07T17:35:24.124555",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Mechatronics/Data%20Structures%20and%20Algorithms%20%28MTE%202151%29%20%28Makeup%29.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Data Structures and Algorithms (MTE 2151) (Makeup).pdf",
+      "program": "Mechatronics",
+      "subject_code": "MTE2151",
+      "paper_type": "Makeup",
+      "display_title": "Data Structures And Algorithms (Mte 2151) (Makeup)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "MTE2151",
+      "course_name": "Data Structures and Algorithms",
+      "subject_name": "Data Structures and Algorithms",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Mechatronics",
+      "scraped_at": "2025-07-07T17:35:24.125985",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Mechatronics/Data%20Structures%20and%20Algorithms%20%28MTE%202151%29.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Data Structures and Algorithms (MTE 2151).pdf",
+      "program": "Mechatronics",
+      "subject_code": "MTE2151",
+      "paper_type": "Regular",
+      "display_title": "Data Structures And Algorithms (Mte 2151)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "MTE2151",
+      "course_name": "Data Structures and Algorithms",
+      "subject_name": "Data Structures and Algorithms",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "MTE4055": [
+    {
+      "path": "2022 / June-Jul 22 QP / VI Sem / Mechatronics",
+      "scraped_at": "2025-07-07T17:34:40.311973",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/VI%20Sem/Mechatronics/Database%20Management%20Systems%20%28MTE%204055%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Database Management Systems (MTE 4055).pdf",
+      "program": "Mechatronics",
+      "subject_code": "MTE4055",
+      "paper_type": "Regular",
+      "display_title": "Database Management Systems (Mte 4055)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "MTE4055",
+      "course_name": "Database Management Systems",
+      "subject_name": "Database Management Systems",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "MTE3151": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Mechatronics",
+      "scraped_at": "2025-07-07T17:35:50.405771",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Mechatronics/Digital%20Signal%20Processing%20%28MTE%203151%29.pdf",
+      "year": 2022,
+      "file_name": "Digital Signal Processing (MTE 3151).pdf",
+      "program": "Mechatronics",
+      "subject_code": "MTE3151",
+      "paper_type": "Regular",
+      "display_title": "Digital Signal Processing (Mte 3151)",
+      "semester": 5,
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "MTE3151",
+      "course_name": "Digital Signal Processing",
+      "subject_name": "Digital Signal Processing",
+      "curriculum_context": {
+        "curriculum_id": "cse_year3_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "MTE2152": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Mechatronics",
+      "scraped_at": "2025-07-07T17:35:24.128362",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Mechatronics/Digital%20System%20Deisgn%20%28MTE%202152%29.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Digital System Deisgn (MTE 2152).pdf",
+      "program": "Mechatronics",
+      "subject_code": "MTE2152",
+      "paper_type": "Regular",
+      "display_title": "Digital System Deisgn (Mte 2152)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "MTE2152",
+      "course_name": "Digital System Deisgn",
+      "subject_name": "Digital System Deisgn",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Mechatronics",
+      "scraped_at": "2025-07-07T17:35:24.129399",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Mechatronics/Digital%20System%20Design%20%28MTE%202152%29%20%28MakeUp%29.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Digital System Design (MTE 2152) (MakeUp).pdf",
+      "program": "Mechatronics",
+      "subject_code": "MTE2152",
+      "paper_type": "Makeup",
+      "display_title": "Digital System Design (Mte 2152) (Makeup)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "MTE2152",
+      "course_name": "Digital System Design",
+      "subject_name": "Digital System Design",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "MTE3152": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Mechatronics",
+      "scraped_at": "2025-07-07T17:35:50.406235",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Mechatronics/Electric%20Drive%20%28MTE%203152%29.pdf",
+      "year": 2022,
+      "file_name": "Electric Drive (MTE 3152).pdf",
+      "program": "Mechatronics",
+      "subject_code": "MTE3152",
+      "paper_type": "Regular",
+      "display_title": "Electric Drive (Mte 3152)",
+      "semester": 5,
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "MTE3152",
+      "course_name": "Electric Drive",
+      "subject_name": "Electric Drive",
+      "curriculum_context": {
+        "curriculum_id": "cse_year3_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "MTE3252": [
+    {
+      "path": "2022 / June-Jul 22 QP / VI Sem / Mechatronics",
+      "scraped_at": "2025-07-07T17:34:40.312435",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/VI%20Sem/Mechatronics/Energy%20and%20Heat%20Trnasfer%20%28MTE%203252%29.pdf",
+      "year": 2022,
+      "semester": 6,
+      "file_name": "Energy and Heat Trnasfer (MTE 3252).pdf",
+      "program": "Mechatronics",
+      "subject_code": "MTE3252",
+      "paper_type": "Regular",
+      "display_title": "Energy And Heat Trnasfer (Mte 3252)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "MTE3252",
+      "course_name": "Energy and Heat Trnasfer",
+      "subject_name": "Energy and Heat Trnasfer",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "MTE4071": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Mechatronics",
+      "scraped_at": "2025-07-07T17:36:04.418488",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Mechatronics/Engineering%20Materials%20%28MTE%204071%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Engineering Materials (MTE 4071).pdf",
+      "program": "Mechatronics",
+      "subject_code": "MTE4071",
+      "paper_type": "Regular",
+      "display_title": "Engineering Materials (Mte 4071)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "MTE4071",
+      "course_name": "Engineering Materials",
+      "subject_name": "Engineering Materials",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "MTE4072": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Mechatronics",
+      "scraped_at": "2025-07-07T17:36:04.419773",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Mechatronics/Hybrid%20Vehicle%20Technology%20%28MTE%204072%29%20PartA%20B.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Hybrid Vehicle Technology (MTE 4072) PartA B.pdf",
+      "program": "Mechatronics",
+      "subject_code": "MTE4072",
+      "paper_type": "Regular",
+      "display_title": "Hybrid Vehicle Technology (Mte 4072) Parta B",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "MTE4072",
+      "course_name": "Hybrid Vehicle Technology",
+      "subject_name": "Hybrid Vehicle Technology",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "MTE4304": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Mechatronics",
+      "scraped_at": "2025-07-07T17:36:04.420821",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Mechatronics/Industrail%20Internet%20Things%20%28MTE%204304%29PART_B.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Industrail Internet Things (MTE 4304)PART_B.pdf",
+      "program": "Mechatronics",
+      "subject_code": "MTE4304",
+      "paper_type": "Regular",
+      "display_title": "Industrail Internet Things (Mte 4304)Part B",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "MTE4304",
+      "course_name": "Industrail Internet Things",
+      "subject_name": "Industrail Internet Things",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "MTE4056": [
+    {
+      "path": "2022 / June-Jul 22 QP / VI Sem / Mechatronics",
+      "scraped_at": "2025-07-07T17:34:40.312881",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/VI%20Sem/Mechatronics/Information%20Security%20for%20Industrial%20Automation%20%28MTE%204056%29%28Makeup%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Information Security for Industrial Automation (MTE 4056)(Makeup).pdf",
+      "program": "Mechatronics",
+      "subject_code": "MTE4056",
+      "paper_type": "Makeup",
+      "display_title": "Information Security For Industrial Automation (Mte 4056)(Makeup)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "MTE4056",
+      "course_name": "Information Security for Industrial Automation",
+      "subject_name": "Information Security for Industrial Automation",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / VI Sem / Mechatronics",
+      "scraped_at": "2025-07-07T17:34:40.313317",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/VI%20Sem/Mechatronics/Information%20Security%20for%20Industrial%20Automation%20%28MTE%204056%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Information Security for Industrial Automation (MTE 4056).pdf",
+      "program": "Mechatronics",
+      "subject_code": "MTE4056",
+      "paper_type": "Regular",
+      "display_title": "Information Security For Industrial Automation (Mte 4056)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "MTE4056",
+      "course_name": "Information Security for Industrial Automation",
+      "subject_name": "Information Security for Industrial Automation",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "MTE4057": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Mechatronics",
+      "scraped_at": "2025-07-07T17:36:04.421820",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Mechatronics/Internet%20Working%20for%20Industries%20%28MTE%204057%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Internet Working for Industries (MTE 4057).pdf",
+      "program": "Mechatronics",
+      "subject_code": "MTE4057",
+      "paper_type": "Regular",
+      "display_title": "Internet Working For Industries (Mte 4057)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "MTE4057",
+      "course_name": "Internet Working for Industries",
+      "subject_name": "Internet Working for Industries",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "MTE2253": [
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / Mechatronics",
+      "scraped_at": "2025-07-07T17:34:12.292763",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/Mechatronics/Linear%20Control%20Theory%20%28MTE%202253%29.pdf",
+      "year": 2022,
+      "file_name": "Linear Control Theory (MTE 2253).pdf",
+      "program": "Mechatronics",
+      "subject_code": "MTE2253",
+      "paper_type": "Regular",
+      "display_title": "Linear Control Theory (Mte 2253)",
+      "semester": 4,
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "MTE2253",
+      "course_name": "Linear Control Theory",
+      "subject_name": "Linear Control Theory",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "MTE2254": [
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / Mechatronics",
+      "scraped_at": "2025-07-07T17:34:12.293164",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/Mechatronics/Linear%20Integrated%20Circuits%20and%20Implementation%20%28MTE%202254%29.pdf",
+      "year": 2022,
+      "file_name": "Linear Integrated Circuits and Implementation (MTE 2254).pdf",
+      "program": "Mechatronics",
+      "subject_code": "MTE2254",
+      "paper_type": "Regular",
+      "display_title": "Linear Integrated Circuits And Implementation (Mte 2254)",
+      "semester": 4,
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "MTE2254",
+      "course_name": "Linear Integrated Circuits and Implementation",
+      "subject_name": "Linear Integrated Circuits and Implementation",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "MTE4075": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Mechatronics",
+      "scraped_at": "2025-07-07T17:36:04.422656",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Mechatronics/Machine%20Vision%20and%20Image%20Processing%20%20%28MTE%204075%29PART%20B.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Machine Vision and Image Processing  (MTE 4075)PART B.pdf",
+      "program": "Mechatronics",
+      "subject_code": "MTE4075",
+      "paper_type": "Regular",
+      "display_title": "Machine Vision And Image Processing  (Mte 4075)Part B",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "MTE4075",
+      "course_name": "Machine Vision and Image Processing",
+      "subject_name": "Machine Vision and Image Processing",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Mechatronics",
+      "scraped_at": "2025-07-07T17:36:04.423490",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Mechatronics/Machine%20Vision%20and%20Image%20Processing%20%28MTE%204075%29PART%20A.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Machine Vision and Image Processing (MTE 4075)PART A.pdf",
+      "program": "Mechatronics",
+      "subject_code": "MTE4075",
+      "paper_type": "Regular",
+      "display_title": "Machine Vision And Image Processing (Mte 4075)Part A",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "MTE4075",
+      "course_name": "Machine Vision and Image Processing",
+      "subject_name": "Machine Vision and Image Processing",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "MTE2153": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Mechatronics",
+      "scraped_at": "2025-07-07T17:35:24.131370",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Mechatronics/Microcontroller%20Based%20System%20Deisgn%20%28MTE%202153%29.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Microcontroller Based System Deisgn (MTE 2153).pdf",
+      "program": "Mechatronics",
+      "subject_code": "MTE2153",
+      "paper_type": "Regular",
+      "display_title": "Microcontroller Based System Deisgn (Mte 2153)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "MTE2153",
+      "course_name": "Microcontroller Based System Deisgn",
+      "subject_name": "Microcontroller Based System Deisgn",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "MTE4085": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Mechatronics",
+      "scraped_at": "2025-07-07T17:36:04.424284",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Mechatronics/Modeling%20of%20Electric%20Vehicles%20%28MTE%204085%29PartA%20B.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Modeling of Electric Vehicles (MTE 4085)PartA B.pdf",
+      "program": "Mechatronics",
+      "subject_code": "MTE4085",
+      "paper_type": "Regular",
+      "display_title": "Modeling Of Electric Vehicles (Mte 4085)Parta B",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "MTE4085",
+      "course_name": "Modeling of Electric Vehicles",
+      "subject_name": "Modeling of Electric Vehicles",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "MTE4058": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Mechatronics",
+      "scraped_at": "2025-07-07T17:36:04.425076",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Mechatronics/Principles%20of%20Cryptography%20%28MTE%204058%29Part-A.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Principles of Cryptography (MTE 4058)Part-A.pdf",
+      "program": "Mechatronics",
+      "subject_code": "MTE4058",
+      "paper_type": "Regular",
+      "display_title": "Principles Of Cryptography (Mte 4058)Part-A",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "MTE4058",
+      "course_name": "Principles of Cryptography",
+      "subject_name": "Principles of Cryptography",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Mechatronics",
+      "scraped_at": "2025-07-07T17:36:04.425866",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Mechatronics/Principles%20of%20Cryptography%20%28MTE%204058%29Part-B.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Principles of Cryptography (MTE 4058)Part-B.pdf",
+      "program": "Mechatronics",
+      "subject_code": "MTE4058",
+      "paper_type": "Regular",
+      "display_title": "Principles Of Cryptography (Mte 4058)Part-B",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "MTE4058",
+      "course_name": "Principles of Cryptography",
+      "subject_name": "Principles of Cryptography",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "MTE4080": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Mechatronics",
+      "scraped_at": "2025-07-07T17:36:04.426658",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Mechatronics/Production%20and%20Operation%20Management%20%28MTE%204080%29%20-%20PART%20A%20.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Production and Operation Management (MTE 4080) - PART A .pdf",
+      "program": "Mechatronics",
+      "subject_code": "MTE4080",
+      "paper_type": "Regular",
+      "display_title": "Production And Operation Management (Mte 4080) - Part A ",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "MTE4080",
+      "course_name": "Production and Operation Management",
+      "subject_name": "Production and Operation Management",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Mechatronics",
+      "scraped_at": "2025-07-07T17:36:04.427308",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Mechatronics/Production%20and%20Operation%20Management%20%28MTE%204080%29%20-%20PART%20B%20-%20%28Makeup%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Production and Operation Management (MTE 4080) - PART B - (Makeup).pdf",
+      "program": "Mechatronics",
+      "subject_code": "MTE4080",
+      "paper_type": "Makeup",
+      "display_title": "Production And Operation Management (Mte 4080) - Part B - (Makeup)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "MTE4080",
+      "course_name": "Production and Operation Management",
+      "subject_name": "Production and Operation Management",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Mechatronics",
+      "scraped_at": "2025-07-07T17:36:04.427951",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Mechatronics/Production%20and%20Operation%20Management%20%28MTE%204080%29%20-%20PART%20B.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Production and Operation Management (MTE 4080) - PART B.pdf",
+      "program": "Mechatronics",
+      "subject_code": "MTE4080",
+      "paper_type": "Regular",
+      "display_title": "Production And Operation Management (Mte 4080) - Part B",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "MTE4080",
+      "course_name": "Production and Operation Management",
+      "subject_name": "Production and Operation Management",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "MTE4060": [
+    {
+      "path": "2022 / June-Jul 22 QP / VI Sem / Mechatronics",
+      "scraped_at": "2025-07-07T17:34:40.313743",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/VI%20Sem/Mechatronics/Robot%20Dynamics%20and%20Control%20%28MTE%204060%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Robot Dynamics and Control (MTE 4060).pdf",
+      "program": "Mechatronics",
+      "subject_code": "MTE4060",
+      "paper_type": "Regular",
+      "display_title": "Robot Dynamics And Control (Mte 4060)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "MTE4060",
+      "course_name": "Robot Dynamics and Control",
+      "subject_name": "Robot Dynamics and Control",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "MTE4061": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Mechatronics",
+      "scraped_at": "2025-07-07T17:36:04.428603",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Mechatronics/Robot%20Path%20Planing%20and%20Mobile%20Robotics%20%28MTE%204061%29%20PART%20A.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Robot Path Planing and Mobile Robotics (MTE 4061) PART A.pdf",
+      "program": "Mechatronics",
+      "subject_code": "MTE4061",
+      "paper_type": "Regular",
+      "display_title": "Robot Path Planing And Mobile Robotics (Mte 4061) Part A",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "MTE4061",
+      "course_name": "Robot Path Planing and Mobile Robotics",
+      "subject_name": "Robot Path Planing and Mobile Robotics",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Mechatronics",
+      "scraped_at": "2025-07-07T17:36:04.429245",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Mechatronics/Robot%20Path%20Planing%20and%20Mobile%20Robotics%20%28MTE%204061%29%20PART%20B.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Robot Path Planing and Mobile Robotics (MTE 4061) PART B.pdf",
+      "program": "Mechatronics",
+      "subject_code": "MTE4061",
+      "paper_type": "Regular",
+      "display_title": "Robot Path Planing And Mobile Robotics (Mte 4061) Part B",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "MTE4061",
+      "course_name": "Robot Path Planing and Mobile Robotics",
+      "subject_name": "Robot Path Planing and Mobile Robotics",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "MTE2154": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Mechatronics",
+      "scraped_at": "2025-07-07T17:35:24.133026",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Mechatronics/Robotics%20%28MTE%202154%29.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Robotics (MTE 2154).pdf",
+      "program": "Mechatronics",
+      "subject_code": "MTE2154",
+      "paper_type": "Regular",
+      "display_title": "Robotics (Mte 2154)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "MTE2154",
+      "course_name": "Robotics",
+      "subject_name": "Robotics",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "MTE4081": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Mechatronics",
+      "scraped_at": "2025-07-07T17:36:04.430645",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Mechatronics/Robotics%20II%20%28MTE%204081%29%20PART%20A.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Robotics II (MTE 4081) PART A.pdf",
+      "program": "Mechatronics",
+      "subject_code": "MTE4081",
+      "paper_type": "Regular",
+      "display_title": "Robotics Ii (Mte 4081) Part A",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "MTE4081",
+      "course_name": "Robotics II",
+      "subject_name": "Robotics II",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Mechatronics",
+      "scraped_at": "2025-07-07T17:36:04.431312",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Mechatronics/Robotics%20II%20%28MTE%204081%29%20PART%20B.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Robotics II (MTE 4081) PART B.pdf",
+      "program": "Mechatronics",
+      "subject_code": "MTE4081",
+      "paper_type": "Regular",
+      "display_title": "Robotics Ii (Mte 4081) Part B",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "MTE4081",
+      "course_name": "Robotics II",
+      "subject_name": "Robotics II",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "MTE2155": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Mechatronics",
+      "scraped_at": "2025-07-07T17:35:24.133816",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Mechatronics/Sensors%20and%20Instrumentation%20%28MTE%202155%29%28Makeup%29.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Sensors and Instrumentation (MTE 2155)(Makeup).pdf",
+      "program": "Mechatronics",
+      "subject_code": "MTE2155",
+      "paper_type": "Makeup",
+      "display_title": "Sensors And Instrumentation (Mte 2155)(Makeup)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "MTE2155",
+      "course_name": "Sensors and Instrumentation",
+      "subject_name": "Sensors and Instrumentation",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Mechatronics",
+      "scraped_at": "2025-07-07T17:35:24.135459",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Mechatronics/Sensors%20and%20Instrumentation%20%28MTE%202155%29.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Sensors and Instrumentation (MTE 2155).pdf",
+      "program": "Mechatronics",
+      "subject_code": "MTE2155",
+      "paper_type": "Regular",
+      "display_title": "Sensors And Instrumentation (Mte 2155)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "MTE2155",
+      "course_name": "Sensors and Instrumentation",
+      "subject_name": "Sensors and Instrumentation",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "MTE4062": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Mechatronics",
+      "scraped_at": "2025-07-07T17:36:04.431924",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Mechatronics/Soft%20Robotics%20%28MTE%204062%29PART%20A.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Soft Robotics (MTE 4062)PART A.pdf",
+      "program": "Mechatronics",
+      "subject_code": "MTE4062",
+      "paper_type": "Regular",
+      "display_title": "Soft Robotics (Mte 4062)Part A",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "MTE4062",
+      "course_name": "Soft Robotics",
+      "subject_name": "Soft Robotics",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Mechatronics",
+      "scraped_at": "2025-07-07T17:36:04.432504",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Mechatronics/Soft%20Robotics%20%28MTE%204062%29PART%20B.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Soft Robotics (MTE 4062)PART B.pdf",
+      "program": "Mechatronics",
+      "subject_code": "MTE4062",
+      "paper_type": "Regular",
+      "display_title": "Soft Robotics (Mte 4062)Part B",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "MTE4062",
+      "course_name": "Soft Robotics",
+      "subject_name": "Soft Robotics",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "MTE3154": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Mechatronics",
+      "scraped_at": "2025-07-07T17:35:50.407043",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Mechatronics/Theory%20of%20Machines%20%28MTE%203154%29%28Makeup%29.pdf",
+      "year": 2022,
+      "file_name": "Theory of Machines (MTE 3154)(Makeup).pdf",
+      "program": "Mechatronics",
+      "subject_code": "MTE3154",
+      "paper_type": "Makeup",
+      "display_title": "Theory Of Machines (Mte 3154)(Makeup)",
+      "semester": 5,
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "MTE3154",
+      "course_name": "Theory of Machines",
+      "subject_name": "Theory of Machines",
+      "curriculum_context": {
+        "curriculum_id": "cse_year3_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Mechatronics",
+      "scraped_at": "2025-07-07T17:35:50.407472",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Mechatronics/Theory%20of%20Machines%20%28MTE%203154%29.pdf",
+      "year": 2022,
+      "file_name": "Theory of Machines (MTE 3154).pdf",
+      "program": "Mechatronics",
+      "subject_code": "MTE3154",
+      "paper_type": "Regular",
+      "display_title": "Theory Of Machines (Mte 3154)",
+      "semester": 5,
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "MTE3154",
+      "course_name": "Theory of Machines",
+      "subject_name": "Theory of Machines",
+      "curriculum_context": {
+        "curriculum_id": "cse_year3_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "MTE4054": [
+    {
+      "path": "2022 / June-Jul 22 QP / VI Sem / Mechatronics",
+      "scraped_at": "2025-07-07T17:34:40.314384",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/VI%20Sem/Mechatronics/Vehicle%20Dynamics%20%28MTE%204054%29%28Make%20up%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Vehicle Dynamics (MTE 4054)(Make up).pdf",
+      "program": "Mechatronics",
+      "subject_code": "MTE4054",
+      "paper_type": "Makeup",
+      "display_title": "Vehicle Dynamics (Mte 4054)(Make Up)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "MTE4054",
+      "course_name": "Vehicle Dynamics",
+      "subject_name": "Vehicle Dynamics",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / VI Sem / Mechatronics",
+      "scraped_at": "2025-07-07T17:34:40.314826",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/VI%20Sem/Mechatronics/Vehicle%20Dynamics%20%28MTE%204054%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Vehicle Dynamics (MTE 4054).pdf",
+      "program": "Mechatronics",
+      "subject_code": "MTE4054",
+      "paper_type": "Regular",
+      "display_title": "Vehicle Dynamics (Mte 4054)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "MTE4054",
+      "course_name": "Vehicle Dynamics",
+      "subject_name": "Vehicle Dynamics",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "MTE4083": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Mechatronics",
+      "scraped_at": "2025-07-07T17:36:04.433074",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Mechatronics/Wireless%20Sensor%20Network%20%28MTE%204083%29%20%28Part-A%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Wireless Sensor Network (MTE 4083) (Part-A).pdf",
+      "program": "Mechatronics",
+      "subject_code": "MTE4083",
+      "paper_type": "Regular",
+      "display_title": "Wireless Sensor Network (Mte 4083) (Part-A)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "MTE4083",
+      "course_name": "Wireless Sensor Network",
+      "subject_name": "Wireless Sensor Network",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Mechatronics",
+      "scraped_at": "2025-07-07T17:36:04.433658",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Mechatronics/Wireless%20Sensor%20Network%20%28MTE%204083%29%20%28Part-B%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Wireless Sensor Network (MTE 4083) (Part-B).pdf",
+      "program": "Mechatronics",
+      "subject_code": "MTE4083",
+      "paper_type": "Regular",
+      "display_title": "Wireless Sensor Network (Mte 4083) (Part-B)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "MTE4083",
+      "course_name": "Wireless Sensor Network",
+      "subject_name": "Wireless Sensor Network",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ]
+}

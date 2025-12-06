@@ -1,0 +1,3915 @@
+{
+  "ECE1071": [
+    {
+      "path": "2025 / Dec 24-Jan 2025 / B.Tech / I Sem",
+      "scraped_at": "2025-07-07T17:38:16.920218",
+      "url": "https://libportal.manipal.edu/RootFolder/2025/Dec%2024-Jan%202025/B.Tech/I%20Sem/Basic%20Electronics%20%28ECE%201071%29%28Makeup%29.pdf",
+      "year": 2025,
+      "program": "B.Tech",
+      "semester": 1,
+      "file_name": "Basic Electronics (ECE 1071)(Makeup).pdf",
+      "subject_code": "ECE1071",
+      "paper_type": "Makeup",
+      "display_title": "Basic Electronics (Ece 1071)(Makeup)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE1071",
+      "course_name": "Basic Electronics",
+      "subject_name": "Basic Electronics",
+      "curriculum_context": {
+        "curriculum_id": "first_year_cs_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2025
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2025 / Dec 24-Jan 2025 / B.Tech / I Sem",
+      "scraped_at": "2025-07-07T17:38:16.921421",
+      "url": "https://libportal.manipal.edu/RootFolder/2025/Dec%2024-Jan%202025/B.Tech/I%20Sem/Basic%20Electronics%20%28ECE%201071%29.pdf",
+      "year": 2025,
+      "program": "B.Tech",
+      "semester": 1,
+      "file_name": "Basic Electronics (ECE 1071).pdf",
+      "subject_code": "ECE1071",
+      "paper_type": "Regular",
+      "display_title": "Basic Electronics (Ece 1071)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE1071",
+      "course_name": "Basic Electronics",
+      "subject_name": "Basic Electronics",
+      "curriculum_context": {
+        "curriculum_id": "first_year_cs_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2025
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2024 / May-June 2024 / B.Tech / II Sem",
+      "scraped_at": "2025-07-07T17:37:28.060686",
+      "url": "https://libportal.manipal.edu/RootFolder/2024/May-June%202024/B.Tech/II%20Sem/Basic%20Electronics%20%28ECE%201071%29.pdf",
+      "year": 2024,
+      "program": "B.Tech",
+      "semester": 1,
+      "file_name": "Basic Electronics (ECE 1071).pdf",
+      "subject_code": "ECE1071",
+      "paper_type": "Regular",
+      "display_title": "Basic Electronics (Ece 1071)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "ECE1071",
+      "course_name": "Basic Electronics",
+      "subject_name": "Basic Electronics",
+      "curriculum_context": {
+        "curriculum_id": "first_year_cs_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2024
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2024 / Dec 2023-Jan 2024 / B.Tech / I Sem",
+      "scraped_at": "2025-07-07T17:37:46.467230",
+      "url": "https://libportal.manipal.edu/RootFolder/2024/Dec%202023-Jan%202024/B.Tech/I%20Sem/Basic%20Electronics%20%28ECE%201071%29.pdf",
+      "year": 2024,
+      "program": "B.Tech",
+      "semester": 1,
+      "file_name": "Basic Electronics (ECE 1071).pdf",
+      "subject_code": "ECE1071",
+      "paper_type": "Regular",
+      "display_title": "Basic Electronics (Ece 1071)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE1071",
+      "course_name": "Basic Electronics",
+      "subject_name": "Basic Electronics",
+      "curriculum_context": {
+        "curriculum_id": "first_year_cs_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2024
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2023 / Dec 2022 - Jan 2023 / B.Tech / I Sem",
+      "scraped_at": "2025-07-07T17:37:08.228599",
+      "url": "https://libportal.manipal.edu/RootFolder/2023/Dec%202022%20-%20Jan%202023/B.Tech/I%20Sem/Basic%20Electronic%20%28ECE%201071%20-%20ECE-1071%29%28Makeup%29.pdf",
+      "year": 2023,
+      "program": "B.Tech",
+      "semester": 1,
+      "file_name": "Basic Electronic (ECE 1071 - ECE-1071)(Makeup).pdf",
+      "subject_code": "ECE1071",
+      "paper_type": "Makeup",
+      "display_title": "Basic Electronic (Ece 1071 - Ece-1071)(Makeup)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE1071",
+      "course_name": "Basic Electronic (",
+      "subject_name": "Basic Electronic (",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2023
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2023 / Dec 2022 - Jan 2023 / B.Tech / I Sem",
+      "scraped_at": "2025-07-07T17:37:08.231114",
+      "url": "https://libportal.manipal.edu/RootFolder/2023/Dec%202022%20-%20Jan%202023/B.Tech/I%20Sem/Basic%20Electronic%20%28ECE%201071%20-%20ECE-1071%29.pdf",
+      "year": 2023,
+      "program": "B.Tech",
+      "semester": 1,
+      "file_name": "Basic Electronic (ECE 1071 - ECE-1071).pdf",
+      "subject_code": "ECE1071",
+      "paper_type": "Regular",
+      "display_title": "Basic Electronic (Ece 1071 - Ece-1071)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE1071",
+      "course_name": "Basic Electronic (",
+      "subject_name": "Basic Electronic (",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2023
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2023 / May - Jun 2023 / B.Tech / II Sem",
+      "scraped_at": "2025-07-07T17:36:42.240992",
+      "url": "https://libportal.manipal.edu/RootFolder/2023/May%20-%20Jun%202023/B.Tech/II%20Sem/Basic%20Electronics%20%28ECE%201071%20%29.pdf",
+      "year": 2023,
+      "program": "B.Tech",
+      "semester": 1,
+      "file_name": "Basic Electronics (ECE 1071 ).pdf",
+      "subject_code": "ECE1071",
+      "paper_type": "Regular",
+      "display_title": "Basic Electronics (Ece 1071 )",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "ECE1071",
+      "course_name": "Basic Electronics (",
+      "subject_name": "Basic Electronics (",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2023
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "ECE1072": [
+    {
+      "path": "2025 / Dec 24-Jan 2025 / B.Tech / I Sem",
+      "scraped_at": "2025-07-07T17:38:16.928820",
+      "url": "https://libportal.manipal.edu/RootFolder/2025/Dec%2024-Jan%202025/B.Tech/I%20Sem/Fundamentals%20of%20Electronics%20%28ECE%201072%29%28Makeup%29.pdf",
+      "year": 2025,
+      "program": "B.Tech",
+      "semester": 2,
+      "file_name": "Fundamentals of Electronics (ECE 1072)(Makeup).pdf",
+      "subject_code": "ECE1072",
+      "paper_type": "Makeup",
+      "display_title": "Fundamentals Of Electronics (Ece 1072)(Makeup)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE1072",
+      "course_name": "Fundamentals of Electronics",
+      "subject_name": "Fundamentals of Electronics",
+      "curriculum_context": {
+        "curriculum_id": "first_year_cs_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2025
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2025 / Dec 24-Jan 2025 / B.Tech / I Sem",
+      "scraped_at": "2025-07-07T17:38:16.929627",
+      "url": "https://libportal.manipal.edu/RootFolder/2025/Dec%2024-Jan%202025/B.Tech/I%20Sem/Fundamentals%20of%20Electronics%20%28ECE%201072%29.pdf",
+      "year": 2025,
+      "program": "B.Tech",
+      "semester": 2,
+      "file_name": "Fundamentals of Electronics (ECE 1072).pdf",
+      "subject_code": "ECE1072",
+      "paper_type": "Regular",
+      "display_title": "Fundamentals Of Electronics (Ece 1072)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE1072",
+      "course_name": "Fundamentals of Electronics",
+      "subject_name": "Fundamentals of Electronics",
+      "curriculum_context": {
+        "curriculum_id": "first_year_cs_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2025
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "ECE2151": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:35:28.753784",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Electrical%20and%20Communication/Analog%20Electronic%20Circuit%20%28ECE%202151%29.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Analog Electronic Circuit (ECE 2151).pdf",
+      "program": null,
+      "subject_code": "ECE2151",
+      "paper_type": "Regular",
+      "display_title": "Analog Electronic Circuit (Ece 2151)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE2151",
+      "course_name": "Analog Electronic Circuit",
+      "subject_name": "Analog Electronic Circuit",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:35:28.754350",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Electrical%20and%20Communication/Analog%20Electronic%20Circuits%20%28ECE%202151%29%20PART%20-A.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Analog Electronic Circuits (ECE 2151) PART -A.pdf",
+      "program": null,
+      "subject_code": "ECE2151",
+      "paper_type": "Regular",
+      "display_title": "Analog Electronic Circuits (Ece 2151) Part -A",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE2151",
+      "course_name": "Analog Electronic Circuits",
+      "subject_name": "Analog Electronic Circuits",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:35:28.754813",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Electrical%20and%20Communication/Analog%20Electronic%20Circuits%20%28ECE%202151%29%20PART%20-B.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Analog Electronic Circuits (ECE 2151) PART -B.pdf",
+      "program": null,
+      "subject_code": "ECE2151",
+      "paper_type": "Regular",
+      "display_title": "Analog Electronic Circuits (Ece 2151) Part -B",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE2151",
+      "course_name": "Analog Electronic Circuits",
+      "subject_name": "Analog Electronic Circuits",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "ECE3151": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:35:56.190543",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Electrical%20and%20Communication/Analog%20and%20Digital%20Communication%20%28ECE%203151%29%20%20PART%20A.pdf",
+      "year": 2022,
+      "file_name": "Analog and Digital Communication (ECE 3151)  PART A.pdf",
+      "program": null,
+      "subject_code": "ECE3151",
+      "paper_type": "Regular",
+      "display_title": "Analog And Digital Communication (Ece 3151)  Part A",
+      "semester": 5,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE3151",
+      "course_name": "Analog and Digital Communication",
+      "subject_name": "Analog and Digital Communication",
+      "curriculum_context": {
+        "curriculum_id": "mechanical_year3",
+        "valid_for_streams": [
+          "core"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "ECE",
+          "VLSI"
+        ]
+      },
+      "streams": [
+        "core"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:35:56.191057",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Electrical%20and%20Communication/Analog%20and%20Digital%20Communication%20%28ECE%203151%29%20.pdf",
+      "year": 2022,
+      "file_name": "Analog and Digital Communication (ECE 3151) .pdf",
+      "program": null,
+      "subject_code": "ECE3151",
+      "paper_type": "Regular",
+      "display_title": "Analog And Digital Communication (Ece 3151) ",
+      "semester": 5,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE3151",
+      "course_name": "Analog and Digital Communication",
+      "subject_name": "Analog and Digital Communication",
+      "curriculum_context": {
+        "curriculum_id": "mechanical_year3",
+        "valid_for_streams": [
+          "core"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "ECE",
+          "VLSI"
+        ]
+      },
+      "streams": [
+        "core"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:35:56.191464",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Electrical%20and%20Communication/Analog%20and%20Digital%20Communication%20%28ECE%203151%29%20PART%20B.pdf",
+      "year": 2022,
+      "file_name": "Analog and Digital Communication (ECE 3151) PART B.pdf",
+      "program": null,
+      "subject_code": "ECE3151",
+      "paper_type": "Regular",
+      "display_title": "Analog And Digital Communication (Ece 3151) Part B",
+      "semester": 5,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE3151",
+      "course_name": "Analog and Digital Communication",
+      "subject_name": "Analog and Digital Communication",
+      "curriculum_context": {
+        "curriculum_id": "mechanical_year3",
+        "valid_for_streams": [
+          "core"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "ECE",
+          "VLSI"
+        ]
+      },
+      "streams": [
+        "core"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:35:56.191861",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Electrical%20and%20Communication/Analog%20and%20Digital%20Communication%20%28ECE%203151%29%28Makeup%29%20Part%20A.pdf",
+      "year": 2022,
+      "file_name": "Analog and Digital Communication (ECE 3151)(Makeup) Part A.pdf",
+      "program": null,
+      "subject_code": "ECE3151",
+      "paper_type": "Makeup",
+      "display_title": "Analog And Digital Communication (Ece 3151)(Makeup) Part A",
+      "semester": 5,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE3151",
+      "course_name": "Analog and Digital Communication",
+      "subject_name": "Analog and Digital Communication",
+      "curriculum_context": {
+        "curriculum_id": "mechanical_year3",
+        "valid_for_streams": [
+          "core"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "ECE",
+          "VLSI"
+        ]
+      },
+      "streams": [
+        "core"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:35:56.192256",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Electrical%20and%20Communication/Analog%20and%20Digital%20Communication%20%28ECE%203151%29%28Makeup%29%20Part%20B.pdf",
+      "year": 2022,
+      "file_name": "Analog and Digital Communication (ECE 3151)(Makeup) Part B.pdf",
+      "program": null,
+      "subject_code": "ECE3151",
+      "paper_type": "Makeup",
+      "display_title": "Analog And Digital Communication (Ece 3151)(Makeup) Part B",
+      "semester": 5,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE3151",
+      "course_name": "Analog and Digital Communication",
+      "subject_name": "Analog and Digital Communication",
+      "curriculum_context": {
+        "curriculum_id": "mechanical_year3",
+        "valid_for_streams": [
+          "core"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "ECE",
+          "VLSI"
+        ]
+      },
+      "streams": [
+        "core"
+      ]
+    }
+  ],
+  "ECE4061": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.416701",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/Analog%20and%20Mixed%20Signal%20Deisgn%20%28ECE_4061%29%20.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Analog and Mixed Signal Deisgn (ECE_4061) .pdf",
+      "program": null,
+      "subject_code": null,
+      "paper_type": "Regular",
+      "display_title": "Analog And Mixed Signal Deisgn (Ece 4061) ",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4061",
+      "course_name": "Analog and Mixed Signal Deisgn (ECE_4061)",
+      "subject_name": "Analog and Mixed Signal Deisgn (ECE_4061)",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.417546",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/Analog%20and%20Mixed%20Signal%20Deisgn%20%28ECE_4061%29%20PART%20A.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Analog and Mixed Signal Deisgn (ECE_4061) PART A.pdf",
+      "program": null,
+      "subject_code": null,
+      "paper_type": "Regular",
+      "display_title": "Analog And Mixed Signal Deisgn (Ece 4061) Part A",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4061",
+      "course_name": "Analog and Mixed Signal Deisgn (ECE_4061) PART A",
+      "subject_name": "Analog and Mixed Signal Deisgn (ECE_4061) PART A",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.418183",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/Analog%20and%20Mixed%20Signal%20Deisgn%20%28ECE_4061%29PART%20B.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Analog and Mixed Signal Deisgn (ECE_4061)PART B.pdf",
+      "program": null,
+      "subject_code": null,
+      "paper_type": "Regular",
+      "display_title": "Analog And Mixed Signal Deisgn (Ece 4061)Part B",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4061",
+      "course_name": "Analog and Mixed Signal Deisgn (ECE_4061)PART B",
+      "subject_name": "Analog and Mixed Signal Deisgn (ECE_4061)PART B",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "ECE10510": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / I Sem",
+      "scraped_at": "2025-07-07T16:49:12.879683",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/I%20Sem/Basic%20Electronics%20%28DTQ%29%20PART-B%20%28ECE%2010510.pdf",
+      "year": 2022,
+      "semester": 1,
+      "file_name": "Basic Electronics (DTQ) PART-B (ECE 10510.pdf",
+      "program": null,
+      "subject_code": "ECE10510",
+      "paper_type": "Regular",
+      "display_title": "Basic Electronics (Dtq) Part-B (Ece 10510",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE10510",
+      "course_name": "Basic Electronics  PART-B (",
+      "subject_name": "Basic Electronics  PART-B (",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 2021-Jan 2022 / B.Tech / I Sem",
+      "scraped_at": "2025-07-07T17:36:23.159438",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%202021-Jan%202022/B.Tech/I%20Sem/Basic%20Electronics%20%28DTQ%29%20PART-B%20%28ECE%2010510.pdf",
+      "year": 2022,
+      "program": "B.Tech",
+      "semester": 1,
+      "file_name": "Basic Electronics (DTQ) PART-B (ECE 10510.pdf",
+      "subject_code": "ECE10510",
+      "paper_type": "Regular",
+      "display_title": "Basic Electronics (Dtq) Part-B (Ece 10510",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE10510",
+      "course_name": "Basic Electronics  PART-B (",
+      "subject_name": "Basic Electronics  PART-B (",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "ECE1051": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / I Sem",
+      "scraped_at": "2025-07-07T16:49:12.880282",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/I%20Sem/Basic%20Electronics%20%28ECE%201051%29%20FORMULA%20TABLE.pdf",
+      "year": 2022,
+      "semester": 1,
+      "file_name": "Basic Electronics (ECE 1051) FORMULA TABLE.pdf",
+      "program": null,
+      "subject_code": "ECE1051",
+      "paper_type": "Regular",
+      "display_title": "Basic Electronics (Ece 1051) Formula Table",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE1051",
+      "course_name": "Basic Electronics",
+      "subject_name": "Basic Electronics",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 2021-Jan 2022 / B.Tech / I Sem",
+      "scraped_at": "2025-07-07T17:36:23.159941",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%202021-Jan%202022/B.Tech/I%20Sem/Basic%20Electronics%20%28ECE%201051%29%20FORMULA%20TABLE.pdf",
+      "year": 2022,
+      "program": "B.Tech",
+      "semester": 1,
+      "file_name": "Basic Electronics (ECE 1051) FORMULA TABLE.pdf",
+      "subject_code": "ECE1051",
+      "paper_type": "Regular",
+      "display_title": "Basic Electronics (Ece 1051) Formula Table",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE1051",
+      "course_name": "Basic Electronics",
+      "subject_name": "Basic Electronics",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / I Sem",
+      "scraped_at": "2025-07-07T16:49:12.880834",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/I%20Sem/Basic%20Electronics%20%28ECE%201051%29%20PART-B.pdf",
+      "year": 2022,
+      "semester": 1,
+      "file_name": "Basic Electronics (ECE 1051) PART-B.pdf",
+      "program": null,
+      "subject_code": "ECE1051",
+      "paper_type": "Regular",
+      "display_title": "Basic Electronics (Ece 1051) Part-B",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE1051",
+      "course_name": "Basic Electronics",
+      "subject_name": "Basic Electronics",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 2021-Jan 2022 / B.Tech / I Sem",
+      "scraped_at": "2025-07-07T17:36:23.160371",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%202021-Jan%202022/B.Tech/I%20Sem/Basic%20Electronics%20%28ECE%201051%29%20PART-B.pdf",
+      "year": 2022,
+      "program": "B.Tech",
+      "semester": 1,
+      "file_name": "Basic Electronics (ECE 1051) PART-B.pdf",
+      "subject_code": "ECE1051",
+      "paper_type": "Regular",
+      "display_title": "Basic Electronics (Ece 1051) Part-B",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE1051",
+      "course_name": "Basic Electronics",
+      "subject_name": "Basic Electronics",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "ECE4069": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.418729",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/Cipher%20System%20%20%28ECE%204069%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Cipher System  (ECE 4069).pdf",
+      "program": null,
+      "subject_code": "ECE4069",
+      "paper_type": "Regular",
+      "display_title": "Cipher System  (Ece 4069)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4069",
+      "course_name": "Cipher System",
+      "subject_name": "Cipher System",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.419244",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/Cipher%20System%20%20%28ECE%204069%29PART%20A.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Cipher System  (ECE 4069)PART A.pdf",
+      "program": null,
+      "subject_code": "ECE4069",
+      "paper_type": "Regular",
+      "display_title": "Cipher System  (Ece 4069)Part A",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4069",
+      "course_name": "Cipher System",
+      "subject_name": "Cipher System",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.419761",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/Cipher%20System%20%20%28ECE%204069%29PART%20B%20.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Cipher System  (ECE 4069)PART B .pdf",
+      "program": null,
+      "subject_code": "ECE4069",
+      "paper_type": "Regular",
+      "display_title": "Cipher System  (Ece 4069)Part B ",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4069",
+      "course_name": "Cipher System",
+      "subject_name": "Cipher System",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.420275",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/Cipher%20System%20%28ECE%204069%29%20%28Makeup%29%20Part-A.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Cipher System (ECE 4069) (Makeup) Part-A.pdf",
+      "program": null,
+      "subject_code": "ECE4069",
+      "paper_type": "Makeup",
+      "display_title": "Cipher System (Ece 4069) (Makeup) Part-A",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4069",
+      "course_name": "Cipher System",
+      "subject_name": "Cipher System",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.420823",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/Cipher%20System%20%28ECE%204069%29%20%28Makeup%29%20Part-B.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Cipher System (ECE 4069) (Makeup) Part-B.pdf",
+      "program": null,
+      "subject_code": "ECE4069",
+      "paper_type": "Makeup",
+      "display_title": "Cipher System (Ece 4069) (Makeup) Part-B",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4069",
+      "course_name": "Cipher System",
+      "subject_name": "Cipher System",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "ECE4308": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.421357",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/Computational%20Intelligence%20and%20Environmental%20Sustainability%20%28ECE-4308%29%20Part%20A%20%28Makeup%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Computational Intelligence and Environmental Sustainability (ECE-4308) Part A (Makeup).pdf",
+      "program": null,
+      "subject_code": null,
+      "paper_type": "Makeup",
+      "display_title": "Computational Intelligence And Environmental Sustainability (Ece-4308) Part A (Makeup)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4308",
+      "course_name": "Computational Intelligence and Environmental Sustainability (ECE-4308) Part A (Makeup)",
+      "subject_name": "Computational Intelligence and Environmental Sustainability (ECE-4308) Part A (Makeup)",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.421876",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/Computational%20Intelligence%20and%20Environmental%20Sustainability%20%28ECE-4308%29%20Part%20B%20%28Makeup%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Computational Intelligence and Environmental Sustainability (ECE-4308) Part B (Makeup).pdf",
+      "program": null,
+      "subject_code": null,
+      "paper_type": "Makeup",
+      "display_title": "Computational Intelligence And Environmental Sustainability (Ece-4308) Part B (Makeup)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4308",
+      "course_name": "Computational Intelligence and Environmental Sustainability (ECE-4308) Part B (Makeup)",
+      "subject_name": "Computational Intelligence and Environmental Sustainability (ECE-4308) Part B (Makeup)",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "ECE2152": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:35:28.755261",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Electrical%20and%20Communication/Computer%20Organization%20and%20Architecture%20%28ECE%202152%29%20PART-A.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Computer Organization and Architecture (ECE 2152) PART-A.pdf",
+      "program": null,
+      "subject_code": "ECE2152",
+      "paper_type": "Regular",
+      "display_title": "Computer Organization And Architecture (Ece 2152) Part-A",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE2152",
+      "course_name": "Computer Organization and Architecture",
+      "subject_name": "Computer Organization and Architecture",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:35:28.755725",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Electrical%20and%20Communication/Computer%20Organization%20and%20Architecture%20%28ECE%202152%29%20PART-B.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Computer Organization and Architecture (ECE 2152) PART-B.pdf",
+      "program": null,
+      "subject_code": "ECE2152",
+      "paper_type": "Regular",
+      "display_title": "Computer Organization And Architecture (Ece 2152) Part-B",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE2152",
+      "course_name": "Computer Organization and Architecture",
+      "subject_name": "Computer Organization and Architecture",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:35:28.756134",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Electrical%20and%20Communication/Computer%20Organization%20and%20Architecture%20%28ECE%202152%29.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Computer Organization and Architecture (ECE 2152).pdf",
+      "program": null,
+      "subject_code": "ECE2152",
+      "paper_type": "Regular",
+      "display_title": "Computer Organization And Architecture (Ece 2152)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE2152",
+      "course_name": "Computer Organization and Architecture",
+      "subject_name": "Computer Organization and Architecture",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "ECE4070": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.422401",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/Data%20Structure%20and%20Algorithms%20%28ECE%204070%29%20.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Data Structure and Algorithms (ECE 4070) .pdf",
+      "program": null,
+      "subject_code": "ECE4070",
+      "paper_type": "Regular",
+      "display_title": "Data Structure And Algorithms (Ece 4070) ",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4070",
+      "course_name": "Data Structure and Algorithms",
+      "subject_name": "Data Structure and Algorithms",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.422914",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/Data%20Structure%20and%20Algorithms%20%28ECE%204070%29%20PART%20A%20%28Graphs%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Data Structure and Algorithms (ECE 4070) PART A (Graphs).pdf",
+      "program": null,
+      "subject_code": "ECE4070",
+      "paper_type": "Regular",
+      "display_title": "Data Structure And Algorithms (Ece 4070) Part A (Graphs)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4070",
+      "course_name": "Data Structure and Algorithms",
+      "subject_name": "Data Structure and Algorithms",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.423434",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/Data%20Structure%20and%20Algorithms%20%28ECE%204070%29%20PART%20A.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Data Structure and Algorithms (ECE 4070) PART A.pdf",
+      "program": null,
+      "subject_code": "ECE4070",
+      "paper_type": "Regular",
+      "display_title": "Data Structure And Algorithms (Ece 4070) Part A",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4070",
+      "course_name": "Data Structure and Algorithms",
+      "subject_name": "Data Structure and Algorithms",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.423964",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/Data%20Structures%20and%20Algorithms%20%28ECE%204070%29%28Makeup%29Part%20A.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Data Structures and Algorithms (ECE 4070)(Makeup)Part A.pdf",
+      "program": null,
+      "subject_code": "ECE4070",
+      "paper_type": "Makeup",
+      "display_title": "Data Structures And Algorithms (Ece 4070)(Makeup)Part A",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4070",
+      "course_name": "Data Structures and Algorithms",
+      "subject_name": "Data Structures and Algorithms",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.424498",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/Data%20Structures%20and%20Algorithms%20%28ECE%204070%29%28Makeup%29Part%20B.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Data Structures and Algorithms (ECE 4070)(Makeup)Part B.pdf",
+      "program": null,
+      "subject_code": "ECE4070",
+      "paper_type": "Makeup",
+      "display_title": "Data Structures And Algorithms (Ece 4070)(Makeup)Part B",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4070",
+      "course_name": "Data Structures and Algorithms",
+      "subject_name": "Data Structures and Algorithms",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "ECE4062": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.425020",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/Digital%20Design%20Verification%20%28ECE%204062%29Part%20A.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Digital Design Verification (ECE 4062)Part A.pdf",
+      "program": null,
+      "subject_code": "ECE4062",
+      "paper_type": "Regular",
+      "display_title": "Digital Design Verification (Ece 4062)Part A",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4062",
+      "course_name": "Digital Design Verification",
+      "subject_name": "Digital Design Verification",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.425539",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/Digital%20Design%20Verification%20%28ECE%204062%29Part%20B.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Digital Design Verification (ECE 4062)Part B.pdf",
+      "program": null,
+      "subject_code": "ECE4062",
+      "paper_type": "Regular",
+      "display_title": "Digital Design Verification (Ece 4062)Part B",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4062",
+      "course_name": "Digital Design Verification",
+      "subject_name": "Digital Design Verification",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "ECE2153": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:35:28.756581",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Electrical%20and%20Communication/Digital%20System%20Deisgn%20%28ECE%202153%29.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Digital System Deisgn (ECE 2153).pdf",
+      "program": null,
+      "subject_code": "ECE2153",
+      "paper_type": "Regular",
+      "display_title": "Digital System Deisgn (Ece 2153)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE2153",
+      "course_name": "Digital System Deisgn",
+      "subject_name": "Digital System Deisgn",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:35:28.756989",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Electrical%20and%20Communication/Digital%20System%20Deisgn%20%28ECE%202153%29PART-A%20FIGURES.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Digital System Deisgn (ECE 2153)PART-A FIGURES.pdf",
+      "program": null,
+      "subject_code": "ECE2153",
+      "paper_type": "Regular",
+      "display_title": "Digital System Deisgn (Ece 2153)Part-A Figures",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE2153",
+      "course_name": "Digital System Deisgn",
+      "subject_name": "Digital System Deisgn",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:35:28.757434",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Electrical%20and%20Communication/Digital%20System%20Deisgn%20%28ECE%202153%29PART-A%20LINK.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Digital System Deisgn (ECE 2153)PART-A LINK.pdf",
+      "program": null,
+      "subject_code": "ECE2153",
+      "paper_type": "Regular",
+      "display_title": "Digital System Deisgn (Ece 2153)Part-A Link",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE2153",
+      "course_name": "Digital System Deisgn",
+      "subject_name": "Digital System Deisgn",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:35:28.757844",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Electrical%20and%20Communication/Digital%20System%20Deisgn%20%28ECE%202153%29PART-B.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Digital System Deisgn (ECE 2153)PART-B.pdf",
+      "program": null,
+      "subject_code": "ECE2153",
+      "paper_type": "Regular",
+      "display_title": "Digital System Deisgn (Ece 2153)Part-B",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE2153",
+      "course_name": "Digital System Deisgn",
+      "subject_name": "Digital System Deisgn",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "ECE4303": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:35:56.192655",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Electrical%20and%20Communication/Electronic%20Product%20Deisgn%20and%20Packging%20%28ECE-4303%29%28Makeup%29%20PART%20A.pdf",
+      "year": 2022,
+      "file_name": "Electronic Product Deisgn and Packging (ECE-4303)(Makeup) PART A.pdf",
+      "program": null,
+      "subject_code": null,
+      "paper_type": "Makeup",
+      "display_title": "Electronic Product Deisgn And Packging (Ece-4303)(Makeup) Part A",
+      "semester": 7,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4303",
+      "course_name": "Electronic Product Deisgn and Packging (ECE-4303)(Makeup) PART A",
+      "subject_name": "Electronic Product Deisgn and Packging (ECE-4303)(Makeup) PART A",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:35:56.193048",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Electrical%20and%20Communication/Electronic%20Product%20Deisgn%20and%20Packging%20%28ECE-4303%29%28Makeup%29%20PART%20B.pdf",
+      "year": 2022,
+      "file_name": "Electronic Product Deisgn and Packging (ECE-4303)(Makeup) PART B.pdf",
+      "program": null,
+      "subject_code": null,
+      "paper_type": "Makeup",
+      "display_title": "Electronic Product Deisgn And Packging (Ece-4303)(Makeup) Part B",
+      "semester": 7,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4303",
+      "course_name": "Electronic Product Deisgn and Packging (ECE-4303)(Makeup) PART B",
+      "subject_name": "Electronic Product Deisgn and Packging (ECE-4303)(Makeup) PART B",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:35:56.193450",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Electrical%20and%20Communication/Electronic%20Product%20Design%20n%20Packaging%20%28ECE-4303%29PART%20A.pdf",
+      "year": 2022,
+      "file_name": "Electronic Product Design n Packaging (ECE-4303)PART A.pdf",
+      "program": null,
+      "subject_code": null,
+      "paper_type": "Regular",
+      "display_title": "Electronic Product Design N Packaging (Ece-4303)Part A",
+      "semester": 7,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4303",
+      "course_name": "Electronic Product Design n Packaging (ECE-4303)PART A",
+      "subject_name": "Electronic Product Design n Packaging (ECE-4303)PART A",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:35:56.193845",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Electrical%20and%20Communication/Electronic%20Product%20Design%20n%20Packaging%20%28ECE-4303%29PART%20B.pdf",
+      "year": 2022,
+      "file_name": "Electronic Product Design n Packaging (ECE-4303)PART B.pdf",
+      "program": null,
+      "subject_code": null,
+      "paper_type": "Regular",
+      "display_title": "Electronic Product Design N Packaging (Ece-4303)Part B",
+      "semester": 7,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4303",
+      "course_name": "Electronic Product Design n Packaging (ECE-4303)PART B",
+      "subject_name": "Electronic Product Design n Packaging (ECE-4303)PART B",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "ECE4072": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.426583",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/Electronic%20System%20Deisgn%20%28ECE-4072%29%28Makeup%29%20PART%20B.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Electronic System Deisgn (ECE-4072)(Makeup) PART B.pdf",
+      "program": null,
+      "subject_code": null,
+      "paper_type": "Makeup",
+      "display_title": "Electronic System Deisgn (Ece-4072)(Makeup) Part B",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4072",
+      "course_name": "Electronic System Deisgn (ECE-4072)(Makeup) PART B",
+      "subject_name": "Electronic System Deisgn (ECE-4072)(Makeup) PART B",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.426055",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/Electronic%20System%20Deisgn%20%28ECE-4072%29%28Makeup%29%20Part%20A.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Electronic System Deisgn (ECE-4072)(Makeup) Part A.pdf",
+      "program": null,
+      "subject_code": null,
+      "paper_type": "Makeup",
+      "display_title": "Electronic System Deisgn (Ece-4072)(Makeup) Part A",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4072",
+      "course_name": "Electronic System Deisgn (ECE-4072)(Makeup) Part A",
+      "subject_name": "Electronic System Deisgn (ECE-4072)(Makeup) Part A",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.427048",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/Electronic%20System%20Design%20%28ECE-4072%29%20PART%20A.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Electronic System Design (ECE-4072) PART A.pdf",
+      "program": null,
+      "subject_code": null,
+      "paper_type": "Regular",
+      "display_title": "Electronic System Design (Ece-4072) Part A",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4072",
+      "course_name": "Electronic System Design (ECE-4072) PART A",
+      "subject_name": "Electronic System Design (ECE-4072) PART A",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "ECE4073": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.430082",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/Error%20Control%20Coding%20%28ECE4073%29%28Makeup%29%20Part%20A.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Error Control Coding (ECE4073)(Makeup) Part A.pdf",
+      "program": null,
+      "subject_code": "ECE4073",
+      "paper_type": "Makeup",
+      "display_title": "Error Control Coding (Ece4073)(Makeup) Part A",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4073",
+      "course_name": "Error Control Coding",
+      "subject_name": "Error Control Coding",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.430558",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/Error%20Control%20Coding%20%28ECE4073%29%28Makeup%29%20Part%20B.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Error Control Coding (ECE4073)(Makeup) Part B.pdf",
+      "program": null,
+      "subject_code": "ECE4073",
+      "paper_type": "Makeup",
+      "display_title": "Error Control Coding (Ece4073)(Makeup) Part B",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4073",
+      "course_name": "Error Control Coding",
+      "subject_name": "Error Control Coding",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.428154",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/Error%20control%20coding%20%28ECE%204073%29%20.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Error control coding (ECE 4073) .pdf",
+      "program": null,
+      "subject_code": "ECE4073",
+      "paper_type": "Regular",
+      "display_title": "Error Control Coding (Ece 4073) ",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4073",
+      "course_name": "Error control coding",
+      "subject_name": "Error control coding",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.429164",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/Error%20control%20coding%20%28ECE%204073%29%20PART%20A%20Figures.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Error control coding (ECE 4073) PART A Figures.pdf",
+      "program": null,
+      "subject_code": "ECE4073",
+      "paper_type": "Regular",
+      "display_title": "Error Control Coding (Ece 4073) Part A Figures",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4073",
+      "course_name": "Error control coding",
+      "subject_name": "Error control coding",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.429630",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/Error%20control%20coding%20%28ECE%204073%29%20PART%20B.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Error control coding (ECE 4073) PART B.pdf",
+      "program": null,
+      "subject_code": "ECE4073",
+      "paper_type": "Regular",
+      "display_title": "Error Control Coding (Ece 4073) Part B",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4073",
+      "course_name": "Error control coding",
+      "subject_name": "Error control coding",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "ECE4075": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.431029",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/Information%20Theory%20and%20Coding%20%20%28ECE%204075%29%20PART%20A.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Information Theory and Coding  (ECE 4075) PART A.pdf",
+      "program": null,
+      "subject_code": "ECE4075",
+      "paper_type": "Regular",
+      "display_title": "Information Theory And Coding  (Ece 4075) Part A",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4075",
+      "course_name": "Information Theory and Coding",
+      "subject_name": "Information Theory and Coding",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.431493",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/Information%20Theory%20and%20Coding%20%20%28ECE%204075%29%20PART%20B.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Information Theory and Coding  (ECE 4075) PART B.pdf",
+      "program": null,
+      "subject_code": "ECE4075",
+      "paper_type": "Regular",
+      "display_title": "Information Theory And Coding  (Ece 4075) Part B",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4075",
+      "course_name": "Information Theory and Coding",
+      "subject_name": "Information Theory and Coding",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.431973",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/Information%20Thoery%20and%20Coding%20%28ECE%204075%29%20PART%20A.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Information Thoery and Coding (ECE 4075) PART A.pdf",
+      "program": null,
+      "subject_code": "ECE4075",
+      "paper_type": "Regular",
+      "display_title": "Information Thoery And Coding (Ece 4075) Part A",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4075",
+      "course_name": "Information Thoery and Coding",
+      "subject_name": "Information Thoery and Coding",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.432497",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/Information%20Thoery%20and%20Coding%20%28ECE%204075%29%20PART%20B.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Information Thoery and Coding (ECE 4075) PART B.pdf",
+      "program": null,
+      "subject_code": "ECE4075",
+      "paper_type": "Regular",
+      "display_title": "Information Thoery And Coding (Ece 4075) Part B",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4075",
+      "course_name": "Information Thoery and Coding",
+      "subject_name": "Information Thoery and Coding",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "ECE4054": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.433085",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/Internet%20of%20Things%20%28ECE%204054%29PART%20A.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Internet of Things (ECE 4054)PART A.pdf",
+      "program": null,
+      "subject_code": "ECE4054",
+      "paper_type": "Regular",
+      "display_title": "Internet Of Things (Ece 4054)Part A",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4054",
+      "course_name": "Internet of Things",
+      "subject_name": "Internet of Things",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.433624",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/Internet%20of%20Things%20%28ECE%204054%29PART%20B.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Internet of Things (ECE 4054)PART B.pdf",
+      "program": null,
+      "subject_code": "ECE4054",
+      "paper_type": "Regular",
+      "display_title": "Internet Of Things (Ece 4054)Part B",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4054",
+      "course_name": "Internet of Things",
+      "subject_name": "Internet of Things",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "ECE4304": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:35:56.194239",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Electrical%20and%20Communication/Introduction%20to%20Communication%20System%20%28ECE%204304%29%28Makeup%29%20PART%20A.pdf",
+      "year": 2022,
+      "file_name": "Introduction to Communication System (ECE 4304)(Makeup) PART A.pdf",
+      "program": null,
+      "subject_code": "ECE4304",
+      "paper_type": "Makeup",
+      "display_title": "Introduction To Communication System (Ece 4304)(Makeup) Part A",
+      "semester": 7,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4304",
+      "course_name": "Introduction to Communication System",
+      "subject_name": "Introduction to Communication System",
+      "curriculum_context": {
+        "curriculum_id": "mechanical_year3",
+        "valid_for_streams": [
+          "core"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "ECE",
+          "VLSI"
+        ]
+      },
+      "streams": [
+        "core"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:35:56.194638",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Electrical%20and%20Communication/Introduction%20to%20Communication%20System%20%28ECE%204304%29%28Makeup%29%20PART%20B.pdf",
+      "year": 2022,
+      "file_name": "Introduction to Communication System (ECE 4304)(Makeup) PART B.pdf",
+      "program": null,
+      "subject_code": "ECE4304",
+      "paper_type": "Makeup",
+      "display_title": "Introduction To Communication System (Ece 4304)(Makeup) Part B",
+      "semester": 7,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4304",
+      "course_name": "Introduction to Communication System",
+      "subject_name": "Introduction to Communication System",
+      "curriculum_context": {
+        "curriculum_id": "mechanical_year3",
+        "valid_for_streams": [
+          "core"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "ECE",
+          "VLSI"
+        ]
+      },
+      "streams": [
+        "core"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:35:56.195031",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Electrical%20and%20Communication/Introduction%20to%20Communication%20Systems%20%28ECE%204304%29%20PART%20A.pdf",
+      "year": 2022,
+      "file_name": "Introduction to Communication Systems (ECE 4304) PART A.pdf",
+      "program": null,
+      "subject_code": "ECE4304",
+      "paper_type": "Regular",
+      "display_title": "Introduction To Communication Systems (Ece 4304) Part A",
+      "semester": 7,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4304",
+      "course_name": "Introduction to Communication Systems",
+      "subject_name": "Introduction to Communication Systems",
+      "curriculum_context": {
+        "curriculum_id": "mechanical_year3",
+        "valid_for_streams": [
+          "core"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "ECE",
+          "VLSI"
+        ]
+      },
+      "streams": [
+        "core"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:35:56.195456",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Electrical%20and%20Communication/Introduction%20to%20Communication%20Systems%20%28ECE%204304%29%20PART%20B.pdf",
+      "year": 2022,
+      "file_name": "Introduction to Communication Systems (ECE 4304) PART B.pdf",
+      "program": null,
+      "subject_code": "ECE4304",
+      "paper_type": "Regular",
+      "display_title": "Introduction To Communication Systems (Ece 4304) Part B",
+      "semester": 7,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4304",
+      "course_name": "Introduction to Communication Systems",
+      "subject_name": "Introduction to Communication Systems",
+      "curriculum_context": {
+        "curriculum_id": "mechanical_year3",
+        "valid_for_streams": [
+          "core"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "ECE",
+          "VLSI"
+        ]
+      },
+      "streams": [
+        "core"
+      ]
+    }
+  ],
+  "ECE3152": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:35:56.195847",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Electrical%20and%20Communication/LInear%20Control%20%28ECE%203152%29%20PART%20A.pdf",
+      "year": 2022,
+      "file_name": "LInear Control (ECE 3152) PART A.pdf",
+      "program": null,
+      "subject_code": "ECE3152",
+      "paper_type": "Regular",
+      "display_title": "Linear Control (Ece 3152) Part A",
+      "semester": 5,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE3152",
+      "course_name": "LInear Control",
+      "subject_name": "LInear Control",
+      "curriculum_context": {
+        "curriculum_id": "mechanical_year3",
+        "valid_for_streams": [
+          "core"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "ECE",
+          "VLSI"
+        ]
+      },
+      "streams": [
+        "core"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:35:56.196238",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Electrical%20and%20Communication/LInear%20Control%20%28ECE%203152%29%20PART%20B.pdf",
+      "year": 2022,
+      "file_name": "LInear Control (ECE 3152) PART B.pdf",
+      "program": null,
+      "subject_code": "ECE3152",
+      "paper_type": "Regular",
+      "display_title": "Linear Control (Ece 3152) Part B",
+      "semester": 5,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE3152",
+      "course_name": "LInear Control",
+      "subject_name": "LInear Control",
+      "curriculum_context": {
+        "curriculum_id": "mechanical_year3",
+        "valid_for_streams": [
+          "core"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "ECE",
+          "VLSI"
+        ]
+      },
+      "streams": [
+        "core"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:35:56.196669",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Electrical%20and%20Communication/Linear%20Control%20Theory%20%28ECE%203152%29%20%28Makeup%29%20.pdf",
+      "year": 2022,
+      "file_name": "Linear Control Theory (ECE 3152) (Makeup) .pdf",
+      "program": null,
+      "subject_code": "ECE3152",
+      "paper_type": "Makeup",
+      "display_title": "Linear Control Theory (Ece 3152) (Makeup) ",
+      "semester": 5,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE3152",
+      "course_name": "Linear Control Theory",
+      "subject_name": "Linear Control Theory",
+      "curriculum_context": {
+        "curriculum_id": "mechanical_year3",
+        "valid_for_streams": [
+          "core"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "ECE",
+          "VLSI"
+        ]
+      },
+      "streams": [
+        "core"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:35:56.197061",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Electrical%20and%20Communication/Linear%20Control%20Theory%20%28ECE%203152%29%20.pdf",
+      "year": 2022,
+      "file_name": "Linear Control Theory (ECE 3152) .pdf",
+      "program": null,
+      "subject_code": "ECE3152",
+      "paper_type": "Regular",
+      "display_title": "Linear Control Theory (Ece 3152) ",
+      "semester": 5,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE3152",
+      "course_name": "Linear Control Theory",
+      "subject_name": "Linear Control Theory",
+      "curriculum_context": {
+        "curriculum_id": "mechanical_year3",
+        "valid_for_streams": [
+          "core"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "ECE",
+          "VLSI"
+        ]
+      },
+      "streams": [
+        "core"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:35:56.197486",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Electrical%20and%20Communication/Linear%20Control%20Theory%20%28ECE%203152%29Part%20A%20%28Makeup%29.pdf",
+      "year": 2022,
+      "file_name": "Linear Control Theory (ECE 3152)Part A (Makeup).pdf",
+      "program": null,
+      "subject_code": "ECE3152",
+      "paper_type": "Makeup",
+      "display_title": "Linear Control Theory (Ece 3152)Part A (Makeup)",
+      "semester": 5,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE3152",
+      "course_name": "Linear Control Theory",
+      "subject_name": "Linear Control Theory",
+      "curriculum_context": {
+        "curriculum_id": "mechanical_year3",
+        "valid_for_streams": [
+          "core"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "ECE",
+          "VLSI"
+        ]
+      },
+      "streams": [
+        "core"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:35:56.197876",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Electrical%20and%20Communication/Linear%20Control%20Thoery%20%28ECE%203152%29%20Part%20B%20%28Makeup%29.pdf",
+      "year": 2022,
+      "file_name": "Linear Control Thoery (ECE 3152) Part B (Makeup).pdf",
+      "program": null,
+      "subject_code": "ECE3152",
+      "paper_type": "Makeup",
+      "display_title": "Linear Control Thoery (Ece 3152) Part B (Makeup)",
+      "semester": 5,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE3152",
+      "course_name": "Linear Control Thoery",
+      "subject_name": "Linear Control Thoery",
+      "curriculum_context": {
+        "curriculum_id": "mechanical_year3",
+        "valid_for_streams": [
+          "core"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "ECE",
+          "VLSI"
+        ]
+      },
+      "streams": [
+        "core"
+      ]
+    }
+  ],
+  "ECE4052": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.434177",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/Machine%20Learning%20%20%28ECE%204052%29%20PART%20A.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Machine Learning  (ECE 4052) PART A.pdf",
+      "program": null,
+      "subject_code": "ECE4052",
+      "paper_type": "Regular",
+      "display_title": "Machine Learning  (Ece 4052) Part A",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4052",
+      "course_name": "Machine Learning",
+      "subject_name": "Machine Learning",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.434711",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/Machine%20Learning%20%20%28ECE%204052%29%20PART%20B.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Machine Learning  (ECE 4052) PART B.pdf",
+      "program": null,
+      "subject_code": "ECE4052",
+      "paper_type": "Regular",
+      "display_title": "Machine Learning  (Ece 4052) Part B",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4052",
+      "course_name": "Machine Learning",
+      "subject_name": "Machine Learning",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.435149",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/Machine%20Learning%20%28ECE%204052%29%2C%20Program%20Elective-III%20%28Makeup%29PART%20A.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Machine Learning (ECE 4052), Program Elective-III (Makeup)PART A.pdf",
+      "program": null,
+      "subject_code": "ECE4052",
+      "paper_type": "Makeup",
+      "display_title": "Machine Learning (Ece 4052), Program Elective-Iii (Makeup)Part A",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4052",
+      "course_name": "Machine Learning",
+      "subject_name": "Machine Learning",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.435606",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/Machine%20Learning%20%28ECE%204052%29%2C%20Program%20Elective-III%20%28Makeup%29PART%20B.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Machine Learning (ECE 4052), Program Elective-III (Makeup)PART B.pdf",
+      "program": null,
+      "subject_code": "ECE4052",
+      "paper_type": "Makeup",
+      "display_title": "Machine Learning (Ece 4052), Program Elective-Iii (Makeup)Part B",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4052",
+      "course_name": "Machine Learning",
+      "subject_name": "Machine Learning",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "ECE3153": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:35:56.198266",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Electrical%20and%20Communication/Microprocessors%20%28ECE%203153%29%20%28Makeup%29%20Part%20A.pdf",
+      "year": 2022,
+      "file_name": "Microprocessors (ECE 3153) (Makeup) Part A.pdf",
+      "program": null,
+      "subject_code": "ECE3153",
+      "paper_type": "Makeup",
+      "display_title": "Microprocessors (Ece 3153) (Makeup) Part A",
+      "semester": 5,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE3153",
+      "course_name": "Microprocessors",
+      "subject_name": "Microprocessors",
+      "curriculum_context": {
+        "curriculum_id": "mechanical_year3",
+        "valid_for_streams": [
+          "core"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "ECE",
+          "VLSI"
+        ]
+      },
+      "streams": [
+        "core"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:35:56.198697",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Electrical%20and%20Communication/Microprocessors%20%28ECE%203153%29%20%28Makeup%29%20Part%20B.pdf",
+      "year": 2022,
+      "file_name": "Microprocessors (ECE 3153) (Makeup) Part B.pdf",
+      "program": null,
+      "subject_code": "ECE3153",
+      "paper_type": "Makeup",
+      "display_title": "Microprocessors (Ece 3153) (Makeup) Part B",
+      "semester": 5,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE3153",
+      "course_name": "Microprocessors",
+      "subject_name": "Microprocessors",
+      "curriculum_context": {
+        "curriculum_id": "mechanical_year3",
+        "valid_for_streams": [
+          "core"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "ECE",
+          "VLSI"
+        ]
+      },
+      "streams": [
+        "core"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:35:56.199141",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Electrical%20and%20Communication/Microprocessors%20%28ECE%203153%29%20.pdf",
+      "year": 2022,
+      "file_name": "Microprocessors (ECE 3153) .pdf",
+      "program": null,
+      "subject_code": "ECE3153",
+      "paper_type": "Regular",
+      "display_title": "Microprocessors (Ece 3153) ",
+      "semester": 5,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE3153",
+      "course_name": "Microprocessors",
+      "subject_name": "Microprocessors",
+      "curriculum_context": {
+        "curriculum_id": "mechanical_year3",
+        "valid_for_streams": [
+          "core"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "ECE",
+          "VLSI"
+        ]
+      },
+      "streams": [
+        "core"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:35:56.203149",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Electrical%20and%20Communication/Mircroprocessors%20%28ECE-3153%29-PART%20A.pdf",
+      "year": 2022,
+      "file_name": "Mircroprocessors (ECE-3153)-PART A.pdf",
+      "program": null,
+      "subject_code": null,
+      "paper_type": "Regular",
+      "display_title": "Mircroprocessors (Ece-3153)-Part A",
+      "semester": 5,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE3153",
+      "course_name": "Mircroprocessors (ECE-3153)-PART A",
+      "subject_name": "Mircroprocessors (ECE-3153)-PART A",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:35:56.203576",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Electrical%20and%20Communication/Mircroprocessors%20%28ECE-3153%29-PART%20B.pdf",
+      "year": 2022,
+      "file_name": "Mircroprocessors (ECE-3153)-PART B.pdf",
+      "program": null,
+      "subject_code": null,
+      "paper_type": "Regular",
+      "display_title": "Mircroprocessors (Ece-3153)-Part B",
+      "semester": 5,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE3153",
+      "course_name": "Mircroprocessors (ECE-3153)-PART B",
+      "subject_name": "Mircroprocessors (ECE-3153)-PART B",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "ECE3154": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:35:56.199581",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Electrical%20and%20Communication/Microwave%20Engineering%20%28ECE%203154%29%20.pdf",
+      "year": 2022,
+      "file_name": "Microwave Engineering (ECE 3154) .pdf",
+      "program": null,
+      "subject_code": "ECE3154",
+      "paper_type": "Regular",
+      "display_title": "Microwave Engineering (Ece 3154) ",
+      "semester": 5,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE3154",
+      "course_name": "Microwave Engineering",
+      "subject_name": "Microwave Engineering",
+      "curriculum_context": {
+        "curriculum_id": "mechanical_year3",
+        "valid_for_streams": [
+          "core"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "ECE",
+          "VLSI"
+        ]
+      },
+      "streams": [
+        "core"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:35:56.199982",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Electrical%20and%20Communication/Microwave%20Engineering%20%28ECE%203154%29%20PART%20A.pdf",
+      "year": 2022,
+      "file_name": "Microwave Engineering (ECE 3154) PART A.pdf",
+      "program": null,
+      "subject_code": "ECE3154",
+      "paper_type": "Regular",
+      "display_title": "Microwave Engineering (Ece 3154) Part A",
+      "semester": 5,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE3154",
+      "course_name": "Microwave Engineering",
+      "subject_name": "Microwave Engineering",
+      "curriculum_context": {
+        "curriculum_id": "mechanical_year3",
+        "valid_for_streams": [
+          "core"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "ECE",
+          "VLSI"
+        ]
+      },
+      "streams": [
+        "core"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:35:56.200426",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Electrical%20and%20Communication/Microwave%20Engineering%20%28ECE%203154%29%20PART%20B.pdf",
+      "year": 2022,
+      "file_name": "Microwave Engineering (ECE 3154) PART B.pdf",
+      "program": null,
+      "subject_code": "ECE3154",
+      "paper_type": "Regular",
+      "display_title": "Microwave Engineering (Ece 3154) Part B",
+      "semester": 5,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE3154",
+      "course_name": "Microwave Engineering",
+      "subject_name": "Microwave Engineering",
+      "curriculum_context": {
+        "curriculum_id": "mechanical_year3",
+        "valid_for_streams": [
+          "core"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "ECE",
+          "VLSI"
+        ]
+      },
+      "streams": [
+        "core"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:35:56.200866",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Electrical%20and%20Communication/Microwave%20Engineering%20%28ECE3154%29%28Makeup%29%20PART%20A.pdf",
+      "year": 2022,
+      "file_name": "Microwave Engineering (ECE3154)(Makeup) PART A.pdf",
+      "program": null,
+      "subject_code": "ECE3154",
+      "paper_type": "Makeup",
+      "display_title": "Microwave Engineering (Ece3154)(Makeup) Part A",
+      "semester": 5,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE3154",
+      "course_name": "Microwave Engineering",
+      "subject_name": "Microwave Engineering",
+      "curriculum_context": {
+        "curriculum_id": "mechanical_year3",
+        "valid_for_streams": [
+          "core"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "ECE",
+          "VLSI"
+        ]
+      },
+      "streams": [
+        "core"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:35:56.202725",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Electrical%20and%20Communication/Microwave%20Engineering%20%28ECE3154%29%28Makeup%29%20PART%20B.pdf",
+      "year": 2022,
+      "file_name": "Microwave Engineering (ECE3154)(Makeup) PART B.pdf",
+      "program": null,
+      "subject_code": "ECE3154",
+      "paper_type": "Makeup",
+      "display_title": "Microwave Engineering (Ece3154)(Makeup) Part B",
+      "semester": 5,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE3154",
+      "course_name": "Microwave Engineering",
+      "subject_name": "Microwave Engineering",
+      "curriculum_context": {
+        "curriculum_id": "mechanical_year3",
+        "valid_for_streams": [
+          "core"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "ECE",
+          "VLSI"
+        ]
+      },
+      "streams": [
+        "core"
+      ]
+    }
+  ],
+  "ECE4078": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.436037",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/Motion%20and%20Geometry%20based%20Methods%20in%20Computer%20Vision%20%28ECE%204078%29%20PART%20B.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Motion and Geometry based Methods in Computer Vision (ECE 4078) PART B.pdf",
+      "program": null,
+      "subject_code": "ECE4078",
+      "paper_type": "Regular",
+      "display_title": "Motion And Geometry Based Methods In Computer Vision (Ece 4078) Part B",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4078",
+      "course_name": "Motion and Geometry based Methods in Computer Vision",
+      "subject_name": "Motion and Geometry based Methods in Computer Vision",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.436493",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/Motion%20and%20Geometry%20based%20Methods%20in%20Computer%20Vision%20-%20Figures%28ECE%204078%29Figures.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Motion and Geometry based Methods in Computer Vision - Figures(ECE 4078)Figures.pdf",
+      "program": null,
+      "subject_code": "ECE4078",
+      "paper_type": "Regular",
+      "display_title": "Motion And Geometry Based Methods In Computer Vision - Figures(Ece 4078)Figures",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4078",
+      "course_name": "Motion and Geometry based Methods in Computer Vision - Figures",
+      "subject_name": "Motion and Geometry based Methods in Computer Vision - Figures",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.443577",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/PMotion%20and%20Geometry%20based%20Methods%20in%20Computer%20Vision%20%28ECE%204078%29PART%20A.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "PMotion and Geometry based Methods in Computer Vision (ECE 4078)PART A.pdf",
+      "program": null,
+      "subject_code": "ECE4078",
+      "paper_type": "Regular",
+      "display_title": "Pmotion And Geometry Based Methods In Computer Vision (Ece 4078)Part A",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4078",
+      "course_name": "PMotion and Geometry based Methods in Computer Vision",
+      "subject_name": "PMotion and Geometry based Methods in Computer Vision",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "ECE4079": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.436916",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/Nanotechnology%20%28ECE%204079%29%20PART%20A.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Nanotechnology (ECE 4079) PART A.pdf",
+      "program": null,
+      "subject_code": "ECE4079",
+      "paper_type": "Regular",
+      "display_title": "Nanotechnology (Ece 4079) Part A",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4079",
+      "course_name": "Nanotechnology",
+      "subject_name": "Nanotechnology",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.437398",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/Nanotechnology%20%28ECE%204079%29%20PART%20B.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Nanotechnology (ECE 4079) PART B.pdf",
+      "program": null,
+      "subject_code": "ECE4079",
+      "paper_type": "Regular",
+      "display_title": "Nanotechnology (Ece 4079) Part B",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4079",
+      "course_name": "Nanotechnology",
+      "subject_name": "Nanotechnology",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.437908",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/Nanotechnology%20%28ECE%204079%29Part%20A%20%28Makeup%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Nanotechnology (ECE 4079)Part A (Makeup).pdf",
+      "program": null,
+      "subject_code": "ECE4079",
+      "paper_type": "Makeup",
+      "display_title": "Nanotechnology (Ece 4079)Part A (Makeup)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4079",
+      "course_name": "Nanotechnology",
+      "subject_name": "Nanotechnology",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.441372",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/Nanotechnology%20%28ECE%204079%29Part%20B%20%28Makeup%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Nanotechnology (ECE 4079)Part B (Makeup).pdf",
+      "program": null,
+      "subject_code": "ECE4079",
+      "paper_type": "Makeup",
+      "display_title": "Nanotechnology (Ece 4079)Part B (Makeup)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4079",
+      "course_name": "Nanotechnology",
+      "subject_name": "Nanotechnology",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "ECE2154": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:35:28.758252",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Electrical%20and%20Communication/Network%20Analysis%20%28ECE%202154%29%20PART-A%20.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Network Analysis (ECE 2154) PART-A .pdf",
+      "program": null,
+      "subject_code": "ECE2154",
+      "paper_type": "Regular",
+      "display_title": "Network Analysis (Ece 2154) Part-A ",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE2154",
+      "course_name": "Network Analysis",
+      "subject_name": "Network Analysis",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:35:28.758701",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Electrical%20and%20Communication/Network%20Analysis%20%28ECE%202154%29%20PART-A%20Circuit%20Images.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Network Analysis (ECE 2154) PART-A Circuit Images.pdf",
+      "program": null,
+      "subject_code": "ECE2154",
+      "paper_type": "Regular",
+      "display_title": "Network Analysis (Ece 2154) Part-A Circuit Images",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE2154",
+      "course_name": "Network Analysis",
+      "subject_name": "Network Analysis",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:35:28.759111",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Electrical%20and%20Communication/Network%20Analysis%20%28ECE%202154%29%20PART-B.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Network Analysis (ECE 2154) PART-B.pdf",
+      "program": null,
+      "subject_code": "ECE2154",
+      "paper_type": "Regular",
+      "display_title": "Network Analysis (Ece 2154) Part-B",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE2154",
+      "course_name": "Network Analysis",
+      "subject_name": "Network Analysis",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:35:28.759569",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Electrical%20and%20Communication/Network%20Analysis%20%28ECE%202154%29.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Network Analysis (ECE 2154).pdf",
+      "program": null,
+      "subject_code": "ECE2154",
+      "paper_type": "Regular",
+      "display_title": "Network Analysis (Ece 2154)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE2154",
+      "course_name": "Network Analysis",
+      "subject_name": "Network Analysis",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "ECE4080": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.441843",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/Object%20Oreinted%20Programming%20Using%20c%2B%2B%20%28ECE%204080%29%20PART%20A.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Object Oreinted Programming Using c++ (ECE 4080) PART A.pdf",
+      "program": null,
+      "subject_code": "ECE4080",
+      "paper_type": "Regular",
+      "display_title": "Object Oreinted Programming Using C++ (Ece 4080) Part A",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4080",
+      "course_name": "Object Oreinted Programming Using c++",
+      "subject_name": "Object Oreinted Programming Using c++",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.442274",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/Object%20Oreinted%20Programming%20Using%20c%2B%2B%20%28ECE%204080%29%20PART%20B.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Object Oreinted Programming Using c++ (ECE 4080) PART B.pdf",
+      "program": null,
+      "subject_code": "ECE4080",
+      "paper_type": "Regular",
+      "display_title": "Object Oreinted Programming Using C++ (Ece 4080) Part B",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4080",
+      "course_name": "Object Oreinted Programming Using c++",
+      "subject_name": "Object Oreinted Programming Using c++",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "ECE4081": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.442736",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/Operating%20Systems%20for%20Advanced%20Processors%20%28ECE-4081%29%20PART%20A.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Operating Systems for Advanced Processors (ECE-4081) PART A.pdf",
+      "program": null,
+      "subject_code": null,
+      "paper_type": "Regular",
+      "display_title": "Operating Systems For Advanced Processors (Ece-4081) Part A",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4081",
+      "course_name": "Operating Systems for Advanced Processors (ECE-4081) PART A",
+      "subject_name": "Operating Systems for Advanced Processors (ECE-4081) PART A",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.443149",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/Operating%20Systems%20for%20Advanced%20Processors%20%28ECE-4081%29%20PART%20B.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Operating Systems for Advanced Processors (ECE-4081) PART B.pdf",
+      "program": null,
+      "subject_code": null,
+      "paper_type": "Regular",
+      "display_title": "Operating Systems For Advanced Processors (Ece-4081) Part B",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4081",
+      "course_name": "Operating Systems for Advanced Processors (ECE-4081) PART B",
+      "subject_name": "Operating Systems for Advanced Processors (ECE-4081) PART B",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "ECE4084": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.444024",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/Radar%20and%20Navigation%20System%20%28ECE%204084%29%28Makeup%29%20Part%20A.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Radar and Navigation System (ECE 4084)(Makeup) Part A.pdf",
+      "program": null,
+      "subject_code": "ECE4084",
+      "paper_type": "Makeup",
+      "display_title": "Radar And Navigation System (Ece 4084)(Makeup) Part A",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4084",
+      "course_name": "Radar and Navigation System",
+      "subject_name": "Radar and Navigation System",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.444506",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/Radar%20and%20Navigation%20System%20%28ECE%204084%29%28Makeup%29%20Part%20B.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Radar and Navigation System (ECE 4084)(Makeup) Part B.pdf",
+      "program": null,
+      "subject_code": "ECE4084",
+      "paper_type": "Makeup",
+      "display_title": "Radar And Navigation System (Ece 4084)(Makeup) Part B",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4084",
+      "course_name": "Radar and Navigation System",
+      "subject_name": "Radar and Navigation System",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.444927",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/Radar%20and%20Navigation%20Systems%20%28ECE%204084%29%20PART%20A.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Radar and Navigation Systems (ECE 4084) PART A.pdf",
+      "program": null,
+      "subject_code": "ECE4084",
+      "paper_type": "Regular",
+      "display_title": "Radar And Navigation Systems (Ece 4084) Part A",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4084",
+      "course_name": "Radar and Navigation Systems",
+      "subject_name": "Radar and Navigation Systems",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:36:10.445385",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Communication/Radar%20and%20Navigation%20Systems%20%28ECE%204084%29%20PART%20B.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Radar and Navigation Systems (ECE 4084) PART B.pdf",
+      "program": null,
+      "subject_code": "ECE4084",
+      "paper_type": "Regular",
+      "display_title": "Radar And Navigation Systems (Ece 4084) Part B",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE4084",
+      "course_name": "Radar and Navigation Systems",
+      "subject_name": "Radar and Navigation Systems",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "ECE2155": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:35:28.760047",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Electrical%20and%20Communication/Signals%20and%20Systems%20%28ECE%202155%29%20PART-A.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Signals and Systems (ECE 2155) PART-A.pdf",
+      "program": null,
+      "subject_code": "ECE2155",
+      "paper_type": "Regular",
+      "display_title": "Signals And Systems (Ece 2155) Part-A",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE2155",
+      "course_name": "Signals and Systems",
+      "subject_name": "Signals and Systems",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:35:28.760512",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Electrical%20and%20Communication/Signals%20and%20Systems%20%28ECE%202155%29%20PART-B.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Signals and Systems (ECE 2155) PART-B.pdf",
+      "program": null,
+      "subject_code": "ECE2155",
+      "paper_type": "Regular",
+      "display_title": "Signals And Systems (Ece 2155) Part-B",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE2155",
+      "course_name": "Signals and Systems",
+      "subject_name": "Signals and Systems",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Electrical and Communication",
+      "scraped_at": "2025-07-07T17:35:28.760930",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Electrical%20and%20Communication/Signals%20and%20Systems%20%28ECE%202155%29.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Signals and Systems (ECE 2155).pdf",
+      "program": null,
+      "subject_code": "ECE2155",
+      "paper_type": "Regular",
+      "display_title": "Signals And Systems (Ece 2155)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ECE2155",
+      "course_name": "Signals and Systems",
+      "subject_name": "Signals and Systems",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2659 @@
+{
+  "CSE1071": [
+    {
+      "path": "2024 / May-June 2024 / B.Tech / II Sem",
+      "scraped_at": "2025-07-07T17:37:28.071660",
+      "url": "https://libportal.manipal.edu/RootFolder/2024/May-June%202024/B.Tech/II%20Sem/PSUC%20%28CSE%201071%29%20Makeup.pdf",
+      "year": 2024,
+      "program": "B.Tech",
+      "semester": 1,
+      "file_name": "PSUC (CSE 1071) Makeup.pdf",
+      "subject_code": "CSE1071",
+      "paper_type": "Makeup",
+      "display_title": "Psuc (Cse 1071) Makeup",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "CSE1071",
+      "course_name": "PSUC",
+      "subject_name": "PSUC",
+      "curriculum_context": {
+        "curriculum_id": "first_year_cs_2024",
+        "valid_for_streams": [
+          "cs"
+        ],
+        "valid_for_batches": [
+          2024
+        ],
+        "valid_for_branches": [
+          "CSE",
+          "IT",
+          "CCE"
+        ]
+      },
+      "streams": [
+        "cs"
+      ]
+    },
+    {
+      "path": "2024 / May-June 2024 / B.Tech / II Sem",
+      "scraped_at": "2025-07-07T17:37:28.073040",
+      "url": "https://libportal.manipal.edu/RootFolder/2024/May-June%202024/B.Tech/II%20Sem/PSUC%20%28CSE%201071%29.pdf",
+      "year": 2024,
+      "program": "B.Tech",
+      "semester": 1,
+      "file_name": "PSUC (CSE 1071).pdf",
+      "subject_code": "CSE1071",
+      "paper_type": "Regular",
+      "display_title": "Psuc (Cse 1071)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "CSE1071",
+      "course_name": "PSUC",
+      "subject_name": "PSUC",
+      "curriculum_context": {
+        "curriculum_id": "first_year_cs_2024",
+        "valid_for_streams": [
+          "cs"
+        ],
+        "valid_for_batches": [
+          2024
+        ],
+        "valid_for_branches": [
+          "CSE",
+          "IT",
+          "CCE"
+        ]
+      },
+      "streams": [
+        "cs"
+      ]
+    }
+  ],
+  "CSE4062": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Computer Science and Engineering",
+      "scraped_at": "2025-07-07T17:36:11.758538",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Computer%20Science%20and%20Engineering/Andriod%20Application%20Development%20%28CSE%204062%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Andriod Application Development (CSE 4062).pdf",
+      "program": "Computer Science",
+      "subject_code": "CSE4062",
+      "paper_type": "Regular",
+      "display_title": "Andriod Application Development (Cse 4062)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CSE4062",
+      "course_name": "Andriod Application Development",
+      "subject_name": "Andriod Application Development",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "CSE4053": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Computer Science and Engineering",
+      "scraped_at": "2025-07-07T17:36:11.759094",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Computer%20Science%20and%20Engineering/Artificial%20Intelligence%20%28CSE%204053%29%20%28Make%20Up%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Artificial Intelligence (CSE 4053) (Make Up).pdf",
+      "program": "Computer Science",
+      "subject_code": "CSE4053",
+      "paper_type": "Makeup",
+      "display_title": "Artificial Intelligence (Cse 4053) (Make Up)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CSE4053",
+      "course_name": "Artificial Intelligence",
+      "subject_name": "Artificial Intelligence",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "CSE4051": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Computer Science and Engineering",
+      "scraped_at": "2025-07-07T17:36:11.759555",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Computer%20Science%20and%20Engineering/Augumented%20and%20Virtual%20Reality%20%20CSE%204051%20%28Makeup%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Augumented and Virtual Reality  CSE 4051 (Makeup).pdf",
+      "program": "Computer Science",
+      "subject_code": "CSE4051",
+      "paper_type": "Makeup",
+      "display_title": "Augumented And Virtual Reality  Cse 4051 (Makeup)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CSE4051",
+      "course_name": "Augumented and Virtual Reality",
+      "subject_name": "Augumented and Virtual Reality",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Computer Science and Engineering",
+      "scraped_at": "2025-07-07T17:36:11.759971",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Computer%20Science%20and%20Engineering/Augumented%20and%20Virual%20Reality%20%28CSE%204051%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Augumented and Virual Reality (CSE 4051).pdf",
+      "program": "Computer Science",
+      "subject_code": "CSE4051",
+      "paper_type": "Regular",
+      "display_title": "Augumented And Virual Reality (Cse 4051)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CSE4051",
+      "course_name": "Augumented and Virual Reality",
+      "subject_name": "Augumented and Virual Reality",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "CSE5151": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Computer Science and Engineering",
+      "scraped_at": "2025-07-07T17:36:11.760400",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Computer%20Science%20and%20Engineering/Cloud%20Computing%20%28CSE%205151%29%28Makeup%29.pdf",
+      "year": 2022,
+      "semester": 8,
+      "file_name": "Cloud Computing (CSE 5151)(Makeup).pdf",
+      "program": "Computer Science",
+      "subject_code": "CSE5151",
+      "paper_type": "Makeup",
+      "display_title": "Cloud Computing (Cse 5151)(Makeup)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CSE5151",
+      "course_name": "Cloud Computing",
+      "subject_name": "Cloud Computing",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "CSE3151": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Computer Science and Engineering",
+      "scraped_at": "2025-07-07T17:35:57.414040",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Computer%20Science%20and%20Engineering/Compiler%20Design%20%20%28CSE%203151%29%28Makeup%20%29.pdf",
+      "year": 2022,
+      "file_name": "Compiler Design  (CSE 3151)(Makeup ).pdf",
+      "program": "Computer Science",
+      "subject_code": "CSE3151",
+      "paper_type": "Makeup",
+      "display_title": "Compiler Design  (Cse 3151)(Makeup )",
+      "semester": 5,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CSE3151",
+      "course_name": "Compiler Design",
+      "subject_name": "Compiler Design",
+      "curriculum_context": {
+        "curriculum_id": "cse_year3_2024",
+        "valid_for_streams": [
+          "cs"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "CSE",
+          "IT",
+          "CCE"
+        ]
+      },
+      "streams": [
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Computer Science and Engineering",
+      "scraped_at": "2025-07-07T17:35:57.416420",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Computer%20Science%20and%20Engineering/Compiler%20Design%20%20%28CSE%203151%29.pdf",
+      "year": 2022,
+      "file_name": "Compiler Design  (CSE 3151).pdf",
+      "program": "Computer Science",
+      "subject_code": "CSE3151",
+      "paper_type": "Regular",
+      "display_title": "Compiler Design  (Cse 3151)",
+      "semester": 5,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CSE3151",
+      "course_name": "Compiler Design",
+      "subject_name": "Compiler Design",
+      "curriculum_context": {
+        "curriculum_id": "cse_year3_2024",
+        "valid_for_streams": [
+          "cs"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "CSE",
+          "IT",
+          "CCE"
+        ]
+      },
+      "streams": [
+        "cs"
+      ]
+    }
+  ],
+  "CSE4063": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Computer Science and Engineering",
+      "scraped_at": "2025-07-07T17:36:11.760805",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Computer%20Science%20and%20Engineering/Computer%20Architecture%20%20%28CSE%204063%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Computer Architecture  (CSE 4063).pdf",
+      "program": "Computer Science",
+      "subject_code": "CSE4063",
+      "paper_type": "Regular",
+      "display_title": "Computer Architecture  (Cse 4063)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CSE4063",
+      "course_name": "Computer Architecture",
+      "subject_name": "Computer Architecture",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "CSE3152": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Computer Science and Engineering",
+      "scraped_at": "2025-07-07T17:35:57.417899",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Computer%20Science%20and%20Engineering/Computer%20Networks%20%28CSE%203152%29%28Makeup%29.pdf",
+      "year": 2022,
+      "file_name": "Computer Networks (CSE 3152)(Makeup).pdf",
+      "program": "Computer Science",
+      "subject_code": "CSE3152",
+      "paper_type": "Makeup",
+      "display_title": "Computer Networks (Cse 3152)(Makeup)",
+      "semester": 5,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CSE3152",
+      "course_name": "Computer Networks",
+      "subject_name": "Computer Networks",
+      "curriculum_context": {
+        "curriculum_id": "cse_year3_2024",
+        "valid_for_streams": [
+          "cs"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "CSE",
+          "IT",
+          "CCE"
+        ]
+      },
+      "streams": [
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Computer Science and Engineering",
+      "scraped_at": "2025-07-07T17:35:57.419273",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Computer%20Science%20and%20Engineering/Computer%20Networks%20%28CSE%203152%29.pdf",
+      "year": 2022,
+      "file_name": "Computer Networks (CSE 3152).pdf",
+      "program": "Computer Science",
+      "subject_code": "CSE3152",
+      "paper_type": "Regular",
+      "display_title": "Computer Networks (Cse 3152)",
+      "semester": 5,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CSE3152",
+      "course_name": "Computer Networks",
+      "subject_name": "Computer Networks",
+      "curriculum_context": {
+        "curriculum_id": "cse_year3_2024",
+        "valid_for_streams": [
+          "cs"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "CSE",
+          "IT",
+          "CCE"
+        ]
+      },
+      "streams": [
+        "cs"
+      ]
+    }
+  ],
+  "CSE4064": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Computer Science and Engineering",
+      "scraped_at": "2025-07-07T17:36:11.761208",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Computer%20Science%20and%20Engineering/Deep%20Learning%20%28CSE-4064%29%20%28Makeup%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Deep Learning (CSE-4064) (Makeup).pdf",
+      "program": "Computer Science",
+      "subject_code": null,
+      "paper_type": "Makeup",
+      "display_title": "Deep Learning (Cse-4064) (Makeup)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CSE4064",
+      "course_name": "Deep Learning (CSE-4064) (Makeup)",
+      "subject_name": "Deep Learning (CSE-4064) (Makeup)",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Computer Science and Engineering",
+      "scraped_at": "2025-07-07T17:36:11.761648",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Computer%20Science%20and%20Engineering/Deep%20Learning%20%28CSE-4064%29B.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Deep Learning (CSE-4064)B.pdf",
+      "program": "Computer Science",
+      "subject_code": null,
+      "paper_type": "Regular",
+      "display_title": "Deep Learning (Cse-4064)B",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CSE4064",
+      "course_name": "Deep Learning (CSE-4064)B",
+      "subject_name": "Deep Learning (CSE-4064)B",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "CSE4301": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Computer Science and Engineering",
+      "scraped_at": "2025-07-07T17:36:11.762494",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Computer%20Science%20and%20Engineering/Essentials%20of%20Industrail%20Computing%20%28CSE%204301%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Essentials of Industrail Computing (CSE 4301).pdf",
+      "program": "Computer Science",
+      "subject_code": "CSE4301",
+      "paper_type": "Regular",
+      "display_title": "Essentials Of Industrail Computing (Cse 4301)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CSE4301",
+      "course_name": "Essentials of Industrail Computing",
+      "subject_name": "Essentials of Industrail Computing",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Computer Science and Engineering",
+      "scraped_at": "2025-07-07T17:36:11.762053",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Computer%20Science%20and%20Engineering/Essentials%20of%20Industrail%20computing%20%28CSE%204301%29%28MakeUp%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Essentials of Industrail computing (CSE 4301)(MakeUp).pdf",
+      "program": "Computer Science",
+      "subject_code": "CSE4301",
+      "paper_type": "Makeup",
+      "display_title": "Essentials Of Industrail Computing (Cse 4301)(Makeup)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CSE4301",
+      "course_name": "Essentials of Industrail computing",
+      "subject_name": "Essentials of Industrail computing",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "CSE4066": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Computer Science and Engineering",
+      "scraped_at": "2025-07-07T17:36:11.762915",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Computer%20Science%20and%20Engineering/Ethical%20Hacking%20and%20Cyber%20Testing%20%28CSE%204066%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Ethical Hacking and Cyber Testing (CSE 4066).pdf",
+      "program": "Computer Science",
+      "subject_code": "CSE4066",
+      "paper_type": "Regular",
+      "display_title": "Ethical Hacking And Cyber Testing (Cse 4066)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CSE4066",
+      "course_name": "Ethical Hacking and Cyber Testing",
+      "subject_name": "Ethical Hacking and Cyber Testing",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "CSE4069": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Computer Science and Engineering",
+      "scraped_at": "2025-07-07T17:36:11.763789",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Computer%20Science%20and%20Engineering/Human%20Computer%20Interaction%20%28CSE%204069%29B.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Human Computer Interaction (CSE 4069)B.pdf",
+      "program": "Computer Science",
+      "subject_code": "CSE4069",
+      "paper_type": "Regular",
+      "display_title": "Human Computer Interaction (Cse 4069)B",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CSE4069",
+      "course_name": "Human Computer Interaction",
+      "subject_name": "Human Computer Interaction",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "HCI2021": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Computer Science and Engineering",
+      "scraped_at": "2025-07-07T17:36:11.764197",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Computer%20Science%20and%20Engineering/Human%20Computer%20Interaction%20%28HCI_2021%29%28Makeup%29.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Human Computer Interaction (HCI_2021)(Makeup).pdf",
+      "program": "Computer Science",
+      "subject_code": null,
+      "paper_type": "Makeup",
+      "display_title": "Human Computer Interaction (Hci 2021)(Makeup)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "HCI2021",
+      "course_name": "Human Computer Interaction (HCI_2021)(Makeup)",
+      "subject_name": "Human Computer Interaction (HCI_2021)(Makeup)",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "CSE4056": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Computer Science and Engineering",
+      "scraped_at": "2025-07-07T17:36:11.764642",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Computer%20Science%20and%20Engineering/Information%20Security%28CSE%204056%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Information Security(CSE 4056).pdf",
+      "program": "Computer Science",
+      "subject_code": "CSE4056",
+      "paper_type": "Regular",
+      "display_title": "Information Security(Cse 4056)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CSE4056",
+      "course_name": "Information Security",
+      "subject_name": "Information Security",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "CSE4057": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Computer Science and Engineering",
+      "scraped_at": "2025-07-07T17:36:11.765048",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Computer%20Science%20and%20Engineering/Internet%20of%20Things%20%28CSE%204057%29%20%28Makeup%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Internet of Things (CSE 4057) (Makeup).pdf",
+      "program": "Computer Science",
+      "subject_code": "CSE4057",
+      "paper_type": "Makeup",
+      "display_title": "Internet Of Things (Cse 4057) (Makeup)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CSE4057",
+      "course_name": "Internet of Things",
+      "subject_name": "Internet of Things",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Computer Science and Engineering",
+      "scraped_at": "2025-07-07T17:36:11.765490",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Computer%20Science%20and%20Engineering/Internet%20of%20Things%20%28CSE%204057%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Internet of Things (CSE 4057).pdf",
+      "program": "Computer Science",
+      "subject_code": "CSE4057",
+      "paper_type": "Regular",
+      "display_title": "Internet Of Things (Cse 4057)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CSE4057",
+      "course_name": "Internet of Things",
+      "subject_name": "Internet of Things",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "CSE4303": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Computer Science and Engineering",
+      "scraped_at": "2025-07-07T17:35:57.421960",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Computer%20Science%20and%20Engineering/Linux%20Programing%20%28CSE%204303%29%20%28Makeup%29.pdf",
+      "year": 2022,
+      "file_name": "Linux Programing (CSE 4303) (Makeup).pdf",
+      "program": "Computer Science",
+      "subject_code": "CSE4303",
+      "paper_type": "Makeup",
+      "display_title": "Linux Programing (Cse 4303) (Makeup)",
+      "semester": 7,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CSE4303",
+      "course_name": "Linux Programing",
+      "subject_name": "Linux Programing",
+      "curriculum_context": {
+        "curriculum_id": "cse_year3_2024",
+        "valid_for_streams": [
+          "cs"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "CSE",
+          "IT",
+          "CCE"
+        ]
+      },
+      "streams": [
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Computer Science and Engineering",
+      "scraped_at": "2025-07-07T17:35:57.422946",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Computer%20Science%20and%20Engineering/Linux%20Programming%20%28CSE%204303%29.pdf",
+      "year": 2022,
+      "file_name": "Linux Programming (CSE 4303).pdf",
+      "program": "Computer Science",
+      "subject_code": "CSE4303",
+      "paper_type": "Regular",
+      "display_title": "Linux Programming (Cse 4303)",
+      "semester": 7,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CSE4303",
+      "course_name": "Linux Programming",
+      "subject_name": "Linux Programming",
+      "curriculum_context": {
+        "curriculum_id": "cse_year3_2024",
+        "valid_for_streams": [
+          "cs"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "CSE",
+          "IT",
+          "CCE"
+        ]
+      },
+      "streams": [
+        "cs"
+      ]
+    }
+  ],
+  "CSE4072": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Computer Science and Engineering",
+      "scraped_at": "2025-07-07T17:36:11.766295",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Computer%20Science%20and%20Engineering/Multimedia%20Technologies%20%28CSE%204072%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Multimedia Technologies (CSE 4072).pdf",
+      "program": "Computer Science",
+      "subject_code": "CSE4072",
+      "paper_type": "Regular",
+      "display_title": "Multimedia Technologies (Cse 4072)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CSE4072",
+      "course_name": "Multimedia Technologies",
+      "subject_name": "Multimedia Technologies",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "CSE31530": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Computer Science and Engineering",
+      "scraped_at": "2025-07-07T17:35:57.423925",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Computer%20Science%20and%20Engineering/Operating%20Systems%20%28CSE%2031530.pdf",
+      "year": 2022,
+      "file_name": "Operating Systems (CSE 31530.pdf",
+      "program": "Computer Science",
+      "subject_code": "CSE31530",
+      "paper_type": "Regular",
+      "display_title": "Operating Systems (Cse 31530",
+      "semester": 5,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CSE31530",
+      "course_name": "Operating Systems (",
+      "subject_name": "Operating Systems (",
+      "curriculum_context": {
+        "curriculum_id": "cse_year3_2024",
+        "valid_for_streams": [
+          "cs"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "CSE",
+          "IT",
+          "CCE"
+        ]
+      },
+      "streams": [
+        "cs"
+      ]
+    }
+  ],
+  "CSE3153": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Computer Science and Engineering",
+      "scraped_at": "2025-07-07T17:35:57.424903",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Computer%20Science%20and%20Engineering/Operationg%20Systems%20%28CSE%203153%29%28Makeup%29.pdf",
+      "year": 2022,
+      "file_name": "Operationg Systems (CSE 3153)(Makeup).pdf",
+      "program": "Computer Science",
+      "subject_code": "CSE3153",
+      "paper_type": "Makeup",
+      "display_title": "Operationg Systems (Cse 3153)(Makeup)",
+      "semester": 5,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CSE3153",
+      "course_name": "Operationg Systems",
+      "subject_name": "Operationg Systems",
+      "curriculum_context": {
+        "curriculum_id": "cse_year3_2024",
+        "valid_for_streams": [
+          "cs"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "CSE",
+          "IT",
+          "CCE"
+        ]
+      },
+      "streams": [
+        "cs"
+      ]
+    }
+  ],
+  "CSE4305": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Computer Science and Engineering",
+      "scraped_at": "2025-07-07T17:36:11.766762",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Computer%20Science%20and%20Engineering/Principles%20of%20Soft%20Computing%20%20%28CSE%204305%29%28Makeup%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Principles of Soft Computing  (CSE 4305)(Makeup).pdf",
+      "program": "Computer Science",
+      "subject_code": "CSE4305",
+      "paper_type": "Makeup",
+      "display_title": "Principles Of Soft Computing  (Cse 4305)(Makeup)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CSE4305",
+      "course_name": "Principles of Soft Computing",
+      "subject_name": "Principles of Soft Computing",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "CSE4035": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Computer Science and Engineering",
+      "scraped_at": "2025-07-07T17:36:11.767202",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Computer%20Science%20and%20Engineering/Principles%20of%20Soft%20Computing%28CSE%204035%29%20RCS.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Principles of Soft Computing(CSE 4035) RCS.pdf",
+      "program": "Computer Science",
+      "subject_code": "CSE4035",
+      "paper_type": "Regular",
+      "display_title": "Principles Of Soft Computing(Cse 4035) Rcs",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CSE4035",
+      "course_name": "Principles of Soft Computing",
+      "subject_name": "Principles of Soft Computing",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "CSE4306": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Computer Science and Engineering",
+      "scraped_at": "2025-07-07T17:35:57.426744",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Computer%20Science%20and%20Engineering/Principles%20of%20Software%20Engineering%20%28CSE%204306%29%20%28Make%20up%29%202021.pdf",
+      "year": 2022,
+      "file_name": "Principles of Software Engineering (CSE 4306) (Make up) 2021.pdf",
+      "program": "Computer Science",
+      "subject_code": "CSE4306",
+      "paper_type": "Makeup",
+      "display_title": "Principles Of Software Engineering (Cse 4306) (Make Up) 2021",
+      "semester": 7,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CSE4306",
+      "course_name": "Principles of Software Engineering",
+      "subject_name": "Principles of Software Engineering",
+      "curriculum_context": {
+        "curriculum_id": "cse_year3_2024",
+        "valid_for_streams": [
+          "cs"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "CSE",
+          "IT",
+          "CCE"
+        ]
+      },
+      "streams": [
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Computer Science and Engineering",
+      "scraped_at": "2025-07-07T17:35:57.427539",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Computer%20Science%20and%20Engineering/Principles%20of%20Software%20Engineering%20%28CSE%204306%29.pdf",
+      "year": 2022,
+      "file_name": "Principles of Software Engineering (CSE 4306).pdf",
+      "program": "Computer Science",
+      "subject_code": "CSE4306",
+      "paper_type": "Regular",
+      "display_title": "Principles Of Software Engineering (Cse 4306)",
+      "semester": 7,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CSE4306",
+      "course_name": "Principles of Software Engineering",
+      "subject_name": "Principles of Software Engineering",
+      "curriculum_context": {
+        "curriculum_id": "cse_year3_2024",
+        "valid_for_streams": [
+          "cs"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "CSE",
+          "IT",
+          "CCE"
+        ]
+      },
+      "streams": [
+        "cs"
+      ]
+    }
+  ],
+  "CSE1051": [
+    {
+      "path": "2022 / June-Jul 22 QP / II Sem",
+      "scraped_at": "2025-07-07T16:49:26.911506",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/II%20Sem/Problem%20Solving%20Using%20Computers%20%28CSE%201051%29%28Makeup%29.pdf",
+      "year": 2022,
+      "semester": 1,
+      "file_name": "Problem Solving Using Computers (CSE 1051)(Makeup).pdf",
+      "program": null,
+      "subject_code": "CSE1051",
+      "paper_type": "Makeup",
+      "display_title": "Problem Solving Using Computers (Cse 1051)(Makeup)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "CSE1051",
+      "course_name": "Problem Solving Using Computers",
+      "subject_name": "Problem Solving Using Computers",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Jun-Jul 2022 / B.Tech / II Sem",
+      "scraped_at": "2025-07-07T17:34:57.689284",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Jun-Jul%202022/B.Tech/II%20Sem/Problem%20Solving%20Using%20Computers%20%28CSE%201051%29%28Makeup%29.pdf",
+      "year": 2022,
+      "program": "B.Tech",
+      "semester": 1,
+      "file_name": "Problem Solving Using Computers (CSE 1051)(Makeup).pdf",
+      "subject_code": "CSE1051",
+      "paper_type": "Makeup",
+      "display_title": "Problem Solving Using Computers (Cse 1051)(Makeup)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "CSE1051",
+      "course_name": "Problem Solving Using Computers",
+      "subject_name": "Problem Solving Using Computers",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / II Sem",
+      "scraped_at": "2025-07-07T16:49:26.912102",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/II%20Sem/Problem%20Solving%20Using%20Computers%20%28CSE%201051%29.pdf",
+      "year": 2022,
+      "semester": 1,
+      "file_name": "Problem Solving Using Computers (CSE 1051).pdf",
+      "program": null,
+      "subject_code": "CSE1051",
+      "paper_type": "Regular",
+      "display_title": "Problem Solving Using Computers (Cse 1051)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "CSE1051",
+      "course_name": "Problem Solving Using Computers",
+      "subject_name": "Problem Solving Using Computers",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Jun-Jul 2022 / B.Tech / II Sem",
+      "scraped_at": "2025-07-07T17:34:57.690695",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Jun-Jul%202022/B.Tech/II%20Sem/Problem%20Solving%20Using%20Computers%20%28CSE%201051%29.pdf",
+      "year": 2022,
+      "program": "B.Tech",
+      "semester": 1,
+      "file_name": "Problem Solving Using Computers (CSE 1051).pdf",
+      "subject_code": "CSE1051",
+      "paper_type": "Regular",
+      "display_title": "Problem Solving Using Computers (Cse 1051)",
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "CSE1051",
+      "course_name": "Problem Solving Using Computers",
+      "subject_name": "Problem Solving Using Computers",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "CSE4074": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Computer Science and Engineering",
+      "scraped_at": "2025-07-07T17:36:11.767683",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Computer%20Science%20and%20Engineering/Social%20Network%20Analysis%20%28CSE%204074%29%20RCS%20.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Social Network Analysis (CSE 4074) RCS .pdf",
+      "program": "Computer Science",
+      "subject_code": "CSE4074",
+      "paper_type": "Regular",
+      "display_title": "Social Network Analysis (Cse 4074) Rcs ",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CSE4074",
+      "course_name": "Social Network Analysis",
+      "subject_name": "Social Network Analysis",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Computer Science and Engineering",
+      "scraped_at": "2025-07-07T17:36:11.768155",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Computer%20Science%20and%20Engineering/Social%20Network%20Analysis%20%28CSE%204074%29-Makeup.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Social Network Analysis (CSE 4074)-Makeup.pdf",
+      "program": "Computer Science",
+      "subject_code": "CSE4074",
+      "paper_type": "Makeup",
+      "display_title": "Social Network Analysis (Cse 4074)-Makeup",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CSE4074",
+      "course_name": "Social Network Analysis",
+      "subject_name": "Social Network Analysis",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "CSE3154": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Computer Science and Engineering",
+      "scraped_at": "2025-07-07T17:35:57.428324",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Computer%20Science%20and%20Engineering/Software%20Engineering%20%28CSE%203154%29%20%28Makeup%29.pdf",
+      "year": 2022,
+      "file_name": "Software Engineering (CSE 3154) (Makeup).pdf",
+      "program": "Computer Science",
+      "subject_code": "CSE3154",
+      "paper_type": "Makeup",
+      "display_title": "Software Engineering (Cse 3154) (Makeup)",
+      "semester": 5,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CSE3154",
+      "course_name": "Software Engineering",
+      "subject_name": "Software Engineering",
+      "curriculum_context": {
+        "curriculum_id": "cse_year3_2024",
+        "valid_for_streams": [
+          "cs"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "CSE",
+          "IT",
+          "CCE"
+        ]
+      },
+      "streams": [
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Computer Science and Engineering",
+      "scraped_at": "2025-07-07T17:35:57.429096",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Computer%20Science%20and%20Engineering/Software%20Engineering%20%28CSE%203154%29.pdf",
+      "year": 2022,
+      "file_name": "Software Engineering (CSE 3154).pdf",
+      "program": "Computer Science",
+      "subject_code": "CSE3154",
+      "paper_type": "Regular",
+      "display_title": "Software Engineering (Cse 3154)",
+      "semester": 5,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CSE3154",
+      "course_name": "Software Engineering",
+      "subject_name": "Software Engineering",
+      "curriculum_context": {
+        "curriculum_id": "cse_year3_2024",
+        "valid_for_streams": [
+          "cs"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "CSE",
+          "IT",
+          "CCE"
+        ]
+      },
+      "streams": [
+        "cs"
+      ]
+    }
+  ],
+  "CSE4076": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Computer Science and Engineering",
+      "scraped_at": "2025-07-07T17:36:11.768655",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Computer%20Science%20and%20Engineering/Software%20Testing%20and%20Analysis%20%28CSE%204076%29%20%28Makeup%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Software Testing and Analysis (CSE 4076) (Makeup).pdf",
+      "program": "Computer Science",
+      "subject_code": "CSE4076",
+      "paper_type": "Makeup",
+      "display_title": "Software Testing And Analysis (Cse 4076) (Makeup)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CSE4076",
+      "course_name": "Software Testing and Analysis",
+      "subject_name": "Software Testing and Analysis",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Computer Science and Engineering",
+      "scraped_at": "2025-07-07T17:36:11.770558",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Computer%20Science%20and%20Engineering/Software%20Testing%20and%20Analysis%20%28CSE%204076%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Software Testing and Analysis (CSE 4076).pdf",
+      "program": "Computer Science",
+      "subject_code": "CSE4076",
+      "paper_type": "Regular",
+      "display_title": "Software Testing And Analysis (Cse 4076)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CSE4076",
+      "course_name": "Software Testing and Analysis",
+      "subject_name": "Software Testing and Analysis",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "DSE3157": [
+    {
+      "path": "2024 / Dec 2023-Jan 2024 / B.Tech / V Sem",
+      "scraped_at": "2025-07-07T17:37:44.033441",
+      "url": "https://libportal.manipal.edu/RootFolder/2024/Dec%202023-Jan%202024/B.Tech/V%20Sem/Cloud%20Computing%20%28DSE%203157%29.pdf",
+      "year": 2024,
+      "program": "B.Tech",
+      "file_name": "Cloud Computing (DSE 3157).pdf",
+      "subject_code": "DSE3157",
+      "paper_type": "Regular",
+      "display_title": "Cloud Computing (Dse 3157)",
+      "semester": 5,
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "DSE3157",
+      "course_name": "Cloud Computing",
+      "subject_name": "Cloud Computing",
+      "curriculum_context": {
+        "curriculum_id": "cse_year3_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "DSE3151": [
+    {
+      "path": "2024 / Dec 2023-Jan 2024 / B.Tech / V Sem",
+      "scraped_at": "2025-07-07T17:37:44.034873",
+      "url": "https://libportal.manipal.edu/RootFolder/2024/Dec%202023-Jan%202024/B.Tech/V%20Sem/Deep%20Learning%20%28DSE%203151%29%28Makeup%29.pdf",
+      "year": 2024,
+      "program": "B.Tech",
+      "file_name": "Deep Learning (DSE 3151)(Makeup).pdf",
+      "subject_code": "DSE3151",
+      "paper_type": "Makeup",
+      "display_title": "Deep Learning (Dse 3151)(Makeup)",
+      "semester": 5,
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "DSE3151",
+      "course_name": "Deep Learning",
+      "subject_name": "Deep Learning",
+      "curriculum_context": {
+        "curriculum_id": "cse_year3_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2024 / Dec 2023-Jan 2024 / B.Tech / V Sem",
+      "scraped_at": "2025-07-07T17:37:44.036042",
+      "url": "https://libportal.manipal.edu/RootFolder/2024/Dec%202023-Jan%202024/B.Tech/V%20Sem/Deep%20Learning%20%28DSE%203151%29.pdf",
+      "year": 2024,
+      "program": "B.Tech",
+      "file_name": "Deep Learning (DSE 3151).pdf",
+      "subject_code": "DSE3151",
+      "paper_type": "Regular",
+      "display_title": "Deep Learning (Dse 3151)",
+      "semester": 5,
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "DSE3151",
+      "course_name": "Deep Learning",
+      "subject_name": "Deep Learning",
+      "curriculum_context": {
+        "curriculum_id": "cse_year3_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "DSE3155": [
+    {
+      "path": "2024 / Dec 2023-Jan 2024 / B.Tech / V Sem",
+      "scraped_at": "2025-07-07T17:37:44.038853",
+      "url": "https://libportal.manipal.edu/RootFolder/2024/Dec%202023-Jan%202024/B.Tech/V%20Sem/Natural%20Language%20Processing%20%28DSE%203155%29.pdf",
+      "year": 2024,
+      "program": "B.Tech",
+      "file_name": "Natural Language Processing (DSE 3155).pdf",
+      "subject_code": "DSE3155",
+      "paper_type": "Regular",
+      "display_title": "Natural Language Processing (Dse 3155)",
+      "semester": 5,
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "DSE3155",
+      "course_name": "Natural Language Processing",
+      "subject_name": "Natural Language Processing",
+      "curriculum_context": {
+        "curriculum_id": "cse_year3_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "DSE3153": [
+    {
+      "path": "2024 / Dec 2023-Jan 2024 / B.Tech / V Sem",
+      "scraped_at": "2025-07-07T17:37:44.039756",
+      "url": "https://libportal.manipal.edu/RootFolder/2024/Dec%202023-Jan%202024/B.Tech/V%20Sem/Operating%20Systems%20%28DSE%203153%29%20%28Makeup%29.pdf",
+      "year": 2024,
+      "program": "B.Tech",
+      "file_name": "Operating Systems (DSE 3153) (Makeup).pdf",
+      "subject_code": "DSE3153",
+      "paper_type": "Makeup",
+      "display_title": "Operating Systems (Dse 3153) (Makeup)",
+      "semester": 5,
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "DSE3153",
+      "course_name": "Operating Systems",
+      "subject_name": "Operating Systems",
+      "curriculum_context": {
+        "curriculum_id": "cse_year3_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2024 / Dec 2023-Jan 2024 / B.Tech / V Sem",
+      "scraped_at": "2025-07-07T17:37:44.040651",
+      "url": "https://libportal.manipal.edu/RootFolder/2024/Dec%202023-Jan%202024/B.Tech/V%20Sem/Operating%20Systems%20%28DSE%203153%29.pdf",
+      "year": 2024,
+      "program": "B.Tech",
+      "file_name": "Operating Systems (DSE 3153).pdf",
+      "subject_code": "DSE3153",
+      "paper_type": "Regular",
+      "display_title": "Operating Systems (Dse 3153)",
+      "semester": 5,
+      "program_name": "BTech Mechatronics Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Mechatronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "DSE3153",
+      "course_name": "Operating Systems",
+      "subject_name": "Operating Systems",
+      "curriculum_context": {
+        "curriculum_id": "cse_year3_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "ICT4034": [
+    {
+      "path": "2022 / June-Jul 22 QP / VI Sem / ICT",
+      "scraped_at": "2025-07-07T17:34:42.914648",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/VI%20Sem/ICT/Big%20Data%20Analytics%20%28ICT%204034%29%20%28Makeup%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Big Data Analytics (ICT 4034) (Makeup).pdf",
+      "program": "Information and Communication Technology",
+      "subject_code": "ICT4034",
+      "paper_type": "Makeup",
+      "display_title": "Big Data Analytics (Ict 4034) (Makeup)",
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "ICT4034",
+      "course_name": "Big Data Analytics",
+      "subject_name": "Big Data Analytics",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "ICT4034",
+        "paper_name": "Big Data Analytics",
+        "year": 2022,
+        "semester": 1,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.875,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "CSS 2103",
+            "curriculum_name": "Data Analytics",
+            "program": "CSE",
+            "semester": "3"
+          }
+        ]
+      }
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / VI Sem / ICT",
+      "scraped_at": "2025-07-07T17:34:42.915974",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/VI%20Sem/ICT/Big%20Data%20Analytics%20%28ICT%204034%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Big Data Analytics (ICT 4034).pdf",
+      "program": "Information and Communication Technology",
+      "subject_code": "ICT4034",
+      "paper_type": "Regular",
+      "display_title": "Big Data Analytics (Ict 4034)",
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "ICT4034",
+      "course_name": "Big Data Analytics",
+      "subject_name": "Big Data Analytics",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "ICT4034",
+        "paper_name": "Big Data Analytics",
+        "year": 2022,
+        "semester": 1,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.875,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "CSS 2103",
+            "curriculum_name": "Data Analytics",
+            "program": "CSE",
+            "semester": "3"
+          }
+        ]
+      }
+    }
+  ],
+  "ICT2153": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / ICT",
+      "scraped_at": "2025-07-07T17:35:25.450632",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/ICT/Data%20Structures%20%28ICT%202153%29%20RCS.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Data Structures (ICT 2153) RCS.pdf",
+      "program": "Information and Communication Technology",
+      "subject_code": "ICT2153",
+      "paper_type": "Regular",
+      "display_title": "Data Structures (Ict 2153) Rcs",
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ICT2153",
+      "course_name": "Data Structures",
+      "subject_name": "Data Structures",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "ICT2153",
+        "paper_name": "Data Structures",
+        "year": 2022,
+        "semester": 1,
+        "matched": true,
+        "match_source": "name_exact",
+        "confidence": 1.0,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "CSS 2101",
+            "curriculum_name": "Data Structures",
+            "program": "CSE",
+            "semester": "3"
+          }
+        ]
+      }
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / CCE",
+      "scraped_at": "2025-07-07T17:35:31.065078",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/CCE/Data%20Structures%20%28ICT2153%29%20PartB.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Data Structures (ICT2153) PartB.pdf",
+      "program": null,
+      "subject_code": "ICT2153",
+      "paper_type": "Regular",
+      "display_title": "Data Structures (Ict2153) Partb",
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ICT2153",
+      "course_name": "Data Structures",
+      "subject_name": "Data Structures",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "ICT2153",
+        "paper_name": "Data Structures",
+        "year": 2022,
+        "semester": 1,
+        "matched": true,
+        "match_source": "name_exact",
+        "confidence": 1.0,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "CSS 2101",
+            "curriculum_name": "Data Structures",
+            "program": "CSE",
+            "semester": "3"
+          }
+        ]
+      }
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / ICT",
+      "scraped_at": "2025-07-07T17:35:25.451112",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/ICT/Data%20Structurs%20%28ICT%202153%29%28Makeup%29.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Data Structurs (ICT 2153)(Makeup).pdf",
+      "program": "Information and Communication Technology",
+      "subject_code": "ICT2153",
+      "paper_type": "Makeup",
+      "display_title": "Data Structurs (Ict 2153)(Makeup)",
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ICT2153",
+      "course_name": "Data Structurs",
+      "subject_name": "Data Structurs",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "ICT2153",
+        "paper_name": "Data Structurs",
+        "year": 2022,
+        "semester": 1,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.9655172413793104,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "CSS 2101",
+            "curriculum_name": "Data Structures",
+            "program": "CSE",
+            "semester": "3"
+          }
+        ]
+      }
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / CCE",
+      "scraped_at": "2025-07-07T17:35:31.063001",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/CCE/Data%20structures%20%28ICT%202153%29%28Makeup%29.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Data structures (ICT 2153)(Makeup).pdf",
+      "program": null,
+      "subject_code": "ICT2153",
+      "paper_type": "Makeup",
+      "display_title": "Data Structures (Ict 2153)(Makeup)",
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ICT2153",
+      "course_name": "Data structures",
+      "subject_name": "Data structures",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "ICT2153",
+        "paper_name": "Data structures",
+        "year": 2022,
+        "semester": 1,
+        "matched": true,
+        "match_source": "name_exact",
+        "confidence": 1.0,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "CSS 2101",
+            "curriculum_name": "Data Structures",
+            "program": "CSE",
+            "semester": "3"
+          }
+        ]
+      }
+    }
+  ],
+  "ICT2271": [
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / ICT",
+      "scraped_at": "2025-07-07T17:34:15.079864",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/ICT/Database%20Systems%20%28ICT%202271%29%28Makeup%29.pdf",
+      "year": 2022,
+      "file_name": "Database Systems (ICT 2271)(Makeup).pdf",
+      "program": "Information and Communication Technology",
+      "subject_code": "ICT2271",
+      "paper_type": "Makeup",
+      "display_title": "Database Systems (Ict 2271)(Makeup)",
+      "semester": 4,
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "ICT2271",
+      "course_name": "Database Systems",
+      "subject_name": "Database Systems",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "ICT2271",
+        "paper_name": "Database Systems",
+        "year": 2022,
+        "semester": 4,
+        "matched": true,
+        "match_source": "name_exact",
+        "confidence": 1.0,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "CSS 2201",
+            "curriculum_name": "Database Systems",
+            "program": "CSE",
+            "semester": "4"
+          }
+        ]
+      }
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / ICT",
+      "scraped_at": "2025-07-07T17:34:15.080348",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/ICT/Database%20Systems%20%28ICT%202271%29.pdf",
+      "year": 2022,
+      "file_name": "Database Systems (ICT 2271).pdf",
+      "program": "Information and Communication Technology",
+      "subject_code": "ICT2271",
+      "paper_type": "Regular",
+      "display_title": "Database Systems (Ict 2271)",
+      "semester": 4,
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "ICT2271",
+      "course_name": "Database Systems",
+      "subject_name": "Database Systems",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "ICT2271",
+        "paper_name": "Database Systems",
+        "year": 2022,
+        "semester": 4,
+        "matched": true,
+        "match_source": "name_exact",
+        "confidence": 1.0,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "CSS 2201",
+            "curriculum_name": "Database Systems",
+            "program": "CSE",
+            "semester": "4"
+          }
+        ]
+      }
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / ICT",
+      "scraped_at": "2025-07-07T17:34:15.079239",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/ICT/Database%20and%20Analysis%20of%20Algorithms%20%28ICT%202271%29.pdf",
+      "year": 2022,
+      "file_name": "Database and Analysis of Algorithms (ICT 2271).pdf",
+      "program": "Information and Communication Technology",
+      "subject_code": "ICT2271",
+      "paper_type": "Regular",
+      "display_title": "Database And Analysis Of Algorithms (Ict 2271)",
+      "semester": 4,
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "ICT2271",
+      "course_name": "Database and Analysis of Algorithms",
+      "subject_name": "Database and Analysis of Algorithms",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "ICT2271",
+        "paper_name": "Database and Analysis of Algorithms",
+        "year": 2022,
+        "semester": 4,
+        "matched": true,
+        "match_source": "prefix_translate",
+        "confidence": 0.7878787878787878,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "CSS 2202",
+            "curriculum_name": "Design & Analysis of Algorithms",
+            "program": "CSE",
+            "semester": "4"
+          }
+        ]
+      }
+    }
+  ],
+  "ICT3157": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / ICT",
+      "scraped_at": "2025-07-07T17:35:51.482044",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/ICT/Database%20Systems%28ICT%203157%29%20RCS.pdf",
+      "year": 2022,
+      "file_name": "Database Systems(ICT 3157) RCS.pdf",
+      "program": "Information and Communication Technology",
+      "subject_code": "ICT3157",
+      "paper_type": "Regular",
+      "display_title": "Database Systems(Ict 3157) Rcs",
+      "semester": 5,
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ICT3157",
+      "course_name": "Database Systems",
+      "subject_name": "Database Systems",
+      "curriculum_context": {
+        "curriculum_id": "cse_year3_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "ICT3157",
+        "paper_name": "Database Systems",
+        "year": 2022,
+        "semester": 5,
+        "matched": true,
+        "match_source": "name_exact",
+        "confidence": 1.0,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "CSS 2201",
+            "curriculum_name": "Database Systems",
+            "program": "CSE",
+            "semester": "4"
+          }
+        ]
+      }
+    }
+  ],
+  "ICT2257": [
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / ICT",
+      "scraped_at": "2025-07-07T17:34:15.081251",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/ICT/Design%20and%20Analysis%20of%20Algorithms%20%28ICT%202257%29%28Makeup%29.pdf",
+      "year": 2022,
+      "file_name": "Design and Analysis of Algorithms (ICT 2257)(Makeup).pdf",
+      "program": "Information and Communication Technology",
+      "subject_code": "ICT2257",
+      "paper_type": "Makeup",
+      "display_title": "Design And Analysis Of Algorithms (Ict 2257)(Makeup)",
+      "semester": 4,
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "ICT2257",
+      "course_name": "Design and Analysis of Algorithms",
+      "subject_name": "Design and Analysis of Algorithms",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "ICT2257",
+        "paper_name": "Design and Analysis of Algorithms",
+        "year": 2022,
+        "semester": 4,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.9375,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "CSS 2202",
+            "curriculum_name": "Design & Analysis of Algorithms",
+            "program": "CSE",
+            "semester": "4"
+          }
+        ]
+      }
+    }
+  ],
+  "ICT2154": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / ICT",
+      "scraped_at": "2025-07-07T17:35:25.451572",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/ICT/Digital%20Systems%20%28ICT%202154%29%20RCS.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Digital Systems (ICT 2154) RCS.pdf",
+      "program": "Information and Communication Technology",
+      "subject_code": "ICT2154",
+      "paper_type": "Regular",
+      "display_title": "Digital Systems (Ict 2154) Rcs",
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ICT2154",
+      "course_name": "Digital Systems",
+      "subject_name": "Digital Systems",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "ICT2154",
+        "paper_name": "Digital Systems",
+        "year": 2022,
+        "semester": 1,
+        "matched": true,
+        "match_source": "name_exact",
+        "confidence": 1.0,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "MTE 2125",
+            "curriculum_name": "Digital Systems",
+            "program": "MTE",
+            "semester": "3"
+          }
+        ]
+      }
+    }
+  ],
+  "ICT2171": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / CCE",
+      "scraped_at": "2025-07-07T17:35:31.068546",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/CCE/Digital%20Systems%20and%20Computer%20Organization%20%28ICT%202171%29%20%28Makeup%29.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Digital Systems and Computer Organization (ICT 2171) (Makeup).pdf",
+      "program": null,
+      "subject_code": "ICT2171",
+      "paper_type": "Makeup",
+      "display_title": "Digital Systems And Computer Organization (Ict 2171) (Makeup)",
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ICT2171",
+      "course_name": "Digital Systems and Computer Organization",
+      "subject_name": "Digital Systems and Computer Organization",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "ICT2171",
+        "paper_name": "Digital Systems and Computer Organization",
+        "year": 2022,
+        "semester": 1,
+        "matched": true,
+        "match_source": "name_exact",
+        "confidence": 1.0,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "CSS 2104",
+            "curriculum_name": "Digital Systems and Computer Organization",
+            "program": "CSE",
+            "semester": "3"
+          }
+        ]
+      }
+    }
+  ],
+  "ICT2155": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / ICT",
+      "scraped_at": "2025-07-07T17:35:25.451959",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/ICT/Object%20Oriented%20Programing%20%28ICT%202155%29%28Makeup%29.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Object Oriented Programing (ICT 2155)(Makeup).pdf",
+      "program": "Information and Communication Technology",
+      "subject_code": "ICT2155",
+      "paper_type": "Makeup",
+      "display_title": "Object Oriented Programing (Ict 2155)(Makeup)",
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ICT2155",
+      "course_name": "Object Oriented Programing",
+      "subject_name": "Object Oriented Programing",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "ICT2155",
+        "paper_name": "Object Oriented Programing",
+        "year": 2022,
+        "semester": 1,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.9811320754716981,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "DSE 2123",
+            "curriculum_name": "Object Oriented Programming",
+            "program": "DSE",
+            "semester": "3"
+          }
+        ]
+      }
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / CCE",
+      "scraped_at": "2025-07-07T17:35:31.070264",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/CCE/Object%20Oriented%20Programing%20%28ICT%202155%29.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Object Oriented Programing (ICT 2155).pdf",
+      "program": null,
+      "subject_code": "ICT2155",
+      "paper_type": "Regular",
+      "display_title": "Object Oriented Programing (Ict 2155)",
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ICT2155",
+      "course_name": "Object Oriented Programing",
+      "subject_name": "Object Oriented Programing",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "ICT2155",
+        "paper_name": "Object Oriented Programing",
+        "year": 2022,
+        "semester": 1,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.9811320754716981,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "DSE 2123",
+            "curriculum_name": "Object Oriented Programming",
+            "program": "DSE",
+            "semester": "3"
+          }
+        ]
+      }
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / CCE",
+      "scraped_at": "2025-07-07T17:35:31.071984",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/CCE/Object%20Oriented%20Programming%28ICT%202155%29%20%28Makeup%29%20.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Object Oriented Programming(ICT 2155) (Makeup) .pdf",
+      "program": null,
+      "subject_code": "ICT2155",
+      "paper_type": "Makeup",
+      "display_title": "Object Oriented Programming(Ict 2155) (Makeup) ",
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ICT2155",
+      "course_name": "Object Oriented Programming",
+      "subject_name": "Object Oriented Programming",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "ICT2155",
+        "paper_name": "Object Oriented Programming",
+        "year": 2022,
+        "semester": 1,
+        "matched": true,
+        "match_source": "name_exact",
+        "confidence": 1.0,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "DSE 2123",
+            "curriculum_name": "Object Oriented Programming",
+            "program": "DSE",
+            "semester": "3"
+          }
+        ]
+      }
+    }
+  ],
+  "ICT2258": [
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / ICT",
+      "scraped_at": "2025-07-07T17:34:15.083043",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/ICT/Operating%20Systems%20%28ICT%202258%29%20%28Makeup%29.pdf",
+      "year": 2022,
+      "file_name": "Operating Systems (ICT 2258) (Makeup).pdf",
+      "program": "Information and Communication Technology",
+      "subject_code": "ICT2258",
+      "paper_type": "Makeup",
+      "display_title": "Operating Systems (Ict 2258) (Makeup)",
+      "semester": 4,
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "ICT2258",
+      "course_name": "Operating Systems",
+      "subject_name": "Operating Systems",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "ICT2258",
+        "paper_name": "Operating Systems",
+        "year": 2022,
+        "semester": 4,
+        "matched": true,
+        "match_source": "name_exact",
+        "confidence": 1.0,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "CSS 2204",
+            "curriculum_name": "Operating Systems",
+            "program": "CSE",
+            "semester": "4"
+          }
+        ]
+      }
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / ICT",
+      "scraped_at": "2025-07-07T17:34:15.083525",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/ICT/Operating%20Systems%20%28ICT%202258%29.pdf",
+      "year": 2022,
+      "file_name": "Operating Systems (ICT 2258).pdf",
+      "program": "Information and Communication Technology",
+      "subject_code": "ICT2258",
+      "paper_type": "Regular",
+      "display_title": "Operating Systems (Ict 2258)",
+      "semester": 4,
+      "program_name": null,
+      "degree_type": null,
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "ICT2258",
+      "course_name": "Operating Systems",
+      "subject_name": "Operating Systems",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "ICT2258",
+        "paper_name": "Operating Systems",
+        "year": 2022,
+        "semester": 4,
+        "matched": true,
+        "match_source": "name_exact",
+        "confidence": 1.0,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "CSS 2204",
+            "curriculum_name": "Operating Systems",
+            "program": "CSE",
+            "semester": "4"
+          }
+        ]
+      }
+    }
+  ]
+}

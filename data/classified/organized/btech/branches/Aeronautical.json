@@ -1,0 +1,1058 @@
+{
+  "AAE2154": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Aeronuatical",
+      "scraped_at": "2025-07-07T17:35:34.692999",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Aeronuatical/Aerospace%20Materials%20and%20Manufacturing%20%20%28AAE-2154%29RCS%20.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Aerospace Materials and Manufacturing  (AAE-2154)RCS .pdf",
+      "program": null,
+      "subject_code": null,
+      "paper_type": "Regular",
+      "display_title": "Aerospace Materials And Manufacturing  (Aae-2154)Rcs ",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "AAE2154",
+      "course_name": "Aerospace Materials and Manufacturing  (AAE-2154)RCS",
+      "subject_name": "Aerospace Materials and Manufacturing  (AAE-2154)RCS",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Aeronuatical",
+      "scraped_at": "2025-07-07T17:35:34.694878",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Aeronuatical/Aerospace%20Materials%20and%20Manufacturing%20%28AAE%202154%29%28Makeup%29.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Aerospace Materials and Manufacturing (AAE 2154)(Makeup).pdf",
+      "program": null,
+      "subject_code": "AAE2154",
+      "paper_type": "Makeup",
+      "display_title": "Aerospace Materials And Manufacturing (Aae 2154)(Makeup)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "AAE2154",
+      "course_name": "Aerospace Materials and Manufacturing",
+      "subject_name": "Aerospace Materials and Manufacturing",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "AAE3155": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Aeronuatical",
+      "scraped_at": "2025-07-07T17:36:03.267432",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Aeronuatical/Aircraft%20Design%20%28AAE%203155%29%20%28Makeup%29.pdf",
+      "year": 2022,
+      "file_name": "Aircraft Design (AAE 3155) (Makeup).pdf",
+      "program": null,
+      "subject_code": "AAE3155",
+      "paper_type": "Makeup",
+      "display_title": "Aircraft Design (Aae 3155) (Makeup)",
+      "semester": 5,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "AAE3155",
+      "course_name": "Aircraft Design",
+      "subject_name": "Aircraft Design",
+      "curriculum_context": {
+        "curriculum_id": "cse_year3_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Aeronuatical",
+      "scraped_at": "2025-07-07T17:36:03.269743",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Aeronuatical/Aircraft%20Design%20%28AAE%203155%29%20RCSt.pdf",
+      "year": 2022,
+      "file_name": "Aircraft Design (AAE 3155) RCSt.pdf",
+      "program": null,
+      "subject_code": "AAE3155",
+      "paper_type": "Regular",
+      "display_title": "Aircraft Design (Aae 3155) Rcst",
+      "semester": 5,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "AAE3155",
+      "course_name": "Aircraft Design",
+      "subject_name": "Aircraft Design",
+      "curriculum_context": {
+        "curriculum_id": "cse_year3_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "AAE2255": [
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / Aeronautical Engineering",
+      "scraped_at": "2025-07-07T17:34:26.475897",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/Aeronautical%20Engineering/Aircraft%20Propulsion%20%28AAE%202255%29%20%28Makeup%29.pdf",
+      "year": 2022,
+      "file_name": "Aircraft Propulsion (AAE 2255) (Makeup).pdf",
+      "program": null,
+      "subject_code": "AAE2255",
+      "paper_type": "Makeup",
+      "display_title": "Aircraft Propulsion (Aae 2255) (Makeup)",
+      "semester": 4,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "AAE2255",
+      "course_name": "Aircraft Propulsion",
+      "subject_name": "Aircraft Propulsion",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / Aeronautical Engineering",
+      "scraped_at": "2025-07-07T17:34:26.478185",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/Aeronautical%20Engineering/Aircraft%20Propulsion%20%28AAE%202255%29.pdf",
+      "year": 2022,
+      "file_name": "Aircraft Propulsion (AAE 2255).pdf",
+      "program": null,
+      "subject_code": "AAE2255",
+      "paper_type": "Regular",
+      "display_title": "Aircraft Propulsion (Aae 2255)",
+      "semester": 4,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "AAE2255",
+      "course_name": "Aircraft Propulsion",
+      "subject_name": "Aircraft Propulsion",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "AAE4040": [
+    {
+      "path": "2022 / June-Jul 22 QP / VI Sem / Automobile",
+      "scraped_at": "2025-07-07T17:34:52.698992",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/VI%20Sem/Automobile/Auto%20Tronics%20%28AAE%204040%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Auto Tronics (AAE 4040).pdf",
+      "program": "Automobile Engineering",
+      "subject_code": "AAE4040",
+      "paper_type": "Regular",
+      "display_title": "Auto Tronics (Aae 4040)",
+      "program_name": "BTech Automobile Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Automobile Engineering",
+      "college": null,
+      "program_category": "Undergraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "AAE4040",
+      "course_name": "Auto Tronics",
+      "subject_name": "Auto Tronics",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / VI Sem / Automobile",
+      "scraped_at": "2025-07-07T17:34:52.701590",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/VI%20Sem/Automobile/Autotronics%20%28AAE%204040%29%28Make%20up%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Autotronics (AAE 4040)(Make up).pdf",
+      "program": "Automobile Engineering",
+      "subject_code": "AAE4040",
+      "paper_type": "Makeup",
+      "display_title": "Autotronics (Aae 4040)(Make Up)",
+      "program_name": "BTech Automobile Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Automobile Engineering",
+      "college": null,
+      "program_category": "Undergraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "AAE4040",
+      "course_name": "Autotronics",
+      "subject_name": "Autotronics",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "AAE2172": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Automobile",
+      "scraped_at": "2025-07-07T17:35:33.788904",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Automobile/Automotive%20Engines%20%28AAE%202172%29.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Automotive Engines (AAE 2172).pdf",
+      "program": "Automobile Engineering",
+      "subject_code": "AAE2172",
+      "paper_type": "Regular",
+      "display_title": "Automotive Engines (Aae 2172)",
+      "program_name": "BTech Automobile Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Automobile Engineering",
+      "college": null,
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "AAE2172",
+      "course_name": "Automotive Engines",
+      "subject_name": "Automotive Engines",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "AAE2271": [
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / Automobile",
+      "scraped_at": "2025-07-07T17:34:25.450558",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/Automobile/Automotive%20Transmission%20System%20%28AAE%202271%29%20%28Make%20up%29.pdf",
+      "year": 2022,
+      "file_name": "Automotive Transmission System (AAE 2271) (Make up).pdf",
+      "program": "Automobile Engineering",
+      "subject_code": "AAE2271",
+      "paper_type": "Makeup",
+      "display_title": "Automotive Transmission System (Aae 2271) (Make Up)",
+      "semester": 4,
+      "program_name": "BTech Automobile Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Automobile Engineering",
+      "college": null,
+      "program_category": "Undergraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "AAE2271",
+      "course_name": "Automotive Transmission System",
+      "subject_name": "Automotive Transmission System",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / Automobile",
+      "scraped_at": "2025-07-07T17:34:25.451031",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/Automobile/Automotive%20Transmission%20System%20%28AAE%202271%29.pdf",
+      "year": 2022,
+      "file_name": "Automotive Transmission System (AAE 2271).pdf",
+      "program": "Automobile Engineering",
+      "subject_code": "AAE2271",
+      "paper_type": "Regular",
+      "display_title": "Automotive Transmission System (Aae 2271)",
+      "semester": 4,
+      "program_name": "BTech Automobile Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Automobile Engineering",
+      "college": null,
+      "program_category": "Undergraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "AAE2271",
+      "course_name": "Automotive Transmission System",
+      "subject_name": "Automotive Transmission System",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "AAE3171": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Automobile",
+      "scraped_at": "2025-07-07T17:36:01.948382",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Automobile/Automotive%C2%A0%20Chassis%20and%20Suspension%20%28AAE%203171%29%20PART%20B.pdf",
+      "year": 2022,
+      "file_name": "Automotive  Chassis and Suspension (AAE 3171) PART B.pdf",
+      "program": "Automobile Engineering",
+      "subject_code": "AAE3171",
+      "paper_type": "Regular",
+      "display_title": "Automotive  Chassis And Suspension (Aae 3171) Part B",
+      "semester": 5,
+      "program_name": "BTech Automobile Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Automobile Engineering",
+      "college": null,
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "AAE3171",
+      "course_name": "Automotive  Chassis and Suspension",
+      "subject_name": "Automotive  Chassis and Suspension",
+      "curriculum_context": {
+        "curriculum_id": "cse_year3_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Automobile",
+      "scraped_at": "2025-07-07T17:36:01.950840",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Automobile/Automotive%C2%A0%20Chassis%20and%20Suspension%20%28AAE%203171%29%20RCS%20%28Makeup%29%20PART%20B.pdf",
+      "year": 2022,
+      "file_name": "Automotive  Chassis and Suspension (AAE 3171) RCS (Makeup) PART B.pdf",
+      "program": "Automobile Engineering",
+      "subject_code": "AAE3171",
+      "paper_type": "Regular",
+      "display_title": "Automotive  Chassis And Suspension (Aae 3171) Rcs (Makeup) Part B",
+      "semester": 5,
+      "program_name": "BTech Automobile Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Automobile Engineering",
+      "college": null,
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "AAE3171",
+      "course_name": "Automotive  Chassis and Suspension",
+      "subject_name": "Automotive  Chassis and Suspension",
+      "curriculum_context": {
+        "curriculum_id": "cse_year3_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "AAE4050": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Aeronautical",
+      "scraped_at": "2025-07-07T17:36:18.114879",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Aeronautical/Composite%20Structures%20%28AAE%204050%29RCS-.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Composite Structures (AAE 4050)RCS-.pdf",
+      "program": null,
+      "subject_code": "AAE4050",
+      "paper_type": "Regular",
+      "display_title": "Composite Structures (Aae 4050)Rcs-",
+      "program_name": "BTech Aeronautical Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Aeronautical Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "AAE4050",
+      "course_name": "Composite Structures",
+      "subject_name": "Composite Structures",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "AAE4075": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Aeronautical",
+      "scraped_at": "2025-07-07T17:36:18.116849",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Aeronautical/Computational%20Fluid%20dynamics%20%28AAE%204075%29%20RCS.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Computational Fluid dynamics (AAE 4075) RCS.pdf",
+      "program": null,
+      "subject_code": "AAE4075",
+      "paper_type": "Regular",
+      "display_title": "Computational Fluid Dynamics (Aae 4075) Rcs",
+      "program_name": "BTech Aeronautical Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Aeronautical Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "AAE4075",
+      "course_name": "Computational Fluid dynamics",
+      "subject_name": "Computational Fluid dynamics",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "AAE2156": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Aeronuatical",
+      "scraped_at": "2025-07-07T17:35:34.696434",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Aeronuatical/Fluid%20Mechanics%20%28AAE%202156%29RCS.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Fluid Mechanics (AAE 2156)RCS.pdf",
+      "program": null,
+      "subject_code": "AAE2156",
+      "paper_type": "Regular",
+      "display_title": "Fluid Mechanics (Aae 2156)Rcs",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "AAE2156",
+      "course_name": "Fluid Mechanics",
+      "subject_name": "Fluid Mechanics",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "AAE2159": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Automobile",
+      "scraped_at": "2025-07-07T17:35:33.790234",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Automobile/Fluid%20Mechanics%20%28AAE%202159%29%20RCS%20.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Fluid Mechanics (AAE 2159) RCS .pdf",
+      "program": "Automobile Engineering",
+      "subject_code": "AAE2159",
+      "paper_type": "Regular",
+      "display_title": "Fluid Mechanics (Aae 2159) Rcs ",
+      "program_name": "BTech Automobile Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Automobile Engineering",
+      "college": null,
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "AAE2159",
+      "course_name": "Fluid Mechanics",
+      "subject_name": "Fluid Mechanics",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "AAE3158": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Aeronuatical",
+      "scraped_at": "2025-07-07T17:36:03.275516",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Aeronuatical/Gas%20Dynamics%20%28AAE%203158%29%20RCS%20%28Makeup%29.pdf",
+      "year": 2022,
+      "file_name": "Gas Dynamics (AAE 3158) RCS (Makeup).pdf",
+      "program": null,
+      "subject_code": "AAE3158",
+      "paper_type": "Regular",
+      "display_title": "Gas Dynamics (Aae 3158) Rcs (Makeup)",
+      "semester": 5,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "AAE3158",
+      "course_name": "Gas Dynamics",
+      "subject_name": "Gas Dynamics",
+      "curriculum_context": {
+        "curriculum_id": "cse_year3_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Aeronuatical",
+      "scraped_at": "2025-07-07T17:36:03.277157",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Aeronuatical/Gas%20Dynamics%20%28AAE%203158%29%20RCS.pdf",
+      "year": 2022,
+      "file_name": "Gas Dynamics (AAE 3158) RCS.pdf",
+      "program": null,
+      "subject_code": "AAE3158",
+      "paper_type": "Regular",
+      "display_title": "Gas Dynamics (Aae 3158) Rcs",
+      "semester": 5,
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "AAE3158",
+      "course_name": "Gas Dynamics",
+      "subject_name": "Gas Dynamics",
+      "curriculum_context": {
+        "curriculum_id": "cse_year3_2024",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "AAE2157": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Aeronuatical",
+      "scraped_at": "2025-07-07T17:35:34.697655",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Aeronuatical/Introduction%20to%20Aerospace%20Engineering%20%28AAE%202157%29%20RCS%20%28Makeup%29%20.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Introduction to Aerospace Engineering (AAE 2157) RCS (Makeup) .pdf",
+      "program": null,
+      "subject_code": "AAE2157",
+      "paper_type": "Regular",
+      "display_title": "Introduction To Aerospace Engineering (Aae 2157) Rcs (Makeup) ",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "AAE2157",
+      "course_name": "Introduction to Aerospace Engineering",
+      "subject_name": "Introduction to Aerospace Engineering",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Aeronuatical",
+      "scraped_at": "2025-07-07T17:35:34.698757",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Aeronuatical/Introduction%20to%20Aerospace%20Engineering%28AAE-2157%29%20RCS%20.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Introduction to Aerospace Engineering(AAE-2157) RCS .pdf",
+      "program": null,
+      "subject_code": null,
+      "paper_type": "Regular",
+      "display_title": "Introduction To Aerospace Engineering(Aae-2157) Rcs ",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "AAE2157",
+      "course_name": "Introduction to Aerospace Engineering(AAE-2157) RCS",
+      "subject_name": "Introduction to Aerospace Engineering(AAE-2157) RCS",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "AAE4067": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Aeronautical",
+      "scraped_at": "2025-07-07T17:36:18.118808",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Aeronautical/Rocket%20Propulsion%20%28AAE%204067%29%20RCS.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Rocket Propulsion (AAE 4067) RCS.pdf",
+      "program": null,
+      "subject_code": "AAE4067",
+      "paper_type": "Regular",
+      "display_title": "Rocket Propulsion (Aae 4067) Rcs",
+      "program_name": "BTech Aeronautical Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Aeronautical Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "AAE4067",
+      "course_name": "Rocket Propulsion",
+      "subject_name": "Rocket Propulsion",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "AAE2158": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Automobile",
+      "scraped_at": "2025-07-07T17:35:33.790651",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Automobile/Thermodynamics%20%28%20AAE-2158%29%20Set%204.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Thermodynamics ( AAE-2158) Set 4.pdf",
+      "program": "Automobile Engineering",
+      "subject_code": null,
+      "paper_type": "Regular",
+      "display_title": "Thermodynamics ( Aae-2158) Set 4",
+      "program_name": "BTech Automobile Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Automobile Engineering",
+      "college": null,
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "AAE2158",
+      "course_name": "Thermodynamics ( AAE-2158) Set 4",
+      "subject_name": "Thermodynamics ( AAE-2158) Set 4",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Aeronuatical",
+      "scraped_at": "2025-07-07T17:35:34.699862",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Aeronuatical/Thermodynamics%20%28AAE%202158%29%20Part%20A.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Thermodynamics (AAE 2158) Part A.pdf",
+      "program": null,
+      "subject_code": "AAE2158",
+      "paper_type": "Regular",
+      "display_title": "Thermodynamics (Aae 2158) Part A",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "AAE2158",
+      "course_name": "Thermodynamics",
+      "subject_name": "Thermodynamics",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Automobile",
+      "scraped_at": "2025-07-07T17:35:33.791061",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Automobile/Thermodynamics%20%28AAE%202158%29%20Part%20B.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Thermodynamics (AAE 2158) Part B.pdf",
+      "program": "Automobile Engineering",
+      "subject_code": "AAE2158",
+      "paper_type": "Regular",
+      "display_title": "Thermodynamics (Aae 2158) Part B",
+      "program_name": "BTech Automobile Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Automobile Engineering",
+      "college": null,
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "AAE2158",
+      "course_name": "Thermodynamics",
+      "subject_name": "Thermodynamics",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Automobile",
+      "scraped_at": "2025-07-07T17:35:33.791478",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Automobile/Thermodynamics%20%28AAE%202158%29%20RCS_Part%20A.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Thermodynamics (AAE 2158) RCS_Part A.pdf",
+      "program": "Automobile Engineering",
+      "subject_code": "AAE2158",
+      "paper_type": "Regular",
+      "display_title": "Thermodynamics (Aae 2158) Rcs Part A",
+      "program_name": "BTech Automobile Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Automobile Engineering",
+      "college": null,
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "AAE2158",
+      "course_name": "Thermodynamics",
+      "subject_name": "Thermodynamics",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Aeronuatical",
+      "scraped_at": "2025-07-07T17:35:34.700989",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Aeronuatical/Thermodynamics%20%28AAE%202158%29Part%20B.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Thermodynamics (AAE 2158)Part B.pdf",
+      "program": null,
+      "subject_code": "AAE2158",
+      "paper_type": "Regular",
+      "display_title": "Thermodynamics (Aae 2158)Part B",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "AAE2158",
+      "course_name": "Thermodynamics",
+      "subject_name": "Thermodynamics",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Aeronuatical",
+      "scraped_at": "2025-07-07T17:35:34.702063",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Aeronuatical/Thermodynamics%28%20AAE-2158%29%20Set%201.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Thermodynamics( AAE-2158) Set 1.pdf",
+      "program": null,
+      "subject_code": null,
+      "paper_type": "Regular",
+      "display_title": "Thermodynamics( Aae-2158) Set 1",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Odd (Nov/Dec)",
+      "course_code": "AAE2158",
+      "course_name": "Thermodynamics( AAE-2158) Set 1",
+      "subject_name": "Thermodynamics( AAE-2158) Set 1",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "AAE4034": [
+    {
+      "path": "2022 / June-Jul 22 QP / VI Sem / Aeronautical Enginering",
+      "scraped_at": "2025-07-07T17:34:53.936274",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/VI%20Sem/Aeronautical%20Enginering/Turbomachinery%20Aerodynamics%20%28AAE%204034%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Turbomachinery Aerodynamics (AAE 4034).pdf",
+      "program": null,
+      "subject_code": "AAE4034",
+      "paper_type": "Regular",
+      "display_title": "Turbomachinery Aerodynamics (Aae 4034)",
+      "program_name": null,
+      "degree_type": "B.Tech",
+      "specialization": null,
+      "college": null,
+      "program_category": null,
+      "session": "Even (May/Jun)",
+      "course_code": "AAE4034",
+      "course_name": "Turbomachinery Aerodynamics",
+      "subject_name": "Turbomachinery Aerodynamics",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "AAE4038": [
+    {
+      "path": "2022 / June-Jul 22 QP / VI Sem / Automobile",
+      "scraped_at": "2025-07-07T17:34:52.703294",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/VI%20Sem/Automobile/Vehicle%20Aerodynamics%20%28AAE%204038%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Vehicle Aerodynamics (AAE 4038).pdf",
+      "program": "Automobile Engineering",
+      "subject_code": "AAE4038",
+      "paper_type": "Regular",
+      "display_title": "Vehicle Aerodynamics (Aae 4038)",
+      "program_name": "BTech Automobile Engineering",
+      "degree_type": "B.Tech",
+      "specialization": "Automobile Engineering",
+      "college": null,
+      "program_category": "Undergraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "AAE4038",
+      "course_name": "Vehicle Aerodynamics",
+      "subject_name": "Vehicle Aerodynamics",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ]
+}

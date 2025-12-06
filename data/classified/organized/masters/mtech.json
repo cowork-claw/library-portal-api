@@ -1,0 +1,814 @@
+{
+  "CHE5252": [
+    {
+      "path": "2023 / May - Jun 2023 / M.Tech / Chemical",
+      "scraped_at": "2025-07-07T17:36:54.081438",
+      "url": "https://libportal.manipal.edu/RootFolder/2023/May%20-%20Jun%202023/M.Tech/Chemical/Process%20Modelling%20Analysis%20and%20Simulation%20%28CHE%205252%29%20RCS%28Make%20up%29.pdf",
+      "year": 2023,
+      "program": "M.Tech",
+      "file_name": "Process Modelling Analysis and Simulation (CHE 5252) RCS(Make up).pdf",
+      "subject_code": "CHE5252",
+      "paper_type": "Regular",
+      "display_title": "Process Modelling Analysis And Simulation (Che 5252) Rcs(Make Up)",
+      "semester": 8,
+      "program_name": "M.Tech Defence Technology",
+      "degree_type": "M.Tech",
+      "specialization": "Defence Technology",
+      "college": null,
+      "program_category": "Postgraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "CHE5252",
+      "course_name": "Process Modelling Analysis and Simulation",
+      "subject_name": "Process Modelling Analysis and Simulation",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "core"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core"
+      ],
+      "curriculum_match": {
+        "paper_code": "CHE5252",
+        "paper_name": "Process Modelling Analysis and Simulation",
+        "year": 2023,
+        "semester": null,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.8767123287671232,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "CHE 3122",
+            "curriculum_name": "Process Modelling and Simulation",
+            "program": "CHE",
+            "semester": "5"
+          }
+        ]
+      }
+    },
+    {
+      "path": "2023 / May - Jun 2023 / M.Tech / Chemical",
+      "scraped_at": "2025-07-07T17:36:54.082456",
+      "url": "https://libportal.manipal.edu/RootFolder/2023/May%20-%20Jun%202023/M.Tech/Chemical/Process%20Modelling%20Analysis%20and%20Simulation%20%28CHE%205252%29%20RCS.pdf",
+      "year": 2023,
+      "program": "M.Tech",
+      "file_name": "Process Modelling Analysis and Simulation (CHE 5252) RCS.pdf",
+      "subject_code": "CHE5252",
+      "paper_type": "Regular",
+      "display_title": "Process Modelling Analysis And Simulation (Che 5252) Rcs",
+      "semester": 8,
+      "program_name": "M.Tech Defence Technology",
+      "degree_type": "M.Tech",
+      "specialization": "Defence Technology",
+      "college": null,
+      "program_category": "Postgraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "CHE5252",
+      "course_name": "Process Modelling Analysis and Simulation",
+      "subject_name": "Process Modelling Analysis and Simulation",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "core"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core"
+      ],
+      "curriculum_match": {
+        "paper_code": "CHE5252",
+        "paper_name": "Process Modelling Analysis and Simulation",
+        "year": 2023,
+        "semester": null,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.8767123287671232,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "CHE 3122",
+            "curriculum_name": "Process Modelling and Simulation",
+            "program": "CHE",
+            "semester": "5"
+          }
+        ]
+      }
+    }
+  ],
+  "CSE5152": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / M.Tech / CSIS",
+      "scraped_at": "2025-07-07T17:35:42.838466",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/M.Tech/CSIS/Advanced%20Data%20structures%20and%20Algorithms%20%28CSE%205152%29%20RCS.pdf",
+      "year": 2022,
+      "program": "M.Tech",
+      "file_name": "Advanced Data structures and Algorithms (CSE 5152) RCS.pdf",
+      "subject_code": "CSE5152",
+      "paper_type": "Regular",
+      "display_title": "Advanced Data Structures And Algorithms (Cse 5152) Rcs",
+      "semester": 8,
+      "program_name": "M.Tech Defence Technology",
+      "degree_type": "M.Tech",
+      "specialization": "Defence Technology",
+      "college": null,
+      "program_category": "Postgraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CSE5152",
+      "course_name": "Advanced Data structures and Algorithms",
+      "subject_name": "Advanced Data structures and Algorithms",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "cs"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "CSE",
+          "IT",
+          "CCE",
+          "AIML",
+          "DSE",
+          "MnC"
+        ]
+      },
+      "streams": [
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "CSE5152",
+        "paper_name": "Advanced Data structures and Algorithms",
+        "year": 2022,
+        "semester": null,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.8695652173913043,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "ICE 2128",
+            "curriculum_name": "Data Structures and Algorithms",
+            "program": "CPS",
+            "semester": "3"
+          }
+        ]
+      }
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / M.Tech / CSE",
+      "scraped_at": "2025-07-07T17:35:44.231571",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/M.Tech/CSE/Advanced%20Data%20structures%20and%20Algorithms%20%28CSE%205152%29%20RCS.pdf",
+      "year": 2022,
+      "program": "M.Tech",
+      "file_name": "Advanced Data structures and Algorithms (CSE 5152) RCS.pdf",
+      "subject_code": "CSE5152",
+      "paper_type": "Regular",
+      "display_title": "Advanced Data Structures And Algorithms (Cse 5152) Rcs",
+      "semester": 8,
+      "program_name": "M.Tech Defence Technology",
+      "degree_type": "M.Tech",
+      "specialization": "Defence Technology",
+      "college": null,
+      "program_category": "Postgraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CSE5152",
+      "course_name": "Advanced Data structures and Algorithms",
+      "subject_name": "Advanced Data structures and Algorithms",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "cs"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "CSE",
+          "IT",
+          "CCE",
+          "AIML",
+          "DSE",
+          "MnC"
+        ]
+      },
+      "streams": [
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "CSE5152",
+        "paper_name": "Advanced Data structures and Algorithms",
+        "year": 2022,
+        "semester": null,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.8695652173913043,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "ICE 2128",
+            "curriculum_name": "Data Structures and Algorithms",
+            "program": "CPS",
+            "semester": "3"
+          }
+        ]
+      }
+    },
+    {
+      "path": "2022 / Dec 2021-Jan 2022 / M.Tech / CSIS",
+      "scraped_at": "2025-07-07T17:36:32.348918",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%202021-Jan%202022/M.Tech/CSIS/Advanced%20Data%20structures%20and%20Algorithms%20%28CSE%205152%29%20RCS.pdf",
+      "year": 2022,
+      "program": "M.Tech",
+      "file_name": "Advanced Data structures and Algorithms (CSE 5152) RCS.pdf",
+      "subject_code": "CSE5152",
+      "paper_type": "Regular",
+      "display_title": "Advanced Data Structures And Algorithms (Cse 5152) Rcs",
+      "semester": 8,
+      "program_name": "M.Tech Defence Technology",
+      "degree_type": "M.Tech",
+      "specialization": "Defence Technology",
+      "college": null,
+      "program_category": "Postgraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CSE5152",
+      "course_name": "Advanced Data structures and Algorithms",
+      "subject_name": "Advanced Data structures and Algorithms",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "cs"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "CSE",
+          "IT",
+          "CCE",
+          "AIML",
+          "DSE",
+          "MnC"
+        ]
+      },
+      "streams": [
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "CSE5152",
+        "paper_name": "Advanced Data structures and Algorithms",
+        "year": 2022,
+        "semester": null,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.8695652173913043,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "ICE 2128",
+            "curriculum_name": "Data Structures and Algorithms",
+            "program": "CPS",
+            "semester": "3"
+          }
+        ]
+      }
+    },
+    {
+      "path": "2022 / Dec 2021-Jan 2022 / M.Tech / CSE",
+      "scraped_at": "2025-07-07T17:36:33.829308",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%202021-Jan%202022/M.Tech/CSE/Advanced%20Data%20structures%20and%20Algorithms%20%28CSE%205152%29%20RCS.pdf",
+      "year": 2022,
+      "program": "M.Tech",
+      "file_name": "Advanced Data structures and Algorithms (CSE 5152) RCS.pdf",
+      "subject_code": "CSE5152",
+      "paper_type": "Regular",
+      "display_title": "Advanced Data Structures And Algorithms (Cse 5152) Rcs",
+      "semester": 8,
+      "program_name": "M.Tech Defence Technology",
+      "degree_type": "M.Tech",
+      "specialization": "Defence Technology",
+      "college": null,
+      "program_category": "Postgraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CSE5152",
+      "course_name": "Advanced Data structures and Algorithms",
+      "subject_name": "Advanced Data structures and Algorithms",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "cs"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "CSE",
+          "IT",
+          "CCE",
+          "AIML",
+          "DSE",
+          "MnC"
+        ]
+      },
+      "streams": [
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "CSE5152",
+        "paper_name": "Advanced Data structures and Algorithms",
+        "year": 2022,
+        "semester": null,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.8695652173913043,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "ICE 2128",
+            "curriculum_name": "Data Structures and Algorithms",
+            "program": "CPS",
+            "semester": "3"
+          }
+        ]
+      }
+    }
+  ],
+  "CSE2251": [
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / CSE",
+      "scraped_at": "2025-07-07T17:34:18.928903",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/CSE/Database%20Systems%20%28CSE%202251%29%20%28Makeup%29.pdf",
+      "year": 2022,
+      "file_name": "Database Systems (CSE 2251) (Makeup).pdf",
+      "program": "Computer Science",
+      "subject_code": "CSE2251",
+      "paper_type": "Makeup",
+      "display_title": "Database Systems (Cse 2251) (Makeup)",
+      "semester": 4,
+      "program_name": "M. Tech in Computer Science and Engineering (Artificial Intelligence & Decision Science)",
+      "degree_type": "M.Tech",
+      "specialization": "Computer Science and Engineering (AI & Decision Science)",
+      "college": null,
+      "program_category": "Postgraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "CSE2251",
+      "course_name": "Database Systems",
+      "subject_name": "Database Systems",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "cs"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "CSE",
+          "IT",
+          "CCE"
+        ]
+      },
+      "streams": [
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "CSE2251",
+        "paper_name": "Database Systems",
+        "year": 2022,
+        "semester": 4,
+        "matched": true,
+        "match_source": "name_exact",
+        "confidence": 1.0,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "CSS 2201",
+            "curriculum_name": "Database Systems",
+            "program": "CSE",
+            "semester": "4"
+          }
+        ]
+      }
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / CSE",
+      "scraped_at": "2025-07-07T17:34:18.931314",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/CSE/Database%20Systems%20%28CSE%202251%29RCS.pdf",
+      "year": 2022,
+      "file_name": "Database Systems (CSE 2251)RCS.pdf",
+      "program": "Computer Science",
+      "subject_code": "CSE2251",
+      "paper_type": "Regular",
+      "display_title": "Database Systems (Cse 2251)Rcs",
+      "semester": 4,
+      "program_name": "M. Tech in Computer Science and Engineering (Artificial Intelligence & Decision Science)",
+      "degree_type": "M.Tech",
+      "specialization": "Computer Science and Engineering (AI & Decision Science)",
+      "college": null,
+      "program_category": "Postgraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "CSE2251",
+      "course_name": "Database Systems",
+      "subject_name": "Database Systems",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "cs"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "CSE",
+          "IT",
+          "CCE"
+        ]
+      },
+      "streams": [
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "CSE2251",
+        "paper_name": "Database Systems",
+        "year": 2022,
+        "semester": 4,
+        "matched": true,
+        "match_source": "name_exact",
+        "confidence": 1.0,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "CSS 2201",
+            "curriculum_name": "Database Systems",
+            "program": "CSE",
+            "semester": "4"
+          }
+        ]
+      }
+    }
+  ],
+  "CSE2252": [
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / CSE",
+      "scraped_at": "2025-07-07T17:34:18.934502",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/CSE/Design%20and%20Analysis%20of%20Algorithms%20%28CSE%202252%29%28Makeup%29.pdf",
+      "year": 2022,
+      "file_name": "Design and Analysis of Algorithms (CSE 2252)(Makeup).pdf",
+      "program": "Computer Science",
+      "subject_code": "CSE2252",
+      "paper_type": "Makeup",
+      "display_title": "Design And Analysis Of Algorithms (Cse 2252)(Makeup)",
+      "semester": 4,
+      "program_name": "M. Tech in Computer Science and Engineering (Artificial Intelligence & Decision Science)",
+      "degree_type": "M.Tech",
+      "specialization": "Computer Science and Engineering (AI & Decision Science)",
+      "college": null,
+      "program_category": "Postgraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "CSE2252",
+      "course_name": "Design and Analysis of Algorithms",
+      "subject_name": "Design and Analysis of Algorithms",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "cs"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "CSE",
+          "IT",
+          "CCE"
+        ]
+      },
+      "streams": [
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "CSE2252",
+        "paper_name": "Design and Analysis of Algorithms",
+        "year": 2022,
+        "semester": 4,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.9375,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "CSS 2202",
+            "curriculum_name": "Design & Analysis of Algorithms",
+            "program": "CSE",
+            "semester": "4"
+          }
+        ]
+      }
+    },
+    {
+      "path": "2022 / June-Jul 22 QP / IV Sem / CSE",
+      "scraped_at": "2025-07-07T17:34:18.933066",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/IV%20Sem/CSE/Design%20and%20analysis%20of%20Algorithms%20%28CSE%202252%29%20RCS.pdf",
+      "year": 2022,
+      "file_name": "Design and analysis of Algorithms (CSE 2252) RCS.pdf",
+      "program": "Computer Science",
+      "subject_code": "CSE2252",
+      "paper_type": "Regular",
+      "display_title": "Design And Analysis Of Algorithms (Cse 2252) Rcs",
+      "semester": 4,
+      "program_name": "M. Tech in Computer Science and Engineering (Artificial Intelligence & Decision Science)",
+      "degree_type": "M.Tech",
+      "specialization": "Computer Science and Engineering (AI & Decision Science)",
+      "college": null,
+      "program_category": "Postgraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "CSE2252",
+      "course_name": "Design and analysis of Algorithms",
+      "subject_name": "Design and analysis of Algorithms",
+      "curriculum_context": {
+        "curriculum_id": "cse_year2_legacy",
+        "valid_for_streams": [
+          "cs"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "CSE",
+          "IT",
+          "CCE"
+        ]
+      },
+      "streams": [
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "CSE2252",
+        "paper_name": "Design and analysis of Algorithms",
+        "year": 2022,
+        "semester": 4,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.9375,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "CSS 2202",
+            "curriculum_name": "Design & Analysis of Algorithms",
+            "program": "CSE",
+            "semester": "4"
+          }
+        ]
+      }
+    }
+  ],
+  "CSE4052": [
+    {
+      "path": "2022 / June-Jul 22 QP / VI Sem / CSE",
+      "scraped_at": "2025-07-07T17:34:46.345854",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/VI%20Sem/CSE/Digital%20Image%20Processing%20%28CSE%204052%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Digital Image Processing (CSE 4052).pdf",
+      "program": "Computer Science",
+      "subject_code": "CSE4052",
+      "paper_type": "Regular",
+      "display_title": "Digital Image Processing (Cse 4052)",
+      "program_name": "M. Tech in Computer Science and Engineering (Artificial Intelligence & Decision Science)",
+      "degree_type": "M.Tech",
+      "specialization": "Computer Science and Engineering (AI & Decision Science)",
+      "college": null,
+      "program_category": "Postgraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "CSE4052",
+      "course_name": "Digital Image Processing",
+      "subject_name": "Digital Image Processing",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "CSE4052",
+        "paper_name": "Digital Image Processing",
+        "year": 2022,
+        "semester": 1,
+        "matched": true,
+        "match_source": "name_exact",
+        "confidence": 1.0,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "BME 3221",
+            "curriculum_name": "Digital Image Processing",
+            "program": "BME",
+            "semester": "6"
+          }
+        ]
+      }
+    }
+  ],
+  "CSE5154": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / M.Tech / CSE",
+      "scraped_at": "2025-07-07T17:35:44.235872",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/M.Tech/CSE/High%20Performance%20Computing%20System%20%28CSE%205154%29%20RCS.pdf",
+      "year": 2022,
+      "program": "M.Tech",
+      "file_name": "High Performance Computing System (CSE 5154) RCS.pdf",
+      "subject_code": "CSE5154",
+      "paper_type": "Regular",
+      "display_title": "High Performance Computing System (Cse 5154) Rcs",
+      "semester": 8,
+      "program_name": "M.Tech Defence Technology",
+      "degree_type": "M.Tech",
+      "specialization": "Defence Technology",
+      "college": null,
+      "program_category": "Postgraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CSE5154",
+      "course_name": "High Performance Computing System",
+      "subject_name": "High Performance Computing System",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "cs"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "CSE",
+          "IT",
+          "CCE",
+          "AIML",
+          "DSE",
+          "MnC"
+        ]
+      },
+      "streams": [
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "CSE5154",
+        "paper_name": "High Performance Computing System",
+        "year": 2022,
+        "semester": null,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.8813559322033898,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "DSE 3122",
+            "curriculum_name": "High Performance Computing",
+            "program": "DSE",
+            "semester": "5"
+          }
+        ]
+      }
+    },
+    {
+      "path": "2022 / Dec 2021-Jan 2022 / M.Tech / CSE",
+      "scraped_at": "2025-07-07T17:36:33.830142",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%202021-Jan%202022/M.Tech/CSE/High%20Performance%20Computing%20System%20%28CSE%205154%29%20RCS.pdf",
+      "year": 2022,
+      "program": "M.Tech",
+      "file_name": "High Performance Computing System (CSE 5154) RCS.pdf",
+      "subject_code": "CSE5154",
+      "paper_type": "Regular",
+      "display_title": "High Performance Computing System (Cse 5154) Rcs",
+      "semester": 8,
+      "program_name": "M.Tech Defence Technology",
+      "degree_type": "M.Tech",
+      "specialization": "Defence Technology",
+      "college": null,
+      "program_category": "Postgraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CSE5154",
+      "course_name": "High Performance Computing System",
+      "subject_name": "High Performance Computing System",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "cs"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "CSE",
+          "IT",
+          "CCE",
+          "AIML",
+          "DSE",
+          "MnC"
+        ]
+      },
+      "streams": [
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "CSE5154",
+        "paper_name": "High Performance Computing System",
+        "year": 2022,
+        "semester": null,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.8813559322033898,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "DSE 3122",
+            "curriculum_name": "High Performance Computing",
+            "program": "DSE",
+            "semester": "5"
+          }
+        ]
+      }
+    }
+  ],
+  "AAE5046": [
+    {
+      "path": "2022 / June-Jul 22 QP / M.Tech / Automobile",
+      "scraped_at": "2025-07-07T17:34:33.128165",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/M.Tech/Automobile/Vehicle%20Aerodynamics%28AAE%205046%29.pdf",
+      "year": 2022,
+      "program": "M.Tech",
+      "file_name": "Vehicle Aerodynamics(AAE 5046).pdf",
+      "subject_code": "AAE5046",
+      "paper_type": "Regular",
+      "display_title": "Vehicle Aerodynamics(Aae 5046)",
+      "semester": 8,
+      "program_name": "M.Tech Defence Technology",
+      "degree_type": "M.Tech",
+      "specialization": "Defence Technology",
+      "college": null,
+      "program_category": "Postgraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "AAE5046",
+      "course_name": "Vehicle Aerodynamics",
+      "subject_name": "Vehicle Aerodynamics",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "AAE5046",
+        "paper_name": "Vehicle Aerodynamics",
+        "year": 2022,
+        "semester": null,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.9090909090909091,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "AAE 3234",
+            "curriculum_name": "Vehicle Aerodynamics Lab",
+            "program": "AUTO",
+            "semester": "6"
+          }
+        ]
+      }
+    },
+    {
+      "path": "2022 / Jun-Jul 2022 / M.Tech / Automobile",
+      "scraped_at": "2025-07-07T17:35:06.076623",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Jun-Jul%202022/M.Tech/Automobile/Vehicle%20Aerodynamics%28AAE%205046%29.pdf",
+      "year": 2022,
+      "program": "M.Tech",
+      "file_name": "Vehicle Aerodynamics(AAE 5046).pdf",
+      "subject_code": "AAE5046",
+      "paper_type": "Regular",
+      "display_title": "Vehicle Aerodynamics(Aae 5046)",
+      "semester": 8,
+      "program_name": "M.Tech Defence Technology",
+      "degree_type": "M.Tech",
+      "specialization": "Defence Technology",
+      "college": null,
+      "program_category": "Postgraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "AAE5046",
+      "course_name": "Vehicle Aerodynamics",
+      "subject_name": "Vehicle Aerodynamics",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "AAE5046",
+        "paper_name": "Vehicle Aerodynamics",
+        "year": 2022,
+        "semester": null,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.9090909090909091,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "AAE 3234",
+            "curriculum_name": "Vehicle Aerodynamics Lab",
+            "program": "AUTO",
+            "semester": "6"
+          }
+        ]
+      }
+    }
+  ]
+}

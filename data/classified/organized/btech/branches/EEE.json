@@ -1,0 +1,1467 @@
+{
+  "ELE2151": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Electrical and Electronics",
+      "scraped_at": "2025-07-07T17:35:27.724825",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Electrical%20and%20Electronics/Analog%20System%20Deisgn%20%28ELE%202151%29%28Makeup%29.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Analog System Deisgn (ELE 2151)(Makeup).pdf",
+      "program": "Electrical & Electronics",
+      "subject_code": "ELE2151",
+      "paper_type": "Makeup",
+      "display_title": "Analog System Deisgn (Ele 2151)(Makeup)",
+      "program_name": "BTech Electrical and Electronics Engineering (EEE)",
+      "degree_type": "B.Tech",
+      "specialization": "Electrical and Electronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ELE2151",
+      "course_name": "Analog System Deisgn",
+      "subject_name": "Analog System Deisgn",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Electrical and Electronics",
+      "scraped_at": "2025-07-07T17:35:27.727247",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Electrical%20and%20Electronics/Analog%20System%20Deisgn%20%28ELE%202151%29.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Analog System Deisgn (ELE 2151).pdf",
+      "program": "Electrical & Electronics",
+      "subject_code": "ELE2151",
+      "paper_type": "Regular",
+      "display_title": "Analog System Deisgn (Ele 2151)",
+      "program_name": "BTech Electrical and Electronics Engineering (EEE)",
+      "degree_type": "B.Tech",
+      "specialization": "Electrical and Electronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ELE2151",
+      "course_name": "Analog System Deisgn",
+      "subject_name": "Analog System Deisgn",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "ELE3151": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Electronics",
+      "scraped_at": "2025-07-07T17:35:54.864664",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Electrical%20and%20Electronics/Communication%20Systems%20%28ELE%203151%29.pdf",
+      "year": 2022,
+      "file_name": "Communication Systems (ELE 3151).pdf",
+      "program": "Electrical & Electronics",
+      "subject_code": "ELE3151",
+      "paper_type": "Regular",
+      "display_title": "Communication Systems (Ele 3151)",
+      "semester": 5,
+      "program_name": "BTech Electrical and Electronics Engineering (EEE)",
+      "degree_type": "B.Tech",
+      "specialization": "Electrical and Electronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ELE3151",
+      "course_name": "Communication Systems",
+      "subject_name": "Communication Systems",
+      "curriculum_context": {
+        "curriculum_id": "mechanical_year3",
+        "valid_for_streams": [
+          "core"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "EEE"
+        ]
+      },
+      "streams": [
+        "core"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Electronics",
+      "scraped_at": "2025-07-07T17:35:54.865630",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Electrical%20and%20Electronics/Communications%20Systems%20%28ELE%203151%29%28makeup%29.pdf",
+      "year": 2022,
+      "file_name": "Communications Systems (ELE 3151)(makeup).pdf",
+      "program": "Electrical & Electronics",
+      "subject_code": "ELE3151",
+      "paper_type": "Makeup",
+      "display_title": "Communications Systems (Ele 3151)(Makeup)",
+      "semester": 5,
+      "program_name": "BTech Electrical and Electronics Engineering (EEE)",
+      "degree_type": "B.Tech",
+      "specialization": "Electrical and Electronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ELE3151",
+      "course_name": "Communications Systems",
+      "subject_name": "Communications Systems",
+      "curriculum_context": {
+        "curriculum_id": "mechanical_year3",
+        "valid_for_streams": [
+          "core"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "EEE"
+        ]
+      },
+      "streams": [
+        "core"
+      ]
+    }
+  ],
+  "ELE4077": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Electronics",
+      "scraped_at": "2025-07-07T17:36:09.428722",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Electronics/Data%20Analytics%20%28ELE%204077%29%28Makeup%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Data Analytics (ELE 4077)(Makeup).pdf",
+      "program": "Electrical & Electronics",
+      "subject_code": "ELE4077",
+      "paper_type": "Makeup",
+      "display_title": "Data Analytics (Ele 4077)(Makeup)",
+      "program_name": "BTech Electrical and Electronics Engineering (EEE)",
+      "degree_type": "B.Tech",
+      "specialization": "Electrical and Electronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ELE4077",
+      "course_name": "Data Analytics",
+      "subject_name": "Data Analytics",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Electronics",
+      "scraped_at": "2025-07-07T17:36:09.430034",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Electronics/Data%20Anlytics%20%28ELE%204077%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Data Anlytics (ELE 4077).pdf",
+      "program": "Electrical & Electronics",
+      "subject_code": "ELE4077",
+      "paper_type": "Regular",
+      "display_title": "Data Anlytics (Ele 4077)",
+      "program_name": "BTech Electrical and Electronics Engineering (EEE)",
+      "degree_type": "B.Tech",
+      "specialization": "Electrical and Electronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ELE4077",
+      "course_name": "Data Anlytics",
+      "subject_name": "Data Anlytics",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "ELE4078": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Electronics",
+      "scraped_at": "2025-07-07T17:36:09.431115",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Electronics/Data%20Structures%20and%20Algorithms%20%28ELE%204078%29%28Makeup%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Data Structures and Algorithms (ELE 4078)(Makeup).pdf",
+      "program": "Electrical & Electronics",
+      "subject_code": "ELE4078",
+      "paper_type": "Makeup",
+      "display_title": "Data Structures And Algorithms (Ele 4078)(Makeup)",
+      "program_name": "BTech Electrical and Electronics Engineering (EEE)",
+      "degree_type": "B.Tech",
+      "specialization": "Electrical and Electronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ELE4078",
+      "course_name": "Data Structures and Algorithms",
+      "subject_name": "Data Structures and Algorithms",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Electronics",
+      "scraped_at": "2025-07-07T17:36:09.432069",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Electronics/Data%20Structures%20and%20Algorithms%20%28ELE%204078%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Data Structures and Algorithms (ELE 4078).pdf",
+      "program": "Electrical & Electronics",
+      "subject_code": "ELE4078",
+      "paper_type": "Regular",
+      "display_title": "Data Structures And Algorithms (Ele 4078)",
+      "program_name": "BTech Electrical and Electronics Engineering (EEE)",
+      "degree_type": "B.Tech",
+      "specialization": "Electrical and Electronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ELE4078",
+      "course_name": "Data Structures and Algorithms",
+      "subject_name": "Data Structures and Algorithms",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "ELE3152": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Electronics",
+      "scraped_at": "2025-07-07T17:35:54.866455",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Electrical%20and%20Electronics/Digital%20Signal%20Processing%20%28ELE%203152%29%28Makeup%29.pdf",
+      "year": 2022,
+      "file_name": "Digital Signal Processing (ELE 3152)(Makeup).pdf",
+      "program": "Electrical & Electronics",
+      "subject_code": "ELE3152",
+      "paper_type": "Makeup",
+      "display_title": "Digital Signal Processing (Ele 3152)(Makeup)",
+      "semester": 5,
+      "program_name": "BTech Electrical and Electronics Engineering (EEE)",
+      "degree_type": "B.Tech",
+      "specialization": "Electrical and Electronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ELE3152",
+      "course_name": "Digital Signal Processing",
+      "subject_name": "Digital Signal Processing",
+      "curriculum_context": {
+        "curriculum_id": "mechanical_year3",
+        "valid_for_streams": [
+          "core"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "EEE"
+        ]
+      },
+      "streams": [
+        "core"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Electronics",
+      "scraped_at": "2025-07-07T17:35:54.867246",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Electrical%20and%20Electronics/Digital%20Signal%20Processing%20%28ELE%203152%29.pdf",
+      "year": 2022,
+      "file_name": "Digital Signal Processing (ELE 3152).pdf",
+      "program": "Electrical & Electronics",
+      "subject_code": "ELE3152",
+      "paper_type": "Regular",
+      "display_title": "Digital Signal Processing (Ele 3152)",
+      "semester": 5,
+      "program_name": "BTech Electrical and Electronics Engineering (EEE)",
+      "degree_type": "B.Tech",
+      "specialization": "Electrical and Electronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ELE3152",
+      "course_name": "Digital Signal Processing",
+      "subject_name": "Digital Signal Processing",
+      "curriculum_context": {
+        "curriculum_id": "mechanical_year3",
+        "valid_for_streams": [
+          "core"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "EEE"
+        ]
+      },
+      "streams": [
+        "core"
+      ]
+    }
+  ],
+  "ELE2152": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Electrical and Electronics",
+      "scraped_at": "2025-07-07T17:35:27.728213",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Electrical%20and%20Electronics/Digital%20System%20Deisgn%20%28ELE%202152%29%28Makeup%29.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Digital System Deisgn (ELE 2152)(Makeup).pdf",
+      "program": "Electrical & Electronics",
+      "subject_code": "ELE2152",
+      "paper_type": "Makeup",
+      "display_title": "Digital System Deisgn (Ele 2152)(Makeup)",
+      "program_name": "BTech Electrical and Electronics Engineering (EEE)",
+      "degree_type": "B.Tech",
+      "specialization": "Electrical and Electronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ELE2152",
+      "course_name": "Digital System Deisgn",
+      "subject_name": "Digital System Deisgn",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Electrical and Electronics",
+      "scraped_at": "2025-07-07T17:35:27.728791",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Electrical%20and%20Electronics/Digital%20System%20Deisgn%20%28ELE%202152%29.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Digital System Deisgn (ELE 2152).pdf",
+      "program": "Electrical & Electronics",
+      "subject_code": "ELE2152",
+      "paper_type": "Regular",
+      "display_title": "Digital System Deisgn (Ele 2152)",
+      "program_name": "BTech Electrical and Electronics Engineering (EEE)",
+      "degree_type": "B.Tech",
+      "specialization": "Electrical and Electronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ELE2152",
+      "course_name": "Digital System Deisgn",
+      "subject_name": "Digital System Deisgn",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "ELE2153": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Electrical and Electronics",
+      "scraped_at": "2025-07-07T17:35:27.729232",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Electrical%20and%20Electronics/Electrical%20Circuit%20Analysis%20%28ELE%202153%29%28Makeup%29.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Electrical Circuit Analysis (ELE 2153)(Makeup).pdf",
+      "program": "Electrical & Electronics",
+      "subject_code": "ELE2153",
+      "paper_type": "Makeup",
+      "display_title": "Electrical Circuit Analysis (Ele 2153)(Makeup)",
+      "program_name": "BTech Electrical and Electronics Engineering (EEE)",
+      "degree_type": "B.Tech",
+      "specialization": "Electrical and Electronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ELE2153",
+      "course_name": "Electrical Circuit Analysis",
+      "subject_name": "Electrical Circuit Analysis",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Electrical and Electronics",
+      "scraped_at": "2025-07-07T17:35:27.729707",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Electrical%20and%20Electronics/Electrical%20Circuit%20Analysis%20%28ELE%202153%29.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Electrical Circuit Analysis (ELE 2153).pdf",
+      "program": "Electrical & Electronics",
+      "subject_code": "ELE2153",
+      "paper_type": "Regular",
+      "display_title": "Electrical Circuit Analysis (Ele 2153)",
+      "program_name": "BTech Electrical and Electronics Engineering (EEE)",
+      "degree_type": "B.Tech",
+      "specialization": "Electrical and Electronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ELE2153",
+      "course_name": "Electrical Circuit Analysis",
+      "subject_name": "Electrical Circuit Analysis",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "ELE2154": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Electrical and Electronics",
+      "scraped_at": "2025-07-07T17:35:27.730200",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Electrical%20and%20Electronics/Electrical%20Machinery%20-I%20%28ELE%202154%29.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Electrical Machinery -I (ELE 2154).pdf",
+      "program": "Electrical & Electronics",
+      "subject_code": "ELE2154",
+      "paper_type": "Regular",
+      "display_title": "Electrical Machinery -I (Ele 2154)",
+      "program_name": "BTech Electrical and Electronics Engineering (EEE)",
+      "degree_type": "B.Tech",
+      "specialization": "Electrical and Electronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ELE2154",
+      "course_name": "Electrical Machinery -I",
+      "subject_name": "Electrical Machinery -I",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Electrical and Electronics",
+      "scraped_at": "2025-07-07T17:35:27.730666",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Electrical%20and%20Electronics/Electrical%20Machinery-1%20%28ELE%202154%29%28Makeup%29.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Electrical Machinery-1 (ELE 2154)(Makeup).pdf",
+      "program": "Electrical & Electronics",
+      "subject_code": "ELE2154",
+      "paper_type": "Makeup",
+      "display_title": "Electrical Machinery-1 (Ele 2154)(Makeup)",
+      "program_name": "BTech Electrical and Electronics Engineering (EEE)",
+      "degree_type": "B.Tech",
+      "specialization": "Electrical and Electronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ELE2154",
+      "course_name": "Electrical Machinery-1",
+      "subject_name": "Electrical Machinery-1",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "ELE2155": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Electrical and Electronics",
+      "scraped_at": "2025-07-07T17:35:27.731123",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Electrical%20and%20Electronics/Electromagnetic%20Theory%20%28ELE%202155%29%28Makeup%29.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Electromagnetic Theory (ELE 2155)(Makeup).pdf",
+      "program": "Electrical & Electronics",
+      "subject_code": "ELE2155",
+      "paper_type": "Makeup",
+      "display_title": "Electromagnetic Theory (Ele 2155)(Makeup)",
+      "program_name": "BTech Electrical and Electronics Engineering (EEE)",
+      "degree_type": "B.Tech",
+      "specialization": "Electrical and Electronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ELE2155",
+      "course_name": "Electromagnetic Theory",
+      "subject_name": "Electromagnetic Theory",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / III Sem / Electrical and Electronics",
+      "scraped_at": "2025-07-07T17:35:27.731582",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/III%20Sem/Electrical%20and%20Electronics/Electromagnetic%20Thoery%20%28ELE%202155%29.pdf",
+      "year": 2022,
+      "semester": 3,
+      "file_name": "Electromagnetic Thoery (ELE 2155).pdf",
+      "program": "Electrical & Electronics",
+      "subject_code": "ELE2155",
+      "paper_type": "Regular",
+      "display_title": "Electromagnetic Thoery (Ele 2155)",
+      "program_name": "BTech Electrical and Electronics Engineering (EEE)",
+      "degree_type": "B.Tech",
+      "specialization": "Electrical and Electronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ELE2155",
+      "course_name": "Electromagnetic Thoery",
+      "subject_name": "Electromagnetic Thoery",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "ELE4083": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Electronics",
+      "scraped_at": "2025-07-07T17:36:09.432936",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Electronics/HVDC%20and%20Facts%20%28ELE%204083%29%28Makeup%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "HVDC and Facts (ELE 4083)(Makeup).pdf",
+      "program": "Electrical & Electronics",
+      "subject_code": "ELE4083",
+      "paper_type": "Makeup",
+      "display_title": "Hvdc And Facts (Ele 4083)(Makeup)",
+      "program_name": "BTech Electrical and Electronics Engineering (EEE)",
+      "degree_type": "B.Tech",
+      "specialization": "Electrical and Electronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ELE4083",
+      "course_name": "HVDC and Facts",
+      "subject_name": "HVDC and Facts",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Electronics",
+      "scraped_at": "2025-07-07T17:36:09.433780",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Electronics/HVDC%20and%20Facts%20%28ELE%204083%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "HVDC and Facts (ELE 4083).pdf",
+      "program": "Electrical & Electronics",
+      "subject_code": "ELE4083",
+      "paper_type": "Regular",
+      "display_title": "Hvdc And Facts (Ele 4083)",
+      "program_name": "BTech Electrical and Electronics Engineering (EEE)",
+      "degree_type": "B.Tech",
+      "specialization": "Electrical and Electronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ELE4083",
+      "course_name": "HVDC and Facts",
+      "subject_name": "HVDC and Facts",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "ELE4302": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Electronics",
+      "scraped_at": "2025-07-07T17:35:54.868028",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Electrical%20and%20Electronics/Introduction%20to%20Design%20%20%28ELE%204302%29%28Makep%29-OE.pdf",
+      "year": 2022,
+      "file_name": "Introduction to Design  (ELE 4302)(Makep)-OE.pdf",
+      "program": "Electrical & Electronics",
+      "subject_code": "ELE4302",
+      "paper_type": "Regular",
+      "display_title": "Introduction To Design  (Ele 4302)(Makep)-Oe",
+      "semester": 7,
+      "program_name": "BTech Electrical and Electronics Engineering (EEE)",
+      "degree_type": "B.Tech",
+      "specialization": "Electrical and Electronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ELE4302",
+      "course_name": "Introduction to Design",
+      "subject_name": "Introduction to Design",
+      "curriculum_context": {
+        "curriculum_id": "mechanical_year3",
+        "valid_for_streams": [
+          "core"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "EEE"
+        ]
+      },
+      "streams": [
+        "core"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Electronics",
+      "scraped_at": "2025-07-07T17:35:54.868801",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Electrical%20and%20Electronics/Introduction%20to%20Lighting%20Design%20%28ELE%204302%29.pdf",
+      "year": 2022,
+      "file_name": "Introduction to Lighting Design (ELE 4302).pdf",
+      "program": "Electrical & Electronics",
+      "subject_code": "ELE4302",
+      "paper_type": "Regular",
+      "display_title": "Introduction To Lighting Design (Ele 4302)",
+      "semester": 7,
+      "program_name": "BTech Electrical and Electronics Engineering (EEE)",
+      "degree_type": "B.Tech",
+      "specialization": "Electrical and Electronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ELE4302",
+      "course_name": "Introduction to Lighting Design",
+      "subject_name": "Introduction to Lighting Design",
+      "curriculum_context": {
+        "curriculum_id": "mechanical_year3",
+        "valid_for_streams": [
+          "core"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "EEE"
+        ]
+      },
+      "streams": [
+        "core"
+      ]
+    }
+  ],
+  "ELE4084": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Electronics",
+      "scraped_at": "2025-07-07T17:36:09.434601",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Electronics/Introduction%20to%20Electric%20Vehicles%20%28ELE%204084%29%28Makeup%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Introduction to Electric Vehicles (ELE 4084)(Makeup).pdf",
+      "program": "Electrical & Electronics",
+      "subject_code": "ELE4084",
+      "paper_type": "Makeup",
+      "display_title": "Introduction To Electric Vehicles (Ele 4084)(Makeup)",
+      "program_name": "BTech Electrical and Electronics Engineering (EEE)",
+      "degree_type": "B.Tech",
+      "specialization": "Electrical and Electronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ELE4084",
+      "course_name": "Introduction to Electric Vehicles",
+      "subject_name": "Introduction to Electric Vehicles",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Electronics",
+      "scraped_at": "2025-07-07T17:36:09.435423",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Electronics/Introduction%20to%20Electric%20Vehicles%20%28ELE%204084%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Introduction to Electric Vehicles (ELE 4084).pdf",
+      "program": "Electrical & Electronics",
+      "subject_code": "ELE4084",
+      "paper_type": "Regular",
+      "display_title": "Introduction To Electric Vehicles (Ele 4084)",
+      "program_name": "BTech Electrical and Electronics Engineering (EEE)",
+      "degree_type": "B.Tech",
+      "specialization": "Electrical and Electronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ELE4084",
+      "course_name": "Introduction to Electric Vehicles",
+      "subject_name": "Introduction to Electric Vehicles",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "ELE3153": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Electronics",
+      "scraped_at": "2025-07-07T17:35:54.869560",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Electrical%20and%20Electronics/Measurement%20and%20Instrumentation%20%28ELE%203153%29.pdf",
+      "year": 2022,
+      "file_name": "Measurement and Instrumentation (ELE 3153).pdf",
+      "program": "Electrical & Electronics",
+      "subject_code": "ELE3153",
+      "paper_type": "Regular",
+      "display_title": "Measurement And Instrumentation (Ele 3153)",
+      "semester": 5,
+      "program_name": "BTech Electrical and Electronics Engineering (EEE)",
+      "degree_type": "B.Tech",
+      "specialization": "Electrical and Electronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ELE3153",
+      "course_name": "Measurement and Instrumentation",
+      "subject_name": "Measurement and Instrumentation",
+      "curriculum_context": {
+        "curriculum_id": "mechanical_year3",
+        "valid_for_streams": [
+          "core"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "EEE"
+        ]
+      },
+      "streams": [
+        "core"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Electronics",
+      "scraped_at": "2025-07-07T17:35:54.870284",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Electrical%20and%20Electronics/Measurements%20and%20Instrumentation%20%28ELE%203153%29%28Makeup%29.pdf",
+      "year": 2022,
+      "file_name": "Measurements and Instrumentation (ELE 3153)(Makeup).pdf",
+      "program": "Electrical & Electronics",
+      "subject_code": "ELE3153",
+      "paper_type": "Makeup",
+      "display_title": "Measurements And Instrumentation (Ele 3153)(Makeup)",
+      "semester": 5,
+      "program_name": "BTech Electrical and Electronics Engineering (EEE)",
+      "degree_type": "B.Tech",
+      "specialization": "Electrical and Electronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ELE3153",
+      "course_name": "Measurements and Instrumentation",
+      "subject_name": "Measurements and Instrumentation",
+      "curriculum_context": {
+        "curriculum_id": "mechanical_year3",
+        "valid_for_streams": [
+          "core"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "EEE"
+        ]
+      },
+      "streams": [
+        "core"
+      ]
+    }
+  ],
+  "ELE4085": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Electronics",
+      "scraped_at": "2025-07-07T17:36:09.436225",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Electronics/Modern%20Power%20Converter%20%28ELE%204085%29%28Makeup%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Modern Power Converter (ELE 4085)(Makeup).pdf",
+      "program": "Electrical & Electronics",
+      "subject_code": "ELE4085",
+      "paper_type": "Makeup",
+      "display_title": "Modern Power Converter (Ele 4085)(Makeup)",
+      "program_name": "BTech Electrical and Electronics Engineering (EEE)",
+      "degree_type": "B.Tech",
+      "specialization": "Electrical and Electronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ELE4085",
+      "course_name": "Modern Power Converter",
+      "subject_name": "Modern Power Converter",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Electronics",
+      "scraped_at": "2025-07-07T17:36:09.436968",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Electronics/Modern%20Pwer%20Converter%20%28ELE%204085%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Modern Pwer Converter (ELE 4085).pdf",
+      "program": "Electrical & Electronics",
+      "subject_code": "ELE4085",
+      "paper_type": "Regular",
+      "display_title": "Modern Pwer Converter (Ele 4085)",
+      "program_name": "BTech Electrical and Electronics Engineering (EEE)",
+      "degree_type": "B.Tech",
+      "specialization": "Electrical and Electronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ELE4085",
+      "course_name": "Modern Pwer Converter",
+      "subject_name": "Modern Pwer Converter",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "ELE3154": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Electronics",
+      "scraped_at": "2025-07-07T17:35:54.871009",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Electrical%20and%20Electronics/Power%20System%20Analysis%20%28ELE%203154%29%28Makeup%29.pdf",
+      "year": 2022,
+      "file_name": "Power System Analysis (ELE 3154)(Makeup).pdf",
+      "program": "Electrical & Electronics",
+      "subject_code": "ELE3154",
+      "paper_type": "Makeup",
+      "display_title": "Power System Analysis (Ele 3154)(Makeup)",
+      "semester": 5,
+      "program_name": "BTech Electrical and Electronics Engineering (EEE)",
+      "degree_type": "B.Tech",
+      "specialization": "Electrical and Electronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ELE3154",
+      "course_name": "Power System Analysis",
+      "subject_name": "Power System Analysis",
+      "curriculum_context": {
+        "curriculum_id": "mechanical_year3",
+        "valid_for_streams": [
+          "core"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "EEE"
+        ]
+      },
+      "streams": [
+        "core"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Electronics",
+      "scraped_at": "2025-07-07T17:35:54.871733",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Electrical%20and%20Electronics/Power%20System%20Analysis%20%28ELE%203154%29.pdf",
+      "year": 2022,
+      "file_name": "Power System Analysis (ELE 3154).pdf",
+      "program": "Electrical & Electronics",
+      "subject_code": "ELE3154",
+      "paper_type": "Regular",
+      "display_title": "Power System Analysis (Ele 3154)",
+      "semester": 5,
+      "program_name": "BTech Electrical and Electronics Engineering (EEE)",
+      "degree_type": "B.Tech",
+      "specialization": "Electrical and Electronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ELE3154",
+      "course_name": "Power System Analysis",
+      "subject_name": "Power System Analysis",
+      "curriculum_context": {
+        "curriculum_id": "mechanical_year3",
+        "valid_for_streams": [
+          "core"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "EEE"
+        ]
+      },
+      "streams": [
+        "core"
+      ]
+    }
+  ],
+  "ELE4064": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Electronics",
+      "scraped_at": "2025-07-07T17:36:09.437644",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Electronics/Real%20Time%20Systems%20%28ELE%204064%29%28Makeup%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Real Time Systems (ELE 4064)(Makeup).pdf",
+      "program": "Electrical & Electronics",
+      "subject_code": "ELE4064",
+      "paper_type": "Makeup",
+      "display_title": "Real Time Systems (Ele 4064)(Makeup)",
+      "program_name": "BTech Electrical and Electronics Engineering (EEE)",
+      "degree_type": "B.Tech",
+      "specialization": "Electrical and Electronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ELE4064",
+      "course_name": "Real Time Systems",
+      "subject_name": "Real Time Systems",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Electronics",
+      "scraped_at": "2025-07-07T17:36:09.438315",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Electronics/Real%20Time%20Systems%20%28ELE%204064%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Real Time Systems (ELE 4064).pdf",
+      "program": "Electrical & Electronics",
+      "subject_code": "ELE4064",
+      "paper_type": "Regular",
+      "display_title": "Real Time Systems (Ele 4064)",
+      "program_name": "BTech Electrical and Electronics Engineering (EEE)",
+      "degree_type": "B.Tech",
+      "specialization": "Electrical and Electronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ELE4064",
+      "course_name": "Real Time Systems",
+      "subject_name": "Real Time Systems",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "ELE4086": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Electronics",
+      "scraped_at": "2025-07-07T17:36:09.438980",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Electronics/Renewable%20Energy%20%28ELE%204086%29%28Makeup%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Renewable Energy (ELE 4086)(Makeup).pdf",
+      "program": "Electrical & Electronics",
+      "subject_code": "ELE4086",
+      "paper_type": "Makeup",
+      "display_title": "Renewable Energy (Ele 4086)(Makeup)",
+      "program_name": "BTech Electrical and Electronics Engineering (EEE)",
+      "degree_type": "B.Tech",
+      "specialization": "Electrical and Electronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ELE4086",
+      "course_name": "Renewable Energy",
+      "subject_name": "Renewable Energy",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Electronics",
+      "scraped_at": "2025-07-07T17:36:09.439657",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Electronics/Renewable%20Energy%20%28ELE%204086%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Renewable Energy (ELE 4086).pdf",
+      "program": "Electrical & Electronics",
+      "subject_code": "ELE4086",
+      "paper_type": "Regular",
+      "display_title": "Renewable Energy (Ele 4086)",
+      "program_name": "BTech Electrical and Electronics Engineering (EEE)",
+      "degree_type": "B.Tech",
+      "specialization": "Electrical and Electronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ELE4086",
+      "course_name": "Renewable Energy",
+      "subject_name": "Renewable Energy",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "ELE4306": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Electronics",
+      "scraped_at": "2025-07-07T17:36:09.441047",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Electronics/Renewable%20Energy%20%28ELE%204306%29%28Makeup%29Open%20Elective.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Renewable Energy (ELE 4306)(Makeup)Open Elective.pdf",
+      "program": "Electrical & Electronics",
+      "subject_code": "ELE4306",
+      "paper_type": "Makeup",
+      "display_title": "Renewable Energy (Ele 4306)(Makeup)Open Elective",
+      "program_name": "BTech Electrical and Electronics Engineering (EEE)",
+      "degree_type": "B.Tech",
+      "specialization": "Electrical and Electronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ELE4306",
+      "course_name": "Renewable Energy",
+      "subject_name": "Renewable Energy",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Electronics",
+      "scraped_at": "2025-07-07T17:36:09.441720",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Electronics/Renewable%20Energy%20%28ELE%204306%29Open%20Elective%20-I.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Renewable Energy (ELE 4306)Open Elective -I.pdf",
+      "program": "Electrical & Electronics",
+      "subject_code": "ELE4306",
+      "paper_type": "Regular",
+      "display_title": "Renewable Energy (Ele 4306)Open Elective -I",
+      "program_name": "BTech Electrical and Electronics Engineering (EEE)",
+      "degree_type": "B.Tech",
+      "specialization": "Electrical and Electronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ELE4306",
+      "course_name": "Renewable Energy",
+      "subject_name": "Renewable Energy",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "ELE4062": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Electronics",
+      "scraped_at": "2025-07-07T17:36:09.442299",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Electronics/Soft%20Computing%20Techniques%20%28ELE%204062%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Soft Computing Techniques (ELE 4062).pdf",
+      "program": "Electrical & Electronics",
+      "subject_code": "ELE4062",
+      "paper_type": "Regular",
+      "display_title": "Soft Computing Techniques (Ele 4062)",
+      "program_name": "BTech Electrical and Electronics Engineering (EEE)",
+      "degree_type": "B.Tech",
+      "specialization": "Electrical and Electronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ELE4062",
+      "course_name": "Soft Computing Techniques",
+      "subject_name": "Soft Computing Techniques",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ],
+  "ELE4304": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Electronics",
+      "scraped_at": "2025-07-07T17:35:54.872487",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Electrical%20and%20Electronics/Solar%20Photo%20Volastics%20%28ELE%204304%29.pdf",
+      "year": 2022,
+      "file_name": "Solar Photo Volastics (ELE 4304).pdf",
+      "program": "Electrical & Electronics",
+      "subject_code": "ELE4304",
+      "paper_type": "Regular",
+      "display_title": "Solar Photo Volastics (Ele 4304)",
+      "semester": 7,
+      "program_name": "BTech Electrical and Electronics Engineering (EEE)",
+      "degree_type": "B.Tech",
+      "specialization": "Electrical and Electronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ELE4304",
+      "course_name": "Solar Photo Volastics",
+      "subject_name": "Solar Photo Volastics",
+      "curriculum_context": {
+        "curriculum_id": "mechanical_year3",
+        "valid_for_streams": [
+          "core"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "EEE"
+        ]
+      },
+      "streams": [
+        "core"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Electronics",
+      "scraped_at": "2025-07-07T17:35:54.873212",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/V%20Sem/Electrical%20and%20Electronics/Solar%20Photovoltaics%20%28ELE%204304%29%28Makeup%29%28open%20Elective%29.pdf",
+      "year": 2022,
+      "file_name": "Solar Photovoltaics (ELE 4304)(Makeup)(open Elective).pdf",
+      "program": "Electrical & Electronics",
+      "subject_code": "ELE4304",
+      "paper_type": "Makeup",
+      "display_title": "Solar Photovoltaics (Ele 4304)(Makeup)(Open Elective)",
+      "semester": 7,
+      "program_name": "BTech Electrical and Electronics Engineering (EEE)",
+      "degree_type": "B.Tech",
+      "specialization": "Electrical and Electronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ELE4304",
+      "course_name": "Solar Photovoltaics",
+      "subject_name": "Solar Photovoltaics",
+      "curriculum_context": {
+        "curriculum_id": "mechanical_year3",
+        "valid_for_streams": [
+          "core"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "EEE"
+        ]
+      },
+      "streams": [
+        "core"
+      ]
+    }
+  ],
+  "ELE4088": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Electronics",
+      "scraped_at": "2025-07-07T17:36:09.442870",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Electronics/Solid%20State%20Drives%20%28ELE%204088%29%28Makeup%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Solid State Drives (ELE 4088)(Makeup).pdf",
+      "program": "Electrical & Electronics",
+      "subject_code": "ELE4088",
+      "paper_type": "Makeup",
+      "display_title": "Solid State Drives (Ele 4088)(Makeup)",
+      "program_name": "BTech Electrical and Electronics Engineering (EEE)",
+      "degree_type": "B.Tech",
+      "specialization": "Electrical and Electronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ELE4088",
+      "course_name": "Solid State Drives",
+      "subject_name": "Solid State Drives",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Electronics",
+      "scraped_at": "2025-07-07T17:36:09.443446",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/VII%20Sem/Electrical%20and%20Electronics/Solid%20State%20Drives%20%28ELE%204088%29.pdf",
+      "year": 2022,
+      "semester": 7,
+      "file_name": "Solid State Drives (ELE 4088).pdf",
+      "program": "Electrical & Electronics",
+      "subject_code": "ELE4088",
+      "paper_type": "Regular",
+      "display_title": "Solid State Drives (Ele 4088)",
+      "program_name": "BTech Electrical and Electronics Engineering (EEE)",
+      "degree_type": "B.Tech",
+      "specialization": "Electrical and Electronics Engineering",
+      "college": "Manipal Institute of Technology",
+      "program_category": "Undergraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "ELE4088",
+      "course_name": "Solid State Drives",
+      "subject_name": "Solid State Drives",
+      "curriculum_context": {
+        "curriculum_id": "first_year_unified_2022",
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [
+          2022
+        ],
+        "valid_for_branches": null
+      },
+      "streams": [
+        "core",
+        "cs"
+      ]
+    }
+  ]
+}
