@@ -74,8 +74,8 @@ class Settings(BaseSettings):
     # SCRAPER SETTINGS
     # ==========================================================================
 
-    TARGET_YEAR_THRESHOLD: int = 2025
-    BLACKLISTED_YEARS: List[int] = list(range(2006, 2025))
+    TARGET_YEAR_THRESHOLD: int = 2024
+    BLACKLISTED_YEARS: List[int] = list(range(2006, 2024))
 
     # ==========================================================================
     # ENVIRONMENT
