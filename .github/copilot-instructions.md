@@ -253,6 +253,8 @@ Use a priority-based approach with multiple fallback sources:
 ### Example Migration Script
 ```python
 # scripts/add_program_abbrev.py demonstrates this pattern:
+import re
+from typing import Optional
 
 # Priority 1: Filename-based mapping
 FILENAME_TO_ABBREV = {
