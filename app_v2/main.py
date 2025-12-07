@@ -13,6 +13,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 # Import configuration
 import sys
+
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from config.config_v2 import settings
 
@@ -29,7 +30,7 @@ from .services.indexing import paper_index
 # Configure logging
 logging.basicConfig(
     level=getattr(logging, settings.LOG_LEVEL),
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
 )
 logger = logging.getLogger(__name__)
 
@@ -38,24 +39,26 @@ logger = logging.getLogger(__name__)
 async def lifespan(app: FastAPI):
     """
     Application lifespan manager.
-    
+
     Loads data on startup, cleans up on shutdown.
     """
     logger.info("🚀 Starting Library Portal API V2...")
-    
+
     # Load data from organized folder
     data_directory = settings.DATA_DIRECTORY
     logger.info(f"Loading data from: {data_directory}")
-    
+
     loader = DataLoader(data_directory)
     paper_index.load_from_directory(loader)
-    
-    logger.info(f"✅ Loaded {paper_index.total_papers} papers from {paper_index.files_loaded} files")
+
+    logger.info(
+        f"✅ Loaded {paper_index.total_papers} papers from {paper_index.files_loaded} files"
+    )
     logger.info(f"   Years: {paper_index.unique_years[:5]}...")
     logger.info(f"   Courses: {len(paper_index.unique_course_codes)}")
-    
+
     yield
-    
+
     # Cleanup on shutdown
     logger.info("👋 Shutting down Library Portal API V2...")
 
@@ -100,15 +103,15 @@ async def root():
         "health": "/health",
         "papers": {
             "total": paper_index.total_papers,
-            "files": paper_index.files_loaded
+            "files": paper_index.files_loaded,
         },
         "endpoints": {
             "papers": "/api/papers",
             "metadata": "/api/metadata",
             "statistics": "/api/statistics",
             "health": "/health",
-            "health_detailed": "/health/data"
-        }
+            "health_detailed": "/health/data",
+        },
     }
 
 
@@ -128,17 +131,13 @@ async def api_info():
             "GET /api/statistics - Collection statistics",
             "GET /health - System health check",
             "GET /health/data - Data health details",
-            "GET /health/scraper - Scraper health"
-        ]
+            "GET /health/scraper - Scraper health",
+        ],
     }
 
 
 # For running directly with uvicorn
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(
-        "app_v2.main:app",
-        host="0.0.0.0",
-        port=8000,
-        reload=True
-    )
+
+    uvicorn.run("app_v2.main:app", host="0.0.0.0", port=8000, reload=True)
