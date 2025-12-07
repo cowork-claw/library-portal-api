@@ -1,4 +1,112 @@
 {
+  "AAE5046": [
+    {
+      "path": "2022 / June-Jul 22 QP / M.Tech / Automobile",
+      "scraped_at": "2025-07-07T17:34:33.128165",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/M.Tech/Automobile/Vehicle%20Aerodynamics%28AAE%205046%29.pdf",
+      "year": 2022,
+      "program": "M.Tech",
+      "file_name": "Vehicle Aerodynamics(AAE 5046).pdf",
+      "subject_code": "AAE5046",
+      "paper_type": "Regular",
+      "display_title": "Vehicle Aerodynamics(Aae 5046)",
+      "semester": 8,
+      "program_name": "M.Tech Defence Technology",
+      "degree_type": "M.Tech",
+      "specialization": "Defence Technology",
+      "college": null,
+      "program_category": "Postgraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "AAE5046",
+      "course_name": "Vehicle Aerodynamics",
+      "subject_name": "Vehicle Aerodynamics",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "M.Tech"
+        ]
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "AAE5046",
+        "paper_name": "Vehicle Aerodynamics",
+        "year": 2022,
+        "semester": null,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.9090909090909091,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "AAE 3234",
+            "curriculum_name": "Vehicle Aerodynamics Lab",
+            "program": "AUTO",
+            "semester": "6"
+          }
+        ]
+      },
+      "program_abbrev": "M.Tech"
+    },
+    {
+      "path": "2022 / Jun-Jul 2022 / M.Tech / Automobile",
+      "scraped_at": "2025-07-07T17:35:06.076623",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Jun-Jul%202022/M.Tech/Automobile/Vehicle%20Aerodynamics%28AAE%205046%29.pdf",
+      "year": 2022,
+      "program": "M.Tech",
+      "file_name": "Vehicle Aerodynamics(AAE 5046).pdf",
+      "subject_code": "AAE5046",
+      "paper_type": "Regular",
+      "display_title": "Vehicle Aerodynamics(Aae 5046)",
+      "semester": 8,
+      "program_name": "M.Tech Defence Technology",
+      "degree_type": "M.Tech",
+      "specialization": "Defence Technology",
+      "college": null,
+      "program_category": "Postgraduate",
+      "session": "Even (May/Jun)",
+      "course_code": "AAE5046",
+      "course_name": "Vehicle Aerodynamics",
+      "subject_name": "Vehicle Aerodynamics",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "all"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "M.Tech"
+        ]
+      },
+      "streams": [
+        "core",
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "AAE5046",
+        "paper_name": "Vehicle Aerodynamics",
+        "year": 2022,
+        "semester": null,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.9090909090909091,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "AAE 3234",
+            "curriculum_name": "Vehicle Aerodynamics Lab",
+            "program": "AUTO",
+            "semester": "6"
+          }
+        ]
+      },
+      "program_abbrev": "M.Tech"
+    }
+  ],
   "CHE5252": [
     {
       "path": "2023 / May - Jun 2023 / M.Tech / Chemical",
@@ -99,236 +207,6 @@
             "curriculum_name": "Process Modelling and Simulation",
             "program": "CHE",
             "semester": "5"
-          }
-        ]
-      },
-      "program_abbrev": "M.Tech"
-    }
-  ],
-  "CSE5152": [
-    {
-      "path": "2022 / Dec 21-Jan 22 / M.Tech / CSIS",
-      "scraped_at": "2025-07-07T17:35:42.838466",
-      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/M.Tech/CSIS/Advanced%20Data%20structures%20and%20Algorithms%20%28CSE%205152%29%20RCS.pdf",
-      "year": 2022,
-      "program": "M.Tech",
-      "file_name": "Advanced Data structures and Algorithms (CSE 5152) RCS.pdf",
-      "subject_code": "CSE5152",
-      "paper_type": "Regular",
-      "display_title": "Advanced Data Structures And Algorithms (Cse 5152) Rcs",
-      "semester": 8,
-      "program_name": "M.Tech Defence Technology",
-      "degree_type": "M.Tech",
-      "specialization": "Defence Technology",
-      "college": null,
-      "program_category": "Postgraduate",
-      "session": "Odd (Nov/Dec)",
-      "course_code": "CSE5152",
-      "course_name": "Advanced Data structures and Algorithms",
-      "subject_name": "Advanced Data structures and Algorithms",
-      "curriculum_context": {
-        "curriculum_id": null,
-        "valid_for_streams": [
-          "cs"
-        ],
-        "valid_for_batches": [],
-        "valid_for_branches": [
-          "CSE",
-          "IT",
-          "CCE",
-          "AIML",
-          "DSE",
-          "MnC"
-        ]
-      },
-      "streams": [
-        "cs"
-      ],
-      "curriculum_match": {
-        "paper_code": "CSE5152",
-        "paper_name": "Advanced Data structures and Algorithms",
-        "year": 2022,
-        "semester": null,
-        "matched": true,
-        "match_source": "name_fuzzy",
-        "confidence": 0.8695652173913043,
-        "curriculum_matches": [
-          {
-            "curriculum_code": "ICE 2128",
-            "curriculum_name": "Data Structures and Algorithms",
-            "program": "CPS",
-            "semester": "3"
-          }
-        ]
-      },
-      "program_abbrev": "M.Tech"
-    },
-    {
-      "path": "2022 / Dec 21-Jan 22 / M.Tech / CSE",
-      "scraped_at": "2025-07-07T17:35:44.231571",
-      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/M.Tech/CSE/Advanced%20Data%20structures%20and%20Algorithms%20%28CSE%205152%29%20RCS.pdf",
-      "year": 2022,
-      "program": "M.Tech",
-      "file_name": "Advanced Data structures and Algorithms (CSE 5152) RCS.pdf",
-      "subject_code": "CSE5152",
-      "paper_type": "Regular",
-      "display_title": "Advanced Data Structures And Algorithms (Cse 5152) Rcs",
-      "semester": 8,
-      "program_name": "M.Tech Defence Technology",
-      "degree_type": "M.Tech",
-      "specialization": "Defence Technology",
-      "college": null,
-      "program_category": "Postgraduate",
-      "session": "Odd (Nov/Dec)",
-      "course_code": "CSE5152",
-      "course_name": "Advanced Data structures and Algorithms",
-      "subject_name": "Advanced Data structures and Algorithms",
-      "curriculum_context": {
-        "curriculum_id": null,
-        "valid_for_streams": [
-          "cs"
-        ],
-        "valid_for_batches": [],
-        "valid_for_branches": [
-          "CSE",
-          "IT",
-          "CCE",
-          "AIML",
-          "DSE",
-          "MnC"
-        ]
-      },
-      "streams": [
-        "cs"
-      ],
-      "curriculum_match": {
-        "paper_code": "CSE5152",
-        "paper_name": "Advanced Data structures and Algorithms",
-        "year": 2022,
-        "semester": null,
-        "matched": true,
-        "match_source": "name_fuzzy",
-        "confidence": 0.8695652173913043,
-        "curriculum_matches": [
-          {
-            "curriculum_code": "ICE 2128",
-            "curriculum_name": "Data Structures and Algorithms",
-            "program": "CPS",
-            "semester": "3"
-          }
-        ]
-      },
-      "program_abbrev": "M.Tech"
-    },
-    {
-      "path": "2022 / Dec 2021-Jan 2022 / M.Tech / CSIS",
-      "scraped_at": "2025-07-07T17:36:32.348918",
-      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%202021-Jan%202022/M.Tech/CSIS/Advanced%20Data%20structures%20and%20Algorithms%20%28CSE%205152%29%20RCS.pdf",
-      "year": 2022,
-      "program": "M.Tech",
-      "file_name": "Advanced Data structures and Algorithms (CSE 5152) RCS.pdf",
-      "subject_code": "CSE5152",
-      "paper_type": "Regular",
-      "display_title": "Advanced Data Structures And Algorithms (Cse 5152) Rcs",
-      "semester": 8,
-      "program_name": "M.Tech Defence Technology",
-      "degree_type": "M.Tech",
-      "specialization": "Defence Technology",
-      "college": null,
-      "program_category": "Postgraduate",
-      "session": "Odd (Nov/Dec)",
-      "course_code": "CSE5152",
-      "course_name": "Advanced Data structures and Algorithms",
-      "subject_name": "Advanced Data structures and Algorithms",
-      "curriculum_context": {
-        "curriculum_id": null,
-        "valid_for_streams": [
-          "cs"
-        ],
-        "valid_for_batches": [],
-        "valid_for_branches": [
-          "CSE",
-          "IT",
-          "CCE",
-          "AIML",
-          "DSE",
-          "MnC"
-        ]
-      },
-      "streams": [
-        "cs"
-      ],
-      "curriculum_match": {
-        "paper_code": "CSE5152",
-        "paper_name": "Advanced Data structures and Algorithms",
-        "year": 2022,
-        "semester": null,
-        "matched": true,
-        "match_source": "name_fuzzy",
-        "confidence": 0.8695652173913043,
-        "curriculum_matches": [
-          {
-            "curriculum_code": "ICE 2128",
-            "curriculum_name": "Data Structures and Algorithms",
-            "program": "CPS",
-            "semester": "3"
-          }
-        ]
-      },
-      "program_abbrev": "M.Tech"
-    },
-    {
-      "path": "2022 / Dec 2021-Jan 2022 / M.Tech / CSE",
-      "scraped_at": "2025-07-07T17:36:33.829308",
-      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%202021-Jan%202022/M.Tech/CSE/Advanced%20Data%20structures%20and%20Algorithms%20%28CSE%205152%29%20RCS.pdf",
-      "year": 2022,
-      "program": "M.Tech",
-      "file_name": "Advanced Data structures and Algorithms (CSE 5152) RCS.pdf",
-      "subject_code": "CSE5152",
-      "paper_type": "Regular",
-      "display_title": "Advanced Data Structures And Algorithms (Cse 5152) Rcs",
-      "semester": 8,
-      "program_name": "M.Tech Defence Technology",
-      "degree_type": "M.Tech",
-      "specialization": "Defence Technology",
-      "college": null,
-      "program_category": "Postgraduate",
-      "session": "Odd (Nov/Dec)",
-      "course_code": "CSE5152",
-      "course_name": "Advanced Data structures and Algorithms",
-      "subject_name": "Advanced Data structures and Algorithms",
-      "curriculum_context": {
-        "curriculum_id": null,
-        "valid_for_streams": [
-          "cs"
-        ],
-        "valid_for_batches": [],
-        "valid_for_branches": [
-          "CSE",
-          "IT",
-          "CCE",
-          "AIML",
-          "DSE",
-          "MnC"
-        ]
-      },
-      "streams": [
-        "cs"
-      ],
-      "curriculum_match": {
-        "paper_code": "CSE5152",
-        "paper_name": "Advanced Data structures and Algorithms",
-        "year": 2022,
-        "semester": null,
-        "matched": true,
-        "match_source": "name_fuzzy",
-        "confidence": 0.8695652173913043,
-        "curriculum_matches": [
-          {
-            "curriculum_code": "ICE 2128",
-            "curriculum_name": "Data Structures and Algorithms",
-            "program": "CPS",
-            "semester": "3"
           }
         ]
       },
@@ -612,6 +490,236 @@
       "program_abbrev": "CSE"
     }
   ],
+  "CSE5152": [
+    {
+      "path": "2022 / Dec 21-Jan 22 / M.Tech / CSIS",
+      "scraped_at": "2025-07-07T17:35:42.838466",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/M.Tech/CSIS/Advanced%20Data%20structures%20and%20Algorithms%20%28CSE%205152%29%20RCS.pdf",
+      "year": 2022,
+      "program": "M.Tech",
+      "file_name": "Advanced Data structures and Algorithms (CSE 5152) RCS.pdf",
+      "subject_code": "CSE5152",
+      "paper_type": "Regular",
+      "display_title": "Advanced Data Structures And Algorithms (Cse 5152) Rcs",
+      "semester": 8,
+      "program_name": "M.Tech Defence Technology",
+      "degree_type": "M.Tech",
+      "specialization": "Defence Technology",
+      "college": null,
+      "program_category": "Postgraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CSE5152",
+      "course_name": "Advanced Data structures and Algorithms",
+      "subject_name": "Advanced Data structures and Algorithms",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "cs"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "CSE",
+          "IT",
+          "CCE",
+          "AIML",
+          "DSE",
+          "MnC"
+        ]
+      },
+      "streams": [
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "CSE5152",
+        "paper_name": "Advanced Data structures and Algorithms",
+        "year": 2022,
+        "semester": null,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.8695652173913043,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "ICE 2128",
+            "curriculum_name": "Data Structures and Algorithms",
+            "program": "CPS",
+            "semester": "3"
+          }
+        ]
+      },
+      "program_abbrev": "M.Tech"
+    },
+    {
+      "path": "2022 / Dec 21-Jan 22 / M.Tech / CSE",
+      "scraped_at": "2025-07-07T17:35:44.231571",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%2021-Jan%2022/M.Tech/CSE/Advanced%20Data%20structures%20and%20Algorithms%20%28CSE%205152%29%20RCS.pdf",
+      "year": 2022,
+      "program": "M.Tech",
+      "file_name": "Advanced Data structures and Algorithms (CSE 5152) RCS.pdf",
+      "subject_code": "CSE5152",
+      "paper_type": "Regular",
+      "display_title": "Advanced Data Structures And Algorithms (Cse 5152) Rcs",
+      "semester": 8,
+      "program_name": "M.Tech Defence Technology",
+      "degree_type": "M.Tech",
+      "specialization": "Defence Technology",
+      "college": null,
+      "program_category": "Postgraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CSE5152",
+      "course_name": "Advanced Data structures and Algorithms",
+      "subject_name": "Advanced Data structures and Algorithms",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "cs"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "CSE",
+          "IT",
+          "CCE",
+          "AIML",
+          "DSE",
+          "MnC"
+        ]
+      },
+      "streams": [
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "CSE5152",
+        "paper_name": "Advanced Data structures and Algorithms",
+        "year": 2022,
+        "semester": null,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.8695652173913043,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "ICE 2128",
+            "curriculum_name": "Data Structures and Algorithms",
+            "program": "CPS",
+            "semester": "3"
+          }
+        ]
+      },
+      "program_abbrev": "M.Tech"
+    },
+    {
+      "path": "2022 / Dec 2021-Jan 2022 / M.Tech / CSIS",
+      "scraped_at": "2025-07-07T17:36:32.348918",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%202021-Jan%202022/M.Tech/CSIS/Advanced%20Data%20structures%20and%20Algorithms%20%28CSE%205152%29%20RCS.pdf",
+      "year": 2022,
+      "program": "M.Tech",
+      "file_name": "Advanced Data structures and Algorithms (CSE 5152) RCS.pdf",
+      "subject_code": "CSE5152",
+      "paper_type": "Regular",
+      "display_title": "Advanced Data Structures And Algorithms (Cse 5152) Rcs",
+      "semester": 8,
+      "program_name": "M.Tech Defence Technology",
+      "degree_type": "M.Tech",
+      "specialization": "Defence Technology",
+      "college": null,
+      "program_category": "Postgraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CSE5152",
+      "course_name": "Advanced Data structures and Algorithms",
+      "subject_name": "Advanced Data structures and Algorithms",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "cs"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "CSE",
+          "IT",
+          "CCE",
+          "AIML",
+          "DSE",
+          "MnC"
+        ]
+      },
+      "streams": [
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "CSE5152",
+        "paper_name": "Advanced Data structures and Algorithms",
+        "year": 2022,
+        "semester": null,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.8695652173913043,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "ICE 2128",
+            "curriculum_name": "Data Structures and Algorithms",
+            "program": "CPS",
+            "semester": "3"
+          }
+        ]
+      },
+      "program_abbrev": "M.Tech"
+    },
+    {
+      "path": "2022 / Dec 2021-Jan 2022 / M.Tech / CSE",
+      "scraped_at": "2025-07-07T17:36:33.829308",
+      "url": "https://libportal.manipal.edu/RootFolder/2022/Dec%202021-Jan%202022/M.Tech/CSE/Advanced%20Data%20structures%20and%20Algorithms%20%28CSE%205152%29%20RCS.pdf",
+      "year": 2022,
+      "program": "M.Tech",
+      "file_name": "Advanced Data structures and Algorithms (CSE 5152) RCS.pdf",
+      "subject_code": "CSE5152",
+      "paper_type": "Regular",
+      "display_title": "Advanced Data Structures And Algorithms (Cse 5152) Rcs",
+      "semester": 8,
+      "program_name": "M.Tech Defence Technology",
+      "degree_type": "M.Tech",
+      "specialization": "Defence Technology",
+      "college": null,
+      "program_category": "Postgraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "CSE5152",
+      "course_name": "Advanced Data structures and Algorithms",
+      "subject_name": "Advanced Data structures and Algorithms",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "cs"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "CSE",
+          "IT",
+          "CCE",
+          "AIML",
+          "DSE",
+          "MnC"
+        ]
+      },
+      "streams": [
+        "cs"
+      ],
+      "curriculum_match": {
+        "paper_code": "CSE5152",
+        "paper_name": "Advanced Data structures and Algorithms",
+        "year": 2022,
+        "semester": null,
+        "matched": true,
+        "match_source": "name_fuzzy",
+        "confidence": 0.8695652173913043,
+        "curriculum_matches": [
+          {
+            "curriculum_code": "ICE 2128",
+            "curriculum_name": "Data Structures and Algorithms",
+            "program": "CPS",
+            "semester": "3"
+          }
+        ]
+      },
+      "program_abbrev": "M.Tech"
+    }
+  ],
   "CSE5154": [
     {
       "path": "2022 / Dec 21-Jan 22 / M.Tech / CSE",
@@ -728,31 +836,31 @@
       "program_abbrev": "M.Tech"
     }
   ],
-  "AAE5046": [
+  "VLS5001": [
     {
-      "path": "2022 / June-Jul 22 QP / M.Tech / Automobile",
-      "scraped_at": "2025-07-07T17:34:33.128165",
-      "url": "https://libportal.manipal.edu/RootFolder/2022/June-Jul%2022%20QP/M.Tech/Automobile/Vehicle%20Aerodynamics%28AAE%205046%29.pdf",
-      "year": 2022,
+      "path": "2025 / Dec 24-Jan 2025 / SOIS / VLSI",
+      "scraped_at": "2025-12-07T14:15:40.328463",
+      "url": "https://libportal.manipal.edu/RootFolder/2025/Dec%2024-Jan%202025/SOIS/VLSI/High%20Level%20Digital%20Design%20%28VLS%205001%29.pdf",
+      "year": 2025,
       "program": "M.Tech",
-      "file_name": "Vehicle Aerodynamics(AAE 5046).pdf",
-      "subject_code": "AAE5046",
+      "file_name": "High Level Digital Design (VLS 5001).pdf",
+      "subject_code": "VLS5001",
       "paper_type": "Regular",
-      "display_title": "Vehicle Aerodynamics(Aae 5046)",
-      "semester": 8,
-      "program_name": "M.Tech Defence Technology",
+      "display_title": "High Level Digital Design",
+      "semester": null,
+      "program_name": "M.Tech VLSI",
       "degree_type": "M.Tech",
-      "specialization": "Defence Technology",
-      "college": null,
+      "specialization": "VLSI",
+      "college": "SOIS",
       "program_category": "Postgraduate",
-      "session": "Even (May/Jun)",
-      "course_code": "AAE5046",
-      "course_name": "Vehicle Aerodynamics",
-      "subject_name": "Vehicle Aerodynamics",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "VLS5001",
+      "course_name": "High Level Digital Design",
+      "subject_name": "High Level Digital Design",
       "curriculum_context": {
         "curriculum_id": null,
         "valid_for_streams": [
-          "all"
+          "core"
         ],
         "valid_for_batches": [],
         "valid_for_branches": [
@@ -760,52 +868,46 @@
         ]
       },
       "streams": [
-        "core",
-        "cs"
+        "core"
       ],
       "curriculum_match": {
-        "paper_code": "AAE5046",
-        "paper_name": "Vehicle Aerodynamics",
-        "year": 2022,
+        "paper_code": "VLS5001",
+        "paper_name": "High Level Digital Design",
+        "year": 2025,
         "semester": null,
-        "matched": true,
-        "match_source": "name_fuzzy",
-        "confidence": 0.9090909090909091,
-        "curriculum_matches": [
-          {
-            "curriculum_code": "AAE 3234",
-            "curriculum_name": "Vehicle Aerodynamics Lab",
-            "program": "AUTO",
-            "semester": "6"
-          }
-        ]
+        "matched": false,
+        "match_source": "manual",
+        "confidence": 1.0,
+        "curriculum_matches": []
       },
       "program_abbrev": "M.Tech"
-    },
+    }
+  ],
+  "VLS5102": [
     {
-      "path": "2022 / Jun-Jul 2022 / M.Tech / Automobile",
-      "scraped_at": "2025-07-07T17:35:06.076623",
-      "url": "https://libportal.manipal.edu/RootFolder/2022/Jun-Jul%202022/M.Tech/Automobile/Vehicle%20Aerodynamics%28AAE%205046%29.pdf",
-      "year": 2022,
+      "path": "2025 / Dec 24-Jan 2025 / SOIS / VLSI",
+      "scraped_at": "2025-12-07T14:15:40.327848",
+      "url": "https://libportal.manipal.edu/RootFolder/2025/Dec%2024-Jan%202025/SOIS/VLSI/Digital%20Systems%20and%20VLSI%20Design%20%28VLS%205102%29.pdf",
+      "year": 2025,
       "program": "M.Tech",
-      "file_name": "Vehicle Aerodynamics(AAE 5046).pdf",
-      "subject_code": "AAE5046",
+      "file_name": "Digital Systems and VLSI Design (VLS 5102).pdf",
+      "subject_code": "VLS5102",
       "paper_type": "Regular",
-      "display_title": "Vehicle Aerodynamics(Aae 5046)",
-      "semester": 8,
-      "program_name": "M.Tech Defence Technology",
+      "display_title": "Digital Systems and VLSI Design",
+      "semester": null,
+      "program_name": "M.Tech VLSI",
       "degree_type": "M.Tech",
-      "specialization": "Defence Technology",
-      "college": null,
+      "specialization": "VLSI",
+      "college": "SOIS",
       "program_category": "Postgraduate",
-      "session": "Even (May/Jun)",
-      "course_code": "AAE5046",
-      "course_name": "Vehicle Aerodynamics",
-      "subject_name": "Vehicle Aerodynamics",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "VLS5102",
+      "course_name": "Digital Systems and VLSI Design",
+      "subject_name": "Digital Systems and VLSI Design",
       "curriculum_context": {
         "curriculum_id": null,
         "valid_for_streams": [
-          "all"
+          "core"
         ],
         "valid_for_batches": [],
         "valid_for_branches": [
@@ -813,25 +915,158 @@
         ]
       },
       "streams": [
-        "core",
-        "cs"
+        "core"
       ],
       "curriculum_match": {
-        "paper_code": "AAE5046",
-        "paper_name": "Vehicle Aerodynamics",
-        "year": 2022,
+        "paper_code": "VLS5102",
+        "paper_name": "Digital Systems and VLSI Design",
+        "year": 2025,
         "semester": null,
-        "matched": true,
-        "match_source": "name_fuzzy",
-        "confidence": 0.9090909090909091,
-        "curriculum_matches": [
-          {
-            "curriculum_code": "AAE 3234",
-            "curriculum_name": "Vehicle Aerodynamics Lab",
-            "program": "AUTO",
-            "semester": "6"
-          }
+        "matched": false,
+        "match_source": "manual",
+        "confidence": 1.0,
+        "curriculum_matches": []
+      },
+      "program_abbrev": "M.Tech"
+    }
+  ],
+  "VLS5103": [
+    {
+      "path": "2025 / Dec 24-Jan 2025 / SOIS / VLSI",
+      "scraped_at": "2025-12-07T14:15:40.329651",
+      "url": "https://libportal.manipal.edu/RootFolder/2025/Dec%2024-Jan%202025/SOIS/VLSI/Verification%20%28VLS%205103%29.pdf",
+      "year": 2025,
+      "program": "M.Tech",
+      "file_name": "Verification (VLS 5103).pdf",
+      "subject_code": "VLS5103",
+      "paper_type": "Regular",
+      "display_title": "Verification",
+      "semester": null,
+      "program_name": "M.Tech VLSI",
+      "degree_type": "M.Tech",
+      "specialization": "VLSI",
+      "college": "SOIS",
+      "program_category": "Postgraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "VLS5103",
+      "course_name": "Verification",
+      "subject_name": "Verification",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "core"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "M.Tech"
         ]
+      },
+      "streams": [
+        "core"
+      ],
+      "curriculum_match": {
+        "paper_code": "VLS5103",
+        "paper_name": "Verification",
+        "year": 2025,
+        "semester": null,
+        "matched": false,
+        "match_source": "manual",
+        "confidence": 1.0,
+        "curriculum_matches": []
+      },
+      "program_abbrev": "M.Tech"
+    }
+  ],
+  "VLS5131": [
+    {
+      "path": "2025 / Dec 24-Jan 2025 / SOIS / VLSI",
+      "scraped_at": "2025-12-07T14:15:40.326576",
+      "url": "https://libportal.manipal.edu/RootFolder/2025/Dec%2024-Jan%202025/SOIS/VLSI/CAD%20for%20VLSI%20%28Elective-1%29%20%28VLS%205131%29.pdf",
+      "year": 2025,
+      "program": "M.Tech",
+      "file_name": "CAD for VLSI (Elective-1) (VLS 5131).pdf",
+      "subject_code": "VLS5131",
+      "paper_type": "Regular",
+      "display_title": "CAD for VLSI (Elective-1)",
+      "semester": null,
+      "program_name": "M.Tech VLSI",
+      "degree_type": "M.Tech",
+      "specialization": "VLSI",
+      "college": "SOIS",
+      "program_category": "Postgraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "VLS5131",
+      "course_name": "CAD for VLSI",
+      "subject_name": "CAD for VLSI",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "core"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "M.Tech"
+        ]
+      },
+      "streams": [
+        "core"
+      ],
+      "curriculum_match": {
+        "paper_code": "VLS5131",
+        "paper_name": "CAD for VLSI",
+        "year": 2025,
+        "semester": null,
+        "matched": false,
+        "match_source": "manual",
+        "confidence": 1.0,
+        "curriculum_matches": []
+      },
+      "program_abbrev": "M.Tech"
+    }
+  ],
+  "VLS5132": [
+    {
+      "path": "2025 / Dec 24-Jan 2025 / SOIS / VLSI",
+      "scraped_at": "2025-12-07T14:15:40.329060",
+      "url": "https://libportal.manipal.edu/RootFolder/2025/Dec%2024-Jan%202025/SOIS/VLSI/System%20on%20Chip%20Design%20%28VLS%205132%29.pdf",
+      "year": 2025,
+      "program": "M.Tech",
+      "file_name": "System on Chip Design (VLS 5132).pdf",
+      "subject_code": "VLS5132",
+      "paper_type": "Regular",
+      "display_title": "System on Chip Design",
+      "semester": null,
+      "program_name": "M.Tech VLSI",
+      "degree_type": "M.Tech",
+      "specialization": "VLSI",
+      "college": "SOIS",
+      "program_category": "Postgraduate",
+      "session": "Odd (Nov/Dec)",
+      "course_code": "VLS5132",
+      "course_name": "System on Chip Design",
+      "subject_name": "System on Chip Design",
+      "curriculum_context": {
+        "curriculum_id": null,
+        "valid_for_streams": [
+          "core"
+        ],
+        "valid_for_batches": [],
+        "valid_for_branches": [
+          "M.Tech"
+        ]
+      },
+      "streams": [
+        "core"
+      ],
+      "curriculum_match": {
+        "paper_code": "VLS5132",
+        "paper_name": "System on Chip Design",
+        "year": 2025,
+        "semester": null,
+        "matched": false,
+        "match_source": "manual",
+        "confidence": 1.0,
+        "curriculum_matches": []
       },
       "program_abbrev": "M.Tech"
     }
