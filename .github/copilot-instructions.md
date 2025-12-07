@@ -279,7 +279,7 @@ CODE_PREFIX_TO_ABBREV = {
 }
 
 def derive_abbrev(paper: dict, filename_abbrev: Optional[str]) -> str:
-    """Derive program abbreviation from paper data using 4-priority strategy."""
+    """Derive program abbreviation from paper data using 5-priority strategy."""
     
     # Priority 1: Use filename-based abbreviation
     if filename_abbrev:
@@ -306,7 +306,7 @@ def derive_abbrev(paper: dict, filename_abbrev: Optional[str]) -> str:
         if branches and isinstance(branches, list) and len(branches) > 0:
             return branches[0]
     
-    # Final fallback: UNKNOWN
+    # Priority 5: Final fallback to UNKNOWN
     return "UNKNOWN"
 ```
 
