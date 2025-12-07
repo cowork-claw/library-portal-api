@@ -57,6 +57,9 @@ class Settings(BaseSettings):
     # CORS
     # ==========================================================================
 
+    # Default includes common localhost ports for development
+    # In production, set LIBRARY_PORTAL_CORS_ORIGINS environment variable
+    # to specific allowed origins (remove wildcard "*" for security)
     CORS_ORIGINS: List[str] = [
         "http://localhost:4321",
         "http://localhost:3000",
