@@ -253,13 +253,34 @@ Use a priority-based approach with multiple fallback sources:
 ### Example Migration Script
 ```python
 # scripts/add_program_abbrev.py demonstrates this pattern:
+
+# Priority 1: Filename-based mapping
+FILENAME_TO_ABBREV = {
+    "CSE": "CSE",
+    "ECE": "ECE",
+    # ... more mappings
+}
+
 def derive_abbrev(paper: dict, filename_abbrev: Optional[str]) -> str:
-    # Priority 1: Filename-based mapping
+    # Priority 1: Use filename-based abbreviation
     if filename_abbrev:
         return filename_abbrev
-    # Priority 2: Program name matching
-    # Priority 3: Course code pattern extraction
+    
+    # Priority 2: Match program/specialization field
+    program = paper.get("program") or ""
+    for name, abbrev in PROGRAM_NAME_TO_ABBREV.items():
+        if name in program.lower():
+            return abbrev
+    
+    # Priority 3: Extract from course code prefix
+    course_code = paper.get("course_code") or ""
+    if course_code:
+        prefix = re.match(r"^([A-Z]{2,4})", course_code.upper())
+        if prefix:
+            return CODE_PREFIX_TO_ABBREV.get(prefix.group(1), prefix.group(1))
+    
     # Priority 4: Fallback to "UNKNOWN"
+    return "UNKNOWN"
 ```
 
 ### After Adding a Field
@@ -302,7 +323,7 @@ The API includes `program_abbrev` field in all paper objects for program identif
 - **Papers endpoint** (`/api/papers`): Each paper includes `program_abbrev` field in the response
 - **Common abbreviations**: BME, CSE, ECE, EEE, EIE, ME, MXE, CE, CHE, BIO, AERO, AUTO, IT, MPE, M.Tech, M.E, MCA
 
-**Frontend Usage:** Frontends can filter papers by matching the `program_abbrev` field in the response. Direct query parameter filtering by `program_abbrev` is not yet implemented. Use the `program` parameter for server-side filtering (supports partial text matching).
+**Frontend Usage:** Frontends can filter papers by matching the `program_abbrev` field in the response. The API does not currently support `program_abbrev` as a query parameter - you cannot pass `?program_abbrev=CSE` to the `/api/papers` endpoint. For server-side filtering, use the `program` parameter which supports partial text matching.
 
 ### Index Service
 The `PaperIndex` service pre-builds indexes for fast lookups:
