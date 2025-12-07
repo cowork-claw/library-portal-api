@@ -261,6 +261,20 @@ FILENAME_TO_ABBREV = {
     # ... more mappings
 }
 
+# Priority 2: Program name to abbreviation mapping (see complete mapping in script)
+PROGRAM_NAME_TO_ABBREV = {
+    "computer science and engineering": "CSE",
+    "electronics and communication": "ECE",
+    # ... more mappings
+}
+
+# Priority 3: Course code prefix mapping (see complete mapping in script)
+CODE_PREFIX_TO_ABBREV = {
+    "CSE": "CSE",
+    "ECE": "ECE",
+    # ... more mappings
+}
+
 def derive_abbrev(paper: dict, filename_abbrev: Optional[str]) -> str:
     # Priority 1: Use filename-based abbreviation
     if filename_abbrev:
