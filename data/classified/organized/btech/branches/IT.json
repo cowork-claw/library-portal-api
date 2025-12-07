@@ -26,12 +26,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "IT"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "IT"
     }
   ]
 }

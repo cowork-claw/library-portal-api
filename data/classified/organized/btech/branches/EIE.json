@@ -28,12 +28,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     }
   ],
   "ICE2151": [
@@ -65,12 +68,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / III Sem / ICE",
@@ -100,12 +106,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / III Sem / ICE",
@@ -135,12 +144,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     }
   ],
   "ICE4064": [
@@ -172,12 +184,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / ICE",
@@ -207,12 +222,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / ICE",
@@ -242,12 +260,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     }
   ],
   "ICE3151": [
@@ -277,12 +298,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / ICE",
@@ -310,12 +334,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / ICE",
@@ -343,12 +370,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / ICE",
@@ -376,12 +406,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     }
   ],
   "ICE4065": [
@@ -413,12 +446,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / ICE",
@@ -448,12 +484,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     }
   ],
   "ICE4051": [
@@ -485,12 +524,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     }
   ],
   "ICE2152": [
@@ -522,12 +564,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / III Sem / ICE",
@@ -557,12 +602,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / III Sem / Mechatronics",
@@ -592,12 +640,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     }
   ],
   "ICE3251": [
@@ -629,12 +680,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     }
   ],
   "ICE2251": [
@@ -664,12 +718,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     }
   ],
   "ICE2153": [
@@ -701,12 +758,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / III Sem / ICE",
@@ -736,12 +796,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / III Sem / ICE",
@@ -771,12 +834,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     }
   ],
   "ICE4307": [
@@ -806,12 +872,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / ICE",
@@ -839,12 +908,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     }
   ],
   "ICE3252": [
@@ -876,12 +948,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     }
   ],
   "ICE4302": [
@@ -913,12 +988,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / ICE",
@@ -946,12 +1024,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / ICE",
@@ -979,12 +1060,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     }
   ],
   "ICE2252": [
@@ -1014,12 +1098,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     }
   ],
   "ICE4303": [
@@ -1049,12 +1136,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     }
   ],
   "ICE4073": [
@@ -1086,12 +1176,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     }
   ],
   "ICE2253": [
@@ -1121,12 +1214,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     }
   ],
   "ICE2254": [
@@ -1156,12 +1252,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     }
   ],
   "ICE4056": [
@@ -1193,12 +1292,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     }
   ],
   "ICE3152": [
@@ -1228,12 +1330,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / ICE",
@@ -1261,12 +1366,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / ICE",
@@ -1294,12 +1402,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / ICE",
@@ -1327,12 +1438,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     }
   ],
   "ICE3153": [
@@ -1362,12 +1476,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / ICE",
@@ -1395,12 +1512,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / ICE",
@@ -1428,12 +1548,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / ICE",
@@ -1461,12 +1584,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     }
   ],
   "ICE4057": [
@@ -1498,12 +1624,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / ICE",
@@ -1533,12 +1662,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / ICE",
@@ -1568,12 +1700,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / ICE",
@@ -1603,12 +1738,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     }
   ],
   "ICE2154": [
@@ -1640,12 +1778,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / III Sem / ICE",
@@ -1675,12 +1816,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / III Sem / ICE",
@@ -1710,12 +1854,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     }
   ],
   "ICE4014": [
@@ -1747,12 +1894,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / ICE",
@@ -1782,12 +1932,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / ICE",
@@ -1817,12 +1970,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / ICE",
@@ -1852,12 +2008,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     }
   ],
   "ICE4052": [
@@ -1889,12 +2048,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / ICE",
@@ -1924,12 +2086,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     }
   ],
   "ICE4067": [
@@ -1961,12 +2126,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / ICE",
@@ -1996,12 +2164,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     }
   ],
   "ICE3154": [
@@ -2031,12 +2202,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / ICE",
@@ -2064,12 +2238,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / ICE",
@@ -2097,12 +2274,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / ICE",
@@ -2130,12 +2310,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     }
   ],
   "ICE4060": [
@@ -2167,12 +2350,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / ICE",
@@ -2202,12 +2388,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / ICE",
@@ -2237,12 +2426,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / ICE",
@@ -2272,12 +2464,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     }
   ],
   "ICE4069": [
@@ -2309,12 +2504,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / ICE",
@@ -2344,12 +2542,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     }
   ],
   "ICE4068": [
@@ -2381,12 +2582,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / ICE",
@@ -2416,12 +2620,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / ICE",
@@ -2451,12 +2658,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / ICE",
@@ -2486,12 +2696,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     }
   ],
   "ICE4053": [
@@ -2523,12 +2736,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / ICE",
@@ -2558,12 +2774,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     }
   ],
   "ICE4304": [
@@ -2593,12 +2812,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     }
   ],
   "ICE2155": [
@@ -2630,12 +2852,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / III Sem / ICE",
@@ -2665,12 +2890,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / III Sem / Mechatronics",
@@ -2700,12 +2928,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     }
   ],
   "ICE4305": [
@@ -2737,12 +2968,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     }
   ],
   "ICE4058": [
@@ -2774,12 +3008,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / ICE",
@@ -2809,12 +3046,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / ICE",
@@ -2844,12 +3084,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / ICE",
@@ -2879,12 +3122,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     }
   ],
   "ICE4074": [
@@ -2916,12 +3162,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     }
   ],
   "ICE4054": [
@@ -2953,12 +3202,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     }
   ],
   "ICE4306": [
@@ -2990,12 +3242,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / ICE",
@@ -3025,12 +3280,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     }
   ],
   "ICE4070": [
@@ -3062,12 +3320,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / ICE",
@@ -3097,12 +3358,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EIE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EIE"
     }
   ]
 }

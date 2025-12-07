@@ -28,12 +28,15 @@
         "valid_for_batches": [
           2023
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "BME"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "BME"
     }
   ],
   "BME4059": [
@@ -65,12 +68,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "BME"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "BME"
     }
   ],
   "BME3251": [
@@ -102,12 +108,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "BME"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "BME"
     },
     {
       "path": "2022 / June-Jul 22 QP / VI Sem / Biomedical",
@@ -137,12 +146,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "BME"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "BME"
     }
   ],
   "BME4051": [
@@ -174,12 +186,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "BME"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "BME"
     }
   ],
   "BME2251": [
@@ -209,12 +224,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "BME"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "BME"
     }
   ],
   "BME2252": [
@@ -244,12 +262,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "BME"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "BME"
     },
     {
       "path": "2022 / June-Jul 22 QP / IV Sem / Humanities and Managemenet",
@@ -277,12 +298,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "BME"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "BME"
     },
     {
       "path": "2022 / June-Jul 22 QP / IV Sem / Biomedical",
@@ -310,12 +334,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "BME"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "BME"
     }
   ],
   "BME4301": [
@@ -345,12 +372,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "BME"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "BME"
     },
     {
       "path": "2022 / June-Jul 22 QP / IV Sem / Humanities and Managemenet",
@@ -378,12 +408,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "BME"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "BME"
     }
   ],
   "BME3252": [
@@ -415,12 +448,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "BME"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "BME"
     },
     {
       "path": "2022 / Dec 2021-Jan 2022 / B.Tech / I Sem",
@@ -450,12 +486,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "BME"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "BME"
     },
     {
       "path": "2022 / June-Jul 22 QP / VI Sem / Biomedical",
@@ -485,12 +524,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "BME"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "BME"
     }
   ],
   "BME2253": [
@@ -520,12 +562,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "BME"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "BME"
     },
     {
       "path": "2022 / June-Jul 22 QP / IV Sem / Humanities and Managemenet",
@@ -553,12 +598,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "BME"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "BME"
     }
   ],
   "BME4063": [
@@ -590,12 +638,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "BME"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "BME"
     }
   ],
   "BME2254": [
@@ -625,12 +676,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "BME"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "BME"
     },
     {
       "path": "2022 / June-Jul 22 QP / IV Sem / Humanities and Managemenet",
@@ -658,12 +712,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "BME"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "BME"
     }
   ],
   "BME4305": [
@@ -695,12 +752,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "BME"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "BME"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / I Sem",
@@ -730,12 +790,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "BME"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "BME"
     },
     {
       "path": "2022 / Dec 2021-Jan 2022 / B.Tech / I Sem",
@@ -765,12 +828,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "BME"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "BME"
     }
   ],
   "BME4054": [
@@ -802,12 +868,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "BME"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "BME"
     },
     {
       "path": "2022 / Dec 2021-Jan 2022 / B.Tech / I Sem",
@@ -837,12 +906,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "BME"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "BME"
     }
   ],
   "BME4303": [
@@ -874,12 +946,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "BME"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "BME"
     },
     {
       "path": "2022 / June-Jul 22 QP / VI Sem / Biomedical",
@@ -909,12 +984,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "BME"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "BME"
     }
   ]
 }

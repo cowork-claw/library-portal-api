@@ -43,6 +43,7 @@ class Paper(BaseModel):
     
     # Program info
     program: Optional[str] = None
+    program_abbrev: Optional[str] = None
     program_name: Optional[str] = None
     degree_type: Optional[str] = None
     program_category: Optional[str] = None

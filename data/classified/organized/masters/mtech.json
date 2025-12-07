@@ -26,7 +26,9 @@
           "core"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "M.Tech"
+        ]
       },
       "streams": [
         "core"
@@ -47,7 +49,8 @@
             "semester": "5"
           }
         ]
-      }
+      },
+      "program_abbrev": "M.Tech"
     },
     {
       "path": "2023 / May - Jun 2023 / M.Tech / Chemical",
@@ -75,7 +78,9 @@
           "core"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "M.Tech"
+        ]
       },
       "streams": [
         "core"
@@ -96,7 +101,8 @@
             "semester": "5"
           }
         ]
-      }
+      },
+      "program_abbrev": "M.Tech"
     }
   ],
   "CSE5152": [
@@ -154,7 +160,8 @@
             "semester": "3"
           }
         ]
-      }
+      },
+      "program_abbrev": "M.Tech"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / M.Tech / CSE",
@@ -210,7 +217,8 @@
             "semester": "3"
           }
         ]
-      }
+      },
+      "program_abbrev": "M.Tech"
     },
     {
       "path": "2022 / Dec 2021-Jan 2022 / M.Tech / CSIS",
@@ -266,7 +274,8 @@
             "semester": "3"
           }
         ]
-      }
+      },
+      "program_abbrev": "M.Tech"
     },
     {
       "path": "2022 / Dec 2021-Jan 2022 / M.Tech / CSE",
@@ -322,7 +331,8 @@
             "semester": "3"
           }
         ]
-      }
+      },
+      "program_abbrev": "M.Tech"
     }
   ],
   "CSE2251": [
@@ -377,7 +387,8 @@
             "semester": "4"
           }
         ]
-      }
+      },
+      "program_abbrev": "CSE"
     },
     {
       "path": "2022 / June-Jul 22 QP / IV Sem / CSE",
@@ -430,7 +441,8 @@
             "semester": "4"
           }
         ]
-      }
+      },
+      "program_abbrev": "CSE"
     }
   ],
   "CSE2252": [
@@ -485,7 +497,8 @@
             "semester": "4"
           }
         ]
-      }
+      },
+      "program_abbrev": "CSE"
     },
     {
       "path": "2022 / June-Jul 22 QP / IV Sem / CSE",
@@ -538,7 +551,8 @@
             "semester": "4"
           }
         ]
-      }
+      },
+      "program_abbrev": "CSE"
     }
   ],
   "CSE4052": [
@@ -570,7 +584,9 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
@@ -592,7 +608,8 @@
             "semester": "6"
           }
         ]
-      }
+      },
+      "program_abbrev": "CSE"
     }
   ],
   "CSE5154": [
@@ -650,7 +667,8 @@
             "semester": "5"
           }
         ]
-      }
+      },
+      "program_abbrev": "M.Tech"
     },
     {
       "path": "2022 / Dec 2021-Jan 2022 / M.Tech / CSE",
@@ -706,7 +724,8 @@
             "semester": "5"
           }
         ]
-      }
+      },
+      "program_abbrev": "M.Tech"
     }
   ],
   "AAE5046": [
@@ -736,7 +755,9 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "M.Tech"
+        ]
       },
       "streams": [
         "core",
@@ -758,7 +779,8 @@
             "semester": "6"
           }
         ]
-      }
+      },
+      "program_abbrev": "M.Tech"
     },
     {
       "path": "2022 / Jun-Jul 2022 / M.Tech / Automobile",
@@ -786,7 +808,9 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "M.Tech"
+        ]
       },
       "streams": [
         "core",
@@ -808,7 +832,8 @@
             "semester": "6"
           }
         ]
-      }
+      },
+      "program_abbrev": "M.Tech"
     }
   ]
 }

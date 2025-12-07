@@ -34,6 +34,7 @@ class PaperIndex:
         self._by_semester: Dict[int, List[Dict]] = defaultdict(list)
         self._by_course: Dict[str, List[Dict]] = defaultdict(list)
         self._by_program: Dict[str, List[Dict]] = defaultdict(list)
+        self._by_program_abbrev: Dict[str, List[Dict]] = defaultdict(list)
         self._by_stream: Dict[str, List[Dict]] = defaultdict(list)
         
         # Unique values for metadata
@@ -41,6 +42,7 @@ class PaperIndex:
         self._unique_semesters: Set[int] = set()
         self._unique_course_codes: Set[str] = set()
         self._unique_programs: Set[str] = set()
+        self._unique_program_abbrevs: Set[str] = set()
         self._unique_degree_types: Set[str] = set()
         self._unique_paper_types: Set[str] = set()
         self._unique_streams: Set[str] = set()
@@ -49,6 +51,7 @@ class PaperIndex:
         self._count_by_year: Dict[int, int] = {}
         self._count_by_semester: Dict[int, int] = {}
         self._count_by_program: Dict[str, int] = {}
+        self._count_by_program_abbrev: Dict[str, int] = {}
         
         # Stats
         self._files_loaded: int = 0
@@ -71,12 +74,14 @@ class PaperIndex:
         self._by_semester.clear()
         self._by_course.clear()
         self._by_program.clear()
+        self._by_program_abbrev.clear()
         self._by_stream.clear()
         
         self._unique_years.clear()
         self._unique_semesters.clear()
         self._unique_course_codes.clear()
         self._unique_programs.clear()
+        self._unique_program_abbrevs.clear()
         self._unique_degree_types.clear()
         self._unique_paper_types.clear()
         self._unique_streams.clear()
@@ -107,6 +112,12 @@ class PaperIndex:
                 self._by_program[program].append(paper)
                 self._unique_programs.add(program)
             
+            # Program abbreviation index
+            program_abbrev = paper.get('program_abbrev')
+            if program_abbrev:
+                self._by_program_abbrev[program_abbrev].append(paper)
+                self._unique_program_abbrevs.add(program_abbrev)
+            
             # Degree type
             degree_type = paper.get('degree_type')
             if degree_type:
@@ -127,10 +138,12 @@ class PaperIndex:
         self._count_by_year = {year: len(papers) for year, papers in self._by_year.items()}
         self._count_by_semester = {sem: len(papers) for sem, papers in self._by_semester.items()}
         self._count_by_program = {prog: len(papers) for prog, papers in self._by_program.items()}
+        self._count_by_program_abbrev = {abbrev: len(papers) for abbrev, papers in self._by_program_abbrev.items()}
         
         logger.debug(f"Built indexes: {len(self._unique_years)} years, "
                     f"{len(self._unique_course_codes)} courses, "
-                    f"{len(self._unique_programs)} programs")
+                    f"{len(self._unique_programs)} programs, "
+                    f"{len(self._unique_program_abbrevs)} program abbreviations")
     
     # ==========================================================================
     # LOOKUP METHODS
@@ -151,6 +164,10 @@ class PaperIndex:
     def get_by_program(self, program: str) -> List[Dict[str, Any]]:
         """Get papers for a specific program."""
         return self._by_program.get(program, [])
+    
+    def get_by_program_abbrev(self, abbrev: str) -> List[Dict[str, Any]]:
+        """Get papers for a specific program abbreviation."""
+        return self._by_program_abbrev.get(abbrev.upper(), [])
     
     def get_by_stream(self, stream: str) -> List[Dict[str, Any]]:
         """Get papers for a specific stream."""
@@ -185,6 +202,10 @@ class PaperIndex:
         return sorted(self._unique_programs)
     
     @property
+    def unique_program_abbrevs(self) -> List[str]:
+        return sorted(self._unique_program_abbrevs)
+    
+    @property
     def unique_degree_types(self) -> List[str]:
         return sorted(self._unique_degree_types)
     
@@ -207,6 +228,10 @@ class PaperIndex:
     @property
     def count_by_program(self) -> Dict[str, int]:
         return dict(sorted(self._count_by_program.items(), key=lambda x: x[1], reverse=True))
+    
+    @property
+    def count_by_program_abbrev(self) -> Dict[str, int]:
+        return dict(sorted(self._count_by_program_abbrev.items(), key=lambda x: x[1], reverse=True))
 
 
 # Global paper index instance

@@ -26,7 +26,9 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MCA"
+        ]
       },
       "streams": [
         "core",
@@ -48,7 +50,8 @@
             "semester": "1"
           }
         ]
-      }
+      },
+      "program_abbrev": "MCA"
     },
     {
       "path": "2025 / Dec 24-Jan 2025 / MCA",
@@ -76,7 +79,9 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MCA"
+        ]
       },
       "streams": [
         "core",
@@ -98,7 +103,8 @@
             "semester": "1"
           }
         ]
-      }
+      },
+      "program_abbrev": "MCA"
     }
   ],
   "MCA4223": [
@@ -130,7 +136,9 @@
         "valid_for_batches": [
           2024
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MCA"
+        ]
       },
       "streams": [
         "core",
@@ -152,7 +160,8 @@
             "semester": "4"
           }
         ]
-      }
+      },
+      "program_abbrev": "MCA"
     },
     {
       "path": "2024 / May-June 2024 / MCA / II Sem",
@@ -182,7 +191,9 @@
         "valid_for_batches": [
           2024
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MCA"
+        ]
       },
       "streams": [
         "core",
@@ -204,7 +215,8 @@
             "semester": "4"
           }
         ]
-      }
+      },
+      "program_abbrev": "MCA"
     }
   ]
 }

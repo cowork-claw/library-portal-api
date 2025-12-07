@@ -28,12 +28,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MXE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MXE"
     }
   ],
   "MTE2251": [
@@ -63,12 +66,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MXE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MXE"
     }
   ],
   "MTE3251": [
@@ -98,12 +104,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MXE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MXE"
     },
     {
       "path": "2022 / June-Jul 22 QP / VI Sem / Mechatronics",
@@ -131,12 +140,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MXE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MXE"
     }
   ],
   "MTE2151": [
@@ -168,12 +180,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MXE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MXE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / III Sem / Mechatronics",
@@ -203,12 +218,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MXE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MXE"
     }
   ],
   "MTE4055": [
@@ -240,12 +258,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MXE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MXE"
     }
   ],
   "MTE3151": [
@@ -275,12 +296,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MXE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MXE"
     }
   ],
   "MTE2152": [
@@ -312,12 +336,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MXE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MXE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / III Sem / Mechatronics",
@@ -347,12 +374,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MXE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MXE"
     }
   ],
   "MTE3152": [
@@ -382,12 +412,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MXE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MXE"
     }
   ],
   "MTE3252": [
@@ -419,12 +452,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MXE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MXE"
     }
   ],
   "MTE4071": [
@@ -456,12 +492,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MXE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MXE"
     }
   ],
   "MTE4072": [
@@ -493,12 +532,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MXE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MXE"
     }
   ],
   "MTE4304": [
@@ -530,12 +572,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MXE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MXE"
     }
   ],
   "MTE4056": [
@@ -567,12 +612,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MXE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MXE"
     },
     {
       "path": "2022 / June-Jul 22 QP / VI Sem / Mechatronics",
@@ -602,12 +650,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MXE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MXE"
     }
   ],
   "MTE4057": [
@@ -639,12 +690,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MXE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MXE"
     }
   ],
   "MTE2253": [
@@ -674,12 +728,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MXE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MXE"
     }
   ],
   "MTE2254": [
@@ -709,12 +766,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MXE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MXE"
     }
   ],
   "MTE4075": [
@@ -746,12 +806,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MXE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MXE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Mechatronics",
@@ -781,12 +844,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MXE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MXE"
     }
   ],
   "MTE2153": [
@@ -818,12 +884,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MXE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MXE"
     }
   ],
   "MTE4085": [
@@ -855,12 +924,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MXE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MXE"
     }
   ],
   "MTE4058": [
@@ -892,12 +964,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MXE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MXE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Mechatronics",
@@ -927,12 +1002,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MXE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MXE"
     }
   ],
   "MTE4080": [
@@ -964,12 +1042,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MXE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MXE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Mechatronics",
@@ -999,12 +1080,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MXE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MXE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Mechatronics",
@@ -1034,12 +1118,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MXE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MXE"
     }
   ],
   "MTE4060": [
@@ -1071,12 +1158,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MXE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MXE"
     }
   ],
   "MTE4061": [
@@ -1108,12 +1198,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MXE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MXE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Mechatronics",
@@ -1143,12 +1236,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MXE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MXE"
     }
   ],
   "MTE2154": [
@@ -1180,12 +1276,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MXE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MXE"
     }
   ],
   "MTE4081": [
@@ -1217,12 +1316,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MXE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MXE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Mechatronics",
@@ -1252,12 +1354,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MXE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MXE"
     }
   ],
   "MTE2155": [
@@ -1289,12 +1394,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MXE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MXE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / III Sem / Mechatronics",
@@ -1324,12 +1432,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MXE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MXE"
     }
   ],
   "MTE4062": [
@@ -1361,12 +1472,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MXE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MXE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Mechatronics",
@@ -1396,12 +1510,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MXE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MXE"
     }
   ],
   "MTE3154": [
@@ -1431,12 +1548,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MXE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MXE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / Mechatronics",
@@ -1464,12 +1584,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MXE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MXE"
     }
   ],
   "MTE4054": [
@@ -1501,12 +1624,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MXE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MXE"
     },
     {
       "path": "2022 / June-Jul 22 QP / VI Sem / Mechatronics",
@@ -1536,12 +1662,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MXE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MXE"
     }
   ],
   "MTE4083": [
@@ -1573,12 +1702,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MXE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MXE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Mechatronics",
@@ -1608,12 +1740,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MXE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MXE"
     }
   ]
 }

@@ -36,7 +36,8 @@
       },
       "streams": [
         "cs"
-      ]
+      ],
+      "program_abbrev": "CSE"
     },
     {
       "path": "2024 / May-June 2024 / B.Tech / II Sem",
@@ -74,7 +75,8 @@
       },
       "streams": [
         "cs"
-      ]
+      ],
+      "program_abbrev": "CSE"
     }
   ],
   "CSE4062": [
@@ -106,12 +108,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CSE"
     }
   ],
   "CSE4053": [
@@ -143,12 +148,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CSE"
     }
   ],
   "CSE4051": [
@@ -180,12 +188,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CSE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Computer Science and Engineering",
@@ -215,12 +226,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CSE"
     }
   ],
   "CSE5151": [
@@ -252,12 +266,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CSE"
     }
   ],
   "CSE3151": [
@@ -295,7 +312,8 @@
       },
       "streams": [
         "cs"
-      ]
+      ],
+      "program_abbrev": "CSE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / Computer Science and Engineering",
@@ -331,7 +349,8 @@
       },
       "streams": [
         "cs"
-      ]
+      ],
+      "program_abbrev": "CSE"
     }
   ],
   "CSE4063": [
@@ -363,12 +382,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CSE"
     }
   ],
   "CSE3152": [
@@ -406,7 +428,8 @@
       },
       "streams": [
         "cs"
-      ]
+      ],
+      "program_abbrev": "CSE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / Computer Science and Engineering",
@@ -442,7 +465,8 @@
       },
       "streams": [
         "cs"
-      ]
+      ],
+      "program_abbrev": "CSE"
     }
   ],
   "CSE4064": [
@@ -472,12 +496,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CSE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Computer Science and Engineering",
@@ -505,12 +532,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CSE"
     }
   ],
   "CSE4301": [
@@ -542,12 +572,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CSE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Computer Science and Engineering",
@@ -577,12 +610,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CSE"
     }
   ],
   "CSE4066": [
@@ -614,12 +650,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CSE"
     }
   ],
   "CSE4069": [
@@ -651,12 +690,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CSE"
     }
   ],
   "HCI2021": [
@@ -686,12 +728,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CSE"
     }
   ],
   "CSE4056": [
@@ -723,12 +768,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CSE"
     }
   ],
   "CSE4057": [
@@ -760,12 +808,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CSE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Computer Science and Engineering",
@@ -795,12 +846,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CSE"
     }
   ],
   "CSE4303": [
@@ -838,7 +892,8 @@
       },
       "streams": [
         "cs"
-      ]
+      ],
+      "program_abbrev": "CSE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / Computer Science and Engineering",
@@ -874,7 +929,8 @@
       },
       "streams": [
         "cs"
-      ]
+      ],
+      "program_abbrev": "CSE"
     }
   ],
   "CSE4072": [
@@ -906,12 +962,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CSE"
     }
   ],
   "CSE31530": [
@@ -949,7 +1008,8 @@
       },
       "streams": [
         "cs"
-      ]
+      ],
+      "program_abbrev": "CSE"
     }
   ],
   "CSE3153": [
@@ -987,7 +1047,8 @@
       },
       "streams": [
         "cs"
-      ]
+      ],
+      "program_abbrev": "CSE"
     }
   ],
   "CSE4305": [
@@ -1019,12 +1080,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CSE"
     }
   ],
   "CSE4035": [
@@ -1056,12 +1120,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CSE"
     }
   ],
   "CSE4306": [
@@ -1099,7 +1166,8 @@
       },
       "streams": [
         "cs"
-      ]
+      ],
+      "program_abbrev": "CSE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / Computer Science and Engineering",
@@ -1135,7 +1203,8 @@
       },
       "streams": [
         "cs"
-      ]
+      ],
+      "program_abbrev": "CSE"
     }
   ],
   "CSE1051": [
@@ -1167,12 +1236,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CSE"
     },
     {
       "path": "2022 / Jun-Jul 2022 / B.Tech / II Sem",
@@ -1202,12 +1274,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CSE"
     },
     {
       "path": "2022 / June-Jul 22 QP / II Sem",
@@ -1237,12 +1312,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CSE"
     },
     {
       "path": "2022 / Jun-Jul 2022 / B.Tech / II Sem",
@@ -1272,12 +1350,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CSE"
     }
   ],
   "CSE4074": [
@@ -1309,12 +1390,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CSE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Computer Science and Engineering",
@@ -1344,12 +1428,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CSE"
     }
   ],
   "CSE3154": [
@@ -1387,7 +1474,8 @@
       },
       "streams": [
         "cs"
-      ]
+      ],
+      "program_abbrev": "CSE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / Computer Science and Engineering",
@@ -1423,7 +1511,8 @@
       },
       "streams": [
         "cs"
-      ]
+      ],
+      "program_abbrev": "CSE"
     }
   ],
   "CSE4076": [
@@ -1455,12 +1544,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CSE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Computer Science and Engineering",
@@ -1490,12 +1582,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CSE"
     }
   ],
   "DSE3157": [
@@ -1527,12 +1622,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CSE"
     }
   ],
   "DSE3151": [
@@ -1564,12 +1662,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CSE"
     },
     {
       "path": "2024 / Dec 2023-Jan 2024 / B.Tech / V Sem",
@@ -1599,12 +1700,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CSE"
     }
   ],
   "DSE3155": [
@@ -1636,12 +1740,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CSE"
     }
   ],
   "DSE3153": [
@@ -1673,12 +1780,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CSE"
     },
     {
       "path": "2024 / Dec 2023-Jan 2024 / B.Tech / V Sem",
@@ -1708,12 +1818,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CSE"
     }
   ],
   "ICT4034": [
@@ -1745,7 +1858,9 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
@@ -1767,7 +1882,8 @@
             "semester": "3"
           }
         ]
-      }
+      },
+      "program_abbrev": "CSE"
     },
     {
       "path": "2022 / June-Jul 22 QP / VI Sem / ICT",
@@ -1797,7 +1913,9 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
@@ -1819,7 +1937,8 @@
             "semester": "3"
           }
         ]
-      }
+      },
+      "program_abbrev": "CSE"
     }
   ],
   "ICT2153": [
@@ -1851,7 +1970,9 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
@@ -1873,7 +1994,8 @@
             "semester": "3"
           }
         ]
-      }
+      },
+      "program_abbrev": "CSE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / III Sem / CCE",
@@ -1903,7 +2025,9 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
@@ -1925,7 +2049,8 @@
             "semester": "3"
           }
         ]
-      }
+      },
+      "program_abbrev": "CSE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / III Sem / ICT",
@@ -1955,7 +2080,9 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
@@ -1977,7 +2104,8 @@
             "semester": "3"
           }
         ]
-      }
+      },
+      "program_abbrev": "CSE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / III Sem / CCE",
@@ -2007,7 +2135,9 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
@@ -2029,7 +2159,8 @@
             "semester": "3"
           }
         ]
-      }
+      },
+      "program_abbrev": "CSE"
     }
   ],
   "ICT2271": [
@@ -2059,7 +2190,9 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
@@ -2081,7 +2214,8 @@
             "semester": "4"
           }
         ]
-      }
+      },
+      "program_abbrev": "CSE"
     },
     {
       "path": "2022 / June-Jul 22 QP / IV Sem / ICT",
@@ -2109,7 +2243,9 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
@@ -2131,7 +2267,8 @@
             "semester": "4"
           }
         ]
-      }
+      },
+      "program_abbrev": "CSE"
     },
     {
       "path": "2022 / June-Jul 22 QP / IV Sem / ICT",
@@ -2159,7 +2296,9 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
@@ -2181,7 +2320,8 @@
             "semester": "4"
           }
         ]
-      }
+      },
+      "program_abbrev": "CSE"
     }
   ],
   "ICT3157": [
@@ -2211,7 +2351,9 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
@@ -2233,7 +2375,8 @@
             "semester": "4"
           }
         ]
-      }
+      },
+      "program_abbrev": "CSE"
     }
   ],
   "ICT2257": [
@@ -2263,7 +2406,9 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
@@ -2285,7 +2430,8 @@
             "semester": "4"
           }
         ]
-      }
+      },
+      "program_abbrev": "CSE"
     }
   ],
   "ICT2154": [
@@ -2317,7 +2463,9 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
@@ -2339,7 +2487,8 @@
             "semester": "3"
           }
         ]
-      }
+      },
+      "program_abbrev": "CSE"
     }
   ],
   "ICT2171": [
@@ -2371,7 +2520,9 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
@@ -2393,7 +2544,8 @@
             "semester": "3"
           }
         ]
-      }
+      },
+      "program_abbrev": "CSE"
     }
   ],
   "ICT2155": [
@@ -2425,7 +2577,9 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
@@ -2447,7 +2601,8 @@
             "semester": "3"
           }
         ]
-      }
+      },
+      "program_abbrev": "CSE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / III Sem / CCE",
@@ -2477,7 +2632,9 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
@@ -2499,7 +2656,8 @@
             "semester": "3"
           }
         ]
-      }
+      },
+      "program_abbrev": "CSE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / III Sem / CCE",
@@ -2529,7 +2687,9 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
@@ -2551,7 +2711,8 @@
             "semester": "3"
           }
         ]
-      }
+      },
+      "program_abbrev": "CSE"
     }
   ],
   "ICT2258": [
@@ -2581,7 +2742,9 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
@@ -2603,7 +2766,8 @@
             "semester": "4"
           }
         ]
-      }
+      },
+      "program_abbrev": "CSE"
     },
     {
       "path": "2022 / June-Jul 22 QP / IV Sem / ICT",
@@ -2631,7 +2795,9 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
@@ -2653,7 +2819,8 @@
             "semester": "4"
           }
         ]
-      }
+      },
+      "program_abbrev": "CSE"
     }
   ]
 }
