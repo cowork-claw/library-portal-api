@@ -12,66 +12,79 @@ from functools import lru_cache
 
 class Settings(BaseSettings):
     """Application settings with environment variable support."""
-    
+
     # ==========================================================================
     # DATA PATHS
     # ==========================================================================
-    
+
     # Organized data directory containing all JSON files
-    DATA_DIRECTORY: Path = Path(__file__).parent.parent / "data" / "classified" / "organized"
-    
+    DATA_DIRECTORY: Path = (
+        Path(__file__).parent.parent / "data" / "classified" / "organized"
+    )
+
     # Staging directory for manual review items
     STAGING_DIRECTORY: Path = Path(__file__).parent.parent / "staging"
-    
+
     # Scraper log file
     SCRAPE_LOG_FILE: Path = Path(__file__).parent.parent / "scraper" / "scrape_log.json"
-    
+
     # ==========================================================================
     # API SETTINGS
     # ==========================================================================
-    
+
     APP_TITLE: str = "Library Portal API"
     APP_DESCRIPTION: str = "API for MIT Library Question Papers"
     APP_VERSION: str = "2.0.0"
-    
+
     # API Key for protected endpoints (set via environment variable)
     API_SECRET_KEY: Optional[str] = None
-    
+
     # ==========================================================================
     # PAGINATION
     # ==========================================================================
-    
+
     DEFAULT_PAGE_SIZE: int = 50
     MAX_PAGE_SIZE: int = 500
-    
+
     # ==========================================================================
     # SEARCH
     # ==========================================================================
-    
+
     FUZZY_SEARCH_THRESHOLD: int = 60  # Minimum fuzzy match score
     MAX_SUGGESTIONS: int = 10
-    
+
     # ==========================================================================
     # CORS
     # ==========================================================================
-    
-    CORS_ORIGINS: List[str] = ["*"]  # Configure properly in production
-    
+
+    # Default includes common localhost ports for development
+    # In production, set LIBRARY_PORTAL_CORS_ORIGINS environment variable
+    # to a comma-separated list of specific allowed origins (no wildcards)
+    # Note: Wildcards are incompatible with allow_credentials=True
+    CORS_ORIGINS: List[str] = [
+        "http://localhost:4321",
+        "http://localhost:3000",
+        "http://localhost:5173",
+        "http://127.0.0.1:4321",
+        "http://127.0.0.1:3000",
+        "http://127.0.0.1:5173",
+    ]
+
     # ==========================================================================
     # SCRAPER SETTINGS
     # ==========================================================================
-    
+
     TARGET_YEAR_THRESHOLD: int = 2025
     BLACKLISTED_YEARS: List[int] = list(range(2006, 2025))
-    
+
     # ==========================================================================
     # ENVIRONMENT
     # ==========================================================================
-    
+
     ENVIRONMENT: str = "development"
     DEBUG: bool = True
     LOG_LEVEL: str = "INFO"
-    
+
     class Config:
         env_prefix = "LIBRARY_PORTAL_"
         env_file = ".env"
