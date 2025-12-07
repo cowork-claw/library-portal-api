@@ -28,12 +28,12 @@ class LibraryScraperSpiderMiddleware:
         # Should return None or raise an exception.
         return None
 
-    async def process_spider_output(self, response, result, spider):
+    def process_spider_output(self, response, result, spider):
         # Called with the results returned from the Spider, after
         # it has processed the response.
 
         # Must return an iterable of Request, or item objects.
-        async for i in result:
+        for i in result:
             yield i
 
     def process_spider_exception(self, response, exception, spider):
@@ -43,13 +43,13 @@ class LibraryScraperSpiderMiddleware:
         # Should return either None or an iterable of Request or item objects.
         pass
 
-    async def process_start_requests(self, start_requests, spider):
+    def process_start_requests(self, start_requests, spider):
         # Called with the start requests of the spider, and works
         # similarly to the process_spider_output() method, except
         # that it doesn't have a response associated.
 
         # Must return only requests (not items).
-        async for r in start_requests:
+        for r in start_requests:
             yield r
 
     def spider_opened(self, spider):
