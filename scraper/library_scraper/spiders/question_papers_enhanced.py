@@ -46,7 +46,7 @@ class QuestionPapersEnhancedSpider(scrapy.Spider):
     ]
 
     # V2: Only scrape from threshold year onwards
-    # Years 2006-2024 are blacklisted (already organized)
+    # Years 2006-2023 are blacklisted (already organized)
     TARGET_YEAR_THRESHOLD = TARGET_YEAR_THRESHOLD
 
     def __init__(self, *args, **kwargs):
@@ -80,7 +80,7 @@ class QuestionPapersEnhancedSpider(scrapy.Spider):
                 f"V2 MODE: Loaded {len(self.seen_urls)} existing URLs from organized data"
             )
             self.logger.info(
-                f"Will only scrape years >= {TARGET_YEAR_THRESHOLD} (blacklisted: 2006-2024)"
+                f"Will only scrape years >= {TARGET_YEAR_THRESHOLD} (blacklisted: 2006-2023)"
             )
         else:
             self.logger.info("No existing data found - running initial scrape")

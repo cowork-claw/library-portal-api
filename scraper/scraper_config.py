@@ -14,11 +14,11 @@ from typing import List, Set
 
 # Minimum year to scrape - papers from this year and above will be scraped
 # Change this to 2026 in January 2026, etc.
-TARGET_YEAR_THRESHOLD: int = 2025
+TARGET_YEAR_THRESHOLD: int = 2024
 
 # Years to completely skip (already scraped and organized)
 # These years have been fully processed and stored in data/classified/organized/
-BLACKLISTED_YEARS: Set[int] = set(range(2006, 2025))
+BLACKLISTED_YEARS: Set[int] = set(range(2006, 2024))
 
 # =============================================================================
 # PATH CONFIGURATION
