@@ -59,11 +59,11 @@ jobs:
           print(f'  Papers: {papers}')
           "
       
-      - name: 🕷️ Run Scraper (2025+ only)
+      - name: 🕷️ Run Scraper (2024+ only)
         run: |
           cd scraper
-          echo "🎯 Target year threshold: 2025+"
-          echo "🚫 Blacklisted years: 2006-2024"
+          echo "🎯 Target year threshold: 2024+"
+          echo "🚫 Blacklisted years: 2006-2023"
           scrapy crawl question_papers_enhanced -O scraped_output.json 2>&1 | tail -50
         continue-on-error: true
       
