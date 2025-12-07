@@ -126,7 +126,7 @@ def process_file(json_path: Path, filename_abbrev: Optional[str]) -> Tuple[int, 
     updated = 0
     errors = 0
 
-    for course_code, papers in data.items():
+    for _course_code, papers in data.items():
         if not isinstance(papers, list):
             continue
 
@@ -142,7 +142,7 @@ def process_file(json_path: Path, filename_abbrev: Optional[str]) -> Tuple[int, 
                         paper["curriculum_context"]["valid_for_branches"] = [abbrev]
 
                 updated += 1
-            except Exception as e:
+            except (KeyError, TypeError, ValueError) as e:
                 print(f"Error processing paper in {json_path}: {e}")
                 errors += 1
 

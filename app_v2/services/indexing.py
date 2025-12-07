@@ -177,7 +177,7 @@ class PaperIndex:
 
     def get_by_program_abbrev(self, abbrev: str) -> List[Dict[str, Any]]:
         """Get papers for a specific program abbreviation."""
-        return self._by_program_abbrev.get(abbrev.upper(), [])
+        return self._by_program_abbrev.get(abbrev, [])
 
     def get_by_stream(self, stream: str) -> List[Dict[str, Any]]:
         """Get papers for a specific stream."""
