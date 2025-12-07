@@ -79,8 +79,10 @@ class QuestionPapersEnhancedSpider(scrapy.Spider):
             self.logger.info(
                 f"V2 MODE: Loaded {len(self.seen_urls)} existing URLs from organized data"
             )
+            blacklist_min = min(BLACKLISTED_YEARS) if BLACKLISTED_YEARS else "N/A"
+            blacklist_max = max(BLACKLISTED_YEARS) if BLACKLISTED_YEARS else "N/A"
             self.logger.info(
-                f"Will only scrape years >= {TARGET_YEAR_THRESHOLD} (blacklisted: 2006-2023)"
+                f"Will only scrape years >= {TARGET_YEAR_THRESHOLD} (blacklisted: {blacklist_min}-{blacklist_max})"
             )
         else:
             self.logger.info("No existing data found - running initial scrape")
@@ -138,7 +140,7 @@ class QuestionPapersEnhancedSpider(scrapy.Spider):
 
                 # This is a new PDF
                 self.new_pdf_count += 1
-                self.logger.info(f"Found NEW PDF: {pdf_item['title']}")
+                self.logger.info(f"Found NEW PDF: {pdf_item['file_name']}")
                 yield pdf_item
 
         # Process folders
@@ -169,9 +171,10 @@ class QuestionPapersEnhancedSpider(scrapy.Spider):
                         is_in_target_year = True
                         break
 
-                # Also check TARGET_YEARS if in full scrape mode
+                # In non-incremental mode, check if we should explore this folder
+                # based on the target year threshold
                 if not self.is_incremental:
-                    for year in self.TARGET_YEARS:
+                    for year in range(TARGET_YEAR_THRESHOLD, self.current_year + 5):
                         if str(year) in current_path:
                             is_in_target_year = True
                             break
