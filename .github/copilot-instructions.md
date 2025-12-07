@@ -124,7 +124,8 @@ Use `.env.development` for local development and `.env.production` for productio
 - Always use Pydantic models for request/response validation
 - Include proper error responses with appropriate HTTP status codes
 - Use pagination for list endpoints (default: 50, max: 500)
-- The API exposes `program_abbrev` field in paper responses and metadata endpoints for filtering by program abbreviation
+- Paper responses include `program_abbrev` field for program identification
+- Metadata endpoints expose available program abbreviations
 
 ### Error Handling
 - Return appropriate HTTP status codes (400, 401, 404, 500)
@@ -294,14 +295,14 @@ def derive_abbrev(paper: dict, filename_abbrev: Optional[str]) -> str:
 
 ## API Features
 
-### Program Abbreviation Filtering
-The API includes `program_abbrev` field for program identification and filtering:
-- **Metadata endpoint** (`/api/metadata`): Returns list of available program abbreviations
-- **Statistics endpoint** (`/api/statistics`): Returns paper counts by program abbreviation
+### Program Abbreviation Field
+The API includes `program_abbrev` field in all paper objects for program identification:
+- **Metadata endpoint** (`/api/metadata`): Returns list of all available program abbreviations
+- **Statistics endpoint** (`/api/statistics`): Returns paper counts grouped by program abbreviation
 - **Papers endpoint** (`/api/papers`): Each paper includes `program_abbrev` field in the response
 - **Common abbreviations**: BME, CSE, ECE, EEE, EIE, ME, MXE, CE, CHE, BIO, AERO, AUTO, IT, MPE, M.Tech, M.E, MCA
 
-Note: The `program_abbrev` field is included in all paper responses but is not yet implemented as a direct query parameter. Use the `program` parameter for filtering, which supports partial text matching.
+**Frontend Usage:** Frontends can filter papers by matching the `program_abbrev` field in the response. Direct query parameter filtering by `program_abbrev` is not yet implemented. Use the `program` parameter for server-side filtering (supports partial text matching).
 
 ### Index Service
 The `PaperIndex` service pre-builds indexes for fast lookups:
