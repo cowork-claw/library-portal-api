@@ -11,6 +11,8 @@ jobs:
   ping:
     name: Ping Render API
     runs-on: ubuntu-latest
+    permissions:
+      contents: none
     
     steps:
       - name: 🏓 Ping health endpoint
