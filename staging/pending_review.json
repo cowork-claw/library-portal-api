@@ -1,5 +1,167 @@
 {
-    "created_at": "2025-12-06T22:15:00+05:30",
-    "description": "Papers that need manual review due to low categorization confidence",
-    "papers": []
+  "created_at": "2025-12-06T22:15:00+05:30",
+  "description": "Papers that need manual review due to low categorization confidence",
+  "papers": [
+    {
+      "paper": {
+        "file_name": "CAD for VLSI (Elective-1) (VLS 5131).pdf",
+        "path": "2025 / Dec 24-Jan 2025 / SOIS / VLSI",
+        "scraped_at": "2025-12-07T14:15:40.326576",
+        "url": "https://libportal.manipal.edu/RootFolder/2025/Dec%2024-Jan%202025/SOIS/VLSI/CAD%20for%20VLSI%20%28Elective-1%29%20%28VLS%205131%29.pdf",
+        "year": "2025",
+        "subject": "CAD for VLSI"
+      },
+      "categorization": {
+        "confidence": 0.1,
+        "reasoning": [
+          "Could not extract prefix from course code"
+        ],
+        "suggested_target": null
+      },
+      "staged_at": "2025-12-07T14:15:41.515665",
+      "reviewed": false,
+      "review_notes": null,
+      "final_target": null,
+      "extractable_info": {
+        "course_code": null,
+        "course_name": null,
+        "year": "2025",
+        "semester": null,
+        "program": null,
+        "degree_type": null,
+        "file_name": "CAD for VLSI (Elective-1) (VLS 5131).pdf",
+        "url": "https://libportal.manipal.edu/RootFolder/2025/Dec%2024-Jan%202025/SOIS/VLSI/CAD%20for%20VLSI%20%28Elective-1%29%20%28VLS%205131%29.pdf",
+        "path": "2025 / Dec 24-Jan 2025 / SOIS / VLSI"
+      }
+    },
+    {
+      "paper": {
+        "file_name": "Digital Systems and VLSI Design (VLS 5102).pdf",
+        "path": "2025 / Dec 24-Jan 2025 / SOIS / VLSI",
+        "scraped_at": "2025-12-07T14:15:40.327848",
+        "url": "https://libportal.manipal.edu/RootFolder/2025/Dec%2024-Jan%202025/SOIS/VLSI/Digital%20Systems%20and%20VLSI%20Design%20%28VLS%205102%29.pdf",
+        "year": "2025",
+        "subject": "Digital Systems and VLSI Design"
+      },
+      "categorization": {
+        "confidence": 0.1,
+        "reasoning": [
+          "Could not extract prefix from course code"
+        ],
+        "suggested_target": null
+      },
+      "staged_at": "2025-12-07T14:15:41.515991",
+      "reviewed": false,
+      "review_notes": null,
+      "final_target": null,
+      "extractable_info": {
+        "course_code": null,
+        "course_name": null,
+        "year": "2025",
+        "semester": null,
+        "program": null,
+        "degree_type": null,
+        "file_name": "Digital Systems and VLSI Design (VLS 5102).pdf",
+        "url": "https://libportal.manipal.edu/RootFolder/2025/Dec%2024-Jan%202025/SOIS/VLSI/Digital%20Systems%20and%20VLSI%20Design%20%28VLS%205102%29.pdf",
+        "path": "2025 / Dec 24-Jan 2025 / SOIS / VLSI"
+      }
+    },
+    {
+      "paper": {
+        "file_name": "High Level Digital Design (VLS 5001).pdf",
+        "path": "2025 / Dec 24-Jan 2025 / SOIS / VLSI",
+        "scraped_at": "2025-12-07T14:15:40.328463",
+        "url": "https://libportal.manipal.edu/RootFolder/2025/Dec%2024-Jan%202025/SOIS/VLSI/High%20Level%20Digital%20Design%20%28VLS%205001%29.pdf",
+        "year": "2025",
+        "subject": "High Level Digital Design"
+      },
+      "categorization": {
+        "confidence": 0.1,
+        "reasoning": [
+          "Could not extract prefix from course code"
+        ],
+        "suggested_target": null
+      },
+      "staged_at": "2025-12-07T14:15:41.516385",
+      "reviewed": false,
+      "review_notes": null,
+      "final_target": null,
+      "extractable_info": {
+        "course_code": null,
+        "course_name": null,
+        "year": "2025",
+        "semester": null,
+        "program": null,
+        "degree_type": null,
+        "file_name": "High Level Digital Design (VLS 5001).pdf",
+        "url": "https://libportal.manipal.edu/RootFolder/2025/Dec%2024-Jan%202025/SOIS/VLSI/High%20Level%20Digital%20Design%20%28VLS%205001%29.pdf",
+        "path": "2025 / Dec 24-Jan 2025 / SOIS / VLSI"
+      }
+    },
+    {
+      "paper": {
+        "file_name": "System on Chip Design (VLS 5132).pdf",
+        "path": "2025 / Dec 24-Jan 2025 / SOIS / VLSI",
+        "scraped_at": "2025-12-07T14:15:40.329060",
+        "url": "https://libportal.manipal.edu/RootFolder/2025/Dec%2024-Jan%202025/SOIS/VLSI/System%20on%20Chip%20Design%20%28VLS%205132%29.pdf",
+        "year": "2025",
+        "subject": "System on Chip Design"
+      },
+      "categorization": {
+        "confidence": 0.1,
+        "reasoning": [
+          "Could not extract prefix from course code"
+        ],
+        "suggested_target": null
+      },
+      "staged_at": "2025-12-07T14:15:41.516915",
+      "reviewed": false,
+      "review_notes": null,
+      "final_target": null,
+      "extractable_info": {
+        "course_code": null,
+        "course_name": null,
+        "year": "2025",
+        "semester": null,
+        "program": null,
+        "degree_type": null,
+        "file_name": "System on Chip Design (VLS 5132).pdf",
+        "url": "https://libportal.manipal.edu/RootFolder/2025/Dec%2024-Jan%202025/SOIS/VLSI/System%20on%20Chip%20Design%20%28VLS%205132%29.pdf",
+        "path": "2025 / Dec 24-Jan 2025 / SOIS / VLSI"
+      }
+    },
+    {
+      "paper": {
+        "file_name": "Verification (VLS 5103).pdf",
+        "path": "2025 / Dec 24-Jan 2025 / SOIS / VLSI",
+        "scraped_at": "2025-12-07T14:15:40.329651",
+        "url": "https://libportal.manipal.edu/RootFolder/2025/Dec%2024-Jan%202025/SOIS/VLSI/Verification%20%28VLS%205103%29.pdf",
+        "year": "2025",
+        "subject": "Verification"
+      },
+      "categorization": {
+        "confidence": 0.1,
+        "reasoning": [
+          "Could not extract prefix from course code"
+        ],
+        "suggested_target": null
+      },
+      "staged_at": "2025-12-07T14:15:41.517309",
+      "reviewed": false,
+      "review_notes": null,
+      "final_target": null,
+      "extractable_info": {
+        "course_code": null,
+        "course_name": null,
+        "year": "2025",
+        "semester": null,
+        "program": null,
+        "degree_type": null,
+        "file_name": "Verification (VLS 5103).pdf",
+        "url": "https://libportal.manipal.edu/RootFolder/2025/Dec%2024-Jan%202025/SOIS/VLSI/Verification%20%28VLS%205103%29.pdf",
+        "path": "2025 / Dec 24-Jan 2025 / SOIS / VLSI"
+      }
+    }
+  ],
+  "last_updated": "2025-12-07T14:15:41.517344"
 }
