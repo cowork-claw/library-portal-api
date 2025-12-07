@@ -1,0 +1,29 @@
+name: Keep Render API Alive
+
+on:
+  schedule:
+    # Ping every 14 minutes to prevent Render free tier from sleeping
+    - cron: '*/14 * * * *'
+  
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  ping:
+    name: Ping Render API
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 🏓 Ping health endpoint
+        run: |
+          echo "Pinging Render API to keep it alive..."
+          response=$(curl -s -o /dev/null -w "%{http_code}" https://library-portal-api.onrender.com/health)
+          
+          if [ "$response" -eq 200 ]; then
+            echo "✅ API is healthy (HTTP $response)"
+          else
+            echo "⚠️ API returned HTTP $response"
+            exit 1
+          fi
+      
+      - name: 📊 Log timestamp
+        run: echo "Pinged at $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
