@@ -28,12 +28,15 @@
         "valid_for_batches": [
           2025
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "PHY"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "PHY"
     }
   ]
 }

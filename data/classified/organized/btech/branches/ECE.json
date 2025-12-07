@@ -28,12 +28,15 @@
         "valid_for_batches": [
           2025
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2025 / Dec 24-Jan 2025 / B.Tech / I Sem",
@@ -63,12 +66,15 @@
         "valid_for_batches": [
           2025
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2024 / May-June 2024 / B.Tech / II Sem",
@@ -98,12 +104,15 @@
         "valid_for_batches": [
           2024
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2024 / Dec 2023-Jan 2024 / B.Tech / I Sem",
@@ -133,12 +142,15 @@
         "valid_for_batches": [
           2024
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2023 / Dec 2022 - Jan 2023 / B.Tech / I Sem",
@@ -168,12 +180,15 @@
         "valid_for_batches": [
           2023
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2023 / Dec 2022 - Jan 2023 / B.Tech / I Sem",
@@ -203,12 +218,15 @@
         "valid_for_batches": [
           2023
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2023 / May - Jun 2023 / B.Tech / II Sem",
@@ -238,12 +256,15 @@
         "valid_for_batches": [
           2023
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     }
   ],
   "ECE1072": [
@@ -275,12 +296,15 @@
         "valid_for_batches": [
           2025
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2025 / Dec 24-Jan 2025 / B.Tech / I Sem",
@@ -310,12 +334,15 @@
         "valid_for_batches": [
           2025
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     }
   ],
   "ECE2151": [
@@ -347,12 +374,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / III Sem / Electrical and Communication",
@@ -382,12 +412,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / III Sem / Electrical and Communication",
@@ -417,12 +450,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     }
   ],
   "ECE3151": [
@@ -459,7 +495,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
@@ -494,7 +531,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
@@ -529,7 +567,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
@@ -564,7 +603,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
@@ -599,7 +639,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "ECE"
     }
   ],
   "ECE4061": [
@@ -629,12 +670,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
@@ -662,12 +706,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
@@ -695,12 +742,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     }
   ],
   "ECE10510": [
@@ -732,12 +782,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 2021-Jan 2022 / B.Tech / I Sem",
@@ -767,12 +820,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     }
   ],
   "ECE1051": [
@@ -804,12 +860,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 2021-Jan 2022 / B.Tech / I Sem",
@@ -839,12 +898,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / I Sem",
@@ -874,12 +936,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 2021-Jan 2022 / B.Tech / I Sem",
@@ -909,12 +974,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     }
   ],
   "ECE4069": [
@@ -946,12 +1014,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
@@ -981,12 +1052,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
@@ -1016,12 +1090,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
@@ -1051,12 +1128,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
@@ -1086,12 +1166,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     }
   ],
   "ECE4308": [
@@ -1121,12 +1204,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
@@ -1154,12 +1240,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     }
   ],
   "ECE2152": [
@@ -1191,12 +1280,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / III Sem / Electrical and Communication",
@@ -1226,12 +1318,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / III Sem / Electrical and Communication",
@@ -1261,12 +1356,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     }
   ],
   "ECE4070": [
@@ -1298,12 +1396,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
@@ -1333,12 +1434,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
@@ -1368,12 +1472,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
@@ -1403,12 +1510,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
@@ -1438,12 +1548,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     }
   ],
   "ECE4062": [
@@ -1475,12 +1588,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
@@ -1510,12 +1626,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     }
   ],
   "ECE2153": [
@@ -1547,12 +1666,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / III Sem / Electrical and Communication",
@@ -1582,12 +1704,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / III Sem / Electrical and Communication",
@@ -1617,12 +1742,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / III Sem / Electrical and Communication",
@@ -1652,12 +1780,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     }
   ],
   "ECE4303": [
@@ -1687,12 +1818,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
@@ -1720,12 +1854,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
@@ -1753,12 +1890,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
@@ -1786,12 +1926,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     }
   ],
   "ECE4072": [
@@ -1821,12 +1964,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
@@ -1854,12 +2000,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
@@ -1887,12 +2036,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     }
   ],
   "ECE4073": [
@@ -1924,12 +2076,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
@@ -1959,12 +2114,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
@@ -1994,12 +2152,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
@@ -2029,12 +2190,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
@@ -2064,12 +2228,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     }
   ],
   "ECE4075": [
@@ -2101,12 +2268,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
@@ -2136,12 +2306,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
@@ -2171,12 +2344,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
@@ -2206,12 +2382,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     }
   ],
   "ECE4054": [
@@ -2243,12 +2422,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
@@ -2278,12 +2460,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     }
   ],
   "ECE4304": [
@@ -2320,7 +2505,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
@@ -2355,7 +2541,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
@@ -2390,7 +2577,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
@@ -2425,7 +2613,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "ECE"
     }
   ],
   "ECE3152": [
@@ -2462,7 +2651,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
@@ -2497,7 +2687,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
@@ -2532,7 +2723,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
@@ -2567,7 +2759,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
@@ -2602,7 +2795,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
@@ -2637,7 +2831,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "ECE"
     }
   ],
   "ECE4052": [
@@ -2669,12 +2864,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
@@ -2704,12 +2902,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
@@ -2739,12 +2940,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
@@ -2774,12 +2978,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     }
   ],
   "ECE3153": [
@@ -2816,7 +3023,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
@@ -2851,7 +3059,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
@@ -2886,7 +3095,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
@@ -2914,12 +3124,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
@@ -2947,12 +3160,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     }
   ],
   "ECE3154": [
@@ -2989,7 +3205,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
@@ -3024,7 +3241,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
@@ -3059,7 +3277,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
@@ -3094,7 +3313,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Communication",
@@ -3129,7 +3349,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "ECE"
     }
   ],
   "ECE4078": [
@@ -3161,12 +3382,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
@@ -3196,12 +3420,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
@@ -3231,12 +3458,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     }
   ],
   "ECE4079": [
@@ -3268,12 +3498,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
@@ -3303,12 +3536,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
@@ -3338,12 +3574,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
@@ -3373,12 +3612,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     }
   ],
   "ECE2154": [
@@ -3410,12 +3652,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / III Sem / Electrical and Communication",
@@ -3445,12 +3690,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / III Sem / Electrical and Communication",
@@ -3480,12 +3728,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / III Sem / Electrical and Communication",
@@ -3515,12 +3766,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     }
   ],
   "ECE4080": [
@@ -3552,12 +3806,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
@@ -3587,12 +3844,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     }
   ],
   "ECE4081": [
@@ -3622,12 +3882,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
@@ -3655,12 +3918,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     }
   ],
   "ECE4084": [
@@ -3692,12 +3958,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
@@ -3727,12 +3996,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
@@ -3762,12 +4034,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Communication",
@@ -3797,12 +4072,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     }
   ],
   "ECE2155": [
@@ -3834,12 +4112,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / III Sem / Electrical and Communication",
@@ -3869,12 +4150,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / III Sem / Electrical and Communication",
@@ -3904,12 +4188,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "ECE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "ECE"
     }
   ]
 }

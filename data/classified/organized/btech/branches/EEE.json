@@ -28,12 +28,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EEE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EEE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / III Sem / Electrical and Electronics",
@@ -63,12 +66,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EEE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EEE"
     }
   ],
   "ELE3151": [
@@ -104,7 +110,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "EEE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Electronics",
@@ -138,7 +145,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "EEE"
     }
   ],
   "ELE4077": [
@@ -170,12 +178,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EEE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EEE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Electronics",
@@ -205,12 +216,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EEE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EEE"
     }
   ],
   "ELE4078": [
@@ -242,12 +256,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EEE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EEE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Electronics",
@@ -277,12 +294,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EEE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EEE"
     }
   ],
   "ELE3152": [
@@ -318,7 +338,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "EEE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Electronics",
@@ -352,7 +373,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "EEE"
     }
   ],
   "ELE2152": [
@@ -384,12 +406,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EEE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EEE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / III Sem / Electrical and Electronics",
@@ -419,12 +444,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EEE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EEE"
     }
   ],
   "ELE2153": [
@@ -456,12 +484,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EEE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EEE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / III Sem / Electrical and Electronics",
@@ -491,12 +522,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EEE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EEE"
     }
   ],
   "ELE2154": [
@@ -528,12 +562,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EEE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EEE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / III Sem / Electrical and Electronics",
@@ -563,12 +600,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EEE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EEE"
     }
   ],
   "ELE2155": [
@@ -600,12 +640,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EEE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EEE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / III Sem / Electrical and Electronics",
@@ -635,12 +678,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EEE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EEE"
     }
   ],
   "ELE4083": [
@@ -672,12 +718,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EEE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EEE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Electronics",
@@ -707,12 +756,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EEE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EEE"
     }
   ],
   "ELE4302": [
@@ -748,7 +800,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "EEE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Electronics",
@@ -782,7 +835,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "EEE"
     }
   ],
   "ELE4084": [
@@ -814,12 +868,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EEE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EEE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Electronics",
@@ -849,12 +906,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EEE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EEE"
     }
   ],
   "ELE3153": [
@@ -890,7 +950,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "EEE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Electronics",
@@ -924,7 +985,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "EEE"
     }
   ],
   "ELE4085": [
@@ -956,12 +1018,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EEE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EEE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Electronics",
@@ -991,12 +1056,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EEE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EEE"
     }
   ],
   "ELE3154": [
@@ -1032,7 +1100,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "EEE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Electronics",
@@ -1066,7 +1135,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "EEE"
     }
   ],
   "ELE4064": [
@@ -1098,12 +1168,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EEE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EEE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Electronics",
@@ -1133,12 +1206,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EEE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EEE"
     }
   ],
   "ELE4086": [
@@ -1170,12 +1246,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EEE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EEE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Electronics",
@@ -1205,12 +1284,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EEE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EEE"
     }
   ],
   "ELE4306": [
@@ -1242,12 +1324,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EEE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EEE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Electronics",
@@ -1277,12 +1362,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EEE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EEE"
     }
   ],
   "ELE4062": [
@@ -1314,12 +1402,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EEE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EEE"
     }
   ],
   "ELE4304": [
@@ -1355,7 +1446,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "EEE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / Electrical and Electronics",
@@ -1389,7 +1481,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "EEE"
     }
   ],
   "ELE4088": [
@@ -1421,12 +1514,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EEE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EEE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Electrical and Electronics",
@@ -1456,12 +1552,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "EEE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "EEE"
     }
   ]
 }

@@ -51,7 +51,8 @@
             "semester": "4"
           }
         ]
-      }
+      },
+      "program_abbrev": "CSE"
     }
   ],
   "CSE3153": [
@@ -106,7 +107,8 @@
             "semester": "4"
           }
         ]
-      }
+      },
+      "program_abbrev": "CSE"
     }
   ],
   "CSE1051": [
@@ -138,7 +140,9 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
@@ -160,7 +164,8 @@
             "track": "core"
           }
         ]
-      }
+      },
+      "program_abbrev": "CSE"
     },
     {
       "path": "2022 / June-Jul 22 QP / II Sem",
@@ -190,7 +195,9 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CSE"
+        ]
       },
       "streams": [
         "core",
@@ -212,7 +219,8 @@
             "track": "core"
           }
         ]
-      }
+      },
+      "program_abbrev": "CSE"
     }
   ]
 }

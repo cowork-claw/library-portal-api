@@ -9,13 +9,14 @@ from pathlib import Path
 
 # Import V2 configuration
 import sys
+
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 from scraper_config import (
     TARGET_YEAR_THRESHOLD,
     BLACKLISTED_YEARS,
     DATA_DIRECTORY,
     SCRAPE_LOG_FILE,
-    should_scrape_year as config_should_scrape_year
+    should_scrape_year as config_should_scrape_year,
 )
 from scrape_log import ScrapeLog, load_existing_urls_from_organized_data
 
@@ -67,12 +68,12 @@ class QuestionPapersEnhancedSpider(scrapy.Spider):
         """Load existing URLs from organized data folder and scrape log."""
         # V2: Load from organized data folder
         self.seen_urls = load_existing_urls_from_organized_data(DATA_DIRECTORY)
-        
+
         # Also load from scrape log (URLs we've seen but may not be categorized yet)
         self.scrape_log = ScrapeLog(SCRAPE_LOG_FILE)
         scrape_log_urls = self.scrape_log.get_scraped_urls()
         self.seen_urls.update(scrape_log_urls)
-        
+
         if self.seen_urls:
             self.is_incremental = True
             self.logger.info(
@@ -513,14 +514,14 @@ class QuestionPapersEnhancedSpider(scrapy.Spider):
         self.logger.info(f"New PDFs scraped: {self.new_pdf_count}")
         self.logger.info(f"Existing PDFs skipped: {self.skipped_pdf_count}")
         self.logger.info(f"Total unique folders visited: {self.folder_count}")
-        
+
         # V2: Record this run in the scrape log
-        if hasattr(self, 'scrape_log'):
+        if hasattr(self, "scrape_log"):
             self.scrape_log.record_run(
                 new_papers=self.new_pdf_count,
                 skipped=self.skipped_pdf_count,
                 errors=0,
                 year_threshold=TARGET_YEAR_THRESHOLD,
-                notes=f"Reason: {reason}"
+                notes=f"Reason: {reason}",
             )
             self.logger.info("Run recorded in scrape log")

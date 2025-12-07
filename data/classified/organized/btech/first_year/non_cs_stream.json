@@ -46,7 +46,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "MnC"
     },
     {
       "path": "2025 / Dec 24-Jan 2025 / B.Tech / I Sem",
@@ -94,7 +95,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "MnC"
     }
   ],
   "MAT1171": [
@@ -148,7 +150,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "MnC"
     },
     {
       "path": "2025 / Dec 24-Jan 2025 / B.Tech / I Sem",
@@ -200,7 +203,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "MnC"
     },
     {
       "path": "2024 / Dec 2023-Jan 2024 / B.Tech / I Sem",
@@ -228,12 +232,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MnC"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MnC"
     },
     {
       "path": "2024 / Dec 2023-Jan 2024 / B.Tech / I Sem",
@@ -261,12 +268,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MnC"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MnC"
     },
     {
       "path": "2024 / Dec 2023-Jan 2024 / B.Tech / I Sem",
@@ -319,7 +329,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "MnC"
     },
     {
       "path": "2024 / Dec 2023-Jan 2024 / B.Tech / I Sem",
@@ -372,7 +383,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "MnC"
     },
     {
       "path": "2023 / Dec 2022 - Jan 2023 / B.Tech / I Sem",
@@ -408,12 +420,15 @@
           2028,
           2029
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MnC"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MnC"
     },
     {
       "path": "2023 / Dec 2022 - Jan 2023 / B.Tech / I Sem",
@@ -449,12 +464,15 @@
           2028,
           2029
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MnC"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MnC"
     }
   ],
   "PHY1071": [
@@ -508,7 +526,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "PHY"
     },
     {
       "path": "2024 / Dec 2023-Jan 2024 / B.Tech / I Sem",
@@ -561,7 +580,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "PHY"
     },
     {
       "path": "2024 / Dec 2023-Jan 2024 / B.Tech / I Sem",
@@ -614,7 +634,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "PHY"
     },
     {
       "path": "2023 / May - Jun 2023 / B.Tech / II Sem",
@@ -650,12 +671,15 @@
           2028,
           2029
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "PHY"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "PHY"
     },
     {
       "path": "2023 / May - Jun 2023 / B.Tech / II Sem",
@@ -691,12 +715,15 @@
           2028,
           2029
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "PHY"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "PHY"
     }
   ],
   "HUM1071": [
@@ -751,7 +778,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "HUM"
     },
     {
       "path": "2024 / May-June 2024 / B.Tech / II Sem",
@@ -804,7 +832,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "HUM"
     }
   ],
   "CHM1071": [
@@ -859,7 +888,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "CHM"
     },
     {
       "path": "2024 / Dec 2023-Jan 2024 / B.Tech / I Sem",
@@ -912,7 +942,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "CHM"
     },
     {
       "path": "2023 / May - Jun 2023 / B.Tech / II Sem",
@@ -948,12 +979,15 @@
           2028,
           2029
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CHM"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CHM"
     },
     {
       "path": "2023 / Dec 2022 - Jan 2023 / B.Tech / I Sem",
@@ -981,12 +1015,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CHM"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CHM"
     },
     {
       "path": "2023 / Dec 2022 - Jan 2023 / B.Tech / I Sem",
@@ -1014,12 +1051,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CHM"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CHM"
     }
   ],
   "MAT1271": [
@@ -1069,7 +1109,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "MnC"
     },
     {
       "path": "2024 / May-June 2024 / B.Tech / II Sem",
@@ -1117,7 +1158,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "MnC"
     },
     {
       "path": "2024 / May-June 2024 / B.Tech / II Sem",
@@ -1165,7 +1207,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "MnC"
     },
     {
       "path": "2024 / May-June 2024 / B.Tech / II Sem",
@@ -1213,7 +1256,8 @@
       },
       "streams": [
         "core"
-      ]
+      ],
+      "program_abbrev": "MnC"
     }
   ],
   "HUM1053": [
@@ -1245,12 +1289,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "HUM"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "HUM"
     },
     {
       "path": "2022 / Jun-Jul 2022 / B.Tech / II Sem",
@@ -1280,12 +1327,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "HUM"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "HUM"
     },
     {
       "path": "2022 / June-Jul 22 QP / II Sem",
@@ -1315,12 +1365,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "HUM"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "HUM"
     },
     {
       "path": "2022 / Jun-Jul 2022 / B.Tech / II Sem",
@@ -1350,12 +1403,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "HUM"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "HUM"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / I Sem",
@@ -1385,12 +1441,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "HUM"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "HUM"
     },
     {
       "path": "2022 / Dec 2021-Jan 2022 / B.Tech / I Sem",
@@ -1420,12 +1479,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "HUM"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "HUM"
     }
   ],
   "CHM1051": [
@@ -1457,12 +1519,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CHM"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CHM"
     },
     {
       "path": "2022 / Dec 2021-Jan 2022 / B.Tech / I Sem",
@@ -1492,12 +1557,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CHM"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CHM"
     },
     {
       "path": "2022 / June-Jul 22 QP / II Sem",
@@ -1527,12 +1595,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CHM"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CHM"
     },
     {
       "path": "2022 / Jun-Jul 2022 / B.Tech / II Sem",
@@ -1562,12 +1633,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CHM"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CHM"
     }
   ],
   "MAT1251": [
@@ -1599,12 +1673,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MnC"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MnC"
     },
     {
       "path": "2022 / Jun-Jul 2022 / B.Tech / II Sem",
@@ -1634,12 +1711,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MnC"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MnC"
     },
     {
       "path": "2022 / June-Jul 22 QP / II Sem",
@@ -1669,12 +1749,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MnC"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MnC"
     },
     {
       "path": "2022 / Jun-Jul 2022 / B.Tech / II Sem",
@@ -1704,12 +1787,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "MnC"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "MnC"
     }
   ],
   "PHY1051": [
@@ -1741,12 +1827,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "PHY"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "PHY"
     },
     {
       "path": "2022 / Jun-Jul 2022 / B.Tech / II Sem",
@@ -1776,12 +1865,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "PHY"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "PHY"
     },
     {
       "path": "2022 / June-Jul 22 QP / II Sem",
@@ -1811,12 +1903,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "PHY"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "PHY"
     },
     {
       "path": "2022 / Jun-Jul 2022 / B.Tech / II Sem",
@@ -1846,12 +1941,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "PHY"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "PHY"
     }
   ]
 }

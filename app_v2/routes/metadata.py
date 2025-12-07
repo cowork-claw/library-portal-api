@@ -16,19 +16,24 @@ router = APIRouter(prefix="/api", tags=["Metadata"])
 async def get_metadata():
     """
     Get available filter values.
-    
+
     Returns all unique values for each filter field, useful for building
     filter dropdowns in the frontend.
+
+    The `program_abbrevs` field contains short abbreviations (e.g., "BME", "CSE")
+    that can be used for filtering papers by program. These are more concise than
+    the full program names in the `programs` field.
     """
     return MetadataResponse(
         years=paper_index.unique_years,
         programs=paper_index.unique_programs,
+        program_abbrevs=paper_index.unique_program_abbrevs,
         semesters=paper_index.unique_semesters,
         paper_types=paper_index.unique_paper_types,
         degree_types=paper_index.unique_degree_types,
         course_codes=paper_index.unique_course_codes[:100],  # Limit to 100
         streams=paper_index.unique_streams,
-        total_papers=paper_index.total_papers
+        total_papers=paper_index.total_papers,
     )
 
 
@@ -36,14 +41,18 @@ async def get_metadata():
 async def get_statistics():
     """
     Get detailed statistics about the paper collection.
-    
+
     Includes counts by year, program, semester, and overall totals.
+
+    The `papers_by_program_abbrev` field provides paper counts grouped by
+    program abbreviation (e.g., "BME": 26, "CSE": 70) for statistical analysis.
     """
     return StatisticsResponse(
         total_papers=paper_index.total_papers,
         papers_by_year=paper_index.count_by_year,
         papers_by_program=paper_index.count_by_program,
+        papers_by_program_abbrev=paper_index.count_by_program_abbrev,
         papers_by_semester=paper_index.count_by_semester,
         courses_count=len(paper_index.unique_course_codes),
-        files_loaded=paper_index.files_loaded
+        files_loaded=paper_index.files_loaded,
     )

@@ -75,6 +75,7 @@ CS_STREAM_BRANCHES: Set[str] = {"CSE", "IT", "CCE", "AIML", "DSE", "MnC"}
 # HELPER FUNCTIONS
 # =============================================================================
 
+
 def should_scrape_year(year: int) -> bool:
     """Check if a year should be scraped based on threshold and blacklist."""
     if year in BLACKLISTED_YEARS:

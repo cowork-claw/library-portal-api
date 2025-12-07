@@ -28,12 +28,15 @@
         "valid_for_batches": [
           2025
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CE"
     }
   ],
   "CIE1072": [
@@ -69,12 +72,15 @@
           2028,
           2029
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CE"
     },
     {
       "path": "2024 / May-June 2024 / B.Tech / II Sem",
@@ -109,12 +115,15 @@
           2028,
           2029
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CE"
     },
     {
       "path": "2024 / May-June 2024 / B.Tech / II Sem",
@@ -149,12 +158,15 @@
           2028,
           2029
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CE"
     },
     {
       "path": "2024 / Dec 2023-Jan 2024 / B.Tech / I Sem",
@@ -189,12 +201,15 @@
           2028,
           2029
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CE"
     },
     {
       "path": "2023 / May - Jun 2023 / B.Tech / II Sem",
@@ -230,12 +245,15 @@
           2028,
           2029
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CE"
     }
   ],
   "CIE1071": [
@@ -267,12 +285,15 @@
         "valid_for_batches": [
           2025
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CE"
     },
     {
       "path": "2024 / May-June 2024 / B.Tech / II Sem",
@@ -302,12 +323,15 @@
         "valid_for_batches": [
           2024
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CE"
     },
     {
       "path": "2024 / Dec 2023-Jan 2024 / B.Tech / I Sem",
@@ -337,12 +361,15 @@
         "valid_for_batches": [
           2024
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CE"
     },
     {
       "path": "2024 / May-June 2024 / B.Tech / II Sem",
@@ -372,12 +399,15 @@
         "valid_for_batches": [
           2024
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CE"
     },
     {
       "path": "2023 / May - Jun 2023 / B.Tech / I Sem",
@@ -407,12 +437,15 @@
         "valid_for_batches": [
           2023
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CE"
     },
     {
       "path": "2023 / May - Jun 2023 / B.Tech / I Sem",
@@ -442,12 +475,15 @@
         "valid_for_batches": [
           2023
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CE"
     }
   ]
 }

@@ -26,12 +26,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "AERO"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "AERO"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / III Sem / Aeronuatical",
@@ -61,12 +64,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "AERO"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "AERO"
     }
   ],
   "AAE3155": [
@@ -96,12 +102,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "AERO"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "AERO"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / Aeronuatical",
@@ -129,12 +138,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "AERO"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "AERO"
     }
   ],
   "AAE2255": [
@@ -164,12 +176,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "AERO"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "AERO"
     },
     {
       "path": "2022 / June-Jul 22 QP / IV Sem / Aeronautical Engineering",
@@ -197,12 +212,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "AERO"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "AERO"
     }
   ],
   "AAE4040": [
@@ -234,12 +252,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "AERO"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "AERO"
     },
     {
       "path": "2022 / June-Jul 22 QP / VI Sem / Automobile",
@@ -269,12 +290,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "AERO"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "AERO"
     }
   ],
   "AAE2172": [
@@ -306,12 +330,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "AERO"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "AERO"
     }
   ],
   "AAE2271": [
@@ -341,12 +368,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "AERO"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "AERO"
     },
     {
       "path": "2022 / June-Jul 22 QP / IV Sem / Automobile",
@@ -374,12 +404,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "AERO"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "AERO"
     }
   ],
   "AAE3171": [
@@ -409,12 +442,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "AERO"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "AERO"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / Automobile",
@@ -442,12 +478,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "AERO"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "AERO"
     }
   ],
   "AAE4050": [
@@ -479,12 +518,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "AERO"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "AERO"
     }
   ],
   "AAE4075": [
@@ -516,12 +558,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "AERO"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "AERO"
     }
   ],
   "AAE2156": [
@@ -553,12 +598,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "AERO"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "AERO"
     }
   ],
   "AAE2159": [
@@ -590,12 +638,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "AERO"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "AERO"
     }
   ],
   "AAE3158": [
@@ -625,12 +676,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "AERO"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "AERO"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / V Sem / Aeronuatical",
@@ -658,12 +712,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "AERO"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "AERO"
     }
   ],
   "AAE2157": [
@@ -695,12 +752,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "AERO"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "AERO"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / III Sem / Aeronuatical",
@@ -728,12 +788,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "AERO"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "AERO"
     }
   ],
   "AAE4067": [
@@ -765,12 +828,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "AERO"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "AERO"
     }
   ],
   "AAE2158": [
@@ -800,12 +866,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "AERO"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "AERO"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / III Sem / Aeronuatical",
@@ -835,12 +904,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "AERO"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "AERO"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / III Sem / Automobile",
@@ -870,12 +942,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "AERO"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "AERO"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / III Sem / Automobile",
@@ -905,12 +980,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "AERO"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "AERO"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / III Sem / Aeronuatical",
@@ -940,12 +1018,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "AERO"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "AERO"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / III Sem / Aeronuatical",
@@ -973,12 +1054,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "AERO"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "AERO"
     }
   ],
   "AAE4034": [
@@ -1010,12 +1094,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "AERO"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "AERO"
     }
   ],
   "AAE4038": [
@@ -1047,12 +1134,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "AERO"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "AERO"
     }
   ]
 }

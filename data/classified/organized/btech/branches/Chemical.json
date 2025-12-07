@@ -28,12 +28,15 @@
         "valid_for_batches": [
           2024
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CHE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CHE"
     }
   ],
   "CHE5115": [
@@ -65,12 +68,15 @@
         "valid_for_batches": [
           2024
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CHE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CHE"
     }
   ],
   "CHE5116": [
@@ -102,12 +108,15 @@
         "valid_for_batches": [
           2024
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CHE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CHE"
     }
   ],
   "CHE5113": [
@@ -139,12 +148,15 @@
         "valid_for_batches": [
           2024
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CHE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CHE"
     }
   ],
   "CHE5117": [
@@ -176,12 +188,15 @@
         "valid_for_batches": [
           2024
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CHE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CHE"
     }
   ],
   "CHE2151": [
@@ -213,12 +228,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CHE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CHE"
     }
   ],
   "CHE2152": [
@@ -250,12 +268,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CHE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CHE"
     }
   ],
   "CHE3151": [
@@ -285,12 +306,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CHE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CHE"
     }
   ],
   "CHE4061": [
@@ -322,12 +346,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CHE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CHE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Chemical",
@@ -357,12 +384,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CHE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CHE"
     }
   ],
   "CHE4056": [
@@ -394,12 +424,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CHE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CHE"
     }
   ],
   "CHE4063": [
@@ -431,12 +464,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CHE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CHE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Chemical",
@@ -466,12 +502,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CHE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CHE"
     }
   ],
   "CHE4301": [
@@ -501,12 +540,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CHE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CHE"
     }
   ],
   "CHE4057": [
@@ -538,12 +580,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CHE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CHE"
     }
   ],
   "CHE4064": [
@@ -575,12 +620,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CHE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CHE"
     }
   ],
   "CHE4304": [
@@ -612,12 +660,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CHE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CHE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Chemical",
@@ -647,12 +698,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CHE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CHE"
     }
   ],
   "CHE4073": [
@@ -684,12 +738,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CHE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CHE"
     }
   ],
   "CHE3152": [
@@ -719,12 +776,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CHE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CHE"
     }
   ],
   "CHE2153": [
@@ -756,12 +816,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CHE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CHE"
     }
   ],
   "CHE4051": [
@@ -793,12 +856,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CHE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CHE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Chemical",
@@ -828,12 +894,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CHE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CHE"
     }
   ],
   "CHE4067": [
@@ -865,12 +934,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CHE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CHE"
     },
     {
       "path": "2022 / Dec 21-Jan 22 / VII Sem / Chemical",
@@ -900,12 +972,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CHE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CHE"
     }
   ],
   "CHE2154": [
@@ -937,12 +1012,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CHE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CHE"
     }
   ],
   "CHE3153": [
@@ -972,12 +1050,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CHE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CHE"
     }
   ],
   "CHE4054": [
@@ -1009,12 +1090,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CHE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CHE"
     }
   ],
   "CHE4069": [
@@ -1046,12 +1130,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CHE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CHE"
     }
   ],
   "CHE4070": [
@@ -1083,12 +1170,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CHE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CHE"
     }
   ],
   "CHE4071": [
@@ -1120,12 +1210,15 @@
         "valid_for_batches": [
           2022
         ],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CHE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CHE"
     }
   ],
   "CHE3154": [
@@ -1155,12 +1248,15 @@
           "all"
         ],
         "valid_for_batches": [],
-        "valid_for_branches": null
+        "valid_for_branches": [
+          "CHE"
+        ]
       },
       "streams": [
         "core",
         "cs"
-      ]
+      ],
+      "program_abbrev": "CHE"
     }
   ]
 }
