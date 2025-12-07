@@ -6,6 +6,7 @@ Run from project root: python scripts/add_program_abbrev.py
 import json
 import re
 from pathlib import Path
+from typing import Optional, Tuple
 
 # Mapping from filename (stem) to abbreviation
 FILENAME_TO_ABBREV = {
@@ -83,7 +84,7 @@ CODE_PREFIX_TO_ABBREV = {
 }
 
 
-def derive_abbrev(paper: dict, filename_abbrev: str | None) -> str:
+def derive_abbrev(paper: dict, filename_abbrev: Optional[str]) -> str:
     """Derive program abbreviation from paper data."""
 
     # Priority 1: Use filename-based abbreviation
@@ -100,7 +101,8 @@ def derive_abbrev(paper: dict, filename_abbrev: str | None) -> str:
     # Priority 3: Extract from course code prefix
     course_code = paper.get("course_code") or paper.get("subject_code") or ""
     if course_code:
-        prefix = re.match(r"^([A-Z]{3})", course_code.upper())
+        # Match 2-4 character prefix to handle various course code formats
+        prefix = re.match(r"^([A-Z]{2,4})", course_code.upper())
         if prefix:
             return CODE_PREFIX_TO_ABBREV.get(prefix.group(1), prefix.group(1))
 
@@ -115,7 +117,7 @@ def derive_abbrev(paper: dict, filename_abbrev: str | None) -> str:
     return "UNKNOWN"
 
 
-def process_file(json_path: Path, filename_abbrev: str | None) -> tuple[int, int]:
+def process_file(json_path: Path, filename_abbrev: Optional[str]) -> Tuple[int, int]:
     """Process a single JSON file. Returns (papers_updated, errors)."""
 
     with open(json_path, "r", encoding="utf-8") as f:
