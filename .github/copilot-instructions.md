@@ -219,12 +219,12 @@ The repository uses GitHub Actions for automated scraping:
 7. Validate data: `python scripts/processing/validate_data.py`
 8. Update `.github/copilot-instructions.md` to document the new field
 
-**Example:** The `program_abbrev` field was added using `scripts/add_program_abbrev.py` with a 5-step derivation strategy:
+**Example:** The `program_abbrev` field was added using `scripts/add_program_abbrev.py` with a 4-priority derivation strategy:
 1. Filename-based mapping (for btech/branches)
 2. Program/specialization name matching
 3. Course code prefix extraction
 4. Curriculum context branches (from valid_for_branches field)
-5. Fallback to "UNKNOWN"
+- Fallback: "UNKNOWN" if no derivation succeeds
 
 ### Updating Scraper Configuration
 1. Modify `scraper/scraper_config.py` for target years/blacklist
@@ -279,7 +279,7 @@ CODE_PREFIX_TO_ABBREV = {
 }
 
 def derive_abbrev(paper: dict, filename_abbrev: Optional[str]) -> str:
-    """Derive program abbreviation from paper data using 5-priority strategy."""
+    """Derive program abbreviation from paper data using 4-priority strategy."""
     
     # Priority 1: Use filename-based abbreviation
     if filename_abbrev:
@@ -306,7 +306,7 @@ def derive_abbrev(paper: dict, filename_abbrev: Optional[str]) -> str:
         if branches and isinstance(branches, list) and len(branches) > 0:
             return branches[0]
     
-    # Priority 5: Final fallback to UNKNOWN
+    # Fallback: Unknown
     return "UNKNOWN"
 ```
 
