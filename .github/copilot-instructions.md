@@ -34,11 +34,13 @@ library-portal-api/
 │   ├── library_scraper/   # Scrapy spider
 │   ├── scraper_config.py  # Scraper configuration
 │   └── scrape_log.json    # Scraping history log
-├── scripts/processing/    # Data processing scripts
-│   ├── paper_categorizer.py    # Categorization logic
-│   ├── validate_data.py        # Data integrity checks
-│   ├── run_categorizer.py      # Categorizer runner
-│   └── staging_handler.py      # Manual review queue
+├── scripts/               # Utility scripts
+│   ├── add_program_abbrev.py   # Add/update program_abbrev field
+│   └── processing/        # Data processing scripts
+│       ├── paper_categorizer.py    # Categorization logic
+│       ├── validate_data.py        # Data integrity checks
+│       ├── run_categorizer.py      # Categorizer runner
+│       └── staging_handler.py      # Manual review queue
 ├── staging/               # Papers pending manual review
 ├── docs/                  # Documentation
 └── .github/workflows/     # GitHub Actions workflows
@@ -122,6 +124,8 @@ Use `.env.development` for local development and `.env.production` for productio
 - Always use Pydantic models for request/response validation
 - Include proper error responses with appropriate HTTP status codes
 - Use pagination for list endpoints (default: 50, max: 500)
+- Paper responses include `program_abbrev` field for program identification
+- Metadata endpoints expose available program abbreviations
 
 ### Error Handling
 - Return appropriate HTTP status codes (400, 401, 404, 500)
@@ -137,6 +141,8 @@ Papers are stored in JSON files organized by program and branch:
 - `data/classified/organized/masters/{program}.json`
 - `data/classified/organized/bsc/{program}.json`
 - `data/classified/organized/other.json`
+
+Each paper object includes a `program_abbrev` field containing a short abbreviation (e.g., "BME", "CSE", "ECE") derived from the program name, filename, or course code. This field enables efficient filtering by program in the API and frontend.
 
 ### Data Validation
 - Run `python scripts/processing/validate_data.py` before committing data changes
@@ -203,12 +209,114 @@ The repository uses GitHub Actions for automated scraping:
 4. Run validation: `python scripts/processing/validate_data.py`
 5. Update API documentation in README.md
 
+### Adding a New Field to Paper Data
+1. Create a migration script in `scripts/` directory (e.g., `add_field_name.py`)
+2. Implement field derivation logic with multiple fallback strategies
+3. Update Pydantic models in `app_v2/models.py` to include the new field
+4. Update indexing service in `app_v2/services/indexing.py` if the field needs indexing
+5. Update API routes in `app_v2/routes/*.py` to expose the field
+6. Run the migration script: `python scripts/add_field_name.py`
+7. Validate data: `python scripts/processing/validate_data.py`
+8. Update `.github/copilot-instructions.md` to document the new field
+
+**Example:** The `program_abbrev` field was added using `scripts/add_program_abbrev.py` with a 4-priority derivation strategy:
+1. Filename-based mapping (for btech/branches)
+2. Program/specialization name matching
+3. Course code prefix extraction
+4. Curriculum context branches (from valid_for_branches field)
+- Fallback: "UNKNOWN" if no derivation succeeds
+
 ### Updating Scraper Configuration
 1. Modify `scraper/scraper_config.py` for target years/blacklist
 2. Update spider logic in `scraper/library_scraper/spiders/`
 3. Test locally: `cd scraper && scrapy crawl question_papers_enhanced`
 4. Verify output in `scraper/scraped_output.json`
 5. Run categorizer: `python scripts/processing/run_categorizer.py scraper/scraped_output.json --dry-run`
+
+## Data Migration Patterns
+
+When adding new fields to paper data, follow these patterns:
+
+### Migration Script Structure
+- Place scripts in `scripts/` directory
+- Use descriptive names: `add_{field_name}.py`
+- Include docstring with usage instructions
+- Implement robust error handling and logging
+- Process all data directories (btech, masters, bsc, other.json)
+
+### Field Derivation Strategy
+Use a priority-based approach with multiple fallback sources:
+1. **Explicit mappings** - Use predefined dictionaries for known values
+2. **Field matching** - Derive from existing fields (program, specialization)
+3. **Pattern extraction** - Extract from structured fields (course codes)
+4. **Fallback values** - Use safe defaults or existing data
+
+### Example Migration Script
+```python
+# scripts/add_program_abbrev.py demonstrates this pattern:
+import re
+from typing import Optional
+
+# Priority 1: Filename-based mapping
+FILENAME_TO_ABBREV = {
+    "CSE": "CSE",
+    "ECE": "ECE",
+    # ... more mappings
+}
+
+# Priority 2: Program name to abbreviation mapping (see complete mapping in script)
+PROGRAM_NAME_TO_ABBREV = {
+    "computer science and engineering": "CSE",
+    "electronics and communication": "ECE",
+    # ... more mappings
+}
+
+# Priority 3: Course code prefix mapping (see complete mapping in script)
+CODE_PREFIX_TO_ABBREV = {
+    "CSE": "CSE",
+    "ECE": "ECE",
+    # ... more mappings
+}
+
+def derive_abbrev(paper: dict, filename_abbrev: Optional[str]) -> str:
+    """Derive program abbreviation from paper data using 4-priority strategy with fallback."""
+    
+    # Priority 1: Use filename-based abbreviation
+    if filename_abbrev:
+        return filename_abbrev
+    
+    # Priority 2: Match program/specialization field
+    program = paper.get("program") or paper.get("specialization") or ""
+    if program:
+        for name, abbrev in PROGRAM_NAME_TO_ABBREV.items():
+            if name in program.lower():
+                return abbrev
+    
+    # Priority 3: Extract from course code prefix
+    course_code = paper.get("course_code") or paper.get("subject_code") or ""
+    if course_code:
+        prefix = re.match(r"^([A-Z]{2,4})", course_code.upper())
+        if prefix:
+            return CODE_PREFIX_TO_ABBREV.get(prefix.group(1), prefix.group(1))
+    
+    # Priority 4: Check curriculum context branches (if available)
+    curriculum_context = paper.get("curriculum_context")
+    if curriculum_context and curriculum_context.get("valid_for_branches"):
+        branches = curriculum_context["valid_for_branches"]
+        if branches and isinstance(branches, list) and len(branches) > 0:
+            return branches[0]
+    
+    # Fallback: Unknown
+    return "UNKNOWN"
+```
+
+### After Adding a Field
+1. Update `app_v2/models.py` - Add field to Pydantic models
+2. Update `app_v2/services/indexing.py` - Add indexing if needed
+3. Update `app_v2/routes/*.py` - Expose in API responses
+4. Run migration: `python scripts/add_{field_name}.py`
+5. Validate: `python scripts/processing/validate_data.py`
+6. Test API endpoints to verify field is exposed correctly
 
 ## Best Practices
 
@@ -233,6 +341,24 @@ The repository uses GitHub Actions for automated scraping:
 - Cache settings using `@lru_cache`
 - Monitor Render free tier limits (512MB RAM)
 
+## API Features
+
+### Program Abbreviation Field
+The API includes `program_abbrev` field in all paper objects for program identification:
+- **Metadata endpoint** (`/api/metadata`): Returns list of all available program abbreviations
+- **Statistics endpoint** (`/api/statistics`): Returns paper counts grouped by program abbreviation
+- **Papers endpoint** (`/api/papers`): Each paper includes `program_abbrev` field in the response
+- **Common abbreviations**: BME, CSE, ECE, EEE, EIE, ME, MXE, CE, CHE, BIO, AERO, AUTO, IT, MPE, M.Tech, M.E, MCA
+
+**Frontend Usage:** Frontends can filter papers by matching the `program_abbrev` field in the response. The API does not currently support `program_abbrev` as a query parameter - you cannot pass `?program_abbrev=CSE` to the `/api/papers` endpoint. For server-side filtering, use the `program` parameter which supports partial text matching.
+
+### Index Service
+The `PaperIndex` service pre-builds indexes for fast lookups:
+- `_by_program_abbrev`: Index papers by program abbreviation
+- `unique_program_abbrevs`: Set of all unique abbreviations
+- `count_by_program_abbrev`: Count papers per abbreviation
+- `get_by_program_abbrev(abbrev)`: Retrieve papers for a specific abbreviation
+
 ## Troubleshooting
 
 ### Common Issues
@@ -241,6 +367,7 @@ The repository uses GitHub Actions for automated scraping:
 - **Authentication failing:** Verify `LIBRARY_PORTAL_API_KEY` is set
 - **CORS errors:** Update `LIBRARY_PORTAL_CORS_ORIGINS`
 - **Scraper not finding papers:** Check year threshold and blacklist
+- **Missing program_abbrev:** Run `python scripts/add_program_abbrev.py` to populate field
 
 ### Debugging
 - Set `LIBRARY_PORTAL_LOG_LEVEL=DEBUG` for verbose logging
