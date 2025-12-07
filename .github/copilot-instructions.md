@@ -219,11 +219,12 @@ The repository uses GitHub Actions for automated scraping:
 7. Validate data: `python scripts/processing/validate_data.py`
 8. Update `.github/copilot-instructions.md` to document the new field
 
-**Example:** The `program_abbrev` field was added using `scripts/add_program_abbrev.py` with a 4-priority derivation strategy:
+**Example:** The `program_abbrev` field was added using `scripts/add_program_abbrev.py` with a 5-step derivation strategy:
 1. Filename-based mapping (for btech/branches)
 2. Program/specialization name matching
 3. Course code prefix extraction
-4. Fallback to existing data or "UNKNOWN"
+4. Curriculum context branches (from valid_for_branches field)
+5. Fallback to "UNKNOWN"
 
 ### Updating Scraper Configuration
 1. Modify `scraper/scraper_config.py` for target years/blacklist
@@ -278,24 +279,34 @@ CODE_PREFIX_TO_ABBREV = {
 }
 
 def derive_abbrev(paper: dict, filename_abbrev: Optional[str]) -> str:
+    """Derive program abbreviation from paper data using 4-priority strategy."""
+    
     # Priority 1: Use filename-based abbreviation
     if filename_abbrev:
         return filename_abbrev
     
     # Priority 2: Match program/specialization field
-    program = paper.get("program") or ""
-    for name, abbrev in PROGRAM_NAME_TO_ABBREV.items():
-        if name in program.lower():
-            return abbrev
+    program = paper.get("program") or paper.get("specialization") or ""
+    if program:
+        for name, abbrev in PROGRAM_NAME_TO_ABBREV.items():
+            if name in program.lower():
+                return abbrev
     
     # Priority 3: Extract from course code prefix
-    course_code = paper.get("course_code") or ""
+    course_code = paper.get("course_code") or paper.get("subject_code") or ""
     if course_code:
         prefix = re.match(r"^([A-Z]{2,4})", course_code.upper())
         if prefix:
             return CODE_PREFIX_TO_ABBREV.get(prefix.group(1), prefix.group(1))
     
-    # Priority 4: Fallback to "UNKNOWN"
+    # Priority 4: Check curriculum context branches (if available)
+    curriculum_context = paper.get("curriculum_context")
+    if curriculum_context and curriculum_context.get("valid_for_branches"):
+        branches = curriculum_context["valid_for_branches"]
+        if branches and isinstance(branches, list) and len(branches) > 0:
+            return branches[0]
+    
+    # Final fallback: UNKNOWN
     return "UNKNOWN"
 ```
 
