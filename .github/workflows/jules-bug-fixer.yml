@@ -1,0 +1,104 @@
+name: Jules Bug Fixer
+
+# Trigger when an issue is labeled with 'bug'
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  fix-bug:
+    name: Auto-Fix Bug
+    # Only run when the 'bug' label is added
+    if: github.event.label.name == 'bug'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: read
+    
+    steps:
+      - name: Log bug details
+        run: |
+          echo "## 🐛 Bug Report Received" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Issue**: #${{ github.event.issue.number }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Title**: ${{ github.event.issue.title }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Author**: ${{ github.event.issue.user.login }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Jules will analyze and attempt to fix this bug." >> $GITHUB_STEP_SUMMARY
+
+      - name: Invoke Jules
+        # SECURITY: Only allow trusted users to trigger Jules
+        if: ${{ contains(fromJSON('["re1t"]'), github.event.issue.user.login) }}
+        uses: google-labs-code/jules-invoke@v1
+        with:
+          prompt: |
+            Please diagnose and fix the following bug in the Library Portal API:
+
+            ## Bug Report
+
+            **Title**: ${{ github.event.issue.title }}
+            **Issue Number**: #${{ github.event.issue.number }}
+            **Reporter**: ${{ github.event.issue.user.login }}
+
+            **Description**:
+            ${{ github.event.issue.body }}
+
+            ## Project Context
+
+            This is a FastAPI-based REST API for serving MIT Library Question Papers with:
+            - FastAPI backend with Pydantic models (`app_v2/`)
+            - API key authentication middleware
+            - Scrapy-based web scraper (`scraper/`)
+            - JSON file storage (`data/classified/organized/`)
+            - Python 3.11+ codebase
+
+            ## Debugging Process
+
+            1. **Analysis** - Review the bug report and identify the root cause
+               - Check error messages and stack traces
+               - Identify affected files and functions
+               - Understand the expected vs actual behavior
+
+            2. **Diagnosis** - Trace the issue through the codebase
+               - Start from the entry point (API endpoint or scraper)
+               - Follow the code flow to find the bug
+               - Check for edge cases or missing validation
+
+            3. **Fix** - Implement a minimal, targeted fix
+               - Make the smallest change that fixes the issue
+               - Follow existing code patterns and style
+               - Add proper error handling if needed
+
+            4. **Testing** - Verify the fix
+               - Run data validation: `python scripts/processing/validate_data.py`
+               - Test the API locally: `uvicorn app_v2.main:app --reload`
+               - Test affected endpoints or functionality
+
+            5. **Documentation** - Document the fix
+               - Add comments explaining the fix if non-obvious
+               - Update docstrings if behavior changes
+               - Reference the issue number in commit message
+
+            ## Key Files
+
+            - `app_v2/main.py` - Application entry point
+            - `app_v2/routes/` - API endpoints
+            - `app_v2/services/` - Business logic
+            - `app_v2/middleware/auth.py` - Authentication
+            - `scraper/library_scraper/spiders/` - Web scrapers
+            - `scripts/processing/` - Data processing scripts
+
+            ## Constraints
+
+            - Make minimal changes - only fix the reported bug
+            - Follow PEP 8 and existing code style
+            - Run Black formatter: `black .`
+            - Include clear PR description referencing the issue
+            - Add test cases if applicable
+
+            Please provide:
+            - Clear explanation of the root cause
+            - The complete fix with all necessary changes
+            - Steps to verify the fix
+          jules_api_key: ${{ secrets.JULES_API_KEY }}
+          starting_branch: 'main'
