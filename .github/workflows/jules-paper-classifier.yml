@@ -27,11 +27,12 @@ jobs:
             count=$(python3 -c "
           import json
           try:
-              data = json.load(open('staging/pending_review.json'))
+              with open('staging/pending_review.json') as f:
+                  data = json.load(f)
               papers = data.get('papers', [])
               pending = [p for p in papers if not p.get('reviewed', False)]
               print(len(pending))
-          except:
+          except (FileNotFoundError, json.JSONDecodeError, KeyError) as e:
               print(0)
           ")
             echo "pending_count=$count" >> $GITHUB_OUTPUT
