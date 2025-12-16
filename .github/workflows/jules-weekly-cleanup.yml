@@ -1,0 +1,91 @@
+name: Jules Weekly Cleanup
+
+# Run weekly maintenance on the codebase
+on:
+  schedule:
+    # Run every Monday at 3 AM UTC
+    - cron: '0 3 * * 1'
+  workflow_dispatch:
+
+jobs:
+  cleanup:
+    name: Weekly Codebase Cleanup
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    
+    steps:
+      - name: Invoke Jules for Cleanup
+        uses: google-labs-code/jules-invoke@v1
+        with:
+          prompt: |
+            You are a code maintenance agent for the Library Portal API. Your task is to
+            perform weekly cleanup and maintenance on the codebase.
+
+            ## Project Context
+
+            This is a FastAPI-based REST API for serving MIT Library Question Papers with:
+            - FastAPI backend with Pydantic models
+            - Scrapy-based web scraper for paper collection
+            - JSON file storage for paper data
+            - Python 3.11+ codebase
+
+            ## Focus Areas
+
+            1. **Code Quality**
+               - Remove unused imports and variables
+               - Remove commented-out code blocks
+               - Clean up dead code paths
+               - Fix any obvious code smells
+
+            2. **Type Hints**
+               - Add missing type hints to functions
+               - Fix incorrect type annotations
+               - Ensure consistency with existing style
+
+            3. **Docstrings**
+               - Add missing docstrings to public functions
+               - Update outdated docstrings
+               - Follow Google-style docstring format
+
+            4. **Code Formatting**
+               - Run Black formatter on all Python files
+               - Fix inconsistent indentation
+               - Organize imports (stdlib, third-party, local)
+
+            5. **Data Validation**
+               - Check JSON files for consistency
+               - Verify no duplicate papers (by URL)
+               - Ensure all required fields are present
+
+            6. **Configuration**
+               - Verify environment variable usage
+               - Check for hardcoded values that should be configurable
+               - Ensure config consistency across files
+
+            ## Key Directories to Check
+
+            - `app_v2/` - Main FastAPI application
+            - `scraper/` - Scrapy spider and config
+            - `scripts/` - Utility and processing scripts
+            - `config/` - Configuration files
+
+            ## Constraints
+
+            - Make incremental, safe changes
+            - Preserve existing functionality
+            - Keep changes under 100 lines per PR
+            - Run validation: `python scripts/processing/validate_data.py`
+            - Run Black: `black .`
+            - Only create PR if there are meaningful improvements
+
+            ## What NOT to Change
+
+            - Do not modify data files unless fixing obvious errors
+            - Do not change API behavior or response formats
+            - Do not remove any functionality
+            - Do not update dependencies
+
+            If no meaningful cleanup is needed, do not create a PR.
+          jules_api_key: ${{ secrets.JULES_API_KEY }}
+          include_commit_log: true

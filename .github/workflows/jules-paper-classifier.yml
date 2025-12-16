@@ -1,0 +1,147 @@
+name: Jules Paper Classifier
+
+# Trigger after scraper completes or when staging queue has papers
+on:
+  workflow_run:
+    workflows: ["Library Portal V2 Scraper"]
+    types: [completed]
+  
+  # Manual trigger to classify pending papers
+  workflow_dispatch:
+
+jobs:
+  classify-papers:
+    name: Auto-Classify Pending Papers
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check for pending papers
+        id: check_pending
+        run: |
+          if [ -f "staging/pending_review.json" ]; then
+            count=$(python3 -c "
+          import json
+          try:
+              with open('staging/pending_review.json') as f:
+                  data = json.load(f)
+              papers = data.get('papers', [])
+              pending = [p for p in papers if not p.get('reviewed', False)]
+              print(len(pending))
+          except (FileNotFoundError, json.JSONDecodeError, KeyError) as e:
+              print(0)
+          ")
+            echo "pending_count=$count" >> $GITHUB_OUTPUT
+            if [ "$count" -gt 0 ]; then
+              echo "has_pending=true" >> $GITHUB_OUTPUT
+              echo "📋 Found $count papers pending classification"
+            else
+              echo "has_pending=false" >> $GITHUB_OUTPUT
+              echo "✅ No papers pending classification"
+            fi
+          else
+            echo "has_pending=false" >> $GITHUB_OUTPUT
+            echo "pending_count=0" >> $GITHUB_OUTPUT
+            echo "✅ No staging file found"
+          fi
+      
+      - name: Invoke Jules Paper Classifier
+        if: steps.check_pending.outputs.has_pending == 'true'
+        uses: google-labs-code/jules-invoke@v1
+        with:
+          prompt: |
+            You are a paper classification agent for the Library Portal API. Your task is to
+            categorize papers from `staging/pending_review.json` into the correct data files.
+
+            ## Context
+
+            This is a FastAPI-based REST API that serves MIT Library Question Papers.
+            Papers are organized in `data/classified/organized/` by:
+            - **btech/branches/{branch}.json** - B.Tech papers by branch (CSE, ECE, EEE, etc.)
+            - **btech/first_year/cs_stream.json** - First year CS stream papers
+            - **btech/first_year/non_cs_stream.json** - First year non-CS stream papers
+            - **masters/mtech.json** - M.Tech papers
+            - **masters/mca.json** - MCA papers
+            - **masters/me.json** - M.E. papers
+            - **bsc/icas.json** - B.Sc ICAS papers
+            - **other.json** - Uncategorized papers
+
+            ## Your Task
+
+            1. **Read** `staging/pending_review.json` to find papers needing classification
+            2. **Analyze** each paper's metadata:
+               - `course_code` / `subject_code` - Main identifier for categorization
+               - `program`, `degree_type` - Program information
+               - `file_name`, `url` - Additional context
+               - `categorization.reasoning` - Why it was staged
+               - `categorization.suggested_target` - Previous suggestion
+
+            3. **Determine** the correct target file using these rules:
+               - Course codes starting with `VLS`, `VL` → M.Tech VLSI (masters/mtech.json)
+               - Course codes with `5XXX` pattern → Masters level
+               - Course codes with `CSS` prefix → CS stream first year
+               - Course codes ending in `71` or `72` → Non-CS stream first year
+               - `MCA`, `MCI` prefix → MCA program
+               - Common prefixes: CSE→CSE, ECE→ECE, EEE→EEE, BME→Biomedical, etc.
+
+            4. **Add** each paper to the correct target JSON file:
+               - Ensure all required fields are present (see paper_categorizer.py)
+               - Add `program_abbrev` field (derive from course code or program)
+               - Ensure no duplicate URLs in the target file
+               - Use proper JSON formatting with 2-space indentation
+
+            5. **Update** staging file to mark papers as reviewed:
+               - Set `reviewed: true`
+               - Add `review_notes` with classification reasoning
+               - Set `final_target` to the file path
+
+            6. **Validate** changes:
+               - Run `python scripts/processing/validate_data.py`
+               - Ensure JSON files are valid
+
+            ## Paper Required Fields
+
+            Each paper must have these 23 fields:
+            - path, scraped_at, url, year, program, file_name
+            - subject_code, paper_type, display_title, semester
+            - program_name, degree_type, specialization, college
+            - program_category, session, course_code, course_name
+            - subject_name, curriculum_context, streams, curriculum_match
+            - program_abbrev
+
+            ## Constraints
+
+            - Only classify papers that have `reviewed: false` in staging
+            - Preserve existing paper data, only add new fields if missing
+            - Run validation before creating PR
+            - Create a clear PR with summary of classified papers
+
+            ## Example Classification
+
+            For a paper with:
+            - course_code: "VLS5001"
+            - program: "M.Tech VLSI"
+            
+            → Target: data/classified/organized/masters/mtech.json
+            → program_abbrev: "VLSI"
+
+            Now analyze the pending papers and classify them appropriately.
+          jules_api_key: ${{ secrets.JULES_API_KEY }}
+          starting_branch: 'main'
+          include_last_commit: true
+      
+      - name: Summary
+        run: |
+          echo "## 🏷️ Paper Classifier Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Pending papers**: ${{ steps.check_pending.outputs.pending_count }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Jules invoked**: ${{ steps.check_pending.outputs.has_pending }}" >> $GITHUB_STEP_SUMMARY
+          if [ "${{ steps.check_pending.outputs.has_pending }}" == "true" ]; then
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "Jules has been invoked to classify the pending papers." >> $GITHUB_STEP_SUMMARY
+            echo "A PR will be created if classification is successful." >> $GITHUB_STEP_SUMMARY
+          fi

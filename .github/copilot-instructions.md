@@ -10,6 +10,7 @@ This is a FastAPI-based REST API for serving MIT Library Question Papers. The AP
 - Fuzzy search capabilities using TheFuzz
 - Automated scraping with Scrapy (2025+ papers only)
 - Automated categorization and data validation
+- **Jules AI agents** for automated maintenance, security, and bug fixing
 - Deployed on Render free tier
 
 ## Project Structure
@@ -44,7 +45,14 @@ library-portal-api/
 ├── staging/               # Papers pending manual review
 ├── docs/                  # Documentation
 └── .github/workflows/     # GitHub Actions workflows
-    └── scraper-v2.yml     # Weekly scraper automation
+    ├── scraper-v2.yml              # Weekly scraper automation
+    ├── security-agent.yml          # Daily security scan (Jules)
+    ├── jules-paper-classifier.yml  # Auto-classify pending papers (Jules)
+    ├── jules-ci-failure-fixer.yml  # Auto-fix CI failures (Jules)
+    ├── jules-weekly-cleanup.yml    # Weekly code cleanup (Jules)
+    ├── jules-bug-fixer.yml         # Auto-fix bugs from issues (Jules)
+    ├── jules-performance-agent.yml # Performance optimization (Jules)
+    └── keep-alive.yml              # Keep Render API alive
 ```
 
 ## Development Setup
@@ -163,9 +171,10 @@ First-year papers (2024+) are categorized by stream:
 
 Other papers are categorized by branch/program based on course code prefixes.
 
-## GitHub Actions Workflow
+## GitHub Actions Workflows
 
-The repository uses GitHub Actions for automated scraping:
+### Scraper Workflow
+The main workflow for automated paper scraping:
 - **Schedule:** Weekly on Sunday at 2 AM UTC
 - **Workflow:** `.github/workflows/scraper-v2.yml`
 - **Steps:**
@@ -177,6 +186,85 @@ The repository uses GitHub Actions for automated scraping:
   6. Check staging queue for manual reviews
 
 **Dry run mode:** Available via manual workflow dispatch for testing.
+
+## Jules AI Agents
+
+This repository uses [Jules](https://jules.google) - an AI coding agent from Google Labs - to automate various maintenance and development tasks. Jules is invoked via GitHub Actions using the [jules-action](https://github.com/google-labs-code/jules-action).
+
+### Setup Requirements
+
+To use Jules agents, you need to:
+1. Get a Jules API key from [jules.google.com](https://jules.google.com)
+2. Add the API key as a GitHub secret named `JULES_API_KEY`
+   - Go to **Settings** → **Secrets and variables** → **Actions**
+   - Click **New repository secret**
+   - Name: `JULES_API_KEY`, Value: your key
+
+### Available Agents
+
+| Agent | Workflow | Trigger | Description |
+|-------|----------|---------|-------------|
+| **Paper Classifier** | `jules-paper-classifier.yml` | After scraper completes | Auto-classifies papers in `staging/pending_review.json` |
+| **CI Failure Fixer** | `jules-ci-failure-fixer.yml` | When scraper workflow fails | Analyzes and fixes CI failures |
+| **Security Scanner** | `security-agent.yml` | Daily at 6 AM UTC | Scans for security vulnerabilities |
+| **Weekly Cleanup** | `jules-weekly-cleanup.yml` | Every Monday at 3 AM UTC | Removes dead code, improves quality |
+| **Bug Fixer** | `jules-bug-fixer.yml` | Issue labeled with `bug` | Auto-diagnoses and fixes bugs |
+| **Performance Agent** | `jules-performance-agent.yml` | Every Wednesday at 4 AM UTC | Finds and implements optimizations |
+
+### Paper Classifier Agent
+Automatically classifies papers from the staging queue after each scraper run:
+- Reads `staging/pending_review.json` for pending papers
+- Analyzes course codes and program metadata
+- Categorizes into the correct data files
+- Updates staging file to mark papers as reviewed
+- Creates a PR with classified papers
+
+### CI Failure Fixer Agent
+Monitors the Library Portal V2 Scraper workflow and fixes failures:
+- Triggers automatically when scraper workflow fails
+- Analyzes error logs and stack traces
+- Identifies common failure patterns (KeyError, middleware issues, config mismatches)
+- Implements targeted fixes
+- Creates a PR with the fix and references the failed run
+
+### Security Scanner Agent
+Daily security audit of the codebase:
+- Checks for hardcoded secrets and credentials
+- Scans for injection vulnerabilities
+- Validates authentication logic
+- Reviews CORS and security headers
+- Checks dependencies for known vulnerabilities
+
+### Weekly Cleanup Agent
+Automated code maintenance:
+- Removes unused imports and dead code
+- Adds missing type hints and docstrings
+- Runs Black formatter
+- Validates data integrity
+- Only creates PR if meaningful improvements found
+
+### Bug Fixer Agent
+Responds to bug reports:
+- Triggered when an issue is labeled with `bug`
+- Security: Only processes issues from trusted users (configurable allowlist)
+- Analyzes bug report and traces through codebase
+- Implements minimal, targeted fix
+- Adds test cases when applicable
+
+### Performance Agent
+Optimizes API performance:
+- Analyzes data loading patterns
+- Identifies slow endpoints
+- Looks for memory usage issues
+- Implements caching and optimization
+- Only creates PR if measurable impact
+
+### Customizing Agents
+Each agent's prompt can be customized by editing the corresponding workflow file in `.github/workflows/`. Key customization points:
+- **Prompt content**: Modify the `prompt` field in the `uses: google-labs-code/jules-invoke@v1` step
+- **Trigger conditions**: Adjust `on:` section for different schedules or events
+- **Allowlist**: Update the user allowlist in bug-fixer for trusted contributors
+- **Target branch**: Set `starting_branch` to work on specific branches
 
 ## Deployment
 

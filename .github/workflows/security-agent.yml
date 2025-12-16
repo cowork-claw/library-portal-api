@@ -1,33 +1,91 @@
-name: Daily Security Scan
+name: Jules Daily Security Scan
 
 on:
   schedule:
-    - cron: '0 6 * * *'  # Every day at 6 AM
+    - cron: '0 6 * * *'  # Every day at 6 AM UTC
   workflow_dispatch:
 
 jobs:
   scan:
+    name: Security Vulnerability Scan
     runs-on: ubuntu-latest
     permissions:
       contents: read
+    
     steps:
-      - uses: google-labs-code/jules-invoke@v1
+      - name: Invoke Jules Security Agent
+        uses: google-labs-code/jules-invoke@v1
         with:
           prompt: |
-            You are a security agent. Scan for vulnerabilities and fix them:
+            You are a security agent for the Library Portal API. Scan for vulnerabilities
+            and fix them.
 
-            CRITICAL (fix immediately):
-            - Hardcoded secrets, API keys, passwords
-            - SQL injection, command injection
-            - Missing auth on sensitive endpoints
+            ## Project Context
 
-            HIGH PRIORITY:
-            - XSS, CSRF vulnerabilities
-            - Insecure direct object references
-            - Missing input validation
+            This is a FastAPI-based REST API that:
+            - Serves MIT Library Question Papers
+            - Uses API key authentication via middleware
+            - Stores data in JSON files
+            - Is deployed on Render free tier
 
-            Rules:
-            - Fix highest severity first
+            ## CRITICAL (fix immediately):
+
+            1. **Secrets & Credentials**
+               - Hardcoded API keys, passwords in source code
+               - Secrets in configuration files
+               - API keys exposed in logs
+               - Check: `.env*` files, `config/`, logs
+
+            2. **Injection Attacks**
+               - Command injection in subprocess calls
+               - Path traversal in file operations
+               - JSON injection in data handling
+               - Check: `scraper/`, `scripts/`, file I/O operations
+
+            3. **Authentication Bypass**
+               - Missing auth on sensitive endpoints
+               - Improper API key validation
+               - Authentication bypass vectors
+               - Check: `app_v2/middleware/auth.py`, `app_v2/routes/`
+
+            ## HIGH PRIORITY:
+
+            1. **Input Validation**
+               - Missing validation on query parameters
+               - Unvalidated file paths or URLs
+               - Missing Pydantic validation
+               - Check: `app_v2/routes/*.py`, `app_v2/models.py`
+
+            2. **Information Disclosure**
+               - Sensitive data in error messages
+               - Debug info in production responses
+               - Excessive logging of user data
+               - Check: Exception handlers, logging calls
+
+            3. **CORS & Headers**
+               - Overly permissive CORS configuration
+               - Missing security headers
+               - Check: `app_v2/main.py`, CORS settings
+
+            4. **Dependency Vulnerabilities**
+               - Check `requirements.txt` for known vulnerabilities
+               - Outdated packages with security issues
+
+            ## Key Files to Audit
+
+            - `app_v2/middleware/auth.py` - Authentication logic
+            - `app_v2/main.py` - CORS and middleware config
+            - `app_v2/routes/*.py` - API endpoints
+            - `config/config_v2.py` - Configuration handling
+            - `scraper/library_scraper/` - Web scraping code
+            - `.env*` files - Environment configuration
+
+            ## Rules
+
+            - Fix highest severity issues first
             - Keep changes under 100 lines
-            - Run tests before creating PR
+            - Validate data integrity after changes
+            - Run Black formatter: `black .`
+            - Only create PR if vulnerabilities found
+            - Include clear explanation of each fix
           jules_api_key: ${{ secrets.JULES_API_KEY }}

@@ -1,0 +1,124 @@
+name: Jules CI Failure Fixer
+
+# Trigger when the Library Portal V2 Scraper workflow fails
+on:
+  workflow_run:
+    workflows: ["Library Portal V2 Scraper"]
+    types: [completed]
+
+jobs:
+  fix-failure:
+    name: Auto-Fix Scraper Failures
+    # Only run when the scraper workflow fails
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
+    
+    steps:
+      - name: Log failure details
+        run: |
+          echo "## 🔴 Scraper Failure Detected" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Workflow**: ${{ github.event.workflow_run.name }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Run ID**: ${{ github.event.workflow_run.id }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Branch**: ${{ github.event.workflow_run.head_branch }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Commit**: ${{ github.event.workflow_run.head_sha }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **URL**: ${{ github.event.workflow_run.html_url }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Jules will analyze the failure and attempt to fix it." >> $GITHUB_STEP_SUMMARY
+      
+      - name: Invoke Jules to fix failure
+        uses: google-labs-code/jules-invoke@v1
+        with:
+          prompt: |
+            The "Library Portal V2 Scraper" workflow has failed. Your task is to analyze the
+            failure and implement a fix.
+
+            ## Failed Run Details
+
+            - **Workflow**: Library Portal V2 Scraper
+            - **Run URL**: ${{ github.event.workflow_run.html_url }}
+            - **Branch**: ${{ github.event.workflow_run.head_branch }}
+            - **Commit**: ${{ github.event.workflow_run.head_sha }}
+
+            ## Context
+
+            This is a FastAPI-based REST API for serving MIT Library Question Papers.
+            The scraper workflow runs weekly to:
+            1. Scrape new papers from the MIT Library website (2024+ only)
+            2. Categorize papers into organized JSON files
+            3. Validate data integrity
+            4. Commit changes if any new papers found
+
+            ## Common Failure Patterns
+
+            Based on historical failures in this repository, check for:
+
+            1. **Scrapy Spider Errors**
+               - KeyError: Missing expected fields in scraped data
+               - TypeError: Async/sync generator issues in middlewares
+               - ImportError: Missing dependencies or incorrect imports
+               - Location: `scraper/library_scraper/spiders/question_papers_enhanced.py`
+
+            2. **Configuration Mismatches**
+               - TARGET_YEARS / BLACKLISTED_YEARS not defined properly
+               - Year threshold inconsistencies between config files
+               - Location: `scraper/scraper_config.py`, `config/config_v2.py`
+
+            3. **Categorization Errors**
+               - Paper validation failures
+               - Missing required fields in paper objects
+               - JSON serialization issues
+               - Location: `scripts/processing/paper_categorizer.py`
+
+            4. **Middleware Compatibility**
+               - Scrapy 2.12+ requires synchronous middleware methods
+               - Must use `def` with `for` loops, not `async def` with `async for`
+               - Location: `scraper/library_scraper/middlewares.py`
+
+            ## Your Task
+
+            1. **Analyze** the failure:
+               - Check the workflow run logs at the provided URL
+               - Identify the specific error message and stack trace
+               - Determine the root cause
+
+            2. **Locate** the issue:
+               - Find the relevant file(s) that need to be fixed
+               - Understand the context and existing code patterns
+
+            3. **Implement** a fix:
+               - Make minimal, targeted changes
+               - Follow existing code conventions (use Black formatter)
+               - Ensure backward compatibility
+
+            4. **Verify** the fix:
+               - Test locally if possible: `cd scraper && scrapy crawl question_papers_enhanced`
+               - Run data validation: `python scripts/processing/validate_data.py`
+               - Ensure no new errors are introduced
+
+            5. **Document** the fix:
+               - Add a clear commit message
+               - Create a PR with explanation of the issue and fix
+               - Reference the failed workflow run
+
+            ## Important Files
+
+            - `scraper/library_scraper/spiders/question_papers_enhanced.py` - Main spider
+            - `scraper/library_scraper/middlewares.py` - Scrapy middlewares
+            - `scraper/scraper_config.py` - Scraper configuration
+            - `scripts/processing/paper_categorizer.py` - Paper categorization logic
+            - `.github/workflows/scraper-v2.yml` - Workflow definition
+
+            ## Constraints
+
+            - Make minimal changes - only fix what's broken
+            - Follow PEP 8 and existing code style
+            - Use type hints where appropriate
+            - Run Black formatter before committing: `black .`
+            - Keep the fix focused and testable
+          jules_api_key: ${{ secrets.JULES_API_KEY }}
+          starting_branch: ${{ github.event.workflow_run.head_branch }}
+          include_last_commit: true
