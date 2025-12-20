@@ -25,11 +25,11 @@ jobs:
           # Use a real User-Agent to avoid bot blocking
           # stderr will go to logs automatically
           # Use --fail to make curl return non-zero on 4xx/5xx? No, we want to log the code.
-          response=$(curl -s -S -w "\n%{http_code}" \
+          response=$(curl -s -w "\nHTTP_CODE:%{http_code}" \
             -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36" \
             --connect-timeout 10 \
             --max-time 60 \
-            https://library-portal-api.onrender.com/health)
+            https://library-portal-api.onrender.com/health 2>&1)
 
           exit_code=$?
           set -e
