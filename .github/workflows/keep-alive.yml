@@ -34,9 +34,9 @@ jobs:
           exit_code=$?
           set -e
 
-          # Extract HTTP code (last line) and body
-          http_code=$(echo "$response" | tail -n1)
-          body=$(echo "$response" | sed '$d')
+          # Extract HTTP code (last line after our marker) and body
+          http_code=$(echo "$response" | grep -o 'HTTP_CODE:[0-9]*' | tail -n1 | cut -d: -f2)
+          body=$(echo "$response" | sed 's/HTTP_CODE:[0-9]*$//')
 
           if [ $exit_code -ne 0 ]; then
             echo "❌ curl failed with exit code $exit_code"
