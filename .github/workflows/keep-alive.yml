@@ -45,7 +45,7 @@ jobs:
             exit 1
           fi
 
-          if [ "$http_code" -eq 200 ]; then
+          if [ -n "$http_code" ] && [ "$http_code" -eq 200 ] 2>/dev/null; then
             echo "✅ API is healthy (HTTP $http_code)"
           else
             echo "⚠️ API returned HTTP $http_code"
