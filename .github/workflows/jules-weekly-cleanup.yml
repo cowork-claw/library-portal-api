@@ -12,9 +12,13 @@ jobs:
     name: Weekly Codebase Cleanup
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
+      pull-requests: write
     
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Invoke Jules for Cleanup
         uses: google-labs-code/jules-invoke@v1
         with:
@@ -87,5 +91,5 @@ jobs:
             - Do not update dependencies
 
             If no meaningful cleanup is needed, do not create a PR.
-          jules_api_key: ${{ secrets.JULES_API_KEY }}
+          api_key: ${{ secrets.JULES_API_KEY }}
           include_commit_log: true
