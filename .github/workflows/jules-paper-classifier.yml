@@ -1,18 +1,25 @@
 name: Jules Paper Classifier
 
-# Trigger after scraper completes or when staging queue has papers
+# Auto-trigger after scraper completes on main branch only
+# Restricted to main to prevent deployment spam on PR branches
 on:
   workflow_run:
     workflows: ["Library Portal V2 Scraper"]
+    branches: [main]
     types: [completed]
-  
-  # Manual trigger to classify pending papers
+
+  # Manual trigger for ad-hoc classification
   workflow_dispatch:
 
 jobs:
   classify-papers:
     name: Auto-Classify Pending Papers
     runs-on: ubuntu-latest
+    # Only run if: manual trigger OR (scraper succeeded on main)
+    if: |
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.head_branch == 'main')
     permissions:
       contents: read
     
