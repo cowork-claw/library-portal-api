@@ -20,76 +20,67 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Invoke Jules for Cleanup
-        uses: google-labs-code/jules-invoke@v1
+        uses: google-labs-code/jules-invoke@v1.0.0
         with:
           prompt: |
-            You are a code maintenance agent for the Library Portal API. Your task is to
-            perform weekly cleanup and maintenance on the codebase.
+            You are a code maintenance agent. Analyze this codebase and perform cleanup.
 
-            ## Project Context
+            ## Codebase Structure
 
-            This is a FastAPI-based REST API for serving MIT Library Question Papers with:
-            - FastAPI backend with Pydantic models
-            - Scrapy-based web scraper for paper collection
-            - JSON file storage for paper data
-            - Python 3.11+ codebase
+            ```
+            library-portal-api/
+            ├── app_v2/                    # FastAPI application (Python 3.11+)
+            │   ├── main.py               # Entry point, lifespan manager, CORS
+            │   ├── models.py             # Pydantic models (Paper, CurriculumContext, responses)
+            │   ├── data_loader.py        # JSON data loading
+            │   ├── routes/               # API endpoints (papers.py, metadata.py, health.py)
+            │   ├── services/             # Business logic (indexing.py, search.py)
+            │   └── middleware/auth.py    # API key authentication
+            ├── scraper/                   # Scrapy web scraper
+            │   ├── library_scraper/      # Spider, middlewares, settings
+            │   └── scraper_config.py     # Year thresholds (TARGET_YEAR_THRESHOLD=2024)
+            ├── scripts/processing/        # Data processing
+            │   ├── paper_categorizer.py  # Categorization logic with confidence scoring
+            │   ├── validate_data.py      # Data integrity validation
+            │   └── run_categorizer.py    # Categorizer CLI
+            ├── config/config_v2.py       # Pydantic settings (LIBRARY_PORTAL_ prefix)
+            └── data/classified/organized/ # JSON paper data
+                ├── btech/branches/       # B.Tech papers by branch (CSE.json, ECE.json, etc.)
+                ├── btech/first_year/     # First year (cs_stream.json, non_cs_stream.json)
+                ├── masters/              # mtech.json, mca.json, me.json
+                └── bsc/                  # icas.json
+            ```
 
             ## Focus Areas
 
-            1. **Code Quality**
-               - Remove unused imports and variables
-               - Remove commented-out code blocks
-               - Clean up dead code paths
-               - Fix any obvious code smells
+            1. **Dead Code Removal**
+               - Unused imports and variables
+               - Commented-out code blocks
+               - Unreachable code paths
 
-            2. **Type Hints**
-               - Add missing type hints to functions
-               - Fix incorrect type annotations
-               - Ensure consistency with existing style
+            2. **Code Quality**
+               - Missing type hints on functions
+               - Missing/outdated docstrings (use Google style)
+               - Inconsistent naming patterns
 
-            3. **Docstrings**
-               - Add missing docstrings to public functions
-               - Update outdated docstrings
-               - Follow Google-style docstring format
+            3. **DRY Violations**
+               - Duplicated code blocks
+               - Similar functions that could be unified
 
-            4. **Code Formatting**
-               - Run Black formatter on all Python files
-               - Fix inconsistent indentation
-               - Organize imports (stdlib, third-party, local)
+            ## Commands to Run
 
-            5. **Data Validation**
-               - Check JSON files for consistency
-               - Verify no duplicate papers (by URL)
-               - Ensure all required fields are present
+            - Format code: `black .`
+            - Validate data: `python scripts/processing/validate_data.py`
+            - Test API starts: `timeout 5 uvicorn app_v2.main:app --host 0.0.0.0 --port 8000 || true`
 
-            6. **Configuration**
-               - Verify environment variable usage
-               - Check for hardcoded values that should be configurable
-               - Ensure config consistency across files
+            ## Rules
 
-            ## Key Directories to Check
-
-            - `app_v2/` - Main FastAPI application
-            - `scraper/` - Scrapy spider and config
-            - `scripts/` - Utility and processing scripts
-            - `config/` - Configuration files
-
-            ## Constraints
-
-            - Make incremental, safe changes
-            - Preserve existing functionality
-            - Keep changes under 100 lines per PR
-            - Run validation: `python scripts/processing/validate_data.py`
-            - Run Black: `black .`
-            - Only create PR if there are meaningful improvements
-
-            ## What NOT to Change
-
-            - Do not modify data files unless fixing obvious errors
-            - Do not change API behavior or response formats
-            - Do not remove any functionality
-            - Do not update dependencies
-
-            If no meaningful cleanup is needed, do not create a PR.
+            - Make incremental, safe refactorings
+            - Keep changes under 100 lines
+            - DO NOT modify JSON data files in data/
+            - DO NOT change API response formats
+            - DO NOT update dependencies in requirements.txt
+            - Run tests to verify changes
+            - Only create PR if meaningful improvements found
           jules_api_key: ${{ secrets.JULES_API_KEY }}
           include_commit_log: true

@@ -51,87 +51,96 @@ jobs:
       
       - name: Invoke Jules Paper Classifier
         if: steps.check_pending.outputs.has_pending == 'true'
-        uses: google-labs-code/jules-invoke@v1
+        uses: google-labs-code/jules-invoke@v1.0.0
         with:
           prompt: |
-            You are a paper classification agent for the Library Portal API. Your task is to
-            categorize papers from `staging/pending_review.json` into the correct data files.
+            Classify pending papers from staging into the correct data files.
 
-            ## Context
+            ## Task
 
-            This is a FastAPI-based REST API that serves MIT Library Question Papers.
-            Papers are organized in `data/classified/organized/` by:
-            - **btech/branches/{branch}.json** - B.Tech papers by branch (CSE, ECE, EEE, etc.)
-            - **btech/first_year/cs_stream.json** - First year CS stream papers
-            - **btech/first_year/non_cs_stream.json** - First year non-CS stream papers
-            - **btech/common_electives.json** - Common elective papers for B.Tech
-            - **masters/mtech.json** - M.Tech papers
-            - **masters/mca.json** - MCA papers
-            - **masters/me.json** - M.E. papers
-            - **bsc/icas.json** - B.Sc ICAS papers
-            - **other.json** - Uncategorized papers
+            Read `staging/pending_review.json` and categorize each paper with `reviewed: false`
+            into the correct target JSON file in `data/classified/organized/`.
 
-            ## Your Task
+            ## Data Structure
 
-            1. **Read** `staging/pending_review.json` to find papers needing classification
-            2. **Analyze** each paper's metadata:
-               - `course_code` / `subject_code` - Main identifier for categorization
-               - `program`, `degree_type` - Program information
-               - `file_name`, `url` - Additional context
-               - `categorization.reasoning` - Why it was staged
-               - `categorization.suggested_target` - Previous suggestion
+            ```
+            data/classified/organized/
+            ├── btech/
+            │   ├── branches/           # Branch-specific papers
+            │   │   ├── CSE.json        # Computer Science
+            │   │   ├── ECE.json        # Electronics & Communication
+            │   │   ├── EEE.json        # Electrical & Electronics
+            │   │   ├── Mechanical.json
+            │   │   ├── Civil.json
+            │   │   └── ... (more branches)
+            │   ├── first_year/
+            │   │   ├── cs_stream.json      # 2024+ CS stream (CSS prefix, XX02 codes)
+            │   │   └── non_cs_stream.json  # 2024+ Core stream (XX71, XX72 codes)
+            │   └── common_electives.json
+            ├── masters/
+            │   ├── mtech.json          # M.Tech (VLS, VL prefixes)
+            │   ├── mca.json            # MCA (MCA, MCI prefixes)
+            │   └── me.json             # M.E.
+            ├── bsc/
+            │   └── icas.json           # B.Sc ICAS
+            └── other.json              # Uncategorized
+            ```
 
-            3. **Determine** the correct target file using these rules:
-               - Course codes starting with `VLS`, `VL` → M.Tech VLSI (masters/mtech.json)
-               - Course codes with `5XXX` pattern → Masters level
-               - Course codes with `CSS` prefix → CS stream first year
-               - Course codes ending in `71` or `72` → Non-CS stream first year
-               - `MCA`, `MCI` prefix → MCA program
-               - Common prefixes: CSE→CSE, ECE→ECE, EEE→EEE, BME→Biomedical, etc.
+            ## Classification Rules
 
-            4. **Add** each paper to the correct target JSON file:
-               - Ensure all required fields are present (see paper_categorizer.py)
-               - Add `program_abbrev` field (derive from course code or program)
-               - Ensure no duplicate URLs in the target file
-               - Use proper JSON formatting with 2-space indentation
+            1. **Course Code Prefix Mapping:**
+               - CSE, DSE, ICT → CSE.json
+               - ECE → ECE.json
+               - EEE, ELE → EEE.json
+               - MEC, MME → Mechanical.json
+               - VLS, VL → masters/mtech.json
+               - MCA, MCI → masters/mca.json
+               - CSS prefix → first_year/cs_stream.json (2024+)
 
-            5. **Update** staging file to mark papers as reviewed:
-               - Set `reviewed: true`
-               - Add `review_notes` with classification reasoning
-               - Set `final_target` to the file path
+            2. **First Year Detection (2024+):**
+               - CSS prefix → CS stream
+               - Codes ending in 71, 72 → Non-CS/Core stream
+               - Codes ending in 02 → CS stream
 
-            6. **Validate** changes:
-               - Run `python scripts/processing/validate_data.py`
-               - Ensure JSON files are valid
+            3. **Masters Detection:**
+               - Course codes 5XXX pattern
+               - VLS/VL prefix → M.Tech VLSI
 
-            ## Paper Required Fields
+            ## Paper Schema (required fields)
 
-            Each paper must have these fields (based on app_v2/models.py):
-            - file_name, url, path, display_title
-            - year, semester, session, paper_type
-            - course_code, course_name, subject_code, subject_name
-            - program, program_abbrev, program_name, degree_type
-            - program_category, specialization, college
-            - curriculum_context (object), streams (list)
-            - scraped_at
+            ```json
+            {
+              "file_name": "string",
+              "url": "string",
+              "year": int,
+              "semester": int,
+              "course_code": "string",
+              "course_name": "string",
+              "program": "string",
+              "program_abbrev": "string",  // Derive from course code prefix
+              "degree_type": "string",
+              "scraped_at": "ISO timestamp"
+            }
+            ```
+
+            ## Process
+
+            1. Read `staging/pending_review.json`
+            2. For each paper with `reviewed: false`:
+               - Analyze course_code and program fields
+               - Determine target file using rules above
+               - Add to correct JSON file (append to course_code key)
+               - Derive `program_abbrev` from course code prefix
+            3. Update staging file: set `reviewed: true`, add `final_target` path
+            4. Validate: `python scripts/processing/validate_data.py`
+            5. Format: `black .`
 
             ## Constraints
 
-            - Only classify papers that have `reviewed: false` in staging
-            - Preserve existing paper data, only add new fields if missing
-            - Run validation before creating PR
-            - Create a clear PR with summary of classified papers
-
-            ## Example Classification
-
-            For a paper with:
-            - course_code: "VLS5001"
-            - program: "M.Tech VLSI"
-            
-            → Target: data/classified/organized/masters/mtech.json
-            → program_abbrev: "VLSI"
-
-            Now analyze the pending papers and classify them appropriately.
+            - Ensure no duplicate URLs in target files
+            - Preserve existing data in target files
+            - Use 2-space JSON indentation
+            - Only classify papers with `reviewed: false`
           jules_api_key: ${{ secrets.JULES_API_KEY }}
           starting_branch: 'main'
           include_last_commit: true
