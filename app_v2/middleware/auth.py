@@ -6,6 +6,7 @@ Public endpoints (health, docs) are accessible without authentication.
 """
 
 import os
+import secrets
 from typing import Optional, Callable
 from fastapi import Request, HTTPException, status
 from fastapi.responses import JSONResponse
@@ -35,9 +36,7 @@ class APIKeyMiddleware(BaseHTTPMiddleware):
     """
     Middleware for API key authentication.
 
-    API key can be provided via:
-    1. Header: X-API-Key: <key>
-    2. Query parameter: ?api_key=<key>
+    API key must be provided via the 'X-API-Key' header.
 
     Public endpoints (/, /docs, /health/*) don't require authentication.
     """
@@ -75,11 +74,11 @@ class APIKeyMiddleware(BaseHTTPMiddleware):
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 content={
                     "detail": "API key required",
-                    "hint": "Provide API key via 'X-API-Key' header or 'api_key' query parameter",
+                    "hint": "Provide API key via 'X-API-Key' header",
                 },
             )
 
-        if provided_key != self.api_key:
+        if not secrets.compare_digest(provided_key, self.api_key):
             logger.warning(f"Invalid API key attempt from {request.client.host}")
             return JSONResponse(
                 status_code=status.HTTP_403_FORBIDDEN,
@@ -103,15 +102,8 @@ class APIKeyMiddleware(BaseHTTPMiddleware):
         return False
 
     def _extract_api_key(self, request: Request) -> Optional[str]:
-        """Extract API key from request headers or query params."""
-        # Try header first (preferred)
-        api_key = request.headers.get("X-API-Key")
-        if api_key:
-            return api_key
-
-        # Fallback to query parameter
-        api_key = request.query_params.get("api_key")
-        return api_key
+        """Extract API key from request headers."""
+        return request.headers.get("X-API-Key")
 
 
 def get_api_key_from_env() -> Optional[str]:
