@@ -31,7 +31,7 @@ jobs:
         # To add more trusted users, update the allowlist below
         # Example: '["re1t", "trusted-user", "another-collaborator"]'
         if: ${{ contains(fromJSON('["re1t"]'), github.event.issue.user.login) }}
-        uses: google-labs-code/jules-invoke@v1
+        uses: BeksOmega/jules-action@v1
         with:
           prompt: |
             Please diagnose and fix the following bug in the Library Portal API:

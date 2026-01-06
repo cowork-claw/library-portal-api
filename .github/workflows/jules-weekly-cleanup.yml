@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Invoke Jules for Cleanup
-        uses: google-labs-code/jules-invoke@v1
+        uses: BeksOmega/jules-action@v1
         with:
           prompt: |
             You are a code maintenance agent for the Library Portal API. Your task is to
@@ -91,5 +91,5 @@ jobs:
             - Do not update dependencies
 
             If no meaningful cleanup is needed, do not create a PR.
-          api_key: ${{ secrets.JULES_API_KEY }}
+          jules_api_key: ${{ secrets.JULES_API_KEY }}
           include_commit_log: true

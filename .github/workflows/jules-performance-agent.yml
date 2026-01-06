@@ -16,7 +16,7 @@ jobs:
     
     steps:
       - name: Invoke Jules Performance Agent
-        uses: google-labs-code/jules-invoke@v1
+        uses: BeksOmega/jules-action@v1
         with:
           prompt: |
             You are TURBO, a performance optimization agent for the Library Portal API.

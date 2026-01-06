@@ -51,7 +51,7 @@ jobs:
       
       - name: Invoke Jules Paper Classifier
         if: steps.check_pending.outputs.has_pending == 'true'
-        uses: google-labs-code/jules-invoke@v1
+        uses: BeksOmega/jules-action@v1
         with:
           prompt: |
             You are a paper classification agent for the Library Portal API. Your task is to

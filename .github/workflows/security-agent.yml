@@ -14,7 +14,7 @@ jobs:
     
     steps:
       - name: Invoke Jules Security Agent
-        uses: google-labs-code/jules-invoke@v1
+        uses: BeksOmega/jules-action@v1
         with:
           prompt: |
             You are a security agent for the Library Portal API. Scan for vulnerabilities
