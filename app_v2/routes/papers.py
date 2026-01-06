@@ -58,32 +58,43 @@ async def get_papers(
     """
     start_time = time.time()
 
-    # Start with all papers
-    results = list(paper_index.papers)
+    # Efficiently filter papers using indexes
+    filter_sets = []
 
-    # Apply filters
     if year is not None:
-        results = [p for p in results if p.get("year") == year]
+        filter_sets.append(set(p["url"] for p in paper_index.get_by_year(year)))
 
     if semester is not None:
-        results = [p for p in results if p.get("semester") == semester]
+        filter_sets.append(set(p["url"] for p in paper_index.get_by_semester(semester)))
 
     if program is not None:
-        results = [
-            p for p in results if program.lower() in str(p.get("program", "")).lower()
-        ]
+        filter_sets.append(set(p["url"] for p in paper_index.get_by_program(program)))
 
+    if course_code is not None:
+        filter_sets.append(
+            set(p["url"] for p in paper_index.get_by_course(course_code))
+        )
+
+    if stream is not None:
+        filter_sets.append(set(p["url"] for p in paper_index.get_by_stream(stream)))
+
+    # Intersect filter results if multiple filters are active
+    if filter_sets:
+        intersected_urls = filter_sets[0].intersection(*filter_sets[1:])
+        results = [
+            p
+            for p in paper_index.papers
+            if p["url"] in intersected_urls
+        ]
+    else:
+        results = list(paper_index.papers)
+
+    # Slower, non-indexed filters (apply after indexed filters)
     if degree_type is not None:
         results = [p for p in results if p.get("degree_type") == degree_type]
 
     if paper_type is not None:
         results = [p for p in results if p.get("paper_type") == paper_type]
-
-    if course_code is not None:
-        results = [p for p in results if p.get("course_code") == course_code.upper()]
-
-    if stream is not None:
-        results = [p for p in results if stream in (p.get("streams") or [])]
 
     # Apply search if provided
     if search:

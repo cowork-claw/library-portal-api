@@ -10,7 +10,7 @@ data/classified/organized/
 └── other.json
 """
 
-import json
+import orjson
 import logging
 from pathlib import Path
 from typing import Dict, List, Set, Any, Optional
@@ -98,8 +98,8 @@ class DataLoader:
     def _load_file(self, file_path: Path) -> None:
         """Load papers from a single JSON file."""
         try:
-            with open(file_path, "r", encoding="utf-8") as f:
-                data = json.load(f)
+            with open(file_path, "rb") as f:
+                data = orjson.loads(f.read())
 
             paper_count = 0
             course_count = 0
@@ -140,7 +140,7 @@ class DataLoader:
 
             logger.debug(f"Loaded {paper_count} papers from {relative_path}")
 
-        except json.JSONDecodeError as e:
+        except orjson.JSONDecodeError as e:
             error_msg = f"Invalid JSON in {file_path}: {e}"
             logger.error(error_msg)
             self.stats.errors.append(error_msg)
