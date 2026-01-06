@@ -31,76 +31,69 @@ jobs:
         # To add more trusted users, update the allowlist below
         # Example: '["re1t", "trusted-user", "another-collaborator"]'
         if: ${{ contains(fromJSON('["re1t"]'), github.event.issue.user.login) }}
-        uses: google-labs-code/jules-invoke@v1
+        uses: google-labs-code/jules-invoke@v1.0.0
         with:
           prompt: |
-            Please diagnose and fix the following bug in the Library Portal API:
+            Diagnose and fix the following bug:
 
             ## Bug Report
 
             **Title**: ${{ github.event.issue.title }}
-            **Issue Number**: #${{ github.event.issue.number }}
+            **Issue**: #${{ github.event.issue.number }}
             **Reporter**: ${{ github.event.issue.user.login }}
 
             **Description**:
             ${{ github.event.issue.body }}
 
-            ## Project Context
+            ## Codebase Structure
 
-            This is a FastAPI-based REST API for serving MIT Library Question Papers with:
-            - FastAPI backend with Pydantic models (`app_v2/`)
-            - API key authentication middleware
-            - Scrapy-based web scraper (`scraper/`)
-            - JSON file storage (`data/classified/organized/`)
-            - Python 3.11+ codebase
+            ```
+            library-portal-api/
+            ├── app_v2/                     # FastAPI application (Python 3.11+)
+            │   ├── main.py                # Entry point, lifespan, CORS middleware
+            │   ├── models.py              # Pydantic models (Paper, responses)
+            │   ├── data_loader.py         # JSON data loading
+            │   ├── routes/
+            │   │   ├── papers.py          # GET /api/papers endpoints
+            │   │   ├── metadata.py        # GET /api/metadata, /api/statistics
+            │   │   └── health.py          # Health check endpoints
+            │   ├── services/
+            │   │   ├── indexing.py        # PaperIndex - pre-built Dict indexes
+            │   │   └── search.py          # Fuzzy search with TheFuzz
+            │   └── middleware/auth.py     # APIKeyMiddleware
+            ├── scraper/
+            │   ├── library_scraper/spiders/  # Scrapy spider
+            │   └── scraper_config.py      # TARGET_YEAR_THRESHOLD=2024
+            ├── scripts/processing/
+            │   ├── paper_categorizer.py   # Categorization logic
+            │   └── validate_data.py       # Data validation
+            └── data/classified/organized/ # JSON paper data
+            ```
 
             ## Debugging Process
 
-            1. **Analysis** - Review the bug report and identify the root cause
-               - Check error messages and stack traces
-               - Identify affected files and functions
-               - Understand the expected vs actual behavior
+            1. **Analyze** - Review the bug report
+               - Identify error messages and stack traces
+               - Understand expected vs actual behavior
 
-            2. **Diagnosis** - Trace the issue through the codebase
+            2. **Locate** - Trace through the codebase
                - Start from the entry point (API endpoint or scraper)
                - Follow the code flow to find the bug
-               - Check for edge cases or missing validation
 
             3. **Fix** - Implement a minimal, targeted fix
                - Make the smallest change that fixes the issue
                - Follow existing code patterns and style
-               - Add proper error handling if needed
 
-            4. **Testing** - Verify the fix
-               - Run data validation: `python scripts/processing/validate_data.py`
-               - Test the API locally: `uvicorn app_v2.main:app --reload`
-               - Test affected endpoints or functionality
+            4. **Verify** - Test the fix
+               - Validate data: `python scripts/processing/validate_data.py`
+               - Test API starts: `timeout 5 uvicorn app_v2.main:app || true`
 
-            5. **Documentation** - Document the fix
-               - Add comments explaining the fix if non-obvious
-               - Update docstrings if behavior changes
-               - Reference the issue number in commit message
-
-            ## Key Files
-
-            - `app_v2/main.py` - Application entry point
-            - `app_v2/routes/` - API endpoints
-            - `app_v2/services/` - Business logic
-            - `app_v2/middleware/auth.py` - Authentication
-            - `scraper/library_scraper/spiders/` - Web scrapers
-            - `scripts/processing/` - Data processing scripts
+            5. **Format** - Run `black .` before PR
 
             ## Constraints
 
             - Make minimal changes - only fix the reported bug
-            - Follow PEP 8 and existing code style
-            - Run Black formatter: `black .`
-            - Include clear PR description referencing the issue
-            - Add test cases if applicable
-
-            Please provide:
-            - Clear explanation of the root cause
-            - The complete fix with all necessary changes
-            - Steps to verify the fix
+            - Follow existing code patterns
+            - Reference issue #${{ github.event.issue.number }} in PR
           jules_api_key: ${{ secrets.JULES_API_KEY }}
           starting_branch: 'main'

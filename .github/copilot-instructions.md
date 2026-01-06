@@ -8,50 +8,61 @@ This is a FastAPI-based REST API for serving MIT Library Question Papers. The AP
 - FastAPI backend with Pydantic models
 - API key authentication for protected endpoints
 - Fuzzy search capabilities using TheFuzz
-- Automated scraping with Scrapy (2025+ papers only)
+- Automated scraping with Scrapy (2024+ papers only)
 - Automated categorization and data validation
 - **Jules AI agents** for automated maintenance, security, and bug fixing
-- Deployed on Render free tier
+- Deployed on Render free tier (512MB RAM limit)
 
 ## Project Structure
 
 ```
 library-portal-api/
-├── app_v2/                 # Main FastAPI application
-│   ├── main.py            # Application entry point
-│   ├── data_loader.py     # Multi-file JSON data loader
-│   ├── models.py          # Pydantic models
-│   ├── routes/            # API endpoint routers
-│   ├── services/          # Business logic (indexing, search)
-│   └── middleware/        # Authentication middleware
-├── config/                # Configuration and settings
-│   └── config_v2.py       # Pydantic settings with env support
-├── data/classified/organized/  # Categorized paper data (JSON)
-│   ├── btech/             # BTech papers by branch
-│   ├── masters/           # Masters programs (MTech, MCA, ME)
-│   ├── bsc/               # BSc programs
-│   └── other.json         # Uncategorized papers
-├── scraper/               # Scrapy-based web scraper
-│   ├── library_scraper/   # Scrapy spider
-│   ├── scraper_config.py  # Scraper configuration
-│   └── scrape_log.json    # Scraping history log
-├── scripts/               # Utility scripts
-│   ├── add_program_abbrev.py   # Add/update program_abbrev field
-│   └── processing/        # Data processing scripts
-│       ├── paper_categorizer.py    # Categorization logic
+├── app_v2/                     # Main FastAPI application
+│   ├── main.py                # Application entry point, lifespan manager, CORS
+│   ├── data_loader.py         # Multi-file JSON data loader
+│   ├── models.py              # Pydantic models (Paper, CurriculumContext, responses)
+│   ├── routes/                # API endpoint routers
+│   │   ├── papers.py          # GET /api/papers with filtering & pagination
+│   │   ├── metadata.py        # GET /api/metadata, /api/statistics
+│   │   └── health.py          # Health check endpoints
+│   ├── services/              # Business logic
+│   │   ├── indexing.py        # PaperIndex class - pre-builds Dict indexes
+│   │   └── search.py          # Fuzzy search using TheFuzz
+│   └── middleware/            # Authentication middleware
+│       └── auth.py            # APIKeyMiddleware - validates X-API-Key
+├── config/                    # Configuration and settings
+│   └── config_v2.py           # Pydantic settings (LIBRARY_PORTAL_ env prefix)
+├── data/classified/organized/ # Categorized paper data (JSON)
+│   ├── btech/                 # BTech papers
+│   │   ├── branches/          # Branch-specific (CSE.json, ECE.json, etc.)
+│   │   ├── first_year/        # cs_stream.json, non_cs_stream.json
+│   │   └── common_electives.json
+│   ├── masters/               # mtech.json, mca.json, me.json
+│   ├── bsc/                   # icas.json
+│   └── other.json             # Uncategorized papers
+├── scraper/                   # Scrapy-based web scraper
+│   ├── library_scraper/       # Scrapy spider, middlewares, settings
+│   │   └── spiders/           # question_papers_enhanced.py
+│   ├── scraper_config.py      # Year thresholds (TARGET_YEAR_THRESHOLD=2024)
+│   └── scrape_log.json        # Scraping history log
+├── scripts/                   # Utility scripts
+│   ├── add_program_abbrev.py  # Add/update program_abbrev field
+│   └── processing/            # Data processing scripts
+│       ├── paper_categorizer.py    # Categorization logic with confidence scoring
 │       ├── validate_data.py        # Data integrity checks
-│       ├── run_categorizer.py      # Categorizer runner
-│       └── staging_handler.py      # Manual review queue
-├── staging/               # Papers pending manual review
-├── docs/                  # Documentation
-└── .github/workflows/     # GitHub Actions workflows
-    ├── scraper-v2.yml              # Weekly scraper automation
-    ├── security-agent.yml          # Daily security scan (Jules)
+│       ├── run_categorizer.py      # Categorizer CLI runner
+│       └── staging_handler.py      # Manual review queue handler
+├── staging/                   # Papers pending manual review
+│   └── pending_review.json    # Queue of papers needing classification
+├── docs/                      # Documentation
+└── .github/workflows/         # GitHub Actions workflows
+    ├── scraper-v2.yml              # Weekly scraper automation (Sunday 2 AM UTC)
+    ├── security-agent.yml          # Security scan (Tuesday 6 AM UTC, Jules)
     ├── jules-paper-classifier.yml  # Auto-classify pending papers (Jules)
     ├── jules-ci-failure-fixer.yml  # Auto-fix CI failures (Jules)
-    ├── jules-weekly-cleanup.yml    # Weekly code cleanup (Jules)
+    ├── jules-weekly-cleanup.yml    # Weekly code cleanup (Monday 3 AM UTC, Jules)
     ├── jules-bug-fixer.yml         # Auto-fix bugs from issues (Jules)
-    ├── jules-performance-agent.yml # Performance optimization (Jules)
+    ├── jules-performance-agent.yml # Performance optimization (Wednesday 4 AM UTC, Jules)
     └── keep-alive.yml              # Keep Render API alive
 ```
 
@@ -159,8 +170,8 @@ Each paper object includes a `program_abbrev` field containing a short abbreviat
 - Check for duplicate papers by URL
 
 ### Scraper Configuration
-- **Target years:** 2025 and newer (configured in `scraper/scraper_config.py`)
-- **Blacklisted years:** 2006-2024 (already organized, avoid re-scraping)
+- **Target years:** 2024 and newer (configured in `scraper/scraper_config.py`)
+- **Blacklisted years:** 2006-2023 (already organized, avoid re-scraping)
 - Scraper runs weekly via GitHub Actions (Sunday 2 AM UTC)
 - Manual trigger available via workflow_dispatch
 
@@ -179,7 +190,7 @@ The main workflow for automated paper scraping:
 - **Workflow:** `.github/workflows/scraper-v2.yml`
 - **Steps:**
   1. Pre-scrape validation (count existing papers)
-  2. Run scraper (2025+ papers only)
+  2. Run scraper (2024+ papers only)
   3. Categorize new papers
   4. Validate data integrity
   5. Commit changes (if any)
@@ -206,65 +217,73 @@ To use Jules agents, you need to:
 |-------|----------|---------|-------------|
 | **Paper Classifier** | `jules-paper-classifier.yml` | After scraper completes | Auto-classifies papers in `staging/pending_review.json` |
 | **CI Failure Fixer** | `jules-ci-failure-fixer.yml` | When scraper workflow fails | Analyzes and fixes CI failures |
-| **Security Scanner** | `security-agent.yml` | Daily at 6 AM UTC | Scans for security vulnerabilities |
-| **Weekly Cleanup** | `jules-weekly-cleanup.yml` | Every Monday at 3 AM UTC | Removes dead code, improves quality |
+| **Security Scanner** | `security-agent.yml` | Tuesday at 6 AM UTC | Scans for security vulnerabilities |
+| **Weekly Cleanup** | `jules-weekly-cleanup.yml` | Monday at 3 AM UTC | Removes dead code, improves quality |
 | **Bug Fixer** | `jules-bug-fixer.yml` | Issue labeled with `bug` | Auto-diagnoses and fixes bugs |
-| **Performance Agent** | `jules-performance-agent.yml` | Every Wednesday at 4 AM UTC | Finds and implements optimizations |
+| **Performance Agent** | `jules-performance-agent.yml` | Wednesday at 4 AM UTC | Finds and implements optimizations |
 
 ### Paper Classifier Agent
 Automatically classifies papers from the staging queue after each scraper run:
-- Reads `staging/pending_review.json` for pending papers
-- Analyzes course codes and program metadata
-- Categorizes into the correct data files
-- Updates staging file to mark papers as reviewed
+- Reads `staging/pending_review.json` for pending papers with `reviewed: false`
+- Analyzes course codes using prefix mappings (CSE→CSE, VLS→M.Tech VLSI, CSS→CS stream)
+- Detects first-year streams: CS stream (CSS prefix, XX02 codes) vs Core stream (XX71, XX72 codes)
+- Categorizes into correct data files under `data/classified/organized/`
+- Updates staging file to mark papers as reviewed with `final_target` path
 - Creates a PR with classified papers
 
 ### CI Failure Fixer Agent
 Monitors the Library Portal V2 Scraper workflow and fixes failures:
 - Triggers automatically when scraper workflow fails
-- Analyzes error logs and stack traces
-- Identifies common failure patterns (KeyError, middleware issues, config mismatches)
+- Analyzes error logs and stack traces from the failed run
+- Identifies common failure patterns:
+  - KeyError: Missing expected fields in scraped data
+  - TypeError: Async/sync generator issues in middlewares
+  - Configuration mismatches in scraper_config.py
 - Implements targeted fixes
 - Creates a PR with the fix and references the failed run
 
 ### Security Scanner Agent
-Daily security audit of the codebase:
-- Checks for hardcoded secrets and credentials
-- Scans for injection vulnerabilities
-- Validates authentication logic
-- Reviews CORS and security headers
-- Checks dependencies for known vulnerabilities
+Weekly security audit of the codebase (Tuesday 6 AM UTC):
+- Checks for hardcoded secrets and credentials in source code
+- Scans for injection vulnerabilities (command, path traversal, JSON)
+- Validates authentication logic in `app_v2/middleware/auth.py`
+- Reviews CORS configuration in `app_v2/main.py`
+- Checks `requirements.txt` for known vulnerabilities
 
 ### Weekly Cleanup Agent
-Automated code maintenance:
+Automated code maintenance (Monday 3 AM UTC):
 - Removes unused imports and dead code
-- Adds missing type hints and docstrings
-- Runs Black formatter
-- Validates data integrity
+- Adds missing type hints and docstrings (Google style)
+- Identifies and refactors duplicated code
+- Runs Black formatter: `black .`
+- Validates data: `python scripts/processing/validate_data.py`
 - Only creates PR if meaningful improvements found
 
 ### Bug Fixer Agent
 Responds to bug reports:
 - Triggered when an issue is labeled with `bug`
-- Security: Only processes issues from trusted users (configurable allowlist)
+- **Security:** Only processes issues from trusted users (configurable allowlist in workflow)
 - Analyzes bug report and traces through codebase
-- Implements minimal, targeted fix
-- Adds test cases when applicable
+- Implements minimal, targeted fix following existing patterns
+- Validates with: `python scripts/processing/validate_data.py`
+- Tests API starts: `uvicorn app_v2.main:app`
 
 ### Performance Agent
-Optimizes API performance:
-- Analyzes data loading patterns
-- Identifies slow endpoints
-- Looks for memory usage issues
-- Implements caching and optimization
-- Only creates PR if measurable impact
+Optimizes API performance (Wednesday 4 AM UTC):
+- Analyzes data loading patterns in `app_v2/data_loader.py`
+- Reviews indexing efficiency in `app_v2/services/indexing.py`
+- Checks for slow fuzzy search in `app_v2/services/search.py`
+- Looks for N+1 patterns and missing early returns
+- Considers Render free tier constraint (512MB RAM)
+- Only creates PR if measurable impact expected
 
 ### Customizing Agents
 Each agent's prompt can be customized by editing the corresponding workflow file in `.github/workflows/`. Key customization points:
-- **Prompt content**: Modify the `prompt` field in the `uses: google-labs-code/jules-invoke@v1` step
+- **Prompt content**: Modify the `prompt` field in the `uses: google-labs-code/jules-invoke@v1.0.0` step
 - **Trigger conditions**: Adjust `on:` section for different schedules or events
 - **Allowlist**: Update the user allowlist in bug-fixer for trusted contributors
 - **Target branch**: Set `starting_branch` to work on specific branches
+- **Context options**: Use `include_last_commit: true` or `include_commit_log: true` for additional context
 
 ## Deployment
 
