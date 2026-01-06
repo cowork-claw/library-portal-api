@@ -91,5 +91,5 @@ jobs:
             - Do not update dependencies
 
             If no meaningful cleanup is needed, do not create a PR.
-          api_key: ${{ secrets.JULES_API_KEY }}
+          jules_api_key: ${{ secrets.JULES_API_KEY }}
           include_commit_log: true

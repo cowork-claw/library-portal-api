@@ -64,6 +64,7 @@ jobs:
             - **btech/branches/{branch}.json** - B.Tech papers by branch (CSE, ECE, EEE, etc.)
             - **btech/first_year/cs_stream.json** - First year CS stream papers
             - **btech/first_year/non_cs_stream.json** - First year non-CS stream papers
+            - **btech/common_electives.json** - Common elective papers for B.Tech
             - **masters/mtech.json** - M.Tech papers
             - **masters/mca.json** - MCA papers
             - **masters/me.json** - M.E. papers
@@ -105,13 +106,14 @@ jobs:
 
             ## Paper Required Fields
 
-            Each paper must have these 23 fields:
-            - path, scraped_at, url, year, program, file_name
-            - subject_code, paper_type, display_title, semester
-            - program_name, degree_type, specialization, college
-            - program_category, session, course_code, course_name
-            - subject_name, curriculum_context, streams, curriculum_match
-            - program_abbrev
+            Each paper must have these fields (based on app_v2/models.py):
+            - file_name, url, path, display_title
+            - year, semester, session, paper_type
+            - course_code, course_name, subject_code, subject_name
+            - program, program_abbrev, program_name, degree_type
+            - program_category, specialization, college
+            - curriculum_context (object), streams (list)
+            - scraped_at
 
             ## Constraints
 
