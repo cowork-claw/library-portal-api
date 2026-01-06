@@ -13,6 +13,8 @@ This is a FastAPI-based REST API for serving MIT Library Question Papers. The AP
 - **Jules AI agents** for automated maintenance, security, and bug fixing
 - Deployed on Render free tier (512MB RAM limit)
 
+> Automation requirement: Any PR created by auto-run workflows (Jules agents, scheduled jobs, or workflow_run triggers) must include a documentation update (e.g., README or .github/copilot-instructions.md) describing the change and should reference Copilot coding agent tips at https://gh.io/copilot-coding-agent-tips.
+
 ## Project Structure
 
 ```

@@ -75,6 +75,7 @@ jobs:
 
             ## Rules
 
+            - **Mandatory Documentation Update:** If this run creates a PR, update relevant documentation (e.g., .github/copilot-instructions.md or README) to capture the cleanup changes and include Copilot agent tips from https://gh.io/copilot-coding-agent-tips.
             - Make incremental, safe refactorings
             - Keep changes under 100 lines
             - DO NOT modify JSON data files in data/
