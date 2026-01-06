@@ -30,7 +30,7 @@ jobs:
           echo "Jules will analyze the failure and attempt to fix it." >> $GITHUB_STEP_SUMMARY
       
       - name: Invoke Jules to fix failure
-        uses: BeksOmega/jules-action@v1
+        uses: google-labs-code/jules-invoke@v1
         with:
           prompt: |
             The "Library Portal V2 Scraper" workflow has failed. Your task is to analyze the

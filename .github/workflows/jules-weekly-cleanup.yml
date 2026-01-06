@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Invoke Jules for Cleanup
-        uses: BeksOmega/jules-action@v1
+        uses: google-labs-code/jules-invoke@v1
         with:
           prompt: |
             You are a code maintenance agent for the Library Portal API. Your task is to
