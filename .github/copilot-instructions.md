@@ -261,7 +261,7 @@ Optimizes API performance:
 
 ### Customizing Agents
 Each agent's prompt can be customized by editing the corresponding workflow file in `.github/workflows/`. Key customization points:
-- **Prompt content**: Modify the `prompt` field in the `uses: google-labs-code/jules-invoke@v1` step
+- **Prompt content**: Modify the `prompt` field in the `uses: BeksOmega/jules-action@v1` step
 - **Trigger conditions**: Adjust `on:` section for different schedules or events
 - **Allowlist**: Update the user allowlist in bug-fixer for trusted contributors
 - **Target branch**: Set `starting_branch` to work on specific branches
