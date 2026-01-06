@@ -1,16 +1,23 @@
 name: Jules CI Failure Fixer
 
-# Trigger when the Library Portal V2 Scraper workflow fails
+# Manual trigger only - prevents automatic deployments on every PR
+# Previously used workflow_run which created deployments for every scraper run
 on:
-  workflow_run:
-    workflows: ["Library Portal V2 Scraper"]
-    types: [completed]
+  workflow_dispatch:
+    inputs:
+      failed_run_url:
+        description: 'URL of the failed workflow run'
+        required: true
+        type: string
+      branch:
+        description: 'Branch to fix'
+        required: true
+        default: 'main'
+        type: string
 
 jobs:
   fix-failure:
     name: Auto-Fix Scraper Failures
-    # Only run when the scraper workflow fails
-    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -18,26 +25,25 @@ jobs:
     
     steps:
       - name: Log failure details
+        env:
+          FAILED_RUN_URL: ${{ inputs.failed_run_url }}
+          BRANCH: ${{ inputs.branch }}
         run: |
-          echo "## 🔴 Scraper Failure Detected" >> $GITHUB_STEP_SUMMARY
+          echo "## 🔴 Scraper Failure - Manual Fix Triggered" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "- **Workflow**: ${{ github.event.workflow_run.name }}" >> $GITHUB_STEP_SUMMARY
-          echo "- **Run ID**: ${{ github.event.workflow_run.id }}" >> $GITHUB_STEP_SUMMARY
-          echo "- **Branch**: ${{ github.event.workflow_run.head_branch }}" >> $GITHUB_STEP_SUMMARY
-          echo "- **Commit**: ${{ github.event.workflow_run.head_sha }}" >> $GITHUB_STEP_SUMMARY
-          echo "- **URL**: ${{ github.event.workflow_run.html_url }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Branch**: $BRANCH" >> $GITHUB_STEP_SUMMARY
+          echo "- **Failed Run URL**: $FAILED_RUN_URL" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "Jules will analyze the failure and attempt to fix it." >> $GITHUB_STEP_SUMMARY
-      
+
       - name: Invoke Jules to fix failure
         uses: google-labs-code/jules-invoke@v1.0.0
         with:
           prompt: |
-            The CI workflow "${{ github.event.workflow_run.name }}" has failed. Fix it.
+            The CI workflow has failed. Fix it.
 
-            **Failed Run:** ${{ github.event.workflow_run.html_url }}
-            **Branch:** ${{ github.event.workflow_run.head_branch }}
-            **Commit:** ${{ github.event.workflow_run.head_sha }}
+            **Failed Run:** ${{ inputs.failed_run_url }}
+            **Branch:** ${{ inputs.branch }}
 
             ## Codebase Structure
 
@@ -93,5 +99,5 @@ jobs:
 
             - **Mandatory Documentation Update:** If this run creates a PR, update relevant documentation (e.g., .github/copilot-instructions.md or README) to describe the fix and include Copilot agent tips from https://gh.io/copilot-coding-agent-tips.
           jules_api_key: ${{ secrets.JULES_API_KEY }}
-          starting_branch: ${{ github.event.workflow_run.head_branch }}
+          starting_branch: ${{ inputs.branch }}
           include_last_commit: true
