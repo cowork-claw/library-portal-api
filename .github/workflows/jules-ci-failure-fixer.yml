@@ -81,7 +81,6 @@ jobs:
 
             ## Fix Process
 
-            - **Mandatory Documentation Update:** If this run creates a PR, update relevant documentation (e.g., .github/copilot-instructions.md or README) to describe the fix and include Copilot agent tips from https://gh.io/copilot-coding-agent-tips.
             1. Analyze the failure from the workflow run logs
             2. Identify the specific error message and stack trace
             3. Locate the relevant file(s)
@@ -89,6 +88,10 @@ jobs:
             5. Verify: `cd scraper && scrapy crawl question_papers_enhanced --nolog | head -20`
             6. Validate: `python scripts/processing/validate_data.py`
             7. Format: `black .`
+
+            ## Rules
+
+            - **Mandatory Documentation Update:** If this run creates a PR, update relevant documentation (e.g., .github/copilot-instructions.md or README) to describe the fix and include Copilot agent tips from https://gh.io/copilot-coding-agent-tips.
           jules_api_key: ${{ secrets.JULES_API_KEY }}
           starting_branch: ${{ github.event.workflow_run.head_branch }}
           include_last_commit: true
