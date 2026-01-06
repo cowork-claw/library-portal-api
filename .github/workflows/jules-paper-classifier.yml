@@ -137,6 +137,7 @@ jobs:
 
             ## Constraints
 
+            - **Mandatory Documentation Update:** If this run produces a PR, update relevant documentation (e.g., .github/copilot-instructions.md or README) to describe the change and include Copilot agent tips from https://gh.io/copilot-coding-agent-tips.
             - Ensure no duplicate URLs in target files
             - Preserve existing data in target files
             - Use 2-space JSON indentation

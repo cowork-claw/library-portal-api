@@ -83,6 +83,7 @@ jobs:
 
             ## Rules
 
+            - **Mandatory Documentation Update:** If this run creates a PR, update relevant documentation (e.g., .github/copilot-instructions.md or README) to describe the optimization and include Copilot agent tips from https://gh.io/copilot-coding-agent-tips.
             - Only optimize if there's measurable impact
             - Keep changes under 100 lines
             - Don't sacrifice readability for micro-gains

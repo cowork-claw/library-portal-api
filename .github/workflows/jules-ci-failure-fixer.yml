@@ -81,6 +81,7 @@ jobs:
 
             ## Fix Process
 
+            - **Mandatory Documentation Update:** If this run creates a PR, update relevant documentation (e.g., .github/copilot-instructions.md or README) to describe the fix and include Copilot agent tips from https://gh.io/copilot-coding-agent-tips.
             1. Analyze the failure from the workflow run logs
             2. Identify the specific error message and stack trace
             3. Locate the relevant file(s)
