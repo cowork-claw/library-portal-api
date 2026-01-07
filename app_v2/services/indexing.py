@@ -29,29 +29,27 @@ class PaperIndex:
         self.papers: List[Dict[str, Any]] = []
         self.loader: Optional[DataLoader] = None
 
-        # Indexes for fast lookup
-        self._by_year: Dict[int, List[Dict]] = defaultdict(list)
-        self._by_semester: Dict[int, List[Dict]] = defaultdict(list)
-        self._by_course: Dict[str, List[Dict]] = defaultdict(list)
-        self._by_program: Dict[str, List[Dict]] = defaultdict(list)
-        self._by_program_abbrev: Dict[str, List[Dict]] = defaultdict(list)
-        self._by_stream: Dict[str, List[Dict]] = defaultdict(list)
+        # Main lookup table
+        self._by_url: Dict[str, Dict] = {}
+
+        # Indexes for fast lookup (storing URLs instead of full objects)
+        self._by_year: Dict[int, Set[str]] = defaultdict(set)
+        self._by_semester: Dict[int, Set[str]] = defaultdict(set)
+        self._by_course: Dict[str, Set[str]] = defaultdict(set)
+        self._by_program: Dict[str, Set[str]] = defaultdict(set)
+        self._by_stream: Dict[str, Set[str]] = defaultdict(set)
 
         # Unique values for metadata
         self._unique_years: Set[int] = set()
         self._unique_semesters: Set[int] = set()
         self._unique_course_codes: Set[str] = set()
         self._unique_programs: Set[str] = set()
-        self._unique_program_abbrevs: Set[str] = set()
-        self._unique_degree_types: Set[str] = set()
-        self._unique_paper_types: Set[str] = set()
         self._unique_streams: Set[str] = set()
 
         # Count aggregations
         self._count_by_year: Dict[int, int] = {}
         self._count_by_semester: Dict[int, int] = {}
         self._count_by_program: Dict[str, int] = {}
-        self._count_by_program_abbrev: Dict[str, int] = {}
 
         # Stats
         self._files_loaded: int = 0
@@ -69,119 +67,106 @@ class PaperIndex:
 
     def _build_indexes(self) -> None:
         """Build all indexes from loaded papers."""
-        # Clear existing indexes
+        # Clear existing indexes and data
+        self._by_url.clear()
         self._by_year.clear()
         self._by_semester.clear()
         self._by_course.clear()
         self._by_program.clear()
-        self._by_program_abbrev.clear()
         self._by_stream.clear()
 
         self._unique_years.clear()
         self._unique_semesters.clear()
         self._unique_course_codes.clear()
         self._unique_programs.clear()
-        self._unique_program_abbrevs.clear()
-        self._unique_degree_types.clear()
-        self._unique_paper_types.clear()
         self._unique_streams.clear()
 
         # Build indexes
         for paper in self.papers:
+            url = paper.get("url")
+            if not url:
+                continue
+
+            # Main URL to paper mapping
+            self._by_url[url] = paper
+
             # Year index
             year = paper.get("year")
             if year:
-                self._by_year[year].append(paper)
+                self._by_year[year].add(url)
                 self._unique_years.add(year)
 
             # Semester index
             semester = paper.get("semester")
             if semester:
-                self._by_semester[semester].append(paper)
+                self._by_semester[semester].add(url)
                 self._unique_semesters.add(semester)
 
             # Course index
             course_code = paper.get("course_code")
             if course_code:
-                self._by_course[course_code].append(paper)
+                self._by_course[course_code].add(url)
                 self._unique_course_codes.add(course_code)
 
             # Program index
             program = paper.get("degree_type") or paper.get("program")
             if program:
-                self._by_program[program].append(paper)
+                self._by_program[program].add(url)
                 self._unique_programs.add(program)
-
-            # Program abbreviation index
-            program_abbrev = paper.get("program_abbrev")
-            if program_abbrev:
-                self._by_program_abbrev[program_abbrev].append(paper)
-                self._unique_program_abbrevs.add(program_abbrev)
-
-            # Degree type
-            degree_type = paper.get("degree_type")
-            if degree_type:
-                self._unique_degree_types.add(degree_type)
-
-            # Paper type
-            paper_type = paper.get("paper_type")
-            if paper_type:
-                self._unique_paper_types.add(paper_type)
 
             # Stream index
             streams = paper.get("streams") or []
             for stream in streams:
-                self._by_stream[stream].append(paper)
+                self._by_stream[stream].add(url)
                 self._unique_streams.add(stream)
 
         # Build count aggregations
-        self._count_by_year = {
-            year: len(papers) for year, papers in self._by_year.items()
-        }
+        self._count_by_year = {year: len(urls) for year, urls in self._by_year.items()}
         self._count_by_semester = {
-            sem: len(papers) for sem, papers in self._by_semester.items()
+            sem: len(urls) for sem, urls in self._by_semester.items()
         }
         self._count_by_program = {
-            prog: len(papers) for prog, papers in self._by_program.items()
-        }
-        self._count_by_program_abbrev = {
-            abbrev: len(papers) for abbrev, papers in self._by_program_abbrev.items()
+            prog: len(urls) for prog, urls in self._by_program.items()
         }
 
         logger.debug(
             f"Built indexes: {len(self._unique_years)} years, "
             f"{len(self._unique_course_codes)} courses, "
             f"{len(self._unique_programs)} programs, "
-            f"{len(self._unique_program_abbrevs)} program abbreviations"
+            f"{len(self._unique_streams)} streams"
         )
 
     # ==========================================================================
     # LOOKUP METHODS
     # ==========================================================================
+    def get_by_url(self, url: str) -> Optional[Dict[str, Any]]:
+        """Get a single paper by its URL."""
+        return self._by_url.get(url)
 
-    def get_by_year(self, year: int) -> List[Dict[str, Any]]:
-        """Get papers for a specific year."""
-        return self._by_year.get(year, [])
+    def get_by_urls(self, urls: Set[str]) -> List[Dict[str, Any]]:
+        """Get multiple papers from a set of URLs."""
+        return [self._by_url[url] for url in urls if url in self._by_url]
 
-    def get_by_semester(self, semester: int) -> List[Dict[str, Any]]:
-        """Get papers for a specific semester."""
-        return self._by_semester.get(semester, [])
+    def get_urls_by_year(self, year: int) -> Set[str]:
+        """Get paper URLs for a specific year."""
+        return self._by_year.get(year, set())
 
-    def get_by_course(self, course_code: str) -> List[Dict[str, Any]]:
+    def get_urls_by_semester(self, semester: int) -> Set[str]:
+        """Get paper URLs for a specific semester."""
+        return self._by_semester.get(semester, set())
+
+    def get_papers_by_course(self, course_code: str) -> List[Dict[str, Any]]:
         """Get papers for a specific course code."""
-        return self._by_course.get(course_code.upper(), [])
+        urls = self._by_course.get(course_code.upper(), set())
+        return self.get_by_urls(urls)
 
-    def get_by_program(self, program: str) -> List[Dict[str, Any]]:
-        """Get papers for a specific program."""
-        return self._by_program.get(program, [])
+    def get_urls_by_program(self, program: str) -> Set[str]:
+        """Get paper URLs for a specific program."""
+        return self._by_program.get(program, set())
 
-    def get_by_program_abbrev(self, abbrev: str) -> List[Dict[str, Any]]:
-        """Get papers for a specific program abbreviation."""
-        return self._by_program_abbrev.get(abbrev, [])
-
-    def get_by_stream(self, stream: str) -> List[Dict[str, Any]]:
-        """Get papers for a specific stream."""
-        return self._by_stream.get(stream, [])
+    def get_urls_by_stream(self, stream: str) -> Set[str]:
+        """Get paper URLs for a specific stream."""
+        return self._by_stream.get(stream, set())
 
     # ==========================================================================
     # PROPERTY ACCESSORS
@@ -212,18 +197,6 @@ class PaperIndex:
         return sorted(self._unique_programs)
 
     @property
-    def unique_program_abbrevs(self) -> List[str]:
-        return sorted(self._unique_program_abbrevs)
-
-    @property
-    def unique_degree_types(self) -> List[str]:
-        return sorted(self._unique_degree_types)
-
-    @property
-    def unique_paper_types(self) -> List[str]:
-        return sorted(self._unique_paper_types)
-
-    @property
     def unique_streams(self) -> List[str]:
         return sorted(self._unique_streams)
 
@@ -239,14 +212,6 @@ class PaperIndex:
     def count_by_program(self) -> Dict[str, int]:
         return dict(
             sorted(self._count_by_program.items(), key=lambda x: x[1], reverse=True)
-        )
-
-    @property
-    def count_by_program_abbrev(self) -> Dict[str, int]:
-        return dict(
-            sorted(
-                self._count_by_program_abbrev.items(), key=lambda x: x[1], reverse=True
-            )
         )
 
 
