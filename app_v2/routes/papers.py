@@ -58,34 +58,32 @@ async def get_papers(
     """
     start_time = time.time()
 
-    # Efficiently filter papers using indexes
-    filter_sets = []
+    # Efficiently filter papers using URL sets from indexes
+    filter_url_sets = []
 
     if year is not None:
-        filter_sets.append(set(p["url"] for p in paper_index.get_by_year(year)))
+        filter_url_sets.append(paper_index.get_urls_by_year(year))
 
     if semester is not None:
-        filter_sets.append(set(p["url"] for p in paper_index.get_by_semester(semester)))
+        filter_url_sets.append(paper_index.get_urls_by_semester(semester))
 
     if program is not None:
-        filter_sets.append(set(p["url"] for p in paper_index.get_by_program(program)))
+        filter_url_sets.append(paper_index.get_urls_by_program(program))
 
     if course_code is not None:
-        filter_sets.append(
-            set(p["url"] for p in paper_index.get_by_course(course_code))
+        # NOTE: get_by_course is not URL-based yet
+        filter_url_sets.append(
+            {p["url"] for p in paper_index.get_papers_by_course(course_code)}
         )
 
     if stream is not None:
-        filter_sets.append(set(p["url"] for p in paper_index.get_by_stream(stream)))
+        filter_url_sets.append(paper_index.get_urls_by_stream(stream))
 
     # Intersect filter results if multiple filters are active
-    if filter_sets:
-        intersected_urls = filter_sets[0].intersection(*filter_sets[1:])
-        results = [
-            p
-            for p in paper_index.papers
-            if p["url"] in intersected_urls
-        ]
+    if filter_url_sets:
+        # Start with the first set and intersect with the rest
+        intersected_urls = filter_url_sets[0].intersection(*filter_url_sets[1:])
+        results = paper_index.get_by_urls(intersected_urls)
     else:
         results = list(paper_index.papers)
 
@@ -126,7 +124,8 @@ async def get_papers_by_year(
     offset: int = Query(0, ge=0),
 ):
     """Get papers for a specific year with optional semester filter."""
-    papers = paper_index.get_by_year(year)
+    urls = paper_index.get_urls_by_year(year)
+    papers = paper_index.get_by_urls(urls)
 
     if not papers:
         raise HTTPException(status_code=404, detail=f"No papers found for year {year}")
@@ -149,7 +148,7 @@ async def get_papers_by_year(
 @router.get("/course/{course_code}", response_model=CourseResponse)
 async def get_papers_by_course(course_code: str):
     """Get all papers for a specific course code."""
-    papers = paper_index.get_by_course(course_code.upper())
+    papers = paper_index.get_papers_by_course(course_code.upper())
 
     if not papers:
         raise HTTPException(
@@ -178,7 +177,8 @@ async def get_papers_by_semester(
     if semester < 1 or semester > 8:
         raise HTTPException(status_code=400, detail="Semester must be between 1 and 8")
 
-    papers = paper_index.get_by_semester(semester)
+    urls = paper_index.get_urls_by_semester(semester)
+    papers = paper_index.get_by_urls(urls)
 
     if year is not None:
         papers = [p for p in papers if p.get("year") == year]
