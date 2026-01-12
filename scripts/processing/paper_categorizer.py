@@ -116,11 +116,16 @@ class PaperCategorizer:
     3. Any metadata that can be auto-filled
     """
 
-    def __init__(self, data_directory: Path, staging_directory: Path):
+    def __init__(self, data_directory: Path, staging_directory: Path) -> None:
+        """
+        Initialize the PaperCategorizer.
+
+        Args:
+            data_directory: Path to the organized data folder.
+            staging_directory: Path to the folder for papers needing review.
+        """
         self.data_dir = data_directory
         self.staging_dir = staging_directory
-
-        # Ensure staging directory exists
         self.staging_dir.mkdir(parents=True, exist_ok=True)
 
     def categorize(self, paper: Dict[str, Any]) -> CategorizationResult:
@@ -210,7 +215,17 @@ class PaperCategorizer:
         )
 
     def _is_masters(self, program: str, degree_type: str, course_code: str) -> bool:
-        """Check if paper belongs to a masters program."""
+        """
+        Check if a paper belongs to a Master's program.
+
+        Args:
+            program: The program name from the paper.
+            degree_type: The degree type from the paper.
+            course_code: The course code of the paper.
+
+        Returns:
+            True if the paper is determined to be a Master's level paper.
+        """
         masters_keywords = ["M.Tech", "MTech", "M.E", "ME", "MCA", "M.Sc", "MSc"]
 
         for keyword in masters_keywords:
@@ -234,8 +249,19 @@ class PaperCategorizer:
         course_code: str,
         reasoning: List[str],
     ) -> CategorizationResult:
-        """Categorize a masters-level paper."""
+        """
+        Categorize a paper determined to be for a Master's program.
 
+        Args:
+            program: The program name from the paper.
+            degree_type: The degree type from the paper.
+            prefix: The extracted course code prefix.
+            course_code: The full course code.
+            reasoning: A list of reasons for the categorization.
+
+        Returns:
+            A CategorizationResult for the Master's paper.
+        """
         if "MCA" in program or "MCA" in degree_type:
             reasoning.append("MCA program detected")
             return CategorizationResult(
@@ -267,7 +293,16 @@ class PaperCategorizer:
         )
 
     def _is_icas(self, prefix: str, course_code: str) -> bool:
-        """Check if paper belongs to B.Sc ICAS program."""
+        """
+        Check if a paper belongs to the B.Sc ICAS program.
+
+        Args:
+            prefix: The extracted course code prefix.
+            course_code: The full course code.
+
+        Returns:
+            True if the paper is determined to be an ICAS paper.
+        """
         # ICAS codes start with 'I' followed by subject area
         if prefix in ICAS_PREFIXES:
             return True
@@ -282,8 +317,18 @@ class PaperCategorizer:
     def _check_first_year(
         self, course_code: str, prefix: str, year: Optional[int], reasoning: List[str]
     ) -> Optional[CategorizationResult]:
-        """Check if paper is first year and determine CS vs Core stream."""
+        """
+        Check if a paper is a first-year paper and determine its stream.
 
+        Args:
+            course_code: The full course code.
+            prefix: The extracted course code prefix.
+            year: The year of the paper.
+            reasoning: A list of reasons for the categorization.
+
+        Returns:
+            A CategorizationResult if the paper is a first-year paper, otherwise None.
+        """
         # CSS prefix is always CS stream (2024+)
         if CSS_PREFIX_PATTERN.match(course_code) or prefix == "CSS":
             reasoning.append(f"CSS prefix = CS Stream (2024+)")
@@ -327,12 +372,17 @@ class PaperCategorizer:
 
     def _get_semester_from_code(self, code: str) -> Optional[int]:
         """
-        Extract semester from course code pattern.
+        Extract semester from the course code pattern.
 
-        Pattern: PREFIX + XYZW
-        - X = Year digit (1-5)
-        - Y = Semester type (1=odd, 2=even, 0/7=first year variants)
+        Args:
+            code: The course code.
+
+        Returns:
+            The extracted semester number (1-8) or None if not found.
         """
+        # Pattern: PREFIX + XYZW
+        # X = Year digit (1-5)
+        # Y = Semester type (1=odd, 2=even, 0/7=first year variants)
         match = re.match(r"^[A-Z]{2,4}(\d)(\d)", code)
         if not match:
             return None

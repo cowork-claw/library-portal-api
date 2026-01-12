@@ -24,10 +24,6 @@ PUBLIC_PATHS = {
     "/docs",
     "/redoc",
     "/openapi.json",
-    "/health",
-    "/health/",
-    "/health/data",
-    "/health/scraper",
 }
 
 
@@ -87,18 +83,20 @@ class APIKeyMiddleware(BaseHTTPMiddleware):
         return await call_next(request)
 
     def _is_public_path(self, path: str) -> bool:
-        """Check if path is public (no auth required)."""
-        path_normalized = path.rstrip("/")
+        """
+        Check if path is public (no auth required).
 
-        # Exact match
-        if path_normalized in PUBLIC_PATHS or f"{path_normalized}/" in PUBLIC_PATHS:
-            return True
+        Paths are considered public if they are in PUBLIC_PATHS or start with /health.
+        """
+        # Normalize path by removing trailing slash for consistent matching
+        path_normalized = path.rstrip("/") if path != "/" else "/"
 
-        # Health endpoints are public
+        # Health endpoints are always public
         if path_normalized.startswith("/health"):
             return True
 
-        return False
+        # Check against the set of defined public paths
+        return path_normalized in PUBLIC_PATHS
 
     def _extract_api_key(self, request: Request) -> Optional[str]:
         """Extract API key from request headers."""
