@@ -28,7 +28,6 @@ PUBLIC_PATHS = {
     "/health/",
     "/health/data",
     "/health/scraper",
-    "/api",
 }
 
 
