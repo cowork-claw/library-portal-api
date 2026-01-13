@@ -22,9 +22,6 @@ Protected endpoints require an API key:
 ```bash
 # Header (recommended)
 curl -H "X-API-Key: your-key" http://localhost:8000/api/papers
-
-# Query parameter
-curl http://localhost:8000/api/papers?api_key=your-key
 ```
 
 **Public endpoints** (no auth required):
