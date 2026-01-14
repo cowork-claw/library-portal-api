@@ -146,7 +146,7 @@ jobs:
           from pathlib import Path
 
           data_dir = Path('data/classified/organized')
-          stats = {'total': 0, 'btech': 0, 'masters': 0, 'bsc': 0, 'other': 0}
+          stats = {{'total': 0, 'btech': 0, 'masters': 0, 'bsc': 0, 'other': 0}}
 
           for f in data_dir.rglob('*.json'):
             try:
@@ -170,9 +170,9 @@ jobs:
                 pass
 
           print('### 📊 Data Stats')
-          print(f"- **Total Papers**: {stats['total']}")
-          print(f"- **B.Tech**: {stats['btech']}")
-          print(f"- **Masters**: {stats['masters']}")
-          print(f"- **B.Sc/ICAS**: {stats['bsc']}")
-          print(f"- **Other**: {stats['other']}")
+          print(f"- **Total Papers**: {{stats['total']}}")
+          print(f"- **B.Tech**: {{stats['btech']}}")
+          print(f"- **Masters**: {{stats['masters']}}")
+          print(f"- **B.Sc/ICAS**: {{stats['bsc']}}")
+          print(f"- **Other**: {{stats['other']}}")
           " >> $GITHUB_STEP_SUMMARY
