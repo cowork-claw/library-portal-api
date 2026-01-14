@@ -140,8 +140,8 @@ jobs:
           echo "- **Mode**: ${{ github.event.inputs.dry_run == 'true' && 'Dry Run' || 'Live' }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           
-          # Final data count
-          python -c "
+          # Final data count - use heredoc to avoid bash quote parsing issues
+          python << 'PYEOF' >> $GITHUB_STEP_SUMMARY
           import json
           from pathlib import Path
 
@@ -170,9 +170,9 @@ jobs:
                 pass
 
           print('### 📊 Data Stats')
-          print(f'- **Total Papers**: {stats["total"]}')
-          print(f'- **B.Tech**: {stats["btech"]}')
-          print(f'- **Masters**: {stats["masters"]}')
-          print(f'- **B.Sc/ICAS**: {stats["bsc"]}')
-          print(f'- **Other**: {stats["other"]}')
-          " >> $GITHUB_STEP_SUMMARY
+          print(f"- **Total Papers**: {stats['total']}")
+          print(f"- **B.Tech**: {stats['btech']}")
+          print(f"- **Masters**: {stats['masters']}")
+          print(f"- **B.Sc/ICAS**: {stats['bsc']}")
+          print(f"- **Other**: {stats['other']}")
+          PYEOF
