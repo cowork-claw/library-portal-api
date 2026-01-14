@@ -81,7 +81,12 @@ class PaperIndex:
         self._unique_programs.clear()
         self._unique_streams.clear()
 
-        # Build indexes
+        # Reset count aggregations
+        self._count_by_year = defaultdict(int)
+        self._count_by_semester = defaultdict(int)
+        self._count_by_program = defaultdict(int)
+
+        # Build indexes and aggregations in a single pass
         for paper in self.papers:
             url = paper.get("url")
             if not url:
@@ -95,12 +100,14 @@ class PaperIndex:
             if year:
                 self._by_year[year].add(url)
                 self._unique_years.add(year)
+                self._count_by_year[year] += 1
 
             # Semester index
             semester = paper.get("semester")
             if semester:
                 self._by_semester[semester].add(url)
                 self._unique_semesters.add(semester)
+                self._count_by_semester[semester] += 1
 
             # Course index
             course_code = paper.get("course_code")
@@ -113,21 +120,13 @@ class PaperIndex:
             if program:
                 self._by_program[program].add(url)
                 self._unique_programs.add(program)
+                self._count_by_program[program] += 1
 
             # Stream index
             streams = paper.get("streams") or []
             for stream in streams:
                 self._by_stream[stream].add(url)
                 self._unique_streams.add(stream)
-
-        # Build count aggregations
-        self._count_by_year = {year: len(urls) for year, urls in self._by_year.items()}
-        self._count_by_semester = {
-            sem: len(urls) for sem, urls in self._by_semester.items()
-        }
-        self._count_by_program = {
-            prog: len(urls) for prog, urls in self._by_program.items()
-        }
 
         logger.debug(
             f"Built indexes: {len(self._unique_years)} years, "
