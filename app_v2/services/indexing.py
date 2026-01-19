@@ -44,12 +44,16 @@ class PaperIndex:
         self._unique_semesters: Set[int] = set()
         self._unique_course_codes: Set[str] = set()
         self._unique_programs: Set[str] = set()
+        self._unique_program_abbrevs: Set[str] = set()
+        self._unique_paper_types: Set[str] = set()
+        self._unique_degree_types: Set[str] = set()
         self._unique_streams: Set[str] = set()
 
         # Count aggregations
         self._count_by_year: Dict[int, int] = {}
         self._count_by_semester: Dict[int, int] = {}
         self._count_by_program: Dict[str, int] = {}
+        self._count_by_program_abbrev: Dict[str, int] = {}
 
         # Stats
         self._files_loaded: int = 0
@@ -79,12 +83,16 @@ class PaperIndex:
         self._unique_semesters.clear()
         self._unique_course_codes.clear()
         self._unique_programs.clear()
+        self._unique_program_abbrevs.clear()
+        self._unique_paper_types.clear()
+        self._unique_degree_types.clear()
         self._unique_streams.clear()
 
         # Reset count aggregations
         self._count_by_year = defaultdict(int)
         self._count_by_semester = defaultdict(int)
         self._count_by_program = defaultdict(int)
+        self._count_by_program_abbrev = defaultdict(int)
 
         # Build indexes and aggregations in a single pass
         for paper in self.papers:
@@ -121,6 +129,22 @@ class PaperIndex:
                 self._by_program[program].add(url)
                 self._unique_programs.add(program)
                 self._count_by_program[program] += 1
+
+            # Program abbreviation index
+            program_abbrev = paper.get("program_abbrev")
+            if program_abbrev:
+                self._unique_program_abbrevs.add(program_abbrev)
+                self._count_by_program_abbrev[program_abbrev] += 1
+
+            # Paper type index
+            paper_type = paper.get("paper_type")
+            if paper_type:
+                self._unique_paper_types.add(paper_type)
+
+            # Degree type index
+            degree_type = paper.get("degree_type")
+            if degree_type:
+                self._unique_degree_types.add(degree_type)
 
             # Stream index
             streams = paper.get("streams") or []
@@ -196,6 +220,18 @@ class PaperIndex:
         return sorted(self._unique_programs)
 
     @property
+    def unique_program_abbrevs(self) -> List[str]:
+        return sorted(self._unique_program_abbrevs)
+
+    @property
+    def unique_paper_types(self) -> List[str]:
+        return sorted(self._unique_paper_types)
+
+    @property
+    def unique_degree_types(self) -> List[str]:
+        return sorted(self._unique_degree_types)
+
+    @property
     def unique_streams(self) -> List[str]:
         return sorted(self._unique_streams)
 
@@ -211,6 +247,16 @@ class PaperIndex:
     def count_by_program(self) -> Dict[str, int]:
         return dict(
             sorted(self._count_by_program.items(), key=lambda x: x[1], reverse=True)
+        )
+
+    @property
+    def count_by_program_abbrev(self) -> Dict[str, int]:
+        return dict(
+            sorted(
+                self._count_by_program_abbrev.items(),
+                key=lambda x: x[1],
+                reverse=True,
+            )
         )
 
 
