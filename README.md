@@ -79,10 +79,16 @@ python -c "import secrets; print(secrets.token_urlsafe(32))"
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `LIBRARY_PORTAL_API_KEY` | API authentication key | None (no auth) |
+| `LIBRARY_PORTAL_API_KEY` | API authentication key | **Required in Prod** / Optional in Dev |
 | `LIBRARY_PORTAL_ENVIRONMENT` | `development` or `production` | development |
 | `LIBRARY_PORTAL_LOG_LEVEL` | `DEBUG`, `INFO`, `WARNING` | INFO |
 | `LIBRARY_PORTAL_CORS_ORIGINS` | Comma-separated origins | * |
+
+## Security
+
+- **Authentication**: `LIBRARY_PORTAL_API_KEY` is **mandatory** in production. The server will refuse requests if it is missing.
+- **Fail-Safe**: In development mode, missing API key will trigger a warning but allow access for testing.
+- **Dependencies**: Regular security updates are applied.
 
 ## Project Structure
 
