@@ -84,7 +84,11 @@ app.add_middleware(
 
 # Add API Key authentication middleware
 # Set LIBRARY_PORTAL_API_KEY env var to enable authentication
-app.add_middleware(APIKeyMiddleware, api_key=settings.API_SECRET_KEY)
+app.add_middleware(
+    APIKeyMiddleware,
+    api_key=settings.API_SECRET_KEY,
+    environment=settings.ENVIRONMENT,
+)
 
 # Include routers
 app.include_router(papers_router)

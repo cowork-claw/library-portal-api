@@ -36,15 +36,24 @@ class APIKeyMiddleware(BaseHTTPMiddleware):
     Public endpoints (/, /docs, /health/*) don't require authentication.
     """
 
-    def __init__(self, app, api_key: Optional[str] = None):
+    def __init__(
+        self, app, api_key: Optional[str] = None, environment: str = "production"
+    ):
         super().__init__(app)
         self.api_key = api_key or os.getenv(API_KEY_ENV)
+        self.environment = environment
 
         if not self.api_key:
-            logger.warning(
-                f"⚠️  No API key configured ({API_KEY_ENV}). "
-                "API will be accessible without authentication!"
-            )
+            if self.environment == "development":
+                logger.warning(
+                    f"⚠️  No API key configured ({API_KEY_ENV}). "
+                    "API will be accessible without authentication (Development Mode Only)!"
+                )
+            else:
+                logger.critical(
+                    f"🚨 CRITICAL SECURITY RISK: No API key configured in {self.environment} environment. "
+                    "All requests will be blocked."
+                )
 
     async def dispatch(self, request: Request, call_next: Callable):
         # Allow CORS preflight requests through without authentication
@@ -57,9 +66,21 @@ class APIKeyMiddleware(BaseHTTPMiddleware):
         if self._is_public_path(path):
             return await call_next(request)
 
-        # If no API key configured, allow all requests (dev mode)
+        # If no API key configured
         if not self.api_key:
-            return await call_next(request)
+            # Only allow in development mode
+            if self.environment == "development":
+                return await call_next(request)
+            else:
+                # Block all requests in non-development environments
+                logger.error("Blocked request due to missing API key configuration")
+                return JSONResponse(
+                    status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                    content={
+                        "detail": "Server security misconfiguration",
+                        "hint": "API Key is required in this environment",
+                    },
+                )
 
         # Check for API key in request
         provided_key = self._extract_api_key(request)
