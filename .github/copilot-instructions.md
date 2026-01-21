@@ -38,7 +38,7 @@ library-portal-api/
 │   ├── btech/                 # BTech papers
 │   │   ├── branches/          # Branch-specific (CSE.json, ECE.json, etc.)
 │   │   ├── first_year/        # cs_stream.json, non_cs_stream.json
-│   │   └── common_electives.json
+│   │   ├── common_electives.json
 │   ├── masters/               # mtech.json, mca.json, me.json
 │   ├── bsc/                   # icas.json
 │   └── other.json             # Uncategorized papers
@@ -277,15 +277,8 @@ Optimizes API performance (Wednesday 4 AM UTC):
 - Checks for slow fuzzy search in `app_v2/services/search.py`
 - Looks for N+1 patterns and missing early returns
 - Considers Render free tier constraint (512MB RAM)
-- Only creates PR if measurable impact expected
-
-### Customizing Agents
-Each agent's prompt can be customized by editing the corresponding workflow file in `.github/workflows/`. Key customization points:
-- **Prompt content**: Modify the `prompt` field in the `uses: google-labs-code/jules-invoke@v1.0.0` step
-- **Trigger conditions**: Adjust `on:` section for different schedules or events
-- **Allowlist**: Update the user allowlist in bug-fixer for trusted contributors
-- **Target branch**: Set `starting_branch` to work on specific branches
-- **Context options**: Use `include_last_commit: true` or `include_commit_log: true` for additional context
+- **Optimization Strategy:** The "Turbo" methodology focuses on 5 steps: Profile, Select, Optimize, Verify, and Present.
+- **Tip:** When optimizing filtering logic, prefer `PaperIndex` methods that return sets of URLs (`get_urls_by_*`) over those that return full objects, to allow for efficient set intersection before object hydration.
 
 ## Deployment
 
@@ -449,6 +442,8 @@ def derive_abbrev(paper: dict, filename_abbrev: Optional[str]) -> str:
 - Implement pagination for large result sets
 - Cache settings using `@lru_cache`
 - Monitor Render free tier limits (512MB RAM)
+- **Optimization Strategy:** The "Turbo" methodology focuses on 5 steps: Profile, Select, Optimize, Verify, and Present.
+- **Tip:** When optimizing filtering logic, prefer `PaperIndex` methods that return sets of URLs (`get_urls_by_*`) over those that return full objects, to allow for efficient set intersection before object hydration.
 
 ## API Features
 
@@ -497,6 +492,15 @@ The `PaperIndex` service pre-builds indexes for fast lookups:
 - **Health Check:** https://library-portal-api.onrender.com/health
 - **Frontend Integration:** See `docs/FRONTEND_INTEGRATION.md`
 - **Archive Docs:** See `docs/archive/` for historical context
+
+## Copilot Agent Tips
+
+To get the most out of Copilot Agents (like Jules), follow these tips (ref: https://gh.io/copilot-coding-agent-tips):
+
+1. **Be specific and provide context**: When asking for changes, reference specific files or logical components.
+2. **Review and iterate**: Inspect the agent's plan and code. Provide feedback to refine the solution.
+3. **Use documentation**: Keep `README.md` and `AGENTS.md` (or this file) up to date to guide the agent's understanding of the project structure and constraints.
+4. **Small steps**: Break down complex tasks into smaller, verifiable steps.
 
 ## Questions?
 When in doubt:
