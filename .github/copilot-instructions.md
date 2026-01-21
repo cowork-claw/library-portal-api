@@ -277,15 +277,8 @@ Optimizes API performance (Wednesday 4 AM UTC):
 - Checks for slow fuzzy search in `app_v2/services/search.py`
 - Looks for N+1 patterns and missing early returns
 - Considers Render free tier constraint (512MB RAM)
-- Only creates PR if measurable impact expected
-
-### Customizing Agents
-Each agent's prompt can be customized by editing the corresponding workflow file in `.github/workflows/`. Key customization points:
-- **Prompt content**: Modify the `prompt` field in the `uses: google-labs-code/jules-invoke@v1.0.0` step
-- **Trigger conditions**: Adjust `on:` section for different schedules or events
-- **Allowlist**: Update the user allowlist in bug-fixer for trusted contributors
-- **Target branch**: Set `starting_branch` to work on specific branches
-- **Context options**: Use `include_last_commit: true` or `include_commit_log: true` for additional context
+- **Optimization Strategy:** The "Turbo" methodology focuses on 5 steps: Profile, Select, Optimize, Verify, and Present.
+- **Tip:** When optimizing filtering logic, prefer `PaperIndex` methods that return sets of URLs (`get_urls_by_*`) over those that return full objects, to allow for efficient set intersection before object hydration.
 
 ## Deployment
 
@@ -452,6 +445,54 @@ def derive_abbrev(paper: dict, filename_abbrev: Optional[str]) -> str:
 - **Optimization Strategy:** The "Turbo" methodology focuses on 5 steps: Profile, Select, Optimize, Verify, and Present.
 - **Tip:** When optimizing filtering logic, prefer `PaperIndex` methods that return sets of URLs (`get_urls_by_*`) over those that return full objects, to allow for efficient set intersection before object hydration.
 
+## API Features
+
+### Program Abbreviation Field
+The API includes `program_abbrev` field in all paper objects for program identification:
+- **Metadata endpoint** (`/api/metadata`): Returns list of all available program abbreviations
+- **Statistics endpoint** (`/api/statistics`): Returns paper counts grouped by program abbreviation
+- **Papers endpoint** (`/api/papers`): Each paper includes `program_abbrev` field in the response
+- **Common abbreviations**: BME, CSE, ECE, EEE, EIE, ME, MXE, CE, CHE, BIO, AERO, AUTO, IT, MPE, M.Tech, M.E, MCA
+
+**Frontend Usage:** Frontends can filter papers by matching the `program_abbrev` field in the response. The API does not currently support `program_abbrev` as a query parameter - you cannot pass `?program_abbrev=CSE` to the `/api/papers` endpoint. For server-side filtering, use the `program` parameter which supports partial text matching.
+
+### Index Service
+The `PaperIndex` service pre-builds indexes for fast lookups:
+- `_by_program_abbrev`: Index papers by program abbreviation
+- `unique_program_abbrevs`: Set of all unique abbreviations
+- `count_by_program_abbrev`: Count papers per abbreviation
+- `get_by_program_abbrev(abbrev)`: Retrieve papers for a specific abbreviation
+
+## Troubleshooting
+
+### Common Issues
+- **Import errors:** Ensure `sys.path` includes project root
+- **Data not loading:** Check `DATA_DIRECTORY` path in config
+- **Authentication failing:** Verify `LIBRARY_PORTAL_API_KEY` is set
+- **CORS errors:** Update `LIBRARY_PORTAL_CORS_ORIGINS`
+- **Scraper not finding papers:** Check year threshold and blacklist
+- **Missing program_abbrev:** Run `python scripts/add_program_abbrev.py` to populate field
+
+### Debugging
+- Set `LIBRARY_PORTAL_LOG_LEVEL=DEBUG` for verbose logging
+- Use FastAPI's `/docs` for interactive API testing
+- Check `scraper/scrape_log.json` for scraping history
+- Review `staging/pending_review.json` for papers needing manual categorization
+
+## Security Notes
+- Never commit API keys or secrets to the repository
+- Use environment variables for all sensitive configuration
+- API key validation happens in `APIKeyMiddleware`
+- CORS is configured to allow all origins by default (tighten in production)
+- Run on Render free tier with public endpoints exposed
+
+## Resources
+- **Live API:** https://library-portal-api.onrender.com
+- **API Docs:** https://library-portal-api.onrender.com/docs
+- **Health Check:** https://library-portal-api.onrender.com/health
+- **Frontend Integration:** See `docs/FRONTEND_INTEGRATION.md`
+- **Archive Docs:** See `docs/archive/` for historical context
+
 ## Copilot Agent Tips
 
 To get the most out of Copilot Agents (like Jules), follow these tips (ref: https://gh.io/copilot-coding-agent-tips):
@@ -460,3 +501,11 @@ To get the most out of Copilot Agents (like Jules), follow these tips (ref: http
 2. **Review and iterate**: Inspect the agent's plan and code. Provide feedback to refine the solution.
 3. **Use documentation**: Keep `README.md` and `AGENTS.md` (or this file) up to date to guide the agent's understanding of the project structure and constraints.
 4. **Small steps**: Break down complex tasks into smaller, verifiable steps.
+
+## Questions?
+When in doubt:
+1. Check existing code patterns in similar files
+2. Review FastAPI and Pydantic documentation
+3. Test changes locally before committing
+4. Validate data integrity after modifications
+5. Consult README.md for high-level architecture
