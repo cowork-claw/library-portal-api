@@ -56,7 +56,6 @@ class DataLoader:
         self.data_directory = data_directory
         self.papers: List[Dict[str, Any]] = []
         self.papers_by_url: Dict[str, Dict[str, Any]] = {}
-        self.papers_by_course: Dict[str, List[Dict[str, Any]]] = {}
         self.stats = LoaderStats()
 
     def load_all(self) -> List[Dict[str, Any]]:
@@ -68,7 +67,6 @@ class DataLoader:
         """
         self.papers = []
         self.papers_by_url = {}
-        self.papers_by_course = {}
         self.stats = LoaderStats()
 
         if not self.data_directory.exists():
@@ -114,17 +112,12 @@ class DataLoader:
 
                 course_count += 1
 
-                # Initialize course list if needed
-                if course_code not in self.papers_by_course:
-                    self.papers_by_course[course_code] = []
-
                 for paper in papers_list:
                     # Deduplicate by URL
                     url = paper.get("url")
                     if url and url not in self.papers_by_url:
                         self.papers.append(paper)
                         self.papers_by_url[url] = paper
-                        self.papers_by_course[course_code].append(paper)
                         paper_count += 1
 
             # Track file stats
@@ -153,10 +146,6 @@ class DataLoader:
         """Get all existing paper URLs for deduplication."""
         return set(self.papers_by_url.keys())
 
-    def get_papers_by_course(self, course_code: str) -> List[Dict[str, Any]]:
-        """Get all papers for a specific course code."""
-        return self.papers_by_course.get(course_code, [])
-
     def get_stats(self) -> Dict[str, Any]:
         """Get statistics about loaded data."""
         return {
@@ -164,7 +153,6 @@ class DataLoader:
             "unique_urls": self.stats.unique_urls,
             "files_loaded": self.stats.files_loaded,
             "last_loaded": self.stats.last_loaded,
-            "courses_count": len(self.papers_by_course),
             "errors": self.stats.errors,
             "file_stats": {
                 path: {

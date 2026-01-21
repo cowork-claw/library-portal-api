@@ -38,7 +38,7 @@ library-portal-api/
 │   ├── btech/                 # BTech papers
 │   │   ├── branches/          # Branch-specific (CSE.json, ECE.json, etc.)
 │   │   ├── first_year/        # cs_stream.json, non_cs_stream.json
-│   │   └── common_electives.json
+│   │   ├── common_electives.json
 │   ├── masters/               # mtech.json, mca.json, me.json
 │   ├── bsc/                   # icas.json
 │   └── other.json             # Uncategorized papers
@@ -449,59 +449,14 @@ def derive_abbrev(paper: dict, filename_abbrev: Optional[str]) -> str:
 - Implement pagination for large result sets
 - Cache settings using `@lru_cache`
 - Monitor Render free tier limits (512MB RAM)
+- **Optimization Strategy:** The "Turbo" methodology focuses on 5 steps: Profile, Select, Optimize, Verify, and Present.
+- **Tip:** When optimizing filtering logic, prefer `PaperIndex` methods that return sets of URLs (`get_urls_by_*`) over those that return full objects, to allow for efficient set intersection before object hydration.
 
-## API Features
+## Copilot Agent Tips
 
-### Program Abbreviation Field
-The API includes `program_abbrev` field in all paper objects for program identification:
-- **Metadata endpoint** (`/api/metadata`): Returns list of all available program abbreviations
-- **Statistics endpoint** (`/api/statistics`): Returns paper counts grouped by program abbreviation
-- **Papers endpoint** (`/api/papers`): Each paper includes `program_abbrev` field in the response
-- **Common abbreviations**: BME, CSE, ECE, EEE, EIE, ME, MXE, CE, CHE, BIO, AERO, AUTO, IT, MPE, M.Tech, M.E, MCA
+To get the most out of Copilot Agents (like Jules), follow these tips (ref: https://gh.io/copilot-coding-agent-tips):
 
-**Frontend Usage:** Frontends can filter papers by matching the `program_abbrev` field in the response. The API does not currently support `program_abbrev` as a query parameter - you cannot pass `?program_abbrev=CSE` to the `/api/papers` endpoint. For server-side filtering, use the `program` parameter which supports partial text matching.
-
-### Index Service
-The `PaperIndex` service pre-builds indexes for fast lookups:
-- `_by_program_abbrev`: Index papers by program abbreviation
-- `unique_program_abbrevs`: Set of all unique abbreviations
-- `count_by_program_abbrev`: Count papers per abbreviation
-- `get_by_program_abbrev(abbrev)`: Retrieve papers for a specific abbreviation
-
-## Troubleshooting
-
-### Common Issues
-- **Import errors:** Ensure `sys.path` includes project root
-- **Data not loading:** Check `DATA_DIRECTORY` path in config
-- **Authentication failing:** Verify `LIBRARY_PORTAL_API_KEY` is set
-- **CORS errors:** Update `LIBRARY_PORTAL_CORS_ORIGINS`
-- **Scraper not finding papers:** Check year threshold and blacklist
-- **Missing program_abbrev:** Run `python scripts/add_program_abbrev.py` to populate field
-
-### Debugging
-- Set `LIBRARY_PORTAL_LOG_LEVEL=DEBUG` for verbose logging
-- Use FastAPI's `/docs` for interactive API testing
-- Check `scraper/scrape_log.json` for scraping history
-- Review `staging/pending_review.json` for papers needing manual categorization
-
-## Security Notes
-- Never commit API keys or secrets to the repository
-- Use environment variables for all sensitive configuration
-- API key validation happens in `APIKeyMiddleware`
-- CORS is configured to allow all origins by default (tighten in production)
-- Run on Render free tier with public endpoints exposed
-
-## Resources
-- **Live API:** https://library-portal-api.onrender.com
-- **API Docs:** https://library-portal-api.onrender.com/docs
-- **Health Check:** https://library-portal-api.onrender.com/health
-- **Frontend Integration:** See `docs/FRONTEND_INTEGRATION.md`
-- **Archive Docs:** See `docs/archive/` for historical context
-
-## Questions?
-When in doubt:
-1. Check existing code patterns in similar files
-2. Review FastAPI and Pydantic documentation
-3. Test changes locally before committing
-4. Validate data integrity after modifications
-5. Consult README.md for high-level architecture
+1. **Be specific and provide context**: When asking for changes, reference specific files or logical components.
+2. **Review and iterate**: Inspect the agent's plan and code. Provide feedback to refine the solution.
+3. **Use documentation**: Keep `README.md` and `AGENTS.md` (or this file) up to date to guide the agent's understanding of the project structure and constraints.
+4. **Small steps**: Break down complex tasks into smaller, verifiable steps.

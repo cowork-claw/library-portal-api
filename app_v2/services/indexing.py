@@ -178,9 +178,13 @@ class PaperIndex:
         """Get paper URLs for a specific semester."""
         return self._by_semester.get(semester, set())
 
+    def get_urls_by_course(self, course_code: str) -> Set[str]:
+        """Get paper URLs for a specific course code."""
+        return self._by_course.get(course_code.upper(), set())
+
     def get_papers_by_course(self, course_code: str) -> List[Dict[str, Any]]:
         """Get papers for a specific course code."""
-        urls = self._by_course.get(course_code.upper(), set())
+        urls = self.get_urls_by_course(course_code)
         return self.get_by_urls(urls)
 
     def get_urls_by_program(self, program: str) -> Set[str]:

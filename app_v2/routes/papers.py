@@ -71,10 +71,7 @@ async def get_papers(
         filter_url_sets.append(paper_index.get_urls_by_program(program))
 
     if course_code is not None:
-        # NOTE: get_by_course is not URL-based yet
-        filter_url_sets.append(
-            {p["url"] for p in paper_index.get_papers_by_course(course_code)}
-        )
+        filter_url_sets.append(paper_index.get_urls_by_course(course_code))
 
     if stream is not None:
         filter_url_sets.append(paper_index.get_urls_by_stream(stream))
