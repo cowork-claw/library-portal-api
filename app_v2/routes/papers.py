@@ -5,7 +5,7 @@ Endpoints for retrieving and searching question papers.
 """
 
 import time
-from typing import Optional, List
+from typing import Optional, List, Dict, Any
 from fastapi import APIRouter, Query, HTTPException
 
 from ..models import Paper, PapersResponse, PaginationInfo, CourseResponse
@@ -28,6 +28,28 @@ def create_pagination(total: int, limit: int, offset: int) -> PaginationInfo:
         total_pages=total_pages,
         has_next=offset + limit < total,
         has_prev=offset > 0,
+    )
+
+
+def create_paginated_response(
+    papers: List[Dict[str, Any]],
+    total: int,
+    limit: int,
+    offset: int,
+    execution_time: Optional[float] = None,
+) -> PapersResponse:
+    """Create a standardized paginated response."""
+    paginated = papers[offset : offset + limit]
+
+    return PapersResponse(
+        papers=[Paper(**p) for p in paginated],
+        total=total,
+        limit=limit,
+        offset=offset,
+        pagination=create_pagination(total, limit, offset),
+        execution_time_ms=(
+            round(execution_time, 2) if execution_time is not None else None
+        ),
     )
 
 
@@ -55,6 +77,21 @@ async def get_papers(
     Get question papers with optional filtering, search, and pagination.
 
     Filters can be combined. Search uses fuzzy matching on course names and titles.
+
+    Args:
+        year: Filter by academic year.
+        semester: Filter by semester number (1-8).
+        program: Filter by program name (e.g., "B.Tech Computer Science").
+        degree_type: Filter by degree type (e.g., "B.Tech", "M.Tech").
+        paper_type: Filter by paper type (e.g., "Regular", "Makeup").
+        course_code: Filter by exact course code.
+        stream: Filter by stream (e.g., "cs", "core").
+        search: Search query for fuzzy matching.
+        limit: Number of results to return per page.
+        offset: Number of results to skip (for pagination).
+
+    Returns:
+        PapersResponse: Paginated list of matching papers with metadata.
     """
     start_time = time.time()
 
@@ -98,19 +135,9 @@ async def get_papers(
     # Get total before pagination
     total = len(results)
 
-    # Apply pagination
-    paginated = results[offset : offset + limit]
-
     execution_time = (time.time() - start_time) * 1000
 
-    return PapersResponse(
-        papers=[Paper(**p) for p in paginated],
-        total=total,
-        limit=limit,
-        offset=offset,
-        pagination=create_pagination(total, limit, offset),
-        execution_time_ms=round(execution_time, 2),
-    )
+    return create_paginated_response(results, total, limit, offset, execution_time)
 
 
 @router.get("/year/{year}", response_model=PapersResponse)
@@ -131,15 +158,8 @@ async def get_papers_by_year(
         papers = [p for p in papers if p.get("semester") == semester]
 
     total = len(papers)
-    paginated = papers[offset : offset + limit]
 
-    return PapersResponse(
-        papers=[Paper(**p) for p in paginated],
-        total=total,
-        limit=limit,
-        offset=offset,
-        pagination=create_pagination(total, limit, offset),
-    )
+    return create_paginated_response(papers, total, limit, offset)
 
 
 @router.get("/course/{course_code}", response_model=CourseResponse)
@@ -181,12 +201,5 @@ async def get_papers_by_semester(
         papers = [p for p in papers if p.get("year") == year]
 
     total = len(papers)
-    paginated = papers[offset : offset + limit]
 
-    return PapersResponse(
-        papers=[Paper(**p) for p in paginated],
-        total=total,
-        limit=limit,
-        offset=offset,
-        pagination=create_pagination(total, limit, offset),
-    )
+    return create_paginated_response(papers, total, limit, offset)

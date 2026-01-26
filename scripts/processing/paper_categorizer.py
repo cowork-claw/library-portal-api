@@ -414,6 +414,13 @@ def write_paper_to_file(paper: Dict[str, Any], target_file: Path) -> bool:
     Write a paper to the target JSON file.
 
     The file format is: {course_code: [papers...]}
+
+    Args:
+        paper: The paper dictionary to write.
+        target_file: The path to the JSON file where the paper should be stored.
+
+    Returns:
+        True if the paper was successfully written (or was a duplicate), False otherwise.
     """
     try:
         # Load existing data

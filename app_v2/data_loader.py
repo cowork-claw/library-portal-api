@@ -163,20 +163,3 @@ class DataLoader:
                 for path, stats in self.stats.file_stats.items()
             },
         }
-
-    def get_paper_count_by_year(self) -> Dict[int, int]:
-        """Get paper counts grouped by year."""
-        counts: Dict[int, int] = {}
-        for paper in self.papers:
-            year = paper.get("year")
-            if year:
-                counts[year] = counts.get(year, 0) + 1
-        return dict(sorted(counts.items(), reverse=True))
-
-    def get_paper_count_by_program(self) -> Dict[str, int]:
-        """Get paper counts grouped by program/degree type."""
-        counts: Dict[str, int] = {}
-        for paper in self.papers:
-            program = paper.get("degree_type") or paper.get("program") or "Unknown"
-            counts[program] = counts.get(program, 0) + 1
-        return dict(sorted(counts.items(), key=lambda x: x[1], reverse=True))

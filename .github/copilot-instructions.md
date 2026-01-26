@@ -145,6 +145,7 @@ Use `.env.development` for local development and `.env.production` for productio
 - Always use Pydantic models for request/response validation
 - Include proper error responses with appropriate HTTP status codes
 - Use pagination for list endpoints (default: 50, max: 500)
+- Use `create_paginated_response` helper in `app_v2/routes/papers.py` for consistent pagination logic
 - Paper responses include `program_abbrev` field for program identification
 - Metadata endpoints expose available program abbreviations
 
