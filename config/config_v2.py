@@ -82,7 +82,7 @@ class Settings(BaseSettings):
     # ==========================================================================
 
     ENVIRONMENT: str = "development"
-    DEBUG: bool = True
+    DEBUG: bool = False
     LOG_LEVEL: str = "INFO"
 
     class Config:

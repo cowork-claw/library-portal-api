@@ -24,6 +24,7 @@ PUBLIC_PATHS = {
     "/docs",
     "/redoc",
     "/openapi.json",
+    "/health",
 }
 
 
@@ -107,14 +108,10 @@ class APIKeyMiddleware(BaseHTTPMiddleware):
         """
         Check if path is public (no auth required).
 
-        Paths are considered public if they are in PUBLIC_PATHS or start with /health.
+        Paths are considered public if they are in PUBLIC_PATHS.
         """
         # Normalize path by removing trailing slash for consistent matching
         path_normalized = path.rstrip("/") if path != "/" else "/"
-
-        # Health endpoints are always public
-        if path_normalized.startswith("/health"):
-            return True
 
         # Check against the set of defined public paths
         return path_normalized in PUBLIC_PATHS
