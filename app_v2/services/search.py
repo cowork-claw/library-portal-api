@@ -6,7 +6,7 @@ Provides fuzzy search functionality for finding papers.
 
 import re
 from typing import List, Dict, Any
-from difflib import SequenceMatcher
+from thefuzz import fuzz
 
 
 def search_papers(
@@ -87,9 +87,9 @@ def _calculate_relevance(paper: Dict[str, Any], query: str) -> float:
             max_score = max(max_score, score)
             continue
 
-        # Fuzzy match using SequenceMatcher
-        ratio = SequenceMatcher(None, query_lower, value_lower).ratio()
-        if ratio > 0.5:
+        # Fuzzy match using TheFuzz (WRatio handles partial matches better)
+        ratio = fuzz.WRatio(query_lower, value_lower) / 100.0
+        if ratio > 0.7:
             score = ratio * weight
             max_score = max(max_score, score)
 
