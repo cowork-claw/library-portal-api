@@ -88,7 +88,7 @@ def _calculate_relevance(paper: Dict[str, Any], query: str) -> float:
             continue
 
         # Fuzzy match using TheFuzz (much faster than SequenceMatcher)
-        ratio = fuzz.ratio(query_lower, value_lower) / 100.0
+        ratio = fuzz.WRatio(query_lower, value_lower) / 100.0
         if ratio > 0.5:
             score = ratio * weight
             max_score = max(max_score, score)
