@@ -22,6 +22,7 @@ from .routes import papers_router, metadata_router, health_router
 
 # Import middleware
 from .middleware.auth import APIKeyMiddleware
+from .middleware.security import SecurityHeadersMiddleware
 
 # Import services
 from .data_loader import DataLoader
@@ -89,6 +90,9 @@ app.add_middleware(
     api_key=settings.API_SECRET_KEY,
     environment=settings.ENVIRONMENT,
 )
+
+# Add Security Headers middleware
+app.add_middleware(SecurityHeadersMiddleware)
 
 # Include routers
 app.include_router(papers_router)

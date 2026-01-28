@@ -482,11 +482,23 @@ The `PaperIndex` service pre-builds indexes for fast lookups:
 - Review `staging/pending_review.json` for papers needing manual categorization
 
 ## Security Notes
-- Never commit API keys or secrets to the repository
-- Use environment variables for all sensitive configuration
-- API key validation happens in `APIKeyMiddleware`
-- CORS is configured to allow all origins by default (tighten in production)
-- Run on Render free tier with public endpoints exposed
+- **Authentication:**
+  - `APIKeyMiddleware` protects all endpoints except explicit public paths.
+  - Public paths: `/`, `/docs`, `/redoc`, `/openapi.json`, `/health`.
+  - **Note:** Sub-paths of `/health` (e.g., `/health/data`) are protected and require authentication.
+- **Configuration:**
+  - `DEBUG` is set to `False` by default in `config/config_v2.py`.
+  - Ensure `LIBRARY_PORTAL_API_KEY` is set in production.
+- **Headers:**
+  - Security headers (`X-Content-Type-Options`, `X-Frame-Options`, `X-XSS-Protection`, `Strict-Transport-Security`, `Referrer-Policy`) are enforced by `SecurityHeadersMiddleware`.
+- **Data Safety:**
+  - Internal file paths are sanitized in API error responses to prevent information disclosure.
+- **Secrets:**
+  - Never commit API keys or secrets to the repository.
+  - Use environment variables for all sensitive configuration.
+- **Deployment:**
+  - CORS is configured to allow all origins by default (tighten in production).
+  - Run on Render free tier with public endpoints exposed.
 
 ## Resources
 - **Live API:** https://library-portal-api.onrender.com
