@@ -42,7 +42,7 @@ jobs:
       - name: Duplicate code scan (non-blocking)
         continue-on-error: true
         run: |
-          npx -y jscpd@3.5.10 --config .jscpd.json --path app_v2 scraper scripts
+          npx -y jscpd@3.5.10 --config .jscpd.json app_v2 scraper scripts
 
       - name: Check formatting
         run: |
