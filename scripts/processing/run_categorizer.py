@@ -9,18 +9,18 @@ Usage:
     python run_categorizer.py scraped_output.json
 """
 
-import json
 import argparse
-from pathlib import Path
+import json
 import logging
 import sys
+from pathlib import Path
 
 # Add parent directories to path for imports
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
+from scraper.scraper_config import DATA_DIRECTORY, STAGING_FILE
 from scripts.processing.paper_categorizer import PaperCategorizer, write_paper_to_file
 from scripts.processing.staging_handler import StagingHandler
-from scraper.scraper_config import DATA_DIRECTORY, STAGING_FILE, AUTO_WRITE_THRESHOLD
 
 # Configure logging
 logging.basicConfig(

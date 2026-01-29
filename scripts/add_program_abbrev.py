@@ -215,7 +215,7 @@ def main():
         total_updated += updated
         total_errors += errors
 
-    print(f"\n=== COMPLETE ===")
+    print("\n=== COMPLETE ===")
     print(f"Total papers updated: {total_updated}")
     print(f"Total errors: {total_errors}")
 

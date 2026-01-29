@@ -83,6 +83,9 @@ python -c "import secrets; print(secrets.token_urlsafe(32))"
 | `LIBRARY_PORTAL_ENVIRONMENT` | `development` or `production` | development |
 | `LIBRARY_PORTAL_LOG_LEVEL` | `DEBUG`, `INFO`, `WARNING` | INFO |
 | `LIBRARY_PORTAL_CORS_ORIGINS` | Comma-separated origins | * |
+| `LIBRARY_PORTAL_SENTRY_DSN` | Sentry DSN for error tracking | empty (disabled) |
+| `LIBRARY_PORTAL_SENTRY_TRACES_SAMPLE_RATE` | Sentry tracing sample rate | 0.0 |
+| `LIBRARY_PORTAL_METRICS_ENABLED` | Enable `/metrics` endpoint | false |
 
 ## Security
 
@@ -140,11 +143,21 @@ See [docs/archive/REMOVED_SCRIPTS_LOG.md](docs/archive/REMOVED_SCRIPTS_LOG.md) f
 source .venv/bin/activate
 
 # Run tests
+pytest -q
+
+# Validate data
 python scripts/processing/validate_data.py
 
 # Format code
 black .
 ```
+
+## Docs
+
+- `AGENTS.md` - agent guidance and critical behavior
+- `docs/RUNBOOK.md` - operational runbook
+- `docs/ARCHITECTURE.md` - service flow diagram
+- `docs/SECURITY_SETUP.md` - GitHub security settings checklist
 
 ## License
 

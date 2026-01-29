@@ -6,10 +6,10 @@ Acts as "memory" for the scraper across runs.
 """
 
 import json
-from pathlib import Path
-from datetime import datetime
-from typing import Set, Dict, Any, Optional
 import logging
+from datetime import datetime
+from pathlib import Path
+from typing import Any, Dict, Optional, Set
 
 logger = logging.getLogger(__name__)
 

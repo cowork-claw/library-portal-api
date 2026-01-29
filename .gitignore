@@ -42,9 +42,7 @@ Thumbs.db
 extracted_pdf_*.txt
 search_analytics_export.json
 logs/
-
-# Test files
-test_*.py
+AGENT_READINESS_REPORT.md
 
 # Node (if using any JS tools)
 node_modules/

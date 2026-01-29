@@ -1,0 +1,27 @@
+[tool.deptry]
+known_first_party = [
+  "app_v2",
+  "config",
+  "scraper",
+  "scripts",
+  "scrape_log",
+  "scraper_config",
+]
+
+[tool.deptry.per_rule_ignores]
+DEP002 = [
+  "black",
+  "deptry",
+  "gunicorn",
+  "httpx",
+  "psutil",
+  "pytest",
+  "pytest-cov",
+  "pytest-xdist",
+  "python-dotenv",
+  "python-Levenshtein",
+  "python-multipart",
+  "requests",
+  "ruff",
+  "vulture",
+]

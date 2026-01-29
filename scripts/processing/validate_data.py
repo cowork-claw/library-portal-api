@@ -10,10 +10,10 @@ Checks for:
 """
 
 import json
-from pathlib import Path
-from typing import Dict, Any, List, Set, Tuple
 import logging
 import sys
+from pathlib import Path
+from typing import Any, Dict, List, Tuple
 
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 from scraper.scraper_config import DATA_DIRECTORY
@@ -136,7 +136,7 @@ def validate_all(data_dir: Path = DATA_DIRECTORY) -> Dict[str, Any]:
                             if url in report["all_urls"]:
                                 report["duplicate_urls"].append(url)
                             report["all_urls"].add(url)
-        except:
+        except Exception:
             pass
 
         if is_valid:

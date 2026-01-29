@@ -3,10 +3,8 @@
 # See documentation in:
 # https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-from scrapy import signals
-
 # useful for handling different item types with a single interface
-from itemadapter import is_item, ItemAdapter
+from scrapy import signals
 
 
 class LibraryScraperSpiderMiddleware:
@@ -36,7 +34,7 @@ class LibraryScraperSpiderMiddleware:
         for i in result:
             yield i
 
-    def process_spider_exception(self, response, exception, spider):
+    def process_spider_exception(self, response, _exception, spider):
         # Called when a spider or process_spider_input() method
         # (from other spider middleware) raises an exception.
 
@@ -89,7 +87,7 @@ class LibraryScraperDownloaderMiddleware:
         # - or raise IgnoreRequest
         return response
 
-    def process_exception(self, request, exception, spider):
+    def process_exception(self, request, _exception, spider):
         # Called when a download handler or a process_request()
         # (from other downloader middleware) raises an exception.
 

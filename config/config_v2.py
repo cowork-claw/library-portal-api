@@ -4,10 +4,11 @@ Configuration for Library Portal API V2
 Clean configuration using pydantic-settings for environment variable support.
 """
 
+from functools import lru_cache
 from pathlib import Path
 from typing import List, Optional
+
 from pydantic_settings import BaseSettings
-from functools import lru_cache
 
 
 class Settings(BaseSettings):
@@ -84,6 +85,13 @@ class Settings(BaseSettings):
     ENVIRONMENT: str = "development"
     DEBUG: bool = False
     LOG_LEVEL: str = "INFO"
+
+    # ==========================================================================
+    # OBSERVABILITY
+    # ==========================================================================
+    SENTRY_DSN: Optional[str] = None
+    SENTRY_TRACES_SAMPLE_RATE: float = 0.0
+    METRICS_ENABLED: bool = False
 
     class Config:
         env_prefix = "LIBRARY_PORTAL_"

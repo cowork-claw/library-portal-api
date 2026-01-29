@@ -1,0 +1,14 @@
+line-length = 88
+target-version = "py311"
+
+[lint]
+select = ["E", "F", "W", "I", "N", "C901"]
+ignore = ["E501"]
+
+[lint.mccabe]
+max-complexity = 12
+
+[lint.per-file-ignores]
+"scraper/library_scraper/spiders/question_papers_enhanced.py" = ["C901"]
+"scripts/processing/run_categorizer.py" = ["C901"]
+"scripts/processing/validate_data.py" = ["C901"]

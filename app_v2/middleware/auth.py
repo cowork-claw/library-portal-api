@@ -5,13 +5,14 @@ Protects API endpoints with API key authentication.
 Public endpoints (health, docs) are accessible without authentication.
 """
 
+import logging
 import os
 import secrets
-from typing import Optional, Callable
+from typing import Callable, Optional
+
 from fastapi import Request, status
 from fastapi.responses import JSONResponse
 from starlette.middleware.base import BaseHTTPMiddleware
-import logging
 
 logger = logging.getLogger(__name__)
 
@@ -61,7 +62,7 @@ class APIKeyMiddleware(BaseHTTPMiddleware):
         if request.method == "OPTIONS":
             return await call_next(request)
 
-        path = request.url.path.rstrip("/")
+        path = request.url.path
 
         # Allow public paths without authentication
         if self._is_public_path(path):

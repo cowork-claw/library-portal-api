@@ -1,0 +1,15 @@
+{
+  "minLines": 50,
+  "minTokens": 100,
+  "reporters": ["console"],
+  "ignore": [
+    "**/data/**",
+    "**/course_images/**",
+    "**/staging/**",
+    "**/docs/archive/**",
+    "**/tests/**",
+    "**/.venv/**",
+    "**/venv/**",
+    "**/__pycache__/**"
+  ]
+}

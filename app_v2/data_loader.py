@@ -10,12 +10,13 @@ data/classified/organized/
 └── other.json
 """
 
-import orjson
 import logging
-from pathlib import Path
-from typing import Dict, List, Set, Any, Optional
-from datetime import datetime
 from dataclasses import dataclass, field
+from datetime import datetime
+from pathlib import Path
+from typing import Any, Dict, List, Optional, Set
+
+import orjson
 
 logger = logging.getLogger(__name__)
 

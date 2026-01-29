@@ -4,8 +4,9 @@ Pydantic Models for Library Portal API V2
 Clean, simplified models for request/response handling.
 """
 
+from typing import Any, Dict, List, Optional
+
 from pydantic import BaseModel, Field
-from typing import List, Optional, Dict, Any
 
 # =============================================================================
 # PAPER MODELS

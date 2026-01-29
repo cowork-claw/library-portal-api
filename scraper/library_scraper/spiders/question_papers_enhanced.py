@@ -1,24 +1,25 @@
-import scrapy
-from scrapy import FormRequest, Request
 import re
-from datetime import datetime
-from urllib.parse import urljoin, quote
-import json
-import os
-from pathlib import Path
 
 # Import V2 configuration
 import sys
+from datetime import datetime
+from pathlib import Path
+from urllib.parse import quote, urljoin
+
+import scrapy
+from scrapy import FormRequest
 
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+from scrape_log import ScrapeLog, load_existing_urls_from_organized_data
 from scraper_config import (
-    TARGET_YEAR_THRESHOLD,
     BLACKLISTED_YEARS,
     DATA_DIRECTORY,
     SCRAPE_LOG_FILE,
+    TARGET_YEAR_THRESHOLD,
+)
+from scraper_config import (
     should_scrape_year as config_should_scrape_year,
 )
-from scrape_log import ScrapeLog, load_existing_urls_from_organized_data
 
 
 class QuestionPapersEnhancedSpider(scrapy.Spider):

@@ -10,12 +10,12 @@ Key features:
 - CSS prefix handling for new curriculum
 """
 
-import re
 import json
-from pathlib import Path
-from dataclasses import dataclass, field
-from typing import Dict, Optional, List, Any
 import logging
+import re
+from dataclasses import dataclass, field
+from pathlib import Path
+from typing import Any, Dict, List, Optional
 
 logger = logging.getLogger(__name__)
 
@@ -330,7 +330,7 @@ class PaperCategorizer:
         """
         # CSS prefix is always CS stream (2024+)
         if CSS_PREFIX_PATTERN.match(course_code) or prefix == "CSS":
-            reasoning.append(f"CSS prefix = CS Stream (2024+)")
+            reasoning.append("CSS prefix = CS Stream (2024+)")
             return CategorizationResult(
                 self.data_dir / "btech" / "first_year" / "cs_stream.json",
                 0.95,

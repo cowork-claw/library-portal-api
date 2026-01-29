@@ -6,17 +6,18 @@ Comprehensive health check endpoints for monitoring system status.
 
 import json
 from datetime import datetime
-from pathlib import Path
+
 from fastapi import APIRouter
 
+from config.config_v2 import settings
+
 from ..models import (
-    HealthResponse,
     ComponentHealth,
     DataHealthResponse,
+    HealthResponse,
     ScraperHealthResponse,
 )
 from ..services.indexing import paper_index
-from config.config_v2 import settings
 
 router = APIRouter(prefix="/health", tags=["Health"])
 

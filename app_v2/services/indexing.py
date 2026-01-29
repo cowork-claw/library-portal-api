@@ -5,8 +5,8 @@ Pre-builds indexes for fast filtering and lookup.
 """
 
 import logging
-from typing import Dict, List, Any, Optional, Set
 from collections import defaultdict
+from typing import Any, Dict, List, Optional, Set
 
 from ..data_loader import DataLoader
 

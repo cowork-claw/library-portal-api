@@ -5,27 +5,37 @@ A fresh, clean FastAPI application for serving organized question paper data.
 """
 
 import logging
+
+# Import configuration
+import sys
 from contextlib import asynccontextmanager
 from pathlib import Path
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-# Import configuration
-import sys
-
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from config.config_v2 import settings
 
+# Optional error tracking (enabled only when SENTRY_DSN is set)
+if settings.SENTRY_DSN:
+    import sentry_sdk
+    from sentry_sdk.integrations.fastapi import FastApiIntegration
+
+    sentry_sdk.init(
+        dsn=settings.SENTRY_DSN,
+        integrations=[FastApiIntegration()],
+        traces_sample_rate=settings.SENTRY_TRACES_SAMPLE_RATE,
+    )
+
 # Import routes
-from .routes import papers_router, metadata_router, health_router
+# Import services
+from .data_loader import DataLoader
 
 # Import middleware
 from .middleware.auth import APIKeyMiddleware
 from .middleware.security import SecurityHeadersMiddleware
-
-# Import services
-from .data_loader import DataLoader
+from .routes import health_router, metadata_router, papers_router
 from .services.indexing import paper_index
 
 # Configure logging
@@ -93,6 +103,14 @@ app.add_middleware(
 
 # Add Security Headers middleware
 app.add_middleware(SecurityHeadersMiddleware)
+
+# Optional Prometheus metrics (disabled by default)
+if settings.METRICS_ENABLED:
+    from .middleware.metrics import MetricsMiddleware
+    from .routes.metrics import router as metrics_router
+
+    app.add_middleware(MetricsMiddleware)
+    app.include_router(metrics_router)
 
 # Include routers
 app.include_router(papers_router)

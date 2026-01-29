@@ -6,11 +6,11 @@ Papers are staged in a JSON file with all extractable metadata pre-filled.
 """
 
 import json
-from pathlib import Path
-from typing import Dict, Any, List, Optional
-from datetime import datetime
-from dataclasses import dataclass, asdict
 import logging
+from dataclasses import dataclass
+from datetime import datetime
+from pathlib import Path
+from typing import Any, Dict, List, Optional
 
 logger = logging.getLogger(__name__)
 

@@ -5,10 +5,11 @@ Endpoints for retrieving and searching question papers.
 """
 
 import time
-from typing import Optional, List, Dict, Any
-from fastapi import APIRouter, Query, HTTPException
+from typing import Any, Dict, List, Optional
 
-from ..models import Paper, PapersResponse, PaginationInfo, CourseResponse
+from fastapi import APIRouter, HTTPException, Query
+
+from ..models import CourseResponse, PaginationInfo, Paper, PapersResponse
 from ..services.indexing import paper_index
 from ..services.search import search_papers
 
