@@ -97,7 +97,8 @@ class APIKeyMiddleware(BaseHTTPMiddleware):
             )
 
         if not secrets.compare_digest(provided_key, self.api_key):
-            logger.warning(f"Invalid API key attempt from {request.client.host}")
+            client_host = request.client.host if request.client else "unknown"
+            logger.warning(f"Invalid API key attempt from {client_host}")
             return JSONResponse(
                 status_code=status.HTTP_403_FORBIDDEN,
                 content={"detail": "Invalid API key"},
