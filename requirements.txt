@@ -1,13 +1,13 @@
 # Core API dependencies
-fastapi==0.115.6
-starlette==0.41.3
+fastapi==0.128.0
+starlette==0.50.0
 uvicorn[standard]==0.34.0
 gunicorn==23.0.0
 python-multipart==0.0.22
 pydantic>=2.8.0
 pydantic-settings>=2.0.0
 psutil==5.9.8
-orjson==3.10.6
+orjson==3.11.5
 
 # Scraping dependencies
 scrapy==2.12.0
