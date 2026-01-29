@@ -8,27 +8,65 @@ on:
     branches: [main]
     types: [completed]
 
-  # Manual trigger for ad-hoc classification
-  workflow_dispatch:
-
 jobs:
   classify-papers:
     name: Auto-Classify Pending Papers
     runs-on: ubuntu-latest
-    # Only run if: manual trigger OR (scraper succeeded on main)
+    # Only run if scraper succeeded on main
     if: |
-      github.event_name == 'workflow_dispatch' ||
-      (github.event.workflow_run.conclusion == 'success' &&
-       github.event.workflow_run.head_branch == 'main')
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.head_branch == 'main'
     permissions:
+      actions: read
       contents: read
     
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Fetch scraper summary
+        id: summary
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          run_id="${{ github.event.workflow_run.id }}"
+          artifact_url=$(gh api repos/${{ github.repository }}/actions/runs/$run_id/artifacts --jq '.artifacts[] | select(.name=="scraper-summary") | .archive_download_url')
+
+          if [ -z "$artifact_url" ]; then
+            echo "has_new=false" >> "$GITHUB_OUTPUT"
+            echo "new_papers=0" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          gh api "$artifact_url" > /tmp/scraper-summary.zip
+          python - << 'PY'
+          import zipfile
+
+          with zipfile.ZipFile("/tmp/scraper-summary.zip") as zf:
+              zf.extractall("/tmp/scraper-summary")
+          PY
+
+          python - << 'PY' > /tmp/scraper-summary/out.txt
+          import json
+          from pathlib import Path
+
+          summary_path = Path("/tmp/scraper-summary/scraper_summary.json")
+          if not summary_path.exists():
+              print("has_new=false")
+              print("new_papers=0")
+          else:
+              data = json.loads(summary_path.read_text(encoding="utf-8"))
+              has_new = "true" if data.get("has_new") else "false"
+              new_papers = int(data.get("new_papers", 0))
+              print(f"has_new={has_new}")
+              print(f"new_papers={new_papers}")
+          PY
+
+          cat /tmp/scraper-summary/out.txt >> "$GITHUB_OUTPUT"
+
       - name: Check for pending papers
         id: check_pending
+        if: steps.summary.outputs.has_new == 'true'
         run: |
           if [ -f "staging/pending_review.json" ]; then
             count=$(python3 -c "
@@ -57,7 +95,7 @@ jobs:
           fi
       
       - name: Invoke Jules Paper Classifier
-        if: steps.check_pending.outputs.has_pending == 'true'
+        if: steps.summary.outputs.has_new == 'true' && steps.check_pending.outputs.has_pending == 'true'
         uses: google-labs-code/jules-invoke@v1.0.0
         with:
           prompt: |
@@ -157,9 +195,10 @@ jobs:
         run: |
           echo "## 🏷️ Paper Classifier Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **New papers found**: ${{ steps.summary.outputs.new_papers }}" >> $GITHUB_STEP_SUMMARY
           echo "- **Pending papers**: ${{ steps.check_pending.outputs.pending_count }}" >> $GITHUB_STEP_SUMMARY
           echo "- **Jules invoked**: ${{ steps.check_pending.outputs.has_pending }}" >> $GITHUB_STEP_SUMMARY
-          if [ "${{ steps.check_pending.outputs.has_pending }}" == "true" ]; then
+          if [ "${{ steps.summary.outputs.has_new }}" == "true" ] && [ "${{ steps.check_pending.outputs.has_pending }}" == "true" ]; then
             echo "" >> $GITHUB_STEP_SUMMARY
             echo "Jules has been invoked to classify the pending papers." >> $GITHUB_STEP_SUMMARY
             echo "A PR will be created if classification is successful." >> $GITHUB_STEP_SUMMARY

@@ -84,6 +84,34 @@ jobs:
             echo "has_new=false" >> $GITHUB_OUTPUT
             echo "new_papers=0" >> $GITHUB_OUTPUT
           fi
+
+      - name: 🧾 Write scraper summary
+        run: |
+          python - << 'PY'
+          import json
+          from datetime import datetime
+          from pathlib import Path
+
+          has_new = "${{ steps.check_output.outputs.has_new }}" == "true"
+          new_papers = int("${{ steps.check_output.outputs.new_papers }}" or 0)
+
+          summary = {
+              "has_new": has_new,
+              "new_papers": new_papers,
+              "generated_at": datetime.utcnow().isoformat() + "Z",
+          }
+
+          Path("scraper_summary.json").write_text(
+              json.dumps(summary, indent=2), encoding="utf-8"
+          )
+          PY
+
+      - name: 📤 Upload scraper summary
+        uses: actions/upload-artifact@v4
+        with:
+          name: scraper-summary
+          path: scraper_summary.json
+          retention-days: 7
       
       - name: 🏷️ Categorize New Papers
         if: steps.check_output.outputs.has_new == 'true'
