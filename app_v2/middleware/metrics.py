@@ -43,6 +43,8 @@ class MetricsMiddleware(BaseHTTPMiddleware):
             route=route_path,
             status_code=str(response.status_code),
         ).inc()
-        REQUEST_LATENCY.labels(method=request.method, route=route_path).observe(duration)
+        REQUEST_LATENCY.labels(method=request.method, route=route_path).observe(
+            duration
+        )
 
         return response

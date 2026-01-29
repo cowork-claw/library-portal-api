@@ -65,9 +65,7 @@ def test_papers_pagination_and_course_endpoint(client):
     assert len(papers_payload["papers"]) <= 1
     assert "pagination" in papers_payload
 
-    course_response = client.get(
-        f"/api/papers/course/{course_code}", headers=headers
-    )
+    course_response = client.get(f"/api/papers/course/{course_code}", headers=headers)
     assert course_response.status_code == 200
     course_payload = course_response.json()
     assert course_payload["course_code"] == course_code.upper()
