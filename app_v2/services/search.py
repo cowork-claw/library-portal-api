@@ -35,10 +35,11 @@ def search_papers(
         return papers
 
     query = query.strip().lower()
+    query_words = set(re.split(r"\W+", query))
     results = []
 
     for paper in papers:
-        score = _calculate_relevance(paper, query)
+        score = _calculate_relevance(paper, query, query_words)
         if score > 0:
             results.append((paper, score))
 
@@ -48,7 +49,7 @@ def search_papers(
     return [paper for paper, score in results if score >= threshold]
 
 
-def _calculate_relevance(paper: Dict[str, Any], query: str) -> float:
+def _calculate_relevance(paper: Dict[str, Any], query: str, query_words: set) -> float:
     """
     Calculate relevance score for a paper against a query.
 
@@ -56,7 +57,7 @@ def _calculate_relevance(paper: Dict[str, Any], query: str) -> float:
         Score between 0 and 1, higher is more relevant
     """
     max_score = 0.0
-    query_lower = query.lower()
+    query_lower = query
 
     # Fields to search with their weights
     search_fields = [
@@ -95,7 +96,6 @@ def _calculate_relevance(paper: Dict[str, Any], query: str) -> float:
             max_score = max(max_score, score)
 
         # Word-level matching
-        query_words = set(re.split(r"\W+", query_lower))
         value_words = set(re.split(r"\W+", value_lower))
 
         if query_words & value_words:  # At least one word matches
