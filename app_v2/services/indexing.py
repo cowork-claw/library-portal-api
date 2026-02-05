@@ -7,7 +7,7 @@ Pre-builds indexes for fast filtering and lookup.
 import logging
 from collections import defaultdict
 from types import MappingProxyType
-from typing import Any, Dict, List, Optional, Set, Tuple, Mapping
+from typing import Any, Dict, List, Mapping, Optional, Set, Tuple
 
 from ..data_loader import DataLoader
 
