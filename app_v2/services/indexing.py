@@ -173,28 +173,34 @@ class PaperIndex:
         self._cached_unique_semesters = tuple(sorted(self._unique_semesters))
         self._cached_unique_course_codes = tuple(sorted(self._unique_course_codes))
         self._cached_unique_programs = tuple(sorted(self._unique_programs))
-        self._cached_unique_program_abbrevs = tuple(sorted(self._unique_program_abbrevs))
+        self._cached_unique_program_abbrevs = tuple(
+            sorted(self._unique_program_abbrevs)
+        )
         self._cached_unique_paper_types = tuple(sorted(self._unique_paper_types))
         self._cached_unique_degree_types = tuple(sorted(self._unique_degree_types))
         self._cached_unique_streams = tuple(sorted(self._unique_streams))
 
         # Use MappingProxyType for immutable dictionary caching
-        self._cached_count_by_year = MappingProxyType(dict(
-            sorted(self._count_by_year.items(), reverse=True)
-        ))
-        self._cached_count_by_semester = MappingProxyType(dict(
-            sorted(self._count_by_semester.items())
-        ))
-        self._cached_count_by_program = MappingProxyType(dict(
-            sorted(self._count_by_program.items(), key=lambda x: x[1], reverse=True)
-        ))
-        self._cached_count_by_program_abbrev = MappingProxyType(dict(
-            sorted(
-                self._count_by_program_abbrev.items(),
-                key=lambda x: x[1],
-                reverse=True,
+        self._cached_count_by_year = MappingProxyType(
+            dict(sorted(self._count_by_year.items(), reverse=True))
+        )
+        self._cached_count_by_semester = MappingProxyType(
+            dict(sorted(self._count_by_semester.items()))
+        )
+        self._cached_count_by_program = MappingProxyType(
+            dict(
+                sorted(self._count_by_program.items(), key=lambda x: x[1], reverse=True)
             )
-        ))
+        )
+        self._cached_count_by_program_abbrev = MappingProxyType(
+            dict(
+                sorted(
+                    self._count_by_program_abbrev.items(),
+                    key=lambda x: x[1],
+                    reverse=True,
+                )
+            )
+        )
 
         logger.debug(
             f"Built indexes: {len(self._unique_years)} years, "
