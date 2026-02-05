@@ -5,7 +5,7 @@ Provides fuzzy search functionality for finding papers.
 """
 
 import re
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Set
 
 from thefuzz import fuzz
 
@@ -34,12 +34,12 @@ def search_papers(
     if not query or not papers:
         return papers
 
-    query = query.strip().lower()
-    query_words = set(re.split(r"\W+", query))
+    query_lower = query.strip().lower()
+    query_words = set(re.split(r"\W+", query_lower))
     results = []
 
     for paper in papers:
-        score = _calculate_relevance(paper, query, query_words)
+        score = _calculate_relevance(paper, query_lower, query_words)
         if score > 0:
             results.append((paper, score))
 
@@ -49,7 +49,9 @@ def search_papers(
     return [paper for paper, score in results if score >= threshold]
 
 
-def _calculate_relevance(paper: Dict[str, Any], query: str, query_words: set) -> float:
+def _calculate_relevance(
+    paper: Dict[str, Any], query_lower: str, query_words: Set[str]
+) -> float:
     """
     Calculate relevance score for a paper against a query.
 
@@ -57,7 +59,6 @@ def _calculate_relevance(paper: Dict[str, Any], query: str, query_words: set) ->
         Score between 0 and 1, higher is more relevant
     """
     max_score = 0.0
-    query_lower = query
 
     # Fields to search with their weights
     search_fields = [

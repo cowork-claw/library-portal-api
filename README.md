@@ -43,6 +43,10 @@ curl -H "X-API-Key: your-key" http://localhost:8000/api/papers
 | `GET /health` | System health |
 | `GET /health/data` | Data integrity |
 
+## Recent Changes
+
+- Search now precomputes normalized query words once per request to avoid repeated regex splitting during relevance scoring, improving query performance. (See https://gh.io/copilot-coding-agent-tips)
+
 ## Data Structure
 
 ```
