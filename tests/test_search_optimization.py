@@ -1,8 +1,10 @@
-from unittest.mock import patch, MagicMock
+import importlib
 import os
+from unittest.mock import patch
+
 import pytest
 from fastapi.testclient import TestClient
-import importlib
+
 
 # Setup client fixture similar to integration tests
 @pytest.fixture(scope="module")
