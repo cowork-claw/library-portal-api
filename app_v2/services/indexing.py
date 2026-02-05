@@ -38,6 +38,8 @@ class PaperIndex:
         self._by_course: Dict[str, Set[str]] = defaultdict(set)
         self._by_program: Dict[str, Set[str]] = defaultdict(set)
         self._by_stream: Dict[str, Set[str]] = defaultdict(set)
+        self._by_paper_type: Dict[str, Set[str]] = defaultdict(set)
+        self._by_degree_type: Dict[str, Set[str]] = defaultdict(set)
 
         # Unique values for metadata
         self._unique_years: Set[int] = set()
@@ -78,6 +80,8 @@ class PaperIndex:
         self._by_course.clear()
         self._by_program.clear()
         self._by_stream.clear()
+        self._by_paper_type.clear()
+        self._by_degree_type.clear()
 
         self._unique_years.clear()
         self._unique_semesters.clear()
@@ -140,11 +144,13 @@ class PaperIndex:
             paper_type = paper.get("paper_type")
             if paper_type:
                 self._unique_paper_types.add(paper_type)
+                self._by_paper_type[paper_type].add(url)
 
             # Degree type index
             degree_type = paper.get("degree_type")
             if degree_type:
                 self._unique_degree_types.add(degree_type)
+                self._by_degree_type[degree_type].add(url)
 
             # Stream index
             streams = paper.get("streams") or []
@@ -194,6 +200,14 @@ class PaperIndex:
     def get_urls_by_stream(self, stream: str) -> Set[str]:
         """Get paper URLs for a specific stream."""
         return self._by_stream.get(stream, set())
+
+    def get_urls_by_paper_type(self, paper_type: str) -> Set[str]:
+        """Get paper URLs for a specific paper type."""
+        return self._by_paper_type.get(paper_type, set())
+
+    def get_urls_by_degree_type(self, degree_type: str) -> Set[str]:
+        """Get paper URLs for a specific degree type."""
+        return self._by_degree_type.get(degree_type, set())
 
     # ==========================================================================
     # PROPERTY ACCESSORS
