@@ -55,6 +55,20 @@ class PaperIndex:
         self._count_by_program: Dict[str, int] = {}
         self._count_by_program_abbrev: Dict[str, int] = {}
 
+        # Cached sorted properties
+        self._cached_unique_years: Optional[List[int]] = None
+        self._cached_unique_semesters: Optional[List[int]] = None
+        self._cached_unique_course_codes: Optional[List[str]] = None
+        self._cached_unique_programs: Optional[List[str]] = None
+        self._cached_unique_program_abbrevs: Optional[List[str]] = None
+        self._cached_unique_paper_types: Optional[List[str]] = None
+        self._cached_unique_degree_types: Optional[List[str]] = None
+        self._cached_unique_streams: Optional[List[str]] = None
+        self._cached_count_by_year: Optional[Dict[int, int]] = None
+        self._cached_count_by_semester: Optional[Dict[int, int]] = None
+        self._cached_count_by_program: Optional[Dict[str, int]] = None
+        self._cached_count_by_program_abbrev: Optional[Dict[str, int]] = None
+
         # Stats
         self._files_loaded: int = 0
 
@@ -152,6 +166,31 @@ class PaperIndex:
                 self._by_stream[stream].add(url)
                 self._unique_streams.add(stream)
 
+        # Pre-sort and cache properties
+        self._cached_unique_years = sorted(self._unique_years, reverse=True)
+        self._cached_unique_semesters = sorted(self._unique_semesters)
+        self._cached_unique_course_codes = sorted(self._unique_course_codes)
+        self._cached_unique_programs = sorted(self._unique_programs)
+        self._cached_unique_program_abbrevs = sorted(self._unique_program_abbrevs)
+        self._cached_unique_paper_types = sorted(self._unique_paper_types)
+        self._cached_unique_degree_types = sorted(self._unique_degree_types)
+        self._cached_unique_streams = sorted(self._unique_streams)
+
+        self._cached_count_by_year = dict(
+            sorted(self._count_by_year.items(), reverse=True)
+        )
+        self._cached_count_by_semester = dict(sorted(self._count_by_semester.items()))
+        self._cached_count_by_program = dict(
+            sorted(self._count_by_program.items(), key=lambda x: x[1], reverse=True)
+        )
+        self._cached_count_by_program_abbrev = dict(
+            sorted(
+                self._count_by_program_abbrev.items(),
+                key=lambda x: x[1],
+                reverse=True,
+            )
+        )
+
         logger.debug(
             f"Built indexes: {len(self._unique_years)} years, "
             f"{len(self._unique_course_codes)} courses, "
@@ -209,59 +248,51 @@ class PaperIndex:
 
     @property
     def unique_years(self) -> List[int]:
-        return sorted(self._unique_years, reverse=True)
+        return (self._cached_unique_years or [])[:]
 
     @property
     def unique_semesters(self) -> List[int]:
-        return sorted(self._unique_semesters)
+        return (self._cached_unique_semesters or [])[:]
 
     @property
     def unique_course_codes(self) -> List[str]:
-        return sorted(self._unique_course_codes)
+        return (self._cached_unique_course_codes or [])[:]
 
     @property
     def unique_programs(self) -> List[str]:
-        return sorted(self._unique_programs)
+        return (self._cached_unique_programs or [])[:]
 
     @property
     def unique_program_abbrevs(self) -> List[str]:
-        return sorted(self._unique_program_abbrevs)
+        return (self._cached_unique_program_abbrevs or [])[:]
 
     @property
     def unique_paper_types(self) -> List[str]:
-        return sorted(self._unique_paper_types)
+        return (self._cached_unique_paper_types or [])[:]
 
     @property
     def unique_degree_types(self) -> List[str]:
-        return sorted(self._unique_degree_types)
+        return (self._cached_unique_degree_types or [])[:]
 
     @property
     def unique_streams(self) -> List[str]:
-        return sorted(self._unique_streams)
+        return (self._cached_unique_streams or [])[:]
 
     @property
     def count_by_year(self) -> Dict[int, int]:
-        return dict(sorted(self._count_by_year.items(), reverse=True))
+        return (self._cached_count_by_year or {}).copy()
 
     @property
     def count_by_semester(self) -> Dict[int, int]:
-        return dict(sorted(self._count_by_semester.items()))
+        return (self._cached_count_by_semester or {}).copy()
 
     @property
     def count_by_program(self) -> Dict[str, int]:
-        return dict(
-            sorted(self._count_by_program.items(), key=lambda x: x[1], reverse=True)
-        )
+        return (self._cached_count_by_program or {}).copy()
 
     @property
     def count_by_program_abbrev(self) -> Dict[str, int]:
-        return dict(
-            sorted(
-                self._count_by_program_abbrev.items(),
-                key=lambda x: x[1],
-                reverse=True,
-            )
-        )
+        return (self._cached_count_by_program_abbrev or {}).copy()
 
 
 # Global paper index instance
