@@ -5,7 +5,7 @@ Provides fuzzy search functionality for finding papers.
 """
 
 import re
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Set
 
 from thefuzz import fuzz
 
@@ -35,10 +35,11 @@ def search_papers(
         return papers
 
     query = query.strip().lower()
+    query_words = set(re.split(r"\W+", query))
     results = []
 
     for paper in papers:
-        score = _calculate_relevance(paper, query)
+        score = _calculate_relevance(paper, query, query_words)
         if score > 0:
             results.append((paper, score))
 
@@ -48,7 +49,9 @@ def search_papers(
     return [paper for paper, score in results if score >= threshold]
 
 
-def _calculate_relevance(paper: Dict[str, Any], query: str) -> float:
+def _calculate_relevance(
+    paper: Dict[str, Any], query: str, query_words: Set[str]
+) -> float:
     """
     Calculate relevance score for a paper against a query.
 
@@ -56,7 +59,6 @@ def _calculate_relevance(paper: Dict[str, Any], query: str) -> float:
         Score between 0 and 1, higher is more relevant
     """
     max_score = 0.0
-    query_lower = query.lower()
 
     # Fields to search with their weights
     search_fields = [
@@ -75,13 +77,13 @@ def _calculate_relevance(paper: Dict[str, Any], query: str) -> float:
         value_lower = str(value).lower()
 
         # Exact match
-        if query_lower == value_lower:
+        if query == value_lower:
             return 1.0 * weight
 
         # Contains match
-        if query_lower in value_lower:
+        if query in value_lower:
             # Give higher score for prefix match
-            if value_lower.startswith(query_lower):
+            if value_lower.startswith(query):
                 score = 0.95 * weight
             else:
                 score = 0.8 * weight
@@ -89,13 +91,12 @@ def _calculate_relevance(paper: Dict[str, Any], query: str) -> float:
             continue
 
         # Fuzzy match using TheFuzz (WRatio handles partial matches better)
-        ratio = fuzz.WRatio(query_lower, value_lower) / 100.0
+        ratio = fuzz.WRatio(query, value_lower) / 100.0
         if ratio > 0.7:
             score = ratio * weight
             max_score = max(max_score, score)
 
         # Word-level matching
-        query_words = set(re.split(r"\W+", query_lower))
         value_words = set(re.split(r"\W+", value_lower))
 
         if query_words & value_words:  # At least one word matches
