@@ -34,12 +34,12 @@ def search_papers(
     if not query or not papers:
         return papers
 
-    query_lower = query.strip().lower()
-    query_words = set(re.split(r"\W+", query_lower))
+    query = query.strip().lower()
+    query_words = set(re.split(r"\W+", query))
     results = []
 
     for paper in papers:
-        score = _calculate_relevance(paper, query_lower, query_words)
+        score = _calculate_relevance(paper, query, query_words)
         if score > 0:
             results.append((paper, score))
 
@@ -50,7 +50,7 @@ def search_papers(
 
 
 def _calculate_relevance(
-    paper: Dict[str, Any], query_lower: str, query_words: Set[str]
+    paper: Dict[str, Any], query: str, query_words: Set[str]
 ) -> float:
     """
     Calculate relevance score for a paper against a query.
@@ -77,13 +77,13 @@ def _calculate_relevance(
         value_lower = str(value).lower()
 
         # Exact match
-        if query_lower == value_lower:
+        if query == value_lower:
             return 1.0 * weight
 
         # Contains match
-        if query_lower in value_lower:
+        if query in value_lower:
             # Give higher score for prefix match
-            if value_lower.startswith(query_lower):
+            if value_lower.startswith(query):
                 score = 0.95 * weight
             else:
                 score = 0.8 * weight
@@ -91,7 +91,7 @@ def _calculate_relevance(
             continue
 
         # Fuzzy match using TheFuzz (WRatio handles partial matches better)
-        ratio = fuzz.WRatio(query_lower, value_lower) / 100.0
+        ratio = fuzz.WRatio(query, value_lower) / 100.0
         if ratio > 0.7:
             score = ratio * weight
             max_score = max(max_score, score)
