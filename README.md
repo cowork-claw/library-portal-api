@@ -152,6 +152,17 @@ python scripts/processing/validate_data.py
 black .
 ```
 
+## Performance Benchmarking
+
+To measure the performance of key endpoints and optimizations:
+
+```bash
+# Run year filter benchmark
+python scripts/benchmarks/benchmark_year_filter.py
+```
+
+This script measures the execution time of the `get_papers_by_year` logic, comparing the optimized implementation against the legacy iteration-based approach.
+
 ## Docs
 
 - `AGENTS.md` - agent guidance and critical behavior

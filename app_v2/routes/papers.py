@@ -150,13 +150,16 @@ async def get_papers_by_year(
 ):
     """Get papers for a specific year with optional semester filter."""
     urls = paper_index.get_urls_by_year(year)
-    papers = paper_index.get_by_urls(urls)
 
-    if not papers:
+    if not urls:
         raise HTTPException(status_code=404, detail=f"No papers found for year {year}")
 
     if semester is not None:
-        papers = [p for p in papers if p.get("semester") == semester]
+        semester_urls = paper_index.get_urls_by_semester(semester)
+        intersected_urls = urls.intersection(semester_urls)
+        papers = paper_index.get_by_urls(intersected_urls)
+    else:
+        papers = paper_index.get_by_urls(urls)
 
     total = len(papers)
 
