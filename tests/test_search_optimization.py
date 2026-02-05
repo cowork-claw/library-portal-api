@@ -13,12 +13,15 @@ def client():
     os.environ["LIBRARY_PORTAL_API_KEY"] = "test-key"
 
     import config.config_v2 as config_module
+
     importlib.reload(config_module)
     import app_v2.main as main_module
+
     importlib.reload(main_module)
 
     with TestClient(main_module.app) as test_client:
         yield test_client
+
 
 def test_search_is_offloaded_to_threadpool(client):
     """
@@ -31,22 +34,27 @@ def test_search_is_offloaded_to_threadpool(client):
     # Note: We need to patch 'app_v2.routes.papers.run_in_threadpool'
     # and 'app_v2.routes.papers.search_papers'
 
-    with patch("app_v2.routes.papers.run_in_threadpool") as mock_run_in_threadpool, \
-         patch("app_v2.routes.papers.search_papers") as mock_search_papers:
+    with patch(
+        "app_v2.routes.papers.run_in_threadpool"
+    ) as mock_run_in_threadpool, patch(
+        "app_v2.routes.papers.search_papers"
+    ) as mock_search_papers:
 
         # Configure the mock to return a dummy list so the endpoint continues
         # run_in_threadpool is async-ish when awaited.
 
-        mock_run_in_threadpool.side_effect = None # Reset
+        mock_run_in_threadpool.side_effect = None  # Reset
 
         # Create an async mock wrapper
         async def async_return(*args, **kwargs):
-            return [{
-                "file_name": "test_paper.pdf",
-                "course_code": "TEST101",
-                "paper_type": "Test",
-                "year": 2024
-            }]
+            return [
+                {
+                    "file_name": "test_paper.pdf",
+                    "course_code": "TEST101",
+                    "paper_type": "Test",
+                    "year": 2024,
+                }
+            ]
 
         mock_run_in_threadpool.side_effect = async_return
 
