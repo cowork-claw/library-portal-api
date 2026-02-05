@@ -6,7 +6,8 @@ Pre-builds indexes for fast filtering and lookup.
 
 import logging
 from collections import defaultdict
-from typing import Any, Dict, List, Optional, Set
+from types import MappingProxyType
+from typing import Any, Dict, List, Optional, Set, Tuple, Mapping
 
 from ..data_loader import DataLoader
 
@@ -56,18 +57,18 @@ class PaperIndex:
         self._count_by_program_abbrev: Dict[str, int] = {}
 
         # Cached sorted properties
-        self._cached_unique_years: Optional[List[int]] = None
-        self._cached_unique_semesters: Optional[List[int]] = None
-        self._cached_unique_course_codes: Optional[List[str]] = None
-        self._cached_unique_programs: Optional[List[str]] = None
-        self._cached_unique_program_abbrevs: Optional[List[str]] = None
-        self._cached_unique_paper_types: Optional[List[str]] = None
-        self._cached_unique_degree_types: Optional[List[str]] = None
-        self._cached_unique_streams: Optional[List[str]] = None
-        self._cached_count_by_year: Optional[Dict[int, int]] = None
-        self._cached_count_by_semester: Optional[Dict[int, int]] = None
-        self._cached_count_by_program: Optional[Dict[str, int]] = None
-        self._cached_count_by_program_abbrev: Optional[Dict[str, int]] = None
+        self._cached_unique_years: Optional[Tuple[int, ...]] = None
+        self._cached_unique_semesters: Optional[Tuple[int, ...]] = None
+        self._cached_unique_course_codes: Optional[Tuple[str, ...]] = None
+        self._cached_unique_programs: Optional[Tuple[str, ...]] = None
+        self._cached_unique_program_abbrevs: Optional[Tuple[str, ...]] = None
+        self._cached_unique_paper_types: Optional[Tuple[str, ...]] = None
+        self._cached_unique_degree_types: Optional[Tuple[str, ...]] = None
+        self._cached_unique_streams: Optional[Tuple[str, ...]] = None
+        self._cached_count_by_year: Optional[Mapping[int, int]] = None
+        self._cached_count_by_semester: Optional[Mapping[int, int]] = None
+        self._cached_count_by_program: Optional[Mapping[str, int]] = None
+        self._cached_count_by_program_abbrev: Optional[Mapping[str, int]] = None
 
         # Stats
         self._files_loaded: int = 0
@@ -167,29 +168,33 @@ class PaperIndex:
                 self._unique_streams.add(stream)
 
         # Pre-sort and cache properties
-        self._cached_unique_years = sorted(self._unique_years, reverse=True)
-        self._cached_unique_semesters = sorted(self._unique_semesters)
-        self._cached_unique_course_codes = sorted(self._unique_course_codes)
-        self._cached_unique_programs = sorted(self._unique_programs)
-        self._cached_unique_program_abbrevs = sorted(self._unique_program_abbrevs)
-        self._cached_unique_paper_types = sorted(self._unique_paper_types)
-        self._cached_unique_degree_types = sorted(self._unique_degree_types)
-        self._cached_unique_streams = sorted(self._unique_streams)
+        # Use tuples for immutable sequence caching
+        self._cached_unique_years = tuple(sorted(self._unique_years, reverse=True))
+        self._cached_unique_semesters = tuple(sorted(self._unique_semesters))
+        self._cached_unique_course_codes = tuple(sorted(self._unique_course_codes))
+        self._cached_unique_programs = tuple(sorted(self._unique_programs))
+        self._cached_unique_program_abbrevs = tuple(sorted(self._unique_program_abbrevs))
+        self._cached_unique_paper_types = tuple(sorted(self._unique_paper_types))
+        self._cached_unique_degree_types = tuple(sorted(self._unique_degree_types))
+        self._cached_unique_streams = tuple(sorted(self._unique_streams))
 
-        self._cached_count_by_year = dict(
+        # Use MappingProxyType for immutable dictionary caching
+        self._cached_count_by_year = MappingProxyType(dict(
             sorted(self._count_by_year.items(), reverse=True)
-        )
-        self._cached_count_by_semester = dict(sorted(self._count_by_semester.items()))
-        self._cached_count_by_program = dict(
+        ))
+        self._cached_count_by_semester = MappingProxyType(dict(
+            sorted(self._count_by_semester.items())
+        ))
+        self._cached_count_by_program = MappingProxyType(dict(
             sorted(self._count_by_program.items(), key=lambda x: x[1], reverse=True)
-        )
-        self._cached_count_by_program_abbrev = dict(
+        ))
+        self._cached_count_by_program_abbrev = MappingProxyType(dict(
             sorted(
                 self._count_by_program_abbrev.items(),
                 key=lambda x: x[1],
                 reverse=True,
             )
-        )
+        ))
 
         logger.debug(
             f"Built indexes: {len(self._unique_years)} years, "
@@ -248,51 +253,51 @@ class PaperIndex:
 
     @property
     def unique_years(self) -> List[int]:
-        return (self._cached_unique_years or [])[:]
+        return self._cached_unique_years or ()
 
     @property
     def unique_semesters(self) -> List[int]:
-        return (self._cached_unique_semesters or [])[:]
+        return self._cached_unique_semesters or ()
 
     @property
     def unique_course_codes(self) -> List[str]:
-        return (self._cached_unique_course_codes or [])[:]
+        return self._cached_unique_course_codes or ()
 
     @property
     def unique_programs(self) -> List[str]:
-        return (self._cached_unique_programs or [])[:]
+        return self._cached_unique_programs or ()
 
     @property
     def unique_program_abbrevs(self) -> List[str]:
-        return (self._cached_unique_program_abbrevs or [])[:]
+        return self._cached_unique_program_abbrevs or ()
 
     @property
     def unique_paper_types(self) -> List[str]:
-        return (self._cached_unique_paper_types or [])[:]
+        return self._cached_unique_paper_types or ()
 
     @property
     def unique_degree_types(self) -> List[str]:
-        return (self._cached_unique_degree_types or [])[:]
+        return self._cached_unique_degree_types or ()
 
     @property
     def unique_streams(self) -> List[str]:
-        return (self._cached_unique_streams or [])[:]
+        return self._cached_unique_streams or ()
 
     @property
     def count_by_year(self) -> Dict[int, int]:
-        return (self._cached_count_by_year or {}).copy()
+        return self._cached_count_by_year or {}
 
     @property
     def count_by_semester(self) -> Dict[int, int]:
-        return (self._cached_count_by_semester or {}).copy()
+        return self._cached_count_by_semester or {}
 
     @property
     def count_by_program(self) -> Dict[str, int]:
-        return (self._cached_count_by_program or {}).copy()
+        return self._cached_count_by_program or {}
 
     @property
     def count_by_program_abbrev(self) -> Dict[str, int]:
-        return (self._cached_count_by_program_abbrev or {}).copy()
+        return self._cached_count_by_program_abbrev or {}
 
 
 # Global paper index instance
