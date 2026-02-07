@@ -282,6 +282,7 @@ Optimizes API performance (Wednesday 4 AM UTC):
 - **Tip:** When optimizing filtering logic, prefer `PaperIndex` methods that return sets of URLs (`get_urls_by_*`) over those that return full objects, to allow for efficient set intersection before object hydration.
 - **Index Caching:** Cache frequently-used derived views (like sorted URL lists) as immutable `tuple`s and `types.MappingProxyType` to avoid repeated sorting and prevent accidental mutation.
 - **Search Optimization:** The fuzzy search logic in `app_v2/services/search.py` uses `thefuzz` (powered by `Levenshtein`) instead of the slower `difflib.SequenceMatcher`. This provides a significant speedup (~10-37x) for search queries on large datasets.
+- **Filtering Optimization:** The `get_papers_by_semester` endpoint uses set intersection for year filtering instead of iterating over paper objects, improving performance (1.41x speedup) for large datasets.
 
 ## Deployment
 
