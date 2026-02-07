@@ -197,11 +197,12 @@ async def get_papers_by_semester(
         raise HTTPException(status_code=400, detail="Semester must be between 1 and 8")
 
     urls = paper_index.get_urls_by_semester(semester)
-    papers = paper_index.get_by_urls(urls)
 
     if year is not None:
-        papers = [p for p in papers if p.get("year") == year]
+        year_urls = paper_index.get_urls_by_year(year)
+        urls = urls.intersection(year_urls)
 
+    papers = paper_index.get_by_urls(urls)
     total = len(papers)
 
     return create_paginated_response(papers, total, limit, offset)
