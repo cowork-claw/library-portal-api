@@ -115,6 +115,12 @@ async def get_papers(
     if stream is not None:
         filter_url_sets.append(paper_index.get_urls_by_stream(stream))
 
+    if degree_type is not None:
+        filter_url_sets.append(paper_index.get_urls_by_degree_type(degree_type))
+
+    if paper_type is not None:
+        filter_url_sets.append(paper_index.get_urls_by_paper_type(paper_type))
+
     # Intersect filter results if multiple filters are active
     if filter_url_sets:
         # Start with the first set and intersect with the rest
@@ -122,13 +128,6 @@ async def get_papers(
         results = paper_index.get_by_urls(intersected_urls)
     else:
         results = list(paper_index.papers)
-
-    # Slower, non-indexed filters (apply after indexed filters)
-    if degree_type is not None:
-        results = [p for p in results if p.get("degree_type") == degree_type]
-
-    if paper_type is not None:
-        results = [p for p in results if p.get("paper_type") == paper_type]
 
     # Apply search if provided
     if search:
