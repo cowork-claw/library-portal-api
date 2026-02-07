@@ -1,12 +1,12 @@
 # Core API dependencies
 fastapi==0.128.0
 starlette==0.50.0
-uvicorn[standard]==0.40.0
-gunicorn==24.1.1
+uvicorn[standard]==0.34.0
+gunicorn==23.0.0
 python-multipart==0.0.22
 pydantic>=2.8.0
 pydantic-settings>=2.0.0
-psutil==7.2.2
+psutil==5.9.8
 orjson==3.11.6
 
 # Scraping dependencies
@@ -14,22 +14,22 @@ scrapy==2.14.1
 
 # Search dependencies
 thefuzz==0.22.1
-python-Levenshtein==0.27.3
+python-Levenshtein==0.27.1
 
 # Upload dependencies
-requests==2.32.5
-python-dotenv==1.2.1
+requests==2.32.4
+python-dotenv==1.0.0
 
 # Observability
 sentry-sdk==2.51.0
-prometheus-client==0.24.1
+prometheus-client==0.20.0
 
 # Development tools
 black==26.1.0
 pytest==9.0.2
 pytest-cov==7.0.0
 pytest-xdist==3.6.1
-httpx==0.28.1
-ruff==0.15.0
+httpx==0.27.0
+ruff==0.14.14
 vulture==2.14
 deptry==0.24.0

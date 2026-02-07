@@ -39,7 +39,6 @@ dist/
 Thumbs.db
 
 # Runtime artifacts (do not commit)
-.coverage
 extracted_pdf_*.txt
 search_analytics_export.json
 logs/
