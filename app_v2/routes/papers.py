@@ -8,6 +8,7 @@ import time
 from typing import Any, Dict, List, Optional
 
 from fastapi import APIRouter, HTTPException, Query
+from fastapi.concurrency import run_in_threadpool
 
 from ..models import CourseResponse, PaginationInfo, Paper, PapersResponse
 from ..services.indexing import paper_index
@@ -131,7 +132,7 @@ async def get_papers(
 
     # Apply search if provided
     if search:
-        results = search_papers(results, search)
+        results = await run_in_threadpool(search_papers, results, search)
 
     # Get total before pagination
     total = len(results)
