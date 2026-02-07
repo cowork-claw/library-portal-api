@@ -8,6 +8,7 @@ import time
 from typing import Any, Dict, List, Optional
 
 from fastapi import APIRouter, HTTPException, Query
+from fastapi.concurrency import run_in_threadpool
 
 from ..models import CourseResponse, PaginationInfo, Paper, PapersResponse
 from ..services.indexing import paper_index
@@ -130,7 +131,7 @@ async def get_papers(
 
     # Apply search if provided
     if search:
-        results = search_papers(results, search)
+        results = await run_in_threadpool(search_papers, results, search)
 
     # Get total before pagination
     total = len(results)
@@ -195,11 +196,12 @@ async def get_papers_by_semester(
         raise HTTPException(status_code=400, detail="Semester must be between 1 and 8")
 
     urls = paper_index.get_urls_by_semester(semester)
-    papers = paper_index.get_by_urls(urls)
 
     if year is not None:
-        papers = [p for p in papers if p.get("year") == year]
+        year_urls = paper_index.get_urls_by_year(year)
+        urls = urls.intersection(year_urls)
 
+    papers = paper_index.get_by_urls(urls)
     total = len(papers)
 
     return create_paginated_response(papers, total, limit, offset)
