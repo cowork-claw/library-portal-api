@@ -99,7 +99,7 @@ def benchmark(year=2022, semester=5, iterations=1000):
         improvement = 0
         speedup = 0
 
-    print(f"\nResults:")
+    print("\nResults:")
     print(f"Current Avg:   {avg_curr:.4f} ms")
     print(f"Optimized Avg: {avg_opt:.4f} ms")
     print(f"Improvement:   {improvement:.2f}%")
