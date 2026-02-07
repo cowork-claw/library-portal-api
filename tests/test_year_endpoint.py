@@ -103,7 +103,9 @@ def test_get_papers_by_year_with_semester_empty_intersection(client):
         year_data = year_resp.json()
 
         year_semesters = {
-            p.get("semester") for p in year_data["papers"] if p.get("semester") is not None
+            p.get("semester")
+            for p in year_data["papers"]
+            if p.get("semester") is not None
         }
         missing = sorted(s for s in all_semesters if s not in year_semesters)
         if not missing:
@@ -121,4 +123,3 @@ def test_get_papers_by_year_with_semester_empty_intersection(client):
         return
 
     pytest.skip("Could not find a (year, semester) combination with empty intersection")
-

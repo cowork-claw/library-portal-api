@@ -17,6 +17,7 @@ def setup():
     paper_index.load_from_directory(loader)
     print(f"Loaded {paper_index.total_papers} papers.")
 
+
 def current_implementation(year, semester):
     """Replicates the logic in app_v2/routes/papers.py before optimization"""
     urls = paper_index.get_urls_by_year(year)
@@ -30,6 +31,7 @@ def current_implementation(year, semester):
         papers = [p for p in papers if p.get("semester") == semester]
 
     return papers
+
 
 def optimized_implementation(year, semester):
     """Proposed optimized logic"""
@@ -47,6 +49,7 @@ def optimized_implementation(year, semester):
 
     return papers
 
+
 def benchmark(year=2022, semester=5, iterations=1000):
     print(f"\nBenchmarking Year={year}, Semester={semester}, Iterations={iterations}")
 
@@ -60,7 +63,7 @@ def benchmark(year=2022, semester=5, iterations=1000):
         start = time.perf_counter()
         res_curr = current_implementation(year, semester)
         end = time.perf_counter()
-        times_current.append((end - start) * 1000) # ms
+        times_current.append((end - start) * 1000)  # ms
 
     # Measure Optimized
     times_opt = []
@@ -68,7 +71,7 @@ def benchmark(year=2022, semester=5, iterations=1000):
         start = time.perf_counter()
         res_opt = optimized_implementation(year, semester)
         end = time.perf_counter()
-        times_opt.append((end - start) * 1000) # ms
+        times_opt.append((end - start) * 1000)  # ms
 
     # Verification
     res_curr = current_implementation(year, semester)
@@ -80,12 +83,12 @@ def benchmark(year=2022, semester=5, iterations=1000):
         print("⚠️  WARNING: Result counts differ!")
 
     # Verify content (checking IDs/URLs)
-    curr_urls = sorted([p['url'] for p in res_curr])
-    opt_urls = sorted([p['url'] for p in res_opt])
+    curr_urls = sorted([p["url"] for p in res_curr])
+    opt_urls = sorted([p["url"] for p in res_opt])
     if curr_urls != opt_urls:
-         print("⚠️  WARNING: Result contents differ!")
+        print("⚠️  WARNING: Result contents differ!")
     else:
-         print("✅ Results match.")
+        print("✅ Results match.")
 
     avg_curr = statistics.mean(times_current)
     avg_opt = statistics.mean(times_opt)
@@ -102,6 +105,7 @@ def benchmark(year=2022, semester=5, iterations=1000):
     print(f"Improvement:   {improvement:.2f}%")
     print(f"Speedup:       {speedup:.2f}x")
 
+
 if __name__ == "__main__":
     setup()
 
@@ -111,7 +115,7 @@ if __name__ == "__main__":
         # Find a semester that exists in this year
         urls = paper_index.get_urls_by_year(test_year)
         papers = paper_index.get_by_urls(urls)
-        semesters = list(set(p.get('semester') for p in papers if p.get('semester')))
+        semesters = list(set(p.get("semester") for p in papers if p.get("semester")))
 
         if semesters:
             # Pick a semester with reasonable count
@@ -119,6 +123,6 @@ if __name__ == "__main__":
             benchmark(year=test_year, semester=test_sem)
         else:
             print("No semesters found for the top year.")
-            benchmark(year=test_year, semester=None) # Fallback
+            benchmark(year=test_year, semester=None)  # Fallback
     else:
         print("No data found.")
