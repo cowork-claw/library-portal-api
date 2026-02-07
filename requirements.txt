@@ -22,7 +22,7 @@ python-dotenv==1.0.0
 
 # Observability
 sentry-sdk==2.51.0
-prometheus-client==0.20.0
+prometheus-client==0.24.1
 
 # Development tools
 black==26.1.0
