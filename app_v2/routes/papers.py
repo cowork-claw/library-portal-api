@@ -8,7 +8,6 @@ import time
 from typing import Any, Dict, List, Optional
 
 from fastapi import APIRouter, HTTPException, Query
-from fastapi.concurrency import run_in_threadpool
 
 from ..models import CourseResponse, PaginationInfo, Paper, PapersResponse
 from ..services.indexing import paper_index
@@ -115,12 +114,6 @@ async def get_papers(
     if stream is not None:
         filter_url_sets.append(paper_index.get_urls_by_stream(stream))
 
-    if degree_type is not None:
-        filter_url_sets.append(paper_index.get_urls_by_degree_type(degree_type))
-
-    if paper_type is not None:
-        filter_url_sets.append(paper_index.get_urls_by_paper_type(paper_type))
-
     # Intersect filter results if multiple filters are active
     if filter_url_sets:
         # Start with the first set and intersect with the rest
@@ -129,9 +122,16 @@ async def get_papers(
     else:
         results = list(paper_index.papers)
 
+    # Slower, non-indexed filters (apply after indexed filters)
+    if degree_type is not None:
+        results = [p for p in results if p.get("degree_type") == degree_type]
+
+    if paper_type is not None:
+        results = [p for p in results if p.get("paper_type") == paper_type]
+
     # Apply search if provided
     if search:
-        results = await run_in_threadpool(search_papers, results, search)
+        results = search_papers(results, search)
 
     # Get total before pagination
     total = len(results)
@@ -150,13 +150,16 @@ async def get_papers_by_year(
 ):
     """Get papers for a specific year with optional semester filter."""
     urls = paper_index.get_urls_by_year(year)
-    papers = paper_index.get_by_urls(urls)
 
-    if not papers:
+    if not urls:
         raise HTTPException(status_code=404, detail=f"No papers found for year {year}")
 
     if semester is not None:
-        papers = [p for p in papers if p.get("semester") == semester]
+        semester_urls = paper_index.get_urls_by_semester(semester)
+        intersected_urls = urls.intersection(semester_urls)
+        papers = paper_index.get_by_urls(intersected_urls)
+    else:
+        papers = paper_index.get_by_urls(urls)
 
     total = len(papers)
 
@@ -196,12 +199,11 @@ async def get_papers_by_semester(
         raise HTTPException(status_code=400, detail="Semester must be between 1 and 8")
 
     urls = paper_index.get_urls_by_semester(semester)
+    papers = paper_index.get_by_urls(urls)
 
     if year is not None:
-        year_urls = paper_index.get_urls_by_year(year)
-        urls = urls.intersection(year_urls)
+        papers = [p for p in papers if p.get("year") == year]
 
-    papers = paper_index.get_by_urls(urls)
     total = len(papers)
 
     return create_paginated_response(papers, total, limit, offset)

@@ -152,18 +152,16 @@ python scripts/processing/validate_data.py
 black .
 ```
 
-## Performance Optimizations
+## Performance Benchmarking
 
-### Search Optimization (Feb 2026)
+To measure the performance of key endpoints and optimizations:
 
-- **Optimized Regex Splitting**: Moved regex compilation and splitting of the query string outside the inner loop in the search service.
-- **Impact**: ~12% performance improvement in search benchmarks.
-- **Details**: `query_words` is calculated once per query instead of N*M times (where N is papers, M is fields).
+```bash
+# Run year filter benchmark
+python scripts/benchmarks/benchmark_year_filter.py
+```
 
-## Copilot & AI Tips
-
-For tips on working with this codebase using GitHub Copilot:
-[Copilot Coding Agent Tips](https://gh.io/copilot-coding-agent-tips)
+This script measures the execution time of the `get_papers_by_year` logic, comparing the optimized implementation against the legacy iteration-based approach.
 
 ## Docs
 

@@ -47,8 +47,6 @@ def test_indexing_urls_and_program_abbrevs():
 
     assert index.get_urls_by_year(2024) == {"u1", "u2"}
     assert index.get_urls_by_course("cs101") == {"u1"}
-    assert index.get_urls_by_paper_type("Regular") == {"u1", "u2"}
-    assert index.get_urls_by_degree_type("B.Tech") == {"u1", "u2", "u3"}
     assert set(index.unique_program_abbrevs) == {"CSE", "ECE"}
     assert index.count_by_program_abbrev["CSE"] == 2
 

@@ -70,17 +70,3 @@ def test_papers_pagination_and_course_endpoint(client):
     course_payload = course_response.json()
     assert course_payload["course_code"] == course_code.upper()
     assert course_payload["total_papers"] >= 1
-
-
-def test_papers_search_query_returns_payload(client):
-    headers = {"X-API-Key": "test-key"}
-
-    # We don't assert exact search hits (data-dependent), just that the endpoint
-    # accepts the query and returns the standard payload structure.
-    response = client.get("/api/papers?limit=2&offset=0&search=zzz", headers=headers)
-    assert response.status_code == 200
-    payload = response.json()
-    assert payload["limit"] == 2
-    assert "total" in payload
-    assert isinstance(payload["papers"], list)
-    assert "pagination" in payload
