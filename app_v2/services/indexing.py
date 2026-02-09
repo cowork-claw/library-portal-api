@@ -218,10 +218,6 @@ class PaperIndex:
     # ==========================================================================
     # LOOKUP METHODS
     # ==========================================================================
-    def get_by_url(self, url: str) -> Optional[Dict[str, Any]]:
-        """Get a single paper by its URL."""
-        return self._by_url.get(url)
-
     def get_by_urls(self, urls: Set[str]) -> List[Dict[str, Any]]:
         """Get multiple papers from a set of URLs."""
         return [self._by_url[url] for url in urls if url in self._by_url]

@@ -255,7 +255,7 @@ Weekly security audit of the codebase (Tuesday 6 AM UTC):
 
 ### Weekly Cleanup Agent
 Automated code maintenance (Monday 3 AM UTC):
-- Removes unused imports and dead code
+- Removes unused imports, functions (e.g., `get_all_urls`, `get_search_suggestions`), and dead code
 - Adds missing type hints and docstrings (Google style)
 - Identifies and refactors duplicated code
 - Runs Black formatter: `black .`
