@@ -169,27 +169,6 @@ class ScraperHealthResponse(BaseModel):
 
 
 # =============================================================================
-# SEARCH MODELS
-# =============================================================================
-
-
-class SearchSuggestion(BaseModel):
-    """Single search suggestion."""
-
-    text: str
-    type: str  # "course_code", "course_name", "subject"
-    score: float
-
-
-class SearchSuggestionsResponse(BaseModel):
-    """Response for search suggestions endpoint."""
-
-    suggestions: List[SearchSuggestion]
-    query: str
-    execution_time_ms: float
-
-
-# =============================================================================
 # STATISTICS MODELS
 # =============================================================================
 

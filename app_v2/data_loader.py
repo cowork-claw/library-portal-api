@@ -14,7 +14,7 @@ import logging
 from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Set
+from typing import Any, Dict, List, Optional
 
 import orjson
 
@@ -142,10 +142,6 @@ class DataLoader:
             error_msg = f"Error loading {file_path.name}: {e}"
             logger.error(error_msg)
             self.stats.errors.append(error_msg)
-
-    def get_all_urls(self) -> Set[str]:
-        """Get all existing paper URLs for deduplication."""
-        return set(self.papers_by_url.keys())
 
     def get_stats(self) -> Dict[str, Any]:
         """Get statistics about loaded data."""

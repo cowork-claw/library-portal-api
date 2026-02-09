@@ -24,7 +24,6 @@ logger = logging.getLogger(__name__)
 
 # Required fields for each paper
 REQUIRED_FIELDS = {"url", "file_name", "course_code"}
-RECOMMENDED_FIELDS = {"year", "semester", "program", "degree_type", "paper_type"}
 
 
 def validate_json_file(file_path: Path) -> Tuple[bool, List[str]]:

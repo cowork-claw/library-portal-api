@@ -1,4 +1,4 @@
-from app_v2.services.search import get_search_suggestions, search_papers
+from app_v2.services.search import search_papers
 
 
 def _sample_papers():
@@ -36,9 +36,3 @@ def test_search_papers_contains_match():
 def test_search_papers_no_match_returns_empty():
     results = search_papers(_sample_papers(), "zzzzzz")
     assert results == []
-
-
-def test_search_suggestions_course_code():
-    suggestions = get_search_suggestions(_sample_papers(), "cs")
-    texts = [s["text"] for s in suggestions]
-    assert "CS101" in texts

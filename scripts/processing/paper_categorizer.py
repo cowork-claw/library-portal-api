@@ -35,11 +35,6 @@ class CategorizationResult:
         """Papers with >=0.85 confidence are auto-written."""
         return self.confidence >= 0.85
 
-    @property
-    def should_stage(self) -> bool:
-        """Papers with <0.85 confidence need review."""
-        return self.confidence < 0.85
-
 
 # =============================================================================
 # MAPPINGS (from REMOVED_SCRIPTS_LOG.md + 2024+ curriculum)
