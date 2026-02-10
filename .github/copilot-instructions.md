@@ -486,6 +486,10 @@ The `PaperIndex` service pre-builds indexes for fast lookups:
   - `APIKeyMiddleware` protects all endpoints except explicit public paths.
   - Public paths: `/`, `/docs`, `/redoc`, `/openapi.json`, `/health`.
   - **Note:** Sub-paths of `/health` (e.g., `/health/data`) are protected and require authentication.
+- **Input Validation:**
+  - Search queries are limited to 100 characters to prevent ReDoS attacks.
+  - Year filters are validated to be within a reasonable range (2000-2100).
+  - Semester filters are validated to be between 1 and 8.
 - **Configuration:**
   - `DEBUG` is set to `False` by default in `config/config_v2.py`.
   - Ensure `LIBRARY_PORTAL_API_KEY` is set in production.
