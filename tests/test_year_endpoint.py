@@ -1,38 +1,13 @@
-import importlib
-import os
-
 import pytest
-from fastapi.testclient import TestClient
 
 
-@pytest.fixture(scope="session")
-def client():
-    os.environ["LIBRARY_PORTAL_ENVIRONMENT"] = "production"
-    os.environ["LIBRARY_PORTAL_API_KEY"] = "test-key"
-
-    import config.config_v2 as config_module
-
-    importlib.reload(config_module)
-
-    import app_v2.main as main_module
-
-    importlib.reload(main_module)
-
-    with TestClient(main_module.app) as test_client:
-        yield test_client
-
-
-def _headers() -> dict:
-    return {"X-API-Key": "test-key"}
-
-
-def test_get_papers_by_year_success(client):
-    metadata = client.get("/api/metadata", headers=_headers()).json()
+def test_get_papers_by_year_success(client, api_key_headers):
+    metadata = client.get("/api/metadata", headers=api_key_headers).json()
     years = metadata["years"]
     assert years, "Expected at least one year in metadata"
 
     year = years[0]
-    response = client.get(f"/api/papers/year/{year}", headers=_headers())
+    response = client.get(f"/api/papers/year/{year}", headers=api_key_headers)
     assert response.status_code == 200
 
     data = response.json()
@@ -41,8 +16,8 @@ def test_get_papers_by_year_success(client):
     assert all(p["year"] == year for p in data["papers"])
 
 
-def test_get_papers_by_year_with_semester(client):
-    metadata = client.get("/api/metadata", headers=_headers()).json()
+def test_get_papers_by_year_with_semester(client, api_key_headers):
+    metadata = client.get("/api/metadata", headers=api_key_headers).json()
     years = metadata["years"]
     assert years, "Expected at least one year in metadata"
 
@@ -50,7 +25,9 @@ def test_get_papers_by_year_with_semester(client):
     semester = None
 
     for candidate_year in years:
-        year_resp = client.get(f"/api/papers/year/{candidate_year}", headers=_headers())
+        year_resp = client.get(
+            f"/api/papers/year/{candidate_year}", headers=api_key_headers
+        )
         assert year_resp.status_code == 200
         year_data = year_resp.json()
         if not year_data["papers"]:
@@ -69,7 +46,7 @@ def test_get_papers_by_year_with_semester(client):
         pytest.skip("Could not find a paper with a non-null semester value")
 
     response = client.get(
-        f"/api/papers/year/{year}?semester={semester}", headers=_headers()
+        f"/api/papers/year/{year}?semester={semester}", headers=api_key_headers
     )
     assert response.status_code == 200
 
@@ -79,18 +56,18 @@ def test_get_papers_by_year_with_semester(client):
     assert all(p["semester"] == semester for p in data["papers"])
 
 
-def test_get_papers_by_year_not_found(client):
-    metadata = client.get("/api/metadata", headers=_headers()).json()
+def test_get_papers_by_year_not_found(client, api_key_headers):
+    metadata = client.get("/api/metadata", headers=api_key_headers).json()
     years = metadata["years"]
     assert years, "Expected at least one year in metadata"
 
     missing_year = min(years) - 1
-    response = client.get(f"/api/papers/year/{missing_year}", headers=_headers())
+    response = client.get(f"/api/papers/year/{missing_year}", headers=api_key_headers)
     assert response.status_code == 404
 
 
-def test_get_papers_by_year_with_semester_empty_intersection(client):
-    metadata = client.get("/api/metadata", headers=_headers()).json()
+def test_get_papers_by_year_with_semester_empty_intersection(client, api_key_headers):
+    metadata = client.get("/api/metadata", headers=api_key_headers).json()
     years = metadata["years"]
     all_semesters = set(metadata["semesters"])
 
@@ -98,7 +75,7 @@ def test_get_papers_by_year_with_semester_empty_intersection(client):
     assert all_semesters, "Expected at least one semester in metadata"
 
     for year in years:
-        year_resp = client.get(f"/api/papers/year/{year}", headers=_headers())
+        year_resp = client.get(f"/api/papers/year/{year}", headers=api_key_headers)
         assert year_resp.status_code == 200
         year_data = year_resp.json()
 
@@ -113,7 +90,8 @@ def test_get_papers_by_year_with_semester_empty_intersection(client):
 
         missing_semester = missing[0]
         response = client.get(
-            f"/api/papers/year/{year}?semester={missing_semester}", headers=_headers()
+            f"/api/papers/year/{year}?semester={missing_semester}",
+            headers=api_key_headers,
         )
         assert response.status_code == 200
 
