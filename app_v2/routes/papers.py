@@ -7,7 +7,7 @@ Endpoints for retrieving and searching question papers.
 import time
 from typing import Any, Dict, List, Optional
 
-from fastapi import APIRouter, HTTPException, Query
+from fastapi import APIRouter, HTTPException, Path, Query
 from fastapi.concurrency import run_in_threadpool
 
 from ..models import CourseResponse, PaginationInfo, Paper, PapersResponse
@@ -58,7 +58,7 @@ def create_paginated_response(
 @router.get("", response_model=PapersResponse)
 async def get_papers(
     # Filters
-    year: Optional[int] = Query(None, description="Filter by year"),
+    year: Optional[int] = Query(None, ge=2000, le=2100, description="Filter by year"),
     semester: Optional[int] = Query(
         None, ge=1, le=8, description="Filter by semester (1-8)"
     ),
@@ -70,7 +70,9 @@ async def get_papers(
     course_code: Optional[str] = Query(None, description="Filter by course code"),
     stream: Optional[str] = Query(None, description="Filter by stream (cs, core)"),
     # Search
-    search: Optional[str] = Query(None, min_length=2, description="Search query"),
+    search: Optional[str] = Query(
+        None, min_length=2, max_length=100, description="Search query"
+    ),
     # Pagination
     limit: int = Query(50, ge=1, le=500, description="Number of results per page"),
     offset: int = Query(0, ge=0, description="Offset for pagination"),
@@ -143,7 +145,7 @@ async def get_papers(
 
 @router.get("/year/{year}", response_model=PapersResponse)
 async def get_papers_by_year(
-    year: int,
+    year: int = Path(..., ge=2000, le=2100, description="Academic Year"),
     semester: Optional[int] = Query(None, ge=1, le=8),
     limit: int = Query(100, ge=1, le=500),
     offset: int = Query(0, ge=0),
@@ -188,15 +190,12 @@ async def get_papers_by_course(course_code: str):
 
 @router.get("/semester/{semester}", response_model=PapersResponse)
 async def get_papers_by_semester(
-    semester: int,
-    year: Optional[int] = Query(None),
+    semester: int = Path(..., ge=1, le=8, description="Semester (1-8)"),
+    year: Optional[int] = Query(None, ge=2000, le=2100, description="Academic Year"),
     limit: int = Query(100, ge=1, le=500),
     offset: int = Query(0, ge=0),
 ):
     """Get papers for a specific semester with optional year filter."""
-    if semester < 1 or semester > 8:
-        raise HTTPException(status_code=400, detail="Semester must be between 1 and 8")
-
     urls = paper_index.get_urls_by_semester(semester)
 
     if year is not None:
