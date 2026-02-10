@@ -191,7 +191,7 @@ async def get_papers_by_course(course_code: str):
 @router.get("/semester/{semester}", response_model=PapersResponse)
 async def get_papers_by_semester(
     semester: int = Path(..., ge=1, le=8, description="Semester (1-8)"),
-    year: Optional[int] = Query(None, ge=2000, le=2100),
+    year: Optional[int] = Query(None, ge=2000, le=2100, description="Academic Year"),
     limit: int = Query(100, ge=1, le=500),
     offset: int = Query(0, ge=0),
 ):
