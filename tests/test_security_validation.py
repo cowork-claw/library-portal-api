@@ -32,17 +32,21 @@ def test_search_query_too_long(client):
     long_query = "a" * 101
     response = client.get(f"/api/papers?search={long_query}", headers=_headers())
     assert response.status_code == 422
-    assert (
-        "String should have at most 100 characters" in response.text
-        or "less than or equal to 100" in response.text
-    )
+    detail = response.json().get("detail", [])
+    # Avoid brittle, version-specific pydantic error strings; just verify it's a
+    # validation error on the `search` field.
+    assert any("search" in map(str, item.get("loc", [])) for item in detail)
 
 
-def test_search_query_valid_length(client):
+def test_search_query_valid_length(client, monkeypatch):
     """Test that search query with 100 characters is accepted."""
+    # Keep this test focused on parameter validation. Fuzzy search over the full
+    # dataset can be slow/data-dependent, so stub it to a fast no-op.
+    import app_v2.routes.papers as papers_routes
+
+    monkeypatch.setattr(papers_routes, "search_papers", lambda results, _: results)
+
     valid_query = "a" * 100
-    # Use a dummy search term that won't match anything to avoid heavy fuzzy search
-    # but still pass validation
     response = client.get(f"/api/papers?search={valid_query}", headers=_headers())
     # Should be 200 (or empty list if no results, but definitely not 422)
     assert response.status_code == 200
