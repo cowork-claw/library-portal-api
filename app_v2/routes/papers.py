@@ -17,6 +17,11 @@ from ..services.search import search_papers
 router = APIRouter(prefix="/api/papers", tags=["Papers"])
 
 
+def to_public_paper(paper: Dict[str, Any]) -> Dict[str, Any]:
+    """Strip internal-only fields before serializing API responses."""
+    return {k: v for k, v in paper.items() if not k.startswith("_")}
+
+
 def create_pagination(total: int, limit: int, offset: int) -> PaginationInfo:
     """Create pagination info from parameters."""
     total_pages = max(1, (total + limit - 1) // limit) if limit > 0 else 1
@@ -44,7 +49,7 @@ def create_paginated_response(
     paginated = papers[offset : offset + limit]
 
     return PapersResponse(
-        papers=[Paper(**p) for p in paginated],
+        papers=[Paper(**to_public_paper(p)) for p in paginated],
         total=total,
         limit=limit,
         offset=offset,
@@ -183,7 +188,7 @@ async def get_papers_by_course(course_code: str):
     return CourseResponse(
         course_code=course_code.upper(),
         course_name=course_name,
-        papers=[Paper(**p) for p in papers],
+        papers=[Paper(**to_public_paper(p)) for p in papers],
         total_papers=len(papers),
     )
 

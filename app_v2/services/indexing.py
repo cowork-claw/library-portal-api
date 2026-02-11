@@ -13,6 +13,7 @@ from typing import Any, Dict, List, Mapping, Optional, Set, Tuple
 from ..data_loader import DataLoader
 
 logger = logging.getLogger(__name__)
+WORD_TOKEN_PATTERN = re.compile(r"\w+")
 
 
 class PaperIndex:
@@ -177,7 +178,10 @@ class PaperIndex:
             # Pre-compute search metadata for faster searching
             # This avoids re.split() and .lower() during search requests
             paper["_search_meta"] = {
-                field: {"lower": val_lower, "words": set(re.split(r"\W+", val_lower))}
+                field: {
+                    "lower": val_lower,
+                    "words": set(WORD_TOKEN_PATTERN.findall(val_lower)),
+                }
                 for field in [
                     "course_code",
                     "course_name",

@@ -44,7 +44,9 @@ def test_search_query_valid_length(client, monkeypatch):
     # dataset can be slow/data-dependent, so stub it to a fast no-op.
     import app_v2.routes.papers as papers_routes
 
-    monkeypatch.setattr(papers_routes, "search_papers", lambda results, *a, **k: results)
+    monkeypatch.setattr(
+        papers_routes, "search_papers", lambda results, *a, **k: results
+    )
 
     valid_query = "a" * 100
     response = client.get(f"/api/papers?search={valid_query}", headers=_headers())

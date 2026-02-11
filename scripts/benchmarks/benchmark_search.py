@@ -1,12 +1,11 @@
 import time
 
-from app_v2.data_loader import DataLoader
 from app_v2.services.indexing import PaperIndex
 from app_v2.services.search import search_papers
 
 
 # Mock DataLoader to feed PaperIndex
-class MockLoader(DataLoader):
+class MockLoader:
     def __init__(self):
         self.papers = []
         # Create 3000 dummy papers to simulate load
@@ -45,11 +44,11 @@ def benchmark():
     search_papers(papers[:100], query)
 
     # Benchmark
-    start_time = time.time()
+    start_time = time.perf_counter()
     iterations = 50
     for _ in range(iterations):
         search_papers(papers, query)
-    end_time = time.time()
+    end_time = time.perf_counter()
 
     avg_time = (end_time - start_time) / iterations
     print(f"Average search time over {iterations} iterations: {avg_time:.4f} seconds")
