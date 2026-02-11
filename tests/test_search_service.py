@@ -49,9 +49,7 @@ def test_search_papers_uses_precomputed_meta_map():
         }
     }
 
-    results = search_papers(
-        papers, "algorithms", search_meta_by_url=search_meta_by_url
-    )
+    results = search_papers(papers, "algorithms", search_meta_by_url=search_meta_by_url)
     assert len(results) == 1
     assert results[0]["url"] == "u-meta"
 

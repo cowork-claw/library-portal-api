@@ -41,9 +41,7 @@ def benchmark():
     print(f"Benchmarking search on {len(papers)} papers...")
 
     # Warmup
-    search_papers(
-        papers[:100], query, search_meta_by_url=index.search_meta_by_url
-    )
+    search_papers(papers[:100], query, search_meta_by_url=index.search_meta_by_url)
 
     # Benchmark
     start_time = time.perf_counter()
