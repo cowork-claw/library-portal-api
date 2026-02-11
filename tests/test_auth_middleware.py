@@ -34,3 +34,26 @@ def test_public_and_protected_paths():
     headers = {"X-API-Key": "secret"}
     assert client.get("/health/data", headers=headers).status_code == 200
     assert client.get("/api/secure", headers=headers).status_code == 200
+
+
+def test_openclaw_bot_key_is_accepted(monkeypatch):
+    monkeypatch.setenv("LIBRARY_PORTAL_API_KEY", "primary-secret")
+    monkeypatch.setenv("LIBRARY_PORTAL_OPENCLAW_BOT_API_KEY", "openclaw-secret")
+
+    app = FastAPI()
+    app.add_middleware(APIKeyMiddleware, api_key=None, environment="production")
+
+    @app.get("/api/secure")
+    def secure():
+        return {"status": "ok"}
+
+    client = TestClient(app)
+
+    assert (
+        client.get("/api/secure", headers={"X-API-Key": "primary-secret"}).status_code
+        == 200
+    )
+    assert (
+        client.get("/api/secure", headers={"X-API-Key": "openclaw-secret"}).status_code
+        == 200
+    )

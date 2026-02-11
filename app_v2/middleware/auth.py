@@ -16,8 +16,9 @@ from starlette.middleware.base import BaseHTTPMiddleware
 
 logger = logging.getLogger(__name__)
 
-# Environment variable for API key
+# Environment variables for API keys
 API_KEY_ENV = "LIBRARY_PORTAL_API_KEY"
+OPENCLAW_BOT_API_KEY_ENV = "LIBRARY_PORTAL_OPENCLAW_BOT_API_KEY"
 
 # Public paths that don't require authentication
 PUBLIC_PATHS = {
@@ -42,10 +43,27 @@ class APIKeyMiddleware(BaseHTTPMiddleware):
         self, app, api_key: Optional[str] = None, environment: str = "production"
     ):
         super().__init__(app)
-        self.api_key = api_key or os.getenv(API_KEY_ENV)
+        configured_keys: list[str] = []
+
+        # Explicitly injected key (used in tests/local wiring)
+        if api_key:
+            configured_keys.append(api_key)
+
+        # Primary API key
+        primary_env_key = os.getenv(API_KEY_ENV)
+        if primary_env_key:
+            configured_keys.append(primary_env_key)
+
+        # Dedicated bot key
+        bot_env_key = os.getenv(OPENCLAW_BOT_API_KEY_ENV)
+        if bot_env_key:
+            configured_keys.append(bot_env_key)
+
+        # Deduplicate while preserving insertion order
+        self.api_keys = list(dict.fromkeys(configured_keys))
         self.environment = environment
 
-        if not self.api_key:
+        if not self.api_keys:
             if self.environment == "development":
                 logger.warning(
                     f"⚠️  No API key configured ({API_KEY_ENV}). "
@@ -69,7 +87,7 @@ class APIKeyMiddleware(BaseHTTPMiddleware):
             return await call_next(request)
 
         # If no API key configured
-        if not self.api_key:
+        if not self.api_keys:
             # Only allow in development mode
             if self.environment == "development":
                 return await call_next(request)
@@ -96,7 +114,10 @@ class APIKeyMiddleware(BaseHTTPMiddleware):
                 },
             )
 
-        if not secrets.compare_digest(provided_key, self.api_key):
+        if not any(
+            secrets.compare_digest(provided_key, configured_key)
+            for configured_key in self.api_keys
+        ):
             client_host = request.client.host if request.client else "unknown"
             logger.warning(f"Invalid API key attempt from {client_host}")
             return JSONResponse(

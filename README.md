@@ -80,6 +80,7 @@ python -c "import secrets; print(secrets.token_urlsafe(32))"
 | Variable | Description | Default |
 |----------|-------------|---------|
 | `LIBRARY_PORTAL_API_KEY` | API authentication key | **Required in Prod** / Optional in Dev |
+| `LIBRARY_PORTAL_OPENCLAW_BOT_API_KEY` | Optional secondary API key for OpenClaw bot access | empty (disabled) |
 | `LIBRARY_PORTAL_ENVIRONMENT` | `development` or `production` | development |
 | `LIBRARY_PORTAL_LOG_LEVEL` | `DEBUG`, `INFO`, `WARNING` | INFO |
 | `LIBRARY_PORTAL_CORS_ORIGINS` | Comma-separated origins | * |
