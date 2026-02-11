@@ -69,12 +69,20 @@ def _calculate_relevance(
         ("file_name", 0.5),
     ]
 
-    for field_name, weight in search_fields:
-        value = paper.get(field_name)
-        if not value:
-            continue
+    search_meta = paper.get("_search_meta")
 
-        value_lower = str(value).lower()
+    for field_name, weight in search_fields:
+        # Use pre-computed values if available (fast path)
+        if search_meta and (meta := search_meta.get(field_name)):
+            value_lower = meta["lower"]
+            value_words = meta["words"]
+        else:
+            # Fallback for papers not yet indexed with meta or missing fields
+            value = paper.get(field_name)
+            if not value:
+                continue
+            value_lower = str(value).lower()
+            value_words = None  # Computed only if needed
 
         # Exact match
         if query == value_lower:
@@ -96,8 +104,15 @@ def _calculate_relevance(
             score = ratio * weight
             max_score = max(max_score, score)
 
+        # Optimization: Skip word matching if fuzzy match was already very strong
+        # Word match max score is 0.7 * weight. If max_score is already higher,
+        # word matching cannot improve the result.
+        if max_score >= 0.7 * weight:
+            continue
+
         # Word-level matching
-        value_words = set(re.split(r"\W+", value_lower))
+        if value_words is None:
+            value_words = set(re.split(r"\W+", value_lower))
 
         if query_words & value_words:  # At least one word matches
             overlap = len(query_words & value_words) / len(query_words)
