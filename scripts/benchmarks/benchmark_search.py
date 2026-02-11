@@ -1,10 +1,8 @@
 import time
-import re
-from typing import Any, Dict, List, Set
-from app_v2.services.search import search_papers
-from app_v2.services.indexing import PaperIndex
+
 from app_v2.data_loader import DataLoader
-from pathlib import Path
+from app_v2.services.indexing import PaperIndex
+from app_v2.services.search import search_papers
 
 
 # Mock DataLoader to feed PaperIndex
