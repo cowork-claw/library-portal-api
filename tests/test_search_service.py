@@ -36,3 +36,26 @@ def test_search_papers_contains_match():
 def test_search_papers_no_match_returns_empty():
     results = search_papers(_sample_papers(), "zzzzzz")
     assert results == []
+
+
+def test_search_papers_uses_precomputed_meta_map():
+    papers = [{"url": "u-meta", "file_name": "fallback-name.pdf"}]
+    search_meta_by_url = {
+        "u-meta": {
+            "course_name": {
+                "lower": "algorithms and data structures",
+                "words": {"algorithms", "and", "data", "structures"},
+            }
+        }
+    }
+
+    results = search_papers(
+        papers, "algorithms", search_meta_by_url=search_meta_by_url
+    )
+    assert len(results) == 1
+    assert results[0]["url"] == "u-meta"
+
+
+def test_search_papers_punctuation_query_returns_empty():
+    results = search_papers(_sample_papers(), "!!!")
+    assert results == []

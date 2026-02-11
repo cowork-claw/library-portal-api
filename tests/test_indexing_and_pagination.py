@@ -63,3 +63,18 @@ def test_pagination_info_and_response():
     response = create_paginated_response(papers, total=3, limit=2, offset=2)
     assert response.pagination.page == 2
     assert len(response.papers) == 1
+
+
+def test_index_build_keeps_search_meta_out_of_paper_payload():
+    papers = _sample_papers()
+    papers[0]["course_name"] = "Algorithms!!!"
+
+    index = PaperIndex()
+    index.papers = papers
+    index._build_indexes()
+
+    assert "_search_meta" not in papers[0]
+
+    meta = index.search_meta_by_url["u1"]["course_name"]
+    assert "algorithms" in meta["words"]
+    assert "" not in meta["words"]

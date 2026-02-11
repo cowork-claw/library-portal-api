@@ -133,7 +133,12 @@ async def get_papers(
 
     # Apply search if provided
     if search:
-        results = await run_in_threadpool(search_papers, results, search)
+        results = await run_in_threadpool(
+            search_papers,
+            results,
+            search,
+            search_meta_by_url=paper_index.search_meta_by_url,
+        )
 
     # Get total before pagination
     total = len(results)

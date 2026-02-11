@@ -13,6 +13,7 @@ from typing import Any, Dict, List, Mapping, Optional, Set, Tuple
 from ..data_loader import DataLoader
 
 logger = logging.getLogger(__name__)
+WORD_TOKEN_PATTERN = re.compile(r"\w+")
 
 
 class PaperIndex:
@@ -33,6 +34,7 @@ class PaperIndex:
 
         # Main lookup table
         self._by_url: Dict[str, Dict] = {}
+        self._search_meta_by_url: Dict[str, Dict[str, Dict[str, Any]]] = {}
 
         # Indexes for fast lookup (storing URLs instead of full objects)
         self._by_year: Dict[int, Set[str]] = defaultdict(set)
@@ -87,10 +89,30 @@ class PaperIndex:
 
         logger.info(f"Indexed {len(self.papers)} papers")
 
+    def _build_search_meta_for_paper(self, paper: Dict[str, Any]) -> Dict[str, Any]:
+        search_meta: Dict[str, Dict[str, Any]] = {}
+        for field in [
+            "course_code",
+            "course_name",
+            "subject_name",
+            "display_title",
+            "file_name",
+        ]:
+            val = paper.get(field)
+            if not val:
+                continue
+            val_lower = str(val).lower()
+            search_meta[field] = {
+                "lower": val_lower,
+                "words": set(WORD_TOKEN_PATTERN.findall(val_lower)),
+            }
+        return search_meta
+
     def _build_indexes(self) -> None:
         """Build all indexes from loaded papers."""
         # Clear existing indexes and data
         self._by_url.clear()
+        self._search_meta_by_url.clear()
         self._by_year.clear()
         self._by_semester.clear()
         self._by_course.clear()
@@ -174,19 +196,9 @@ class PaperIndex:
                 self._by_stream[stream].add(url)
                 self._unique_streams.add(stream)
 
-            # Pre-compute search metadata for faster searching
-            # This avoids re.split() and .lower() during search requests
-            paper["_search_meta"] = {
-                field: {"lower": val_lower, "words": set(re.split(r"\W+", val_lower))}
-                for field in [
-                    "course_code",
-                    "course_name",
-                    "subject_name",
-                    "display_title",
-                    "file_name",
-                ]
-                if (val := paper.get(field)) and (val_lower := str(val).lower())
-            }
+            # Pre-compute search metadata in a side index for faster searching.
+            # Keep paper objects clean so internal search metadata is never serialized.
+            self._search_meta_by_url[url] = self._build_search_meta_for_paper(paper)
 
         # Pre-sort and cache properties
         # Use tuples for immutable sequence caching
@@ -329,6 +341,10 @@ class PaperIndex:
     @property
     def count_by_program_abbrev(self) -> Dict[str, int]:
         return self._cached_count_by_program_abbrev or {}
+
+    @property
+    def search_meta_by_url(self) -> Mapping[str, Dict[str, Dict[str, Any]]]:
+        return MappingProxyType(self._search_meta_by_url)
 
 
 # Global paper index instance
