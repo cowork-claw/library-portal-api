@@ -160,9 +160,12 @@ To measure the performance of key endpoints and optimizations:
 ```bash
 # Run year filter benchmark
 python scripts/benchmarks/benchmark_year_filter.py
+
+# Run search benchmark
+python scripts/benchmarks/benchmark_search.py
 ```
 
-This script measures the execution time of the `get_papers_by_year` logic, comparing the optimized implementation against the legacy iteration-based approach.
+These scripts measure the performance of key filtering and search logic.
 
 ## Docs
 

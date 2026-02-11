@@ -5,6 +5,7 @@ Pre-builds indexes for fast filtering and lookup.
 """
 
 import logging
+import re
 from collections import defaultdict
 from types import MappingProxyType
 from typing import Any, Dict, List, Mapping, Optional, Set, Tuple
@@ -12,6 +13,7 @@ from typing import Any, Dict, List, Mapping, Optional, Set, Tuple
 from ..data_loader import DataLoader
 
 logger = logging.getLogger(__name__)
+WORD_TOKEN_PATTERN = re.compile(r"\w+")
 
 
 class PaperIndex:
@@ -172,6 +174,23 @@ class PaperIndex:
             for stream in streams:
                 self._by_stream[stream].add(url)
                 self._unique_streams.add(stream)
+
+            # Pre-compute search metadata for faster searching
+            # This avoids re.split() and .lower() during search requests
+            paper["_search_meta"] = {
+                field: {
+                    "lower": val_lower,
+                    "words": set(WORD_TOKEN_PATTERN.findall(val_lower)),
+                }
+                for field in [
+                    "course_code",
+                    "course_name",
+                    "subject_name",
+                    "display_title",
+                    "file_name",
+                ]
+                if (val := paper.get(field)) and (val_lower := str(val).lower())
+            }
 
         # Pre-sort and cache properties
         # Use tuples for immutable sequence caching

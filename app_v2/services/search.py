@@ -9,6 +9,13 @@ from typing import Any, Dict, List, Set
 
 from thefuzz import fuzz
 
+WORD_MATCH_SCORE_FACTOR = 0.7
+WORD_TOKEN_PATTERN = re.compile(r"\w+")
+
+
+def _tokenize_words(text: str) -> Set[str]:
+    return set(WORD_TOKEN_PATTERN.findall(text))
+
 
 def search_papers(
     papers: List[Dict[str, Any]], query: str, threshold: float = 0.4
@@ -35,7 +42,7 @@ def search_papers(
         return papers
 
     query = query.strip().lower()
-    query_words = set(re.split(r"\W+", query))
+    query_words = _tokenize_words(query)
     results = []
 
     for paper in papers:
@@ -69,12 +76,20 @@ def _calculate_relevance(
         ("file_name", 0.5),
     ]
 
-    for field_name, weight in search_fields:
-        value = paper.get(field_name)
-        if not value:
-            continue
+    search_meta = paper.get("_search_meta")
 
-        value_lower = str(value).lower()
+    for field_name, weight in search_fields:
+        # Use pre-computed values if available (fast path)
+        if search_meta and (meta := search_meta.get(field_name)):
+            value_lower = meta["lower"]
+            value_words = meta["words"]
+        else:
+            # Fallback for papers not yet indexed with meta or missing fields
+            value = paper.get(field_name)
+            if not value:
+                continue
+            value_lower = str(value).lower()
+            value_words = None  # Computed only if needed
 
         # Exact match
         if query == value_lower:
@@ -92,16 +107,23 @@ def _calculate_relevance(
 
         # Fuzzy match using TheFuzz (WRatio handles partial matches better)
         ratio = fuzz.WRatio(query, value_lower) / 100.0
-        if ratio > 0.7:
+        if ratio > WORD_MATCH_SCORE_FACTOR:
             score = ratio * weight
             max_score = max(max_score, score)
 
-        # Word-level matching
-        value_words = set(re.split(r"\W+", value_lower))
+        # Optimization: Skip word matching if fuzzy match was already very strong
+        # Word match max score is 0.7 * weight. If max_score is already higher,
+        # word matching cannot improve the result.
+        if max_score >= WORD_MATCH_SCORE_FACTOR * weight:
+            continue
 
-        if query_words & value_words:  # At least one word matches
+        # Word-level matching
+        if value_words is None:
+            value_words = _tokenize_words(value_lower)
+
+        if query_words and (query_words & value_words):  # At least one word matches
             overlap = len(query_words & value_words) / len(query_words)
-            score = overlap * 0.7 * weight
+            score = overlap * WORD_MATCH_SCORE_FACTOR * weight
             max_score = max(max_score, score)
 
     return max_score

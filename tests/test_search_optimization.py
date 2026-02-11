@@ -34,11 +34,10 @@ def test_search_is_offloaded_to_threadpool(client):
     # Note: We need to patch 'app_v2.routes.papers.run_in_threadpool'
     # and 'app_v2.routes.papers.search_papers'
 
-    with patch(
-        "app_v2.routes.papers.run_in_threadpool"
-    ) as mock_run_in_threadpool, patch(
-        "app_v2.routes.papers.search_papers"
-    ) as mock_search_papers:
+    with (
+        patch("app_v2.routes.papers.run_in_threadpool") as mock_run_in_threadpool,
+        patch("app_v2.routes.papers.search_papers") as mock_search_papers,
+    ):
 
         # Configure the mock to return a dummy list so the endpoint continues
         # run_in_threadpool is async-ish when awaited.
