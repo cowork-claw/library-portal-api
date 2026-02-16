@@ -10,6 +10,7 @@ from types import MappingProxyType
 from typing import Any, Dict, List, Mapping, Optional, Set, Tuple
 
 from app_v2.utils import WORD_TOKEN_PATTERN
+
 from ..data_loader import DataLoader
 
 logger = logging.getLogger(__name__)
