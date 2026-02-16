@@ -4,13 +4,13 @@ Search Service for Library Portal API V2
 Provides fuzzy search functionality for finding papers.
 """
 
-import re
 from typing import Any, Dict, List, Set
 
 from thefuzz import fuzz
 
+from app_v2.utils import WORD_TOKEN_PATTERN
+
 WORD_MATCH_SCORE_FACTOR = 0.7
-WORD_TOKEN_PATTERN = re.compile(r"\w+")
 
 
 def _tokenize_words(text: str) -> Set[str]:
@@ -43,12 +43,13 @@ def search_papers(
 
     query = query.strip().lower()
     query_words = _tokenize_words(query)
-    results = []
 
-    for paper in papers:
-        score = _calculate_relevance(paper, query, query_words)
-        if score > 0:
-            results.append((paper, score))
+    # Calculate relevance for all papers
+    results = [
+        (paper, score)
+        for paper in papers
+        if (score := _calculate_relevance(paper, query, query_words)) > 0
+    ]
 
     # Sort by relevance score (highest first)
     results.sort(key=lambda x: x[1], reverse=True)
