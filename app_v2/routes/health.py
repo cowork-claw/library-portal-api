@@ -119,7 +119,14 @@ async def scraper_health():
 
 
 def _check_scraper_health() -> ComponentHealth:
-    """Check scraper log health."""
+    """
+    Check the health of the scraper component.
+
+    Reads the latest scraper log to determine status and last run time.
+
+    Returns:
+        ComponentHealth: Health status object for the scraper.
+    """
     log_data = _load_scrape_log()
 
     if not log_data:
@@ -144,7 +151,14 @@ def _check_scraper_health() -> ComponentHealth:
 
 
 def _check_staging_health() -> ComponentHealth:
-    """Check staging directory health."""
+    """
+    Check the health of the staging area.
+
+    Verifies if there are any papers pending review in the staging file.
+
+    Returns:
+        ComponentHealth: Health status object for the staging component.
+    """
     staging_file = settings.STAGING_DIRECTORY / "pending_review.json"
 
     if not staging_file.exists():
@@ -169,7 +183,13 @@ def _check_staging_health() -> ComponentHealth:
 
 
 def _load_scrape_log() -> dict:
-    """Load scrape log file."""
+    """
+    Load the scraper log file safely.
+
+    Returns:
+        dict: The content of the scraper log, or an empty dict if
+              the file doesn't exist or is invalid.
+    """
     try:
         if settings.SCRAPE_LOG_FILE.exists():
             with open(settings.SCRAPE_LOG_FILE, "r") as f:

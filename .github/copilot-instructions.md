@@ -116,6 +116,7 @@ cd scraper && scrapy crawl question_papers_enhanced
 - Keep routes in `app_v2/routes/` directory, organized by resource
 - Business logic goes in `app_v2/services/`
 - Middleware components in `app_v2/middleware/`
+- Shared utilities in `app_v2/utils.py` (e.g., regex patterns)
 - Configuration uses Pydantic Settings with `LIBRARY_PORTAL_` prefix
 
 ### Environment Variables

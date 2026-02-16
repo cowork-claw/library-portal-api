@@ -5,15 +5,15 @@ Pre-builds indexes for fast filtering and lookup.
 """
 
 import logging
-import re
 from collections import defaultdict
 from types import MappingProxyType
 from typing import Any, Dict, List, Mapping, Optional, Set, Tuple
 
+from app_v2.utils import WORD_TOKEN_PATTERN
+
 from ..data_loader import DataLoader
 
 logger = logging.getLogger(__name__)
-WORD_TOKEN_PATTERN = re.compile(r"\w+")
 
 
 class PaperIndex:
@@ -206,25 +206,15 @@ class PaperIndex:
         self._cached_unique_streams = tuple(sorted(self._unique_streams))
 
         # Use MappingProxyType for immutable dictionary caching
-        self._cached_count_by_year = MappingProxyType(
-            dict(sorted(self._count_by_year.items(), reverse=True))
+        self._cached_count_by_year = self._sort_and_proxy(
+            self._count_by_year, reverse=True
         )
-        self._cached_count_by_semester = MappingProxyType(
-            dict(sorted(self._count_by_semester.items()))
+        self._cached_count_by_semester = self._sort_and_proxy(self._count_by_semester)
+        self._cached_count_by_program = self._sort_and_proxy(
+            self._count_by_program, key=lambda x: x[1], reverse=True
         )
-        self._cached_count_by_program = MappingProxyType(
-            dict(
-                sorted(self._count_by_program.items(), key=lambda x: x[1], reverse=True)
-            )
-        )
-        self._cached_count_by_program_abbrev = MappingProxyType(
-            dict(
-                sorted(
-                    self._count_by_program_abbrev.items(),
-                    key=lambda x: x[1],
-                    reverse=True,
-                )
-            )
+        self._cached_count_by_program_abbrev = self._sort_and_proxy(
+            self._count_by_program_abbrev, key=lambda x: x[1], reverse=True
         )
 
         logger.debug(
@@ -233,6 +223,10 @@ class PaperIndex:
             f"{len(self._unique_programs)} programs, "
             f"{len(self._unique_streams)} streams"
         )
+
+    def _sort_and_proxy(self, data: Dict, key=None, reverse=False) -> MappingProxyType:
+        """Helper to sort a dictionary and return an immutable proxy."""
+        return MappingProxyType(dict(sorted(data.items(), key=key, reverse=reverse)))
 
     # ==========================================================================
     # LOOKUP METHODS

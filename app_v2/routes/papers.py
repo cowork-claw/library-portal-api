@@ -107,26 +107,19 @@ async def get_papers(
     # Efficiently filter papers using URL sets from indexes
     filter_url_sets = []
 
-    if year is not None:
-        filter_url_sets.append(paper_index.get_urls_by_year(year))
+    filters = [
+        (year, paper_index.get_urls_by_year),
+        (semester, paper_index.get_urls_by_semester),
+        (program, paper_index.get_urls_by_program),
+        (course_code, paper_index.get_urls_by_course),
+        (stream, paper_index.get_urls_by_stream),
+        (degree_type, paper_index.get_urls_by_degree_type),
+        (paper_type, paper_index.get_urls_by_paper_type),
+    ]
 
-    if semester is not None:
-        filter_url_sets.append(paper_index.get_urls_by_semester(semester))
-
-    if program is not None:
-        filter_url_sets.append(paper_index.get_urls_by_program(program))
-
-    if course_code is not None:
-        filter_url_sets.append(paper_index.get_urls_by_course(course_code))
-
-    if stream is not None:
-        filter_url_sets.append(paper_index.get_urls_by_stream(stream))
-
-    if degree_type is not None:
-        filter_url_sets.append(paper_index.get_urls_by_degree_type(degree_type))
-
-    if paper_type is not None:
-        filter_url_sets.append(paper_index.get_urls_by_paper_type(paper_type))
+    for value, method in filters:
+        if value is not None:
+            filter_url_sets.append(method(value))
 
     # Intersect filter results if multiple filters are active
     if filter_url_sets:
