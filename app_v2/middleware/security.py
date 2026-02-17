@@ -27,4 +27,22 @@ class SecurityHeadersMiddleware(BaseHTTPMiddleware):
         )
         response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
 
+        # Content Security Policy (CSP)
+        # Restrict content sources to self and trusted domains
+        response.headers["Content-Security-Policy"] = (
+            "default-src 'self'; "
+            "img-src 'self' https://libportal.manipal.edu data:; "
+            "object-src 'none'; "
+            "frame-src 'none'; "
+            "base-uri 'self'; "
+            "form-action 'self'; "
+            "upgrade-insecure-requests"
+        )
+
+        # Permissions Policy
+        # Disable sensitive features
+        response.headers["Permissions-Policy"] = (
+            "geolocation=(), microphone=(), camera=(), payment=(), usb=(), vr=()"
+        )
+
         return response
