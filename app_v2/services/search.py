@@ -122,7 +122,9 @@ def _calculate_relevance(
                 if value_words is None:
                     value_words = _tokenize_words(value_lower)
 
-                if query_words and (query_words & value_words):  # At least one word matches
+                if query_words and (
+                    query_words & value_words
+                ):  # At least one word matches
                     overlap = len(query_words & value_words) / len(query_words)
                     score = overlap * WORD_MATCH_SCORE_FACTOR * weight
                     max_score = max(max_score, score)

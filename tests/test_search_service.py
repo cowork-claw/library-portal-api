@@ -64,7 +64,9 @@ def test_search_papers_punctuation_query_returns_empty():
     assert results == []
 
 
-def test_calculate_relevance_keeps_higher_previous_score_on_later_exact_match(monkeypatch):
+def test_calculate_relevance_keeps_higher_previous_score_on_later_exact_match(
+    monkeypatch,
+):
     paper = {
         "course_code": "CS102",
         "course_name": "No match",
