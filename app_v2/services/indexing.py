@@ -85,6 +85,8 @@ class PaperIndex:
 
         stats = loader.get_stats()
         self._files_loaded = stats.get("files_loaded", 0)
+        loader.papers = []
+        loader.papers_by_url = {}
 
         logger.info(f"Indexed {len(self.papers)} papers")
 

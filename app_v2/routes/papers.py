@@ -127,7 +127,7 @@ async def get_papers(
         intersected_urls = filter_url_sets[0].intersection(*filter_url_sets[1:])
         results = paper_index.get_by_urls(intersected_urls)
     else:
-        results = list(paper_index.papers)
+        results = paper_index.papers
 
     # Apply search if provided
     if search:

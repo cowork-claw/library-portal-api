@@ -1,3 +1,8 @@
+import json
+from asyncio import run
+
+from app_v2.data_loader import DataLoader
+from app_v2.routes import papers as papers_route
 from app_v2.routes.papers import create_paginated_response, create_pagination
 from app_v2.services.indexing import PaperIndex
 
@@ -86,3 +91,53 @@ def test_create_paginated_response_hides_internal_fields():
     serialized = response.model_dump()
 
     assert "_search_meta" not in serialized["papers"][0]
+
+
+def test_load_from_directory_releases_loader_caches_without_touching_index(tmp_path):
+    data_file = tmp_path / "papers.json"
+    data_file.write_text(
+        json.dumps({"CS101": [{"url": "u1", "course_code": "CS101"}]}),
+        encoding="utf-8",
+    )
+
+    loader = DataLoader(tmp_path)
+    index = PaperIndex()
+    index.load_from_directory(loader)
+
+    assert len(index.papers) == 1
+    assert index.papers[0]["url"] == "u1"
+    assert loader.papers == []
+    assert loader.papers_by_url == {}
+
+
+def test_get_papers_unfiltered_uses_direct_index_reference(monkeypatch):
+    source = [{"url": "u1", "course_code": "CS101"}]
+    captured = {}
+
+    def fake_create_paginated_response(
+        papers, total, limit, offset, execution_time=None
+    ):
+        captured["papers"] = papers
+        return {"ok": True}
+
+    monkeypatch.setattr(papers_route.paper_index, "papers", source)
+    monkeypatch.setattr(
+        papers_route, "create_paginated_response", fake_create_paginated_response
+    )
+
+    run(
+        papers_route.get_papers(
+            year=None,
+            semester=None,
+            program=None,
+            degree_type=None,
+            paper_type=None,
+            course_code=None,
+            stream=None,
+            search=None,
+            limit=50,
+            offset=0,
+        )
+    )
+
+    assert captured["papers"] is source
