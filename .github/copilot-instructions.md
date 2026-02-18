@@ -297,7 +297,7 @@ Optimizes API performance (Wednesday 4 AM UTC):
 ### Render Configuration
 - Platform: Render free tier
 - Configuration: `render.yaml`
-- Web service runs: `gunicorn app_v2.main:app -w 4 -k uvicorn.workers.UvicornWorker`
+- Web service runs: `uvicorn app_v2.main:app --host 0.0.0.0 --port $PORT`
 - Environment variables set via Render dashboard
 - Auto-deploys from `main` branch
 
