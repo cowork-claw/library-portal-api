@@ -30,7 +30,7 @@ class SecurityHeadersMiddleware(BaseHTTPMiddleware):
         # Permissions Policy
         # Disable sensitive features
         response.headers["Permissions-Policy"] = (
-            "geolocation=(), microphone=(), camera=(), payment=(), usb=(), vr=()"
+            "geolocation=(), microphone=(), camera=(), payment=(), usb=(), xr-spatial-tracking=()"
         )
 
         # Content Security Policy (CSP)
@@ -45,6 +45,8 @@ class SecurityHeadersMiddleware(BaseHTTPMiddleware):
                 "style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; "
                 "img-src 'self' https://fastapi.tiangolo.com https://cdn.jsdelivr.net data:; "
                 "connect-src 'self' https://cdn.jsdelivr.net; "
+                "object-src 'none'; "
+                "frame-src 'none'; "
                 "upgrade-insecure-requests"
             )
         else:

@@ -27,6 +27,7 @@ def test_security_headers_present(client: TestClient):
     assert "Permissions-Policy" in headers
     permissions = headers["Permissions-Policy"]
     assert "geolocation=()" in permissions
+    assert "xr-spatial-tracking=()" in permissions
 
 
 def test_docs_csp_relaxed(client: TestClient):
@@ -42,9 +43,11 @@ def test_docs_csp_relaxed(client: TestClient):
     # Should allow scripts and styles from self and CDN, and inline
     assert "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net" in csp
     assert "style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net" in csp
+    assert "object-src 'none'" in csp
+    assert "frame-src 'none'" in csp
 
 
-def test_double_slash_auth_bypass_protection(client: TestClient):
+def test_double_slash_auth_bypass_protection(client: TestClient, api_key_headers: dict):
     """
     Verify that accessing a protected endpoint with double slashes (//api/metadata)
     does not bypass authentication.
@@ -62,14 +65,9 @@ def test_double_slash_auth_bypass_protection(client: TestClient):
     response_double = client.get(double_slash_url)
     assert response_double.status_code == 401
 
-    # 3. Check that we can access it with auth (sanity check)
-    api_key = "test-key"  # Matches conftest.py default if available, or just a dummy key for testing logic
-    headers = {"X-API-Key": api_key}
-
-    # With valid auth and double slash, the response should NOT be 401.
-    # It might be 200 (if router handles it) or 404 (if router is strict),
-    # but it must be authenticated (passed the middleware).
-    response_auth = client.get(double_slash_url, headers=headers)
-
-    # Assert that it is NOT unauthorized
-    assert response_auth.status_code != 401
+    # 3. Check deterministic behavior with auth:
+    # canonical path resolves, double-slash path remains protected but unresolved
+    response_auth = client.get("/api/metadata", headers=api_key_headers)
+    response_auth_double = client.get(double_slash_url, headers=api_key_headers)
+    assert response_auth.status_code == 200
+    assert response_auth_double.status_code == 404
