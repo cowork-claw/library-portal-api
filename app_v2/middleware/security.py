@@ -30,7 +30,7 @@ class SecurityHeadersMiddleware(BaseHTTPMiddleware):
         # Permissions Policy
         # Disable sensitive features
         response.headers["Permissions-Policy"] = (
-            "geolocation=(), microphone=(), camera=(), payment=(), usb=(), xr-spatial-tracking=()"
+            "geolocation=(), microphone=(), camera=(), payment=(), usb=(), vr=()"
         )
 
         # Content Security Policy (CSP)
