@@ -17,7 +17,7 @@ def test_security_headers_present(client: TestClient):
     assert "Strict-Transport-Security" in headers
     assert headers["Referrer-Policy"] == "strict-origin-when-cross-origin"
 
-    # Check new headers
+    # Check new headers for normal endpoints (strict CSP)
     assert "Content-Security-Policy" in headers
     csp = headers["Content-Security-Policy"]
     assert "default-src 'self'" in csp
@@ -29,38 +29,47 @@ def test_security_headers_present(client: TestClient):
     assert "geolocation=()" in permissions
 
 
+def test_docs_csp_relaxed(client: TestClient):
+    """Verify that documentation endpoints have a relaxed CSP."""
+    # Docs endpoint should allow unsafe-inline and CDN
+    response = client.get("/docs")
+    assert response.status_code == 200
+
+    headers = response.headers
+    assert "Content-Security-Policy" in headers
+    csp = headers["Content-Security-Policy"]
+
+    # Should allow scripts and styles from self and CDN, and inline
+    assert "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net" in csp
+    assert "style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net" in csp
+
+
 def test_double_slash_auth_bypass_protection(client: TestClient):
     """
     Verify that accessing a protected endpoint with double slashes (//api/metadata)
     does not bypass authentication.
     """
-    # /api/metadata requires auth.
-    # Standard request should be 401
+    # Use absolute URL to prevent TestClient/httpx from normalizing the path automatically
+    base_url = str(client.base_url)
+
+    # 1. Standard request should be 401 Unauthorized
     response = client.get("/api/metadata")
     assert response.status_code == 401
 
-    # Double slash request should also be 401 (not 200 or 404 if it bypassed auth incorrectly)
-    # Note: TestClient might normalize double slashes itself, but we'll try.
-    response = client.get("//api/metadata")
-    assert response.status_code == 401
+    # 2. Double slash request should also be 401 (not 200 or 404 if it bypassed auth incorrectly)
+    # Using absolute URL to ensure double slash is sent
+    double_slash_url = f"{base_url}//api/metadata"
+    response_double = client.get(double_slash_url)
+    assert response_double.status_code == 401
 
-    # Check that we can access it with auth
-    api_key = "test-key"  # Matches conftest.py default
+    # 3. Check that we can access it with auth (sanity check)
+    api_key = "test-key"  # Matches conftest.py default if available, or just a dummy key for testing logic
     headers = {"X-API-Key": api_key}
 
-    # With double slash and auth, it should work (or fail due to path not found if router is strict,
-    # but auth should pass first).
-    # FastAPI/Starlette router usually handles double slashes by normalizing them or matching them if configured.
-    # The key thing is that it should NOT be 200 without auth.
+    # With valid auth and double slash, the response should NOT be 401.
+    # It might be 200 (if router handles it) or 404 (if router is strict),
+    # but it must be authenticated (passed the middleware).
+    response_auth = client.get(double_slash_url, headers=headers)
 
-    response_auth = client.get("//api/metadata", headers=headers)
-    # It might be 404 if the router doesn't match //api/metadata, but 401 is the security check.
-    # If the router normalizes it to /api/metadata, then it will return 200.
-
-    if response_auth.status_code == 200:
-        # If valid request works, then invalid one MUST be 401
-        assert response.status_code == 401
-    else:
-        # If it returns 404, that's also safe (not found or not routed).
-        # But we want to ensure it didn't bypass auth and return something else.
-        pass
+    # Assert that it is NOT unauthorized
+    assert response_auth.status_code != 401

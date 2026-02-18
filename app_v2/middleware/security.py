@@ -27,22 +27,37 @@ class SecurityHeadersMiddleware(BaseHTTPMiddleware):
         )
         response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
 
-        # Content Security Policy (CSP)
-        # Restrict content sources to self and trusted domains
-        response.headers["Content-Security-Policy"] = (
-            "default-src 'self'; "
-            "img-src 'self' https://libportal.manipal.edu data:; "
-            "object-src 'none'; "
-            "frame-src 'none'; "
-            "base-uri 'self'; "
-            "form-action 'self'; "
-            "upgrade-insecure-requests"
-        )
-
         # Permissions Policy
         # Disable sensitive features
         response.headers["Permissions-Policy"] = (
             "geolocation=(), microphone=(), camera=(), payment=(), usb=(), vr=()"
         )
+
+        # Content Security Policy (CSP)
+        # Determine if this is a documentation endpoint
+        path = request.url.path
+        if path.startswith(("/docs", "/redoc", "/openapi.json")):
+            # Relaxed CSP for Swagger UI / ReDoc
+            # Allow unsafe-inline for Swagger UI scripts/styles and connections to CDNs
+            response.headers["Content-Security-Policy"] = (
+                "default-src 'self'; "
+                "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; "
+                "style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; "
+                "img-src 'self' https://fastapi.tiangolo.com https://cdn.jsdelivr.net data:; "
+                "connect-src 'self' https://cdn.jsdelivr.net; "
+                "upgrade-insecure-requests"
+            )
+        else:
+            # Strict CSP for API endpoints
+            # Restrict content sources to self and trusted domains
+            response.headers["Content-Security-Policy"] = (
+                "default-src 'self'; "
+                "img-src 'self' https://libportal.manipal.edu data:; "
+                "object-src 'none'; "
+                "frame-src 'none'; "
+                "base-uri 'self'; "
+                "form-action 'self'; "
+                "upgrade-insecure-requests"
+            )
 
         return response
