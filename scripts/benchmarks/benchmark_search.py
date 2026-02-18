@@ -8,6 +8,7 @@ from app_v2.services.search import search_papers
 class MockLoader:
     def __init__(self):
         self.papers = []
+        self.papers_by_url = {}
         # Create 3000 dummy papers to simulate load
         for i in range(3000):
             self.papers.append(

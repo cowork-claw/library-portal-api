@@ -85,6 +85,10 @@ class PaperIndex:
 
         stats = loader.get_stats()
         self._files_loaded = stats.get("files_loaded", 0)
+
+        # Clear loader data to free memory (data is now in self.papers)
+        # Note: We must reassign to new empty structures rather than clearing the existing objects,
+        # because self.papers might reference the same list object returned by load_all().
         loader.papers = []
         loader.papers_by_url = {}
 
