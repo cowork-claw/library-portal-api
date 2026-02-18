@@ -80,6 +80,11 @@ def _calculate_relevance(
     search_meta = paper.get("_search_meta")
 
     for field_name, weight in search_fields:
+        # Optimization: Early exit if max_score is already higher than
+        # current field's max potential
+        if max_score >= weight:
+            break
+
         # Use pre-computed values if available (fast path)
         if search_meta and (meta := search_meta.get(field_name)):
             value_lower = meta["lower"]
