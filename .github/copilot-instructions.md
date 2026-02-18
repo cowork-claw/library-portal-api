@@ -30,8 +30,9 @@ library-portal-api/
 │   ├── services/              # Business logic
 │   │   ├── indexing.py        # PaperIndex class - pre-builds Dict indexes
 │   │   └── search.py          # Fuzzy search using TheFuzz
-│   └── middleware/            # Authentication middleware
-│       └── auth.py            # APIKeyMiddleware - validates X-API-Key
+│   └── middleware/            # Authentication & Security middleware
+│       ├── auth.py            # APIKeyMiddleware - validates X-API-Key
+│       └── security.py        # SecurityHeadersMiddleware - adds CSP, HSTS, etc.
 ├── config/                    # Configuration and settings
 │   └── config_v2.py           # Pydantic settings (LIBRARY_PORTAL_ env prefix)
 ├── data/classified/organized/ # Categorized paper data (JSON)
@@ -99,6 +100,9 @@ python scripts/processing/validate_data.py
 
 # Format code (before committing)
 black .
+
+# Run tests
+pytest
 
 # Manual scraper run (for testing)
 cd scraper && scrapy crawl question_papers_enhanced
@@ -253,6 +257,7 @@ Weekly security audit of the codebase (Tuesday 6 AM UTC):
 - Validates authentication logic in `app_v2/middleware/auth.py`
 - Reviews CORS configuration in `app_v2/main.py`
 - Checks `requirements.txt` for known vulnerabilities
+- **Enhancement:** Checks for presence of security headers (CSP, Permissions-Policy) via `tests/test_security_headers.py`.
 
 ### Weekly Cleanup Agent
 Automated code maintenance (Monday 3 AM UTC):
@@ -498,6 +503,7 @@ The `PaperIndex` service pre-builds indexes for fast lookups:
   - Ensure `LIBRARY_PORTAL_API_KEY` is set in production.
 - **Headers:**
   - Security headers (`X-Content-Type-Options`, `X-Frame-Options`, `X-XSS-Protection`, `Strict-Transport-Security`, `Referrer-Policy`) are enforced by `SecurityHeadersMiddleware`.
+  - **New:** Content-Security-Policy (CSP) and Permissions-Policy headers are added to further harden the API against XSS and injection attacks.
 - **Data Safety:**
   - Internal file paths are sanitized in API error responses to prevent information disclosure.
 - **Secrets:**
