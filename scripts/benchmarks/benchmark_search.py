@@ -1,41 +1,34 @@
-import time
+"""
+Benchmark for search performance using real paper data.
 
+Uses the actual DataLoader to load real papers from the organized
+data directory, ensuring benchmarks reflect production conditions.
+"""
+
+import sys
+import time
+from pathlib import Path
+
+# Add project root to path
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+
+from app_v2.data_loader import DataLoader
 from app_v2.services.indexing import PaperIndex
 from app_v2.services.search import search_papers
-
-
-# Mock DataLoader to feed PaperIndex
-class MockLoader:
-    def __init__(self):
-        self.papers = []
-        # Create 3000 dummy papers to simulate load
-        for i in range(3000):
-            self.papers.append(
-                {
-                    "url": f"http://example.com/{i}",
-                    "course_code": f"CSE{2000+i}",
-                    "course_name": f"Computer Science {i} Algorithms and Data Structures",
-                    "subject_name": "Data Structures",
-                    "display_title": f"End Semester Examination {2000+i}",
-                    "file_name": f"paper_{i}.pdf",
-                    "year": 2020 + (i % 5),
-                }
-            )
-
-    def load_all(self):
-        return self.papers
-
-    def get_stats(self):
-        return {"files_loaded": 1}
+from config.config_v2 import settings
 
 
 def benchmark():
-    # Setup
-    loader = MockLoader()
+    # Load real data
+    print("Loading real paper data...")
+    loader = DataLoader(settings.DATA_DIRECTORY)
     index = PaperIndex()
     index.load_from_directory(loader)
 
     papers = index.papers
+    print(f"Loaded {len(papers)} papers from {index.files_loaded} files")
+
+    # Use a realistic search query
     query = "Algorithms"
 
     print(f"Benchmarking search on {len(papers)} papers...")
