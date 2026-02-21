@@ -21,9 +21,12 @@ def tmp_json_path():
 
 
 def test_initialization(tmp_json_path):
+    tmp_json_path.unlink()  # start fresh so save() no-op can be verified
     log = ScrapeLog(tmp_json_path)
     assert len(log.get_scraped_urls()) == 0
-    assert not log._dirty
+    # save() on a clean log should not create the file
+    log.save()
+    assert not tmp_json_path.exists()
 
 
 def test_add_url(tmp_json_path):
@@ -32,7 +35,10 @@ def test_add_url(tmp_json_path):
     assert log.add_scraped_url(url) is True
     assert log.has_url(url) is True
     assert url in log.get_scraped_urls()
-    assert log._dirty is True
+    # verify save() persists the added URL
+    log.save()
+    log2 = ScrapeLog(tmp_json_path)
+    assert log2.has_url(url) is True
 
 
 def test_add_duplicate_url(tmp_json_path):
