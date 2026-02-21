@@ -1,70 +1,85 @@
-import unittest
+"""Tests for ScrapeLog operations."""
+
 import tempfile
-import json
 from pathlib import Path
+
+import pytest
+
 from scraper.scrape_log import ScrapeLog
 
-class TestScrapeLog(unittest.TestCase):
-    def setUp(self):
-        self.tmp_file = tempfile.NamedTemporaryFile(suffix=".json", delete=False)
-        self.tmp_path = Path(self.tmp_file.name)
-        self.tmp_file.close()
 
-    def tearDown(self):
-        if self.tmp_path.exists():
-            self.tmp_path.unlink()
+@pytest.fixture
+def tmp_json_path():
+    tmp_file = tempfile.NamedTemporaryFile(suffix=".json", delete=False)
+    tmp_path = Path(tmp_file.name)
+    tmp_file.close()
+    try:
+        yield tmp_path
+    finally:
+        if tmp_path.exists():
+            tmp_path.unlink()
 
-    def test_initialization(self):
-        log = ScrapeLog(self.tmp_path)
-        self.assertEqual(len(log.get_scraped_urls()), 0)
-        self.assertFalse(log._dirty)
 
-    def test_add_url(self):
-        log = ScrapeLog(self.tmp_path)
-        url = "https://example.com/1"
-        self.assertTrue(log.add_scraped_url(url))
-        self.assertTrue(log.has_url(url))
-        self.assertIn(url, log.get_scraped_urls())
-        self.assertTrue(log._dirty)
+def test_initialization(tmp_json_path):
+    log = ScrapeLog(tmp_json_path)
+    assert len(log.get_scraped_urls()) == 0
+    assert not log._dirty
 
-    def test_add_duplicate_url(self):
-        log = ScrapeLog(self.tmp_path)
-        url = "https://example.com/1"
-        log.add_scraped_url(url)
-        self.assertFalse(log.add_scraped_url(url))
-        self.assertEqual(len(log.get_scraped_urls()), 1)
 
-    def test_bulk_add(self):
-        log = ScrapeLog(self.tmp_path)
-        urls = {"url1", "url2", "url3"}
-        added = log.add_scraped_urls(urls)
-        self.assertEqual(added, 3)
-        self.assertEqual(len(log.get_scraped_urls()), 3)
+def test_add_url(tmp_json_path):
+    log = ScrapeLog(tmp_json_path)
+    url = "https://libportal.manipal.edu/RootFolder/2022/Test%20Paper.pdf"
+    assert log.add_scraped_url(url) is True
+    assert log.has_url(url) is True
+    assert url in log.get_scraped_urls()
+    assert log._dirty is True
 
-        # Add again with some overlap
-        urls2 = {"url3", "url4"}
-        added2 = log.add_scraped_urls(urls2)
-        self.assertEqual(added2, 1)
-        self.assertEqual(len(log.get_scraped_urls()), 4)
 
-    def test_persistence(self):
-        log = ScrapeLog(self.tmp_path)
-        url = "https://example.com/persist"
-        log.add_scraped_url(url)
-        log.save()
+def test_add_duplicate_url(tmp_json_path):
+    log = ScrapeLog(tmp_json_path)
+    url = "https://libportal.manipal.edu/RootFolder/2022/Test%20Paper.pdf"
+    log.add_scraped_url(url)
+    assert log.add_scraped_url(url) is False
+    assert len(log.get_scraped_urls()) == 1
 
-        # Load in new instance
-        log2 = ScrapeLog(self.tmp_path)
-        self.assertTrue(log2.has_url(url))
-        self.assertEqual(len(log2.get_scraped_urls()), 1)
 
-    def test_get_scraped_urls_is_copy(self):
-        log = ScrapeLog(self.tmp_path)
-        url = "url1"
-        log.add_scraped_url(url)
-        urls = log.get_scraped_urls()
-        urls.add("evil_url")
-        self.assertFalse(log.has_url("evil_url"))
+def test_bulk_add(tmp_json_path):
+    log = ScrapeLog(tmp_json_path)
+    urls = {
+        "https://libportal.manipal.edu/RootFolder/2022/Paper1.pdf",
+        "https://libportal.manipal.edu/RootFolder/2022/Paper2.pdf",
+        "https://libportal.manipal.edu/RootFolder/2022/Paper3.pdf",
+    }
+    added = log.add_scraped_urls(urls)
+    assert added == 3
+    assert len(log.get_scraped_urls()) == 3
 
-if __name__ == "__main__":
-    unittest.main()
+    # Add again with some overlap
+    urls2 = {
+        "https://libportal.manipal.edu/RootFolder/2022/Paper3.pdf",
+        "https://libportal.manipal.edu/RootFolder/2022/Paper4.pdf",
+    }
+    added2 = log.add_scraped_urls(urls2)
+    assert added2 == 1
+    assert len(log.get_scraped_urls()) == 4
+
+
+def test_persistence(tmp_json_path):
+    log = ScrapeLog(tmp_json_path)
+    url = "https://libportal.manipal.edu/RootFolder/2022/Persist%20Test.pdf"
+    log.add_scraped_url(url)
+    log.save()
+
+    # Load in new instance
+    log2 = ScrapeLog(tmp_json_path)
+    assert log2.has_url(url) is True
+    assert len(log2.get_scraped_urls()) == 1
+
+
+def test_get_scraped_urls_is_copy(tmp_json_path):
+    log = ScrapeLog(tmp_json_path)
+    url = "https://libportal.manipal.edu/RootFolder/2022/Copy%20Test.pdf"
+    log.add_scraped_url(url)
+    urls = log.get_scraped_urls()
+    urls.add("evil_url")
+    assert log.has_url("evil_url") is False
