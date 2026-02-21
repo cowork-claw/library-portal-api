@@ -283,7 +283,10 @@ Optimizes API performance (Wednesday 4 AM UTC):
 - **Tip:** When optimizing filtering logic, prefer `PaperIndex` methods that return sets of URLs (`get_urls_by_*`) over those that return full objects, to allow for efficient set intersection before object hydration.
 - **Search Optimization:** The fuzzy search logic in `app_v2/services/search.py` uses `thefuzz` (powered by `Levenshtein`) instead of the slower `difflib.SequenceMatcher`. This provides a significant speedup (~10-37x) for search queries on large datasets.
 - **Token Pre-computation:** Search tokens are pre-computed during indexing to avoid redundant text processing (`re.split`, `.lower()`) during search requests, reducing latency by ~24%.
-- **Benchmarking:** Use `python scripts/benchmarks/benchmark_search.py` to verify search performance.
+- **Scraper Log Optimization:** The `ScrapeLog` class uses an in-memory set for O(1) membership lookups, significantly speeding up the scraping process when tracking seen URLs.
+- **Benchmarking:** Use `python scripts/benchmarks/benchmark_search.py` and `python scripts/benchmarks/benchmark_scrape_log.py` to verify performance improvements.
+
+> ⚡ **Jules Performance Tip:** For optimizations, follow the "Turbo" methodology and reference [Copilot coding agent tips](https://gh.io/copilot-coding-agent-tips) for better collaboration.
 
 ## Deployment
 

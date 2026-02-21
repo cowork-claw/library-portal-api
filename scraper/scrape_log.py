@@ -27,6 +27,7 @@ class ScrapeLog:
     def __init__(self, log_file: Path):
         self.log_file = log_file
         self.data = self._load()
+        self._scraped_urls_set = set(self.data.get("scraped_urls", []))
         self._dirty = False
 
     def _load(self) -> Dict[str, Any]:
@@ -63,11 +64,11 @@ class ScrapeLog:
 
     def get_scraped_urls(self) -> Set[str]:
         """Get all previously scraped URLs."""
-        return set(self.data.get("scraped_urls", []))
+        return self._scraped_urls_set.copy()
 
     def has_url(self, url: str) -> bool:
         """Check if URL has already been scraped."""
-        return url in self.get_scraped_urls()
+        return url in self._scraped_urls_set
 
     def add_scraped_url(self, url: str) -> bool:
         """
@@ -76,7 +77,8 @@ class ScrapeLog:
         Returns:
             True if URL was new, False if already existed
         """
-        if url not in self.data["scraped_urls"]:
+        if url not in self._scraped_urls_set:
+            self._scraped_urls_set.add(url)
             self.data["scraped_urls"].append(url)
             self._dirty = True
             return True
@@ -89,9 +91,9 @@ class ScrapeLog:
         Returns:
             Number of new URLs added
         """
-        existing = set(self.data["scraped_urls"])
-        new_urls = urls - existing
+        new_urls = urls - self._scraped_urls_set
         if new_urls:
+            self._scraped_urls_set.update(new_urls)
             self.data["scraped_urls"].extend(new_urls)
             self._dirty = True
         return len(new_urls)
