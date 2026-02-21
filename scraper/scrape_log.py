@@ -27,7 +27,7 @@ class ScrapeLog:
     def __init__(self, log_file: Path):
         self.log_file = log_file
         self.data = self._load()
-        self._scraped_urls_set = set(self.data.get("scraped_urls", []))
+        self._scraped_urls_set = set(self.data.setdefault("scraped_urls", []))
         self._dirty = False
 
     def _load(self) -> Dict[str, Any]:

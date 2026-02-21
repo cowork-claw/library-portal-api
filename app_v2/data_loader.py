@@ -16,7 +16,10 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-import orjson
+try:
+    import orjson
+except ImportError:
+    import json as orjson
 
 logger = logging.getLogger(__name__)
 
