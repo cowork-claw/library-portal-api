@@ -287,52 +287,52 @@ class PaperIndex:
         return self._files_loaded
 
     @property
-    def unique_years(self) -> List[int]:
+    def unique_years(self) -> Tuple[int, ...]:
         return self._cached_unique_years or ()
 
     @property
-    def unique_semesters(self) -> List[int]:
+    def unique_semesters(self) -> Tuple[int, ...]:
         return self._cached_unique_semesters or ()
 
     @property
-    def unique_course_codes(self) -> List[str]:
+    def unique_course_codes(self) -> Tuple[str, ...]:
         return self._cached_unique_course_codes or ()
 
     @property
-    def unique_programs(self) -> List[str]:
+    def unique_programs(self) -> Tuple[str, ...]:
         return self._cached_unique_programs or ()
 
     @property
-    def unique_program_abbrevs(self) -> List[str]:
+    def unique_program_abbrevs(self) -> Tuple[str, ...]:
         return self._cached_unique_program_abbrevs or ()
 
     @property
-    def unique_paper_types(self) -> List[str]:
+    def unique_paper_types(self) -> Tuple[str, ...]:
         return self._cached_unique_paper_types or ()
 
     @property
-    def unique_degree_types(self) -> List[str]:
+    def unique_degree_types(self) -> Tuple[str, ...]:
         return self._cached_unique_degree_types or ()
 
     @property
-    def unique_streams(self) -> List[str]:
+    def unique_streams(self) -> Tuple[str, ...]:
         return self._cached_unique_streams or ()
 
     @property
-    def count_by_year(self) -> Dict[int, int]:
-        return self._cached_count_by_year or {}
+    def count_by_year(self) -> Mapping[int, int]:
+        return self._cached_count_by_year or MappingProxyType({})
 
     @property
-    def count_by_semester(self) -> Dict[int, int]:
-        return self._cached_count_by_semester or {}
+    def count_by_semester(self) -> Mapping[int, int]:
+        return self._cached_count_by_semester or MappingProxyType({})
 
     @property
-    def count_by_program(self) -> Dict[str, int]:
-        return self._cached_count_by_program or {}
+    def count_by_program(self) -> Mapping[str, int]:
+        return self._cached_count_by_program or MappingProxyType({})
 
     @property
-    def count_by_program_abbrev(self) -> Dict[str, int]:
-        return self._cached_count_by_program_abbrev or {}
+    def count_by_program_abbrev(self) -> Mapping[str, int]:
+        return self._cached_count_by_program_abbrev or MappingProxyType({})
 
 
 # Global paper index instance

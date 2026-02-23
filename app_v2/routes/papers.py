@@ -5,7 +5,7 @@ Endpoints for retrieving and searching question papers.
 """
 
 import time
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Set
 
 from fastapi import APIRouter, HTTPException, Path, Query
 from fastapi.concurrency import run_in_threadpool
@@ -152,14 +152,14 @@ async def get_papers_by_year(
     urls = paper_index.get_urls_by_year(year)
 
     if not urls:
+        # Note: get_papers returns empty list, but this endpoint historically returns 404
+        # We preserve this behavior.
         raise HTTPException(status_code=404, detail=f"No papers found for year {year}")
 
     if semester is not None:
-        semester_urls = paper_index.get_urls_by_semester(semester)
-        urls = urls.intersection(semester_urls)
+        urls = urls.intersection(paper_index.get_urls_by_semester(semester))
 
     papers = paper_index.get_by_urls(urls)
-
     total = len(papers)
 
     return create_paginated_response(papers, total, limit, offset)
@@ -197,8 +197,7 @@ async def get_papers_by_semester(
     urls = paper_index.get_urls_by_semester(semester)
 
     if year is not None:
-        year_urls = paper_index.get_urls_by_year(year)
-        urls = urls.intersection(year_urls)
+        urls = urls.intersection(paper_index.get_urls_by_year(year))
 
     papers = paper_index.get_by_urls(urls)
     total = len(papers)
