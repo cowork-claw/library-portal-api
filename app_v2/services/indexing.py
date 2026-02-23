@@ -15,6 +15,8 @@ from ..data_loader import DataLoader
 
 logger = logging.getLogger(__name__)
 
+__all__ = ["PaperIndex", "paper_index"]
+
 
 class PaperIndex:
     """

@@ -10,6 +10,8 @@ from thefuzz import fuzz
 
 from app_v2.utils import WORD_TOKEN_PATTERN
 
+__all__ = ["search_papers", "SEARCH_FIELDS"]
+
 WORD_MATCH_SCORE_FACTOR = 0.7
 
 # Fields to search with their weights
