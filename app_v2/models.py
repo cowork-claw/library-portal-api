@@ -27,6 +27,11 @@ __all__ = [
 # =============================================================================
 
 
+def _default_streams_factory() -> List[str]:
+    """Default factory for valid_for_streams."""
+    return ["all"]
+
+
 class CurriculumContext(BaseModel):
     """
     Curriculum context indicating which students a paper is relevant for.
@@ -39,7 +44,7 @@ class CurriculumContext(BaseModel):
     """
 
     curriculum_id: Optional[str] = None
-    valid_for_streams: List[str] = Field(default_factory=lambda: ["all"])
+    valid_for_streams: List[str] = Field(default_factory=_default_streams_factory)
     valid_for_batches: List[int] = Field(default_factory=list)
     valid_for_branches: Optional[List[str]] = None
 

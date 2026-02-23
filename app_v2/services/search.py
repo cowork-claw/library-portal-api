@@ -29,7 +29,7 @@ def _tokenize_words(text: str) -> Set[str]:
 
 
 def search_papers(
-    papers: List[Dict[str, Any]], query: str, threshold: float = 0.4
+    papers: List[Dict[str, Any]], query: str, threshold: float = 0.5
 ) -> List[Dict[str, Any]]:
     """
     Search papers using fuzzy matching.
@@ -45,6 +45,7 @@ def search_papers(
         papers: List of paper dictionaries to search.
         query: Search query string.
         threshold: Minimum similarity score (0-1) to include in results.
+                   Defaults to 0.5.
 
     Returns:
         List of matching papers, sorted by relevance.
@@ -55,11 +56,16 @@ def search_papers(
     query = query.strip().lower()
     query_words = _tokenize_words(query)
 
+    # Guard clause: ensure we filter out zero-score papers even if threshold is 0 or negative
+    # unless explicitly desired? No, search generally implies some relevance.
+    effective_threshold = max(threshold, 0.01) if threshold <= 0 else threshold
+
     # Calculate relevance for all papers and filter by threshold immediately
     results = [
         (paper, score)
         for paper in papers
-        if (score := _calculate_relevance(paper, query, query_words)) >= threshold
+        if (score := _calculate_relevance(paper, query, query_words))
+        >= effective_threshold
     ]
 
     # Sort by relevance score (highest first)

@@ -128,6 +128,9 @@ class DataLoader:
                 relative_path = str(file_path.relative_to(self.data_directory))
             except ValueError:
                 relative_path = file_path.name
+                logger.debug(
+                    f"Could not determine relative path for {file_path}, using filename only"
+                )
 
             self.stats.file_stats[relative_path] = FileStats(
                 path=str(file_path),
