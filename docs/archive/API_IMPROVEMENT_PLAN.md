@@ -801,7 +801,7 @@ async def advanced_search(
 **Current:**
 ```python
 # Single shared key
-API_SECRET_KEY = "one-key-for-everyone"
+API_SECRET_KEY = "<hidden-secret-key>"
 ```
 
 **Proposed:**

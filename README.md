@@ -91,6 +91,7 @@ python -c "import secrets; print(secrets.token_urlsafe(32))"
 ## Security
 
 - **Authentication**: `LIBRARY_PORTAL_API_KEY` is **mandatory** in production. The server will refuse requests if it is missing.
+- **Input Validation**: Strict type and length checking on all API parameters to prevent DoS and Injection attacks.
 - **Fail-Safe**: In development mode, missing API key will trigger a warning but allow access for testing.
 - **Dependencies**: Regular security updates are applied.
 

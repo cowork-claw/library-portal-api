@@ -500,6 +500,7 @@ The `PaperIndex` service pre-builds indexes for fast lookups:
   - Search queries are limited to 100 characters to prevent ReDoS attacks.
   - Year filters are validated to be within a reasonable range (2000-2100).
   - Semester filters are validated to be between 1 and 8.
+  - String parameters (`program`, `degree_type`, etc.) have `max_length` constraints to prevent DoS via large payloads.
 - **Configuration:**
   - `DEBUG` is set to `False` by default in `config/config_v2.py`.
   - Ensure `LIBRARY_PORTAL_API_KEY` is set in production.

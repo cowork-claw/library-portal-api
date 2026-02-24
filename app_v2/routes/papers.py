@@ -67,13 +67,21 @@ async def get_papers(
     semester: Optional[int] = Query(
         None, ge=1, le=8, description="Filter by semester (1-8)"
     ),
-    program: Optional[str] = Query(None, description="Filter by program"),
-    degree_type: Optional[str] = Query(None, description="Filter by degree type"),
-    paper_type: Optional[str] = Query(
-        None, description="Filter by paper type (Regular, Makeup, etc.)"
+    program: Optional[str] = Query(
+        None, max_length=50, description="Filter by program"
     ),
-    course_code: Optional[str] = Query(None, description="Filter by course code"),
-    stream: Optional[str] = Query(None, description="Filter by stream (cs, core)"),
+    degree_type: Optional[str] = Query(
+        None, max_length=50, description="Filter by degree type"
+    ),
+    paper_type: Optional[str] = Query(
+        None, max_length=50, description="Filter by paper type (Regular, Makeup, etc.)"
+    ),
+    course_code: Optional[str] = Query(
+        None, max_length=20, description="Filter by course code"
+    ),
+    stream: Optional[str] = Query(
+        None, max_length=20, description="Filter by stream (cs, core)"
+    ),
     # Search
     search: Optional[str] = Query(
         None, min_length=2, max_length=100, description="Search query"
