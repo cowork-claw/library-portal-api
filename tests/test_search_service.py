@@ -60,3 +60,9 @@ def test_search_papers_uses_precomputed_meta():
 def test_search_papers_punctuation_query_returns_empty():
     results = search_papers(_sample_papers(), "!!!")
     assert results == []
+
+
+def test_search_papers_whitespace_query_returns_original_list():
+    papers = _sample_papers()
+    results = search_papers(papers, "   ")
+    assert results is papers

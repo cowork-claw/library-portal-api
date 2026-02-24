@@ -54,6 +54,8 @@ def search_papers(
         return papers
 
     query = query.strip().lower()
+    if not query:
+        return papers
     query_words = _tokenize_words(query)
 
     # Guard clause: ensure we filter out zero-score papers even if threshold is 0 or negative
