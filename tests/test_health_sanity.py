@@ -16,7 +16,9 @@ def test_health_check_staging_error_sanitization(client):
     """Test that health check handles staging file errors gracefully and sanitizes messages."""
 
     # Mock open to raise an exception
-    with patch("builtins.open", side_effect=PermissionError("/secret/path/to/staging.json")):
+    with patch(
+        "builtins.open", side_effect=PermissionError("/secret/path/to/staging.json")
+    ):
         response = client.get("/health")
         assert response.status_code == 200
         data = response.json()
