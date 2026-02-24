@@ -288,7 +288,6 @@ Optimizes API performance (Wednesday 4 AM UTC):
 - **Tip:** When optimizing filtering logic, prefer `PaperIndex` methods that return sets of URLs (`get_urls_by_*`) over those that return full objects, to allow for efficient set intersection before object hydration.
 - **Search Optimization:** Global search results are cached using `@lru_cache` in `PaperIndex` for instant repeated queries, significantly reducing latency for common searches. The implementation uses `thefuzz` (backed by `Levenshtein`) which provides a good balance of accuracy and performance.
 - **Token Pre-computation:** Search tokens are pre-computed during indexing to avoid redundant text processing (`re.split`, `.lower()`) during search requests, reducing latency by ~24%.
-<<<<<<< HEAD
 - **Early Exit Strategy:** The search service implements an optimization in `_calculate_relevance` to break the scoring loop early if a high-quality match (e.g., exact match on a high-weight field) is found, skipping redundant fuzzy matching on lower-priority fields. This improves search performance by ~49% on average.
 - **Memory Optimization:** The `PaperIndex` service clears the `DataLoader`'s internal memory immediately after initialization to prevent data duplication. The `get_papers` route optimizes memory usage by using a direct reference to the paper list when no filters are applied, avoiding unnecessary list copying.
 - **Scraper Log Optimization:** The `ScrapeLog` class uses an in-memory set for O(1) membership lookups, significantly speeding up the scraping process when tracking seen URLs.
