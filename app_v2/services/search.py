@@ -10,7 +10,18 @@ from thefuzz import fuzz
 
 from app_v2.utils import WORD_TOKEN_PATTERN
 
+__all__ = ["search_papers", "SEARCH_FIELDS"]
+
 WORD_MATCH_SCORE_FACTOR = 0.7
+
+# Fields to search with their weights
+SEARCH_FIELDS = [
+    ("course_code", 1.0),  # Exact course code match is highest priority
+    ("course_name", 0.9),
+    ("subject_name", 0.9),
+    ("display_title", 0.7),
+    ("file_name", 0.5),
+]
 
 
 def _tokenize_words(text: str) -> Set[str]:
@@ -18,7 +29,7 @@ def _tokenize_words(text: str) -> Set[str]:
 
 
 def search_papers(
-    papers: List[Dict[str, Any]], query: str, threshold: float = 0.4
+    papers: List[Dict[str, Any]], query: str, threshold: float = 0.5
 ) -> List[Dict[str, Any]]:
     """
     Search papers using fuzzy matching.
@@ -31,30 +42,38 @@ def search_papers(
     - file_name
 
     Args:
-        papers: List of paper dictionaries to search
-        query: Search query string
-        threshold: Minimum similarity score (0-1) to include in results
+        papers: List of paper dictionaries to search.
+        query: Search query string.
+        threshold: Minimum similarity score (0-1) to include in results.
+                   Defaults to 0.5.
 
     Returns:
-        List of matching papers, sorted by relevance
+        List of matching papers, sorted by relevance.
     """
     if not query or not papers:
         return papers
 
     query = query.strip().lower()
+    if not query:
+        return papers
     query_words = _tokenize_words(query)
 
-    # Calculate relevance for all papers
+    # Guard clause: ensure we filter out zero-score papers even if threshold is 0 or negative
+    # unless explicitly desired? No, search generally implies some relevance.
+    effective_threshold = max(threshold, 0.01) if threshold <= 0 else threshold
+
+    # Calculate relevance for all papers and filter by threshold immediately
     results = [
         (paper, score)
         for paper in papers
-        if (score := _calculate_relevance(paper, query, query_words)) > 0
+        if (score := _calculate_relevance(paper, query, query_words))
+        >= effective_threshold
     ]
 
     # Sort by relevance score (highest first)
     results.sort(key=lambda x: x[1], reverse=True)
 
-    return [paper for paper, score in results if score >= threshold]
+    return [paper for paper, score in results]
 
 
 def _calculate_relevance(
@@ -64,22 +83,13 @@ def _calculate_relevance(
     Calculate relevance score for a paper against a query.
 
     Returns:
-        Score between 0 and 1, higher is more relevant
+        Score between 0 and 1, higher is more relevant.
     """
     max_score = 0.0
 
-    # Fields to search with their weights
-    search_fields = [
-        ("course_code", 1.0),  # Exact course code match is highest priority
-        ("course_name", 0.9),
-        ("subject_name", 0.9),
-        ("display_title", 0.7),
-        ("file_name", 0.5),
-    ]
-
     search_meta = paper.get("_search_meta")
 
-    for field_name, weight in search_fields:
+    for field_name, weight in SEARCH_FIELDS:
         # Optimization: Early exit if max_score is already higher than
         # current field's max potential
         if max_score >= weight:

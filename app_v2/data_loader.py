@@ -100,6 +100,8 @@ class DataLoader:
             with open(file_path, "rb") as f:
                 data = orjson.loads(f.read())
 
+            # Papers added from this file (might be duplicates of papers in other files)
+            # but we track how many we *processed* from this file that were unique so far.
             paper_count = 0
             course_count = 0
 
@@ -107,7 +109,7 @@ class DataLoader:
             for course_code, papers_list in data.items():
                 if not isinstance(papers_list, list):
                     logger.warning(
-                        f"Invalid format in {file_path}: {course_code} is not a list"
+                        f"Invalid format in {file_path.name}: {course_code} is not a list"
                     )
                     continue
 
@@ -122,7 +124,14 @@ class DataLoader:
                         paper_count += 1
 
             # Track file stats
-            relative_path = str(file_path.relative_to(self.data_directory))
+            try:
+                relative_path = str(file_path.relative_to(self.data_directory))
+            except ValueError:
+                relative_path = file_path.name
+                logger.debug(
+                    f"Could not determine relative path for {file_path}, using filename only"
+                )
+
             self.stats.file_stats[relative_path] = FileStats(
                 path=str(file_path),
                 papers_count=paper_count,

@@ -523,6 +523,15 @@ The `PaperIndex` service pre-builds indexes for fast lookups:
 - **Frontend Integration:** See `docs/FRONTEND_INTEGRATION.md`
 - **Archive Docs:** See `docs/archive/` for historical context
 
+## Codebase Evolution
+
+### Refactoring & Cleanup (Feb 2026)
+- **Models:** Updated Pydantic models in `app_v2/models.py` to V2 style (`model_config`) and added Google-style docstrings.
+- **Indexing:** Refactored `app_v2/services/indexing.py` to use correct type hints for immutable properties (`Tuple`, `Mapping`).
+- **Search:** Optimized `app_v2/services/search.py` with early filtering and extracted constants.
+- **Routes:** Refactored `app_v2/routes/papers.py` for consistent filtering logic.
+- **Data Loader:** Improved robustness in `app_v2/data_loader.py`.
+
 ## Copilot Agent Tips
 
 To get the most out of Copilot Agents (like Jules), follow these tips (ref: https://gh.io/copilot-coding-agent-tips):

@@ -8,7 +8,7 @@ from functools import lru_cache
 from pathlib import Path
 from typing import List, Optional
 
-from pydantic_settings import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
@@ -93,10 +93,11 @@ class Settings(BaseSettings):
     SENTRY_TRACES_SAMPLE_RATE: float = 0.0
     METRICS_ENABLED: bool = False
 
-    class Config:
-        env_prefix = "LIBRARY_PORTAL_"
-        env_file = ".env"
-        env_file_encoding = "utf-8"
+    model_config = SettingsConfigDict(
+        env_prefix="LIBRARY_PORTAL_",
+        env_file=".env",
+        env_file_encoding="utf-8",
+    )
 
 
 @lru_cache()
