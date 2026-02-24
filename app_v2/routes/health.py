@@ -177,8 +177,11 @@ def _check_staging_health() -> ComponentHealth:
             details={"count": count},
         )
     except Exception as e:
+        # Use generic error message to avoid leaking internal file paths
         return ComponentHealth(
-            status="degraded", message=f"Error reading staging file: {e}", details=None
+            status="degraded",
+            message=f"Error reading staging file: {e.__class__.__name__}",
+            details=None,
         )
 
 

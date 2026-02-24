@@ -106,3 +106,17 @@ def test_semester_path_validation_too_large(client):
     """Test that semester path param > 8 returns 422."""
     response = client.get("/api/papers/semester/9", headers=_headers())
     assert response.status_code == 422
+
+
+def test_program_length_validation(client):
+    """Test that program filter exceeding max length returns 422."""
+    long_program = "a" * 51
+    response = client.get(f"/api/papers?program={long_program}", headers=_headers())
+    assert response.status_code == 422
+
+
+def test_course_code_length_validation(client):
+    """Test that course_code filter exceeding max length returns 422."""
+    long_code = "a" * 21
+    response = client.get(f"/api/papers?course_code={long_code}", headers=_headers())
+    assert response.status_code == 422
