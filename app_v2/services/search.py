@@ -6,7 +6,7 @@ Provides fuzzy search functionality for finding papers.
 
 from typing import Any, Dict, List, Set
 
-from rapidfuzz import fuzz
+from thefuzz import fuzz
 
 from app_v2.utils import WORD_TOKEN_PATTERN
 

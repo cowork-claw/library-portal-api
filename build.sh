@@ -12,5 +12,5 @@ pip install -r requirements.txt
 
 # Verify installation of key packages (optional, but helpful)
 echo "Verifying installation..."
-python -c "import rapidfuzz; print('rapidfuzz installed:', rapidfuzz.__version__)"
+python -c "import thefuzz; print('thefuzz installed:', thefuzz.__version__)"
 python -c "import orjson; print('orjson installed:', orjson.__version__)"
