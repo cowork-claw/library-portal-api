@@ -6,12 +6,14 @@ Pre-builds indexes for fast filtering and lookup.
 
 import logging
 from collections import defaultdict
+from functools import lru_cache
 from types import MappingProxyType
-from typing import Any, Dict, List, Mapping, Optional, Set, Tuple
+from typing import Any, Dict, Iterable, List, Mapping, Optional, Set, Tuple
 
 from app_v2.utils import WORD_TOKEN_PATTERN
 
 from ..data_loader import DataLoader
+from .search import search_papers
 
 logger = logging.getLogger(__name__)
 
@@ -93,6 +95,9 @@ class PaperIndex:
         # because self.papers might reference the same list object returned by load_all().
         loader.papers = []
         loader.papers_by_url = {}
+
+        # Clear search cache on reload
+        self.search.cache_clear()
 
         logger.info(f"Indexed {len(self.papers)} papers")
 
@@ -239,7 +244,13 @@ class PaperIndex:
     # ==========================================================================
     # LOOKUP METHODS
     # ==========================================================================
-    def get_by_urls(self, urls: Set[str]) -> List[Dict[str, Any]]:
+    @lru_cache(maxsize=128)
+    def search(self, query: str) -> List[str]:
+        """Search all papers and return matching URLs sorted by relevance."""
+        results = search_papers(self.papers, query)
+        return [p["url"] for p in results]
+
+    def get_by_urls(self, urls: Iterable[str]) -> List[Dict[str, Any]]:
         """Get multiple papers from a set of URLs."""
         return [self._by_url[url] for url in urls if url in self._by_url]
 

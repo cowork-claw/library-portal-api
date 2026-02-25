@@ -7,7 +7,7 @@ Key paths: `app_v2/` (API), `scraper/` (Scrapy crawler), `data/` (organized pape
 ## Critical Behavior (recent PR context)
 - **Auth safety**: Only `/`, `/docs`, `/redoc`, `/openapi.json`, and `/health` are public.
   `/health/data` and all `/api/*` routes require `X-API-Key`.
-- **Search**: Fuzzy matching uses `thefuzz.WRatio` with a higher similarity threshold for speed.
+- **Search**: Fuzzy matching uses `rapidfuzz.WRatio` for optimal performance.
 - **Filtering**: `/api/papers` uses URL-set intersections from `PaperIndex` for performance.
 - **Pagination**: Standardized helper in `app_v2/routes/papers.py`.
 - **Security headers**: `SecurityHeadersMiddleware` wraps auth so 401/403 responses include headers.

@@ -12,7 +12,6 @@ from fastapi.concurrency import run_in_threadpool
 
 from ..models import CourseResponse, PaginationInfo, Paper, PapersResponse
 from ..services.indexing import paper_index
-from ..services.search import search_papers
 
 router = APIRouter(prefix="/api/papers", tags=["Papers"])
 
@@ -130,16 +129,31 @@ async def get_papers(
             filter_url_sets.append(method(value))
 
     # Intersect filter results if multiple filters are active
+    filter_urls = None
     if filter_url_sets:
-        # Start with the first set and intersect with the rest
-        intersected_urls = filter_url_sets[0].intersection(*filter_url_sets[1:])
-        results = paper_index.get_by_urls(intersected_urls)
-    else:
-        results = paper_index.papers
+        filter_urls = filter_url_sets[0].intersection(*filter_url_sets[1:])
 
     # Apply search if provided
     if search:
-        results = await run_in_threadpool(search_papers, results, search)
+        # Use cached global search (returns sorted URLs)
+        # Offload to threadpool to avoid blocking event loop during first computation
+        search_urls = await run_in_threadpool(paper_index.search, search)
+
+        if filter_urls is not None:
+            # Combine search + filters (intersection), preserving search rank
+            # Note: We iterate over sorted search_urls to maintain relevance order
+            results = paper_index.get_by_urls(
+                [url for url in search_urls if url in filter_urls]
+            )
+        else:
+            results = paper_index.get_by_urls(search_urls)
+
+    else:
+        # No search, just filters
+        if filter_urls is not None:
+            results = paper_index.get_by_urls(filter_urls)
+        else:
+            results = paper_index.papers
 
     # Get total before pagination
     total = len(results)

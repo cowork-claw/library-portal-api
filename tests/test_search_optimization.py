@@ -32,13 +32,12 @@ def test_search_is_offloaded_to_threadpool(client):
     # We also mock search_papers to ensure we don't actually run a search and just verify the call.
 
     # Note: We need to patch 'app_v2.routes.papers.run_in_threadpool'
-    # and 'app_v2.routes.papers.search_papers'
+    # and 'app_v2.routes.papers.paper_index.search'
 
     with (
         patch("app_v2.routes.papers.run_in_threadpool") as mock_run_in_threadpool,
-        patch("app_v2.routes.papers.search_papers") as mock_search_papers,
+        patch("app_v2.routes.papers.paper_index.search") as mock_search,
     ):
-
         # Configure the mock to return a dummy list so the endpoint continues
         # run_in_threadpool is async-ish when awaited.
 
@@ -46,7 +45,14 @@ def test_search_is_offloaded_to_threadpool(client):
 
         # Create an async mock wrapper
         async def async_return(*args, **kwargs):
-            return [
+            # return URLs
+            return ["http://example.com/test_paper.pdf"]
+
+        mock_run_in_threadpool.side_effect = async_return
+
+        # Also need to ensure get_by_urls returns valid paper objects
+        with patch("app_v2.routes.papers.paper_index.get_by_urls") as mock_get_by_urls:
+            mock_get_by_urls.return_value = [
                 {
                     "file_name": "test_paper.pdf",
                     "course_code": "TEST101",
@@ -55,25 +61,22 @@ def test_search_is_offloaded_to_threadpool(client):
                 }
             ]
 
-        mock_run_in_threadpool.side_effect = async_return
+            headers = {"X-API-Key": "test-key"}
+            response = client.get("/api/papers?search=testquery", headers=headers)
 
-        headers = {"X-API-Key": "test-key"}
-        response = client.get("/api/papers?search=testquery", headers=headers)
+            assert response.status_code == 200
 
-        assert response.status_code == 200
+            # Verify run_in_threadpool was called
+            assert mock_run_in_threadpool.called
 
-        # Verify run_in_threadpool was called
-        assert mock_run_in_threadpool.called
+            # Verify arguments: first arg should be the function paper_index.search
+            call_args = mock_run_in_threadpool.call_args
+            assert call_args is not None
 
-        # Verify arguments: first arg should be the function search_papers
-        call_args = mock_run_in_threadpool.call_args
-        assert call_args is not None
+            func_arg = call_args[0][0]
+            # In the route: await run_in_threadpool(paper_index.search, search)
 
-        func_arg = call_args[0][0]
-        # In the route: await run_in_threadpool(search_papers, results, search)
+            assert func_arg == mock_search
 
-        # Since we patched search_papers in the route file, the first arg should be that mock
-        assert func_arg == mock_search_papers
-
-        # Verify the search query was passed as the 3rd argument (results is 2nd)
-        assert call_args[0][2] == "testquery"
+            # Verify the search query was passed as the 2nd argument
+            assert call_args[0][1] == "testquery"
