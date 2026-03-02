@@ -18,6 +18,7 @@ from .search import search_papers
 logger = logging.getLogger(__name__)
 
 __all__ = ["PaperIndex", "paper_index"]
+SEARCH_CACHE_MAXSIZE = 32
 
 
 class PaperIndex:
@@ -97,7 +98,7 @@ class PaperIndex:
         loader.papers_by_url = {}
 
         # Clear search cache on reload
-        self.search.cache_clear()
+        self._search_cached.cache_clear()
 
         logger.info(f"Indexed {len(self.papers)} papers")
 
@@ -244,11 +245,18 @@ class PaperIndex:
     # ==========================================================================
     # LOOKUP METHODS
     # ==========================================================================
-    @lru_cache(maxsize=128)
+    @lru_cache(maxsize=SEARCH_CACHE_MAXSIZE)
+    def _search_cached(self, normalized_query: str) -> Tuple[str, ...]:
+        """Return cached matching URLs for a normalized query."""
+        results = search_papers(self.papers, normalized_query)
+        return tuple(url for paper in results if (url := paper.get("url")))
+
     def search(self, query: str) -> List[str]:
         """Search all papers and return matching URLs sorted by relevance."""
-        results = search_papers(self.papers, query)
-        return [p["url"] for p in results]
+        normalized_query = query.strip().lower()
+        if not normalized_query:
+            return []
+        return list(self._search_cached(normalized_query))
 
     def get_by_urls(self, urls: Iterable[str]) -> List[Dict[str, Any]]:
         """Get multiple papers from a set of URLs."""
