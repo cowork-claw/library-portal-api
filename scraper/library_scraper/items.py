@@ -2,18 +2,3 @@
 #
 # See documentation in:
 # https://docs.scrapy.org/en/latest/topics/items.html
-
-import scrapy
-
-
-class LibraryScraperItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    title = scrapy.Field()
-    url = scrapy.Field()
-    year = scrapy.Field()
-    program = scrapy.Field()
-    semester = scrapy.Field()
-    subject = scrapy.Field()
-    path = scrapy.Field()
-    scraped_at = scrapy.Field()

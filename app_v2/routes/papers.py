@@ -18,12 +18,30 @@ router = APIRouter(prefix="/api/papers", tags=["Papers"])
 
 
 def to_public_paper(paper: Dict[str, Any]) -> Dict[str, Any]:
-    """Strip internal-only fields before serializing API responses."""
+    """
+    Strip internal-only fields before serializing API responses.
+
+    Args:
+        paper: The internal paper dictionary.
+
+    Returns:
+        A dictionary suitable for public API exposure.
+    """
     return {k: v for k, v in paper.items() if not k.startswith("_")}
 
 
 def create_pagination(total: int, limit: int, offset: int) -> PaginationInfo:
-    """Create pagination info from parameters."""
+    """
+    Create pagination info from parameters.
+
+    Args:
+        total: Total number of items.
+        limit: Max items per page.
+        offset: Number of items skipped.
+
+    Returns:
+        A PaginationInfo model with pagination metadata.
+    """
     total_pages = max(1, (total + limit - 1) // limit) if limit > 0 else 1
     current_page = (offset // limit) + 1 if limit > 0 else 1
 
@@ -58,6 +76,15 @@ def create_paginated_response(
             round(execution_time, 2) if execution_time is not None else None
         ),
     )
+
+
+def _get_papers_response_from_urls(
+    urls: set, limit: int, offset: int
+) -> PapersResponse:
+    """Helper to fetch papers by URL set and return a paginated response."""
+    papers = paper_index.get_by_urls(urls)
+    total = len(papers)
+    return create_paginated_response(papers, total, limit, offset)
 
 
 @router.get("", response_model=PapersResponse)
@@ -167,10 +194,7 @@ async def get_papers_by_year(
     if semester is not None:
         urls = urls.intersection(paper_index.get_urls_by_semester(semester))
 
-    papers = paper_index.get_by_urls(urls)
-    total = len(papers)
-
-    return create_paginated_response(papers, total, limit, offset)
+    return _get_papers_response_from_urls(urls, limit, offset)
 
 
 @router.get("/course/{course_code}", response_model=CourseResponse)
@@ -207,7 +231,4 @@ async def get_papers_by_semester(
     if year is not None:
         urls = urls.intersection(paper_index.get_urls_by_year(year))
 
-    papers = paper_index.get_by_urls(urls)
-    total = len(papers)
-
-    return create_paginated_response(papers, total, limit, offset)
+    return _get_papers_response_from_urls(urls, limit, offset)
