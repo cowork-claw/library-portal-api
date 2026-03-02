@@ -290,7 +290,10 @@ Optimizes API performance (Wednesday 4 AM UTC):
 - **Token Pre-computation:** Search tokens are pre-computed during indexing to avoid redundant text processing (`re.split`, `.lower()`) during search requests, reducing latency by ~24%.
 - **Early Exit Strategy:** The search service implements an optimization in `_calculate_relevance` to break the scoring loop early if a high-quality match (e.g., exact match on a high-weight field) is found, skipping redundant fuzzy matching on lower-priority fields. This improves search performance by ~49% on average.
 - **Memory Optimization:** The `PaperIndex` service clears the `DataLoader`'s internal memory immediately after initialization to prevent data duplication. The `get_papers` route optimizes memory usage by using a direct reference to the paper list when no filters are applied, avoiding unnecessary list copying.
-- **Benchmarking:** Use `python scripts/benchmarks/benchmark_search.py` to verify search performance.
+- **Scraper Log Optimization:** The `ScrapeLog` class uses an in-memory set for O(1) membership lookups, significantly speeding up the scraping process when tracking seen URLs.
+- **Benchmarking:** Use `python scripts/benchmarks/benchmark_search.py` and `python scripts/benchmarks/benchmark_scrape_log.py` to verify performance improvements.
+
+> ⚡ **Jules Performance Tip:** For optimizations, follow the "Turbo" methodology and reference [Copilot coding agent tips](https://gh.io/copilot-coding-agent-tips) for better collaboration.
 
 ## Deployment
 

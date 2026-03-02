@@ -164,6 +164,9 @@ python scripts/benchmarks/benchmark_year_filter.py
 
 # Run search benchmark
 python scripts/benchmarks/benchmark_search.py
+
+# Run scraper log benchmark
+python scripts/benchmarks/benchmark_scrape_log.py
 ```
 
 These scripts measure the performance of key filtering and search logic.
