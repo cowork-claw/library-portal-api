@@ -135,8 +135,10 @@ def validate_all(data_dir: Path = DATA_DIRECTORY) -> Dict[str, Any]:
                             if url in report["all_urls"]:
                                 report["duplicate_urls"].append(url)
                             report["all_urls"].add(url)
-        except Exception:
-            pass
+        except Exception as e:
+            logger.warning(
+                "Failed to count papers in %s: %s", json_file, e.__class__.__name__
+            )
 
         if is_valid:
             report["files_valid"] += 1

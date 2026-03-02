@@ -17,8 +17,8 @@ from starlette.middleware.base import BaseHTTPMiddleware
 logger = logging.getLogger(__name__)
 
 # Environment variables for API keys
-API_KEY_ENV = "LIBRARY_PORTAL_API_KEY"
-OPENCLAW_BOT_API_KEY_ENV = "LIBRARY_PORTAL_OPENCLAW_BOT_API_KEY"
+_MAIN_AUTH_TOKEN_VAR = "LIBRARY_PORTAL_API_KEY"
+_BOT_AUTH_TOKEN_VAR = "LIBRARY_PORTAL_OPENCLAW_BOT_API_KEY"
 
 # Public paths that don't require authentication
 PUBLIC_PATHS = {
@@ -50,12 +50,12 @@ class APIKeyMiddleware(BaseHTTPMiddleware):
             configured_keys.append(api_key)
 
         # Primary API key
-        primary_env_key = os.getenv(API_KEY_ENV)
+        primary_env_key = os.getenv(_MAIN_AUTH_TOKEN_VAR)
         if primary_env_key:
             configured_keys.append(primary_env_key)
 
         # Dedicated bot key
-        bot_env_key = os.getenv(OPENCLAW_BOT_API_KEY_ENV)
+        bot_env_key = os.getenv(_BOT_AUTH_TOKEN_VAR)
         if bot_env_key:
             configured_keys.append(bot_env_key)
 
@@ -66,7 +66,7 @@ class APIKeyMiddleware(BaseHTTPMiddleware):
         if not self.api_keys:
             if self.environment == "development":
                 logger.warning(
-                    f"⚠️  No API key configured ({API_KEY_ENV}). "
+                    f"⚠️  No API key configured ({_MAIN_AUTH_TOKEN_VAR}). "
                     "API will be accessible without authentication (Development Mode Only)!"
                 )
             else:
@@ -146,4 +146,4 @@ class APIKeyMiddleware(BaseHTTPMiddleware):
 
 def get_api_key_from_env() -> Optional[str]:
     """Get API key from environment variable."""
-    return os.getenv(API_KEY_ENV)
+    return os.getenv(_MAIN_AUTH_TOKEN_VAR)

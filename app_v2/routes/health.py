@@ -5,6 +5,7 @@ Comprehensive health check endpoints for monitoring system status.
 """
 
 import json
+import logging
 from datetime import datetime
 
 from fastapi import APIRouter
@@ -23,6 +24,8 @@ router = APIRouter(prefix="/health", tags=["Health"])
 
 # Track application start time
 APP_START_TIME = datetime.now()
+
+health_logger = logging.getLogger(__name__)
 
 
 @router.get("", response_model=HealthResponse)
@@ -197,6 +200,6 @@ def _load_scrape_log() -> dict:
         if settings.SCRAPE_LOG_FILE.exists():
             with open(settings.SCRAPE_LOG_FILE, "r") as f:
                 return json.load(f)
-    except Exception:
-        pass
+    except Exception as e:
+        health_logger.warning("Failed to load scrape log: %s", e.__class__.__name__)
     return {}

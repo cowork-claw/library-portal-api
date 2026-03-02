@@ -35,7 +35,9 @@ from .data_loader import DataLoader
 # Import middleware
 from .middleware.auth import APIKeyMiddleware
 from .middleware.security import SecurityHeadersMiddleware
-from .routes import health_router, metadata_router, papers_router
+from .routes.health import router as health_router
+from .routes.metadata import router as metadata_router
+from .routes.papers import router as papers_router
 from .services.indexing import paper_index
 
 # Configure logging
@@ -166,4 +168,4 @@ async def api_info():
 if __name__ == "__main__":
     import uvicorn
 
-    uvicorn.run("app_v2.main:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run("app_v2.main:app", host="127.0.0.1", port=8000, reload=True)
