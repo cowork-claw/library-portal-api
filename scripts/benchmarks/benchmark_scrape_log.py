@@ -16,8 +16,12 @@ def benchmark_scrape_log():
     urls = real_urls.copy()
     if len(urls) < 10000:
         needed = 10000 - len(urls)
-        print(f"Supplementing with {needed} variants to reach 10,000 for meaningful benchmark.")
-        base_url = urls[0] if urls else "https://libportal.manipal.edu/RootFolder/Paper.pdf"
+        print(
+            f"Supplementing with {needed} variants to reach 10,000 for meaningful benchmark."
+        )
+        base_url = (
+            urls[0] if urls else "https://libportal.manipal.edu/RootFolder/Paper.pdf"
+        )
         for i in range(needed):
             urls.append(f"{base_url}?v={i}")
 
@@ -39,7 +43,9 @@ def benchmark_scrape_log():
             scrape_log.has_url(url)
         end_time = time.perf_counter()
 
-        print(f"Checked {len(urls)} existing URLs in {end_time - start_time:.4f} seconds")
+        print(
+            f"Checked {len(urls)} existing URLs in {end_time - start_time:.4f} seconds"
+        )
 
         # Benchmark add_scraped_url with existing URLs
         start_time = time.perf_counter()
@@ -47,7 +53,10 @@ def benchmark_scrape_log():
             scrape_log.add_scraped_url(url)
         end_time = time.perf_counter()
 
-        print(f"Attempted to add {len(urls)} existing URLs in {end_time - start_time:.4f} seconds")
+        print(
+            f"Attempted to add {len(urls)} existing URLs in {end_time - start_time:.4f} seconds"
+        )
+
 
 if __name__ == "__main__":
     benchmark_scrape_log()
