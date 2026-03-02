@@ -1,8 +1,9 @@
-import time
 import tempfile
-import json
+import time
 from pathlib import Path
+
 from scraper.scrape_log import ScrapeLog, load_existing_urls_from_organized_data
+
 
 def benchmark_scrape_log():
     # Load real URLs from the data directory

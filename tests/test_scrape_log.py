@@ -1,18 +1,21 @@
-import pytest
 import tempfile
-import json
 from pathlib import Path
+
+import pytest
+
 from scraper.scrape_log import ScrapeLog
+
 
 @pytest.fixture
 def tmp_log_path():
     with tempfile.TemporaryDirectory() as tmp_dir:
         yield Path(tmp_dir) / "scrape_log.json"
 
+
 def test_initialization(tmp_log_path):
     log = ScrapeLog(tmp_log_path)
     assert len(log.get_scraped_urls()) == 0
-    assert not log._dirty
+
 
 def test_add_url(tmp_log_path):
     log = ScrapeLog(tmp_log_path)
@@ -20,7 +23,9 @@ def test_add_url(tmp_log_path):
     assert log.add_scraped_url(url)
     assert log.has_url(url)
     assert url in log.get_scraped_urls()
-    assert log._dirty
+    log.save()
+    assert ScrapeLog(tmp_log_path).has_url(url)
+
 
 def test_add_duplicate_url(tmp_log_path):
     log = ScrapeLog(tmp_log_path)
@@ -28,6 +33,7 @@ def test_add_duplicate_url(tmp_log_path):
     log.add_scraped_url(url)
     assert not log.add_scraped_url(url)
     assert len(log.get_scraped_urls()) == 1
+
 
 def test_bulk_add(tmp_log_path):
     log = ScrapeLog(tmp_log_path)
@@ -42,6 +48,7 @@ def test_bulk_add(tmp_log_path):
     assert added2 == 1
     assert len(log.get_scraped_urls()) == 4
 
+
 def test_persistence(tmp_log_path):
     log = ScrapeLog(tmp_log_path)
     url = "https://example.com/persist"
@@ -52,6 +59,7 @@ def test_persistence(tmp_log_path):
     log2 = ScrapeLog(tmp_log_path)
     assert log2.has_url(url)
     assert len(log2.get_scraped_urls()) == 1
+
 
 def test_get_scraped_urls_is_copy(tmp_log_path):
     log = ScrapeLog(tmp_log_path)
