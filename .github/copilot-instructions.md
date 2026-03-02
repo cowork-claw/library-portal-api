@@ -526,6 +526,8 @@ The `PaperIndex` service pre-builds indexes for fast lookups:
 ## Codebase Evolution
 
 ### Refactoring & Cleanup (Feb 2026)
+- **Dead Code Removal:** Removed unused Scrapy components (empty middlewares, `LibraryScraperItem`, unused settings references).
+- **Code Quality:** Added missing Google-style docstrings in `app_v2/routes/papers.py` and resolved DRY violations by extracting pagination logic into `_get_papers_response_from_urls`.
 - **Models:** Updated Pydantic models in `app_v2/models.py` to V2 style (`model_config`) and added Google-style docstrings.
 - **Indexing:** Refactored `app_v2/services/indexing.py` to use correct type hints for immutable properties (`Tuple`, `Mapping`).
 - **Search:** Optimized `app_v2/services/search.py` with early filtering and extracted constants.
