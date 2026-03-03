@@ -510,6 +510,8 @@ The `PaperIndex` service pre-builds indexes for fast lookups:
 - **Headers:**
   - Security headers (`X-Content-Type-Options`, `X-Frame-Options`, `X-XSS-Protection`, `Strict-Transport-Security`, `Referrer-Policy`) are enforced by `SecurityHeadersMiddleware`.
   - **New:** Content-Security-Policy (CSP) and Permissions-Policy headers are added to further harden the API against XSS and injection attacks.
+  - **Data Loader Information Disclosure Fix:** `DataLoader` now uses `e.__class__.__name__` instead of the full exception string to prevent leaking internal file paths.
+  - **Input Validation Fix:** `course_code` parameter in `get_papers_by_course` now has `max_length=20` validation to prevent DoS attacks.
 - **Data Safety:**
   - Internal file paths are sanitized in API error responses to prevent information disclosure.
 - **Secrets:**

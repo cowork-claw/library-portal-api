@@ -147,12 +147,12 @@ class DataLoader:
             logger.debug(f"Loaded {paper_count} papers from {relative_path}")
 
         except orjson.JSONDecodeError as e:
-            error_msg = f"Invalid JSON in {file_path.name}: {e}"
-            logger.error(error_msg)
+            error_msg = f"Invalid JSON in {file_path.name}: {e.__class__.__name__}"
+            logger.error(f"Invalid JSON in {file_path.name}: {e}")
             self.stats.errors.append(error_msg)
         except Exception as e:
-            error_msg = f"Error loading {file_path.name}: {e}"
-            logger.error(error_msg)
+            error_msg = f"Error loading {file_path.name}: {e.__class__.__name__}"
+            logger.error(f"Error loading {file_path.name}: {e}")
             self.stats.errors.append(error_msg)
 
     def get_stats(self) -> Dict[str, Any]:
