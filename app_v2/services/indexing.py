@@ -102,9 +102,8 @@ class PaperIndex:
 
         logger.info(f"Indexed {len(self.papers)} papers")
 
-    def _build_indexes(self) -> None:
-        """Build all indexes from loaded papers."""
-        # Clear existing indexes and data
+    def _clear_indexes(self) -> None:
+        """Clear existing indexes and data."""
         self._by_url.clear()
         self._by_year.clear()
         self._by_semester.clear()
@@ -123,89 +122,114 @@ class PaperIndex:
         self._unique_degree_types.clear()
         self._unique_streams.clear()
 
+    def _build_indexes(self) -> None:
+        """Build all indexes from loaded papers."""
+        self._clear_indexes()
+
         # Reset count aggregations
         self._count_by_year = defaultdict(int)
         self._count_by_semester = defaultdict(int)
         self._count_by_program = defaultdict(int)
         self._count_by_program_abbrev = defaultdict(int)
 
+        field_meta_cache = {}  # Flyweight cache for search metadata
+
         # Build indexes and aggregations in a single pass
         for paper in self.papers:
-            url = paper.get("url")
-            if not url:
-                continue
+            self._index_paper(paper, field_meta_cache)
 
-            # Main URL to paper mapping
-            self._by_url[url] = paper
+        self._finalize_indexes()
 
-            # Year index
-            year = paper.get("year")
-            if year:
-                self._by_year[year].add(url)
-                self._unique_years.add(year)
-                self._count_by_year[year] += 1
+    def _index_paper(
+        self, paper: Dict[str, Any], field_meta_cache: Dict[str, Any]
+    ) -> None:
+        """Index a single paper and build aggregations."""
+        url = paper.get("url")
+        if not url:
+            return
 
-            # Semester index
-            semester = paper.get("semester")
-            if semester:
-                self._by_semester[semester].add(url)
-                self._unique_semesters.add(semester)
-                self._count_by_semester[semester] += 1
+        # Main URL to paper mapping
+        self._by_url[url] = paper
 
-            # Course index
-            course_code = paper.get("course_code")
-            if course_code:
-                self._by_course[course_code].add(url)
-                self._unique_course_codes.add(course_code)
+        # Year index
+        year = paper.get("year")
+        if year:
+            self._by_year[year].add(url)
+            self._unique_years.add(year)
+            self._count_by_year[year] += 1
 
-            # Program index
-            program = paper.get("degree_type") or paper.get("program")
-            if program:
-                self._by_program[program].add(url)
-                self._unique_programs.add(program)
-                self._count_by_program[program] += 1
+        # Semester index
+        semester = paper.get("semester")
+        if semester:
+            self._by_semester[semester].add(url)
+            self._unique_semesters.add(semester)
+            self._count_by_semester[semester] += 1
 
-            # Program abbreviation index
-            program_abbrev = paper.get("program_abbrev")
-            if program_abbrev:
-                self._unique_program_abbrevs.add(program_abbrev)
-                self._count_by_program_abbrev[program_abbrev] += 1
+        # Course index
+        course_code = paper.get("course_code")
+        if course_code:
+            self._by_course[course_code].add(url)
+            self._unique_course_codes.add(course_code)
 
-            # Paper type index
-            paper_type = paper.get("paper_type")
-            if paper_type:
-                self._unique_paper_types.add(paper_type)
-                self._by_paper_type[paper_type].add(url)
+        # Program index
+        program = paper.get("degree_type") or paper.get("program")
+        if program:
+            self._by_program[program].add(url)
+            self._unique_programs.add(program)
+            self._count_by_program[program] += 1
 
-            # Degree type index
-            degree_type = paper.get("degree_type")
-            if degree_type:
-                self._unique_degree_types.add(degree_type)
-                self._by_degree_type[degree_type].add(url)
+        # Program abbreviation index
+        program_abbrev = paper.get("program_abbrev")
+        if program_abbrev:
+            self._unique_program_abbrevs.add(program_abbrev)
+            self._count_by_program_abbrev[program_abbrev] += 1
 
-            # Stream index
-            streams = paper.get("streams") or []
-            for stream in streams:
-                self._by_stream[stream].add(url)
-                self._unique_streams.add(stream)
+        # Paper type index
+        paper_type = paper.get("paper_type")
+        if paper_type:
+            self._unique_paper_types.add(paper_type)
+            self._by_paper_type[paper_type].add(url)
 
-            # Pre-compute search metadata for faster searching
-            # This avoids re.split() and .lower() during search requests
-            paper["_search_meta"] = {
-                field: {
-                    "lower": val_lower,
-                    "words": set(WORD_TOKEN_PATTERN.findall(val_lower)),
-                }
-                for field in [
-                    "course_code",
-                    "course_name",
-                    "subject_name",
-                    "display_title",
-                    "file_name",
-                ]
-                if (val := paper.get(field)) and (val_lower := str(val).lower())
-            }
+        # Degree type index
+        degree_type = paper.get("degree_type")
+        if degree_type:
+            self._unique_degree_types.add(degree_type)
+            self._by_degree_type[degree_type].add(url)
 
+        # Stream index
+        streams = paper.get("streams") or []
+        for stream in streams:
+            self._by_stream[stream].add(url)
+            self._unique_streams.add(stream)
+
+        self._compute_search_meta(paper, field_meta_cache)
+
+    def _compute_search_meta(
+        self, paper: Dict[str, Any], field_meta_cache: Dict[str, Any]
+    ) -> None:
+        """Pre-compute and cache search metadata for a paper."""
+        # Pre-compute search metadata for faster searching
+        # This avoids re.split() and .lower() during search requests
+        # Deduplicated using a shared field_meta_cache (Flyweight pattern)
+        search_meta = {}
+        for field in [
+            "course_code",
+            "course_name",
+            "subject_name",
+            "display_title",
+            "file_name",
+        ]:
+            if (val := paper.get(field)) and (val_lower := str(val).lower()):
+                if val_lower not in field_meta_cache:
+                    field_meta_cache[val_lower] = {
+                        "lower": val_lower,
+                        "words": set(WORD_TOKEN_PATTERN.findall(val_lower)),
+                    }
+                search_meta[field] = field_meta_cache[val_lower]
+        paper["_search_meta"] = search_meta
+
+    def _finalize_indexes(self) -> None:
+        """Pre-sort and cache properties after index construction."""
         # Pre-sort and cache properties
         # Use tuples for immutable sequence caching
         self._cached_unique_years = tuple(sorted(self._unique_years, reverse=True))
