@@ -1,0 +1,3 @@
+[gitleaks]
+[gitleaks.ignore]
+path = '''^\.desloppify/.*'''
