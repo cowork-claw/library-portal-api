@@ -16,3 +16,11 @@ def test_data_loader_sanitizes_invalid_json_paths():
         error = loader.stats.errors[0]
         assert "bad.json" in error
         assert tmpdir not in error
+
+
+def test_data_loader_sanitizes_missing_directory_path():
+    missing_dir = Path(tempfile.gettempdir()) / "library-portal-does-not-exist"
+    loader = DataLoader(missing_dir)
+
+    assert loader.load_all() == []
+    assert loader.stats.errors == ["Data directory not found"]

@@ -119,3 +119,12 @@ def test_course_code_length_validation(client):
     long_code = "a" * 21
     response = client.get(f"/api/papers?course_code={long_code}", headers=_headers())
     assert response.status_code == 422
+
+
+def test_course_path_length_validation(client):
+    """Test that course_code path param exceeding max length returns 422."""
+    long_code = "a" * 21
+    response = client.get(f"/api/papers/course/{long_code}", headers=_headers())
+    assert response.status_code == 422
+    detail = response.json().get("detail", [])
+    assert any("course_code" in map(str, item.get("loc", [])) for item in detail)

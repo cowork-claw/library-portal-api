@@ -74,8 +74,8 @@ class DataLoader:
         self.stats = LoaderStats()
 
         if not self.data_directory.exists():
-            logger.error(f"Data directory not found: {self.data_directory}")
-            self.stats.errors.append(f"Data directory not found: {self.data_directory}")
+            logger.error("Data directory not found: %s", self.data_directory)
+            self.stats.errors.append("Data directory not found")
             return []
 
         json_files = list(self.data_directory.rglob("*.json"))
@@ -148,11 +148,11 @@ class DataLoader:
 
         except orjson.JSONDecodeError as e:
             error_msg = f"Invalid JSON in {file_path.name}: {e.__class__.__name__}"
-            logger.error(f"Invalid JSON in {file_path.name}: {e}")
+            logger.exception("Invalid JSON in %s", file_path.name)
             self.stats.errors.append(error_msg)
         except Exception as e:
             error_msg = f"Error loading {file_path.name}: {e.__class__.__name__}"
-            logger.error(f"Error loading {file_path.name}: {e}")
+            logger.exception("Error loading %s", file_path.name)
             self.stats.errors.append(error_msg)
 
     def get_stats(self) -> Dict[str, Any]:
