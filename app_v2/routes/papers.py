@@ -212,7 +212,9 @@ async def get_papers_by_year(
 
 
 @router.get("/course/{course_code}", response_model=CourseResponse)
-async def get_papers_by_course(course_code: str):
+async def get_papers_by_course(
+    course_code: str = Path(..., max_length=20, description="Course code")
+):
     """Get all papers for a specific course code."""
     papers = paper_index.get_papers_by_course(course_code.upper())
 
