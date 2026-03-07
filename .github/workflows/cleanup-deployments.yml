@@ -4,12 +4,20 @@ on:
   pull_request:
     types: [closed]
 
+  schedule:
+    - cron: "17 3 * * *"
+
   workflow_dispatch:
     inputs:
       ref:
         description: "Branch ref to clean (e.g., dependabot/pip/foo)"
         required: false
         type: string
+      cleanup_all_stale:
+        description: "Clean all stale non-main transient deployments with no open PR"
+        required: false
+        default: true
+        type: boolean
 
 jobs:
   cleanup:
@@ -23,23 +31,33 @@ jobs:
         id: ref
         run: |
           if [ -n "${{ github.event.inputs.ref }}" ]; then
+            echo "mode=ref" >> "$GITHUB_OUTPUT"
             echo "ref=${{ github.event.inputs.ref }}" >> "$GITHUB_OUTPUT"
             exit 0
           fi
 
-          if [ "${{ github.event.pull_request.head.repo.full_name }}" != "${{ github.repository }}" ]; then
+          if [ "${{ github.event_name }}" = "schedule" ] || [ "${{ github.event.inputs.cleanup_all_stale }}" = "true" ]; then
+            echo "mode=all" >> "$GITHUB_OUTPUT"
             echo "ref=" >> "$GITHUB_OUTPUT"
             exit 0
           fi
 
+          if [ "${{ github.event.pull_request.head.repo.full_name }}" != "${{ github.repository }}" ]; then
+            echo "mode=skip" >> "$GITHUB_OUTPUT"
+            echo "ref=" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "mode=ref" >> "$GITHUB_OUTPUT"
           echo "ref=${{ github.event.pull_request.head.ref }}" >> "$GITHUB_OUTPUT"
 
-      - name: Delete deployments for ref
-        if: steps.ref.outputs.ref != ''
+      - name: Delete stale deployments
+        if: steps.ref.outputs.mode != 'skip'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
           REF: ${{ steps.ref.outputs.ref }}
+          MODE: ${{ steps.ref.outputs.mode }}
         run: |
           python - << 'PY'
           import json
@@ -49,57 +67,30 @@ jobs:
 
           repo = os.environ["REPO"]
           ref = os.environ["REF"]
+          mode = os.environ["MODE"]
 
-          raw = subprocess.check_output(
-              ["gh", "api", "-H", "Accept: application/vnd.github+json", f"/repos/{repo}/deployments?ref={ref}&per_page=100"]
-          )
-          deployments = json.loads(raw)
-          if not deployments:
-              print(f"No deployments found for ref: {ref}")
-              raise SystemExit(0)
+          def gh_json(*args):
+              return json.loads(subprocess.check_output(["gh", "api", *args], text=True))
 
-          by_env = defaultdict(list)
-          for d in deployments:
-              by_env[d.get("environment")].append(d)
+          def mark_inactive(dep_id, description):
+              subprocess.run(
+                  [
+                      "gh",
+                      "api",
+                      "-X",
+                      "POST",
+                      "-H",
+                      "Accept: application/vnd.github+json",
+                      f"/repos/{repo}/deployments/{dep_id}/statuses",
+                      "-f",
+                      "state=inactive",
+                      "-f",
+                      f"description={description}",
+                  ],
+                  check=True,
+              )
 
-          for env, deps in by_env.items():
-              deps.sort(key=lambda d: d["created_at"], reverse=True)
-              newest = deps[0]
-              older = deps[1:]
-
-              for d in older:
-                  dep_id = d["id"]
-                  subprocess.run(
-                      [
-                          "gh",
-                          "api",
-                          "-X",
-                          "POST",
-                          "-H",
-                          "Accept: application/vnd.github+json",
-                          f"/repos/{repo}/deployments/{dep_id}/statuses",
-                          "-f",
-                          "state=inactive",
-                          "-f",
-                          "description=Cleanup inactive deployment",
-                      ],
-                      check=True,
-                  )
-                  subprocess.run(
-                      [
-                          "gh",
-                          "api",
-                          "-X",
-                          "DELETE",
-                          "-H",
-                          "Accept: application/vnd.github+json",
-                          f"/repos/{repo}/deployments/{dep_id}",
-                      ],
-                      check=True,
-                  )
-                  print(f"Deleted inactive deployment {dep_id} ({env})")
-
-              dep_id = newest["id"]
+          def delete_deployment(dep_id):
               subprocess.run(
                   [
                       "gh",
@@ -112,5 +103,63 @@ jobs:
                   ],
                   check=True,
               )
-              print(f"Deleted newest deployment {dep_id} ({env})")
+
+          def cleanup_deployments(deployments, description):
+              if not deployments:
+                  return 0
+
+              by_env = defaultdict(list)
+              for deployment in deployments:
+                  by_env[deployment.get("environment")].append(deployment)
+
+              deleted = 0
+              for env, deps in by_env.items():
+                  deps.sort(key=lambda d: d["created_at"], reverse=True)
+                  for deployment in deps:
+                      dep_id = deployment["id"]
+                      mark_inactive(dep_id, description)
+                      delete_deployment(dep_id)
+                      deleted += 1
+                      print(f"Deleted deployment {dep_id} ({env})")
+              return deleted
+
+          if mode == "ref":
+              deployments = gh_json(
+                  "-H",
+                  "Accept: application/vnd.github+json",
+                  f"/repos/{repo}/deployments?ref={ref}&per_page=100",
+              )
+              deleted = cleanup_deployments(
+                  deployments, f"Cleanup deployments for closed ref {ref}"
+              )
+              print(f"Deleted {deleted} deployment(s) for ref: {ref}")
+              raise SystemExit(0)
+
+          repo_meta = gh_json("-H", "Accept: application/vnd.github+json", f"/repos/{repo}")
+          default_branch = repo_meta["default_branch"]
+          open_prs = gh_json(
+              "-H",
+              "Accept: application/vnd.github+json",
+              f"/repos/{repo}/pulls?state=open&per_page=100",
+          )
+          open_refs = {pr["head"]["ref"] for pr in open_prs}
+          deployments = gh_json(
+              "-H",
+              "Accept: application/vnd.github+json",
+              f"/repos/{repo}/deployments?per_page=100",
+          )
+
+          stale = [
+              deployment
+              for deployment in deployments
+              if deployment.get("transient_environment")
+              and not deployment.get("production_environment")
+              and deployment.get("ref") != default_branch
+              and deployment.get("ref") not in open_refs
+          ]
+
+          deleted = cleanup_deployments(
+              stale, "Cleanup stale transient deployment with no open PR"
+          )
+          print(f"Deleted {deleted} stale deployment(s)")
           PY

@@ -69,6 +69,13 @@ data/classified/organized/
 
 3. Deploy - uses `render.yaml` automatically
 
+### Notes on PR Deployments vs CI
+
+- **GitHub Actions CI already exists** in `.github/workflows/ci.yml` and runs tests/lint checks for PRs and pushes to `main`.
+- **GitHub deployment entries are different from CI checks.** In this repo, those deployment records are created by the **Render GitHub App** when Render preview deployments are enabled for PR branches.
+- If you want to keep **only the main Render service**, disable **Preview Environments** in the Render dashboard for this service. That setting lives in Render, not in FastAPI code.
+- This repo includes `.github/workflows/cleanup-deployments.yml` to clean up stale transient PR deployment records after PRs close and on scheduled/manual cleanup runs.
+
 **Generate API key**:
 
 ```bash
