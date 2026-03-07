@@ -170,6 +170,9 @@ python scripts/benchmarks/benchmark_search.py
 
 # Run scraper log benchmark
 python scripts/benchmarks/benchmark_scrape_log.py
+
+# Run memory benchmark
+python scripts/benchmarks/benchmark_memory.py
 ```
 
 These scripts measure the performance of key filtering and search logic.

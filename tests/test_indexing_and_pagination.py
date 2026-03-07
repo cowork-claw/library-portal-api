@@ -78,6 +78,24 @@ def test_index_build_search_meta_excludes_empty_tokens():
     assert "" not in meta["words"]
 
 
+def test_index_build_search_meta_reuses_cached_metadata_for_same_value():
+    papers = _sample_papers()
+    papers[0]["course_name"] = "Algorithms"
+    papers[1]["course_name"] = "Algorithms"
+    papers[2]["course_name"] = "Circuits"
+
+    index = PaperIndex()
+    index.papers = papers
+    index._build_indexes()
+
+    first_meta = papers[0]["_search_meta"]["course_name"]
+    second_meta = papers[1]["_search_meta"]["course_name"]
+    third_meta = papers[2]["_search_meta"]["course_name"]
+
+    assert first_meta is second_meta
+    assert first_meta is not third_meta
+
+
 def test_create_paginated_response_hides_internal_fields():
     papers = _sample_papers()
     papers[0]["_search_meta"] = {"course_name": {"lower": "x", "words": {"x"}}}
