@@ -19,6 +19,36 @@ logger = logging.getLogger(__name__)
 
 __all__ = ["PaperIndex", "paper_index"]
 SEARCH_CACHE_MAXSIZE = 32
+SEARCH_META_FIELDS = (
+    "course_code",
+    "course_name",
+    "subject_name",
+    "display_title",
+    "file_name",
+)
+
+
+def build_search_meta(
+    paper: Dict[str, Any], field_meta_cache: Optional[Dict[str, Dict[str, Any]]] = None
+) -> Dict[str, Dict[str, Any]]:
+    """Build normalized search metadata for a paper, optionally using Flyweight reuse."""
+    search_meta: Dict[str, Dict[str, Any]] = {}
+    for field in SEARCH_META_FIELDS:
+        if (val := paper.get(field)) and (val_lower := str(val).lower()):
+            if field_meta_cache is None:
+                search_meta[field] = {
+                    "lower": val_lower,
+                    "words": set(WORD_TOKEN_PATTERN.findall(val_lower)),
+                }
+                continue
+
+            if val_lower not in field_meta_cache:
+                field_meta_cache[val_lower] = {
+                    "lower": val_lower,
+                    "words": set(WORD_TOKEN_PATTERN.findall(val_lower)),
+                }
+            search_meta[field] = field_meta_cache[val_lower]
+    return search_meta
 
 
 class PaperIndex:
@@ -208,25 +238,7 @@ class PaperIndex:
         self, paper: Dict[str, Any], field_meta_cache: Dict[str, Any]
     ) -> None:
         """Pre-compute and cache search metadata for a paper."""
-        # Pre-compute search metadata for faster searching
-        # This avoids re.split() and .lower() during search requests
-        # Deduplicated using a shared field_meta_cache (Flyweight pattern)
-        search_meta = {}
-        for field in [
-            "course_code",
-            "course_name",
-            "subject_name",
-            "display_title",
-            "file_name",
-        ]:
-            if (val := paper.get(field)) and (val_lower := str(val).lower()):
-                if val_lower not in field_meta_cache:
-                    field_meta_cache[val_lower] = {
-                        "lower": val_lower,
-                        "words": set(WORD_TOKEN_PATTERN.findall(val_lower)),
-                    }
-                search_meta[field] = field_meta_cache[val_lower]
-        paper["_search_meta"] = search_meta
+        paper["_search_meta"] = build_search_meta(paper, field_meta_cache)
 
     def _finalize_indexes(self) -> None:
         """Pre-sort and cache properties after index construction."""
