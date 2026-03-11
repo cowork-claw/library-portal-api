@@ -81,6 +81,8 @@ def _get_papers_response_from_urls(
     urls: set, limit: int, offset: int
 ) -> PapersResponse:
     """Helper to fetch papers by URL set and return a paginated response."""
+    if not urls:
+        return create_paginated_response([], 0, limit, offset)
     papers = paper_index.get_by_urls(urls)
     total = len(papers)
     return create_paginated_response(papers, total, limit, offset)
@@ -151,14 +153,34 @@ async def get_papers(
         (paper_type, paper_index.get_urls_by_paper_type),
     ]
 
+    # Early exit flag if any filter returns empty
+    empty_filter = False
+
     for value, method in filters:
         if value is not None:
-            filter_url_sets.append(method(value))
+            urls = method(value)
+            if not urls:
+                empty_filter = True
+                break
+            filter_url_sets.append(urls)
+
+    if empty_filter:
+        return create_paginated_response(
+            [], 0, limit, offset, (time.time() - start_time) * 1000
+        )
 
     # Intersect filter results if multiple filters are active
     filter_urls = None
     if filter_url_sets:
+        # Sort by size for faster intersection
+        filter_url_sets.sort(key=len)
         filter_urls = filter_url_sets[0].intersection(*filter_url_sets[1:])
+
+        # Another early exit if intersection is empty
+        if not filter_urls:
+            return create_paginated_response(
+                [], 0, limit, offset, (time.time() - start_time) * 1000
+            )
 
     # Apply search if provided
     if search:

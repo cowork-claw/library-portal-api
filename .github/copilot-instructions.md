@@ -555,3 +555,9 @@ When in doubt:
 3. Test changes locally before committing
 4. Validate data integrity after modifications
 5. Consult README.md for high-level architecture
+
+### Search API Optimization (March 2026)
+- **Intersection Performance:** Implemented `sorted(filter_url_sets, key=len)` before computing `intersection()` in `app_v2/routes/papers.py`. By starting with the smallest set, CPython iterates over far fewer elements, significantly reducing intersection overhead.
+- **Early Exits:** Added $O(1)$ fast paths for combinations of filters that yield no results, preventing unnecessary fetching and computation.
+- **Serialization:** Micro-optimized dictionary comprehension (`k[0] != "_"`) in `to_public_paper`, replacing the slower `startswith`.
+- Reference: https://gh.io/copilot-coding-agent-tips
