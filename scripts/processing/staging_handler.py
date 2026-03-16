@@ -7,24 +7,11 @@ Papers are staged in a JSON file with all extractable metadata pre-filled.
 
 import json
 import logging
-from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 logger = logging.getLogger(__name__)
-
-
-@dataclass
-class StagedPaper:
-    """Paper staged for manual review."""
-
-    paper: Dict[str, Any]
-    category_result: Dict[str, Any]
-    staged_at: str
-    reviewed: bool = False
-    review_notes: Optional[str] = None
-    final_target: Optional[str] = None
 
 
 class StagingHandler:

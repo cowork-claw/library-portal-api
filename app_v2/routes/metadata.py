@@ -13,7 +13,7 @@ router = APIRouter(prefix="/api", tags=["Metadata"])
 
 
 @router.get("/metadata", response_model=MetadataResponse)
-async def get_metadata():
+async def get_metadata() -> MetadataResponse:
     """
     Get available filter values.
 
@@ -38,7 +38,7 @@ async def get_metadata():
 
 
 @router.get("/statistics", response_model=StatisticsResponse)
-async def get_statistics():
+async def get_statistics() -> StatisticsResponse:
     """
     Get detailed statistics about the paper collection.
 

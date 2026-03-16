@@ -538,6 +538,7 @@ The `PaperIndex` service pre-builds indexes for fast lookups:
 - **Search:** Optimized `app_v2/services/search.py` with early filtering and extracted constants.
 - **Routes:** Refactored `app_v2/routes/papers.py` for consistent filtering logic.
 - **Data Loader:** Improved robustness in `app_v2/data_loader.py`.
+- **Code Quality Cleanup:** Removed dead code (`StagedPaper` in `staging_handler.py`, `get_last_run` in `scrape_log.py`) and added missing return type hints to endpoints in `app_v2/main.py`, `app_v2/routes/metadata.py`, and `app_v2/routes/health.py`. Applied black and ruff formatting. [Copilot agent tips](https://gh.io/copilot-coding-agent-tips).
 
 ## Copilot Agent Tips
 

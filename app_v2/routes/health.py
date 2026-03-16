@@ -26,7 +26,7 @@ APP_START_TIME = datetime.now()
 
 
 @router.get("", response_model=HealthResponse)
-async def health_check():
+async def health_check() -> HealthResponse:
     """
     Basic health check endpoint.
 
@@ -73,7 +73,7 @@ async def health_check():
 
 
 @router.get("/data", response_model=DataHealthResponse)
-async def data_health():
+async def data_health() -> DataHealthResponse:
     """
     Detailed data health check.
 
@@ -95,7 +95,7 @@ async def data_health():
 
 
 @router.get("/scraper", response_model=ScraperHealthResponse)
-async def scraper_health():
+async def scraper_health() -> ScraperHealthResponse:
     """
     Scraper health check.
 

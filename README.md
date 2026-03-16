@@ -76,6 +76,9 @@ data/classified/organized/
 - If you want to keep **only the main Render service**, disable **Preview Environments** in the Render dashboard for this service. That setting lives in Render, not in FastAPI code.
 - This repo includes `.github/workflows/cleanup-deployments.yml` to clean up stale transient PR deployment records after PRs close and on scheduled/manual cleanup runs.
 
+### Codebase Cleanup Notes
+- **Code Quality:** Removed dead code from `staging_handler.py` (`StagedPaper`) and `scrape_log.py` (`get_last_run`). Added missing return type hints to API endpoints. Applied `black` and `ruff`. Refer to [Copilot agent tips](https://gh.io/copilot-coding-agent-tips) for continuous code cleanup strategies.
+
 **Generate API key**:
 
 ```bash
