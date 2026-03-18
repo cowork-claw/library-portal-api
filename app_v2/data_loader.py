@@ -59,7 +59,7 @@ class DataLoader:
     def __init__(self, data_directory: Path):
         self.data_directory = data_directory
         self.papers: List[Dict[str, Any]] = []
-        self.seen_urls: Set[str] = set()
+        self.seen_urls: set[str] = set()
         self.stats = LoaderStats()
 
     def load_all(self) -> List[Dict[str, Any]]:
