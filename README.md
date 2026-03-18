@@ -105,6 +105,12 @@ python -c "import secrets; print(secrets.token_urlsafe(32))"
 
 > ⚡ **Jules Security Tip:** For proactive security scanning, adhere to the [Copilot coding agent tips](https://gh.io/copilot-coding-agent-tips).
 
+## Performance Optimizations
+
+- **URL Deduplication:** The data loader (`app_v2/data_loader.py`) uses a `set` (`seen_urls`) instead of a `dict` for URL deduplication during the parsing of JSON files. This O(1) membership checking reduces memory overhead and improves data loading speed at startup.
+
+> ⚡ **Jules Performance Tip:** For optimizations, follow the "Turbo" methodology and reference [Copilot coding agent tips](https://gh.io/copilot-coding-agent-tips) for better collaboration.
+
 ## Project Structure
 
 ```
