@@ -100,6 +100,7 @@ python -c "import secrets; print(secrets.token_urlsafe(32))"
 - **Authentication**: `LIBRARY_PORTAL_API_KEY` is **mandatory** in production. The server will refuse requests if it is missing.
 - **Input Validation**: Strict type and length checking on all API parameters to prevent DoS and Injection attacks. Added `max_length` validation to course code endpoint.
 - **Information Disclosure**: Prevented internal file path leakage in data loader errors by sanitizing exception messages.
+- **Performance / Responsiveness**: Offloaded synchronous I/O operations (file reading and JSON parsing) in health routes to a threadpool via `run_in_threadpool` to prevent event loop blocking. For details, see [Copilot agent tips](https://gh.io/copilot-coding-agent-tips).
 - **Fail-Safe**: In development mode, missing API key will trigger a warning but allow access for testing.
 - **Dependencies**: Regular security updates are applied.
 

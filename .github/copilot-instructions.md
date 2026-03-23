@@ -537,6 +537,8 @@ The `PaperIndex` service pre-builds indexes for fast lookups:
 - **Indexing:** Refactored `app_v2/services/indexing.py` to use correct type hints for immutable properties (`Tuple`, `Mapping`).
 - **Search:** Optimized `app_v2/services/search.py` with early filtering and extracted constants.
 - **Routes:** Refactored `app_v2/routes/papers.py` for consistent filtering logic.
+- **Health:** Offloaded synchronous I/O operations (file reading and JSON parsing) in `app_v2/routes/health.py` to a threadpool via `run_in_threadpool` to prevent event loop blocking. [Copilot agent tips](https://gh.io/copilot-coding-agent-tips).
+- **Tests:** Cleaned up unused variables and imports in tests (e.g. `tests/test_security_validation.py`). [Copilot agent tips](https://gh.io/copilot-coding-agent-tips).
 - **Data Loader:** Improved robustness in `app_v2/data_loader.py`.
 
 ## Copilot Agent Tips
