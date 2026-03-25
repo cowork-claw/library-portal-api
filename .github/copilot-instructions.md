@@ -530,6 +530,9 @@ The `PaperIndex` service pre-builds indexes for fast lookups:
 
 ## Codebase Evolution
 
+### Performance Optimizations (Mar 2026)
+- **Data Loader URL Deduplication:** In `app_v2/data_loader.py`, replaced the `papers_by_url` dictionary mapping (which held references to large paper dictionaries) with a lightweight `seen_urls` set. This changes URL tracking from $O(N)$ memory overhead to a minimal footprint, significantly reducing the application's RAM usage during the initial data load phase, crucial for the Render 512MB RAM constraint.
+
 ### Refactoring & Cleanup (Feb 2026)
 - **Dead Code Removal:** Removed unused Scrapy components (empty middlewares, `LibraryScraperItem`, unused settings references).
 - **Code Quality:** Added missing Google-style docstrings in `app_v2/routes/papers.py` and resolved DRY violations by extracting pagination logic into `_get_papers_response_from_urls`.

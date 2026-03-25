@@ -95,6 +95,10 @@ python -c "import secrets; print(secrets.token_urlsafe(32))"
 | `LIBRARY_PORTAL_SENTRY_TRACES_SAMPLE_RATE` | Sentry tracing sample rate | 0.0 |
 | `LIBRARY_PORTAL_METRICS_ENABLED` | Enable `/metrics` endpoint | false |
 
+## Performance Optimizations
+
+- **URL Deduplication Memory Footprint**: Replaced the dictionary-based URL tracking (`papers_by_url`) in the `DataLoader` with a lightweight `seen_urls` set. This changes the space complexity of deduplication metadata from $O(N)$ large objects to $O(N)$ string pointers, substantially decreasing peak memory usage during server startup. This is crucial for environments with strict constraints like Render's 512MB free tier limit.
+
 ## Security
 
 - **Authentication**: `LIBRARY_PORTAL_API_KEY` is **mandatory** in production. The server will refuse requests if it is missing.
