@@ -10,6 +10,10 @@ pip install --upgrade pip setuptools wheel
 echo "Installing dependencies from requirements.txt..."
 pip install -r requirements.txt
 
+# Install deployment-specific dependencies required by Render Dashboard overrides
+echo "Installing deployment dependencies..."
+pip install gunicorn
+
 # Verify installation of key packages (optional, but helpful)
 echo "Verifying installation..."
 python -c "import thefuzz; print('thefuzz installed:', thefuzz.__version__)"
