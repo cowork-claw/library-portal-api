@@ -128,11 +128,6 @@ class ScrapeLog:
             f"Recorded run: {new_papers} new, {skipped} skipped, {errors} errors"
         )
 
-    def get_last_run(self) -> Optional[Dict[str, Any]]:
-        """Get the most recent run record."""
-        runs = self.data.get("runs", [])
-        return runs[-1] if runs else None
-
     def get_stats(self) -> Dict[str, Any]:
         """Get overall statistics."""
         return {

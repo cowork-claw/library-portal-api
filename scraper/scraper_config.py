@@ -81,10 +81,3 @@ def should_scrape_year(year: int) -> bool:
     if year in BLACKLISTED_YEARS:
         return False
     return year >= TARGET_YEAR_THRESHOLD
-
-
-def get_all_json_files() -> List[Path]:
-    """Get all JSON files from the organized data directory."""
-    if not DATA_DIRECTORY.exists():
-        return []
-    return list(DATA_DIRECTORY.rglob("*.json"))

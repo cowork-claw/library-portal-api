@@ -530,6 +530,13 @@ The `PaperIndex` service pre-builds indexes for fast lookups:
 
 ## Codebase Evolution
 
+### Dead Code Cleanup (March 2026)
+- **Scraper Config:** Removed unused `get_all_json_files` function from `scraper/scraper_config.py`.
+- **Scrape Log:** Removed unused `get_last_run` method from `scraper/scrape_log.py`.
+- **Staging Handler:** Removed unused `StagedPaper` dataclass and methods (`get_pending_count`, `get_pending_papers`, `mark_reviewed`, `clear_reviewed`) from `scripts/processing/staging_handler.py`.
+- **Test Optimization:** Removed unused lambda parameter `q` in `tests/test_security_validation.py`.
+- See Copilot tips: https://gh.io/copilot-coding-agent-tips
+
 ### Refactoring & Cleanup (Feb 2026)
 - **Dead Code Removal:** Removed unused Scrapy components (empty middlewares, `LibraryScraperItem`, unused settings references).
 - **Code Quality:** Added missing Google-style docstrings in `app_v2/routes/papers.py` and resolved DRY violations by extracting pagination logic into `_get_papers_response_from_urls`.

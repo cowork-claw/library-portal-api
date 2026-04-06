@@ -15,18 +15,6 @@ from typing import Any, Dict, List, Optional
 logger = logging.getLogger(__name__)
 
 
-@dataclass
-class StagedPaper:
-    """Paper staged for manual review."""
-
-    paper: Dict[str, Any]
-    category_result: Dict[str, Any]
-    staged_at: str
-    reviewed: bool = False
-    review_notes: Optional[str] = None
-    final_target: Optional[str] = None
-
-
 class StagingHandler:
     """
     Handles papers that need manual review.
@@ -128,48 +116,6 @@ class StagingHandler:
             "url": paper.get("url"),
             "path": paper.get("path"),
         }
-
-    def get_pending_count(self) -> int:
-        """Get count of papers pending review."""
-        return sum(1 for p in self.data["papers"] if not p.get("reviewed", False))
-
-    def get_pending_papers(self) -> List[Dict[str, Any]]:
-        """Get all papers pending review."""
-        return [p for p in self.data["papers"] if not p.get("reviewed", False)]
-
-    def mark_reviewed(
-        self, url: str, final_target: str, notes: Optional[str] = None
-    ) -> bool:
-        """
-        Mark a staged paper as reviewed.
-
-        Args:
-            url: URL of the paper to mark
-            final_target: Final target file after manual review
-            notes: Optional review notes
-
-        Returns:
-            True if paper was found and marked
-        """
-        for paper in self.data["papers"]:
-            if paper.get("paper", {}).get("url") == url:
-                paper["reviewed"] = True
-                paper["final_target"] = final_target
-                paper["review_notes"] = notes
-                paper["reviewed_at"] = datetime.now().isoformat()
-                self.save()
-                return True
-        return False
-
-    def clear_reviewed(self) -> int:
-        """Remove all reviewed papers from staging. Returns count removed."""
-        original = len(self.data["papers"])
-        self.data["papers"] = [
-            p for p in self.data["papers"] if not p.get("reviewed", False)
-        ]
-        removed = original - len(self.data["papers"])
-        self.save()
-        return removed
 
     def get_stats(self) -> Dict[str, Any]:
         """Get staging statistics."""
