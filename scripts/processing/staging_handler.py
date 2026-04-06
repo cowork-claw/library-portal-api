@@ -7,7 +7,6 @@ Papers are staged in a JSON file with all extractable metadata pre-filled.
 
 import json
 import logging
-from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List, Optional

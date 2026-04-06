@@ -6,7 +6,7 @@ Change TARGET_YEAR_THRESHOLD when transitioning to a new year (e.g., 2026 in Jan
 """
 
 from pathlib import Path
-from typing import List, Set
+from typing import Set
 
 # =============================================================================
 # YEAR CONFIGURATION
