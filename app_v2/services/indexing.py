@@ -125,7 +125,7 @@ class PaperIndex:
         # Note: We must reassign to new empty structures rather than clearing the existing objects,
         # because self.papers might reference the same list object returned by load_all().
         loader.papers = []
-        loader.papers_by_url = {}
+        loader.seen_urls = set()
 
         # Clear search cache on reload
         self._search_cached.cache_clear()

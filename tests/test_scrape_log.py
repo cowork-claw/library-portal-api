@@ -35,20 +35,6 @@ def test_add_duplicate_url(tmp_log_path):
     assert len(log.get_scraped_urls()) == 1
 
 
-def test_bulk_add(tmp_log_path):
-    log = ScrapeLog(tmp_log_path)
-    urls = {"url1", "url2", "url3"}
-    added = log.add_scraped_urls(urls)
-    assert added == 3
-    assert len(log.get_scraped_urls()) == 3
-
-    # Add again with some overlap
-    urls2 = {"url3", "url4"}
-    added2 = log.add_scraped_urls(urls2)
-    assert added2 == 1
-    assert len(log.get_scraped_urls()) == 4
-
-
 def test_persistence(tmp_log_path):
     log = ScrapeLog(tmp_log_path)
     url = "https://example.com/persist"

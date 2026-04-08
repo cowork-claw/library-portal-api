@@ -8,6 +8,7 @@ import json
 from datetime import datetime
 
 from fastapi import APIRouter
+from fastapi.concurrency import run_in_threadpool
 
 from config.config_v2 import settings
 
@@ -26,7 +27,7 @@ APP_START_TIME = datetime.now()
 
 
 @router.get("", response_model=HealthResponse)
-async def health_check():
+async def health_check() -> HealthResponse:
     """
     Basic health check endpoint.
 
@@ -47,10 +48,10 @@ async def health_check():
     )
 
     # Check scraper log
-    scraper_status = _check_scraper_health()
+    scraper_status = await run_in_threadpool(_check_scraper_health)
 
     # Check staging
-    staging_status = _check_staging_health()
+    staging_status = await run_in_threadpool(_check_staging_health)
 
     # Overall status
     overall = "healthy"
@@ -73,7 +74,7 @@ async def health_check():
 
 
 @router.get("/data", response_model=DataHealthResponse)
-async def data_health():
+async def data_health() -> DataHealthResponse:
     """
     Detailed data health check.
 
@@ -95,13 +96,13 @@ async def data_health():
 
 
 @router.get("/scraper", response_model=ScraperHealthResponse)
-async def scraper_health():
+async def scraper_health() -> ScraperHealthResponse:
     """
     Scraper health check.
 
     Returns scraper run history and configuration.
     """
-    log_data = _load_scrape_log()
+    log_data = await run_in_threadpool(_load_scrape_log)
 
     runs = log_data.get("runs", [])
     last_run = runs[-1] if runs else None
