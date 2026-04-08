@@ -97,6 +97,7 @@ python -c "import secrets; print(secrets.token_urlsafe(32))"
 
 ## Security
 
+- **Optimization Strategy**: The system relies on aggressive in-memory caching and optimizations (such as Flyweight metadata patterns and O(1) set operations in the `DataLoader`) to work within Render's 512MB RAM free tier limit. See `.github/copilot-instructions.md` for specific optimization patterns. References: https://gh.io/copilot-coding-agent-tips
 - **Authentication**: `LIBRARY_PORTAL_API_KEY` is **mandatory** in production. The server will refuse requests if it is missing.
 - **Input Validation**: Strict type and length checking on all API parameters to prevent DoS and Injection attacks. Added `max_length` validation to course code endpoint.
 - **Information Disclosure**: Prevented internal file path leakage in data loader errors by sanitizing exception messages.
