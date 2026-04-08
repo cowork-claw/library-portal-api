@@ -158,6 +158,12 @@ async def get_papers(
     # Intersect filter results if multiple filters are active
     filter_urls = None
     if filter_url_sets:
+        # Sort by set size for faster intersection (smallest first)
+        filter_url_sets.sort(key=len)
+        # Early exit if any filter returned empty
+        if len(filter_url_sets[0]) == 0:
+            execution_time = (time.time() - start_time) * 1000
+            return create_paginated_response([], 0, limit, offset, execution_time)
         filter_urls = filter_url_sets[0].intersection(*filter_url_sets[1:])
 
     # Apply search if provided

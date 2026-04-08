@@ -45,7 +45,7 @@ def test_search_query_valid_length(client, monkeypatch):
     import app_v2.routes.papers as papers_routes
 
     # Mock paper_index.search instead of search_papers
-    monkeypatch.setattr(papers_routes.paper_index, "search", lambda q: [])
+    monkeypatch.setattr(papers_routes.paper_index, "search", lambda _q: [])
 
     valid_query = "a" * 100
     response = client.get(f"/api/papers?search={valid_query}", headers=_headers())

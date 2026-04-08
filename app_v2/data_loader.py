@@ -59,7 +59,7 @@ class DataLoader:
     def __init__(self, data_directory: Path):
         self.data_directory = data_directory
         self.papers: List[Dict[str, Any]] = []
-        self.papers_by_url: Dict[str, Dict[str, Any]] = {}
+        self.seen_urls: set[str] = set()
         self.stats = LoaderStats()
 
     def load_all(self) -> List[Dict[str, Any]]:
@@ -70,7 +70,7 @@ class DataLoader:
             List of all paper dictionaries, deduplicated by URL
         """
         self.papers = []
-        self.papers_by_url = {}
+        self.seen_urls = set()
         self.stats = LoaderStats()
 
         if not self.data_directory.exists():
@@ -85,7 +85,7 @@ class DataLoader:
             self._load_file(json_file)
 
         self.stats.total_papers = len(self.papers)
-        self.stats.unique_urls = len(self.papers_by_url)
+        self.stats.unique_urls = len(self.seen_urls)
         self.stats.files_loaded = len(self.stats.file_stats)
         self.stats.last_loaded = datetime.now().isoformat()
 
@@ -121,9 +121,9 @@ class DataLoader:
                 for paper in papers_list:
                     # Deduplicate by URL
                     url = paper.get("url")
-                    if url and url not in self.papers_by_url:
+                    if url and url not in self.seen_urls:
                         self.papers.append(paper)
-                        self.papers_by_url[url] = paper
+                        self.seen_urls.add(url)
                         paper_count += 1
 
             # Track file stats

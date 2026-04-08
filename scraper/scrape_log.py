@@ -84,20 +84,6 @@ class ScrapeLog:
             return True
         return False
 
-    def add_scraped_urls(self, urls: Set[str]) -> int:
-        """
-        Bulk add URLs to scraped list.
-
-        Returns:
-            Number of new URLs added
-        """
-        new_urls = urls - self._scraped_urls_set
-        if new_urls:
-            self._scraped_urls_set.update(new_urls)
-            self.data["scraped_urls"].extend(new_urls)
-            self._dirty = True
-        return len(new_urls)
-
     def record_run(
         self,
         new_papers: int,
@@ -127,11 +113,6 @@ class ScrapeLog:
         logger.info(
             f"Recorded run: {new_papers} new, {skipped} skipped, {errors} errors"
         )
-
-    def get_last_run(self) -> Optional[Dict[str, Any]]:
-        """Get the most recent run record."""
-        runs = self.data.get("runs", [])
-        return runs[-1] if runs else None
 
     def get_stats(self) -> Dict[str, Any]:
         """Get overall statistics."""

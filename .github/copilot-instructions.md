@@ -289,7 +289,7 @@ Optimizes API performance (Wednesday 4 AM UTC):
 - **Search Optimization:** Global search results are cached using `@lru_cache` in `PaperIndex` for instant repeated queries, significantly reducing latency for common searches. The implementation uses `thefuzz` (backed by `Levenshtein`) which provides a good balance of accuracy and performance.
 - **Token Pre-computation:** Search tokens are pre-computed during indexing to avoid redundant text processing (`re.split`, `.lower()`) during search requests, reducing latency by ~24%.
 - **Early Exit Strategy:** The search service implements an optimization in `_calculate_relevance` to break the scoring loop early if a high-quality match (e.g., exact match on a high-weight field) is found, skipping redundant fuzzy matching on lower-priority fields. This improves search performance by ~49% on average.
-- **Memory Optimization:** The `PaperIndex` service clears the `DataLoader`'s internal memory immediately after initialization to prevent data duplication. The `get_papers` route optimizes memory usage by using a direct reference to the paper list when no filters are applied, avoiding unnecessary list copying. The `PaperIndex` service also deduplicates search metadata using a Flyweight pattern (`field_meta_cache`) during initialization, reducing the overall metadata memory footprint by significantly sharing duplicate course code, name, subject, and file name metadata instances.
+- **Memory Optimization:** The `DataLoader` uses a lightweight `seen_urls` set for O(1) URL deduplication instead of a dictionary mapping to full paper objects, reducing memory overhead during data loading. The `PaperIndex` service clears the `DataLoader`'s internal memory immediately after initialization to prevent data duplication. The `get_papers` route optimizes memory usage by using a direct reference to the paper list when no filters are applied, avoiding unnecessary list copying. The `PaperIndex` service also deduplicates search metadata using a Flyweight pattern (`field_meta_cache`) during initialization, reducing the overall metadata memory footprint by significantly sharing duplicate course code, name, subject, and file name metadata instances.
 - **Scraper Log Optimization:** The `ScrapeLog` class uses an in-memory set for O(1) membership lookups, significantly speeding up the scraping process when tracking seen URLs.
 - **Benchmarking:** Use `python scripts/benchmarks/benchmark_search.py`, `python scripts/benchmarks/benchmark_scrape_log.py`, and `python scripts/benchmarks/benchmark_memory.py` to verify performance improvements.
 
@@ -529,6 +529,15 @@ The `PaperIndex` service pre-builds indexes for fast lookups:
 - **Archive Docs:** See `docs/archive/` for historical context
 
 ## Codebase Evolution
+
+### Consolidated Cleanup & Security Fixes (April 2026)
+- **Security:** Fixed 3 vulnerabilities: `requests` insecure temp file reuse (→2.33.0), `Scrapy` arbitrary module import (→2.14.2), `black` arbitrary file writes (→26.3.1).
+- **Dependencies:** Bumped `uvicorn` (→0.42.0), `ruff` (→0.15.7), `sentry-sdk` (→2.55.0).
+- **Data Loader Optimization:** Replaced `papers_by_url` dictionary with `seen_urls` set for O(1) URL deduplication with reduced memory overhead.
+- **Search Filter Optimization:** Sort `filter_url_sets` by size before intersection and early exit on empty sets for faster filtering.
+- **Health I/O Optimization:** Offloaded synchronous file I/O in `app_v2/routes/health.py` to threadpool via `run_in_threadpool`.
+- **Dead Code Removal:** Removed unused `StagedPaper` dataclass and methods (`get_pending_count`, `get_pending_papers`, `mark_reviewed`, `clear_reviewed`) from `staging_handler.py`. Removed `get_last_run`, `add_scraped_urls` from `scrape_log.py`. Removed `get_all_json_files`, scraper settings, and confidence thresholds from `scraper_config.py`. Removed unused pagination/search config from `config_v2.py`.
+- **Code Quality:** Added missing return type hints to endpoints in `main.py`, `metadata.py`, `health.py`. Fixed unused lambda parameter in tests. Added gunicorn to `build.sh`. See [Copilot agent tips](https://gh.io/copilot-coding-agent-tips).
 
 ### Refactoring & Cleanup (Feb 2026)
 - **Dead Code Removal:** Removed unused Scrapy components (empty middlewares, `LibraryScraperItem`, unused settings references).

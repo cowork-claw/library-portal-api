@@ -12,6 +12,7 @@ known_first_party = [
 DEP002 = [
   "black",
   "deptry",
+  "gunicorn",
   "httpx",
   "psutil",
   "pytest",

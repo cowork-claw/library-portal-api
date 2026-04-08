@@ -119,7 +119,7 @@ app.include_router(health_router)
 
 
 @app.get("/")
-async def root():
+async def root() -> dict:
     """Root endpoint with API information."""
     return {
         "name": settings.APP_TITLE,
@@ -142,7 +142,7 @@ async def root():
 
 
 @app.get("/api")
-async def api_info():
+async def api_info() -> dict:
     """API version information."""
     return {
         "version": "2.0.0",
