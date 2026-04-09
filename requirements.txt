@@ -6,7 +6,7 @@ python-multipart==0.0.22
 pydantic>=2.8.0
 pydantic-settings>=2.0.0
 psutil==7.2.2
-orjson==3.11.7
+orjson==3.11.8
 
 # Scraping dependencies
 scrapy==2.14.2
