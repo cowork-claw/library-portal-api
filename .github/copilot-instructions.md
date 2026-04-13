@@ -530,6 +530,11 @@ The `PaperIndex` service pre-builds indexes for fast lookups:
 
 ## Codebase Evolution
 
+### API Cleanup & Code Quality Improvements (April 2026)
+- **Code Quality:** Added missing explicit return type hints to endpoints in `app_v2/routes/metrics.py` and `app_v2/routes/papers.py` to ensure robust API contracts.
+- **Documentation:** Added and updated Google-style docstrings in `app_v2/utils.py` and `app_v2/routes/metrics.py` to improve readability and maintainability.
+- **Reference:** For maintaining Copilot agent effectiveness, see [Copilot agent tips](https://gh.io/copilot-coding-agent-tips).
+
 ### Consolidated Cleanup & Security Fixes (April 2026)
 - **Security:** Fixed 3 vulnerabilities: `requests` insecure temp file reuse (→2.33.0), `Scrapy` arbitrary module import (→2.14.2), `black` arbitrary file writes (→26.3.1).
 - **Dependencies:** Bumped `uvicorn` (→0.42.0), `ruff` (→0.15.7), `sentry-sdk` (→2.55.0).

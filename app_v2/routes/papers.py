@@ -115,7 +115,7 @@ async def get_papers(
     # Pagination
     limit: int = Query(50, ge=1, le=500, description="Number of results per page"),
     offset: int = Query(0, ge=0, description="Offset for pagination"),
-):
+) -> PapersResponse:
     """
     Get question papers with optional filtering, search, and pagination.
 
@@ -202,7 +202,7 @@ async def get_papers_by_year(
     semester: Optional[int] = Query(None, ge=1, le=8),
     limit: int = Query(100, ge=1, le=500),
     offset: int = Query(0, ge=0),
-):
+) -> PapersResponse:
     """Get papers for a specific year with optional semester filter."""
     urls = paper_index.get_urls_by_year(year)
 
@@ -220,7 +220,7 @@ async def get_papers_by_year(
 @router.get("/course/{course_code}", response_model=CourseResponse)
 async def get_papers_by_course(
     course_code: str = Path(..., max_length=20, description="Course code")
-):
+) -> CourseResponse:
     """Get all papers for a specific course code."""
     papers = paper_index.get_papers_by_course(course_code.upper())
 
@@ -246,7 +246,7 @@ async def get_papers_by_semester(
     year: Optional[int] = Query(None, ge=2000, le=2100, description="Academic Year"),
     limit: int = Query(100, ge=1, le=500),
     offset: int = Query(0, ge=0),
-):
+) -> PapersResponse:
     """Get papers for a specific semester with optional year filter."""
     urls = paper_index.get_urls_by_semester(semester)
 
