@@ -67,7 +67,9 @@ data/classified/organized/
    LIBRARY_PORTAL_ENVIRONMENT=production
    ```
 
-3. Deploy - uses `render.yaml` automatically
+3. Deploy - uses `render.yaml` automatically.
+
+**Note on Dashboard Overrides**: If your deployment fails due to a missing `gunicorn` command, it is likely because your Render Dashboard settings are overriding `render.yaml`. To fix this, manually update your Render Dashboard under **Settings → Build & Deploy** and change the **Build Command** to `./build.sh` to ensure `gunicorn` and other requirements are properly installed.
 
 ### Notes on PR Deployments vs CI
 
