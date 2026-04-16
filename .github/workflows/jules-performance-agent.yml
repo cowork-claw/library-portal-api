@@ -8,8 +8,33 @@ on:
   workflow_dispatch:
 
 jobs:
+  pre-check:
+    name: Check for existing performance PRs
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
+    outputs:
+      should_run: ${{ steps.check.outputs.should_run }}
+    steps:
+      - name: Check for open Turbo/performance PRs
+        id: check
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          open_prs=$(gh pr list --repo ${{ github.repository }} \
+            --state open --author '@me' --json title \
+            --jq '[.[] | select(.title | test("(?i)turbo|performance|optimiz"))] | length')
+          if [ "$open_prs" -gt "0" ]; then
+            echo "should_run=false" >> "$GITHUB_OUTPUT"
+            echo "⏭️ Skipping — $open_prs open performance PR(s) already exist"
+          else
+            echo "should_run=true" >> "$GITHUB_OUTPUT"
+          fi
+
   optimize:
     name: Performance Optimization
+    needs: pre-check
+    if: needs.pre-check.outputs.should_run == 'true'
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -19,7 +44,22 @@ jobs:
         uses: google-labs-code/jules-invoke@v1.0.0
         with:
           prompt: |
-            You are TURBO, a performance optimization agent. Hunt for speed improvements.
+            You are TURBO, a performance optimization agent.
+
+            ## IMPORTANT — Check Before Acting
+
+            Read the "Codebase Evolution" section in `.github/copilot-instructions.md`.
+            Many areas have already been optimized. Do NOT re-optimize areas documented
+            there. Already completed optimizations include:
+            - DataLoader URL deduplication (seen_urls set)
+            - Search filter set-intersection sorting and early exit
+            - Health route threadpool offloading
+            - Search token pre-computation
+            - Search early-exit on high-quality matches
+            - Flyweight pattern for search metadata deduplication
+            - lru_cache for global search results
+
+            Only proceed if you find a NEW, unoptimized bottleneck.
 
             ## Codebase Architecture
 
@@ -42,51 +82,25 @@ jobs:
             - ~3000+ papers loaded in memory at startup
             - In-memory indexing (no database)
 
-            ## What to Look For
-
-            **Data Loading (app_v2/data_loader.py):**
-            - Slow JSON file parsing
-            - Unnecessary data copying
-            - Memory-heavy data structures
-
-            **Indexing (app_v2/services/indexing.py):**
-            - Inefficient index building in _build_indexes()
-            - Redundant iterations over papers list
-            - defaultdict vs dict performance
-
-            **Search (app_v2/services/search.py):**
-            - TheFuzz search can be slow for large datasets
-            - Missing caching for repeated searches
-            - Unoptimized list comprehensions
-
-            **API Routes (app_v2/routes/papers.py):**
-            - N+1 patterns in filtering
-            - Unnecessary data transformations
-            - Missing early returns
-
             ## Optimization Process
 
-            1. 🔍 PROFILE - Find a clear performance opportunity
-            2. ⚡ SELECT - Pick one that's impactful AND safe (<100 lines)
-            3. 🔧 OPTIMIZE - Implement with comments explaining the win
-            4. ✅ VERIFY - Run: `timeout 5 uvicorn app_v2.main:app || true`
-            5. 🎁 PRESENT - Create PR with expected impact
+            1. 🔍 PROFILE — Measure current performance with a concrete benchmark:
+               `python scripts/benchmarks/benchmark_search.py` or
+               `python scripts/benchmarks/benchmark_memory.py`
+            2. ⚡ SELECT — Pick a bottleneck that is measurably slow (>10ms or >1MB)
+            3. 🔧 OPTIMIZE — Implement with before/after measurements
+            4. ✅ VERIFY — Run benchmarks again, confirm measurable improvement
+            5. 🎁 PRESENT — Create PR with concrete numbers (not estimates)
 
-            ## PR Format
-
-            Title: "🚀 Turbo: [optimization]"
-            Include:
-            - 💡 What: The optimization
-            - 🎯 Why: The problem it solves
-            - 📊 Impact: Expected improvement (e.g., "Reduces startup time by ~20%")
-            - 🔬 Measurement: How you verified
+            If benchmarks don't show a clear win, do NOT create a PR.
 
             ## Rules
 
-            - **Mandatory Documentation Update:** If this run creates a PR, update relevant documentation (e.g., .github/copilot-instructions.md or README) to describe the optimization and include Copilot agent tips from https://gh.io/copilot-coding-agent-tips.
-            - Only optimize if there's measurable impact
+            - Only optimize if benchmarks show measurable impact
             - Keep changes under 100 lines
             - Don't sacrifice readability for micro-gains
-            - Run `black .` before PR
+            - Run `black .` and `pytest -q` before PR
+            - DO NOT modify .github/copilot-instructions.md or README.md
+              unless you changed behavior, config, or public interfaces
             - If no clear win exists, don't create a PR
           jules_api_key: ${{ secrets.JULES_API_KEY }}

@@ -8,8 +8,34 @@ on:
   workflow_dispatch:
 
 jobs:
+  pre-check:
+    name: Check for existing Jules PRs
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
+    outputs:
+      should_run: ${{ steps.check.outputs.should_run }}
+    steps:
+      - name: Check for open Jules cleanup PRs
+        id: check
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          open_prs=$(gh pr list --repo ${{ github.repository }} \
+            --state open --author '@me' --json title \
+            --jq '[.[] | select(.title | test("(?i)cleanup|code.quality|dead.code|type.hint|docstring"))] | length')
+          if [ "$open_prs" -gt "0" ]; then
+            echo "should_run=false" >> "$GITHUB_OUTPUT"
+            echo "⏭️ Skipping — $open_prs open cleanup PR(s) already exist"
+          else
+            echo "should_run=true" >> "$GITHUB_OUTPUT"
+            echo "✅ No open cleanup PRs found, proceeding"
+          fi
+
   cleanup:
     name: Weekly Codebase Cleanup
+    needs: pre-check
+    if: needs.pre-check.outputs.should_run == 'true'
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -33,7 +59,7 @@ jobs:
             │   ├── main.py               # Entry point, lifespan manager, CORS
             │   ├── models.py             # Pydantic models (Paper, CurriculumContext, responses)
             │   ├── data_loader.py        # JSON data loading
-            │   ├── routes/               # API endpoints (papers.py, metadata.py, health.py)
+            │   ├── routes/               # API endpoints (papers.py, metadata.py, health.py, metrics.py)
             │   ├── services/             # Business logic (indexing.py, search.py)
             │   └── middleware/auth.py    # API key authentication
             ├── scraper/                   # Scrapy web scraper
@@ -45,43 +71,48 @@ jobs:
             │   └── run_categorizer.py    # Categorizer CLI
             ├── config/config_v2.py       # Pydantic settings (LIBRARY_PORTAL_ prefix)
             └── data/classified/organized/ # JSON paper data
-                ├── btech/branches/       # B.Tech papers by branch (CSE.json, ECE.json, etc.)
-                ├── btech/first_year/     # First year (cs_stream.json, non_cs_stream.json)
-                ├── masters/              # mtech.json, mca.json, me.json
-                └── bsc/                  # icas.json
             ```
+
+            ## IMPORTANT — Check Before Acting
+
+            Before making any changes, read the "Codebase Evolution" section in
+            `.github/copilot-instructions.md`. Do NOT repeat work already documented
+            there. If all areas have been recently cleaned, do NOT create a PR.
 
             ## Focus Areas
 
-            1. **Dead Code Removal**
-               - Unused imports and variables
-               - Commented-out code blocks
-               - Unreachable code paths
+            Only address issues that are **clearly wrong or harmful**, not cosmetic:
 
-            2. **Code Quality**
-               - Missing type hints on functions
-               - Missing/outdated docstrings (use Google style)
-               - Inconsistent naming patterns
+            1. **Dead Code Removal** — Unused imports, unreachable code paths, or
+               functions with zero callers (verify with grep before removing)
+            2. **Bug-Adjacent Quality** — Missing type hints ONLY on public API
+               endpoints or functions that handle user input. Do NOT add type hints
+               to internal helpers just for completeness.
+            3. **DRY Violations** — Only refactor if duplicated code has diverged
+               or is likely to cause maintenance bugs.
 
-            3. **DRY Violations**
-               - Duplicated code blocks
-               - Similar functions that could be unified
+            Do NOT touch:
+            - Docstrings (unless factually wrong)
+            - Cosmetic formatting or style
+            - Type hints on internal/private functions
+            - Code that works correctly and is readable
 
             ## Commands to Run
 
             - Format code: `black .`
             - Validate data: `python scripts/processing/validate_data.py`
-            - Test API starts: `timeout 5 uvicorn app_v2.main:app --host 0.0.0.0 --port 8000 || true`
+            - Run tests: `pytest -q`
 
             ## Rules
 
-            - **Mandatory Documentation Update:** If this run creates a PR, update relevant documentation (e.g., .github/copilot-instructions.md or README) to capture the cleanup changes and include Copilot agent tips from https://gh.io/copilot-coding-agent-tips.
             - Make incremental, safe refactorings
             - Keep changes under 100 lines
             - DO NOT modify JSON data files in data/
             - DO NOT change API response formats
             - DO NOT update dependencies in requirements.txt
+            - DO NOT modify .github/copilot-instructions.md or README.md
+              unless you changed behavior, config, or public interfaces
             - Run tests to verify changes
-            - Only create PR if meaningful improvements found
+            - Only create a PR if you found high-confidence fixes. If in doubt, skip.
           jules_api_key: ${{ secrets.JULES_API_KEY }}
           include_commit_log: true

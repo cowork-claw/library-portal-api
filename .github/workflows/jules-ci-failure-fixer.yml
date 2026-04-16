@@ -97,7 +97,7 @@ jobs:
 
             ## Rules
 
-            - **Mandatory Documentation Update:** If this run creates a PR, update relevant documentation (e.g., .github/copilot-instructions.md or README) to describe the fix and include Copilot agent tips from https://gh.io/copilot-coding-agent-tips.
+            - Keep fixes minimal and targeted
           jules_api_key: ${{ secrets.JULES_API_KEY }}
           starting_branch: ${{ inputs.branch }}
           include_last_commit: true
