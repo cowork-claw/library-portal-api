@@ -12,6 +12,13 @@ Key paths: `app_v2/` (API), `scraper/` (Scrapy crawler), `data/` (organized pape
 - **Pagination**: Standardized helper in `app_v2/routes/papers.py`.
 - **Security headers**: `SecurityHeadersMiddleware` wraps auth so 401/403 responses include headers.
 
+## Jules Workflow Guardrails
+Jules agent workflows include mechanical pre-check jobs to prevent duplicate PRs:
+- **weekly-cleanup**, **performance**, **security** workflows check for open PRs in the same category before invoking Jules. If one exists, the run is skipped.
+- Prompts are scoped to high-confidence changes only. Open-ended sweeps (e.g., "find missing type hints") are not allowed.
+- Mandatory documentation update rules have been removed to prevent merge conflicts.
+- See `.github/copilot-instructions.md` "Codebase Evolution" for the list of already-completed work.
+
 ## Commands
 ```bash
 # Install dependencies
