@@ -6,8 +6,33 @@ on:
   workflow_dispatch:
 
 jobs:
+  pre-check:
+    name: Check for existing security PRs
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
+    outputs:
+      should_run: ${{ steps.check.outputs.should_run }}
+    steps:
+      - name: Check for open security PRs
+        id: check
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          open_prs=$(gh pr list --repo ${{ github.repository }} \
+            --state open --author '@me' --json title \
+            --jq '[.[] | select(.title | test("(?i)security|vulnerabilit|harden"))] | length')
+          if [ "$open_prs" -gt "0" ]; then
+            echo "should_run=false" >> "$GITHUB_OUTPUT"
+            echo "⏭️ Skipping — $open_prs open security PR(s) already exist"
+          else
+            echo "should_run=true" >> "$GITHUB_OUTPUT"
+          fi
+
   scan:
     name: Security Vulnerability Scan
+    needs: pre-check
+    if: needs.pre-check.outputs.should_run == 'true'
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -17,7 +42,15 @@ jobs:
         uses: google-labs-code/jules-invoke@v1.0.0
         with:
           prompt: |
-            You are a security agent. Scan for vulnerabilities and fix them.
+            You are a security agent. Scan for CODE-LEVEL vulnerabilities and fix them.
+
+            ## IMPORTANT — Scope
+
+            - Focus on **code-level** security issues only (injection, auth bypass,
+              info disclosure, insecure logic).
+            - Do NOT bump dependency versions — Dependabot handles that automatically.
+            - Do NOT re-audit areas already documented in the "Codebase Evolution"
+              section of `.github/copilot-instructions.md`.
 
             ## Codebase Architecture
 
@@ -26,6 +59,7 @@ jobs:
             ├── app_v2/
             │   ├── main.py             # FastAPI app, CORS middleware
             │   ├── middleware/auth.py  # APIKeyMiddleware - validates X-API-Key header
+            │   ├── middleware/security.py # SecurityHeadersMiddleware - CSP, HSTS, etc.
             │   ├── routes/             # API endpoints
             │   └── models.py           # Pydantic request/response validation
             ├── config/config_v2.py     # Pydantic settings (LIBRARY_PORTAL_ env prefix)
@@ -33,57 +67,34 @@ jobs:
             └── scripts/processing/     # Data processing with JSON file operations
             ```
 
-            ## CRITICAL (fix immediately):
+            ## What to Look For
 
-            1. **Secrets & Credentials**
-               - Hardcoded API keys or passwords in source code
-               - Secrets in config files (check .env*, config/)
-               - API keys exposed in logs
+            1. **CRITICAL** — Hardcoded secrets, command injection, auth bypass
+            2. **HIGH** — Path traversal, unvalidated input leading to crashes,
+               info disclosure in error responses
+            3. **MEDIUM** — CORS misconfiguration, missing security headers,
+               excessive logging of sensitive data
 
-            2. **Injection Attacks**
-               - Command injection in subprocess calls (scraper/, scripts/)
-               - Path traversal in file operations
-               - JSON injection in data handling
+            ## Already Secured (do NOT re-audit)
 
-            3. **Authentication Bypass**
-               - Review app_v2/middleware/auth.py for bypass vectors
-               - Missing auth on sensitive endpoints
-               - Check public endpoints: /, /docs, /health, /health/data
+            - Security headers (CSP, HSTS, X-Frame-Options, etc.) via SecurityHeadersMiddleware
+            - Search query length limits (max 100 chars)
+            - Year/semester parameter validation with ranges
+            - String parameter max_length constraints
+            - DataLoader error sanitization (class name only, no file paths)
+            - course_code max_length=20 validation
 
-            ## HIGH PRIORITY:
+            ## Commands
 
-            1. **Input Validation**
-               - Query parameter validation in app_v2/routes/*.py
-               - Unvalidated file paths or URLs
-               - Missing Pydantic validation
-
-            2. **Information Disclosure**
-               - Sensitive data in error messages
-               - Debug info in production responses
-               - Excessive logging of user data
-
-            3. **CORS & Headers**
-               - Review CORSMiddleware config in app_v2/main.py
-               - Check allow_origins setting
-               - Missing security headers
-
-            4. **Dependencies**
-               - Check requirements.txt for known vulnerabilities
-
-            ## Files to Audit
-
-            - `app_v2/middleware/auth.py` - Authentication logic
-            - `app_v2/main.py` - CORS and middleware config
-            - `app_v2/routes/*.py` - API endpoints
-            - `config/config_v2.py` - Configuration handling
-            - `scraper/library_scraper/spiders/` - Web scraping code
+            - Run tests: `pytest -q`
+            - Format: `black .`
 
             ## Rules
 
-            - **Mandatory Documentation Update:** If this run creates a PR, update relevant documentation (e.g., .github/copilot-instructions.md or README) to describe the security fixes and include Copilot agent tips from https://gh.io/copilot-coding-agent-tips.
-            - Fix highest severity issues first
+            - Only fix code-level security issues, NOT dependency versions
             - Keep changes under 100 lines
-            - Run `black .` before PR
-            - Only create PR if vulnerabilities found
-            - Include clear explanation of each fix
+            - Run tests before creating PR
+            - DO NOT modify .github/copilot-instructions.md or README.md
+              unless you changed security behavior or public interfaces
+            - If no vulnerabilities found, do NOT create a PR
           jules_api_key: ${{ secrets.JULES_API_KEY }}

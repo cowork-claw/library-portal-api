@@ -13,7 +13,7 @@ This is a FastAPI-based REST API for serving MIT Library Question Papers. The AP
 - **Jules AI agents** for automated maintenance, security, and bug fixing
 - Deployed on Render free tier (512MB RAM limit)
 
-> Automation requirement: Any PR created by auto-run workflows (Jules agents, scheduled jobs, or workflow_run triggers) must include a documentation update (e.g., README or .github/copilot-instructions.md) describing the change and should reference Copilot coding agent tips at https://gh.io/copilot-coding-agent-tips.
+> Automation note: Jules agent workflows include mechanical guardrails (pre-check jobs) to prevent duplicate PRs. Documentation updates are encouraged but not mandatory for automated PRs — blanket update rules caused merge conflicts and repetitive changes. See [Copilot coding agent tips](https://gh.io/copilot-coding-agent-tips).
 
 ## Project Structure
 
@@ -241,7 +241,7 @@ Automatically classifies papers from the staging queue after each scraper run:
 
 ### CI Failure Fixer Agent
 Monitors the Library Portal V2 Scraper workflow and fixes failures:
-- Triggers automatically when scraper workflow fails
+- **Trigger:** Manual dispatch only (`workflow_dispatch`) — prevents automatic deployments
 - Analyzes error logs and stack traces from the failed run
 - Identifies common failure patterns:
   - KeyError: Missing expected fields in scraped data
@@ -252,21 +252,21 @@ Monitors the Library Portal V2 Scraper workflow and fixes failures:
 
 ### Security Scanner Agent
 Weekly security audit of the codebase (Tuesday 6 AM UTC):
+- **Guardrail:** Pre-check skips run if an open security PR already exists
+- **Scope:** Code-level vulnerabilities only — dependency bumps are delegated to Dependabot
 - Checks for hardcoded secrets and credentials in source code
 - Scans for injection vulnerabilities (command, path traversal, JSON)
 - Validates authentication logic in `app_v2/middleware/auth.py`
 - Reviews CORS configuration in `app_v2/main.py`
-- Checks `requirements.txt` for known vulnerabilities
-- **Enhancement:** Checks for presence of security headers (CSP, Permissions-Policy) via `tests/test_security_headers.py`.
 
 ### Weekly Cleanup Agent
 Automated code maintenance (Monday 3 AM UTC):
-- Removes unused imports, functions (e.g., `get_all_urls`, `get_search_suggestions`), and dead code
-- Adds missing type hints and docstrings (Google style)
-- Identifies and refactors duplicated code
-- Runs Black formatter: `black .`
-- Validates data: `python scripts/processing/validate_data.py`
-- Only creates PR if meaningful improvements found
+- **Guardrail:** Pre-check skips run if an open cleanup PR already exists
+- **Scope:** High-confidence fixes only — dead code with zero callers, bug-adjacent quality issues
+- Does NOT do open-ended type hint or docstring sweeps
+- Checks "Codebase Evolution" section before acting to avoid repeating past work
+- Runs Black formatter and pytest before PR
+- Only creates PR if high-confidence fixes found
 
 ### Bug Fixer Agent
 Responds to bug reports:
@@ -279,10 +279,9 @@ Responds to bug reports:
 
 ### Performance Agent
 Optimizes API performance (Wednesday 4 AM UTC):
-- Analyzes data loading patterns in `app_v2/data_loader.py`
-- Reviews indexing efficiency in `app_v2/services/indexing.py`
-- Checks for slow fuzzy search in `app_v2/services/search.py`
-- Looks for N+1 patterns and missing early returns
+- **Guardrail:** Pre-check skips run if an open performance PR already exists
+- **Scope:** Requires concrete benchmark measurements, not estimates
+- Checks "Codebase Evolution" for already-optimized areas before acting
 - Considers Render free tier constraint (512MB RAM)
 - **Optimization Strategy:** The "Turbo" methodology focuses on 5 steps: Profile, Select, Optimize, Verify, and Present.
 - **Tip:** When optimizing filtering logic, prefer `PaperIndex` methods that return sets of URLs (`get_urls_by_*`) over those that return full objects, to allow for efficient set intersection before object hydration.
@@ -529,6 +528,12 @@ The `PaperIndex` service pre-builds indexes for fast lookups:
 - **Archive Docs:** See `docs/archive/` for historical context
 
 ## Codebase Evolution
+
+### Dependency Updates & Workflow Guardrails (April 2026)
+- **Security:** Fixed 2 vulnerabilities: `python-multipart` DoS via large preamble (→0.0.26, medium), `pytest` tmpdir handling (→9.0.3, medium). Scrapy DoS (GHSA #14) has no available patch — accepted risk, scraper runs in isolated CI only.
+- **Dependencies:** Bumped `orjson` (→3.11.8), `sentry-sdk` (→2.57.0), `pytest-cov` (→7.1.0), `ruff` (→0.15.10).
+- **Code Quality:** Added return type hints to remaining endpoints in `papers.py` and `metrics.py`. Added module docstring to `utils.py`.
+- **Jules Workflow Guardrails:** Added mechanical pre-check jobs to weekly-cleanup, performance, and security workflows that skip runs when an open PR from the same agent category already exists. Narrowed prompts to prevent repetitive low-value PRs (removed open-ended "find missing type hints/docstrings" mandates, added "already completed" lists, replaced blanket documentation update rules with targeted guidance).
 
 ### Consolidated Cleanup & Security Fixes (April 2026)
 - **Security:** Fixed 3 vulnerabilities: `requests` insecure temp file reuse (→2.33.0), `Scrapy` arbitrary module import (→2.14.2), `black` arbitrary file writes (→26.3.1).
