@@ -1,3 +1,7 @@
+"""
+Utility functions and constants for the Library Portal API.
+"""
+
 import re
 
 # Regex for splitting text into word tokens

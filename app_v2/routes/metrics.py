@@ -11,6 +11,11 @@ router = APIRouter(tags=["Metrics"])
 
 
 @router.get("/metrics")
-def metrics():
-    """Expose Prometheus metrics."""
+def metrics() -> Response:
+    """
+    Expose Prometheus metrics.
+
+    Returns:
+        Response: The generated Prometheus metrics in plain text.
+    """
     return Response(generate_latest(), media_type=CONTENT_TYPE_LATEST)
