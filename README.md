@@ -30,6 +30,8 @@ curl -H "X-API-Key: your-key" http://localhost:8000/api/papers
 - `/docs` - Swagger UI
 - `/health` - Health checks
 
+`/health/data` requires the same API key as other non-public operational endpoints.
+
 ## Key Endpoints
 
 | Endpoint | Description |
@@ -73,7 +75,8 @@ data/classified/organized/
 
 - **GitHub Actions CI already exists** in `.github/workflows/ci.yml` and runs tests/lint checks for PRs and pushes to `main`.
 - **GitHub deployment entries are different from CI checks.** In this repo, those deployment records are created by the **Render GitHub App** when Render preview deployments are enabled for PR branches.
-- If you want to keep **only the main Render service**, disable **Preview Environments** in the Render dashboard for this service. That setting lives in Render, not in FastAPI code.
+- `render.yaml` now declares `previews.generation: off` and `pullRequestPreviewsEnabled: false` so the repo configuration matches the desired "main-only" deployment behavior.
+- If Render still shows PR previews after syncing the Blueprint, disable **Preview Environments** / **PR Previews** once in the Render dashboard for the existing service so dashboard state matches the repo config.
 - This repo includes `.github/workflows/cleanup-deployments.yml` to clean up stale transient PR deployment records after PRs close and on scheduled/manual cleanup runs.
 
 **Generate API key**:
@@ -138,7 +141,7 @@ lib-portal-master/
 
 ## Scraper
 
-The scraper runs weekly via GitHub Actions, fetching new papers (2025+).
+The scraper runs weekly via GitHub Actions, fetching new papers (2024+).
 
 ```bash
 # Manual run
@@ -147,8 +150,8 @@ cd scraper && scrapy crawl question_papers_enhanced
 
 Configuration: `scraper/scraper_config.py`
 
-- Target: 2025+ papers only
-- Blacklist: 2006-2024 (already organized)
+- Target: 2024+ papers only
+- Blacklist: 2006-2023 (already organized)
 
 ## Categorization Logic
 

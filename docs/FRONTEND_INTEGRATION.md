@@ -45,6 +45,9 @@ async function fetchPapers(filters = {}) {
 - `GET /docs` - Swagger UI
 - `GET /redoc` - ReDoc
 - `GET /health` - Health check
+
+### Operational Endpoint (API key required)
+
 - `GET /health/data` - Data health
 
 ---

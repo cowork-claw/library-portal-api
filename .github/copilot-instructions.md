@@ -141,7 +141,7 @@ Use `.env.development` for local development and `.env.production` for productio
 ## API Patterns
 
 ### Authentication
-- Public endpoints: `/`, `/docs`, `/redoc`, `/health`, `/health/data`
+- Public endpoints: `/`, `/docs`, `/redoc`, `/health`
 - Protected endpoints: All `/api/*` routes
 - Authentication via `APIKeyMiddleware`
 - Support both header (`X-API-Key`) and query parameter (`api_key`)
@@ -305,7 +305,7 @@ Optimizes API performance (Wednesday 4 AM UTC):
 
 ### Health Checks
 - `/health` - Basic health status
-- `/health/data` - Data integrity validation
+- `/health/data` - Data integrity validation (requires authentication)
 - Used by Render for service health monitoring
 
 ## Common Tasks
@@ -528,6 +528,11 @@ The `PaperIndex` service pre-builds indexes for fast lookups:
 - **Archive Docs:** See `docs/archive/` for historical context
 
 ## Codebase Evolution
+
+### Dependency Refresh & Preview Deployment Lockdown (April 2026)
+- **Dependencies:** Bumped `requests` (→2.33.1), `uvicorn` (→0.44.0), `ruff` (→0.15.11), and `vulture` (→2.16). Held back `starlette` 1.0.0 because `fastapi==0.135.1` is still pinned to `<0.51.0`.
+- **Render Deployments:** Updated `render.yaml` to disable preview environments / PR previews in repo-managed config and kept `.github/workflows/cleanup-deployments.yml` as the stale transient deployment cleanup path.
+- **Documentation:** Corrected auth docs to keep `/health/data` protected and fixed scraper target-year drift back to the actual `2024+` configuration.
 
 ### Dependency Updates & Workflow Guardrails (April 2026)
 - **Security:** Fixed 2 vulnerabilities: `python-multipart` DoS via large preamble (→0.0.26, medium), `pytest` tmpdir handling (→9.0.3, medium). Scrapy DoS (GHSA #14) has no available patch — accepted risk, scraper runs in isolated CI only.

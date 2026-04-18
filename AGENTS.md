@@ -11,6 +11,7 @@ Key paths: `app_v2/` (API), `scraper/` (Scrapy crawler), `data/` (organized pape
 - **Filtering**: `/api/papers` uses URL-set intersections from `PaperIndex` for performance.
 - **Pagination**: Standardized helper in `app_v2/routes/papers.py`.
 - **Security headers**: `SecurityHeadersMiddleware` wraps auth so 401/403 responses include headers.
+- **Render previews**: `render.yaml` explicitly disables Render preview environments / PR previews; `.github/workflows/cleanup-deployments.yml` removes stale transient deployment records after PRs close or on scheduled cleanup.
 
 ## Jules Workflow Guardrails
 Jules agent workflows include mechanical pre-check jobs to prevent duplicate PRs:
