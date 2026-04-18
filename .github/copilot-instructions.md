@@ -532,6 +532,7 @@ The `PaperIndex` service pre-builds indexes for fast lookups:
 ### Dependency Refresh & Preview Deployment Lockdown (April 2026)
 - **Dependencies:** Bumped `requests` (→2.33.1), `uvicorn` (→0.44.0), `ruff` (→0.15.11), and `vulture` (→2.16). Held back `starlette` 1.0.0 because `fastapi==0.135.1` is still pinned to `<0.51.0`.
 - **Render Deployments:** Updated `render.yaml` to disable preview environments / PR previews in repo-managed config and kept `.github/workflows/cleanup-deployments.yml` as the stale transient deployment cleanup path.
+- **Cleanup Workflow Robustness:** `cleanup-deployments.yml` now tolerates `404 Not Found` for deployment status/delete calls so races with already-removed transient deployments do not fail the cleanup run.
 - **Documentation:** Corrected auth docs to keep `/health/data` protected and fixed scraper target-year drift back to the actual `2024+` configuration.
 
 ### Dependency Updates & Workflow Guardrails (April 2026)

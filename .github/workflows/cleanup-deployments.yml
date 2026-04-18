@@ -72,36 +72,47 @@ jobs:
           def gh_json(*args):
               return json.loads(subprocess.check_output(["gh", "api", *args], text=True))
 
+          def gh_api(*args, allow_not_found=False):
+              result = subprocess.run(
+                  ["gh", "api", *args],
+                  check=False,
+                  capture_output=True,
+                  text=True,
+              )
+              if result.returncode == 0:
+                  return
+              if allow_not_found and "404" in result.stderr:
+                  print(result.stderr.strip())
+                  return
+              raise subprocess.CalledProcessError(
+                  result.returncode,
+                  result.args,
+                  output=result.stdout,
+                  stderr=result.stderr,
+              )
+
           def mark_inactive(dep_id, description):
-              subprocess.run(
-                  [
-                      "gh",
-                      "api",
-                      "-X",
-                      "POST",
-                      "-H",
-                      "Accept: application/vnd.github+json",
-                      f"/repos/{repo}/deployments/{dep_id}/statuses",
-                      "-f",
-                      "state=inactive",
-                      "-f",
-                      f"description={description}",
-                  ],
-                  check=True,
+              gh_api(
+                  "-X",
+                  "POST",
+                  "-H",
+                  "Accept: application/vnd.github+json",
+                  f"/repos/{repo}/deployments/{dep_id}/statuses",
+                  "-f",
+                  "state=inactive",
+                  "-f",
+                  f"description={description}",
+                  allow_not_found=True,
               )
 
           def delete_deployment(dep_id):
-              subprocess.run(
-                  [
-                      "gh",
-                      "api",
-                      "-X",
-                      "DELETE",
-                      "-H",
-                      "Accept: application/vnd.github+json",
-                      f"/repos/{repo}/deployments/{dep_id}",
-                  ],
-                  check=True,
+              gh_api(
+                  "-X",
+                  "DELETE",
+                  "-H",
+                  "Accept: application/vnd.github+json",
+                  f"/repos/{repo}/deployments/{dep_id}",
+                  allow_not_found=True,
               )
 
           def cleanup_deployments(deployments, description):
