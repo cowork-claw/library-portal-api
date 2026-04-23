@@ -4,7 +4,7 @@ starlette==0.50.0
 uvicorn[standard]==0.44.0
 python-multipart==0.0.26
 pydantic>=2.8.0
-pydantic-settings>=2.0.0
+pydantic-settings>=2.14.0
 psutil==7.2.2
 orjson==3.11.8
 
