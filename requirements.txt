@@ -20,7 +20,7 @@ requests==2.33.1
 python-dotenv==1.2.2
 
 # Observability
-sentry-sdk==2.57.0
+sentry-sdk==2.58.0
 prometheus-client==0.24.1
 
 # Development tools
