@@ -78,6 +78,7 @@ class PaperIndex:
         self._by_stream: Dict[str, Set[str]] = defaultdict(set)
         self._by_paper_type: Dict[str, Set[str]] = defaultdict(set)
         self._by_degree_type: Dict[str, Set[str]] = defaultdict(set)
+        self._by_program_abbrev: Dict[str, Set[str]] = defaultdict(set)
 
         # Unique values for metadata
         self._unique_years: Set[int] = set()
@@ -142,6 +143,7 @@ class PaperIndex:
         self._by_stream.clear()
         self._by_paper_type.clear()
         self._by_degree_type.clear()
+        self._by_program_abbrev.clear()
 
         self._unique_years.clear()
         self._unique_semesters.clear()
@@ -211,6 +213,7 @@ class PaperIndex:
         # Program abbreviation index
         program_abbrev = paper.get("program_abbrev")
         if program_abbrev:
+            self._by_program_abbrev[program_abbrev.upper()].add(url)
             self._unique_program_abbrevs.add(program_abbrev)
             self._count_by_program_abbrev[program_abbrev] += 1
 
@@ -330,6 +333,10 @@ class PaperIndex:
     def get_urls_by_degree_type(self, degree_type: str) -> Set[str]:
         """Get paper URLs for a specific degree type."""
         return self._by_degree_type.get(degree_type, set())
+
+    def get_urls_by_program_abbrev(self, program_abbrev: str) -> Set[str]:
+        """Get paper URLs for a specific program abbreviation (case-insensitive)."""
+        return self._by_program_abbrev.get(program_abbrev.upper(), set())
 
     # ==========================================================================
     # PROPERTY ACCESSORS

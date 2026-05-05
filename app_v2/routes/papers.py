@@ -108,6 +108,13 @@ async def get_papers(
     stream: Optional[str] = Query(
         None, max_length=20, description="Filter by stream (cs, core)"
     ),
+    program_abbrev: Optional[str] = Query(
+        None,
+        min_length=1,
+        max_length=20,
+        pattern=r"\S",
+        description="Filter by program abbreviation (e.g., CSE, ECE)",
+    ),
     # Search
     search: Optional[str] = Query(
         None, min_length=2, max_length=100, description="Search query"
@@ -129,6 +136,7 @@ async def get_papers(
         paper_type: Filter by paper type (e.g., "Regular", "Makeup").
         course_code: Filter by exact course code.
         stream: Filter by stream (e.g., "cs", "core").
+        program_abbrev: Filter by program abbreviation (e.g., "CSE", "ECE").
         search: Search query for fuzzy matching.
         limit: Number of results to return per page.
         offset: Number of results to skip (for pagination).
@@ -149,6 +157,7 @@ async def get_papers(
         (stream, paper_index.get_urls_by_stream),
         (degree_type, paper_index.get_urls_by_degree_type),
         (paper_type, paper_index.get_urls_by_paper_type),
+        (program_abbrev, paper_index.get_urls_by_program_abbrev),
     ]
 
     for value, method in filters:
