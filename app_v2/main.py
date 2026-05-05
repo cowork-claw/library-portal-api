@@ -34,6 +34,7 @@ from .data_loader import DataLoader
 
 # Import middleware
 from .middleware.auth import APIKeyMiddleware
+from .middleware.request_id import RequestIDMiddleware
 from .middleware.security import SecurityHeadersMiddleware
 from .routes import health_router, metadata_router, papers_router
 from .services.indexing import paper_index
@@ -113,6 +114,9 @@ app.add_middleware(
 
 # Add Security Headers middleware
 app.add_middleware(SecurityHeadersMiddleware)
+
+# Add Request ID middleware (outermost — registered last so it wraps everything)
+app.add_middleware(RequestIDMiddleware)
 
 # Optional Prometheus metrics (disabled by default)
 if settings.METRICS_ENABLED:
