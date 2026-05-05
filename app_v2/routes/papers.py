@@ -9,6 +9,7 @@ from typing import Any, Dict, List, Literal, Optional
 
 from fastapi import APIRouter, HTTPException, Path, Query
 from fastapi.concurrency import run_in_threadpool
+from pydantic import HttpUrl
 
 from ..models import CourseResponse, PaginationInfo, Paper, PapersResponse
 from ..services.indexing import paper_index
@@ -263,6 +264,28 @@ async def get_papers(
     execution_time = (time.time() - start_time) * 1000
 
     return create_paginated_response(results, total, limit, offset, execution_time)
+
+
+@router.get("/lookup", response_model=Paper)
+async def lookup_paper(
+    url: HttpUrl = Query(..., description="Exact paper URL to look up"),
+) -> Paper:
+    """
+    Look up a single paper by its exact download URL.
+
+    Args:
+        url: The exact URL of the paper to find.
+
+    Returns:
+        Paper: The matching paper object.
+
+    Raises:
+        HTTPException: 404 if no paper with the given URL exists in the index.
+    """
+    paper = paper_index.get_by_url(str(url))
+    if paper is None:
+        raise HTTPException(status_code=404, detail="Paper not found")
+    return Paper(**to_public_paper(paper))
 
 
 @router.get("/year/{year}", response_model=PapersResponse)
