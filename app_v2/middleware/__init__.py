@@ -2,5 +2,17 @@
 
 from .auth import APIKeyMiddleware, get_api_key_from_env
 from .request_id import RequestIDMiddleware
+from .structured_logging import (
+    StructuredJSONFormatter,
+    StructuredLoggingMiddleware,
+    setup_structured_logging,
+)
 
-__all__ = ["APIKeyMiddleware", "get_api_key_from_env", "RequestIDMiddleware"]
+__all__ = [
+    "APIKeyMiddleware",
+    "StructuredJSONFormatter",
+    "StructuredLoggingMiddleware",
+    "RequestIDMiddleware",
+    "get_api_key_from_env",
+    "setup_structured_logging",
+]

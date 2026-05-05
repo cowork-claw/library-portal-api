@@ -36,14 +36,15 @@ from .data_loader import DataLoader
 from .middleware.auth import APIKeyMiddleware
 from .middleware.request_id import RequestIDMiddleware
 from .middleware.security import SecurityHeadersMiddleware
+from .middleware.structured_logging import (
+    StructuredLoggingMiddleware,
+    setup_structured_logging,
+)
 from .routes import health_router, metadata_router, papers_router
 from .services.indexing import paper_index
 
-# Configure logging
-logging.basicConfig(
-    level=getattr(logging, settings.LOG_LEVEL),
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-)
+# Configure structured JSON logging (replaces basicConfig)
+setup_structured_logging(settings.LOG_LEVEL)
 logger = logging.getLogger(__name__)
 
 
@@ -114,6 +115,10 @@ app.add_middleware(
 
 # Add Security Headers middleware
 app.add_middleware(SecurityHeadersMiddleware)
+
+# Add Structured Logging middleware
+# (inside RequestID so it can read request.state.request_id)
+app.add_middleware(StructuredLoggingMiddleware)
 
 # Add Request ID middleware (outermost — registered last so it wraps everything)
 app.add_middleware(RequestIDMiddleware)
