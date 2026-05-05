@@ -5,7 +5,7 @@ Endpoints for retrieving and searching question papers.
 """
 
 import time
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Literal, Optional
 
 from fastapi import APIRouter, HTTPException, Path, Query
 from fastapi.concurrency import run_in_threadpool
@@ -77,6 +77,43 @@ def create_paginated_response(
     )
 
 
+def _sort_papers(
+    papers: List[Dict[str, Any]],
+    sort_field: str,
+    order: str,
+) -> List[Dict[str, Any]]:
+    """Sort papers by the specified field and order.
+
+    Args:
+        papers: List of paper dictionaries to sort.
+        sort_field: One of 'year', 'semester', 'relevance'.
+        order: One of 'asc', 'desc'.
+
+    Returns:
+        A new list of papers sorted accordingly. Papers with null values
+        for the sort field are placed after all non-null papers.
+    """
+    if not papers:
+        return papers
+
+    if sort_field == "relevance":
+        # Relevance order is already set by search results.
+        # Reverse if ascending order is requested (relevance is naturally desc).
+        if order == "asc":
+            return list(reversed(papers))
+        return papers
+
+    reverse = order == "desc"
+
+    # Split into non-null and null groups to guarantee nulls always come last
+    non_null = [p for p in papers if p.get(sort_field) is not None]
+    nulls = [p for p in papers if p.get(sort_field) is None]
+
+    non_null.sort(key=lambda p: p.get(sort_field, 0), reverse=reverse)
+
+    return non_null + nulls
+
+
 def _get_papers_response_from_urls(
     urls: set, limit: int, offset: int
 ) -> PapersResponse:
@@ -119,6 +156,13 @@ async def get_papers(
     search: Optional[str] = Query(
         None, min_length=2, max_length=100, description="Search query"
     ),
+    # Sort
+    sort: Optional[Literal["year", "semester", "relevance"]] = Query(
+        None, description="Sort field: year, semester, or relevance"
+    ),
+    order: Optional[Literal["asc", "desc"]] = Query(
+        None, description="Sort order: asc or desc (default: desc)"
+    ),
     # Pagination
     limit: int = Query(50, ge=1, le=500, description="Number of results per page"),
     offset: int = Query(0, ge=0, description="Offset for pagination"),
@@ -138,6 +182,9 @@ async def get_papers(
         stream: Filter by stream (e.g., "cs", "core").
         program_abbrev: Filter by program abbreviation (e.g., "CSE", "ECE").
         search: Search query for fuzzy matching.
+        sort: Sort field — one of 'year', 'semester', 'relevance'.
+            Defaults to 'relevance' when search is provided, otherwise 'year'.
+        order: Sort order — 'asc' or 'desc'. Defaults to 'desc'.
         limit: Number of results to return per page.
         offset: Number of results to skip (for pagination).
 
@@ -196,6 +243,19 @@ async def get_papers(
             results = paper_index.get_by_urls(filter_urls)
         else:
             results = paper_index.papers
+
+    # Determine effective sort field and order
+    effective_sort = sort
+    if effective_sort is None:
+        effective_sort = "relevance" if search else "year"
+    elif effective_sort == "relevance" and not search:
+        # Relevance sort without search falls back to year descending
+        effective_sort = "year"
+
+    effective_order = order if order is not None else "desc"
+
+    # Apply sorting
+    results = _sort_papers(results, effective_sort, effective_order)
 
     # Get total before pagination
     total = len(results)
