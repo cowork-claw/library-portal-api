@@ -59,14 +59,24 @@ async def lifespan(app: FastAPI):
     data_directory = settings.DATA_DIRECTORY
     logger.info(f"Loading data from: {data_directory}")
 
-    loader = DataLoader(data_directory)
-    paper_index.load_from_directory(loader)
+    try:
+        loader = DataLoader(data_directory)
+        paper_index.load_from_directory(loader)
+    except Exception:
+        logger.exception("Failed to load data — starting with empty index")
+        # paper_index remains empty; API will serve zero-paper responses
 
-    logger.info(
-        f"✅ Loaded {paper_index.total_papers} papers from {paper_index.files_loaded} files"
-    )
-    logger.info(f"   Years: {paper_index.unique_years[:5]}...")
-    logger.info(f"   Courses: {len(paper_index.unique_course_codes)}")
+    if paper_index.total_papers == 0:
+        logger.warning(
+            "⚠️  No papers loaded — API is running in degraded mode. "
+            "Check that DATA_DIRECTORY points to valid JSON files."
+        )
+    else:
+        logger.info(
+            f"✅ Loaded {paper_index.total_papers} papers from {paper_index.files_loaded} files"
+        )
+        logger.info(f"   Years: {paper_index.unique_years[:5]}...")
+        logger.info(f"   Courses: {len(paper_index.unique_course_codes)}")
 
     yield
 

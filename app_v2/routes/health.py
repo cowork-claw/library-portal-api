@@ -35,10 +35,10 @@ async def health_check() -> HealthResponse:
     """
     uptime = (datetime.now() - APP_START_TIME).total_seconds()
 
-    # Check data component
+    # Check data component — "degraded" when no data (not "unhealthy")
     data_healthy = paper_index.total_papers > 0
     data_status = ComponentHealth(
-        status="healthy" if data_healthy else "unhealthy",
+        status="healthy" if data_healthy else "degraded",
         message=(
             f"Loaded {paper_index.total_papers} papers"
             if data_healthy
@@ -56,7 +56,7 @@ async def health_check() -> HealthResponse:
     # Overall status
     overall = "healthy"
     if not data_healthy:
-        overall = "unhealthy"
+        overall = "degraded"
     elif scraper_status.status != "healthy":
         overall = "degraded"
 
@@ -83,7 +83,7 @@ async def data_health() -> DataHealthResponse:
     loader_stats = paper_index.loader.get_stats() if paper_index.loader else {}
 
     return DataHealthResponse(
-        status="healthy" if paper_index.total_papers > 0 else "unhealthy",
+        status="healthy" if paper_index.total_papers > 0 else "degraded",
         total_papers=paper_index.total_papers,
         unique_urls=loader_stats.get("unique_urls", 0),
         files_loaded=paper_index.files_loaded,
