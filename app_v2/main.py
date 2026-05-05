@@ -34,6 +34,7 @@ from .data_loader import DataLoader
 
 # Import middleware
 from .middleware.auth import APIKeyMiddleware
+from .middleware.rate_limit import RateLimitMiddleware
 from .middleware.request_id import RequestIDMiddleware
 from .middleware.security import SecurityHeadersMiddleware
 from .middleware.structured_logging import (
@@ -112,6 +113,9 @@ app.add_middleware(
     api_key=settings.API_SECRET_KEY,
     environment=settings.ENVIRONMENT,
 )
+
+# Add Rate Limiting middleware (wraps APIKey so failed auth counts toward limit)
+app.add_middleware(RateLimitMiddleware)
 
 # Add Security Headers middleware
 app.add_middleware(SecurityHeadersMiddleware)
