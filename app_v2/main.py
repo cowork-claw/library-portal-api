@@ -34,6 +34,7 @@ from .data_loader import DataLoader
 
 # Import middleware
 from .middleware.auth import APIKeyMiddleware
+from .middleware.compression import CompressionMiddleware
 from .middleware.rate_limit import RateLimitMiddleware
 from .middleware.request_id import RequestIDMiddleware
 from .middleware.security import SecurityHeadersMiddleware
@@ -116,6 +117,11 @@ app.add_middleware(
 
 # Add Rate Limiting middleware (wraps APIKey so failed auth counts toward limit)
 app.add_middleware(RateLimitMiddleware)
+
+# Add Gzip Compression middleware (innermost custom middleware — only
+# compresses successful route responses; auth/rate-limit errors are
+# generated further out and never reach this layer).
+app.add_middleware(CompressionMiddleware)
 
 # Add Security Headers middleware
 app.add_middleware(SecurityHeadersMiddleware)
