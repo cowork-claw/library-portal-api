@@ -197,7 +197,7 @@ async def get_papers(
     # Efficiently filter papers using URL sets from indexes
     filter_url_sets = []
 
-    filters = [
+    filters: List[tuple] = [
         (year, paper_index.get_urls_by_year),
         (semester, paper_index.get_urls_by_semester),
         (program, paper_index.get_urls_by_program),

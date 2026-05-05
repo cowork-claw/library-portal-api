@@ -164,7 +164,7 @@ class PaperIndex:
         self._count_by_program = defaultdict(int)
         self._count_by_program_abbrev = defaultdict(int)
 
-        field_meta_cache = {}  # Flyweight cache for search metadata
+        field_meta_cache: Dict[str, Dict[str, Any]] = {}  # Flyweight cache for search metadata
 
         # Build indexes and aggregations in a single pass
         for paper in self.papers:

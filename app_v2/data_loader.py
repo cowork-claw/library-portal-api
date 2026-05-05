@@ -19,7 +19,7 @@ from typing import Any, Dict, List, Optional
 try:
     import orjson
 except ImportError:
-    import json as orjson
+    import json as orjson  # type: ignore[no-redef]
 
 logger = logging.getLogger(__name__)
 

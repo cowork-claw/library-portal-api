@@ -98,8 +98,8 @@ async def data_health() -> DataHealthResponse:
         courses_count=len(paper_index.unique_course_codes),
         last_loaded=loader_stats.get("last_loaded"),
         errors=loader_stats.get("errors", []),
-        papers_by_year=paper_index.count_by_year,
-        papers_by_program=paper_index.count_by_program,
+        papers_by_year=dict(paper_index.count_by_year),
+        papers_by_program=dict(paper_index.count_by_program),
     )
 
 
