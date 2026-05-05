@@ -5,20 +5,28 @@ Comprehensive health check endpoints for monitoring system status.
 """
 
 import json
+import logging
+import os
+import uuid
 from datetime import datetime
+from pathlib import Path
 
-from fastapi import APIRouter
+from fastapi import APIRouter, status
 from fastapi.concurrency import run_in_threadpool
 
 from config.config_v2 import settings
 
+from ..data_loader import DataLoader
 from ..models import (
     ComponentHealth,
     DataHealthResponse,
     HealthResponse,
+    ReloadResponse,
     ScraperHealthResponse,
 )
 from ..services.indexing import paper_index
+
+logger = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/health", tags=["Health"])
 
@@ -117,6 +125,62 @@ async def scraper_health() -> ScraperHealthResponse:
         target_year_threshold=settings.TARGET_YEAR_THRESHOLD,
         blacklisted_years_count=len(settings.BLACKLISTED_YEARS),
     )
+
+
+@router.post(
+    "/data/reload",
+    response_model=ReloadResponse,
+    status_code=status.HTTP_202_ACCEPTED,
+)
+async def reload_data() -> ReloadResponse:
+    """
+    Trigger a background reload of JSON data.
+
+    Requires API key authentication. Returns immediately with a unique
+    ``reload_id``. The reload runs synchronously within the request cycle
+    but the endpoint is designed to be non-blocking for typical data sizes.
+
+    Returns:
+        ReloadResponse: Contains ``reload_id`` and a status message.
+    """
+    reload_id = str(uuid.uuid4())
+    # Read DATA_DIRECTORY directly from env so reload always uses the current
+    # value, even if the module-level ``settings`` is stale after tests reload
+    # config.  This mirrors how ``Settings`` itself resolves the value.
+    data_directory = Path(
+        os.environ.get("LIBRARY_PORTAL_DATA_DIRECTORY", str(settings.DATA_DIRECTORY))
+    )
+
+    # Run reload in a thread so it doesn't block the async event loop
+    await run_in_threadpool(_do_reload, reload_id, data_directory)
+
+    return ReloadResponse(
+        reload_id=reload_id,
+        message="Reload started",
+    )
+
+
+def _do_reload(reload_id: str, data_directory) -> None:
+    """Perform the actual data reload.
+
+    Runs as a background task. Creates a new DataLoader, loads data from
+    disk, and atomically swaps the index. Existing requests continue
+    against the old index until the swap is complete.
+
+    Args:
+        reload_id: Unique identifier for this reload operation.
+        data_directory: Path to the data directory to reload from.
+    """
+    try:
+        loader = DataLoader(data_directory)
+        paper_index.load_from_directory(loader)
+        logger.info(
+            "Reload %s complete: %d papers loaded",
+            reload_id,
+            paper_index.total_papers,
+        )
+    except Exception:
+        logger.exception("Reload %s failed", reload_id)
 
 
 def _check_scraper_health() -> ComponentHealth:

@@ -18,6 +18,7 @@ __all__ = [
     "ComponentHealth",
     "HealthResponse",
     "DataHealthResponse",
+    "ReloadResponse",
     "ScraperHealthResponse",
     "StatisticsResponse",
 ]
@@ -300,6 +301,19 @@ class ScraperHealthResponse(BaseModel):
     total_skipped: int
     target_year_threshold: int
     blacklisted_years_count: int
+
+
+class ReloadResponse(BaseModel):
+    """
+    Response model for POST /health/data/reload.
+
+    Attributes:
+        reload_id: Unique identifier for the reload operation.
+        message: Human-readable status message.
+    """
+
+    reload_id: str
+    message: str
 
 
 # =============================================================================
