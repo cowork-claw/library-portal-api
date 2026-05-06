@@ -7,6 +7,7 @@ Pre-builds indexes for fast filtering and lookup.
 import logging
 from collections import defaultdict
 from functools import lru_cache
+from threading import RLock
 from types import MappingProxyType
 from typing import Any, Dict, Iterable, List, Mapping, Optional, Set, Tuple
 
@@ -64,6 +65,7 @@ class PaperIndex:
     """
 
     def __init__(self):
+        self._swap_lock = RLock()
         self.papers: List[Dict[str, Any]] = []
         self.loader: Optional[DataLoader] = None
 
@@ -78,6 +80,7 @@ class PaperIndex:
         self._by_stream: Dict[str, Set[str]] = defaultdict(set)
         self._by_paper_type: Dict[str, Set[str]] = defaultdict(set)
         self._by_degree_type: Dict[str, Set[str]] = defaultdict(set)
+        self._by_program_abbrev: Dict[str, Set[str]] = defaultdict(set)
 
         # Unique values for metadata
         self._unique_years: Set[int] = set()
@@ -132,6 +135,26 @@ class PaperIndex:
 
         logger.info(f"Indexed {len(self.papers)} papers")
 
+    def reload_from_directory(self, loader: DataLoader) -> None:
+        """Build a replacement index first, then publish it."""
+        new_index = PaperIndex()
+        new_index.load_from_directory(loader)
+        if new_index.loader and new_index.loader.stats.errors:
+            raise RuntimeError("Data reload failed; keeping previous index")
+        self.replace_with(new_index)
+
+    def replace_with(self, other: "PaperIndex") -> None:
+        """Replace this index's state with a fully built index."""
+        with self._swap_lock:
+            swap_lock = self._swap_lock
+            new_state = {
+                key: value
+                for key, value in other.__dict__.items()
+                if key != "_swap_lock"
+            }
+            self.__dict__.update(new_state)
+            self._swap_lock = swap_lock
+
     def _clear_indexes(self) -> None:
         """Clear existing indexes and data."""
         self._by_url.clear()
@@ -142,6 +165,7 @@ class PaperIndex:
         self._by_stream.clear()
         self._by_paper_type.clear()
         self._by_degree_type.clear()
+        self._by_program_abbrev.clear()
 
         self._unique_years.clear()
         self._unique_semesters.clear()
@@ -162,7 +186,9 @@ class PaperIndex:
         self._count_by_program = defaultdict(int)
         self._count_by_program_abbrev = defaultdict(int)
 
-        field_meta_cache = {}  # Flyweight cache for search metadata
+        field_meta_cache: Dict[str, Dict[str, Any]] = (
+            {}
+        )  # Flyweight cache for search metadata
 
         # Build indexes and aggregations in a single pass
         for paper in self.papers:
@@ -211,8 +237,10 @@ class PaperIndex:
         # Program abbreviation index
         program_abbrev = paper.get("program_abbrev")
         if program_abbrev:
-            self._unique_program_abbrevs.add(program_abbrev)
-            self._count_by_program_abbrev[program_abbrev] += 1
+            normalized_abbrev = program_abbrev.upper()
+            self._by_program_abbrev[normalized_abbrev].add(url)
+            self._unique_program_abbrevs.add(normalized_abbrev)
+            self._count_by_program_abbrev[normalized_abbrev] += 1
 
         # Paper type index
         paper_type = paper.get("paper_type")
@@ -294,6 +322,10 @@ class PaperIndex:
             return []
         return list(self._search_cached(normalized_query))
 
+    def get_by_url(self, url: str) -> Optional[Dict[str, Any]]:
+        """Get a single paper by its URL, or None if not found."""
+        return self._by_url.get(url)
+
     def get_by_urls(self, urls: Iterable[str]) -> List[Dict[str, Any]]:
         """Get multiple papers from a set of URLs."""
         return [self._by_url[url] for url in urls if url in self._by_url]
@@ -330,6 +362,10 @@ class PaperIndex:
     def get_urls_by_degree_type(self, degree_type: str) -> Set[str]:
         """Get paper URLs for a specific degree type."""
         return self._by_degree_type.get(degree_type, set())
+
+    def get_urls_by_program_abbrev(self, program_abbrev: str) -> Set[str]:
+        """Get paper URLs for a specific program abbreviation (case-insensitive)."""
+        return self._by_program_abbrev.get(program_abbrev.upper(), set())
 
     # ==========================================================================
     # PROPERTY ACCESSORS

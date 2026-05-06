@@ -44,6 +44,7 @@ extracted_pdf_*.txt
 search_analytics_export.json
 logs/
 AGENT_READINESS_REPORT.md
+.agents/state/worktree-viz/
 
 # Node (if using any JS tools)
 node_modules/

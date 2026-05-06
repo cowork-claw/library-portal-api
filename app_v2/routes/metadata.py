@@ -25,14 +25,14 @@ async def get_metadata() -> MetadataResponse:
     the full program names in the `programs` field.
     """
     return MetadataResponse(
-        years=paper_index.unique_years,
-        programs=paper_index.unique_programs,
-        program_abbrevs=paper_index.unique_program_abbrevs,
-        semesters=paper_index.unique_semesters,
-        paper_types=paper_index.unique_paper_types,
-        degree_types=paper_index.unique_degree_types,
-        course_codes=paper_index.unique_course_codes[:100],  # Limit to 100
-        streams=paper_index.unique_streams,
+        years=list(paper_index.unique_years),
+        programs=list(paper_index.unique_programs),
+        program_abbrevs=list(paper_index.unique_program_abbrevs),
+        semesters=list(paper_index.unique_semesters),
+        paper_types=list(paper_index.unique_paper_types),
+        degree_types=list(paper_index.unique_degree_types),
+        course_codes=list(paper_index.unique_course_codes[:100]),  # Limit to 100
+        streams=list(paper_index.unique_streams),
         total_papers=paper_index.total_papers,
     )
 
@@ -49,10 +49,10 @@ async def get_statistics() -> StatisticsResponse:
     """
     return StatisticsResponse(
         total_papers=paper_index.total_papers,
-        papers_by_year=paper_index.count_by_year,
-        papers_by_program=paper_index.count_by_program,
-        papers_by_program_abbrev=paper_index.count_by_program_abbrev,
-        papers_by_semester=paper_index.count_by_semester,
+        papers_by_year=dict(paper_index.count_by_year),
+        papers_by_program=dict(paper_index.count_by_program),
+        papers_by_program_abbrev=dict(paper_index.count_by_program_abbrev),
+        papers_by_semester=dict(paper_index.count_by_semester),
         courses_count=len(paper_index.unique_course_codes),
         files_loaded=paper_index.files_loaded,
     )

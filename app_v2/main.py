@@ -5,6 +5,7 @@ A fresh, clean FastAPI application for serving organized question paper data.
 """
 
 import logging
+import os
 
 # Import configuration
 import sys
@@ -33,16 +34,20 @@ if settings.SENTRY_DSN:
 from .data_loader import DataLoader
 
 # Import middleware
-from .middleware.auth import APIKeyMiddleware
+from .middleware.auth import OPENCLAW_BOT_API_KEY_ENV, APIKeyMiddleware
+from .middleware.compression import CompressionMiddleware
+from .middleware.rate_limit import RateLimitMiddleware
+from .middleware.request_id import RequestIDMiddleware
 from .middleware.security import SecurityHeadersMiddleware
+from .middleware.structured_logging import (
+    StructuredLoggingMiddleware,
+    setup_structured_logging,
+)
 from .routes import health_router, metadata_router, papers_router
 from .services.indexing import paper_index
 
-# Configure logging
-logging.basicConfig(
-    level=getattr(logging, settings.LOG_LEVEL),
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-)
+# Configure structured JSON logging (replaces basicConfig)
+setup_structured_logging(settings.LOG_LEVEL)
 logger = logging.getLogger(__name__)
 
 
@@ -59,14 +64,24 @@ async def lifespan(app: FastAPI):
     data_directory = settings.DATA_DIRECTORY
     logger.info(f"Loading data from: {data_directory}")
 
-    loader = DataLoader(data_directory)
-    paper_index.load_from_directory(loader)
+    try:
+        loader = DataLoader(data_directory)
+        paper_index.load_from_directory(loader)
+    except Exception:
+        logger.exception("Failed to load data — starting with empty index")
+        # paper_index remains empty; API will serve zero-paper responses
 
-    logger.info(
-        f"✅ Loaded {paper_index.total_papers} papers from {paper_index.files_loaded} files"
-    )
-    logger.info(f"   Years: {paper_index.unique_years[:5]}...")
-    logger.info(f"   Courses: {len(paper_index.unique_course_codes)}")
+    if paper_index.total_papers == 0:
+        logger.warning(
+            "⚠️  No papers loaded — API is running in degraded mode. "
+            "Check that DATA_DIRECTORY points to valid JSON files."
+        )
+    else:
+        logger.info(
+            f"✅ Loaded {paper_index.total_papers} papers from {paper_index.files_loaded} files"
+        )
+        logger.info(f"   Years: {paper_index.unique_years[:5]}...")
+        logger.info(f"   Courses: {len(paper_index.unique_course_codes)}")
 
     yield
 
@@ -83,6 +98,10 @@ app = FastAPI(
     docs_url="/docs",
     redoc_url="/redoc",
 )
+
+# Add Gzip Compression middleware first so it stays innermost among the
+# custom stack; auth/rate-limit errors are generated outside this layer.
+app.add_middleware(CompressionMiddleware)
 
 # Add CORS middleware
 app.add_middleware(
@@ -101,8 +120,21 @@ app.add_middleware(
     environment=settings.ENVIRONMENT,
 )
 
+# Add Rate Limiting middleware (wraps APIKey so failed auth counts toward limit)
+rate_limit_valid_keys = [
+    key for key in (settings.API_SECRET_KEY, os.getenv(OPENCLAW_BOT_API_KEY_ENV)) if key
+]
+app.add_middleware(RateLimitMiddleware, valid_api_keys=rate_limit_valid_keys)
+
 # Add Security Headers middleware
 app.add_middleware(SecurityHeadersMiddleware)
+
+# Add Structured Logging middleware
+# (inside RequestID so it can read request.state.request_id)
+app.add_middleware(StructuredLoggingMiddleware)
+
+# Add Request ID middleware (outermost — registered last so it wraps everything)
+app.add_middleware(RequestIDMiddleware)
 
 # Optional Prometheus metrics (disabled by default)
 if settings.METRICS_ENABLED:

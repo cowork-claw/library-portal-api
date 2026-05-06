@@ -5,20 +5,28 @@ Comprehensive health check endpoints for monitoring system status.
 """
 
 import json
+import logging
+import os
+import uuid
 from datetime import datetime
+from pathlib import Path
 
-from fastapi import APIRouter
+from fastapi import APIRouter, BackgroundTasks, status
 from fastapi.concurrency import run_in_threadpool
 
 from config.config_v2 import settings
 
+from ..data_loader import DataLoader
 from ..models import (
     ComponentHealth,
     DataHealthResponse,
     HealthResponse,
+    ReloadResponse,
     ScraperHealthResponse,
 )
 from ..services.indexing import paper_index
+
+logger = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/health", tags=["Health"])
 
@@ -35,10 +43,10 @@ async def health_check() -> HealthResponse:
     """
     uptime = (datetime.now() - APP_START_TIME).total_seconds()
 
-    # Check data component
+    # Check data component — "degraded" when no data (not "unhealthy")
     data_healthy = paper_index.total_papers > 0
     data_status = ComponentHealth(
-        status="healthy" if data_healthy else "unhealthy",
+        status="healthy" if data_healthy else "degraded",
         message=(
             f"Loaded {paper_index.total_papers} papers"
             if data_healthy
@@ -56,7 +64,7 @@ async def health_check() -> HealthResponse:
     # Overall status
     overall = "healthy"
     if not data_healthy:
-        overall = "unhealthy"
+        overall = "degraded"
     elif scraper_status.status != "healthy":
         overall = "degraded"
 
@@ -83,15 +91,15 @@ async def data_health() -> DataHealthResponse:
     loader_stats = paper_index.loader.get_stats() if paper_index.loader else {}
 
     return DataHealthResponse(
-        status="healthy" if paper_index.total_papers > 0 else "unhealthy",
+        status="healthy" if paper_index.total_papers > 0 else "degraded",
         total_papers=paper_index.total_papers,
         unique_urls=loader_stats.get("unique_urls", 0),
         files_loaded=paper_index.files_loaded,
         courses_count=len(paper_index.unique_course_codes),
         last_loaded=loader_stats.get("last_loaded"),
         errors=loader_stats.get("errors", []),
-        papers_by_year=paper_index.count_by_year,
-        papers_by_program=paper_index.count_by_program,
+        papers_by_year=dict(paper_index.count_by_year),
+        papers_by_program=dict(paper_index.count_by_program),
     )
 
 
@@ -117,6 +125,59 @@ async def scraper_health() -> ScraperHealthResponse:
         target_year_threshold=settings.TARGET_YEAR_THRESHOLD,
         blacklisted_years_count=len(settings.BLACKLISTED_YEARS),
     )
+
+
+@router.post(
+    "/data/reload",
+    response_model=ReloadResponse,
+    status_code=status.HTTP_202_ACCEPTED,
+)
+async def reload_data(background_tasks: BackgroundTasks) -> ReloadResponse:
+    """
+    Trigger a background reload of JSON data.
+
+    Requires API key authentication. Returns immediately with a unique
+    ``reload_id`` and schedules the reload as a FastAPI background task.
+
+    Returns:
+        ReloadResponse: Contains ``reload_id`` and a status message.
+    """
+    reload_id = str(uuid.uuid4())
+    # Read DATA_DIRECTORY directly from env so reload always uses the current
+    # value, even if the module-level ``settings`` is stale after tests reload
+    # config.  This mirrors how ``Settings`` itself resolves the value.
+    data_directory = Path(
+        os.environ.get("LIBRARY_PORTAL_DATA_DIRECTORY", str(settings.DATA_DIRECTORY))
+    )
+
+    background_tasks.add_task(_do_reload, reload_id, data_directory)
+
+    return ReloadResponse(
+        reload_id=reload_id,
+        message="Reload started",
+    )
+
+
+def _do_reload(reload_id: str, data_directory) -> None:
+    """Perform the actual data reload.
+
+    Runs as a background task. Creates a new DataLoader, loads data from
+    disk, and atomically swaps the index. Existing requests continue
+    against the old index until the swap is complete.
+
+    Args:
+        reload_id: Unique identifier for this reload operation.
+        data_directory: Path to the data directory to reload from.
+    """
+    try:
+        paper_index.reload_from_directory(DataLoader(data_directory))
+        logger.info(
+            "Reload %s complete: %d papers loaded",
+            reload_id,
+            paper_index.total_papers,
+        )
+    except Exception:
+        logger.exception("Reload %s failed", reload_id)
 
 
 def _check_scraper_health() -> ComponentHealth:

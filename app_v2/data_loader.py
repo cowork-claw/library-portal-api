@@ -19,7 +19,7 @@ from typing import Any, Dict, List, Optional
 try:
     import orjson
 except ImportError:
-    import json as orjson
+    import json as orjson  # type: ignore[no-redef]
 
 logger = logging.getLogger(__name__)
 
@@ -74,8 +74,10 @@ class DataLoader:
         self.stats = LoaderStats()
 
         if not self.data_directory.exists():
-            logger.error(f"Data directory not found: {self.data_directory}")
-            self.stats.errors.append(f"Data directory not found: {self.data_directory}")
+            logger.warning("Data directory not found: %s", self.data_directory.name)
+            self.stats.errors.append(
+                "Data directory not found: <data directory does not exist>"
+            )
             return []
 
         json_files = list(self.data_directory.rglob("*.json"))
