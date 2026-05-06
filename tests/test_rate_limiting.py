@@ -81,13 +81,12 @@ def _build_app(
         return JSONResponse(status_code=422, content={"detail": "Validation error"})
 
     # Middleware stack (registered reverse: last = outermost)
-    app.add_middleware(
-        APIKeyMiddleware, api_key=API_KEY, environment="production"
-    )
+    app.add_middleware(APIKeyMiddleware, api_key=API_KEY, environment="production")
     app.add_middleware(
         RateLimitMiddleware,
         max_requests=max_requests,
         window_seconds=window_seconds,
+        valid_api_keys=[API_KEY, "other-key"],
     )
     app.add_middleware(SecurityHeadersMiddleware)
     app.add_middleware(RequestIDMiddleware)
@@ -110,7 +109,9 @@ class TestRequestsUnderThreshold:
 
         for i in range(100):
             response = client.get("/api/secure", headers={"X-API-Key": API_KEY})
-            assert response.status_code == 200, f"Request {i + 1} failed: {response.status_code}"
+            assert (
+                response.status_code == 200
+            ), f"Request {i + 1} failed: {response.status_code}"
 
     def test_requests_to_health_data_succeed_under_threshold(self):
         """Requests to /health/data succeed under threshold."""
@@ -153,7 +154,9 @@ class TestThresholdExceeded:
 
         for i in range(5):
             response = client.get("/api/secure", headers=headers)
-            assert response.status_code == 429, f"Request {i + 1} after limit should be 429"
+            assert (
+                response.status_code == 429
+            ), f"Request {i + 1} after limit should be 429"
 
 
 # ---------------------------------------------------------------------------
@@ -605,15 +608,34 @@ class TestLookupUnderRateLimit:
 class TestClientIdentification:
     """Rate limits are per-client (by API key or IP)."""
 
-    def test_different_api_keys_have_separate_limits(self):
-        """Clients with different API keys have separate rate limits."""
+    def test_valid_key_bucket_is_separate_from_no_key_bucket(self):
+        """Valid API-key requests and missing-key requests use separate buckets."""
         app = _build_app(max_requests=5, window_seconds=60)
         client = TestClient(app)
 
-        # Requests with no key are identified by IP (testclient)
-        # All share the same IP bucket, so they all count toward one limit
         for _ in range(5):
-            client.get("/api/secure")
+            assert (
+                client.get("/api/secure", headers={"X-API-Key": API_KEY}).status_code
+                == 200
+            )
+
+        response = client.get("/api/secure", headers={"X-API-Key": API_KEY})
+        assert response.status_code == 429
+
+        response = client.get("/api/secure")
+        assert response.status_code == 401
+
+    def test_invalid_api_keys_share_ip_bucket(self):
+        """Rotating bogus API keys does not bypass failed-auth rate limits."""
+        app = _build_app(max_requests=5, window_seconds=60)
+        client = TestClient(app)
+
+        for i in range(5):
+            response = client.get("/api/secure", headers={"X-API-Key": f"wrong-{i}"})
+            assert response.status_code == 403
+
+        response = client.get("/api/secure", headers={"X-API-Key": "wrong-6"})
+        assert response.status_code == 429
 
     def test_no_key_identified_by_ip(self):
         """Requests without API key are identified by client IP."""

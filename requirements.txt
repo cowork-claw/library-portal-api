@@ -9,7 +9,7 @@ psutil==7.2.2
 orjson==3.11.8
 
 # Scraping dependencies
-scrapy==2.15.1
+scrapy==2.15.2
 
 # Search dependencies
 thefuzz==0.22.1
@@ -20,8 +20,8 @@ requests==2.33.1
 python-dotenv==1.2.2
 
 # Observability
-sentry-sdk==2.57.0
-prometheus-client==0.24.1
+sentry-sdk==2.58.0
+prometheus-client==0.25.0
 
 # Development tools
 black==26.3.1
@@ -29,6 +29,6 @@ pytest==9.0.3
 pytest-cov==7.1.0
 pytest-xdist==3.8.0
 httpx==0.28.1
-ruff==0.15.11
+ruff==0.15.12
 vulture==2.16
-deptry==0.24.0
+deptry==0.25.1

@@ -397,9 +397,7 @@ class TestConcurrentRequestsDuringReload:
                 )
                 # Fire concurrent reads
                 futures = [
-                    executor.submit(
-                        make_request, "/api/papers", AUTH_HEADERS
-                    )
+                    executor.submit(make_request, "/api/papers", AUTH_HEADERS)
                     for _ in range(5)
                 ]
 
@@ -425,9 +423,7 @@ class TestEmptyStartupReloadThenFilter:
         app = _build_app(tmp_path)
         with TestClient(app) as client:
             # Initially empty
-            resp = client.get(
-                "/api/papers?program_abbrev=CSE", headers=AUTH_HEADERS
-            )
+            resp = client.get("/api/papers?program_abbrev=CSE", headers=AUTH_HEADERS)
             assert resp.status_code == 200
             assert resp.json()["total"] == 0
 
@@ -437,9 +433,7 @@ class TestEmptyStartupReloadThenFilter:
             assert resp.status_code == 202
 
             # Now filter should return results (BackgroundTasks sync in TestClient)
-            resp = client.get(
-                "/api/papers?program_abbrev=CSE", headers=AUTH_HEADERS
-            )
+            resp = client.get("/api/papers?program_abbrev=CSE", headers=AUTH_HEADERS)
             assert resp.status_code == 200
             body = resp.json()
             assert body["total"] > 0

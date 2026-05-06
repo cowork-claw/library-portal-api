@@ -11,7 +11,7 @@ import uuid
 from datetime import datetime
 from pathlib import Path
 
-from fastapi import APIRouter, status
+from fastapi import APIRouter, BackgroundTasks, status
 from fastapi.concurrency import run_in_threadpool
 
 from config.config_v2 import settings
@@ -132,13 +132,12 @@ async def scraper_health() -> ScraperHealthResponse:
     response_model=ReloadResponse,
     status_code=status.HTTP_202_ACCEPTED,
 )
-async def reload_data() -> ReloadResponse:
+async def reload_data(background_tasks: BackgroundTasks) -> ReloadResponse:
     """
     Trigger a background reload of JSON data.
 
     Requires API key authentication. Returns immediately with a unique
-    ``reload_id``. The reload runs synchronously within the request cycle
-    but the endpoint is designed to be non-blocking for typical data sizes.
+    ``reload_id`` and schedules the reload as a FastAPI background task.
 
     Returns:
         ReloadResponse: Contains ``reload_id`` and a status message.
@@ -151,8 +150,7 @@ async def reload_data() -> ReloadResponse:
         os.environ.get("LIBRARY_PORTAL_DATA_DIRECTORY", str(settings.DATA_DIRECTORY))
     )
 
-    # Run reload in a thread so it doesn't block the async event loop
-    await run_in_threadpool(_do_reload, reload_id, data_directory)
+    background_tasks.add_task(_do_reload, reload_id, data_directory)
 
     return ReloadResponse(
         reload_id=reload_id,
@@ -172,8 +170,7 @@ def _do_reload(reload_id: str, data_directory) -> None:
         data_directory: Path to the data directory to reload from.
     """
     try:
-        loader = DataLoader(data_directory)
-        paper_index.load_from_directory(loader)
+        paper_index.reload_from_directory(DataLoader(data_directory))
         logger.info(
             "Reload %s complete: %d papers loaded",
             reload_id,

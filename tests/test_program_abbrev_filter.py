@@ -355,9 +355,10 @@ class TestProgramAbbrevSpecialCharacters:
             headers=_auth_headers(),
         )
         # Must be 200 (empty results) or 422, never 500
-        assert resp.status_code in (200, 422), (
-            f"Expected 200 or 422 for {value!r}, got {resp.status_code}"
-        )
+        assert resp.status_code in (
+            200,
+            422,
+        ), f"Expected 200 or 422 for {value!r}, got {resp.status_code}"
         if resp.status_code == 200:
             body = resp.json()
             assert "papers" in body

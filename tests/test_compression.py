@@ -18,6 +18,8 @@ instead of trying to read the raw compressed wire bytes.
 import pytest
 from fastapi.testclient import TestClient
 
+from app_v2.middleware.compression import MINIMUM_SIZE
+
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
@@ -39,6 +41,14 @@ SECURITY_HEADERS = [
 ]
 
 
+def _assert_compression_matches_size(response, uncompressed_body: bytes) -> None:
+    """Compression depends on the actual payload size, not endpoint identity."""
+    if len(uncompressed_body) >= MINIMUM_SIZE:
+        assert response.headers.get("content-encoding") == "gzip"
+    else:
+        assert response.headers.get("content-encoding") != "gzip"
+
+
 # ---------------------------------------------------------------------------
 # VAL-SEC-006: Compression reduces response size for large payloads
 # ---------------------------------------------------------------------------
@@ -56,9 +66,9 @@ class TestCompressionLargePayload:
             headers={**api_key_headers, **GZIP_HEADERS},
         )
         assert response.status_code == 200
-        assert response.headers.get("content-encoding") == "gzip", (
-            "Expected Content-Encoding: gzip for large response"
-        )
+        assert (
+            response.headers.get("content-encoding") == "gzip"
+        ), "Expected Content-Encoding: gzip for large response"
 
     def test_compressed_content_length_smaller_than_body(
         self, client: TestClient, api_key_headers: dict
@@ -122,9 +132,9 @@ class TestNoCompressionSmallPayload:
         # The root endpoint "/" returns a small JSON (< 1KB)
         response = client.get("/", headers=GZIP_HEADERS)
         assert response.status_code == 200
-        assert response.headers.get("content-encoding") != "gzip", (
-            "Small response should not be compressed"
-        )
+        assert (
+            response.headers.get("content-encoding") != "gzip"
+        ), "Small response should not be compressed"
 
     def test_small_api_response_not_compressed(
         self, client: TestClient, api_key_headers: dict
@@ -136,9 +146,9 @@ class TestNoCompressionSmallPayload:
             headers={**api_key_headers, **GZIP_HEADERS},
         )
         assert response.status_code == 200
-        assert response.headers.get("content-encoding") != "gzip", (
-            "Small API response should not be compressed"
-        )
+        assert (
+            response.headers.get("content-encoding") != "gzip"
+        ), "Small API response should not be compressed"
 
 
 # ---------------------------------------------------------------------------
@@ -158,9 +168,9 @@ class TestNoCompressionWithoutAcceptEncoding:
             headers={**api_key_headers, **NO_GZIP_HEADERS},
         )
         assert response.status_code == 200
-        assert response.headers.get("content-encoding") != "gzip", (
-            "Response should not be compressed when client doesn't accept gzip"
-        )
+        assert (
+            response.headers.get("content-encoding") != "gzip"
+        ), "Response should not be compressed when client doesn't accept gzip"
 
     def test_large_response_is_valid_json(
         self, client: TestClient, api_key_headers: dict
@@ -196,9 +206,9 @@ class TestSecurityHeadersOnCompressedResponses:
         assert response.headers.get("content-encoding") == "gzip"
 
         for header in SECURITY_HEADERS:
-            assert header in response.headers, (
-                f"Security header '{header}' missing from compressed response"
-            )
+            assert (
+                header in response.headers
+            ), f"Security header '{header}' missing from compressed response"
 
     def test_security_headers_present_on_uncompressed_response(
         self, client: TestClient, api_key_headers: dict
@@ -211,9 +221,9 @@ class TestSecurityHeadersOnCompressedResponses:
         assert response.status_code == 200
 
         for header in SECURITY_HEADERS:
-            assert header in response.headers, (
-                f"Security header '{header}' missing from uncompressed response"
-            )
+            assert (
+                header in response.headers
+            ), f"Security header '{header}' missing from uncompressed response"
 
 
 # ---------------------------------------------------------------------------
@@ -242,7 +252,7 @@ class TestCompressedFilteredResults:
             headers={**api_key_headers, **GZIP_HEADERS},
         )
         assert compressed.status_code == 200
-        assert compressed.headers.get("content-encoding") == "gzip"
+        _assert_compression_matches_size(compressed, uncompressed.content)
         actual = compressed.json()
 
         # Compare papers (exclude execution_time_ms which varies)
@@ -271,7 +281,7 @@ class TestCompressedFilteredResults:
             headers={**api_key_headers, **GZIP_HEADERS},
         )
         assert compressed.status_code == 200
-        assert compressed.headers.get("content-encoding") == "gzip"
+        _assert_compression_matches_size(compressed, uncompressed.content)
         actual = compressed.json()
         # Compare papers (exclude execution_time_ms which varies)
         assert actual["papers"] == expected["papers"]
@@ -295,7 +305,7 @@ class TestCompressedFilteredResults:
             headers={**api_key_headers, **GZIP_HEADERS},
         )
         assert compressed.status_code == 200
-        assert compressed.headers.get("content-encoding") == "gzip"
+        _assert_compression_matches_size(compressed, uncompressed.content)
         actual = compressed.json()
         assert actual == expected
 
@@ -333,9 +343,9 @@ class TestCompressionEdgeCases:
         assert response.status_code == 200
         assert response.headers.get("content-encoding") == "gzip"
         vary = response.headers.get("vary", "")
-        assert "Accept-Encoding" in vary, (
-            "Vary header should include Accept-Encoding for compressed responses"
-        )
+        assert (
+            "Accept-Encoding" in vary
+        ), "Vary header should include Accept-Encoding for compressed responses"
 
     def test_request_id_present_on_compressed_response(
         self, client: TestClient, api_key_headers: dict

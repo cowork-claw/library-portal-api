@@ -104,9 +104,7 @@ class TestMissingDataDirectory:
             assert resp.status_code == 200
             body = resp.json()
             for err in body.get("errors", []):
-                assert not err.startswith(
-                    "/"
-                ), f"Error message leaks path: {err}"
+                assert not err.startswith("/"), f"Error message leaks path: {err}"
 
 
 # ---------------------------------------------------------------------------

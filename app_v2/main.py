@@ -5,6 +5,7 @@ A fresh, clean FastAPI application for serving organized question paper data.
 """
 
 import logging
+import os
 
 # Import configuration
 import sys
@@ -33,7 +34,7 @@ if settings.SENTRY_DSN:
 from .data_loader import DataLoader
 
 # Import middleware
-from .middleware.auth import APIKeyMiddleware
+from .middleware.auth import OPENCLAW_BOT_API_KEY_ENV, APIKeyMiddleware
 from .middleware.compression import CompressionMiddleware
 from .middleware.rate_limit import RateLimitMiddleware
 from .middleware.request_id import RequestIDMiddleware
@@ -98,6 +99,10 @@ app = FastAPI(
     redoc_url="/redoc",
 )
 
+# Add Gzip Compression middleware first so it stays innermost among the
+# custom stack; auth/rate-limit errors are generated outside this layer.
+app.add_middleware(CompressionMiddleware)
+
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
@@ -116,12 +121,10 @@ app.add_middleware(
 )
 
 # Add Rate Limiting middleware (wraps APIKey so failed auth counts toward limit)
-app.add_middleware(RateLimitMiddleware)
-
-# Add Gzip Compression middleware (innermost custom middleware — only
-# compresses successful route responses; auth/rate-limit errors are
-# generated further out and never reach this layer).
-app.add_middleware(CompressionMiddleware)
+rate_limit_valid_keys = [
+    key for key in (settings.API_SECRET_KEY, os.getenv(OPENCLAW_BOT_API_KEY_ENV)) if key
+]
+app.add_middleware(RateLimitMiddleware, valid_api_keys=rate_limit_valid_keys)
 
 # Add Security Headers middleware
 app.add_middleware(SecurityHeadersMiddleware)

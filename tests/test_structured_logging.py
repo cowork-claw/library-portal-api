@@ -16,6 +16,7 @@ Also covers:
 import json
 import logging
 
+import pytest
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
 
@@ -31,6 +32,17 @@ from app_v2.middleware.structured_logging import (
 )
 
 API_KEY = "test-key"
+
+
+@pytest.fixture(autouse=True)
+def _restore_root_logger():
+    """Prevent root logger handlers and levels from leaking across tests."""
+    root_logger = logging.getLogger()
+    original_handlers = list(root_logger.handlers)
+    original_level = root_logger.level
+    yield
+    root_logger.handlers[:] = original_handlers
+    root_logger.setLevel(original_level)
 
 
 # ---------------------------------------------------------------------------
@@ -65,9 +77,7 @@ def _build_app_with_logging() -> tuple[FastAPI, _LogCapture]:
 
     # Middleware registered in reverse order (last = outermost)
     # Execution order: RequestID -> StructuredLogging -> SecurityHeaders -> APIKey -> Routes
-    app.add_middleware(
-        APIKeyMiddleware, api_key=API_KEY, environment="production"
-    )
+    app.add_middleware(APIKeyMiddleware, api_key=API_KEY, environment="production")
     app.add_middleware(SecurityHeadersMiddleware)
     app.add_middleware(StructuredLoggingMiddleware)
     app.add_middleware(RequestIDMiddleware)
@@ -209,9 +219,9 @@ class TestStructuredLogFormat:
 
         for msg in capture.messages:
             parsed = json.loads(msg)
-            assert isinstance(parsed["request_id"], str), (
-                f"request_id not string: {parsed['request_id']}"
-            )
+            assert isinstance(
+                parsed["request_id"], str
+            ), f"request_id not string: {parsed['request_id']}"
 
 
 # ---------------------------------------------------------------------------
@@ -234,23 +244,24 @@ class TestRequestIDInLogs:
 
         # Access log lines (from app_v2.access logger) should have the matching request_id
         access_logs = [
-            json.loads(msg) for msg in capture.messages
+            json.loads(msg)
+            for msg in capture.messages
             if json.loads(msg).get("name") == "app_v2.access"
         ]
         assert len(access_logs) > 0, "No access log lines found"
         for log_entry in access_logs:
-            assert log_entry["request_id"] == custom_id, (
-                f"Expected request_id={custom_id}, got {log_entry['request_id']}"
-            )
+            assert (
+                log_entry["request_id"] == custom_id
+            ), f"Expected request_id={custom_id}, got {log_entry['request_id']}"
 
         # No log line during the request should have a different non-"-" request_id
         for msg in capture.messages:
             parsed = json.loads(msg)
             rid = parsed["request_id"]
             if rid != "-":
-                assert rid == custom_id, (
-                    f"Log line has unexpected request_id={rid}, expected {custom_id}"
-                )
+                assert (
+                    rid == custom_id
+                ), f"Log line has unexpected request_id={rid}, expected {custom_id}"
 
     def test_generated_request_id_in_logs(self):
         """When no X-Request-ID is provided, generated ID appears in logs."""
@@ -295,7 +306,8 @@ class TestRequestIDInLogs:
 
         # Access log lines should have req-002
         access_logs = [
-            json.loads(msg) for msg in capture.messages
+            json.loads(msg)
+            for msg in capture.messages
             if json.loads(msg).get("name") == "app_v2.access"
         ]
         assert len(access_logs) > 0
@@ -360,9 +372,9 @@ class TestStructuredLogOn429:
         for msg in capture.messages:
             parsed = json.loads(msg)
             if parsed.get("status_code") == 429:
-                assert parsed["request_id"] == custom_id, (
-                    f"request_id mismatch: expected {custom_id}, got {parsed['request_id']}"
-                )
+                assert (
+                    parsed["request_id"] == custom_id
+                ), f"request_id mismatch: expected {custom_id}, got {parsed['request_id']}"
                 found = True
 
         assert found, "No 429 log line found"
@@ -386,9 +398,9 @@ class TestStructuredLogOn429:
         for msg in capture.messages:
             parsed = json.loads(msg)
             if parsed.get("status_code") == 429:
-                assert parsed.get("path") == "/api/test", (
-                    f"Path mismatch: expected /api/test, got {parsed.get('path')}"
-                )
+                assert (
+                    parsed.get("path") == "/api/test"
+                ), f"Path mismatch: expected /api/test, got {parsed.get('path')}"
                 found = True
 
         assert found, "No 429 log line found"
@@ -542,9 +554,7 @@ class TestStructuredLoggingWithFullApp:
 
         try:
             custom_id = "auth-fail-trace"
-            response = client.get(
-                "/api/papers", headers={"X-Request-ID": custom_id}
-            )
+            response = client.get("/api/papers", headers={"X-Request-ID": custom_id})
             assert response.status_code == 401
             assert response.headers["X-Request-ID"] == custom_id
 

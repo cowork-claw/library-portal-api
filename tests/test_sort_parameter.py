@@ -196,13 +196,13 @@ class TestSortByYearAsc:
 
         # Non-null values should be monotonically non-decreasing
         for i in range(1, len(non_null)):
-            assert non_null[i] >= non_null[i - 1], (
-                f"Years not ascending: {non_null}"
-            )
+            assert non_null[i] >= non_null[i - 1], f"Years not ascending: {non_null}"
 
         # Nulls should appear after all non-null values
         if null_count > 0:
-            assert None not in years[: len(non_null)], "Null year appeared before non-null"
+            assert (
+                None not in years[: len(non_null)]
+            ), "Null year appeared before non-null"
 
     def test_at_least_two_distinct_years(self, client_with_papers):
         resp = client_with_papers.get(
@@ -236,12 +236,12 @@ class TestSortByYearDesc:
         null_count = years.count(None)
 
         for i in range(1, len(non_null)):
-            assert non_null[i] <= non_null[i - 1], (
-                f"Years not descending: {non_null}"
-            )
+            assert non_null[i] <= non_null[i - 1], f"Years not descending: {non_null}"
 
         if null_count > 0:
-            assert None not in years[: len(non_null)], "Null year appeared before non-null"
+            assert (
+                None not in years[: len(non_null)]
+            ), "Null year appeared before non-null"
 
 
 # ---------------------------------------------------------------------------
@@ -265,9 +265,9 @@ class TestSortBySemesterAsc:
         null_count = semesters.count(None)
 
         for i in range(1, len(non_null)):
-            assert non_null[i] >= non_null[i - 1], (
-                f"Semesters not ascending: {non_null}"
-            )
+            assert (
+                non_null[i] >= non_null[i - 1]
+            ), f"Semesters not ascending: {non_null}"
 
         if null_count > 0:
             assert None not in semesters[: len(non_null)]
@@ -294,9 +294,9 @@ class TestSortBySemesterDesc:
         null_count = semesters.count(None)
 
         for i in range(1, len(non_null)):
-            assert non_null[i] <= non_null[i - 1], (
-                f"Semesters not descending: {non_null}"
-            )
+            assert (
+                non_null[i] <= non_null[i - 1]
+            ), f"Semesters not descending: {non_null}"
 
         if null_count > 0:
             assert None not in semesters[: len(non_null)]
@@ -356,9 +356,7 @@ class TestDefaultSortBehavior:
         body = resp.json()
         years = [p["year"] for p in body["papers"] if p["year"] is not None]
         for i in range(1, len(years)):
-            assert years[i] <= years[i - 1], (
-                f"Default order not year desc: {years}"
-            )
+            assert years[i] <= years[i - 1], f"Default order not year desc: {years}"
 
 
 # ---------------------------------------------------------------------------
@@ -369,16 +367,18 @@ class TestDefaultSortBehavior:
 class TestInvalidSortFields:
     """Invalid sort field values return 422."""
 
-    @pytest.mark.parametrize("invalid_sort", ["name", "invalid", "date", "title", "YEAR", "Year"])
+    @pytest.mark.parametrize(
+        "invalid_sort", ["name", "invalid", "date", "title", "YEAR", "Year"]
+    )
     def test_invalid_sort_returns_422(self, client_with_papers, invalid_sort):
         resp = client_with_papers.get(
             "/api/papers",
             params={"sort": invalid_sort},
             headers=_auth_headers(),
         )
-        assert resp.status_code == 422, (
-            f"Expected 422 for sort={invalid_sort!r}, got {resp.status_code}"
-        )
+        assert (
+            resp.status_code == 422
+        ), f"Expected 422 for sort={invalid_sort!r}, got {resp.status_code}"
 
 
 # ---------------------------------------------------------------------------
@@ -389,16 +389,18 @@ class TestInvalidSortFields:
 class TestInvalidOrderValues:
     """Invalid order values return 422."""
 
-    @pytest.mark.parametrize("invalid_order", ["ascending", "descending", "up", "down", "DESC", "Asc"])
+    @pytest.mark.parametrize(
+        "invalid_order", ["ascending", "descending", "up", "down", "DESC", "Asc"]
+    )
     def test_invalid_order_returns_422(self, client_with_papers, invalid_order):
         resp = client_with_papers.get(
             "/api/papers",
             params={"sort": "year", "order": invalid_order},
             headers=_auth_headers(),
         )
-        assert resp.status_code == 422, (
-            f"Expected 422 for order={invalid_order!r}, got {resp.status_code}"
-        )
+        assert (
+            resp.status_code == 422
+        ), f"Expected 422 for order={invalid_order!r}, got {resp.status_code}"
 
 
 # ---------------------------------------------------------------------------
@@ -436,9 +438,9 @@ class TestPaginationConsistency:
         page2_urls = [p["url"] for p in resp_p2.json()["papers"]]
 
         # No overlap
-        assert set(page1_urls).isdisjoint(set(page2_urls)), (
-            f"Pages overlap: {page1_urls} vs {page2_urls}"
-        )
+        assert set(page1_urls).isdisjoint(
+            set(page2_urls)
+        ), f"Pages overlap: {page1_urls} vs {page2_urls}"
 
         # Page 2 URLs match the 4th-6th papers in the full sorted list
         expected_page2_urls = [p["url"] for p in all_papers[3:6]]
@@ -447,8 +449,12 @@ class TestPaginationConsistency:
     def test_same_query_returns_identical_results(self, client_with_papers):
         """Repeating the same sorted query yields identical results."""
         params = {"sort": "year", "order": "desc", "limit": 5, "offset": 0}
-        resp1 = client_with_papers.get("/api/papers", params=params, headers=_auth_headers())
-        resp2 = client_with_papers.get("/api/papers", params=params, headers=_auth_headers())
+        resp1 = client_with_papers.get(
+            "/api/papers", params=params, headers=_auth_headers()
+        )
+        resp2 = client_with_papers.get(
+            "/api/papers", params=params, headers=_auth_headers()
+        )
 
         urls1 = [p["url"] for p in resp1.json()["papers"]]
         urls2 = [p["url"] for p in resp2.json()["papers"]]
@@ -483,9 +489,9 @@ class TestRelevanceSortWithoutSearch:
         body = resp.json()
         years = [p["year"] for p in body["papers"] if p["year"] is not None]
         for i in range(1, len(years)):
-            assert years[i] <= years[i - 1], (
-                f"Relevance fallback not year desc: {years}"
-            )
+            assert (
+                years[i] <= years[i - 1]
+            ), f"Relevance fallback not year desc: {years}"
 
 
 # ---------------------------------------------------------------------------
@@ -506,9 +512,7 @@ class TestDefaultOrderWhenOnlySortProvided:
         body = resp.json()
         years = [p["year"] for p in body["papers"] if p["year"] is not None]
         for i in range(1, len(years)):
-            assert years[i] <= years[i - 1], (
-                f"Default order not desc: {years}"
-            )
+            assert years[i] <= years[i - 1], f"Default order not desc: {years}"
 
     def test_sort_semester_without_order_defaults_to_desc(self, client_with_papers):
         resp = client_with_papers.get(
@@ -520,9 +524,9 @@ class TestDefaultOrderWhenOnlySortProvided:
         body = resp.json()
         semesters = [p["semester"] for p in body["papers"] if p["semester"] is not None]
         for i in range(1, len(semesters)):
-            assert semesters[i] <= semesters[i - 1], (
-                f"Default order not desc: {semesters}"
-            )
+            assert (
+                semesters[i] <= semesters[i - 1]
+            ), f"Default order not desc: {semesters}"
 
 
 # ---------------------------------------------------------------------------

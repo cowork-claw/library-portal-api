@@ -299,9 +299,7 @@ class TestLookupOpenAPISchema:
         schema = resp.json()
 
         get_op = schema["paths"]["/api/papers/lookup"]["get"]
-        url_param = next(
-            p for p in get_op["parameters"] if p["name"] == "url"
-        )
+        url_param = next(p for p in get_op["parameters"] if p["name"] == "url")
         assert url_param["required"] is True
 
 

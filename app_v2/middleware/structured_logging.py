@@ -40,9 +40,7 @@ from starlette.middleware.base import BaseHTTPMiddleware
 #: Holds the current request ID (populated by this middleware from
 #: ``request.state.request_id``, which is set by ``RequestIDMiddleware``).
 #: Falls back to ``"-"`` outside of a request context.
-current_request_id: ContextVar[str] = ContextVar(
-    "current_request_id", default="-"
-)
+current_request_id: ContextVar[str] = ContextVar("current_request_id", default="-")
 
 
 # ---------------------------------------------------------------------------
@@ -116,6 +114,7 @@ class StructuredJSONFormatter(logging.Formatter):
 # ---------------------------------------------------------------------------
 
 _access_logger = logging.getLogger("app_v2.access")
+_STRUCTURED_HANDLER_MARKER = "_library_portal_structured_handler"
 
 
 class StructuredLoggingMiddleware(BaseHTTPMiddleware):
@@ -167,9 +166,10 @@ def setup_structured_logging(level: str = "INFO") -> None:
     """
     Configure the root Python logger for structured JSON output.
 
-    Replaces any existing handlers on the root logger with a single
-    :class:`~logging.StreamHandler` writing to *stdout*, using
-    :class:`StructuredJSONFormatter` and :class:`RequestIDLogFilter`.
+    Adds one owned :class:`~logging.StreamHandler` writing to *stdout*, using
+    :class:`StructuredJSONFormatter` and :class:`RequestIDLogFilter`. Existing
+    root handlers are left in place so server/test logging configuration is
+    not unexpectedly removed at import time.
 
     Args:
         level: Logging level name (e.g. ``"INFO"``, ``"DEBUG"``).
@@ -177,12 +177,14 @@ def setup_structured_logging(level: str = "INFO") -> None:
     root_logger = logging.getLogger()
     root_logger.setLevel(getattr(logging, level.upper(), logging.INFO))
 
-    # Remove existing handlers to avoid duplicate output
-    for handler in root_logger.handlers[:]:
-        root_logger.removeHandler(handler)
+    for handler in root_logger.handlers:
+        if getattr(handler, _STRUCTURED_HANDLER_MARKER, False):
+            handler.setLevel(getattr(logging, level.upper(), logging.INFO))
+            return
 
     # Create and attach the structured handler
     handler = logging.StreamHandler(sys.stdout)
     handler.setFormatter(StructuredJSONFormatter())
     handler.addFilter(RequestIDLogFilter())
+    setattr(handler, _STRUCTURED_HANDLER_MARKER, True)
     root_logger.addHandler(handler)

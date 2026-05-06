@@ -39,9 +39,7 @@ def _build_app() -> FastAPI:
     # Middleware is registered in reverse order (last registered = outermost).
     # Desired outermost → innermost: RequestID → SecurityHeaders → APIKey
     # So register innermost first.
-    app.add_middleware(
-        APIKeyMiddleware, api_key=API_KEY, environment="production"
-    )
+    app.add_middleware(APIKeyMiddleware, api_key=API_KEY, environment="production")
     app.add_middleware(SecurityHeadersMiddleware)
     app.add_middleware(RequestIDMiddleware)
 
@@ -254,7 +252,9 @@ class TestRequestIDMiddlewareOrdering:
 class TestRequestIDWithFullApp:
     """Integration tests using the real app client fixture."""
 
-    def test_request_id_on_api_endpoint(self, client: TestClient, api_key_headers: dict):
+    def test_request_id_on_api_endpoint(
+        self, client: TestClient, api_key_headers: dict
+    ):
         """Real app: /api/papers returns X-Request-ID."""
         response = client.get("/api/papers", headers=api_key_headers)
         assert response.status_code == 200
@@ -276,9 +276,7 @@ class TestRequestIDWithFullApp:
         assert response.status_code == 200
         assert response.headers["X-Request-ID"] == "my-trace-id-999"
 
-    def test_request_id_on_lookup_404(
-        self, client: TestClient, api_key_headers: dict
-    ):
+    def test_request_id_on_lookup_404(self, client: TestClient, api_key_headers: dict):
         """Real app: 404 from lookup includes X-Request-ID."""
         headers = {**api_key_headers, "X-Request-ID": "lookup-trace"}
         response = client.get(
