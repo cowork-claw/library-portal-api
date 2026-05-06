@@ -39,11 +39,15 @@ curl -H "X-API-Key: your-key" http://localhost:8000/api/papers
 | `GET /api/papers` | List papers with filters |
 | `GET /api/papers?year=2024&semester=3` | Filter by year/semester |
 | `GET /api/papers?course_code=CSE2101` | Filter by course |
+| `GET /api/papers?program_abbrev=CSE` | Filter by program abbreviation (case-insensitive, composes with other filters) |
 | `GET /api/papers?search=algorithms` | Fuzzy search |
+| `GET /api/papers?sort=year&order=desc` | Sort by `year`, `semester`, or `relevance` (asc/desc) |
+| `GET /api/papers/lookup?url=<paper_url>` | Look up a single paper by its download URL |
 | `GET /api/metadata` | Available filter values |
 | `GET /api/statistics` | Collection statistics |
 | `GET /health` | System health |
 | `GET /health/data` | Data integrity |
+| `POST /health/data/reload` | Admin endpoint to reload data without restarting (returns `202 Accepted` with `reload_id`) |
 
 ## Data Structure
 
@@ -101,18 +105,32 @@ python -c "import secrets; print(secrets.token_urlsafe(32))"
 ## Security
 
 - **Authentication**: `LIBRARY_PORTAL_API_KEY` is **mandatory** in production. The server will refuse requests if it is missing.
+- **Rate Limiting**: Fixed-window rate limiter (100 req/min per client) on `/api/*` and `/health/data`. Returns `429 Too Many Requests` with `Retry-After` header when exceeded.
+- **Request ID Tracking**: Every request carries an `X-Request-ID` header. If not provided by the client, a UUID4 is auto-generated and echoed back in the response for traceability.
 - **Input Validation**: Strict type and length checking on all API parameters to prevent DoS and Injection attacks. Added `max_length` validation to course code endpoint.
-- **Information Disclosure**: Prevented internal file path leakage in data loader errors by sanitizing exception messages.
+- **Path Sanitization**: Internal file paths are stripped from error messages and API responses to prevent information disclosure.
 - **Performance / Responsiveness**: Offloaded synchronous I/O operations (file reading and JSON parsing) in health routes to a threadpool via `run_in_threadpool` to prevent event loop blocking.
 - **Fail-Safe**: In development mode, missing API key will trigger a warning but allow access for testing.
 - **Dependencies**: Regular security updates are applied.
 
 > ⚡ **Jules Security Tip:** For proactive security scanning, adhere to the [Copilot coding agent tips](https://gh.io/copilot-coding-agent-tips).
 
+## Observability
+
+- **Structured JSON Logging:** When `LIBRARY_PORTAL_LOG_LEVEL` is set, all log output is formatted as structured JSON. Every log line includes a `request_id` field propagated from the `X-Request-ID` header, making it easy to trace requests across logs.
+- **Request ID Propagation:** The `X-Request-ID` header is generated (if missing) and echoed on every response. It is also injected into the logging context so that every log record emitted during a request carries the same ID.
+
+## Reliability
+
+- **Graceful Degradation:** The API starts successfully even if the `data/` directory is missing or corrupt. In this case, it serves empty results and the health endpoint reports `degraded` status instead of failing to start.
+- **Hot Data Reload:** `POST /health/data/reload` allows admins to reload JSON data without restarting the service. It returns `202 Accepted` with a unique `reload_id` and swaps the index atomically so in-flight requests are not interrupted.
+
 ## Performance Optimizations
 
+- **Gzip Compression:** Responses larger than 1 KB are automatically gzip-compressed when the client sends `Accept-Encoding: gzip`. Small responses and error responses (401, 403, 429) are forwarded unchanged.
 - **URL Deduplication:** The data loader (`app_v2/data_loader.py`) uses a `set` (`seen_urls`) instead of a `dict` for URL deduplication during the parsing of JSON files. This O(1) membership checking reduces memory overhead and improves data loading speed at startup.
 - **Search Filter Optimization:** Filter URL sets are sorted by size before intersection for ~35-50% speedup. Early exits on empty filter sets provide O(1) response time for queries with non-existent filters.
+- **Sorting Optimization:** Papers can be sorted by `year`, `semester`, or `relevance` in ascending or descending order. Null values are consistently placed last regardless of sort direction.
 - **Health I/O Optimization:** Synchronous file I/O in health check endpoints is offloaded to a threadpool to avoid blocking the event loop.
 
 > ⚡ **Jules Performance Tip:** For optimizations, follow the "Turbo" methodology and reference [Copilot coding agent tips](https://gh.io/copilot-coding-agent-tips) for better collaboration.
