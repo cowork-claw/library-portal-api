@@ -1,0 +1,24 @@
+# Gemini Code Assist configuration
+# https://developers.google.com/gemini-code-assist/docs/customize-repo-review
+
+have_fun: false
+memory_config:
+  disabled: false
+code_review:
+  disable: false
+  comment_severity_threshold: HIGH
+  max_review_comments: 10
+  pull_request_opened:
+    help: false
+    summary: true
+    code_review: true
+    include_drafts: false
+ignore_patterns:
+  - "data/**"
+  - "course_images/**"
+  - "scraper/**"
+  - "docs/**"
+  - "droid-wiki/**"
+  - "scripts/**"
+  - "*.md"
+  - "requirements.txt"

@@ -48,3 +48,6 @@ AGENT_READINESS_REPORT.md
 
 # Node (if using any JS tools)
 node_modules/
+
+# Local research notes (not for CI)
+.research/
