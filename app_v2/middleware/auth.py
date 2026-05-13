@@ -75,56 +75,58 @@ class APIKeyMiddleware(BaseHTTPMiddleware):
                     "All requests will be blocked."
                 )
 
-    async def dispatch(self, request: Request, call_next: Callable):
-        # Allow CORS preflight requests through without authentication
-        if request.method == "OPTIONS":
-            return await call_next(request)
+    def _missing_configuration_response(self) -> JSONResponse:
+        """Return the non-development response for absent server API keys."""
+        logger.error("Blocked request due to missing API key configuration")
+        return JSONResponse(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            content={
+                "detail": "Server security misconfiguration",
+                "hint": "API Key is required in this environment",
+            },
+        )
 
-        path = request.url.path
+    def _missing_api_key_response(self) -> JSONResponse:
+        """Return the response for protected requests without an API key."""
+        return JSONResponse(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            content={
+                "detail": "API key required",
+                "hint": "Provide API key via 'X-API-Key' header",
+            },
+        )
 
-        # Allow public paths without authentication
-        if self._is_public_path(path):
-            return await call_next(request)
+    def _invalid_api_key_response(self, request: Request) -> JSONResponse:
+        """Log and return the response for an invalid API key."""
+        client_host = request.client.host if request.client else "unknown"
+        logger.warning(f"Invalid API key attempt from {client_host}")
+        return JSONResponse(
+            status_code=status.HTTP_403_FORBIDDEN,
+            content={"detail": "Invalid API key"},
+        )
 
-        # If no API key configured
-        if not self.api_keys:
-            # Only allow in development mode
-            if self.environment == "development":
-                return await call_next(request)
-            else:
-                # Block all requests in non-development environments
-                logger.error("Blocked request due to missing API key configuration")
-                return JSONResponse(
-                    status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-                    content={
-                        "detail": "Server security misconfiguration",
-                        "hint": "API Key is required in this environment",
-                    },
-                )
-
-        # Check for API key in request
-        provided_key = self._extract_api_key(request)
-
-        if not provided_key:
-            return JSONResponse(
-                status_code=status.HTTP_401_UNAUTHORIZED,
-                content={
-                    "detail": "API key required",
-                    "hint": "Provide API key via 'X-API-Key' header",
-                },
-            )
-
-        if not any(
+    def _is_valid_api_key(self, provided_key: str) -> bool:
+        """Return whether a provided key matches any configured key."""
+        return any(
             secrets.compare_digest(provided_key, configured_key)
             for configured_key in self.api_keys
-        ):
-            client_host = request.client.host if request.client else "unknown"
-            logger.warning(f"Invalid API key attempt from {client_host}")
-            return JSONResponse(
-                status_code=status.HTTP_403_FORBIDDEN,
-                content={"detail": "Invalid API key"},
-            )
+        )
 
+    async def dispatch(self, request: Request, call_next: Callable):
+        if request.method == "OPTIONS" or self._is_public_path(request.url.path):
+            return await call_next(request)
+
+        if not self.api_keys:
+            if self.environment == "development":
+                return await call_next(request)
+            return self._missing_configuration_response()
+
+        provided_key = self._extract_api_key(request)
+        if not provided_key:
+            return self._missing_api_key_response()
+
+        if not self._is_valid_api_key(provided_key):
+            return self._invalid_api_key_response(request)
         return await call_next(request)
 
     def _is_public_path(self, path: str) -> bool:
