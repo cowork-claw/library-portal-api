@@ -106,125 +106,120 @@ class QuestionPapersEnhancedSpider(scrapy.Spider):
 
         self.logger.info(f"Parsing page - Path: {current_path}, Depth: {depth}")
 
-        # Extract all items on current page
         items = self.extract_items(response)
-
         if not items:
             self.logger.warning(f"No items found at: {current_path}")
             return
 
-        # Log what we found
+        pdfs, folders = self._split_items(items)
+        self.logger.info(
+            f"Found {len(pdfs)} PDFs and {len(folders)} folders at: {current_path}"
+        )
+
+        yield from self._iter_new_pdf_items(pdfs, response)
+
+        for folder in folders:
+            request = self._build_navigation_request(
+                folder, response, current_path, depth
+            )
+            if request:
+                yield request
+
+    def _split_items(self, items):
+        """Split extracted table items into PDFs and navigable folders."""
         pdfs = [item for item in items if item.get("is_pdf")]
         folders = [
             item
             for item in items
             if item.get("is_folder") and not self.should_skip(item["name"])
         ]
+        return pdfs, folders
 
-        self.logger.info(
-            f"Found {len(pdfs)} PDFs and {len(folders)} folders at: {current_path}"
-        )
-
-        # Process PDFs
+    def _iter_new_pdf_items(self, pdfs, response):
+        """Yield unseen PDF items and update scrape counters."""
         for pdf in pdfs:
             pdf_item = self.create_pdf_item(pdf, response)
-            if pdf_item:
-                self.pdf_count += 1
+            if not pdf_item:
+                continue
 
-                # Check if URL has been seen before
-                if pdf_item["url"] in self.seen_urls:
-                    self.skipped_pdf_count += 1
-                    self.logger.debug(
-                        f"Skipping already scraped PDF: {pdf_item['file_name']}"
-                    )
-                    continue
+            self.pdf_count += 1
+            if pdf_item["url"] in self.seen_urls:
+                self.skipped_pdf_count += 1
+                self.logger.debug(
+                    f"Skipping already scraped PDF: {pdf_item['file_name']}"
+                )
+                continue
 
-                # This is a new PDF
-                self.new_pdf_count += 1
-                self.logger.info(f"Found NEW PDF: {pdf_item['file_name']}")
-                yield pdf_item
+            self.new_pdf_count += 1
+            self.logger.info(f"Found NEW PDF: {pdf_item['file_name']}")
+            yield pdf_item
 
-        # Process folders
-        for folder in folders:
-            folder_name = folder["name"]
+    def _should_visit_folder(self, folder_name, current_path):
+        """Return whether a folder is inside the configured scrape window."""
+        if folder_name.isdigit():
+            if not self.should_scrape_year(folder_name):
+                self.logger.info(
+                    f"Skipping year folder '{folder_name}' based on scraping mode"
+                )
+                return False
+            self.logger.info(f"Will scrape year folder '{folder_name}'")
+            return True
 
-            # Check if it's a year folder
-            is_year_folder = folder_name.isdigit()
+        return self._path_contains_target_year(current_path)
 
-            if is_year_folder:
-                # Decide whether to scrape this year
-                if not self.should_scrape_year(folder_name):
-                    self.logger.info(
-                        f"Skipping year folder '{folder_name}' based on scraping mode"
-                    )
-                    continue
-                else:
-                    self.logger.info(f"Will scrape year folder '{folder_name}'")
+    def _path_contains_target_year(self, current_path):
+        """Check whether the current folder path is within a target year."""
+        for year in range(self.current_year, self.current_year + 5):
+            if str(year) in current_path:
+                return True
 
-            # For non-year folders, check if we're inside a target year
-            is_in_target_year = False
-            if not is_year_folder:
-                # Check if current path contains a year we should scrape
-                for year in range(
-                    self.current_year, self.current_year + 5
-                ):  # Check current and next 4 years
-                    if str(year) in current_path:
-                        is_in_target_year = True
-                        break
+        if self.is_incremental:
+            return False
 
-                # In non-incremental mode, check if we should explore this folder
-                # based on the target year threshold
-                if not self.is_incremental:
-                    for year in range(TARGET_YEAR_THRESHOLD, self.current_year + 5):
-                        if str(year) in current_path:
-                            is_in_target_year = True
-                            break
+        for year in range(TARGET_YEAR_THRESHOLD, self.current_year + 5):
+            if str(year) in current_path:
+                return True
 
-            # Navigate if it's a year folder we want or we're inside a target year
-            if is_year_folder or is_in_target_year:
-                if "event_target" in folder and "event_argument" in folder:
-                    # Create unique folder signature
-                    event_target = folder["event_target"]
-                    event_argument = folder["event_argument"]
-                    folder_signature = (event_target, event_argument)
+        return False
 
-                    # Check if we've already visited this folder
-                    if folder_signature in self.seen_folders:
-                        self.logger.debug(
-                            f"Skipping already visited folder: {folder['name']}"
-                        )
-                        continue
+    def _build_navigation_request(self, folder, response, current_path, depth):
+        """Create a postback request for a folder, or None if it should not be visited."""
+        folder_name = folder["name"]
+        if not self._should_visit_folder(folder_name, current_path):
+            return None
 
-                    # Mark this folder as seen
-                    self.seen_folders.add(folder_signature)
-                    self.folder_count += 1
+        if "event_target" not in folder or "event_argument" not in folder:
+            return None
 
-                    # Prepare form data for navigation
-                    form_data = self.extract_form_data(response)
-                    form_data["__EVENTTARGET"] = event_target
-                    form_data["__EVENTARGUMENT"] = event_argument
+        event_target = folder["event_target"]
+        event_argument = folder["event_argument"]
+        folder_signature = (event_target, event_argument)
+        if folder_signature in self.seen_folders:
+            self.logger.debug(f"Skipping already visited folder: {folder_name}")
+            return None
 
-                    # Log navigation attempt
-                    self.logger.info(
-                        f"Navigating to folder: {folder['name']} (depth: {depth + 1})"
-                    )
+        self.seen_folders.add(folder_signature)
+        self.folder_count += 1
 
-                    yield FormRequest(
-                        url=response.url,
-                        formdata=form_data,
-                        callback=self.parse,
-                        meta={
-                            "folder_name": folder["name"],
-                            "parent_path": current_path,
-                            "depth": depth + 1,
-                            "navigation_stack": response.meta.get(
-                                "navigation_stack", []
-                            )
-                            + [folder["name"]],
-                        },
-                        dont_filter=True,
-                        priority=10 - depth,  # Higher priority for shallower folders
-                    )
+        form_data = self.extract_form_data(response)
+        form_data["__EVENTTARGET"] = event_target
+        form_data["__EVENTARGUMENT"] = event_argument
+
+        self.logger.info(f"Navigating to folder: {folder_name} (depth: {depth + 1})")
+        return FormRequest(
+            url=response.url,
+            formdata=form_data,
+            callback=self.parse,
+            meta={
+                "folder_name": folder_name,
+                "parent_path": current_path,
+                "depth": depth + 1,
+                "navigation_stack": response.meta.get("navigation_stack", [])
+                + [folder_name],
+            },
+            dont_filter=True,
+            priority=10 - depth,
+        )
 
     def extract_form_data(self, response):
         """Extract all form data needed for ASP.NET postback."""
@@ -447,11 +442,9 @@ class QuestionPapersEnhancedSpider(scrapy.Spider):
             # The year should be the first element in the path
             potential_year = path_parts[0].strip()
 
-            # Validate that it's a 4-digit number
+            current_year = datetime.now().year
             if potential_year.isdigit() and len(potential_year) == 4:
                 year_int = int(potential_year)
-                # Validate reasonable range (2005 to current year + 1)
-                current_year = datetime.now().year
                 if 2005 <= year_int <= current_year + 1:
                     item["year"] = potential_year
                 else:
@@ -459,7 +452,6 @@ class QuestionPapersEnhancedSpider(scrapy.Spider):
                         f"Year {year_int} outside valid range for paper: {file_name}"
                     )
             else:
-                # Try to extract year from first path element if it contains other text
                 year_match = re.search(r"\b(20\d{2})\b", potential_year)
                 if year_match:
                     year_int = int(year_match.group(1))
