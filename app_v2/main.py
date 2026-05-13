@@ -183,7 +183,7 @@ if settings.METRICS_ENABLED:
     metrics_router = APIRouter(tags=["Metrics"])
 
     @metrics_router.get("/metrics")
-    def metrics() -> Response:
+    def _metrics() -> Response:
         return Response(generate_latest(), media_type=CONTENT_TYPE_LATEST)
 
     app.add_middleware(MetricsMiddleware)
