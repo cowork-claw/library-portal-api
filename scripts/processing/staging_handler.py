@@ -1,9 +1,4 @@
-"""
-Staging Handler for Library Portal V2
-
-Manages papers that need manual review due to low categorization confidence.
-Papers are staged in a JSON file with all extractable metadata pre-filled.
-"""
+"""Stage low-confidence papers for manual review."""
 
 import json
 import logging
@@ -15,14 +10,7 @@ logger = logging.getLogger(__name__)
 
 
 class StagingHandler:
-    """
-    Handles papers that need manual review.
-
-    Features:
-    - Pre-fills all extractable metadata
-    - Provides skeleton for manual completion
-    - Tracks review status
-    """
+    """Manage papers queued for manual classification review."""
 
     def __init__(self, staging_file: Path):
         self.staging_file = staging_file
@@ -62,15 +50,7 @@ class StagingHandler:
         reasoning: List[str],
         suggested_target: Optional[str] = None,
     ) -> None:
-        """
-        Add a paper to staging for manual review.
-
-        Args:
-            paper: The paper dictionary
-            confidence: Confidence score (0-1)
-            reasoning: List of reasoning strings explaining categorization
-            suggested_target: Suggested target file (may be None if uncertain)
-        """
+        """Add a paper to staging for manual review."""
         # Check for duplicates by URL
         url = paper.get("url")
         if url:
