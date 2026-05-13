@@ -52,7 +52,7 @@ logger = logging.getLogger(__name__)
 
 
 @asynccontextmanager
-async def lifespan(app: FastAPI):
+async def _lifespan(app: FastAPI):
     """Load paper data for the application lifespan."""
     logger.info("🚀 Starting Library Portal API V2...")
 
@@ -90,7 +90,7 @@ app = FastAPI(
     title=settings.APP_TITLE,
     description=settings.APP_DESCRIPTION,
     version=settings.APP_VERSION,
-    lifespan=lifespan,
+    lifespan=_lifespan,
     docs_url="/docs",
     redoc_url="/redoc",
 )
