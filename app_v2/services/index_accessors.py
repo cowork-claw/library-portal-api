@@ -25,7 +25,7 @@ class PaperIndexAccessors:
             return []
         return list(self._search_cached(normalized_query))
 
-    def get_by_url(self, url: str) -> Optional[Dict[str, Any]]:
+    def _get_by_url(self, url: str) -> Optional[Dict[str, Any]]:
         """Get a single paper by its URL, or None if not found."""
         return self._by_url.get(url)
 
@@ -45,16 +45,16 @@ class PaperIndexAccessors:
         """Get paper URLs for a specific course code."""
         return self._by_course.get(course_code.upper(), set())
 
-    def get_papers_by_course(self, course_code: str) -> List[Dict[str, Any]]:
+    def _get_papers_by_course(self, course_code: str) -> List[Dict[str, Any]]:
         """Get papers for a specific course code."""
         urls = self.get_urls_by_course(course_code)
         return self.get_by_urls(urls)
 
-    def get_urls_by_program(self, program: str) -> Set[str]:
+    def _get_urls_by_program(self, program: str) -> Set[str]:
         """Get paper URLs for a specific program."""
         return self._by_program.get(program, set())
 
-    def get_urls_by_stream(self, stream: str) -> Set[str]:
+    def _get_urls_by_stream(self, stream: str) -> Set[str]:
         """Get paper URLs for a specific stream."""
         return self._by_stream.get(stream, set())
 
@@ -66,7 +66,7 @@ class PaperIndexAccessors:
         """Get paper URLs for a specific degree type."""
         return self._by_degree_type.get(degree_type, set())
 
-    def get_urls_by_program_abbrev(self, program_abbrev: str) -> Set[str]:
+    def _get_urls_by_program_abbrev(self, program_abbrev: str) -> Set[str]:
         """Get paper URLs for a specific program abbreviation (case-insensitive)."""
         return self._by_program_abbrev.get(program_abbrev.upper(), set())
 

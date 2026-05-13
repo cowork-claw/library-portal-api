@@ -221,12 +221,12 @@ async def _get_papers(
     filters = [
         (year, paper_index.get_urls_by_year),
         (semester, paper_index.get_urls_by_semester),
-        (program, paper_index.get_urls_by_program),
+        (program, paper_index._get_urls_by_program),
         (course_code, paper_index.get_urls_by_course),
-        (stream, paper_index.get_urls_by_stream),
+        (stream, paper_index._get_urls_by_stream),
         (degree_type, paper_index.get_urls_by_degree_type),
         (paper_type, paper_index.get_urls_by_paper_type),
-        (program_abbrev, paper_index.get_urls_by_program_abbrev),
+        (program_abbrev, paper_index._get_urls_by_program_abbrev),
     ]
 
     filter_urls = _intersect_filter_url_sets(_collect_filter_url_sets(filters))
@@ -256,7 +256,7 @@ async def _lookup_paper(
     url: HttpUrl = Query(..., description="Exact paper URL to look up"),
 ) -> Paper:
     """Look up a single paper by its exact download URL."""
-    paper = paper_index.get_by_url(str(url))
+    paper = paper_index._get_by_url(str(url))
     if paper is None:
         raise HTTPException(status_code=404, detail="Paper not found")
     return Paper(**_to_public_paper(paper))
@@ -296,7 +296,7 @@ async def _get_papers_by_course(
     course_code: str = Path(..., max_length=20, description="Course code")
 ) -> CourseResponse:
     """Get all papers for a specific course code."""
-    papers = paper_index.get_papers_by_course(course_code.upper())
+    papers = paper_index._get_papers_by_course(course_code.upper())
 
     if not papers:
         raise HTTPException(
