@@ -99,6 +99,20 @@ CORE_STREAM_PATTERN = re.compile(r"^[A-Z]{2,3}1[0-2]7[12]$")
 # ICAS (B.Sc) pattern - starts with I but not ICE, ICT, IND, INF
 ICAS_PREFIXES = {"ICS", "IMA", "IPH", "ICH", "IBI"}  # ICAS-specific prefixes
 
+# Course-code digit mapping used by _get_semester_from_code.
+# Key: (year digit, semester-type digit). Masters-level year digit 5 maps to None.
+SEMESTER_BY_CODE_DIGITS = {
+    (1, 0): 1,
+    (1, 1): 1,
+    (1, 2): 2,
+    (1, 7): 1,
+    (2, 1): 3,
+    (2, 2): 4,
+    (3, 1): 5,
+    (3, 2): 6,
+    **{(4, sem_type): 7 if sem_type < 2 else 8 for sem_type in range(10)},
+}
+
 
 class PaperCategorizer:
     """
@@ -374,34 +388,11 @@ class PaperCategorizer:
         Returns:
             The extracted semester number (1-8) or None if not found.
         """
-        # Pattern: PREFIX + XYZW
-        # X = Year digit (1-5)
-        # Y = Semester type (1=odd, 2=even, 0/7=first year variants)
         match = re.match(r"^[A-Z]{2,4}(\d)(\d)", code)
         if not match:
             return None
 
-        year_digit = int(match.group(1))
-        sem_type = int(match.group(2))
-
-        if year_digit == 1:
-            # First year
-            if sem_type in [0, 7]:
-                return 1
-            elif sem_type in [1, 2]:
-                return 2 if sem_type == 2 else 1
-            return None
-        elif year_digit == 2:
-            return 3 if sem_type == 1 else 4
-        elif year_digit == 3:
-            return 5 if sem_type == 1 else 6
-        elif year_digit == 4:
-            return 7 if sem_type < 2 else 8
-        elif year_digit == 5:
-            # Masters level
-            return None
-
-        return None
+        return SEMESTER_BY_CODE_DIGITS.get((int(match.group(1)), int(match.group(2))))
 
 
 def write_paper_to_file(paper: Dict[str, Any], target_file: Path) -> bool:
