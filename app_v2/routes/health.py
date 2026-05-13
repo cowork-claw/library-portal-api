@@ -144,7 +144,6 @@ async def _reload_data(background_tasks: BackgroundTasks) -> ReloadResponse:
 
 
 def _do_reload(reload_id: str, data_directory) -> None:
-    """Reload data and atomically swap the paper index."""
     try:
         paper_index._reload_from_directory(DataLoader(data_directory))
         logger.info(
@@ -157,7 +156,6 @@ def _do_reload(reload_id: str, data_directory) -> None:
 
 
 def _check_scraper_health() -> ComponentHealth:
-    """Return scraper component health from the latest scrape log."""
     log_data = _load_scrape_log()
 
     if not log_data:
@@ -182,7 +180,6 @@ def _check_scraper_health() -> ComponentHealth:
 
 
 def _check_staging_health() -> ComponentHealth:
-    """Return staging queue health."""
     staging_file = settings.STAGING_DIRECTORY / "pending_review.json"
 
     if not staging_file.exists():
@@ -210,7 +207,6 @@ def _check_staging_health() -> ComponentHealth:
 
 
 def _load_scrape_log() -> dict:
-    """Load scraper log JSON, returning an empty dict on failure."""
     try:
         if settings.SCRAPE_LOG_FILE.exists():
             with open(settings.SCRAPE_LOG_FILE, "r") as f:

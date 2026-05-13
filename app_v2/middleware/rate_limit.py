@@ -21,7 +21,6 @@ EXEMPT_PATHS: frozenset[str] = frozenset(
 
 
 def _is_rate_limited_path(path: str) -> bool:
-    """Return whether a path should be rate-limited."""
     if path in EXEMPT_PATHS:
         return False
     if path.startswith("/api"):
@@ -48,13 +47,11 @@ class _FixedWindow:
         self.last_seen = now
 
     def _reset_if_expired(self, now: float) -> None:
-        """Reset the window if it has expired."""
         if now - self.window_start >= self.window_seconds:
             self.count = 0
             self.window_start = now
 
     def _try_consume(self, now: float | None = None) -> bool:
-        """Try to record one request. Returns True if allowed."""
         now = now or time.monotonic()
         self.last_seen = now
         self._reset_if_expired(now)
@@ -65,7 +62,6 @@ class _FixedWindow:
 
     @property
     def _retry_after_seconds(self) -> int:
-        """Seconds remaining until the current window resets."""
         now = time.monotonic()
         elapsed = now - self.window_start
         remaining = self.window_seconds - elapsed
