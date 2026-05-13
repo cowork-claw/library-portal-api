@@ -1,5 +1,7 @@
 """Categorize scraped papers into organized JSON targets."""
 
+import json
+import logging
 import re
 from pathlib import Path
 from typing import Any, Dict, List, Optional
@@ -15,7 +17,38 @@ from .paper_categorizer_rules import (
     SEMESTER_BY_CODE_DIGITS,
     CategorizationResult,
 )
-from .paper_writer import write_paper_to_file as write_paper_to_file
+
+logger = logging.getLogger(__name__)
+
+
+def write_paper_to_file(paper: Dict[str, Any], target_file: Path) -> bool:
+    """Write a categorized paper into an organized JSON file."""
+    try:
+        if target_file.exists():
+            with open(target_file, "r", encoding="utf-8") as f:
+                data = json.load(f)
+        else:
+            data = {}
+
+        course_code = paper.get("course_code", "UNKNOWN")
+        if course_code not in data:
+            data[course_code] = []
+
+        existing_urls = {p.get("url") for p in data[course_code]}
+        if paper.get("url") in existing_urls:
+            logger.debug(f"Paper already exists in {target_file}: {paper.get('url')}")
+            return False
+
+        data[course_code].append(paper)
+        with open(target_file, "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=2, ensure_ascii=False, sort_keys=True)
+
+        logger.info(f"Added paper to {target_file}: {course_code}")
+        return True
+
+    except Exception as e:
+        logger.error(f"Error writing paper to {target_file}: {e}")
+        return False
 
 
 class PaperCategorizer:
