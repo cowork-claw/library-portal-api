@@ -20,6 +20,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from scraper.scraper_config import DATA_DIRECTORY, STAGING_FILE
 from scripts.processing.paper_categorizer import PaperCategorizer, write_paper_to_file
+from scripts.processing.paper_categorizer_rules import AUTO_WRITE_CONFIDENCE
 from scripts.processing.staging_handler import StagingHandler
 
 # Configure logging
@@ -115,7 +116,7 @@ def _process_paper(
         result.confidence,
     )
 
-    if result.should_auto_write and result.target_file:
+    if result.confidence >= AUTO_WRITE_CONFIDENCE and result.target_file:
         _handle_auto_write(paper, result, dry_run, stats)
     else:
         _handle_staging(paper, result, dry_run, stats, staging_handler)

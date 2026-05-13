@@ -5,6 +5,8 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
+AUTO_WRITE_CONFIDENCE = 0.85
+
 
 @dataclass
 class CategorizationResult:
@@ -15,11 +17,6 @@ class CategorizationResult:
     category: str  # 'btech_branch', 'first_year_cs', 'first_year_core', 'masters', 'bsc', 'other', 'uncertain'
     reasoning: List[str] = field(default_factory=list)
     metadata_filled: Dict[str, Any] = field(default_factory=dict)
-
-    @property
-    def should_auto_write(self) -> bool:
-        """Papers with >=0.85 confidence are auto-written."""
-        return self.confidence >= 0.85
 
 
 # Course code prefix to branch mapping
