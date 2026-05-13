@@ -10,7 +10,7 @@ import os
 import secrets
 from typing import Callable, Optional
 
-from fastapi import Request, status
+from fastapi import Request, Response, status
 from fastapi.responses import JSONResponse
 from starlette.middleware.base import BaseHTTPMiddleware
 
@@ -144,3 +144,44 @@ class APIKeyMiddleware(BaseHTTPMiddleware):
     def _extract_api_key(self, request: Request) -> Optional[str]:
         """Extract API key from request headers."""
         return request.headers.get("X-API-Key")
+
+
+class SecurityHeadersMiddleware(BaseHTTPMiddleware):
+    """Add security headers to all responses."""
+
+    async def dispatch(self, request: Request, call_next: Callable) -> Response:
+        response = await call_next(request)
+        response.headers["X-Content-Type-Options"] = "nosniff"
+        response.headers["X-Frame-Options"] = "DENY"
+        response.headers["X-XSS-Protection"] = "1; mode=block"
+        response.headers["Strict-Transport-Security"] = (
+            "max-age=31536000; includeSubDomains"
+        )
+        response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
+        response.headers["Permissions-Policy"] = (
+            "geolocation=(), microphone=(), camera=(), payment=(), usb=(), xr-spatial-tracking=()"
+        )
+
+        if request.url.path.startswith(("/docs", "/redoc", "/openapi.json")):
+            response.headers["Content-Security-Policy"] = (
+                "default-src 'self'; "
+                "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; "
+                "style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; "
+                "img-src 'self' https://fastapi.tiangolo.com https://cdn.jsdelivr.net data:; "
+                "connect-src 'self' https://cdn.jsdelivr.net; "
+                "object-src 'none'; "
+                "frame-src 'none'; "
+                "upgrade-insecure-requests"
+            )
+        else:
+            response.headers["Content-Security-Policy"] = (
+                "default-src 'self'; "
+                "img-src 'self' https://libportal.manipal.edu data:; "
+                "object-src 'none'; "
+                "frame-src 'none'; "
+                "base-uri 'self'; "
+                "form-action 'self'; "
+                "upgrade-insecure-requests"
+            )
+
+        return response

@@ -35,9 +35,12 @@ if settings.SENTRY_DSN:
 from .data_loader import DataLoader
 
 # Import middleware
-from .middleware.auth import OPENCLAW_BOT_API_KEY_ENV, APIKeyMiddleware
+from .middleware.auth import (
+    OPENCLAW_BOT_API_KEY_ENV,
+    APIKeyMiddleware,
+    SecurityHeadersMiddleware,
+)
 from .middleware.rate_limit import RateLimitMiddleware
-from .middleware.security import SecurityHeadersMiddleware
 from .middleware.structured_logging import (
     RequestIDMiddleware,
     StructuredLoggingMiddleware,
