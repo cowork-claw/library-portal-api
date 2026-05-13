@@ -119,7 +119,7 @@ class PaperIndex(PaperIndexAccessors):
 
         logger.info(f"Indexed {len(self.papers)} papers")
 
-    def reload_from_directory(self, loader: DataLoader) -> None:
+    def _reload_from_directory(self, loader: DataLoader) -> None:
         """Build a replacement index first, then publish it."""
         new_index = PaperIndex()
         new_index.load_from_directory(loader)

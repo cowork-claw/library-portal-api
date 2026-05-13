@@ -137,7 +137,7 @@ async def reload_data(background_tasks: BackgroundTasks) -> ReloadResponse:
 def _do_reload(reload_id: str, data_directory) -> None:
     """Reload data and atomically swap the paper index."""
     try:
-        paper_index.reload_from_directory(DataLoader(data_directory))
+        paper_index._reload_from_directory(DataLoader(data_directory))
         logger.info(
             "Reload %s complete: %d papers loaded",
             reload_id,
