@@ -224,8 +224,8 @@ async def _get_papers(
         (program, paper_index._get_urls_by_program),
         (course_code, paper_index.get_urls_by_course),
         (stream, paper_index._get_urls_by_stream),
-        (degree_type, paper_index.get_urls_by_degree_type),
-        (paper_type, paper_index.get_urls_by_paper_type),
+        (degree_type, paper_index._get_urls_by_degree_type),
+        (paper_type, paper_index._get_urls_by_paper_type),
         (program_abbrev, paper_index._get_urls_by_program_abbrev),
     ]
 

@@ -58,11 +58,11 @@ class PaperIndexAccessors:
         """Get paper URLs for a specific stream."""
         return self._by_stream.get(stream, set())
 
-    def get_urls_by_paper_type(self, paper_type: str) -> Set[str]:
+    def _get_urls_by_paper_type(self, paper_type: str) -> Set[str]:
         """Get paper URLs for a specific paper type."""
         return self._by_paper_type.get(paper_type, set())
 
-    def get_urls_by_degree_type(self, degree_type: str) -> Set[str]:
+    def _get_urls_by_degree_type(self, degree_type: str) -> Set[str]:
         """Get paper URLs for a specific degree type."""
         return self._by_degree_type.get(degree_type, set())
 

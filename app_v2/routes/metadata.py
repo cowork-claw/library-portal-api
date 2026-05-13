@@ -6,12 +6,12 @@ from ..models import MetadataResponse, StatisticsResponse
 from ..services.indexing import paper_index
 
 router = APIRouter(prefix="/api", tags=["Metadata"])
+METADATA_OPERATION_ID = "get_metadata_api_metadata_get"
+STATISTICS_OPERATION_ID = "get_statistics_api_statistics_get"
 
 
 @router.get(
-    "/metadata",
-    response_model=MetadataResponse,
-    operation_id="get_metadata_api_metadata_get",
+    "/metadata", response_model=MetadataResponse, operation_id=METADATA_OPERATION_ID
 )
 async def _get_metadata() -> MetadataResponse:
     """Return available filter values for clients."""
@@ -31,7 +31,7 @@ async def _get_metadata() -> MetadataResponse:
 @router.get(
     "/statistics",
     response_model=StatisticsResponse,
-    operation_id="get_statistics_api_statistics_get",
+    operation_id=STATISTICS_OPERATION_ID,
 )
 async def _get_statistics() -> StatisticsResponse:
     """Return aggregate paper collection counts."""

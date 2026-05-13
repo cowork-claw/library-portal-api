@@ -28,6 +28,8 @@ router = APIRouter(prefix="/health", tags=["Health"])
 
 # Track application start time
 APP_START_TIME = datetime.now()
+DATA_HEALTH_OPERATION_ID = "data_health_health_data_get"
+SCRAPER_HEALTH_OPERATION_ID = "scraper_health_health_scraper_get"
 
 
 @router.get("", response_model=HealthResponse, operation_id="health_check_health_get")
@@ -74,9 +76,7 @@ async def _health_check() -> HealthResponse:
 
 
 @router.get(
-    "/data",
-    response_model=DataHealthResponse,
-    operation_id="data_health_health_data_get",
+    "/data", response_model=DataHealthResponse, operation_id=DATA_HEALTH_OPERATION_ID
 )
 async def _data_health() -> DataHealthResponse:
     """Return loaded paper and data integrity status."""
@@ -98,7 +98,7 @@ async def _data_health() -> DataHealthResponse:
 @router.get(
     "/scraper",
     response_model=ScraperHealthResponse,
-    operation_id="scraper_health_health_scraper_get",
+    operation_id=SCRAPER_HEALTH_OPERATION_ID,
 )
 async def _scraper_health() -> ScraperHealthResponse:
     """Return scraper run history and configuration status."""
