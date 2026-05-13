@@ -159,16 +159,7 @@ async def reload_data(background_tasks: BackgroundTasks) -> ReloadResponse:
 
 
 def _do_reload(reload_id: str, data_directory) -> None:
-    """Perform the actual data reload.
-
-    Runs as a background task. Creates a new DataLoader, loads data from
-    disk, and atomically swaps the index. Existing requests continue
-    against the old index until the swap is complete.
-
-    Args:
-        reload_id: Unique identifier for this reload operation.
-        data_directory: Path to the data directory to reload from.
-    """
+    """Reload data and atomically swap the paper index."""
     try:
         paper_index.reload_from_directory(DataLoader(data_directory))
         logger.info(
@@ -181,14 +172,7 @@ def _do_reload(reload_id: str, data_directory) -> None:
 
 
 def _check_scraper_health() -> ComponentHealth:
-    """
-    Check the health of the scraper component.
-
-    Reads the latest scraper log to determine status and last run time.
-
-    Returns:
-        ComponentHealth: Health status object for the scraper.
-    """
+    """Return scraper component health from the latest scrape log."""
     log_data = _load_scrape_log()
 
     if not log_data:
@@ -213,14 +197,7 @@ def _check_scraper_health() -> ComponentHealth:
 
 
 def _check_staging_health() -> ComponentHealth:
-    """
-    Check the health of the staging area.
-
-    Verifies if there are any papers pending review in the staging file.
-
-    Returns:
-        ComponentHealth: Health status object for the staging component.
-    """
+    """Return staging queue health."""
     staging_file = settings.STAGING_DIRECTORY / "pending_review.json"
 
     if not staging_file.exists():
@@ -248,13 +225,7 @@ def _check_staging_health() -> ComponentHealth:
 
 
 def _load_scrape_log() -> dict:
-    """
-    Load the scraper log file safely.
-
-    Returns:
-        dict: The content of the scraper log, or an empty dict if
-              the file doesn't exist or is invalid.
-    """
+    """Load scraper log JSON, returning an empty dict on failure."""
     try:
         if settings.SCRAPE_LOG_FILE.exists():
             with open(settings.SCRAPE_LOG_FILE, "r") as f:
