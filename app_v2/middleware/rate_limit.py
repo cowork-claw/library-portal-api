@@ -119,7 +119,6 @@ class RateLimitMiddleware(BaseHTTPMiddleware):
         return await call_next(request)
 
     def _identify_client(self, request: Request) -> str:
-        """Identify a client without storing or logging raw credentials."""
         api_key = request.headers.get("X-API-Key", "").strip()
         if api_key and self._is_configured_key(api_key):
             fingerprint = hashlib.sha256(api_key.encode("utf-8")).hexdigest()[:16]
@@ -128,11 +127,9 @@ class RateLimitMiddleware(BaseHTTPMiddleware):
         return f"ip:{client_host}"
 
     def _is_configured_key(self, api_key: str) -> bool:
-        """Return True only for API keys this middleware was configured to trust."""
         return any(secrets.compare_digest(api_key, key) for key in self._valid_api_keys)
 
     def _get_or_create_window(self, client_id: str, now: float) -> _FixedWindow:
-        """Get or create a fixed window for the given client."""
         self._prune_windows(now)
         if client_id not in self._windows:
             self._evict_oldest_if_full()
@@ -143,7 +140,6 @@ class RateLimitMiddleware(BaseHTTPMiddleware):
         return self._windows[client_id]
 
     def _prune_windows(self, now: float) -> None:
-        """Remove expired or least-recently-seen client windows."""
         expired = [
             client_id
             for client_id, window in self._windows.items()
@@ -164,7 +160,6 @@ class RateLimitMiddleware(BaseHTTPMiddleware):
             self._windows.pop(client_id, None)
 
     def _evict_oldest_if_full(self) -> None:
-        """Make room for a new client when the hard cap is reached."""
         if len(self._windows) < self.max_clients:
             return
 

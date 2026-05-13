@@ -21,7 +21,6 @@ __all__ = [
 
 
 def _default_streams_factory() -> List[str]:
-    """Default factory for valid_for_streams."""
     return ["all"]
 
 
