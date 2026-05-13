@@ -22,7 +22,6 @@ logger = logging.getLogger(__name__)
 
 
 def _new_stats(total: int) -> dict:
-    """Create the summary dictionary used by the categorizer run."""
     return {
         "total": total,
         "auto_written": 0,
@@ -35,7 +34,6 @@ def _new_stats(total: int) -> dict:
 
 
 def _record_result(stats: dict, category: str, confidence: float) -> None:
-    """Update category and confidence counters for one categorization result."""
     stats["by_category"][category] = stats["by_category"].get(category, 0) + 1
 
     if confidence >= AUTO_WRITE_CONFIDENCE:
@@ -47,7 +45,6 @@ def _record_result(stats: dict, category: str, confidence: float) -> None:
 
 
 def _merge_metadata(paper: dict, metadata: dict) -> None:
-    """Fill missing paper metadata discovered by the categorizer."""
     for key, value in metadata.items():
         if key not in paper or paper[key] is None:
             paper[key] = value

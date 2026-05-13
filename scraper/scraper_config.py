@@ -24,7 +24,6 @@ STAGING_FILE: Path = STAGING_DIRECTORY / "pending_review.json"
 
 
 def _should_scrape_year(year: int) -> bool:
-    """Check if a year should be scraped based on threshold and blacklist."""
     if year in BLACKLISTED_YEARS:
         return False
     return year >= TARGET_YEAR_THRESHOLD

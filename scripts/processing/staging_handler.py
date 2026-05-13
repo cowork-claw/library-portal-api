@@ -18,7 +18,6 @@ class StagingHandler:
         self._load()
 
     def _load(self) -> None:
-        """Load existing staging data."""
         if self.staging_file.exists():
             try:
                 with open(self.staging_file, "r", encoding="utf-8") as f:
@@ -37,7 +36,6 @@ class StagingHandler:
         }
 
     def _save(self) -> None:
-        """Save staging data to file."""
         self.data["last_updated"] = datetime.now().isoformat()
         with open(self.staging_file, "w", encoding="utf-8") as f:
             json.dump(self.data, f, indent=2, ensure_ascii=False)
