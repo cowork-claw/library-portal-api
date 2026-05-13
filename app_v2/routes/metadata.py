@@ -8,8 +8,12 @@ from ..services.indexing import paper_index
 router = APIRouter(prefix="/api", tags=["Metadata"])
 
 
-@router.get("/metadata", response_model=MetadataResponse)
-async def get_metadata() -> MetadataResponse:
+@router.get(
+    "/metadata",
+    response_model=MetadataResponse,
+    operation_id="get_metadata_api_metadata_get",
+)
+async def _get_metadata() -> MetadataResponse:
     """Return available filter values for clients."""
     return MetadataResponse(
         years=list(paper_index.unique_years),
@@ -24,8 +28,12 @@ async def get_metadata() -> MetadataResponse:
     )
 
 
-@router.get("/statistics", response_model=StatisticsResponse)
-async def get_statistics() -> StatisticsResponse:
+@router.get(
+    "/statistics",
+    response_model=StatisticsResponse,
+    operation_id="get_statistics_api_statistics_get",
+)
+async def _get_statistics() -> StatisticsResponse:
     """Return aggregate paper collection counts."""
     return StatisticsResponse(
         total_papers=paper_index.total_papers,
