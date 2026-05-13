@@ -62,6 +62,9 @@ class StaticMetrics:
     max_cyclomatic_complexity: int
     complex_functions: int
     large_modules: int
+    module_overhead_score: int
+    source_line_score: int
+    public_surface_score: int
     static_risk_score: int
 
 
@@ -88,7 +91,11 @@ class ComplexityVisitor(ast.NodeVisitor):
         self.generic_visit(node)
 
     def visit_Try(self, node: ast.Try) -> Any:  # noqa: N802
-        self.score += len(node.handlers) + (1 if node.orelse else 0) + (1 if node.finalbody else 0)
+        self.score += (
+            len(node.handlers)
+            + (1 if node.orelse else 0)
+            + (1 if node.finalbody else 0)
+        )
         self.generic_visit(node)
 
     def visit_BoolOp(self, node: ast.BoolOp) -> Any:  # noqa: N802
@@ -152,7 +159,9 @@ def compute_static_metrics() -> StaticMetrics:
         text = path.read_text(encoding="utf-8")
         lines = text.splitlines()
         modules += 1
-        source_lines += sum(1 for line in lines if line.strip() and not line.lstrip().startswith("#"))
+        source_lines += sum(
+            1 for line in lines if line.strip() and not line.lstrip().startswith("#")
+        )
         if len(lines) > 350:
             large_modules += 1
 
@@ -172,10 +181,16 @@ def compute_static_metrics() -> StaticMetrics:
             if complexity > 12:
                 complex_functions += 1
 
+    module_overhead_score = max(0, modules - 25) * 5
+    source_line_score = max(0, source_lines - 3300) // 20
+    public_surface_score = max(0, public_functions - 80) * 2
     static_risk_score = (
         long_functions * 25
         + complex_functions * 40
         + large_modules * 30
+        + module_overhead_score
+        + source_line_score
+        + public_surface_score
         + max(0, max_function_lines - 75) * 2
         + max(0, max_cyclomatic_complexity - 15) * 10
     )
@@ -188,6 +203,9 @@ def compute_static_metrics() -> StaticMetrics:
         max_cyclomatic_complexity=max_cyclomatic_complexity,
         complex_functions=complex_functions,
         large_modules=large_modules,
+        module_overhead_score=module_overhead_score,
+        source_line_score=source_line_score,
+        public_surface_score=public_surface_score,
         static_risk_score=static_risk_score,
     )
 
@@ -210,16 +228,28 @@ def exercise_data_and_index(suite: CheckSuite) -> Any:
     suite.require(len(papers) > 0, "data loader returned no papers")
     suite.require(len(urls) == len(set(urls)), "data loader returned duplicate URLs")
     suite.require(not loader.stats.errors, f"data loader errors: {loader.stats.errors}")
-    suite.require(loader.stats.total_papers == len(papers), "loader total_papers mismatch")
-    suite.require(loader.stats.unique_urls == len(set(urls)), "loader unique_urls mismatch")
+    suite.require(
+        loader.stats.total_papers == len(papers), "loader total_papers mismatch"
+    )
+    suite.require(
+        loader.stats.unique_urls == len(set(urls)), "loader unique_urls mismatch"
+    )
 
     index = PaperIndex()
     index.load_from_directory(DataLoader(DATA_DIR))
     suite.require(index.total_papers == len(papers), "index total differs from loader")
     suite.require(len(index.unique_years) > 0, "index has no years")
-    suite.require(len(index.unique_program_abbrevs) > 0, "index has no program abbreviations")
-    suite.require(sum(index.count_by_year.values()) == index.total_papers, "year counts do not sum to total")
-    suite.require(sum(index.count_by_program_abbrev.values()) == index.total_papers, "program abbreviation counts do not sum to total")
+    suite.require(
+        len(index.unique_program_abbrevs) > 0, "index has no program abbreviations"
+    )
+    suite.require(
+        sum(index.count_by_year.values()) == index.total_papers,
+        "year counts do not sum to total",
+    )
+    suite.require(
+        sum(index.count_by_program_abbrev.values()) == index.total_papers,
+        "program abbreviation counts do not sum to total",
+    )
     return index
 
 
@@ -240,72 +270,171 @@ def exercise_api_contract(suite: CheckSuite, index: Any) -> None:
     with TestClient(main_module.app) as client:
         for path in ("/", "/health", "/openapi.json"):
             response = client.get(path)
-            suite.require(response.status_code == 200, f"public endpoint {path} returned {response.status_code}")
+            suite.require(
+                response.status_code == 200,
+                f"public endpoint {path} returned {response.status_code}",
+            )
 
         for path in ("/api/metadata", "/api/papers", "/health/data"):
             response = client.get(path)
-            suite.require(response.status_code == 401, f"protected endpoint {path} without key returned {response.status_code}")
-            suite.require("x-content-type-options" in response.headers, f"security headers missing on {path} 401")
+            suite.require(
+                response.status_code == 401,
+                f"protected endpoint {path} without key returned {response.status_code}",
+            )
+            suite.require(
+                "x-content-type-options" in response.headers,
+                f"security headers missing on {path} 401",
+            )
 
         metadata_response = client.get("/api/metadata", headers=headers)
-        suite.require(metadata_response.status_code == 200, "metadata endpoint failed with API key")
+        suite.require(
+            metadata_response.status_code == 200,
+            "metadata endpoint failed with API key",
+        )
         metadata = _json(metadata_response)
-        suite.require(set(metadata) >= {"years", "programs", "program_abbrevs", "semesters"}, "metadata response missing expected keys")
-        suite.require(metadata.get("years") == list(index.unique_years), "metadata years differ from index")
+        suite.require(
+            set(metadata) >= {"years", "programs", "program_abbrevs", "semesters"},
+            "metadata response missing expected keys",
+        )
+        suite.require(
+            metadata.get("years") == list(index.unique_years),
+            "metadata years differ from index",
+        )
 
         statistics_response = client.get("/api/statistics", headers=headers)
-        suite.require(statistics_response.status_code == 200, "statistics endpoint failed")
+        suite.require(
+            statistics_response.status_code == 200, "statistics endpoint failed"
+        )
         statistics = _json(statistics_response)
-        suite.require(statistics.get("total_papers") == index.total_papers, "statistics total_papers differs from index")
+        suite.require(
+            statistics.get("total_papers") == index.total_papers,
+            "statistics total_papers differs from index",
+        )
 
-        list_response = client.get("/api/papers", headers=headers, params={"limit": 5, "offset": 0})
+        list_response = client.get(
+            "/api/papers", headers=headers, params={"limit": 5, "offset": 0}
+        )
         suite.require(list_response.status_code == 200, "papers list endpoint failed")
         list_payload = _json(list_response)
-        suite.require(list_payload.get("total") == index.total_papers, "unfiltered papers total differs from index")
-        suite.require(len(list_payload.get("papers", [])) == min(5, index.total_papers), "papers limit not honored")
+        suite.require(
+            list_payload.get("total") == index.total_papers,
+            "unfiltered papers total differs from index",
+        )
+        suite.require(
+            len(list_payload.get("papers", [])) == min(5, index.total_papers),
+            "papers limit not honored",
+        )
 
-        first_paper = sorted((paper for paper in index.papers if paper.get("url")), key=lambda item: item["url"])[0]
-        lookup_response = client.get("/api/papers/lookup", headers=headers, params={"url": first_paper["url"]})
-        suite.require(lookup_response.status_code == 200, "lookup endpoint failed for known URL")
+        first_paper = sorted(
+            (paper for paper in index.papers if paper.get("url")),
+            key=lambda item: item["url"],
+        )[0]
+        lookup_response = client.get(
+            "/api/papers/lookup", headers=headers, params={"url": first_paper["url"]}
+        )
+        suite.require(
+            lookup_response.status_code == 200, "lookup endpoint failed for known URL"
+        )
         lookup_payload = _json(lookup_response)
-        suite.require(lookup_payload.get("url") == first_paper["url"], "lookup returned wrong paper")
+        suite.require(
+            lookup_payload.get("url") == first_paper["url"],
+            "lookup returned wrong paper",
+        )
 
         if first_paper.get("course_code"):
-            search_response = client.get("/api/papers", headers=headers, params={"search": first_paper["course_code"], "limit": 10})
+            search_response = client.get(
+                "/api/papers",
+                headers=headers,
+                params={"search": first_paper["course_code"], "limit": 10},
+            )
             suite.require(search_response.status_code == 200, "search endpoint failed")
             search_payload = _json(search_response)
-            suite.require(search_payload.get("total", 0) >= 1, "search for known course code returned no hits")
+            suite.require(
+                search_payload.get("total", 0) >= 1,
+                "search for known course code returned no hits",
+            )
 
         first_abbrev = index.unique_program_abbrevs[0]
-        abbrev_response = client.get("/api/papers", headers=headers, params={"program_abbrev": first_abbrev, "limit": 500})
-        suite.require(abbrev_response.status_code == 200, "program_abbrev filter failed")
+        abbrev_response = client.get(
+            "/api/papers",
+            headers=headers,
+            params={"program_abbrev": first_abbrev, "limit": 500},
+        )
+        suite.require(
+            abbrev_response.status_code == 200, "program_abbrev filter failed"
+        )
         abbrev_payload = _json(abbrev_response)
-        suite.require(abbrev_payload.get("total") == index.count_by_program_abbrev[first_abbrev], "program_abbrev total differs from index")
+        suite.require(
+            abbrev_payload.get("total") == index.count_by_program_abbrev[first_abbrev],
+            "program_abbrev total differs from index",
+        )
 
-        invalid_response = client.get("/api/papers", headers=headers, params={"semester": 99})
-        suite.require(invalid_response.status_code == 422, "invalid semester did not fail validation")
+        invalid_response = client.get(
+            "/api/papers", headers=headers, params={"semester": 99}
+        )
+        suite.require(
+            invalid_response.status_code == 422,
+            "invalid semester did not fail validation",
+        )
 
 
 def exercise_categorizer_contract(suite: CheckSuite) -> None:
     from scripts.processing.paper_categorizer import PaperCategorizer
 
     fixtures = (
-        ({"course_code": "CSE2201", "program": "B.Tech", "year": 2024}, "btech/branches/CSE.json", "btech_branch"),
-        ({"course_code": "CSS1001", "program": "B.Tech", "year": 2024}, "btech/first_year/cs_stream.json", "first_year_cs"),
-        ({"course_code": "MAT1171", "program": "B.Tech", "year": 2024}, "btech/first_year/non_cs_stream.json", "first_year_core"),
-        ({"course_code": "CSE5001", "program": "M.Tech", "year": 2024}, "masters/mtech.json", "masters"),
-        ({"course_code": "ICS1001", "program": "B.Sc", "year": 2024}, "bsc/icas.json", "bsc"),
-        ({"course_code": "ZZZ9001", "program": "Unknown", "year": 2024}, "other.json", "other"),
+        (
+            {"course_code": "CSE2201", "program": "B.Tech", "year": 2024},
+            "btech/branches/CSE.json",
+            "btech_branch",
+        ),
+        (
+            {"course_code": "CSS1001", "program": "B.Tech", "year": 2024},
+            "btech/first_year/cs_stream.json",
+            "first_year_cs",
+        ),
+        (
+            {"course_code": "MAT1171", "program": "B.Tech", "year": 2024},
+            "btech/first_year/non_cs_stream.json",
+            "first_year_core",
+        ),
+        (
+            {"course_code": "CSE5001", "program": "M.Tech", "year": 2024},
+            "masters/mtech.json",
+            "masters",
+        ),
+        (
+            {"course_code": "ICS1001", "program": "B.Sc", "year": 2024},
+            "bsc/icas.json",
+            "bsc",
+        ),
+        (
+            {"course_code": "ZZZ9001", "program": "Unknown", "year": 2024},
+            "other.json",
+            "other",
+        ),
     )
 
     with tempfile.TemporaryDirectory(prefix="autoresearch-staging-") as staging_dir:
         categorizer = PaperCategorizer(DATA_DIR, Path(staging_dir))
         for paper, expected_suffix, expected_category in fixtures:
             result = categorizer.categorize(paper)
-            target = result.target_file.relative_to(DATA_DIR).as_posix() if result.target_file else ""
-            suite.require(target == expected_suffix, f"categorizer target for {paper['course_code']} was {target}")
-            suite.require(result.category == expected_category, f"categorizer category for {paper['course_code']} was {result.category}")
-            suite.require(result.confidence >= 0.5, f"categorizer confidence too low for {paper['course_code']}")
+            target = (
+                result.target_file.relative_to(DATA_DIR).as_posix()
+                if result.target_file
+                else ""
+            )
+            suite.require(
+                target == expected_suffix,
+                f"categorizer target for {paper['course_code']} was {target}",
+            )
+            suite.require(
+                result.category == expected_category,
+                f"categorizer category for {paper['course_code']} was {result.category}",
+            )
+            suite.require(
+                result.confidence >= 0.5,
+                f"categorizer confidence too low for {paper['course_code']}",
+            )
 
 
 def main() -> int:
@@ -330,6 +459,9 @@ def main() -> int:
         "long_functions": static_metrics.long_functions,
         "complex_functions": static_metrics.complex_functions,
         "large_modules": static_metrics.large_modules,
+        "module_overhead_score": static_metrics.module_overhead_score,
+        "source_line_score": static_metrics.source_line_score,
+        "public_surface_score": static_metrics.public_surface_score,
         "max_function_lines": static_metrics.max_function_lines,
         "max_cyclomatic_complexity": static_metrics.max_cyclomatic_complexity,
         "indexed_papers": index.total_papers,
