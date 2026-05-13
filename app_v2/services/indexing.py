@@ -25,7 +25,6 @@ SEARCH_META_FIELDS = (
 def _build_search_meta(
     paper: Dict[str, Any], field_meta_cache: Optional[Dict[str, Dict[str, Any]]] = None
 ) -> Dict[str, Dict[str, Any]]:
-    """Build normalized search metadata for a paper, optionally using Flyweight reuse."""
     search_meta: Dict[str, Dict[str, Any]] = {}
     for field in SEARCH_META_FIELDS:
         if (val := paper.get(field)) and (val_lower := str(val).lower()):
@@ -120,7 +119,6 @@ class PaperIndex(PaperIndexAccessors):
         logger.info(f"Indexed {len(self.papers)} papers")
 
     def _reload_from_directory(self, loader: DataLoader) -> None:
-        """Build a replacement index first, then publish it."""
         new_index = PaperIndex()
         new_index.load_from_directory(loader)
         if new_index.loader and new_index.loader.stats.errors:
@@ -128,7 +126,6 @@ class PaperIndex(PaperIndexAccessors):
         self._replace_with(new_index)
 
     def _replace_with(self, other: "PaperIndex") -> None:
-        """Replace this index's state with a fully built index."""
         with self._swap_lock:
             swap_lock = self._swap_lock
             new_state = {
@@ -140,7 +137,6 @@ class PaperIndex(PaperIndexAccessors):
             self._swap_lock = swap_lock
 
     def _clear_indexes(self) -> None:
-        """Clear existing indexes and data."""
         self._by_url.clear()
         self._by_year.clear()
         self._by_semester.clear()
@@ -161,7 +157,6 @@ class PaperIndex(PaperIndexAccessors):
         self._unique_streams.clear()
 
     def _build_indexes(self) -> None:
-        """Build all indexes from loaded papers."""
         self._clear_indexes()
 
         # Reset count aggregations

@@ -55,32 +55,27 @@ class PaperCategorizer:
     """Categorize papers by target file, confidence, and derived metadata."""
 
     def __init__(self, data_directory: Path, staging_directory: Path) -> None:
-        """Initialize with organized data and staging directories."""
         self.data_dir = data_directory
         self.staging_dir = staging_directory
         self.staging_dir.mkdir(parents=True, exist_ok=True)
 
     def _normalized_course_code(self, paper: Dict[str, Any]) -> str:
-        """Return a compact uppercase course code from scraper fields."""
         course_code = str(
             paper.get("course_code", "") or paper.get("subject_code", "")
         ).upper()
         return re.sub(r"\s+", "", course_code.strip())
 
     def _course_prefix(self, course_code: str) -> str:
-        """Extract the alphabetic course prefix, if present."""
         prefix_match = re.match(r"^([A-Z]{2,4})", course_code)
         return prefix_match.group(1) if prefix_match else ""
 
     def _uncertain_result(self, reasoning: List[str]) -> CategorizationResult:
-        """Return the standard low-confidence result for malformed course codes."""
         reasoning.append("Could not extract prefix from course code")
         return CategorizationResult(None, 0.1, "uncertain", reasoning, {})
 
     def _categorize_icas(
         self, prefix: str, reasoning: List[str]
     ) -> CategorizationResult:
-        """Return the B.Sc ICAS categorization result."""
         reasoning.append(f"ICAS pattern detected: {prefix}")
         return CategorizationResult(
             self.data_dir / "bsc" / "icas.json",
@@ -93,7 +88,6 @@ class PaperCategorizer:
     def _categorize_btech_branch(
         self, prefix: str, course_code: str, reasoning: List[str]
     ) -> Optional[CategorizationResult]:
-        """Return a B.Tech branch result when the prefix maps to an existing file."""
         branch = PREFIX_TO_BRANCH.get(prefix)
         if not branch:
             return None
