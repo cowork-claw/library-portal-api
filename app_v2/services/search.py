@@ -4,7 +4,7 @@ Search Service for Library Portal API V2
 Provides fuzzy search functionality for finding papers.
 """
 
-from typing import Any, Dict, List, Set
+from typing import Any, Dict, List, Optional, Set
 
 from thefuzz import fuzz
 
@@ -76,6 +76,57 @@ def search_papers(
     return [paper for paper, score in results]
 
 
+def _field_search_data(
+    paper: Dict[str, Any], search_meta: Optional[Dict[str, Any]], field_name: str
+) -> Optional[tuple[str, Optional[Set[str]]]]:
+    """Return lower-case field text and cached words for a searchable field."""
+    if search_meta and (meta := search_meta.get(field_name)):
+        return meta["lower"], meta["words"]
+
+    value = paper.get(field_name)
+    if not value:
+        return None
+    return str(value).lower(), None
+
+
+def _exact_or_contains_score(
+    query: str, value_lower: str, weight: float
+) -> Optional[float]:
+    """Score exact and substring matches, or return None if neither applies."""
+    if query == value_lower:
+        return weight
+    if query not in value_lower:
+        return None
+    return (0.95 if value_lower.startswith(query) else 0.8) * weight
+
+
+def _fuzzy_score(query: str, value_lower: str, weight: float) -> float:
+    """Return weighted fuzzy score when the ratio is strong enough."""
+    ratio = fuzz.WRatio(query, value_lower) / 100.0
+    if ratio > WORD_MATCH_SCORE_FACTOR:
+        return ratio * weight
+    return 0.0
+
+
+def _word_overlap_score(
+    query_words: Set[str],
+    value_words: Optional[Set[str]],
+    value_lower: str,
+    weight: float,
+) -> float:
+    """Return weighted word-overlap score for tokenized search text."""
+    if not query_words:
+        return 0.0
+
+    if value_words is None:
+        value_words = _tokenize_words(value_lower)
+
+    matching_words = query_words & value_words
+    if not matching_words:
+        return 0.0
+    return (len(matching_words) / len(query_words)) * WORD_MATCH_SCORE_FACTOR * weight
+
+
 def _calculate_relevance(
     paper: Dict[str, Any], query: str, query_words: Set[str]
 ) -> float:
@@ -86,60 +137,31 @@ def _calculate_relevance(
         Score between 0 and 1, higher is more relevant.
     """
     max_score = 0.0
-
     search_meta = paper.get("_search_meta")
 
     for field_name, weight in SEARCH_FIELDS:
-        # Optimization: Early exit if max_score is already higher than
-        # current field's max potential
         if max_score >= weight:
             break
 
-        # Use pre-computed values if available (fast path)
-        if search_meta and (meta := search_meta.get(field_name)):
-            value_lower = meta["lower"]
-            value_words = meta["words"]
-        else:
-            # Fallback for papers not yet indexed with meta or missing fields
-            value = paper.get(field_name)
-            if not value:
-                continue
-            value_lower = str(value).lower()
-            value_words = None  # Computed only if needed
-
-        # Exact match
-        if query == value_lower:
-            return 1.0 * weight
-
-        # Contains match
-        if query in value_lower:
-            # Give higher score for prefix match
-            if value_lower.startswith(query):
-                score = 0.95 * weight
-            else:
-                score = 0.8 * weight
-            max_score = max(max_score, score)
+        field_data = _field_search_data(paper, search_meta, field_name)
+        if field_data is None:
             continue
 
-        # Fuzzy match using TheFuzz (WRatio handles partial matches better)
-        ratio = fuzz.WRatio(query, value_lower) / 100.0
-        if ratio > WORD_MATCH_SCORE_FACTOR:
-            score = ratio * weight
-            max_score = max(max_score, score)
+        value_lower, value_words = field_data
+        phrase_score = _exact_or_contains_score(query, value_lower, weight)
+        if phrase_score is not None:
+            if phrase_score == weight:
+                return phrase_score
+            max_score = max(max_score, phrase_score)
+            continue
 
-        # Optimization: Skip word matching if fuzzy match was already very strong
-        # Word match max score is 0.7 * weight. If max_score is already higher,
-        # word matching cannot improve the result.
+        max_score = max(max_score, _fuzzy_score(query, value_lower, weight))
         if max_score >= WORD_MATCH_SCORE_FACTOR * weight:
             continue
 
-        # Word-level matching
-        if value_words is None:
-            value_words = _tokenize_words(value_lower)
-
-        if query_words and (query_words & value_words):  # At least one word matches
-            overlap = len(query_words & value_words) / len(query_words)
-            score = overlap * WORD_MATCH_SCORE_FACTOR * weight
-            max_score = max(max_score, score)
+        max_score = max(
+            max_score,
+            _word_overlap_score(query_words, value_words, value_lower, weight),
+        )
 
     return max_score
