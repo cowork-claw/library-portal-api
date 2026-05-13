@@ -199,7 +199,7 @@ def validate_all(data_dir: Path = DATA_DIRECTORY) -> Dict[str, Any]:
     return report
 
 
-def main():
+def _main() -> None:
     import argparse
 
     parser = argparse.ArgumentParser(description="Validate organized data files")
@@ -221,4 +221,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    _main()
