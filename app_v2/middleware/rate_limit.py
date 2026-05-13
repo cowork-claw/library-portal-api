@@ -1,18 +1,4 @@
-"""
-Rate Limiting Middleware.
-
-Fixed-window rate limiter applied to ``/api/*`` and ``/health/data`` routes.
-Public paths (``/``, ``/docs``, ``/redoc``, ``/openapi.json``, ``/health``)
-are exempt.
-
-Default: 100 requests per 60-second window per client. Valid configured
-API keys receive a non-sensitive fingerprint bucket; unauthenticated and
-invalid-key traffic is bucketed by client IP so bogus key rotation cannot
-bypass failed-auth throttling. Returns 429 with ``Retry-After`` header when
-the limit is exceeded.
-
-Failed requests (401, 403, 404, 422) still count toward the limit.
-"""
+"""Fixed-window rate limiting for protected API and data-health routes."""
 
 import hashlib
 import logging
@@ -35,15 +21,7 @@ EXEMPT_PATHS: frozenset[str] = frozenset(
 
 
 def _is_rate_limited_path(path: str) -> bool:
-    """Return True if *path* should be rate-limited.
-
-    Rate-limited paths:
-      - ``/api/*``
-      - ``/health/data``  (and ``/health/data/*``)
-
-    Exempt paths:
-      - ``/``, ``/docs``, ``/redoc``, ``/openapi.json``, ``/health``
-    """
+    """Return whether a path should be rate-limited."""
     if path in EXEMPT_PATHS:
         return False
     if path.startswith("/api"):
@@ -55,11 +33,7 @@ def _is_rate_limited_path(path: str) -> bool:
 
 @dataclass
 class _FixedWindow:
-    """Fixed-window rate counter.
-
-    Tracks request count within a rolling time window. When the window
-    expires, the counter resets and a new window begins.
-    """
+    """Fixed-window request counter."""
 
     max_requests: int
     window_seconds: int
@@ -101,16 +75,7 @@ class _FixedWindow:
 
 
 class RateLimitMiddleware(BaseHTTPMiddleware):
-    """Per-client fixed-window rate limiter.
-
-    Clients with a configured valid API key are identified by a stable hash
-    fingerprint. Missing or invalid keys are identified by source IP address.
-
-    Args:
-        app: The ASGI application to wrap.
-        max_requests: Maximum requests allowed per window (default 100).
-        window_seconds: Window duration in seconds (default 60).
-    """
+    """Per-client fixed-window rate limiter."""
 
     def __init__(
         self,
