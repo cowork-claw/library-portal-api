@@ -15,9 +15,7 @@ from scraper_config import (
     SCRAPE_LOG_FILE,
     TARGET_YEAR_THRESHOLD,
 )
-from scraper_config import (
-    should_scrape_year as config_should_scrape_year,
-)
+from scraper_config import _should_scrape_year as config_should_scrape_year
 
 from .question_paper_metadata import QuestionPaperMetadataMixin
 from .question_paper_row_parsing import QuestionPaperRowParsingMixin

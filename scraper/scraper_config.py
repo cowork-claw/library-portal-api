@@ -1,28 +1,13 @@
-"""
-Scraper Configuration for Library Portal V2
-
-This file contains all configurable settings for the scraper.
-Change TARGET_YEAR_THRESHOLD when transitioning to a new year (e.g., 2026 in Jan 2026).
-"""
+"""Scraper paths and year-window configuration."""
 
 from pathlib import Path
 from typing import Set
 
-# =============================================================================
-# YEAR CONFIGURATION
-# =============================================================================
-
-# Minimum year to scrape - papers from this year and above will be scraped
-# Change this to 2026 in January 2026, etc.
+# Minimum year to scrape.
 TARGET_YEAR_THRESHOLD: int = 2024
 
-# Years to completely skip (already scraped and organized)
-# These years have been fully processed and stored in data/classified/organized/
+# Fully processed years to skip.
 BLACKLISTED_YEARS: Set[int] = set(range(2006, 2024))
-
-# =============================================================================
-# PATH CONFIGURATION
-# =============================================================================
 
 # Project root directory
 PROJECT_ROOT: Path = Path(__file__).parent.parent
@@ -37,12 +22,8 @@ SCRAPE_LOG_FILE: Path = Path(__file__).parent / "scrape_log.json"
 STAGING_DIRECTORY: Path = PROJECT_ROOT / "staging"
 STAGING_FILE: Path = STAGING_DIRECTORY / "pending_review.json"
 
-# =============================================================================
-# HELPER FUNCTIONS
-# =============================================================================
 
-
-def should_scrape_year(year: int) -> bool:
+def _should_scrape_year(year: int) -> bool:
     """Check if a year should be scraped based on threshold and blacklist."""
     if year in BLACKLISTED_YEARS:
         return False
