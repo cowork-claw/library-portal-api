@@ -5,7 +5,7 @@ Endpoints for retrieving and searching question papers.
 """
 
 import time
-from typing import Any, Dict, List, Literal, Optional
+from typing import Any, Callable, Dict, Iterable, List, Literal, Optional, Set
 
 from fastapi import APIRouter, HTTPException, Path, Query
 from fastapi.concurrency import run_in_threadpool
@@ -124,6 +124,52 @@ def _get_papers_response_from_urls(
     return create_paginated_response(papers, total, limit, offset)
 
 
+def _collect_filter_url_sets(
+    filters: Iterable[tuple[Any, Callable[[Any], Set[str]]]],
+) -> List[Set[str]]:
+    """Resolve active query filters to indexed URL sets."""
+    return [method(value) for value, method in filters if value is not None]
+
+
+def _intersect_filter_url_sets(filter_url_sets: List[Set[str]]) -> Optional[Set[str]]:
+    """Intersect filter URL sets, using the smallest sets first."""
+    if not filter_url_sets:
+        return None
+
+    filter_url_sets.sort(key=len)
+    if not filter_url_sets[0]:
+        return set()
+    return filter_url_sets[0].intersection(*filter_url_sets[1:])
+
+
+async def _resolve_paper_results(
+    search: Optional[str], filter_urls: Optional[Set[str]]
+) -> List[Dict[str, Any]]:
+    """Resolve search/filter combinations into ordered paper dictionaries."""
+    if search:
+        search_urls = await run_in_threadpool(paper_index.search, search)
+        if filter_urls is not None:
+            return paper_index.get_by_urls(
+                [url for url in search_urls if url in filter_urls]
+            )
+        return paper_index.get_by_urls(search_urls)
+
+    if filter_urls is not None:
+        return paper_index.get_by_urls(filter_urls)
+    return paper_index.papers
+
+
+def _effective_sort_field(
+    sort: Optional[Literal["year", "semester", "relevance"]], search: Optional[str]
+) -> Literal["year", "semester", "relevance"]:
+    """Return the sort field implied by the request parameters."""
+    if sort is None:
+        return "relevance" if search else "year"
+    if sort == "relevance" and not search:
+        return "year"
+    return sort
+
+
 @router.get("", response_model=PapersResponse)
 async def get_papers(
     # Filters
@@ -194,10 +240,7 @@ async def get_papers(
     """
     start_time = time.time()
 
-    # Efficiently filter papers using URL sets from indexes
-    filter_url_sets = []
-
-    filters: List[tuple] = [
+    filters = [
         (year, paper_index.get_urls_by_year),
         (semester, paper_index.get_urls_by_semester),
         (program, paper_index.get_urls_by_program),
@@ -208,54 +251,14 @@ async def get_papers(
         (program_abbrev, paper_index.get_urls_by_program_abbrev),
     ]
 
-    for value, method in filters:
-        if value is not None:
-            filter_url_sets.append(method(value))
+    filter_urls = _intersect_filter_url_sets(_collect_filter_url_sets(filters))
+    if filter_urls is not None and not filter_urls:
+        execution_time = (time.time() - start_time) * 1000
+        return create_paginated_response([], 0, limit, offset, execution_time)
 
-    # Intersect filter results if multiple filters are active
-    filter_urls = None
-    if filter_url_sets:
-        # Sort by set size for faster intersection (smallest first)
-        filter_url_sets.sort(key=len)
-        # Early exit if any filter returned empty
-        if len(filter_url_sets[0]) == 0:
-            execution_time = (time.time() - start_time) * 1000
-            return create_paginated_response([], 0, limit, offset, execution_time)
-        filter_urls = filter_url_sets[0].intersection(*filter_url_sets[1:])
-
-    # Apply search if provided
-    if search:
-        # Use cached global search (returns sorted URLs)
-        # Offload to threadpool to avoid blocking event loop during first computation
-        search_urls = await run_in_threadpool(paper_index.search, search)
-
-        if filter_urls is not None:
-            # Combine search + filters (intersection), preserving search rank
-            # Note: We iterate over sorted search_urls to maintain relevance order
-            results = paper_index.get_by_urls(
-                [url for url in search_urls if url in filter_urls]
-            )
-        else:
-            results = paper_index.get_by_urls(search_urls)
-
-    else:
-        # No search, just filters
-        if filter_urls is not None:
-            results = paper_index.get_by_urls(filter_urls)
-        else:
-            results = paper_index.papers
-
-    # Determine effective sort field and order
-    effective_sort = sort
-    if effective_sort is None:
-        effective_sort = "relevance" if search else "year"
-    elif effective_sort == "relevance" and not search:
-        # Relevance sort without search falls back to year descending
-        effective_sort = "year"
-
+    results = await _resolve_paper_results(search, filter_urls)
+    effective_sort = _effective_sort_field(sort, search)
     effective_order = order if order is not None else "desc"
-
-    # Apply sorting
     results = _sort_papers(results, effective_sort, effective_order)
 
     # Get total before pagination
