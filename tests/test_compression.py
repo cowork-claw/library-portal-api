@@ -18,7 +18,7 @@ instead of trying to read the raw compressed wire bytes.
 import pytest
 from fastapi.testclient import TestClient
 
-from app_v2.middleware.compression import MINIMUM_SIZE
+from app_v2.main import COMPRESSION_MINIMUM_SIZE
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -43,7 +43,7 @@ SECURITY_HEADERS = [
 
 def _assert_compression_matches_size(response, uncompressed_body: bytes) -> None:
     """Compression depends on the actual payload size, not endpoint identity."""
-    if len(uncompressed_body) >= MINIMUM_SIZE:
+    if len(uncompressed_body) >= COMPRESSION_MINIMUM_SIZE:
         assert response.headers.get("content-encoding") == "gzip"
     else:
         assert response.headers.get("content-encoding") != "gzip"

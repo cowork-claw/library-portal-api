@@ -14,6 +14,7 @@ from pathlib import Path
 
 from fastapi import APIRouter, FastAPI, Response
 from fastapi.middleware.cors import CORSMiddleware
+from starlette.middleware.gzip import GZipMiddleware
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from config.config_v2 import settings
@@ -35,7 +36,6 @@ from .data_loader import DataLoader
 
 # Import middleware
 from .middleware.auth import OPENCLAW_BOT_API_KEY_ENV, APIKeyMiddleware
-from .middleware.compression import CompressionMiddleware
 from .middleware.rate_limit import RateLimitMiddleware
 from .middleware.request_id import RequestIDMiddleware
 from .middleware.security import SecurityHeadersMiddleware
@@ -47,6 +47,7 @@ from .routes import health_router, metadata_router, papers_router
 from .services.indexing import paper_index
 
 # Configure structured JSON logging (replaces basicConfig)
+COMPRESSION_MINIMUM_SIZE = 1024
 setup_structured_logging(settings.LOG_LEVEL)
 logger = logging.getLogger(__name__)
 
@@ -101,7 +102,7 @@ app = FastAPI(
 
 # Add Gzip Compression middleware first so it stays innermost among the
 # custom stack; auth/rate-limit errors are generated outside this layer.
-app.add_middleware(CompressionMiddleware)
+app.add_middleware(GZipMiddleware, minimum_size=COMPRESSION_MINIMUM_SIZE)
 
 # Add CORS middleware
 app.add_middleware(
