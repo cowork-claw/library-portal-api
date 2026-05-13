@@ -30,8 +30,8 @@ router = APIRouter(prefix="/health", tags=["Health"])
 APP_START_TIME = datetime.now()
 
 
-@router.get("", response_model=HealthResponse)
-async def health_check() -> HealthResponse:
+@router.get("", response_model=HealthResponse, operation_id="health_check_health_get")
+async def _health_check() -> HealthResponse:
     """Return overall system health with component statuses."""
     uptime = (datetime.now() - APP_START_TIME).total_seconds()
 
@@ -73,8 +73,12 @@ async def health_check() -> HealthResponse:
     )
 
 
-@router.get("/data", response_model=DataHealthResponse)
-async def data_health() -> DataHealthResponse:
+@router.get(
+    "/data",
+    response_model=DataHealthResponse,
+    operation_id="data_health_health_data_get",
+)
+async def _data_health() -> DataHealthResponse:
     """Return loaded paper and data integrity status."""
     loader_stats = paper_index.loader._get_stats() if paper_index.loader else {}
 
@@ -91,8 +95,12 @@ async def data_health() -> DataHealthResponse:
     )
 
 
-@router.get("/scraper", response_model=ScraperHealthResponse)
-async def scraper_health() -> ScraperHealthResponse:
+@router.get(
+    "/scraper",
+    response_model=ScraperHealthResponse,
+    operation_id="scraper_health_health_scraper_get",
+)
+async def _scraper_health() -> ScraperHealthResponse:
     """Return scraper run history and configuration status."""
     log_data = await run_in_threadpool(_load_scrape_log)
 
@@ -115,8 +123,9 @@ async def scraper_health() -> ScraperHealthResponse:
     "/data/reload",
     response_model=ReloadResponse,
     status_code=status.HTTP_202_ACCEPTED,
+    operation_id="reload_data_health_data_reload_post",
 )
-async def reload_data(background_tasks: BackgroundTasks) -> ReloadResponse:
+async def _reload_data(background_tasks: BackgroundTasks) -> ReloadResponse:
     """Schedule a background JSON data reload."""
     reload_id = str(uuid.uuid4())
     # Read DATA_DIRECTORY directly from env so reload always uses the current
