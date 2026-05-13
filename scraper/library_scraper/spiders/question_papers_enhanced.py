@@ -271,76 +271,22 @@ class QuestionPapersEnhancedSpider(scrapy.Spider):
         if len(cells) < 2:
             return None
 
-        # First cell contains the link
         first_cell = cells[0]
-        link = first_cell.css("a").get()
-
-        if not link:
+        link_elem = first_cell.css("a")
+        if not link_elem.get():
             return None
 
-        # Extract the link element for detailed parsing
-        link_elem = first_cell.css("a")
-
-        # Extract name - it's after the image tag
-        # The structure is: <img src="../Images/folder.png" alt="" />&nbsp;2023
-        full_text = "".join(first_cell.css("a ::text").getall()).strip()
-
-        # If no text found, try extracting from the full HTML
-        if not full_text:
-            link_html = link_elem.get()
-            # Look for text after the image tag
-            text_match = re.search(r"</?\w+[^>]*>\s*([^<]+)", link_html)
-            if text_match:
-                full_text = text_match.group(1).strip()
-
-        name = full_text
+        name = self._extract_link_name(first_cell, link_elem)
         if not name or name in ["..", "."]:
             return None
 
-        # Extract href and ID
         href = link_elem.css("::attr(href)").get("")
         link_id = link_elem.css("::attr(id)").get("")
-
-        # Extract type and size from other cells
-        item_type = cells[1].css("::text").get("").strip() if len(cells) > 1 else ""
+        item_type = cells[1].css("::text").get("").strip()
         size = cells[3].css("::text").get("").strip() if len(cells) > 3 else ""
-
-        # Determine if it's a folder or PDF
-        is_folder = False
-        is_pdf = False
-        event_target = None
-        event_argument = None
-        pdf_url = None
-
-        # Check for postback (folder navigation)
-        if "__doPostBack" in href:
-            postback_match = re.search(r"__doPostBack\('([^']+)','([^']*)'\)", href)
-            if postback_match:
-                is_folder = True
-                event_target = postback_match.group(1)
-                event_argument = postback_match.group(2)
-            elif link_id:
-                # Use the link ID as event target
-                is_folder = True
-                event_target = link_id
-                event_argument = ""
-
-        # Check for PDF
-        if ".pdf" in name.lower() or "pdf" in item_type.lower():
-            is_pdf = True
-
-            # For PDFs, the href might be a direct link
-            if href and not href.startswith("javascript:"):
-                pdf_url = href
-                if not pdf_url.startswith("http"):
-                    pdf_url = urljoin(response.url, pdf_url)
-
-        # Use item type as additional check
-        if not is_folder and not is_pdf:
-            if "folder" in item_type.lower():
-                is_folder = True
-            elif "pdf" in item_type.lower():
-                is_pdf = True
+        is_folder, is_pdf, event_target, event_argument, pdf_url = self._classify_item(
+            name, item_type, href, link_id, response
+        )
 
         return {
             "name": name,
@@ -353,6 +299,53 @@ class QuestionPapersEnhancedSpider(scrapy.Spider):
             "event_argument": event_argument,
             "pdf_url": pdf_url,
         }
+
+    def _extract_link_name(self, first_cell, link_elem):
+        """Extract display text from the table-row link."""
+        full_text = "".join(first_cell.css("a ::text").getall()).strip()
+        if full_text:
+            return full_text
+
+        link_html = link_elem.get()
+        text_match = re.search(r"</?\w+[^>]*>\s*([^<]+)", link_html or "")
+        return text_match.group(1).strip() if text_match else ""
+
+    def _postback_target(self, href, link_id):
+        """Extract ASP.NET postback navigation target from a link."""
+        if "__doPostBack" not in href:
+            return False, None, None
+
+        postback_match = re.search(r"__doPostBack\('([^']+)','([^']*)'\)", href)
+        if postback_match:
+            return True, postback_match.group(1), postback_match.group(2)
+        if link_id:
+            return True, link_id, ""
+        return False, None, None
+
+    def _pdf_url(self, name_lower, item_type_lower, href, response):
+        """Return a direct PDF URL when the row points at a PDF."""
+        if ".pdf" not in name_lower and "pdf" not in item_type_lower:
+            return False, None
+        if not href or href.startswith("javascript:"):
+            return True, None
+        if href.startswith("http"):
+            return True, href
+        return True, urljoin(response.url, href)
+
+    def _classify_item(self, name, item_type, href, link_id, response):
+        """Classify a row as folder/PDF and extract navigation metadata."""
+        name_lower = name.lower()
+        item_type_lower = item_type.lower()
+        is_folder, event_target, event_argument = self._postback_target(href, link_id)
+        is_pdf, pdf_url = self._pdf_url(name_lower, item_type_lower, href, response)
+
+        if not is_folder and not is_pdf:
+            if "folder" in item_type_lower:
+                is_folder = True
+            elif "pdf" in item_type_lower:
+                is_pdf = True
+
+        return is_folder, is_pdf, event_target, event_argument, pdf_url
 
     def should_skip(self, name):
         """Check if a folder should be skipped."""
