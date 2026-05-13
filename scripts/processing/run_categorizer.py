@@ -136,7 +136,7 @@ def _log_summary(stats: dict, dry_run: bool, staging_handler: StagingHandler) ->
         logger.info("   See: %s", STAGING_FILE)
 
 
-def run_categorizer(input_file: Path, dry_run: bool = False) -> dict:
+def _run_categorizer(input_file: Path, dry_run: bool = False) -> dict:
     """Categorize papers from an input JSON file."""
     logger.info("Loading papers from: %s", input_file)
     with open(input_file, "r", encoding="utf-8") as f:
@@ -190,7 +190,7 @@ def _main() -> None:
         logger.error(f"Input file not found: {args.input}")
         sys.exit(1)
 
-    stats = run_categorizer(args.input, dry_run=args.dry_run)
+    stats = _run_categorizer(args.input, dry_run=args.dry_run)
 
     if stats.get("errors", 0) > 0:
         sys.exit(1)
