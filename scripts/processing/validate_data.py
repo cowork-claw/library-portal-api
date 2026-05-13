@@ -1,13 +1,4 @@
-"""
-Data Validation for Library Portal V2
-
-Validates the integrity of the organized data files.
-Checks for:
-- Valid JSON format
-- Required paper fields
-- URL uniqueness
-- Correct file locations
-"""
+"""Validate organized paper JSON files."""
 
 import json
 import logging
@@ -94,12 +85,7 @@ def _validate_paper(
 
 
 def validate_json_file(file_path: Path) -> Tuple[bool, List[str]]:
-    """
-    Validate a single JSON file.
-
-    Returns:
-        Tuple of (is_valid, list_of_errors)
-    """
+    """Validate one course-code JSON file."""
     data, errors = _load_json(file_path)
     if errors:
         return False, errors
@@ -190,12 +176,7 @@ def _log_summary(report: Dict[str, Any]) -> None:
 
 
 def validate_all(data_dir: Path = DATA_DIRECTORY) -> Dict[str, Any]:
-    """
-    Validate all JSON files in the data directory.
-
-    Returns:
-        Validation report dictionary
-    """
+    """Validate all JSON files under the data directory."""
     report = _new_report()
     if not data_dir.exists():
         logger.error("Data directory not found: %s", data_dir)
