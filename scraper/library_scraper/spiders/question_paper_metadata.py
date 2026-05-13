@@ -21,7 +21,6 @@ class QuestionPaperMetadataMixin:
     """Extract year, program, semester, and subject metadata from PDF items."""
 
     def _extract_metadata(self, item):
-        """Extract year, semester, program, and subject from item data."""
         path_parts = item["path"].split("/")
         file_name = item["file_name"]
 
@@ -42,7 +41,6 @@ class QuestionPaperMetadataMixin:
         item["subject"] = self._extract_subject(file_name)
 
     def _extract_year(self, path_parts, file_name):
-        """Extract a valid year from the first path component."""
         if not path_parts:
             return None
 
@@ -62,19 +60,16 @@ class QuestionPaperMetadataMixin:
         return None
 
     def _is_valid_year(self, year_text, current_year):
-        """Return whether a scraped year is within the accepted range."""
         year_int = int(year_text)
         return 2005 <= year_int <= current_year + 1
 
     def _extract_program(self, path_parts):
-        """Extract the first known program component from a path."""
         for part in path_parts:
             if any(program in part for program in PROGRAM_NAMES):
                 return part
         return None
 
     def _extract_semester(self, path_parts):
-        """Extract semester text from path components."""
         for part in path_parts:
             sem_match = re.search(r"(I+|[1-9])\s*(st|nd|rd|th)?\s*[Ss]em", part)
             if sem_match:
@@ -82,7 +77,6 @@ class QuestionPaperMetadataMixin:
         return None
 
     def _extract_subject(self, file_name):
-        """Extract the display subject from a PDF file name."""
         subject = re.sub(r"\.pdf$", "", file_name, flags=re.IGNORECASE)
         subject_match = re.search(r"^([^(\[]+)", subject)
         return subject_match.group(1).strip() if subject_match else subject

@@ -62,7 +62,6 @@ class QuestionPapersEnhancedSpider(
         self._load_existing_data()
 
     def _load_existing_data(self):
-        """Load existing URLs from organized data folder and scrape log."""
         self.seen_urls = _load_existing_urls_from_organized_data(DATA_DIRECTORY)
 
         self.scrape_log = ScrapeLog(SCRAPE_LOG_FILE)
@@ -83,7 +82,6 @@ class QuestionPapersEnhancedSpider(
             self.logger.info("No existing data found - running initial scrape")
 
     def _should_scrape_year(self, year):
-        """Return whether a year is within the configured scrape window."""
         try:
             year_int = int(year)
         except (ValueError, TypeError):
@@ -118,7 +116,6 @@ class QuestionPapersEnhancedSpider(
                 yield request
 
     def _split_items(self, items):
-        """Split extracted table items into PDFs and navigable folders."""
         pdfs = [item for item in items if item.get("is_pdf")]
         folders = [
             item
@@ -128,7 +125,6 @@ class QuestionPapersEnhancedSpider(
         return pdfs, folders
 
     def _iter_new_pdf_items(self, pdfs, response):
-        """Yield unseen PDF items and update scrape counters."""
         for pdf in pdfs:
             pdf_item = self._create_pdf_item(pdf, response)
             if not pdf_item:
@@ -147,7 +143,6 @@ class QuestionPapersEnhancedSpider(
             yield pdf_item
 
     def _should_visit_folder(self, folder_name, current_path):
-        """Return whether a folder is inside the configured scrape window."""
         if folder_name.isdigit():
             if not self._should_scrape_year(folder_name):
                 self.logger.info(
@@ -160,7 +155,6 @@ class QuestionPapersEnhancedSpider(
         return self._path_contains_target_year(current_path)
 
     def _path_contains_target_year(self, current_path):
-        """Check whether the current folder path is within a target year."""
         for year in range(self.current_year, self.current_year + 5):
             if str(year) in current_path:
                 return True

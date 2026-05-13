@@ -8,7 +8,6 @@ class QuestionPaperRowParsingMixin:
     """Extract folder/PDF rows and ASP.NET form metadata from library pages."""
 
     def _extract_form_data(self, response):
-        """Extract all form data needed for ASP.NET postback."""
         form_data = {}
 
         for field in response.css('input[type="hidden"]'):
@@ -26,7 +25,6 @@ class QuestionPaperRowParsingMixin:
         return form_data
 
     def _extract_items(self, response):
-        """Extract all items from the current page."""
         items = []
         table = response.css('table[id*="gvFiles"]').get()
         if not table:
@@ -45,7 +43,6 @@ class QuestionPaperRowParsingMixin:
         return items
 
     def _extract_item_from_row(self, row, response):
-        """Extract item data from a table row."""
         cells = row.css("td")
         if len(cells) < 2:
             return None
@@ -80,7 +77,6 @@ class QuestionPaperRowParsingMixin:
         }
 
     def _extract_link_name(self, first_cell, link_elem):
-        """Extract display text from the table-row link."""
         full_text = "".join(first_cell.css("a ::text").getall()).strip()
         if full_text:
             return full_text
@@ -90,7 +86,6 @@ class QuestionPaperRowParsingMixin:
         return text_match.group(1).strip() if text_match else ""
 
     def _postback_target(self, href, link_id):
-        """Extract ASP.NET postback navigation target from a link."""
         if "__doPostBack" not in href:
             return False, None, None
 
@@ -102,7 +97,6 @@ class QuestionPaperRowParsingMixin:
         return False, None, None
 
     def _pdf_url(self, name_lower, item_type_lower, href, response):
-        """Return a direct PDF URL when the row points at a PDF."""
         if ".pdf" not in name_lower and "pdf" not in item_type_lower:
             return False, None
         if not href or href.startswith("javascript:"):
@@ -112,7 +106,6 @@ class QuestionPaperRowParsingMixin:
         return True, urljoin(response.url, href)
 
     def _classify_item(self, name, item_type, href, link_id, response):
-        """Classify a row as folder/PDF and extract navigation metadata."""
         name_lower = name.lower()
         item_type_lower = item_type.lower()
         is_folder, event_target, event_argument = self._postback_target(href, link_id)
