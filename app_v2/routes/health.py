@@ -88,7 +88,7 @@ async def data_health() -> DataHealthResponse:
 
     Returns comprehensive information about loaded papers and data integrity.
     """
-    loader_stats = paper_index.loader.get_stats() if paper_index.loader else {}
+    loader_stats = paper_index.loader._get_stats() if paper_index.loader else {}
 
     return DataHealthResponse(
         status="healthy" if paper_index.total_papers > 0 else "degraded",

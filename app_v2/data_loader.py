@@ -166,7 +166,7 @@ class DataLoader:
             logger.error(f"Error loading {file_path.name}: {e}")
             self.stats.errors.append(error_msg)
 
-    def get_stats(self) -> Dict[str, Any]:
+    def _get_stats(self) -> Dict[str, Any]:
         """Get statistics about loaded data."""
         return {
             "total_papers": self.stats.total_papers,

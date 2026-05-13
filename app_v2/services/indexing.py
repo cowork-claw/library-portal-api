@@ -118,7 +118,7 @@ class PaperIndex(PaperIndexAccessors):
         self.papers = loader.load_all()
         self._build_indexes()
 
-        stats = loader.get_stats()
+        stats = loader._get_stats()
         self._files_loaded = stats.get("files_loaded", 0)
 
         # Clear loader data to free memory (data is now in self.papers)
