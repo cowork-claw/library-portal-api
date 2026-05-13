@@ -36,7 +36,7 @@ class StagingHandler:
             "papers": [],
         }
 
-    def save(self) -> None:
+    def _save(self) -> None:
         """Save staging data to file."""
         self.data["last_updated"] = datetime.now().isoformat()
         with open(self.staging_file, "w", encoding="utf-8") as f:
@@ -75,7 +75,7 @@ class StagingHandler:
         }
 
         self.data["papers"].append(staged)
-        self.save()
+        self._save()
 
         logger.info(
             f"Staged paper for review: {paper.get('course_code', 'UNKNOWN')} "
@@ -96,7 +96,7 @@ class StagingHandler:
             "path": paper.get("path"),
         }
 
-    def get_stats(self) -> Dict[str, Any]:
+    def _get_stats(self) -> Dict[str, Any]:
         """Get staging statistics."""
         papers = self.data.get("papers", [])
         return {
