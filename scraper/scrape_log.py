@@ -1,9 +1,4 @@
-"""
-Scrape Log Manager for Library Portal V2
-
-Persistent log tracking scraped paper URLs to avoid re-scraping.
-Acts as "memory" for the scraper across runs.
-"""
+"""Persistent scrape-log state for URL deduplication."""
 
 import json
 import logging
@@ -15,14 +10,7 @@ logger = logging.getLogger(__name__)
 
 
 class ScrapeLog:
-    """
-    Persistent scrape log manager.
-
-    Tracks:
-    - All scraped URLs (for deduplication)
-    - Run history with timestamps and counts
-    - Error counts and messages
-    """
+    """Track scraped URLs and scraper run history."""
 
     def __init__(self, log_file: Path):
         self.log_file = log_file
@@ -71,12 +59,7 @@ class ScrapeLog:
         return url in self._scraped_urls_set
 
     def add_scraped_url(self, url: str) -> bool:
-        """
-        Add URL to scraped list.
-
-        Returns:
-            True if URL was new, False if already existed
-        """
+        """Add a URL; return whether it was new."""
         if url not in self._scraped_urls_set:
             self._scraped_urls_set.add(url)
             self.data["scraped_urls"].append(url)
@@ -123,12 +106,8 @@ class ScrapeLog:
         }
 
 
-def load_existing_urls_from_organized_data(data_directory: Path) -> Set[str]:
-    """
-    Load all existing paper URLs from organized JSON files.
-
-    This is used to initialize the scraper's "seen" set from existing data.
-    """
+def _load_existing_urls_from_organized_data(data_directory: Path) -> Set[str]:
+    """Load existing paper URLs from organized JSON files."""
     urls = set()
 
     if not data_directory.exists():

@@ -1,6 +1,5 @@
 import re
 
-# Import V2 configuration
 import sys
 from datetime import datetime
 from pathlib import Path
@@ -10,7 +9,7 @@ import scrapy
 from scrapy import FormRequest
 
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
-from scrape_log import ScrapeLog, load_existing_urls_from_organized_data
+from scrape_log import ScrapeLog, _load_existing_urls_from_organized_data
 from scraper_config import (
     BLACKLISTED_YEARS,
     DATA_DIRECTORY,
@@ -32,7 +31,6 @@ class QuestionPapersEnhancedSpider(
     allowed_domains = ["libportal.manipal.edu"]
     start_urls = ["https://libportal.manipal.edu/MIT/Question%20Paper.aspx"]
 
-    # Custom settings for this spider
     custom_settings = {
         "DOWNLOAD_DELAY": 1,
         "CONCURRENT_REQUESTS": 4,
@@ -40,7 +38,6 @@ class QuestionPapersEnhancedSpider(
         "DUPEFILTER_CLASS": "scrapy.dupefilters.BaseDupeFilter",  # Disable duplicate filtering
     }
 
-    # Skip patterns
     SKIP_PATTERNS = [
         "Source Publication List",
         "Policy, Rules & Regulations",
@@ -51,8 +48,6 @@ class QuestionPapersEnhancedSpider(
         "Open Access",
     ]
 
-    # V2: Only scrape from threshold year onwards
-    # Years 2006-2023 are blacklisted (already organized)
     TARGET_YEAR_THRESHOLD = TARGET_YEAR_THRESHOLD
 
     def __init__(self, *args, **kwargs):
@@ -63,7 +58,6 @@ class QuestionPapersEnhancedSpider(
         self.new_pdf_count = 0
         self.skipped_pdf_count = 0
 
-        # Load existing data and create seen URLs set
         self.seen_urls = set()
         self.seen_folders = set()  # Track visited folders to prevent loops
         self.is_incremental = False
@@ -72,10 +66,8 @@ class QuestionPapersEnhancedSpider(
 
     def _load_existing_data(self):
         """Load existing URLs from organized data folder and scrape log."""
-        # V2: Load from organized data folder
-        self.seen_urls = load_existing_urls_from_organized_data(DATA_DIRECTORY)
+        self.seen_urls = _load_existing_urls_from_organized_data(DATA_DIRECTORY)
 
-        # Also load from scrape log (URLs we've seen but may not be categorized yet)
         self.scrape_log = ScrapeLog(SCRAPE_LOG_FILE)
         scrape_log_urls = self.scrape_log.get_scraped_urls()
         self.seen_urls.update(scrape_log_urls)
@@ -94,14 +86,12 @@ class QuestionPapersEnhancedSpider(
             self.logger.info("No existing data found - running initial scrape")
 
     def _should_scrape_year(self, year):
-        """V2: Use config-based year filtering."""
+        """Return whether a year is within the configured scrape window."""
         try:
             year_int = int(year)
         except (ValueError, TypeError):
             return False
 
-        # V2: Use centralized config logic
-        # This checks: not in BLACKLISTED_YEARS and >= TARGET_YEAR_THRESHOLD
         return config_should_scrape_year(year_int)
 
     def parse(self, response):
@@ -235,7 +225,6 @@ class QuestionPapersEnhancedSpider(
 
     def _get_current_path(self, response):
         """Extract the current folder path."""
-        # Try multiple selectors
         selectors = [
             'span[id*="lblCurrentFolder"]::text',
             'span[id*="CurrentFolder"]::text',
@@ -246,7 +235,6 @@ class QuestionPapersEnhancedSpider(
         for selector in selectors:
             path = response.css(selector).get()
             if path:
-                # Clean up the path
                 path = path.replace("Viewing the folder ", "")
                 path = path.replace("Current folder: ", "")
                 path = re.sub(r"<[^>]+>", "", path)
@@ -264,46 +252,29 @@ class QuestionPapersEnhancedSpider(
         if not item_data.get("is_pdf"):
             return None
 
-        item = {}
-
-        # Basic fields
-        item["file_name"] = item_data["name"]  # Renamed from 'title' to 'file_name'
-        item["path"] = self._get_current_path(response)
-        item["scraped_at"] = datetime.now().isoformat()
-
-        # Construct the proper URL
-        # The format is: https://libportal.manipal.edu/RootFolder/[full path]/[filename]
-        # We need to URL encode the path components
-
-        # Get the current path and clean it
+        item = {
+            "file_name": item_data["name"],
+            "path": self._get_current_path(response),
+            "scraped_at": datetime.now().isoformat(),
+        }
         current_path = item["path"]
 
-        # Build the full path
         if current_path and current_path != "Root":
-            # Split path and URL encode each part
             path_parts = [part.strip() for part in current_path.split("/")]
-            encoded_parts = [quote(part, safe="") for part in path_parts]
-            encoded_path = "/".join(encoded_parts)
-
-            # Encode the filename
+            encoded_path = "/".join(quote(part, safe="") for part in path_parts)
             encoded_filename = quote(item["file_name"], safe="")
-
-            # Construct the full URL
             item["url"] = (
                 f"https://libportal.manipal.edu/RootFolder/{encoded_path}/{encoded_filename}"
             )
         else:
-            # If at root, just use the filename
             encoded_filename = quote(item["file_name"], safe="")
             item["url"] = f"https://libportal.manipal.edu/RootFolder/{encoded_filename}"
 
-        # Extract metadata from path and title
         self._extract_metadata(item)
-
         return item
 
     def closed(self, reason):
-        """Called when spider closes. V2: Records run in scrape log."""
+        """Record scrape-log stats when Scrapy closes the spider."""
         self.logger.info(f"Spider closed: {reason}")
         self.logger.info(
             f"Scraping mode: {'INCREMENTAL (V2)' if self.is_incremental else 'INITIAL'}"
@@ -314,7 +285,6 @@ class QuestionPapersEnhancedSpider(
         self.logger.info(f"Existing PDFs skipped: {self.skipped_pdf_count}")
         self.logger.info(f"Total unique folders visited: {self.folder_count}")
 
-        # V2: Record this run in the scrape log
         if hasattr(self, "scrape_log"):
             self.scrape_log.record_run(
                 new_papers=self.new_pdf_count,

@@ -2,13 +2,13 @@ import tempfile
 import time
 from pathlib import Path
 
-from scraper.scrape_log import ScrapeLog, load_existing_urls_from_organized_data
+from scraper.scrape_log import ScrapeLog, _load_existing_urls_from_organized_data
 
 
 def benchmark_scrape_log():
     # Load real URLs from the data directory
     data_dir = Path("data/classified/organized")
-    real_urls = list(load_existing_urls_from_organized_data(data_dir))
+    real_urls = list(_load_existing_urls_from_organized_data(data_dir))
 
     print(f"Found {len(real_urls)} real URLs in data directory.")
 
