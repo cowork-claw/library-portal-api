@@ -2,8 +2,8 @@
 
 from .auth import APIKeyMiddleware
 from .rate_limit import RateLimitMiddleware
-from .request_id import RequestIDMiddleware
 from .structured_logging import (
+    RequestIDMiddleware,
     StructuredJSONFormatter,
     StructuredLoggingMiddleware,
     setup_structured_logging,

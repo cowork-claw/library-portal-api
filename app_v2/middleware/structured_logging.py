@@ -26,6 +26,7 @@ Usage::
 import json
 import logging
 import sys
+import uuid
 from contextvars import ContextVar
 from datetime import datetime, timezone
 from typing import Any, Callable
@@ -41,6 +42,21 @@ from starlette.middleware.base import BaseHTTPMiddleware
 #: ``request.state.request_id``, which is set by ``RequestIDMiddleware``).
 #: Falls back to ``"-"`` outside of a request context.
 current_request_id: ContextVar[str] = ContextVar("current_request_id", default="-")
+HEADER_NAME = "X-Request-ID"
+
+
+class RequestIDMiddleware(BaseHTTPMiddleware):
+    """Ensure every response carries an X-Request-ID header."""
+
+    async def dispatch(self, request: Request, call_next: Callable) -> Response:
+        request_id = request.headers.get(HEADER_NAME, "").strip()
+        if not request_id:
+            request_id = str(uuid.uuid4())
+
+        request.state.request_id = request_id
+        response = await call_next(request)
+        response.headers[HEADER_NAME] = request_id
+        return response
 
 
 # ---------------------------------------------------------------------------

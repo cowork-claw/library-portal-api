@@ -37,9 +37,9 @@ from .data_loader import DataLoader
 # Import middleware
 from .middleware.auth import OPENCLAW_BOT_API_KEY_ENV, APIKeyMiddleware
 from .middleware.rate_limit import RateLimitMiddleware
-from .middleware.request_id import RequestIDMiddleware
 from .middleware.security import SecurityHeadersMiddleware
 from .middleware.structured_logging import (
+    RequestIDMiddleware,
     StructuredLoggingMiddleware,
     setup_structured_logging,
 )

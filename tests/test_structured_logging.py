@@ -21,10 +21,10 @@ from fastapi import FastAPI
 from fastapi.testclient import TestClient
 
 from app_v2.middleware.auth import APIKeyMiddleware
-from app_v2.middleware.request_id import RequestIDMiddleware
 from app_v2.middleware.security import SecurityHeadersMiddleware
 from app_v2.middleware.structured_logging import (
     RequestIDLogFilter,
+    RequestIDMiddleware,
     StructuredJSONFormatter,
     StructuredLoggingMiddleware,
     current_request_id,

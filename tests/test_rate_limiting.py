@@ -22,8 +22,8 @@ from fastapi.testclient import TestClient
 
 from app_v2.middleware.auth import APIKeyMiddleware
 from app_v2.middleware.rate_limit import RateLimitMiddleware
-from app_v2.middleware.request_id import RequestIDMiddleware
 from app_v2.middleware.security import SecurityHeadersMiddleware
+from app_v2.middleware.structured_logging import RequestIDMiddleware
 
 API_KEY = "test-key"
 
