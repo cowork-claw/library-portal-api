@@ -196,6 +196,40 @@ class PaperIndex:
 
         self._finalize_indexes()
 
+    def _add_index_value(
+        self,
+        index: Dict[Any, Set[str]],
+        unique_values: Set[Any],
+        url: str,
+        value: Any,
+        counts: Dict[Any, int] | None = None,
+    ) -> None:
+        """Add one scalar value to an index, unique set, and optional count map."""
+        if not value:
+            return
+        index[value].add(url)
+        unique_values.add(value)
+        if counts is not None:
+            counts[value] += 1
+
+    def _index_streams(self, url: str, streams: Iterable[str]) -> None:
+        """Index stream membership for a paper URL."""
+        for stream in streams:
+            self._by_stream[stream].add(url)
+            self._unique_streams.add(stream)
+
+    def _index_program_abbrev(self, url: str, program_abbrev: Any) -> None:
+        """Index a normalized program abbreviation for a paper URL."""
+        if not program_abbrev:
+            return
+        self._add_index_value(
+            self._by_program_abbrev,
+            self._unique_program_abbrevs,
+            url,
+            program_abbrev.upper(),
+            self._count_by_program_abbrev,
+        )
+
     def _index_paper(
         self, paper: Dict[str, Any], field_meta_cache: Dict[str, Any]
     ) -> None:
@@ -204,61 +238,44 @@ class PaperIndex:
         if not url:
             return
 
-        # Main URL to paper mapping
         self._by_url[url] = paper
+        self._add_index_value(
+            self._by_year,
+            self._unique_years,
+            url,
+            paper.get("year"),
+            self._count_by_year,
+        )
+        self._add_index_value(
+            self._by_semester,
+            self._unique_semesters,
+            url,
+            paper.get("semester"),
+            self._count_by_semester,
+        )
+        self._add_index_value(
+            self._by_course, self._unique_course_codes, url, paper.get("course_code")
+        )
+        self._add_index_value(
+            self._by_program,
+            self._unique_programs,
+            url,
+            paper.get("degree_type") or paper.get("program"),
+            self._count_by_program,
+        )
 
-        # Year index
-        year = paper.get("year")
-        if year:
-            self._by_year[year].add(url)
-            self._unique_years.add(year)
-            self._count_by_year[year] += 1
+        self._index_program_abbrev(url, paper.get("program_abbrev"))
 
-        # Semester index
-        semester = paper.get("semester")
-        if semester:
-            self._by_semester[semester].add(url)
-            self._unique_semesters.add(semester)
-            self._count_by_semester[semester] += 1
-
-        # Course index
-        course_code = paper.get("course_code")
-        if course_code:
-            self._by_course[course_code].add(url)
-            self._unique_course_codes.add(course_code)
-
-        # Program index
-        program = paper.get("degree_type") or paper.get("program")
-        if program:
-            self._by_program[program].add(url)
-            self._unique_programs.add(program)
-            self._count_by_program[program] += 1
-
-        # Program abbreviation index
-        program_abbrev = paper.get("program_abbrev")
-        if program_abbrev:
-            normalized_abbrev = program_abbrev.upper()
-            self._by_program_abbrev[normalized_abbrev].add(url)
-            self._unique_program_abbrevs.add(normalized_abbrev)
-            self._count_by_program_abbrev[normalized_abbrev] += 1
-
-        # Paper type index
-        paper_type = paper.get("paper_type")
-        if paper_type:
-            self._unique_paper_types.add(paper_type)
-            self._by_paper_type[paper_type].add(url)
-
-        # Degree type index
-        degree_type = paper.get("degree_type")
-        if degree_type:
-            self._unique_degree_types.add(degree_type)
-            self._by_degree_type[degree_type].add(url)
-
-        # Stream index
-        streams = paper.get("streams") or []
-        for stream in streams:
-            self._by_stream[stream].add(url)
-            self._unique_streams.add(stream)
+        self._add_index_value(
+            self._by_paper_type, self._unique_paper_types, url, paper.get("paper_type")
+        )
+        self._add_index_value(
+            self._by_degree_type,
+            self._unique_degree_types,
+            url,
+            paper.get("degree_type"),
+        )
+        self._index_streams(url, paper.get("streams") or [])
 
         self._compute_search_meta(paper, field_meta_cache)
 
