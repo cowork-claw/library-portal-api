@@ -4,7 +4,7 @@ import re
 import sys
 from datetime import datetime
 from pathlib import Path
-from urllib.parse import quote, urljoin
+from urllib.parse import quote
 
 import scrapy
 from scrapy import FormRequest
@@ -21,21 +21,13 @@ from scraper_config import (
     should_scrape_year as config_should_scrape_year,
 )
 
-PROGRAM_NAMES = (
-    "B.Tech",
-    "M.Tech",
-    "B.Sc",
-    "M.Sc",
-    "MBA",
-    "MCA",
-    "B.Com",
-    "M.Com",
-    "BBA",
-    "BCA",
-)
+from .question_paper_metadata import QuestionPaperMetadataMixin
+from .question_paper_row_parsing import QuestionPaperRowParsingMixin
 
 
-class QuestionPapersEnhancedSpider(scrapy.Spider):
+class QuestionPapersEnhancedSpider(
+    QuestionPaperRowParsingMixin, QuestionPaperMetadataMixin, scrapy.Spider
+):
     name = "question_papers_enhanced"
     allowed_domains = ["libportal.manipal.edu"]
     start_urls = ["https://libportal.manipal.edu/MIT/Question%20Paper.aspx"]
@@ -234,132 +226,6 @@ class QuestionPapersEnhancedSpider(scrapy.Spider):
             priority=10 - depth,
         )
 
-    def extract_form_data(self, response):
-        """Extract all form data needed for ASP.NET postback."""
-        form_data = {}
-
-        # Extract all hidden fields
-        for field in response.css('input[type="hidden"]'):
-            name = field.css("::attr(name)").get()
-            value = field.css("::attr(value)").get("")
-            if name:
-                form_data[name] = value
-
-        # Add any additional form fields that might be needed
-        for field in response.css('input[type="text"], input[type="submit"], select'):
-            name = field.css("::attr(name)").get()
-            value = field.css("::attr(value)").get("")
-            if name and name not in form_data:
-                form_data[name] = value
-
-        return form_data
-
-    def extract_items(self, response):
-        """Extract all items from the current page."""
-        items = []
-
-        # Look for the specific file table
-        table = response.css('table[id*="gvFiles"]').get()
-
-        if not table:
-            self.logger.debug("No file table found with gvFiles ID")
-            return items
-
-        # Parse the table
-        table_selector = response.css('table[id*="gvFiles"]')
-        rows = table_selector.css("tr")[1:]  # Skip header row
-
-        self.logger.debug(f"Found table with {len(rows)} rows")
-
-        for row in rows:
-            item = self.extract_item_from_row(row, response)
-            if item and item.get("name"):
-                items.append(item)
-
-        return items
-
-    def extract_item_from_row(self, row, response):
-        """Extract item data from a table row."""
-        cells = row.css("td")
-        if len(cells) < 2:
-            return None
-
-        first_cell = cells[0]
-        link_elem = first_cell.css("a")
-        if not link_elem.get():
-            return None
-
-        name = self._extract_link_name(first_cell, link_elem)
-        if not name or name in ["..", "."]:
-            return None
-
-        href = link_elem.css("::attr(href)").get("")
-        link_id = link_elem.css("::attr(id)").get("")
-        item_type = cells[1].css("::text").get("").strip()
-        size = cells[3].css("::text").get("").strip() if len(cells) > 3 else ""
-        is_folder, is_pdf, event_target, event_argument, pdf_url = self._classify_item(
-            name, item_type, href, link_id, response
-        )
-
-        return {
-            "name": name,
-            "type": item_type,
-            "size": size,
-            "is_folder": is_folder,
-            "is_pdf": is_pdf,
-            "href": href,
-            "event_target": event_target,
-            "event_argument": event_argument,
-            "pdf_url": pdf_url,
-        }
-
-    def _extract_link_name(self, first_cell, link_elem):
-        """Extract display text from the table-row link."""
-        full_text = "".join(first_cell.css("a ::text").getall()).strip()
-        if full_text:
-            return full_text
-
-        link_html = link_elem.get()
-        text_match = re.search(r"</?\w+[^>]*>\s*([^<]+)", link_html or "")
-        return text_match.group(1).strip() if text_match else ""
-
-    def _postback_target(self, href, link_id):
-        """Extract ASP.NET postback navigation target from a link."""
-        if "__doPostBack" not in href:
-            return False, None, None
-
-        postback_match = re.search(r"__doPostBack\('([^']+)','([^']*)'\)", href)
-        if postback_match:
-            return True, postback_match.group(1), postback_match.group(2)
-        if link_id:
-            return True, link_id, ""
-        return False, None, None
-
-    def _pdf_url(self, name_lower, item_type_lower, href, response):
-        """Return a direct PDF URL when the row points at a PDF."""
-        if ".pdf" not in name_lower and "pdf" not in item_type_lower:
-            return False, None
-        if not href or href.startswith("javascript:"):
-            return True, None
-        if href.startswith("http"):
-            return True, href
-        return True, urljoin(response.url, href)
-
-    def _classify_item(self, name, item_type, href, link_id, response):
-        """Classify a row as folder/PDF and extract navigation metadata."""
-        name_lower = name.lower()
-        item_type_lower = item_type.lower()
-        is_folder, event_target, event_argument = self._postback_target(href, link_id)
-        is_pdf, pdf_url = self._pdf_url(name_lower, item_type_lower, href, response)
-
-        if not is_folder and not is_pdf:
-            if "folder" in item_type_lower:
-                is_folder = True
-            elif "pdf" in item_type_lower:
-                is_pdf = True
-
-        return is_folder, is_pdf, event_target, event_argument, pdf_url
-
     def should_skip(self, name):
         """Check if a folder should be skipped."""
         for pattern in self.SKIP_PATTERNS:
@@ -435,73 +301,6 @@ class QuestionPapersEnhancedSpider(scrapy.Spider):
         self.extract_metadata(item)
 
         return item
-
-    def extract_metadata(self, item):
-        """Extract year, semester, program, and subject from item data."""
-        path_parts = item["path"].split("/")
-        file_name = item["file_name"]
-
-        item["year"] = self._extract_year(path_parts, file_name)
-        if not item["year"]:
-            self.logger.warning(
-                f"Could not extract valid year from path: {item['path']}"
-            )
-
-        program = self._extract_program(path_parts)
-        if program:
-            item["program"] = program
-
-        semester = self._extract_semester(path_parts)
-        if semester:
-            item["semester"] = semester
-
-        item["subject"] = self._extract_subject(file_name)
-
-    def _extract_year(self, path_parts, file_name):
-        """Extract a valid year from the first path component."""
-        if not path_parts:
-            return None
-
-        potential_year = path_parts[0].strip()
-        current_year = datetime.now().year
-        if potential_year.isdigit() and len(potential_year) == 4:
-            if self._is_valid_year(potential_year, current_year):
-                return potential_year
-            self.logger.warning(
-                f"Year {int(potential_year)} outside valid range for paper: {file_name}"
-            )
-            return None
-
-        year_match = re.search(r"\b(20\d{2})\b", potential_year)
-        if year_match and self._is_valid_year(year_match.group(1), current_year):
-            return year_match.group(1)
-        return None
-
-    def _is_valid_year(self, year_text, current_year):
-        """Return whether a scraped year is within the accepted range."""
-        year_int = int(year_text)
-        return 2005 <= year_int <= current_year + 1
-
-    def _extract_program(self, path_parts):
-        """Extract the first known program component from a path."""
-        for part in path_parts:
-            if any(program in part for program in PROGRAM_NAMES):
-                return part
-        return None
-
-    def _extract_semester(self, path_parts):
-        """Extract semester text from path components."""
-        for part in path_parts:
-            sem_match = re.search(r"(I+|[1-9])\s*(st|nd|rd|th)?\s*[Ss]em", part)
-            if sem_match:
-                return sem_match.group()
-        return None
-
-    def _extract_subject(self, file_name):
-        """Extract the display subject from a PDF file name."""
-        subject = re.sub(r"\.pdf$", "", file_name, flags=re.IGNORECASE)
-        subject_match = re.search(r"^([^(\[]+)", subject)
-        return subject_match.group(1).strip() if subject_match else subject
 
     def closed(self, reason):
         """Called when spider closes. V2: Records run in scrape log."""
