@@ -18,7 +18,6 @@ REQUIRED_FIELDS = {"url", "file_name", "course_code"}
 
 
 def _load_json(file_path: Path) -> Tuple[Any, List[str]]:
-    """Load JSON data from disk and return validation-style read errors."""
     try:
         with open(file_path, "r", encoding="utf-8") as f:
             return json.load(f), []
@@ -31,7 +30,6 @@ def _load_json(file_path: Path) -> Tuple[Any, List[str]]:
 def _validate_required_fields(
     course_code: str, index: int, paper: Dict[str, Any], errors: List[str]
 ) -> None:
-    """Record missing required paper fields."""
     for field in REQUIRED_FIELDS:
         if field not in paper or paper[field] is None:
             errors.append(f"{course_code}[{index}]: missing required field '{field}'")
@@ -44,7 +42,6 @@ def _validate_unique_url(
     urls_seen: set,
     errors: List[str],
 ) -> None:
-    """Record duplicate URLs within a single JSON file."""
     url = paper.get("url")
     if not url:
         return
@@ -62,7 +59,6 @@ def _validate_int_range(
     upper: int,
     errors: List[str],
 ) -> None:
-    """Record invalid optional integer range fields."""
     value = paper.get(field)
     if value is None:
         return
@@ -77,7 +73,6 @@ def _validate_paper(
     urls_seen: set,
     errors: List[str],
 ) -> None:
-    """Validate one paper record."""
     _validate_required_fields(course_code, index, paper, errors)
     _validate_unique_url(course_code, index, paper, urls_seen, errors)
     _validate_int_range(course_code, index, paper, "year", 2006, 2030, errors)
@@ -85,7 +80,6 @@ def _validate_paper(
 
 
 def _validate_json_file(file_path: Path) -> Tuple[bool, List[str]]:
-    """Validate one course-code JSON file."""
     data, errors = _load_json(file_path)
     if errors:
         return False, errors
@@ -108,7 +102,6 @@ def _validate_json_file(file_path: Path) -> Tuple[bool, List[str]]:
 
 
 def _new_report() -> Dict[str, Any]:
-    """Create an empty validation report."""
     return {
         "valid": True,
         "files_checked": 0,
@@ -122,7 +115,6 @@ def _new_report() -> Dict[str, Any]:
 
 
 def _count_file_papers(report: Dict[str, Any], json_file: Path) -> None:
-    """Update cross-file paper and URL counts from one JSON file."""
     data, errors = _load_json(json_file)
     if errors or not isinstance(data, dict):
         return
@@ -143,7 +135,6 @@ def _count_file_papers(report: Dict[str, Any], json_file: Path) -> None:
 def _record_file_result(
     report: Dict[str, Any], relative_path: str, is_valid: bool, errors: List[str]
 ) -> None:
-    """Update aggregate report counters for one file result."""
     if is_valid:
         report["files_valid"] += 1
         logger.info("OK %s", relative_path)
@@ -160,7 +151,6 @@ def _record_file_result(
 
 
 def _log_summary(report: Dict[str, Any]) -> None:
-    """Log aggregate validation results."""
     logger.info("=" * 60)
     logger.info("VALIDATION SUMMARY")
     logger.info("  Files checked: %s", report["files_checked"])
@@ -176,7 +166,6 @@ def _log_summary(report: Dict[str, Any]) -> None:
 
 
 def _validate_all(data_dir: Path = DATA_DIRECTORY) -> Dict[str, Any]:
-    """Validate all JSON files under the data directory."""
     report = _new_report()
     if not data_dir.exists():
         logger.error("Data directory not found: %s", data_dir)
