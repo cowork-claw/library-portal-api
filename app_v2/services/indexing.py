@@ -125,9 +125,9 @@ class PaperIndex(PaperIndexAccessors):
         new_index.load_from_directory(loader)
         if new_index.loader and new_index.loader.stats.errors:
             raise RuntimeError("Data reload failed; keeping previous index")
-        self.replace_with(new_index)
+        self._replace_with(new_index)
 
-    def replace_with(self, other: "PaperIndex") -> None:
+    def _replace_with(self, other: "PaperIndex") -> None:
         """Replace this index's state with a fully built index."""
         with self._swap_lock:
             swap_lock = self._swap_lock
