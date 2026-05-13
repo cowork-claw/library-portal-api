@@ -10,7 +10,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from scraper.scraper_config import DATA_DIRECTORY, STAGING_FILE
-from scripts.processing.paper_categorizer import PaperCategorizer, write_paper_to_file
+from scripts.processing.paper_categorizer import PaperCategorizer, _write_paper_to_file
 from scripts.processing.paper_categorizer_rules import AUTO_WRITE_CONFIDENCE
 from scripts.processing.staging_handler import StagingHandler
 
@@ -62,7 +62,7 @@ def _handle_auto_write(paper: dict, result, dry_run: bool, stats: dict) -> None:
         return
 
     _merge_metadata(paper, result.metadata_filled)
-    if write_paper_to_file(paper, result.target_file):
+    if _write_paper_to_file(paper, result.target_file):
         stats["auto_written"] += 1
     else:
         stats["skipped_duplicate"] += 1

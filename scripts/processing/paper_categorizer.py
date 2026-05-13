@@ -21,7 +21,7 @@ from .paper_categorizer_rules import (
 logger = logging.getLogger(__name__)
 
 
-def write_paper_to_file(paper: Dict[str, Any], target_file: Path) -> bool:
+def _write_paper_to_file(paper: Dict[str, Any], target_file: Path) -> bool:
     """Write a categorized paper into an organized JSON file."""
     try:
         if target_file.exists():
