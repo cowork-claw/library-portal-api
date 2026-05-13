@@ -1,9 +1,4 @@
-"""
-API Authentication Middleware for Library Portal V2
-
-Protects API endpoints with API key authentication.
-Public endpoints (health, docs) are accessible without authentication.
-"""
+"""API key authentication and security header middleware."""
 
 import logging
 import os
@@ -31,13 +26,7 @@ PUBLIC_PATHS = {
 
 
 class APIKeyMiddleware(BaseHTTPMiddleware):
-    """
-    Middleware for API key authentication.
-
-    API key must be provided via the 'X-API-Key' header.
-
-    Public endpoints (/, /docs, /health/*) don't require authentication.
-    """
+    """Validate API keys on protected routes."""
 
     def __init__(
         self, app, api_key: Optional[str] = None, environment: str = "production"
@@ -130,11 +119,7 @@ class APIKeyMiddleware(BaseHTTPMiddleware):
         return await call_next(request)
 
     def _is_public_path(self, path: str) -> bool:
-        """
-        Check if path is public (no auth required).
-
-        Paths are considered public if they are in PUBLIC_PATHS.
-        """
+        """Return whether the path bypasses API-key authentication."""
         # Normalize path by removing trailing slash for consistent matching
         path_normalized = path.rstrip("/") if path != "/" else "/"
 
