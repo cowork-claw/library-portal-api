@@ -1,8 +1,4 @@
-"""
-Metadata Routes for Library Portal API V2
-
-Endpoints for retrieving available filter values and statistics.
-"""
+"""Metadata and collection statistics routes."""
 
 from fastapi import APIRouter
 
@@ -14,16 +10,7 @@ router = APIRouter(prefix="/api", tags=["Metadata"])
 
 @router.get("/metadata", response_model=MetadataResponse)
 async def get_metadata() -> MetadataResponse:
-    """
-    Get available filter values.
-
-    Returns all unique values for each filter field, useful for building
-    filter dropdowns in the frontend.
-
-    The `program_abbrevs` field contains short abbreviations (e.g., "BME", "CSE")
-    that can be used for filtering papers by program. These are more concise than
-    the full program names in the `programs` field.
-    """
+    """Return available filter values for clients."""
     return MetadataResponse(
         years=list(paper_index.unique_years),
         programs=list(paper_index.unique_programs),
@@ -39,14 +26,7 @@ async def get_metadata() -> MetadataResponse:
 
 @router.get("/statistics", response_model=StatisticsResponse)
 async def get_statistics() -> StatisticsResponse:
-    """
-    Get detailed statistics about the paper collection.
-
-    Includes counts by year, program, semester, and overall totals.
-
-    The `papers_by_program_abbrev` field provides paper counts grouped by
-    program abbreviation (e.g., "BME": 26, "CSE": 70) for statistical analysis.
-    """
+    """Return aggregate paper collection counts."""
     return StatisticsResponse(
         total_papers=paper_index.total_papers,
         papers_by_year=dict(paper_index.count_by_year),

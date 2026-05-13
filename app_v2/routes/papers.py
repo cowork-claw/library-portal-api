@@ -251,18 +251,7 @@ async def get_papers(
 async def lookup_paper(
     url: HttpUrl = Query(..., description="Exact paper URL to look up"),
 ) -> Paper:
-    """
-    Look up a single paper by its exact download URL.
-
-    Args:
-        url: The exact URL of the paper to find.
-
-    Returns:
-        Paper: The matching paper object.
-
-    Raises:
-        HTTPException: 404 if no paper with the given URL exists in the index.
-    """
+    """Look up a single paper by its exact download URL."""
     paper = paper_index.get_by_url(str(url))
     if paper is None:
         raise HTTPException(status_code=404, detail="Paper not found")

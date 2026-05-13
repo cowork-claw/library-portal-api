@@ -1,8 +1,4 @@
-"""
-Health Routes for Library Portal API V2
-
-Comprehensive health check endpoints for monitoring system status.
-"""
+"""Health and operational status routes."""
 
 import json
 import logging
@@ -36,11 +32,7 @@ APP_START_TIME = datetime.now()
 
 @router.get("", response_model=HealthResponse)
 async def health_check() -> HealthResponse:
-    """
-    Basic health check endpoint.
-
-    Returns overall system health status with component breakdown.
-    """
+    """Return overall system health with component statuses."""
     uptime = (datetime.now() - APP_START_TIME).total_seconds()
 
     # Check data component — "degraded" when no data (not "unhealthy")
@@ -83,11 +75,7 @@ async def health_check() -> HealthResponse:
 
 @router.get("/data", response_model=DataHealthResponse)
 async def data_health() -> DataHealthResponse:
-    """
-    Detailed data health check.
-
-    Returns comprehensive information about loaded papers and data integrity.
-    """
+    """Return loaded paper and data integrity status."""
     loader_stats = paper_index.loader._get_stats() if paper_index.loader else {}
 
     return DataHealthResponse(
@@ -105,11 +93,7 @@ async def data_health() -> DataHealthResponse:
 
 @router.get("/scraper", response_model=ScraperHealthResponse)
 async def scraper_health() -> ScraperHealthResponse:
-    """
-    Scraper health check.
-
-    Returns scraper run history and configuration.
-    """
+    """Return scraper run history and configuration status."""
     log_data = await run_in_threadpool(_load_scrape_log)
 
     runs = log_data.get("runs", [])
@@ -133,15 +117,7 @@ async def scraper_health() -> ScraperHealthResponse:
     status_code=status.HTTP_202_ACCEPTED,
 )
 async def reload_data(background_tasks: BackgroundTasks) -> ReloadResponse:
-    """
-    Trigger a background reload of JSON data.
-
-    Requires API key authentication. Returns immediately with a unique
-    ``reload_id`` and schedules the reload as a FastAPI background task.
-
-    Returns:
-        ReloadResponse: Contains ``reload_id`` and a status message.
-    """
+    """Schedule a background JSON data reload."""
     reload_id = str(uuid.uuid4())
     # Read DATA_DIRECTORY directly from env so reload always uses the current
     # value, even if the module-level ``settings`` is stale after tests reload
