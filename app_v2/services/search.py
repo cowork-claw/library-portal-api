@@ -1,8 +1,4 @@
-"""
-Search Service for Library Portal API V2
-
-Provides fuzzy search functionality for finding papers.
-"""
+"""Fuzzy search service for paper metadata."""
 
 import re
 from typing import Any, Dict, List, Optional, Set
@@ -31,25 +27,7 @@ def _tokenize_words(text: str) -> Set[str]:
 def search_papers(
     papers: List[Dict[str, Any]], query: str, threshold: float = 0.5
 ) -> List[Dict[str, Any]]:
-    """
-    Search papers using fuzzy matching.
-
-    Searches across:
-    - course_code
-    - course_name
-    - subject_name
-    - display_title
-    - file_name
-
-    Args:
-        papers: List of paper dictionaries to search.
-        query: Search query string.
-        threshold: Minimum similarity score (0-1) to include in results.
-                   Defaults to 0.5.
-
-    Returns:
-        List of matching papers, sorted by relevance.
-    """
+    """Return matching papers sorted by relevance."""
     if not query or not papers:
         return papers
 
