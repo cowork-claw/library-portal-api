@@ -75,12 +75,10 @@ SEMESTER_OPERATION_ID = "get_papers_by_semester_api_papers_semester__semester__g
 
 
 def _to_public_paper(paper: Dict[str, Any]) -> Dict[str, Any]:
-    """Strip internal-only fields before serializing API responses."""
     return {k: v for k, v in paper.items() if not k.startswith("_")}
 
 
 def _create_pagination(total: int, limit: int, offset: int) -> PaginationInfo:
-    """Create pagination metadata from total, limit, and offset."""
     total_pages = max(1, (total + limit - 1) // limit) if limit > 0 else 1
     current_page = (offset // limit) + 1 if limit > 0 else 1
 
@@ -102,7 +100,6 @@ def _create_paginated_response(
     offset: int,
     execution_time: Optional[float] = None,
 ) -> PapersResponse:
-    """Create a standardized paginated response."""
     paginated = papers[offset : offset + limit]
 
     return PapersResponse(
@@ -147,7 +144,6 @@ def _sort_papers(
 def _get_papers_response_from_urls(
     urls: set, limit: int, offset: int
 ) -> PapersResponse:
-    """Helper to fetch papers by URL set and return a paginated response."""
     papers = paper_index.get_by_urls(urls)
     total = len(papers)
     return _create_paginated_response(papers, total, limit, offset)
@@ -156,12 +152,10 @@ def _get_papers_response_from_urls(
 def _collect_filter_url_sets(
     filters: Iterable[tuple[Any, Callable[[Any], Set[str]]]],
 ) -> List[Set[str]]:
-    """Resolve active query filters to indexed URL sets."""
     return [method(value) for value, method in filters if value is not None]
 
 
 def _intersect_filter_url_sets(filter_url_sets: List[Set[str]]) -> Optional[Set[str]]:
-    """Intersect filter URL sets, using the smallest sets first."""
     if not filter_url_sets:
         return None
 
@@ -174,7 +168,6 @@ def _intersect_filter_url_sets(filter_url_sets: List[Set[str]]) -> Optional[Set[
 async def _resolve_paper_results(
     search: Optional[str], filter_urls: Optional[Set[str]]
 ) -> List[Dict[str, Any]]:
-    """Resolve search/filter combinations into ordered paper dictionaries."""
     if search:
         search_urls = await run_in_threadpool(paper_index.search, search)
         if filter_urls is not None:
@@ -191,7 +184,6 @@ async def _resolve_paper_results(
 def _effective_sort_field(
     sort: Optional[Literal["year", "semester", "relevance"]], search: Optional[str]
 ) -> Literal["year", "semester", "relevance"]:
-    """Return the sort field implied by the request parameters."""
     if sort is None:
         return "relevance" if search else "year"
     if sort == "relevance" and not search:
