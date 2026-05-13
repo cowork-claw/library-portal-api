@@ -97,14 +97,6 @@ class ScrapeLog:
             f"Recorded run: {new_papers} new, {skipped} skipped, {errors} errors"
         )
 
-    def get_stats(self) -> Dict[str, Any]:
-        """Get overall statistics."""
-        return {
-            "total_urls": len(self.data.get("scraped_urls", [])),
-            "total_runs": len(self.data.get("runs", [])),
-            **self.data.get("stats", {}),
-        }
-
 
 def _load_existing_urls_from_organized_data(data_directory: Path) -> Set[str]:
     """Load existing paper URLs from organized JSON files."""
