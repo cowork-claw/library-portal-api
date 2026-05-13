@@ -1,8 +1,4 @@
-"""
-Library Portal API V2 - Main Application
-
-A fresh, clean FastAPI application for serving organized question paper data.
-"""
+"""FastAPI application wiring for the Library Portal API."""
 
 import logging
 import os
@@ -57,11 +53,7 @@ logger = logging.getLogger(__name__)
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    """
-    Application lifespan manager.
-
-    Loads data on startup, cleans up on shutdown.
-    """
+    """Load paper data for the application lifespan."""
     logger.info("🚀 Starting Library Portal API V2...")
 
     # Load data from organized folder
