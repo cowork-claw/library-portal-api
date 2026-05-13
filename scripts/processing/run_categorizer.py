@@ -1,13 +1,4 @@
-"""
-Run Categorizer - CLI Entry Point
-
-Process scraped papers and categorize them into the organized folder structure.
-High-confidence papers are auto-written, low-confidence papers are staged for review.
-
-Usage:
-    python run_categorizer.py <input_json>
-    python run_categorizer.py scraped_output.json
-"""
+"""Categorize scraped papers from the command line."""
 
 import argparse
 import json
@@ -47,7 +38,7 @@ def _record_result(stats: dict, category: str, confidence: float) -> None:
     """Update category and confidence counters for one categorization result."""
     stats["by_category"][category] = stats["by_category"].get(category, 0) + 1
 
-    if confidence >= 0.85:
+    if confidence >= AUTO_WRITE_CONFIDENCE:
         stats["by_confidence"]["high"] += 1
     elif confidence >= 0.5:
         stats["by_confidence"]["medium"] += 1
@@ -174,7 +165,7 @@ def run_categorizer(input_file: Path, dry_run: bool = False) -> dict:
     return stats
 
 
-def main():
+def _main() -> None:
     parser = argparse.ArgumentParser(
         description="Categorize scraped papers into organized folder structure"
     )
@@ -206,4 +197,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    _main()
