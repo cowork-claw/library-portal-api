@@ -5,7 +5,17 @@ Endpoints for retrieving and searching question papers.
 """
 
 import time
-from typing import Any, Callable, Dict, Iterable, List, Literal, Optional, Set
+from typing import (
+    Annotated,
+    Any,
+    Callable,
+    Dict,
+    Iterable,
+    List,
+    Literal,
+    Optional,
+    Set,
+)
 
 from fastapi import APIRouter, HTTPException, Path, Query
 from fastapi.concurrency import run_in_threadpool
@@ -15,6 +25,53 @@ from ..models import CourseResponse, PaginationInfo, Paper, PapersResponse
 from ..services.indexing import paper_index
 
 router = APIRouter(prefix="/api/papers", tags=["Papers"])
+
+YearFilter = Annotated[
+    Optional[int], Query(ge=2000, le=2100, description="Filter by year")
+]
+SemesterFilter = Annotated[
+    Optional[int], Query(ge=1, le=8, description="Filter by semester (1-8)")
+]
+ProgramFilter = Annotated[
+    Optional[str], Query(max_length=50, description="Filter by program")
+]
+DegreeTypeFilter = Annotated[
+    Optional[str], Query(max_length=50, description="Filter by degree type")
+]
+PaperTypeFilter = Annotated[
+    Optional[str],
+    Query(max_length=50, description="Filter by paper type (Regular, Makeup, etc.)"),
+]
+CourseCodeFilter = Annotated[
+    Optional[str], Query(max_length=20, description="Filter by course code")
+]
+StreamFilter = Annotated[
+    Optional[str], Query(max_length=20, description="Filter by stream (cs, core)")
+]
+ProgramAbbrevFilter = Annotated[
+    Optional[str],
+    Query(
+        min_length=1,
+        max_length=20,
+        pattern=r"\S",
+        description="Filter by program abbreviation (e.g., CSE, ECE)",
+    ),
+]
+SearchQuery = Annotated[
+    Optional[str], Query(min_length=2, max_length=100, description="Search query")
+]
+SortField = Annotated[
+    Optional[Literal["year", "semester", "relevance"]],
+    Query(description="Sort field: year, semester, or relevance"),
+]
+SortOrder = Annotated[
+    Optional[Literal["asc", "desc"]],
+    Query(description="Sort order: asc or desc (default: desc)"),
+]
+LimitParam = Annotated[
+    int, Query(ge=1, le=500, description="Number of results per page")
+]
+OffsetParam = Annotated[int, Query(ge=0, description="Offset for pagination")]
 
 
 def to_public_paper(paper: Dict[str, Any]) -> Dict[str, Any]:
@@ -172,72 +229,21 @@ def _effective_sort_field(
 
 @router.get("", response_model=PapersResponse)
 async def get_papers(
-    # Filters
-    year: Optional[int] = Query(None, ge=2000, le=2100, description="Filter by year"),
-    semester: Optional[int] = Query(
-        None, ge=1, le=8, description="Filter by semester (1-8)"
-    ),
-    program: Optional[str] = Query(
-        None, max_length=50, description="Filter by program"
-    ),
-    degree_type: Optional[str] = Query(
-        None, max_length=50, description="Filter by degree type"
-    ),
-    paper_type: Optional[str] = Query(
-        None, max_length=50, description="Filter by paper type (Regular, Makeup, etc.)"
-    ),
-    course_code: Optional[str] = Query(
-        None, max_length=20, description="Filter by course code"
-    ),
-    stream: Optional[str] = Query(
-        None, max_length=20, description="Filter by stream (cs, core)"
-    ),
-    program_abbrev: Optional[str] = Query(
-        None,
-        min_length=1,
-        max_length=20,
-        pattern=r"\S",
-        description="Filter by program abbreviation (e.g., CSE, ECE)",
-    ),
-    # Search
-    search: Optional[str] = Query(
-        None, min_length=2, max_length=100, description="Search query"
-    ),
-    # Sort
-    sort: Optional[Literal["year", "semester", "relevance"]] = Query(
-        None, description="Sort field: year, semester, or relevance"
-    ),
-    order: Optional[Literal["asc", "desc"]] = Query(
-        None, description="Sort order: asc or desc (default: desc)"
-    ),
-    # Pagination
-    limit: int = Query(50, ge=1, le=500, description="Number of results per page"),
-    offset: int = Query(0, ge=0, description="Offset for pagination"),
+    year: YearFilter = None,
+    semester: SemesterFilter = None,
+    program: ProgramFilter = None,
+    degree_type: DegreeTypeFilter = None,
+    paper_type: PaperTypeFilter = None,
+    course_code: CourseCodeFilter = None,
+    stream: StreamFilter = None,
+    program_abbrev: ProgramAbbrevFilter = None,
+    search: SearchQuery = None,
+    sort: SortField = None,
+    order: SortOrder = None,
+    limit: LimitParam = 50,
+    offset: OffsetParam = 0,
 ) -> PapersResponse:
-    """
-    Get question papers with optional filtering, search, and pagination.
-
-    Filters can be combined. Search uses fuzzy matching on course names and titles.
-
-    Args:
-        year: Filter by academic year.
-        semester: Filter by semester number (1-8).
-        program: Filter by program name (e.g., "B.Tech Computer Science").
-        degree_type: Filter by degree type (e.g., "B.Tech", "M.Tech").
-        paper_type: Filter by paper type (e.g., "Regular", "Makeup").
-        course_code: Filter by exact course code.
-        stream: Filter by stream (e.g., "cs", "core").
-        program_abbrev: Filter by program abbreviation (e.g., "CSE", "ECE").
-        search: Search query for fuzzy matching.
-        sort: Sort field — one of 'year', 'semester', 'relevance'.
-            Defaults to 'relevance' when search is provided, otherwise 'year'.
-        order: Sort order — 'asc' or 'desc'. Defaults to 'desc'.
-        limit: Number of results to return per page.
-        offset: Number of results to skip (for pagination).
-
-    Returns:
-        PapersResponse: Paginated list of matching papers with metadata.
-    """
+    """Get question papers with filtering, fuzzy search, sorting, and pagination."""
     start_time = time.time()
 
     filters = [
