@@ -10,10 +10,9 @@ from threading import RLock
 from types import MappingProxyType
 from typing import Any, Dict, Iterable, List, Mapping, Optional, Set, Tuple
 
-from app_v2.utils import WORD_TOKEN_PATTERN
-
 from ..data_loader import DataLoader
 from .index_accessors import PaperIndexAccessors
+from .search import WORD_TOKEN_PATTERN
 
 logger = logging.getLogger(__name__)
 

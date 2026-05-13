@@ -4,15 +4,15 @@ Search Service for Library Portal API V2
 Provides fuzzy search functionality for finding papers.
 """
 
+import re
 from typing import Any, Dict, List, Optional, Set
 
 from thefuzz import fuzz
 
-from app_v2.utils import WORD_TOKEN_PATTERN
-
 __all__ = ["search_papers", "SEARCH_FIELDS"]
 
 WORD_MATCH_SCORE_FACTOR = 0.7
+WORD_TOKEN_PATTERN = re.compile(r"\w+")
 
 # Fields to search with their weights
 SEARCH_FIELDS = [
