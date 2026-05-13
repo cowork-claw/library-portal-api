@@ -1,14 +1,4 @@
-"""
-Paper Categorizer for Library Portal V2
-
-Intelligent categorization of scraped papers into the organized folder structure.
-Uses course code patterns and program information to determine target file.
-
-Key features:
-- 2024+ two-track first year detection (CS vs Core)
-- Confidence scoring for auto-write vs staging
-- CSS prefix handling for new curriculum
-"""
+"""Categorize scraped papers into organized JSON targets."""
 
 import re
 from pathlib import Path
@@ -29,23 +19,10 @@ from .paper_writer import write_paper_to_file as write_paper_to_file
 
 
 class PaperCategorizer:
-    """
-    Categorizes papers into the organized folder structure.
-
-    Uses course code patterns and program information to determine:
-    1. Target JSON file
-    2. Confidence score
-    3. Any metadata that can be auto-filled
-    """
+    """Categorize papers by target file, confidence, and derived metadata."""
 
     def __init__(self, data_directory: Path, staging_directory: Path) -> None:
-        """
-        Initialize the PaperCategorizer.
-
-        Args:
-            data_directory: Path to the organized data folder.
-            staging_directory: Path to the folder for papers needing review.
-        """
+        """Initialize with organized data and staging directories."""
         self.data_dir = data_directory
         self.staging_dir = staging_directory
         self.staging_dir.mkdir(parents=True, exist_ok=True)
@@ -117,15 +94,7 @@ class PaperCategorizer:
         )
 
     def categorize(self, paper: Dict[str, Any]) -> CategorizationResult:
-        """
-        Determine the correct file for a paper and calculate confidence.
-
-        Args:
-            paper: Paper dictionary from scraper
-
-        Returns:
-            CategorizationResult with target file, confidence, and reasoning
-        """
+        """Determine the target file, confidence, and reasoning for a paper."""
         reasoning: List[str] = []
         metadata: Dict[str, Any] = {}
         course_code = self._normalized_course_code(paper)
@@ -158,17 +127,7 @@ class PaperCategorizer:
         return self._categorize_other(reasoning, metadata)
 
     def _is_masters(self, program: str, degree_type: str, course_code: str) -> bool:
-        """
-        Check if a paper belongs to a Master's program.
-
-        Args:
-            program: The program name from the paper.
-            degree_type: The degree type from the paper.
-            course_code: The course code of the paper.
-
-        Returns:
-            True if the paper is determined to be a Master's level paper.
-        """
+        """Return whether scraper metadata or course code indicates masters level."""
         masters_keywords = ["M.Tech", "MTech", "M.E", "ME", "MCA", "M.Sc", "MSc"]
 
         for keyword in masters_keywords:
@@ -192,19 +151,7 @@ class PaperCategorizer:
         course_code: str,
         reasoning: List[str],
     ) -> CategorizationResult:
-        """
-        Categorize a paper determined to be for a Master's program.
-
-        Args:
-            program: The program name from the paper.
-            degree_type: The degree type from the paper.
-            prefix: The extracted course code prefix.
-            course_code: The full course code.
-            reasoning: A list of reasons for the categorization.
-
-        Returns:
-            A CategorizationResult for the Master's paper.
-        """
+        """Categorize a masters-level paper by program family."""
         if "MCA" in program or "MCA" in degree_type:
             reasoning.append("MCA program detected")
             return CategorizationResult(
@@ -236,16 +183,7 @@ class PaperCategorizer:
         )
 
     def _is_icas(self, prefix: str, course_code: str) -> bool:
-        """
-        Check if a paper belongs to the B.Sc ICAS program.
-
-        Args:
-            prefix: The extracted course code prefix.
-            course_code: The full course code.
-
-        Returns:
-            True if the paper is determined to be an ICAS paper.
-        """
+        """Return whether the prefix/course code belongs to B.Sc ICAS."""
         # ICAS codes start with 'I' followed by subject area
         if prefix in ICAS_PREFIXES:
             return True
@@ -279,17 +217,7 @@ class PaperCategorizer:
     def _check_first_year(
         self, course_code: str, prefix: str, reasoning: List[str]
     ) -> Optional[CategorizationResult]:
-        """
-        Check if a paper is a first-year paper and determine its stream.
-
-        Args:
-            course_code: The full course code.
-            prefix: The extracted course code prefix.
-            reasoning: A list of reasons for the categorization.
-
-        Returns:
-            A CategorizationResult if the paper is a first-year paper, otherwise None.
-        """
+        """Return a first-year stream result when the course pattern is known."""
         if CSS_PREFIX_PATTERN.match(course_code) or prefix == "CSS":
             return self._first_year_result(
                 "cs_stream.json",
@@ -326,15 +254,7 @@ class PaperCategorizer:
         return None
 
     def _get_semester_from_code(self, code: str) -> Optional[int]:
-        """
-        Extract semester from the course code pattern.
-
-        Args:
-            code: The course code.
-
-        Returns:
-            The extracted semester number (1-8) or None if not found.
-        """
+        """Extract semester number 1-8 from a branch course code."""
         match = re.match(r"^[A-Z]{2,4}(\d)(\d)", code)
         if not match:
             return None
