@@ -19,7 +19,6 @@ class ScrapeLog:
         self._dirty = False
 
     def _load(self) -> Dict[str, Any]:
-        """Load existing log or create new."""
         if self.log_file.exists():
             try:
                 with open(self.log_file, "r", encoding="utf-8") as f:

@@ -51,7 +51,6 @@ def _merge_metadata(paper: dict, metadata: dict) -> None:
 
 
 def _handle_auto_write(paper: dict, result, dry_run: bool, stats: dict) -> None:
-    """Write a high-confidence paper or count the dry-run action."""
     course_code = paper.get("course_code", "UNKNOWN")
     if dry_run:
         logger.info("DRY RUN: Would write %s to %s", course_code, result.target_file)
@@ -68,7 +67,6 @@ def _handle_auto_write(paper: dict, result, dry_run: bool, stats: dict) -> None:
 def _handle_staging(
     paper: dict, result, dry_run: bool, stats: dict, staging_handler
 ) -> None:
-    """Stage a low-confidence paper or count the dry-run action."""
     course_code = paper.get("course_code", "UNKNOWN")
     if dry_run:
         logger.info(
@@ -90,7 +88,6 @@ def _process_paper(
     dry_run: bool,
     stats: dict,
 ) -> None:
-    """Categorize one paper and route it to writing or staging."""
     result = categorizer.categorize(paper)
     _record_result(stats, result.category, result.confidence)
 

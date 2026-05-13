@@ -114,7 +114,6 @@ class PaperCategorizer:
     def _categorize_other(
         self, reasoning: List[str], metadata: Dict[str, Any]
     ) -> CategorizationResult:
-        """Return the fallback catch-all categorization result."""
         reasoning.append("No clear category - defaulting to other.json")
         return CategorizationResult(
             self.data_dir / "other.json", 0.5, "other", reasoning, metadata

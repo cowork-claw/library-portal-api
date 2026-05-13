@@ -48,7 +48,6 @@ class StagingHandler:
         reasoning: List[str],
         suggested_target: Optional[str] = None,
     ) -> None:
-        """Add a paper to staging for manual review."""
         # Check for duplicates by URL
         url = paper.get("url")
         if url:
@@ -81,7 +80,6 @@ class StagingHandler:
         )
 
     def _extract_info(self, paper: Dict[str, Any]) -> Dict[str, Any]:
-        """Extract and summarize key information for review."""
         return {
             "course_code": paper.get("course_code") or paper.get("subject_code"),
             "course_name": paper.get("course_name") or paper.get("subject_name"),
