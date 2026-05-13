@@ -447,9 +447,16 @@ def main() -> int:
     exercise_categorizer_contract(suite)
 
     architecture_risk_score = static_metrics.static_risk_score + suite.failed * 100_000
+    maintenance_load_score = (
+        architecture_risk_score
+        + static_metrics.modules * 10
+        + static_metrics.source_lines // 10
+        + static_metrics.public_functions * 2
+    )
 
     metrics = {
         "architecture_risk_score": architecture_risk_score,
+        "maintenance_load_score": maintenance_load_score,
         "contract_checks": suite.checks,
         "contract_failures": suite.failed,
         "static_risk_score": static_metrics.static_risk_score,
