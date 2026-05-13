@@ -37,7 +37,6 @@ def _search_papers(
     # unless explicitly desired? No, search generally implies some relevance.
     effective_threshold = max(threshold, 0.01) if threshold <= 0 else threshold
 
-    # Calculate relevance for all papers and filter by threshold immediately
     results = [
         (paper, score)
         for paper in papers
@@ -86,7 +85,6 @@ def _word_overlap_score(
     value_lower: str,
     weight: float,
 ) -> float:
-    """Return weighted word-overlap score for tokenized search text."""
     if not query_words:
         return 0.0
 
@@ -102,12 +100,6 @@ def _word_overlap_score(
 def _calculate_relevance(
     paper: Dict[str, Any], query: str, query_words: Set[str]
 ) -> float:
-    """
-    Calculate relevance score for a paper against a query.
-
-    Returns:
-        Score between 0 and 1, higher is more relevant.
-    """
     max_score = 0.0
     search_meta = paper.get("_search_meta")
 
