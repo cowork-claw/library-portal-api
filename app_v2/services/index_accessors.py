@@ -14,7 +14,6 @@ class PaperIndexAccessors:
 
     @lru_cache(maxsize=SEARCH_CACHE_MAXSIZE)
     def _search_cached(self, normalized_query: str) -> Tuple[str, ...]:
-        """Return cached matching URLs for a normalized query."""
         results = _search_papers(self.papers, normalized_query)
         return tuple(url for paper in results if (url := paper.get("url")))
 
@@ -26,7 +25,6 @@ class PaperIndexAccessors:
         return list(self._search_cached(normalized_query))
 
     def _get_by_url(self, url: str) -> Optional[Dict[str, Any]]:
-        """Get a single paper by its URL, or None if not found."""
         return self._by_url.get(url)
 
     def get_by_urls(self, urls: Iterable[str]) -> List[Dict[str, Any]]:
@@ -46,28 +44,22 @@ class PaperIndexAccessors:
         return self._by_course.get(course_code.upper(), set())
 
     def _get_papers_by_course(self, course_code: str) -> List[Dict[str, Any]]:
-        """Get papers for a specific course code."""
         urls = self.get_urls_by_course(course_code)
         return self.get_by_urls(urls)
 
     def _get_urls_by_program(self, program: str) -> Set[str]:
-        """Get paper URLs for a specific program."""
         return self._by_program.get(program, set())
 
     def _get_urls_by_stream(self, stream: str) -> Set[str]:
-        """Get paper URLs for a specific stream."""
         return self._by_stream.get(stream, set())
 
     def _get_urls_by_paper_type(self, paper_type: str) -> Set[str]:
-        """Get paper URLs for a specific paper type."""
         return self._by_paper_type.get(paper_type, set())
 
     def _get_urls_by_degree_type(self, degree_type: str) -> Set[str]:
-        """Get paper URLs for a specific degree type."""
         return self._by_degree_type.get(degree_type, set())
 
     def _get_urls_by_program_abbrev(self, program_abbrev: str) -> Set[str]:
-        """Get paper URLs for a specific program abbreviation (case-insensitive)."""
         return self._by_program_abbrev.get(program_abbrev.upper(), set())
 
     @property

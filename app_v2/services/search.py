@@ -25,7 +25,6 @@ def _tokenize_words(text: str) -> Set[str]:
 def _search_papers(
     papers: List[Dict[str, Any]], query: str, threshold: float = 0.5
 ) -> List[Dict[str, Any]]:
-    """Return matching papers sorted by relevance."""
     if not query or not papers:
         return papers
 
@@ -55,7 +54,6 @@ def _search_papers(
 def _field_search_data(
     paper: Dict[str, Any], search_meta: Optional[Dict[str, Any]], field_name: str
 ) -> Optional[tuple[str, Optional[Set[str]]]]:
-    """Return lower-case field text and cached words for a searchable field."""
     if search_meta and (meta := search_meta.get(field_name)):
         return meta["lower"], meta["words"]
 
@@ -68,7 +66,6 @@ def _field_search_data(
 def _exact_or_contains_score(
     query: str, value_lower: str, weight: float
 ) -> Optional[float]:
-    """Score exact and substring matches, or return None if neither applies."""
     if query == value_lower:
         return weight
     if query not in value_lower:
@@ -77,7 +74,6 @@ def _exact_or_contains_score(
 
 
 def _fuzzy_score(query: str, value_lower: str, weight: float) -> float:
-    """Return weighted fuzzy score when the ratio is strong enough."""
     ratio = fuzz.WRatio(query, value_lower) / 100.0
     if ratio > WORD_MATCH_SCORE_FACTOR:
         return ratio * weight
