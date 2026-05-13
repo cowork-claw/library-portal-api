@@ -53,7 +53,7 @@ class _FixedWindow:
             self.count = 0
             self.window_start = now
 
-    def try_consume(self, now: float | None = None) -> bool:
+    def _try_consume(self, now: float | None = None) -> bool:
         """Try to record one request. Returns True if allowed."""
         now = now or time.monotonic()
         self.last_seen = now
@@ -64,7 +64,7 @@ class _FixedWindow:
         return False
 
     @property
-    def retry_after_seconds(self) -> int:
+    def _retry_after_seconds(self) -> int:
         """Seconds remaining until the current window resets."""
         now = time.monotonic()
         elapsed = now - self.window_start
@@ -110,8 +110,8 @@ class RateLimitMiddleware(BaseHTTPMiddleware):
         now = time.monotonic()
         window = self._get_or_create_window(client_id, now)
 
-        if not window.try_consume(now):
-            retry_after = window.retry_after_seconds
+        if not window._try_consume(now):
+            retry_after = window._retry_after_seconds
             logger.warning("Rate limit exceeded for client %s on %s", client_id, path)
             response = JSONResponse(
                 status_code=status.HTTP_429_TOO_MANY_REQUESTS,
