@@ -1,6 +1,6 @@
 import json
 
-from scripts.processing.validate_data import validate_all, validate_json_file
+from scripts.processing.validate_data import _validate_all, _validate_json_file
 
 
 def _write_json(path, data):
@@ -22,7 +22,7 @@ def test_validate_json_file_accepts_valid_course_mapping(tmp_path):
     data_file = tmp_path / "CSE.json"
     _write_json(data_file, {"CSE101": [_paper()]})
 
-    is_valid, errors = validate_json_file(data_file)
+    is_valid, errors = _validate_json_file(data_file)
 
     assert is_valid is True
     assert errors == []
@@ -45,7 +45,7 @@ def test_validate_json_file_reports_record_errors(tmp_path):
         },
     )
 
-    is_valid, errors = validate_json_file(data_file)
+    is_valid, errors = _validate_json_file(data_file)
 
     assert is_valid is False
     assert "CSE101[0]: missing required field 'course_code'" in errors
@@ -61,7 +61,7 @@ def test_validate_all_counts_files_papers_and_cross_file_duplicates(tmp_path):
         {"ECE101": [_paper(course_code="ECE101")]},
     )
 
-    report = validate_all(tmp_path)
+    report = _validate_all(tmp_path)
 
     assert report["valid"] is True
     assert report["files_checked"] == 2
@@ -73,7 +73,7 @@ def test_validate_all_counts_files_papers_and_cross_file_duplicates(tmp_path):
 
 
 def test_validate_all_reports_missing_directory(tmp_path):
-    report = validate_all(tmp_path / "missing")
+    report = _validate_all(tmp_path / "missing")
 
     assert report["valid"] is False
     assert report["error"] == "Data directory not found"

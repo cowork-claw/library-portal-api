@@ -84,7 +84,7 @@ def _validate_paper(
     _validate_int_range(course_code, index, paper, "semester", 1, 10, errors)
 
 
-def validate_json_file(file_path: Path) -> Tuple[bool, List[str]]:
+def _validate_json_file(file_path: Path) -> Tuple[bool, List[str]]:
     """Validate one course-code JSON file."""
     data, errors = _load_json(file_path)
     if errors:
@@ -175,7 +175,7 @@ def _log_summary(report: Dict[str, Any]) -> None:
     logger.info("=" * 60)
 
 
-def validate_all(data_dir: Path = DATA_DIRECTORY) -> Dict[str, Any]:
+def _validate_all(data_dir: Path = DATA_DIRECTORY) -> Dict[str, Any]:
     """Validate all JSON files under the data directory."""
     report = _new_report()
     if not data_dir.exists():
@@ -190,7 +190,7 @@ def validate_all(data_dir: Path = DATA_DIRECTORY) -> Dict[str, Any]:
     for json_file in json_files:
         relative_path = str(json_file.relative_to(data_dir))
         report["files_checked"] += 1
-        is_valid, errors = validate_json_file(json_file)
+        is_valid, errors = _validate_json_file(json_file)
         _count_file_papers(report, json_file)
         _record_file_result(report, relative_path, is_valid, errors)
 
@@ -210,7 +210,7 @@ def _main() -> None:
 
     args = parser.parse_args()
 
-    report = validate_all(args.dir)
+    report = _validate_all(args.dir)
 
     if args.json:
         import json
