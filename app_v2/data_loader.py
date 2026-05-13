@@ -1,14 +1,4 @@
-"""
-Multi-file Data Loader for Library Portal V2
-
-Loads and aggregates papers from the organized folder structure:
-data/classified/organized/
-├── btech/branches/*.json
-├── btech/first_year/*.json
-├── masters/*.json
-├── bsc/*.json
-└── other.json
-"""
+"""Load and aggregate papers from organized JSON files."""
 
 import logging
 from dataclasses import dataclass, field
@@ -47,14 +37,7 @@ class LoaderStats:
 
 
 class DataLoader:
-    """
-    Load and aggregate papers from organized folder structure.
-
-    The data is organized as:
-    - Each JSON file contains: {course_code: [paper_objects...]}
-    - Papers are deduplicated by URL
-    - File metadata is tracked for health checks
-    """
+    """Load organized course-code JSON files with URL deduplication."""
 
     def __init__(self, data_directory: Path):
         self.data_directory = data_directory
@@ -63,12 +46,7 @@ class DataLoader:
         self.stats = LoaderStats()
 
     def load_all(self) -> List[Dict[str, Any]]:
-        """
-        Load all papers from organized JSON files.
-
-        Returns:
-            List of all paper dictionaries, deduplicated by URL
-        """
+        """Load all papers from the organized data directory."""
         self.papers = []
         self.seen_urls = set()
         self.stats = LoaderStats()
