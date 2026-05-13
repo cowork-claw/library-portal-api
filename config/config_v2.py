@@ -1,8 +1,4 @@
-"""
-Configuration for Library Portal API V2
-
-Clean configuration using pydantic-settings for environment variable support.
-"""
+"""Pydantic settings for the Library Portal API."""
 
 from functools import lru_cache
 from pathlib import Path
@@ -13,10 +9,6 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
     """Application settings with environment variable support."""
-
-    # ==========================================================================
-    # DATA PATHS
-    # ==========================================================================
 
     # Organized data directory containing all JSON files
     DATA_DIRECTORY: Path = (
@@ -29,10 +21,6 @@ class Settings(BaseSettings):
     # Scraper log file
     SCRAPE_LOG_FILE: Path = Path(__file__).parent.parent / "scraper" / "scrape_log.json"
 
-    # ==========================================================================
-    # API SETTINGS
-    # ==========================================================================
-
     APP_TITLE: str = "Library Portal API"
     APP_DESCRIPTION: str = "API for MIT Library Question Papers"
     APP_VERSION: str = "2.0.0"
@@ -40,14 +28,7 @@ class Settings(BaseSettings):
     # API Key for protected endpoints (set via environment variable)
     API_SECRET_KEY: Optional[str] = None
 
-    # ==========================================================================
-    # CORS
-    # ==========================================================================
-
-    # Default includes common localhost ports for development
-    # In production, set LIBRARY_PORTAL_CORS_ORIGINS environment variable
-    # to a comma-separated list of specific allowed origins (no wildcards)
-    # Note: Wildcards are incompatible with allow_credentials=True
+    # Local development defaults; production should set explicit origins.
     CORS_ORIGINS: List[str] = [
         "http://localhost:4321",
         "http://localhost:3000",
@@ -57,24 +38,13 @@ class Settings(BaseSettings):
         "http://127.0.0.1:5173",
     ]
 
-    # ==========================================================================
-    # SCRAPER SETTINGS
-    # ==========================================================================
-
     TARGET_YEAR_THRESHOLD: int = 2024
     BLACKLISTED_YEARS: List[int] = list(range(2006, 2024))
-
-    # ==========================================================================
-    # ENVIRONMENT
-    # ==========================================================================
 
     ENVIRONMENT: str = "development"
     DEBUG: bool = False
     LOG_LEVEL: str = "INFO"
 
-    # ==========================================================================
-    # OBSERVABILITY
-    # ==========================================================================
     SENTRY_DSN: Optional[str] = None
     SENTRY_TRACES_SAMPLE_RATE: float = 0.0
     METRICS_ENABLED: bool = False
@@ -87,10 +57,10 @@ class Settings(BaseSettings):
 
 
 @lru_cache()
-def get_settings() -> Settings:
+def _get_settings() -> Settings:
     """Get cached settings instance."""
     return Settings()
 
 
 # Convenience access
-settings = get_settings()
+settings = _get_settings()
