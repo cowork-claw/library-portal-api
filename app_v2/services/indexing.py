@@ -1,8 +1,4 @@
-"""
-Paper Indexing Service for Library Portal API V2
-
-Pre-builds indexes for fast filtering and lookup.
-"""
+"""In-memory indexes for fast paper filtering and lookup."""
 
 import logging
 from collections import defaultdict
@@ -50,16 +46,7 @@ def _build_search_meta(
 
 
 class PaperIndex(PaperIndexAccessors):
-    """
-    In-memory paper index for fast lookups.
-
-    Pre-builds various indexes on load for efficient filtering:
-    - By year
-    - By semester
-    - By course code
-    - By program
-    - By stream
-    """
+    """In-memory paper index built from organized JSON data."""
 
     def __init__(self):
         self._swap_lock = RLock()
