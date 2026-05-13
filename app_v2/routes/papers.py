@@ -199,8 +199,8 @@ def _effective_sort_field(
     return sort
 
 
-@router.get("", response_model=PapersResponse)
-async def get_papers(
+@router.get("", response_model=PapersResponse, operation_id="get_papers_api_papers_get")
+async def _get_papers(
     year: YearFilter = None,
     semester: SemesterFilter = None,
     program: ProgramFilter = None,
@@ -247,8 +247,12 @@ async def get_papers(
     return _create_paginated_response(results, total, limit, offset, execution_time)
 
 
-@router.get("/lookup", response_model=Paper)
-async def lookup_paper(
+@router.get(
+    "/lookup",
+    response_model=Paper,
+    operation_id="lookup_paper_api_papers_lookup_get",
+)
+async def _lookup_paper(
     url: HttpUrl = Query(..., description="Exact paper URL to look up"),
 ) -> Paper:
     """Look up a single paper by its exact download URL."""
@@ -258,8 +262,12 @@ async def lookup_paper(
     return Paper(**_to_public_paper(paper))
 
 
-@router.get("/year/{year}", response_model=PapersResponse)
-async def get_papers_by_year(
+@router.get(
+    "/year/{year}",
+    response_model=PapersResponse,
+    operation_id="get_papers_by_year_api_papers_year__year__get",
+)
+async def _get_papers_by_year(
     year: int = Path(..., ge=2000, le=2100, description="Academic Year"),
     semester: Optional[int] = Query(None, ge=1, le=8),
     limit: int = Query(100, ge=1, le=500),
@@ -279,8 +287,12 @@ async def get_papers_by_year(
     return _get_papers_response_from_urls(urls, limit, offset)
 
 
-@router.get("/course/{course_code}", response_model=CourseResponse)
-async def get_papers_by_course(
+@router.get(
+    "/course/{course_code}",
+    response_model=CourseResponse,
+    operation_id="get_papers_by_course_api_papers_course__course_code__get",
+)
+async def _get_papers_by_course(
     course_code: str = Path(..., max_length=20, description="Course code")
 ) -> CourseResponse:
     """Get all papers for a specific course code."""
@@ -302,8 +314,12 @@ async def get_papers_by_course(
     )
 
 
-@router.get("/semester/{semester}", response_model=PapersResponse)
-async def get_papers_by_semester(
+@router.get(
+    "/semester/{semester}",
+    response_model=PapersResponse,
+    operation_id="get_papers_by_semester_api_papers_semester__semester__get",
+)
+async def _get_papers_by_semester(
     semester: int = Path(..., ge=1, le=8, description="Semester (1-8)"),
     year: Optional[int] = Query(None, ge=2000, le=2100, description="Academic Year"),
     limit: int = Query(100, ge=1, le=500),
