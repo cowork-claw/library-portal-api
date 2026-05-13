@@ -65,7 +65,6 @@ class APIKeyMiddleware(BaseHTTPMiddleware):
                 )
 
     def _missing_configuration_response(self) -> JSONResponse:
-        """Return the non-development response for absent server API keys."""
         logger.error("Blocked request due to missing API key configuration")
         return JSONResponse(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
@@ -76,7 +75,6 @@ class APIKeyMiddleware(BaseHTTPMiddleware):
         )
 
     def _missing_api_key_response(self) -> JSONResponse:
-        """Return the response for protected requests without an API key."""
         return JSONResponse(
             status_code=status.HTTP_401_UNAUTHORIZED,
             content={
@@ -86,7 +84,6 @@ class APIKeyMiddleware(BaseHTTPMiddleware):
         )
 
     def _invalid_api_key_response(self, request: Request) -> JSONResponse:
-        """Log and return the response for an invalid API key."""
         client_host = request.client.host if request.client else "unknown"
         logger.warning(f"Invalid API key attempt from {client_host}")
         return JSONResponse(
@@ -95,7 +92,6 @@ class APIKeyMiddleware(BaseHTTPMiddleware):
         )
 
     def _is_valid_api_key(self, provided_key: str) -> bool:
-        """Return whether a provided key matches any configured key."""
         return any(
             secrets.compare_digest(provided_key, configured_key)
             for configured_key in self.api_keys
@@ -119,7 +115,6 @@ class APIKeyMiddleware(BaseHTTPMiddleware):
         return await call_next(request)
 
     def _is_public_path(self, path: str) -> bool:
-        """Return whether the path bypasses API-key authentication."""
         # Normalize path by removing trailing slash for consistent matching
         path_normalized = path.rstrip("/") if path != "/" else "/"
 
@@ -127,7 +122,6 @@ class APIKeyMiddleware(BaseHTTPMiddleware):
         return path_normalized in PUBLIC_PATHS
 
     def _extract_api_key(self, request: Request) -> Optional[str]:
-        """Extract API key from request headers."""
         return request.headers.get("X-API-Key")
 
 

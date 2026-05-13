@@ -78,13 +78,11 @@ class DataLoader:
         return self.papers
 
     def _read_json_file(self, file_path: Path) -> Dict[str, Any]:
-        """Read and decode one organized JSON file."""
         return orjson.loads(file_path.read_bytes())
 
     def _add_unique_papers_from_file(
         self, file_path: Path, data: Dict[str, Any]
     ) -> tuple[int, int]:
-        """Add unique papers from decoded file data and return paper/course counts."""
         paper_count = 0
         course_count = 0
         for course_code, papers_list in data.items():
@@ -105,7 +103,6 @@ class DataLoader:
         return paper_count, course_count
 
     def _relative_data_path(self, file_path: Path) -> str:
-        """Return a stable stats key for a loaded JSON file."""
         try:
             return str(file_path.relative_to(self.data_directory))
         except ValueError:
@@ -117,7 +114,6 @@ class DataLoader:
     def _record_file_stats(
         self, file_path: Path, relative_path: str, paper_count: int, course_count: int
     ) -> None:
-        """Store per-file loader statistics."""
         self.stats.file_stats[relative_path] = FileStats(
             path=str(file_path),
             papers_count=paper_count,
@@ -126,7 +122,6 @@ class DataLoader:
         )
 
     def _load_file(self, file_path: Path) -> None:
-        """Load papers from a single JSON file."""
         try:
             data = self._read_json_file(file_path)
             paper_count, course_count = self._add_unique_papers_from_file(
