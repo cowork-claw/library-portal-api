@@ -5,8 +5,6 @@ from typing import Any, Dict, List, Optional, Set
 
 from thefuzz import fuzz
 
-__all__ = ["search_papers", "SEARCH_FIELDS"]
-
 WORD_MATCH_SCORE_FACTOR = 0.7
 WORD_TOKEN_PATTERN = re.compile(r"\w+")
 
@@ -24,7 +22,7 @@ def _tokenize_words(text: str) -> Set[str]:
     return set(WORD_TOKEN_PATTERN.findall(text))
 
 
-def search_papers(
+def _search_papers(
     papers: List[Dict[str, Any]], query: str, threshold: float = 0.5
 ) -> List[Dict[str, Any]]:
     """Return matching papers sorted by relevance."""

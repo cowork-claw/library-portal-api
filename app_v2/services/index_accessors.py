@@ -4,7 +4,7 @@ from functools import lru_cache
 from types import MappingProxyType
 from typing import Any, Dict, Iterable, List, Mapping, Optional, Set, Tuple
 
-from .search import search_papers
+from .search import _search_papers
 
 SEARCH_CACHE_MAXSIZE = 32
 
@@ -15,7 +15,7 @@ class PaperIndexAccessors:
     @lru_cache(maxsize=SEARCH_CACHE_MAXSIZE)
     def _search_cached(self, normalized_query: str) -> Tuple[str, ...]:
         """Return cached matching URLs for a normalized query."""
-        results = search_papers(self.papers, normalized_query)
+        results = _search_papers(self.papers, normalized_query)
         return tuple(url for paper in results if (url := paper.get("url")))
 
     def search(self, query: str) -> List[str]:
