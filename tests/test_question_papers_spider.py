@@ -98,3 +98,31 @@ def test_extract_item_from_row_rejects_parent_directory_entries():
     )
 
     assert _spider().extract_item_from_row(_row(response), response) is None
+
+
+def test_extract_metadata_populates_year_program_semester_and_subject():
+    item = {
+        "path": "2026 / B.Tech / III Sem",
+        "file_name": "Algorithms (CSE).pdf",
+    }
+
+    _spider().extract_metadata(item)
+
+    assert item["year"] == "2026"
+    assert item["program"] == " B.Tech "
+    assert item["semester"] == "III Sem"
+    assert item["subject"] == "Algorithms"
+
+
+def test_extract_metadata_recovers_year_from_text_path_component():
+    item = {
+        "path": "Question Papers 2026 / M.Tech / 2nd Sem",
+        "file_name": "Advanced Topics.pdf",
+    }
+
+    _spider().extract_metadata(item)
+
+    assert item["year"] == "2026"
+    assert item["program"] == " M.Tech "
+    assert item["semester"] == "2nd Sem"
+    assert item["subject"] == "Advanced Topics"
