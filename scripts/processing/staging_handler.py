@@ -96,7 +96,7 @@ class StagingHandler:
             "path": paper.get("path"),
         }
 
-    def get_stats(self) -> Dict[str, Any]:
+    def _get_stats(self) -> Dict[str, Any]:
         """Get staging statistics."""
         papers = self.data.get("papers", [])
         return {

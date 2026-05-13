@@ -130,7 +130,7 @@ def _log_summary(stats: dict, dry_run: bool, staging_handler: StagingHandler) ->
     if dry_run:
         return
 
-    staging_stats = staging_handler.get_stats()
+    staging_stats = staging_handler._get_stats()
     if staging_stats["pending_review"] > 0:
         logger.warning("%s papers need manual review", staging_stats["pending_review"])
         logger.info("   See: %s", STAGING_FILE)
