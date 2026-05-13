@@ -12,7 +12,7 @@ import sys
 from contextlib import asynccontextmanager
 from pathlib import Path
 
-from fastapi import FastAPI
+from fastapi import APIRouter, FastAPI, Response
 from fastapi.middleware.cors import CORSMiddleware
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
@@ -138,8 +138,15 @@ app.add_middleware(RequestIDMiddleware)
 
 # Optional Prometheus metrics (disabled by default)
 if settings.METRICS_ENABLED:
+    from prometheus_client import CONTENT_TYPE_LATEST, generate_latest
+
     from .middleware.metrics import MetricsMiddleware
-    from .routes.metrics import router as metrics_router
+
+    metrics_router = APIRouter(tags=["Metrics"])
+
+    @metrics_router.get("/metrics")
+    def metrics() -> Response:
+        return Response(generate_latest(), media_type=CONTENT_TYPE_LATEST)
 
     app.add_middleware(MetricsMiddleware)
     app.include_router(metrics_router)
