@@ -78,7 +78,7 @@ def _handle_staging(
             "DRY RUN: Would stage %s (conf: %.2f)", course_code, result.confidence
         )
     else:
-        staging_handler.add_paper(
+        staging_handler._add_paper(
             paper, result.confidence, result.reasoning, result.target_file
         )
     stats["staged"] += 1

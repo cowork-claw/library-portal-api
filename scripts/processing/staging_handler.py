@@ -43,7 +43,7 @@ class StagingHandler:
             json.dump(self.data, f, indent=2, ensure_ascii=False)
         logger.debug(f"Saved {len(self.data['papers'])} staged papers")
 
-    def add_paper(
+    def _add_paper(
         self,
         paper: Dict[str, Any],
         confidence: float,
@@ -96,7 +96,7 @@ class StagingHandler:
             "path": paper.get("path"),
         }
 
-    def _get_stats(self) -> Dict[str, Any]:
+    def get_stats(self) -> Dict[str, Any]:
         """Get staging statistics."""
         papers = self.data.get("papers", [])
         return {
