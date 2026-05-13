@@ -29,35 +29,10 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-def run_categorizer(input_file: Path, dry_run: bool = False) -> dict:
-    """
-    Categorize papers from input file.
-
-    Args:
-        input_file: Path to scraped papers JSON
-        dry_run: If True, don't write files, just show what would happen
-
-    Returns:
-        Statistics dictionary
-    """
-    # Load input papers
-    logger.info(f"Loading papers from: {input_file}")
-    with open(input_file, "r", encoding="utf-8") as f:
-        papers = json.load(f)
-
-    if not isinstance(papers, list):
-        logger.error("Input file must contain a list of papers")
-        return {"error": "Invalid input format"}
-
-    logger.info(f"Loaded {len(papers)} papers to categorize")
-
-    # Initialize categorizer and staging handler
-    categorizer = PaperCategorizer(DATA_DIRECTORY, STAGING_FILE.parent)
-    staging_handler = StagingHandler(STAGING_FILE)
-
-    # Statistics
-    stats = {
-        "total": len(papers),
+def _new_stats(total: int) -> dict:
+    """Create the summary dictionary used by the categorizer run."""
+    return {
+        "total": total,
         "auto_written": 0,
         "staged": 0,
         "skipped_duplicate": 0,
@@ -66,85 +41,135 @@ def run_categorizer(input_file: Path, dry_run: bool = False) -> dict:
         "by_confidence": {"high": 0, "medium": 0, "low": 0},
     }
 
-    # Process each paper
-    for i, paper in enumerate(papers, 1):
-        try:
-            result = categorizer.categorize(paper)
 
-            # Update category stats
-            cat = result.category
-            stats["by_category"][cat] = stats["by_category"].get(cat, 0) + 1
+def _record_result(stats: dict, category: str, confidence: float) -> None:
+    """Update category and confidence counters for one categorization result."""
+    stats["by_category"][category] = stats["by_category"].get(category, 0) + 1
 
-            # Update confidence stats
-            if result.confidence >= 0.85:
-                stats["by_confidence"]["high"] += 1
-            elif result.confidence >= 0.5:
-                stats["by_confidence"]["medium"] += 1
-            else:
-                stats["by_confidence"]["low"] += 1
+    if confidence >= 0.85:
+        stats["by_confidence"]["high"] += 1
+    elif confidence >= 0.5:
+        stats["by_confidence"]["medium"] += 1
+    else:
+        stats["by_confidence"]["low"] += 1
 
-            # Log progress
-            course_code = paper.get("course_code", "UNKNOWN")
-            logger.debug(
-                f"[{i}/{len(papers)}] {course_code}: "
-                f"{result.category} (conf: {result.confidence:.2f})"
-            )
 
-            if result.should_auto_write and result.target_file:
-                # High confidence - auto-write
-                if dry_run:
-                    logger.info(
-                        f"DRY RUN: Would write {course_code} to {result.target_file}"
-                    )
-                    stats["auto_written"] += 1
-                else:
-                    # Merge any auto-filled metadata
-                    for key, value in result.metadata_filled.items():
-                        if key not in paper or paper[key] is None:
-                            paper[key] = value
+def _merge_metadata(paper: dict, metadata: dict) -> None:
+    """Fill missing paper metadata discovered by the categorizer."""
+    for key, value in metadata.items():
+        if key not in paper or paper[key] is None:
+            paper[key] = value
 
-                    if write_paper_to_file(paper, result.target_file):
-                        stats["auto_written"] += 1
-                    else:
-                        stats["skipped_duplicate"] += 1
-            else:
-                # Low confidence - stage for review
-                if dry_run:
-                    logger.info(
-                        f"DRY RUN: Would stage {course_code} (conf: {result.confidence:.2f})"
-                    )
-                else:
-                    staging_handler.add_paper(
-                        paper, result.confidence, result.reasoning, result.target_file
-                    )
-                stats["staged"] += 1
 
-        except Exception as e:
-            logger.error(f"Error processing paper {i}: {e}")
-            stats["errors"] += 1
+def _handle_auto_write(paper: dict, result, dry_run: bool, stats: dict) -> None:
+    """Write a high-confidence paper or count the dry-run action."""
+    course_code = paper.get("course_code", "UNKNOWN")
+    if dry_run:
+        logger.info("DRY RUN: Would write %s to %s", course_code, result.target_file)
+        stats["auto_written"] += 1
+        return
 
-    # Summary
+    _merge_metadata(paper, result.metadata_filled)
+    if write_paper_to_file(paper, result.target_file):
+        stats["auto_written"] += 1
+    else:
+        stats["skipped_duplicate"] += 1
+
+
+def _handle_staging(
+    paper: dict, result, dry_run: bool, stats: dict, staging_handler
+) -> None:
+    """Stage a low-confidence paper or count the dry-run action."""
+    course_code = paper.get("course_code", "UNKNOWN")
+    if dry_run:
+        logger.info(
+            "DRY RUN: Would stage %s (conf: %.2f)", course_code, result.confidence
+        )
+    else:
+        staging_handler.add_paper(
+            paper, result.confidence, result.reasoning, result.target_file
+        )
+    stats["staged"] += 1
+
+
+def _process_paper(
+    paper: dict,
+    index: int,
+    total: int,
+    categorizer: PaperCategorizer,
+    staging_handler: StagingHandler,
+    dry_run: bool,
+    stats: dict,
+) -> None:
+    """Categorize one paper and route it to writing or staging."""
+    result = categorizer.categorize(paper)
+    _record_result(stats, result.category, result.confidence)
+
+    course_code = paper.get("course_code", "UNKNOWN")
+    logger.debug(
+        "[%d/%d] %s: %s (conf: %.2f)",
+        index,
+        total,
+        course_code,
+        result.category,
+        result.confidence,
+    )
+
+    if result.should_auto_write and result.target_file:
+        _handle_auto_write(paper, result, dry_run, stats)
+    else:
+        _handle_staging(paper, result, dry_run, stats, staging_handler)
+
+
+def _log_summary(stats: dict, dry_run: bool, staging_handler: StagingHandler) -> None:
+    """Log the categorization run summary."""
     logger.info("=" * 60)
     logger.info("CATEGORIZATION COMPLETE")
-    logger.info(f"  Total papers: {stats['total']}")
-    logger.info(f"  Auto-written: {stats['auto_written']}")
-    logger.info(f"  Staged for review: {stats['staged']}")
-    logger.info(f"  Skipped (duplicate): {stats['skipped_duplicate']}")
-    logger.info(f"  Errors: {stats['errors']}")
+    logger.info("  Total papers: %s", stats["total"])
+    logger.info("  Auto-written: %s", stats["auto_written"])
+    logger.info("  Staged for review: %s", stats["staged"])
+    logger.info("  Skipped (duplicate): %s", stats["skipped_duplicate"])
+    logger.info("  Errors: %s", stats["errors"])
     logger.info("By category:")
-    for cat, count in sorted(stats["by_category"].items()):
-        logger.info(f"  - {cat}: {count}")
+    for category, count in sorted(stats["by_category"].items()):
+        logger.info("  - %s: %s", category, count)
     logger.info("=" * 60)
 
-    # Report staging stats
-    if not dry_run:
-        staging_stats = staging_handler.get_stats()
-        if staging_stats["pending_review"] > 0:
-            logger.warning(
-                f"⚠️  {staging_stats['pending_review']} papers need manual review"
-            )
-            logger.info(f"   See: {STAGING_FILE}")
+    if dry_run:
+        return
 
+    staging_stats = staging_handler.get_stats()
+    if staging_stats["pending_review"] > 0:
+        logger.warning("%s papers need manual review", staging_stats["pending_review"])
+        logger.info("   See: %s", STAGING_FILE)
+
+
+def run_categorizer(input_file: Path, dry_run: bool = False) -> dict:
+    """Categorize papers from an input JSON file."""
+    logger.info("Loading papers from: %s", input_file)
+    with open(input_file, "r", encoding="utf-8") as f:
+        papers = json.load(f)
+
+    if not isinstance(papers, list):
+        logger.error("Input file must contain a list of papers")
+        return {"error": "Invalid input format"}
+
+    logger.info("Loaded %d papers to categorize", len(papers))
+
+    categorizer = PaperCategorizer(DATA_DIRECTORY, STAGING_FILE.parent)
+    staging_handler = StagingHandler(STAGING_FILE)
+    stats = _new_stats(len(papers))
+
+    for index, paper in enumerate(papers, 1):
+        try:
+            _process_paper(
+                paper, index, len(papers), categorizer, staging_handler, dry_run, stats
+            )
+        except Exception as e:
+            logger.error("Error processing paper %d: %s", index, e)
+            stats["errors"] += 1
+
+    _log_summary(stats, dry_run, staging_handler)
     return stats
 
 
