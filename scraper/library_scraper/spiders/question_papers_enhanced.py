@@ -68,9 +68,9 @@ class QuestionPapersEnhancedSpider(
         self.seen_folders = set()  # Track visited folders to prevent loops
         self.is_incremental = False
         self.current_year = datetime.now().year
-        self.load_existing_data()
+        self._load_existing_data()
 
-    def load_existing_data(self):
+    def _load_existing_data(self):
         """Load existing URLs from organized data folder and scrape log."""
         # V2: Load from organized data folder
         self.seen_urls = load_existing_urls_from_organized_data(DATA_DIRECTORY)
@@ -93,7 +93,7 @@ class QuestionPapersEnhancedSpider(
         else:
             self.logger.info("No existing data found - running initial scrape")
 
-    def should_scrape_year(self, year):
+    def _should_scrape_year(self, year):
         """V2: Use config-based year filtering."""
         try:
             year_int = int(year)
@@ -106,12 +106,12 @@ class QuestionPapersEnhancedSpider(
 
     def parse(self, response):
         """Parse any page and handle navigation."""
-        current_path = self.get_current_path(response)
+        current_path = self._get_current_path(response)
         depth = response.meta.get("depth", 0)
 
         self.logger.info(f"Parsing page - Path: {current_path}, Depth: {depth}")
 
-        items = self.extract_items(response)
+        items = self._extract_items(response)
         if not items:
             self.logger.warning(f"No items found at: {current_path}")
             return
@@ -136,14 +136,14 @@ class QuestionPapersEnhancedSpider(
         folders = [
             item
             for item in items
-            if item.get("is_folder") and not self.should_skip(item["name"])
+            if item.get("is_folder") and not self._should_skip(item["name"])
         ]
         return pdfs, folders
 
     def _iter_new_pdf_items(self, pdfs, response):
         """Yield unseen PDF items and update scrape counters."""
         for pdf in pdfs:
-            pdf_item = self.create_pdf_item(pdf, response)
+            pdf_item = self._create_pdf_item(pdf, response)
             if not pdf_item:
                 continue
 
@@ -162,7 +162,7 @@ class QuestionPapersEnhancedSpider(
     def _should_visit_folder(self, folder_name, current_path):
         """Return whether a folder is inside the configured scrape window."""
         if folder_name.isdigit():
-            if not self.should_scrape_year(folder_name):
+            if not self._should_scrape_year(folder_name):
                 self.logger.info(
                     f"Skipping year folder '{folder_name}' based on scraping mode"
                 )
@@ -206,7 +206,7 @@ class QuestionPapersEnhancedSpider(
         self.seen_folders.add(folder_signature)
         self.folder_count += 1
 
-        form_data = self.extract_form_data(response)
+        form_data = self._extract_form_data(response)
         form_data["__EVENTTARGET"] = event_target
         form_data["__EVENTARGUMENT"] = event_argument
 
@@ -226,14 +226,14 @@ class QuestionPapersEnhancedSpider(
             priority=10 - depth,
         )
 
-    def should_skip(self, name):
+    def _should_skip(self, name):
         """Check if a folder should be skipped."""
         for pattern in self.SKIP_PATTERNS:
             if pattern.lower() in name.lower():
                 return True
         return False
 
-    def get_current_path(self, response):
+    def _get_current_path(self, response):
         """Extract the current folder path."""
         # Try multiple selectors
         selectors = [
@@ -259,7 +259,7 @@ class QuestionPapersEnhancedSpider(
 
         return "Root"
 
-    def create_pdf_item(self, item_data, response):
+    def _create_pdf_item(self, item_data, response):
         """Create a PDF item from PDF data."""
         if not item_data.get("is_pdf"):
             return None
@@ -268,7 +268,7 @@ class QuestionPapersEnhancedSpider(
 
         # Basic fields
         item["file_name"] = item_data["name"]  # Renamed from 'title' to 'file_name'
-        item["path"] = self.get_current_path(response)
+        item["path"] = self._get_current_path(response)
         item["scraped_at"] = datetime.now().isoformat()
 
         # Construct the proper URL
@@ -298,7 +298,7 @@ class QuestionPapersEnhancedSpider(
             item["url"] = f"https://libportal.manipal.edu/RootFolder/{encoded_filename}"
 
         # Extract metadata from path and title
-        self.extract_metadata(item)
+        self._extract_metadata(item)
 
         return item
 

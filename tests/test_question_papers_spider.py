@@ -32,16 +32,14 @@ def _row(response):
 
 
 def test_extract_item_from_row_returns_postback_folder():
-    response = _response(
-        """
+    response = _response("""
         <tr>
           <td><a id="folderLink" href="javascript:__doPostBack('target','arg')">2026</a></td>
           <td>Folder</td><td></td><td></td>
         </tr>
-        """
-    )
+        """)
 
-    item = _spider().extract_item_from_row(_row(response), response)
+    item = _spider()._extract_item_from_row(_row(response), response)
 
     assert item["name"] == "2026"
     assert item["is_folder"] is True
@@ -52,16 +50,14 @@ def test_extract_item_from_row_returns_postback_folder():
 
 
 def test_extract_item_from_row_uses_link_id_for_malformed_postback():
-    response = _response(
-        """
+    response = _response("""
         <tr>
           <td><a id="fallbackTarget" href="javascript:__doPostBack(bad)">CSE</a></td>
           <td>Folder</td><td></td><td></td>
         </tr>
-        """
-    )
+        """)
 
-    item = _spider().extract_item_from_row(_row(response), response)
+    item = _spider()._extract_item_from_row(_row(response), response)
 
     assert item["is_folder"] is True
     assert item["event_target"] == "fallbackTarget"
@@ -69,16 +65,14 @@ def test_extract_item_from_row_uses_link_id_for_malformed_postback():
 
 
 def test_extract_item_from_row_returns_relative_pdf_url():
-    response = _response(
-        """
+    response = _response("""
         <tr>
           <td><a href="../RootFolder/2026/CSE101.pdf">CSE101.pdf</a></td>
           <td>PDF File</td><td></td><td>12 KB</td>
         </tr>
-        """
-    )
+        """)
 
-    item = _spider().extract_item_from_row(_row(response), response)
+    item = _spider()._extract_item_from_row(_row(response), response)
 
     assert item["name"] == "CSE101.pdf"
     assert item["is_pdf"] is True
@@ -88,16 +82,14 @@ def test_extract_item_from_row_returns_relative_pdf_url():
 
 
 def test_extract_item_from_row_rejects_parent_directory_entries():
-    response = _response(
-        """
+    response = _response("""
         <tr>
           <td><a href="javascript:__doPostBack('up','')">..</a></td>
           <td>Folder</td><td></td><td></td>
         </tr>
-        """
-    )
+        """)
 
-    assert _spider().extract_item_from_row(_row(response), response) is None
+    assert _spider()._extract_item_from_row(_row(response), response) is None
 
 
 def test_extract_metadata_populates_year_program_semester_and_subject():
@@ -106,7 +98,7 @@ def test_extract_metadata_populates_year_program_semester_and_subject():
         "file_name": "Algorithms (CSE).pdf",
     }
 
-    _spider().extract_metadata(item)
+    _spider()._extract_metadata(item)
 
     assert item["year"] == "2026"
     assert item["program"] == " B.Tech "
@@ -120,7 +112,7 @@ def test_extract_metadata_recovers_year_from_text_path_component():
         "file_name": "Advanced Topics.pdf",
     }
 
-    _spider().extract_metadata(item)
+    _spider()._extract_metadata(item)
 
     assert item["year"] == "2026"
     assert item["program"] == " M.Tech "

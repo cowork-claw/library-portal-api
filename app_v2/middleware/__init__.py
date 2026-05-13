@@ -1,6 +1,6 @@
 """Middleware package for Library Portal API V2."""
 
-from .auth import APIKeyMiddleware, get_api_key_from_env
+from .auth import APIKeyMiddleware
 from .compression import CompressionMiddleware
 from .rate_limit import RateLimitMiddleware
 from .request_id import RequestIDMiddleware
@@ -17,6 +17,5 @@ __all__ = [
     "StructuredJSONFormatter",
     "StructuredLoggingMiddleware",
     "RequestIDMiddleware",
-    "get_api_key_from_env",
     "setup_structured_logging",
 ]

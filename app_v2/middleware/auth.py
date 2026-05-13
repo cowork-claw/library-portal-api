@@ -144,8 +144,3 @@ class APIKeyMiddleware(BaseHTTPMiddleware):
     def _extract_api_key(self, request: Request) -> Optional[str]:
         """Extract API key from request headers."""
         return request.headers.get("X-API-Key")
-
-
-def get_api_key_from_env() -> Optional[str]:
-    """Get API key from environment variable."""
-    return os.getenv(API_KEY_ENV)

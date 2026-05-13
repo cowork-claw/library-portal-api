@@ -27,7 +27,7 @@ SEARCH_META_FIELDS = (
 )
 
 
-def build_search_meta(
+def _build_search_meta(
     paper: Dict[str, Any], field_meta_cache: Optional[Dict[str, Dict[str, Any]]] = None
 ) -> Dict[str, Dict[str, Any]]:
     """Build normalized search metadata for a paper, optionally using Flyweight reuse."""
@@ -281,7 +281,7 @@ class PaperIndex(PaperIndexAccessors):
         self, paper: Dict[str, Any], field_meta_cache: Dict[str, Any]
     ) -> None:
         """Pre-compute and cache search metadata for a paper."""
-        paper["_search_meta"] = build_search_meta(paper, field_meta_cache)
+        paper["_search_meta"] = _build_search_meta(paper, field_meta_cache)
 
     def _finalize_indexes(self) -> None:
         """Pre-sort and cache properties after index construction."""

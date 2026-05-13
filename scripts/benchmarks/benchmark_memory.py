@@ -7,7 +7,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from app_v2.data_loader import DataLoader
-from app_v2.services.indexing import build_search_meta
+from app_v2.services.indexing import _build_search_meta
 
 
 def main():
@@ -22,7 +22,7 @@ def main():
     tracemalloc.start()
     papers_copy = [dict(p) for p in papers]
     for paper in papers_copy:
-        paper["_search_meta"] = build_search_meta(paper)
+        paper["_search_meta"] = _build_search_meta(paper)
     current_unopt, peak_unopt = tracemalloc.get_traced_memory()
     tracemalloc.stop()
     del papers_copy
@@ -33,7 +33,7 @@ def main():
 
     field_meta_cache = {}
     for paper in papers_copy_opt:
-        paper["_search_meta"] = build_search_meta(paper, field_meta_cache)
+        paper["_search_meta"] = _build_search_meta(paper, field_meta_cache)
 
     current_opt, peak_opt = tracemalloc.get_traced_memory()
     tracemalloc.stop()

@@ -20,7 +20,7 @@ PROGRAM_NAMES = (
 class QuestionPaperMetadataMixin:
     """Extract year, program, semester, and subject metadata from PDF items."""
 
-    def extract_metadata(self, item):
+    def _extract_metadata(self, item):
         """Extract year, semester, program, and subject from item data."""
         path_parts = item["path"].split("/")
         file_name = item["file_name"]

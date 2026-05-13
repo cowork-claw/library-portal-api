@@ -7,7 +7,7 @@ from urllib.parse import urljoin
 class QuestionPaperRowParsingMixin:
     """Extract folder/PDF rows and ASP.NET form metadata from library pages."""
 
-    def extract_form_data(self, response):
+    def _extract_form_data(self, response):
         """Extract all form data needed for ASP.NET postback."""
         form_data = {}
 
@@ -25,7 +25,7 @@ class QuestionPaperRowParsingMixin:
 
         return form_data
 
-    def extract_items(self, response):
+    def _extract_items(self, response):
         """Extract all items from the current page."""
         items = []
         table = response.css('table[id*="gvFiles"]').get()
@@ -38,13 +38,13 @@ class QuestionPaperRowParsingMixin:
         self.logger.debug(f"Found table with {len(rows)} rows")
 
         for row in rows:
-            item = self.extract_item_from_row(row, response)
+            item = self._extract_item_from_row(row, response)
             if item and item.get("name"):
                 items.append(item)
 
         return items
 
-    def extract_item_from_row(self, row, response):
+    def _extract_item_from_row(self, row, response):
         """Extract item data from a table row."""
         cells = row.css("td")
         if len(cells) < 2:

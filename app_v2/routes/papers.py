@@ -32,31 +32,13 @@ from .paper_query_params import (
 router = APIRouter(prefix="/api/papers", tags=["Papers"])
 
 
-def to_public_paper(paper: Dict[str, Any]) -> Dict[str, Any]:
-    """
-    Strip internal-only fields before serializing API responses.
-
-    Args:
-        paper: The internal paper dictionary.
-
-    Returns:
-        A dictionary suitable for public API exposure.
-    """
+def _to_public_paper(paper: Dict[str, Any]) -> Dict[str, Any]:
+    """Strip internal-only fields before serializing API responses."""
     return {k: v for k, v in paper.items() if not k.startswith("_")}
 
 
-def create_pagination(total: int, limit: int, offset: int) -> PaginationInfo:
-    """
-    Create pagination info from parameters.
-
-    Args:
-        total: Total number of items.
-        limit: Max items per page.
-        offset: Number of items skipped.
-
-    Returns:
-        A PaginationInfo model with pagination metadata.
-    """
+def _create_pagination(total: int, limit: int, offset: int) -> PaginationInfo:
+    """Create pagination metadata from total, limit, and offset."""
     total_pages = max(1, (total + limit - 1) // limit) if limit > 0 else 1
     current_page = (offset // limit) + 1 if limit > 0 else 1
 
@@ -71,7 +53,7 @@ def create_pagination(total: int, limit: int, offset: int) -> PaginationInfo:
     )
 
 
-def create_paginated_response(
+def _create_paginated_response(
     papers: List[Dict[str, Any]],
     total: int,
     limit: int,
@@ -82,11 +64,11 @@ def create_paginated_response(
     paginated = papers[offset : offset + limit]
 
     return PapersResponse(
-        papers=[Paper(**to_public_paper(p)) for p in paginated],
+        papers=[Paper(**_to_public_paper(p)) for p in paginated],
         total=total,
         limit=limit,
         offset=offset,
-        pagination=create_pagination(total, limit, offset),
+        pagination=_create_pagination(total, limit, offset),
         execution_time_ms=(
             round(execution_time, 2) if execution_time is not None else None
         ),
@@ -98,17 +80,7 @@ def _sort_papers(
     sort_field: str,
     order: str,
 ) -> List[Dict[str, Any]]:
-    """Sort papers by the specified field and order.
-
-    Args:
-        papers: List of paper dictionaries to sort.
-        sort_field: One of 'year', 'semester', 'relevance'.
-        order: One of 'asc', 'desc'.
-
-    Returns:
-        A new list of papers sorted accordingly. Papers with null values
-        for the sort field are placed after all non-null papers.
-    """
+    """Sort papers with null values placed after non-null values."""
     if not papers:
         return papers
 
@@ -136,7 +108,7 @@ def _get_papers_response_from_urls(
     """Helper to fetch papers by URL set and return a paginated response."""
     papers = paper_index.get_by_urls(urls)
     total = len(papers)
-    return create_paginated_response(papers, total, limit, offset)
+    return _create_paginated_response(papers, total, limit, offset)
 
 
 def _collect_filter_url_sets(
@@ -218,7 +190,7 @@ async def get_papers(
     filter_urls = _intersect_filter_url_sets(_collect_filter_url_sets(filters))
     if filter_urls is not None and not filter_urls:
         execution_time = (time.time() - start_time) * 1000
-        return create_paginated_response([], 0, limit, offset, execution_time)
+        return _create_paginated_response([], 0, limit, offset, execution_time)
 
     results = await _resolve_paper_results(search, filter_urls)
     effective_sort = _effective_sort_field(sort, search)
@@ -230,7 +202,7 @@ async def get_papers(
 
     execution_time = (time.time() - start_time) * 1000
 
-    return create_paginated_response(results, total, limit, offset, execution_time)
+    return _create_paginated_response(results, total, limit, offset, execution_time)
 
 
 @router.get("/lookup", response_model=Paper)
@@ -252,7 +224,7 @@ async def lookup_paper(
     paper = paper_index.get_by_url(str(url))
     if paper is None:
         raise HTTPException(status_code=404, detail="Paper not found")
-    return Paper(**to_public_paper(paper))
+    return Paper(**_to_public_paper(paper))
 
 
 @router.get("/year/{year}", response_model=PapersResponse)
@@ -294,7 +266,7 @@ async def get_papers_by_course(
     return CourseResponse(
         course_code=course_code.upper(),
         course_name=course_name,
-        papers=[Paper(**to_public_paper(p)) for p in papers],
+        papers=[Paper(**_to_public_paper(p)) for p in papers],
         total_papers=len(papers),
     )
 
