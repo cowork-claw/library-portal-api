@@ -99,55 +99,64 @@ class DataLoader:
 
         return self.papers
 
+    def _read_json_file(self, file_path: Path) -> Dict[str, Any]:
+        """Read and decode one organized JSON file."""
+        return orjson.loads(file_path.read_bytes())
+
+    def _add_unique_papers_from_file(
+        self, file_path: Path, data: Dict[str, Any]
+    ) -> tuple[int, int]:
+        """Add unique papers from decoded file data and return paper/course counts."""
+        paper_count = 0
+        course_count = 0
+        for course_code, papers_list in data.items():
+            if not isinstance(papers_list, list):
+                logger.warning(
+                    f"Invalid format in {file_path.name}: {course_code} is not a list"
+                )
+                continue
+
+            course_count += 1
+            for paper in papers_list:
+                url = paper.get("url")
+                if url and url not in self.seen_urls:
+                    self.papers.append(paper)
+                    self.seen_urls.add(url)
+                    paper_count += 1
+
+        return paper_count, course_count
+
+    def _relative_data_path(self, file_path: Path) -> str:
+        """Return a stable stats key for a loaded JSON file."""
+        try:
+            return str(file_path.relative_to(self.data_directory))
+        except ValueError:
+            logger.debug(
+                f"Could not determine relative path for {file_path}, using filename only"
+            )
+            return file_path.name
+
+    def _record_file_stats(
+        self, file_path: Path, relative_path: str, paper_count: int, course_count: int
+    ) -> None:
+        """Store per-file loader statistics."""
+        self.stats.file_stats[relative_path] = FileStats(
+            path=str(file_path),
+            papers_count=paper_count,
+            courses_count=course_count,
+            last_modified=datetime.fromtimestamp(file_path.stat().st_mtime).isoformat(),
+        )
+
     def _load_file(self, file_path: Path) -> None:
         """Load papers from a single JSON file."""
         try:
-            with open(file_path, "rb") as f:
-                data = orjson.loads(f.read())
-
-            # Papers added from this file (might be duplicates of papers in other files)
-            # but we track how many we *processed* from this file that were unique so far.
-            paper_count = 0
-            course_count = 0
-
-            # Data format: {course_code: [papers...]}
-            for course_code, papers_list in data.items():
-                if not isinstance(papers_list, list):
-                    logger.warning(
-                        f"Invalid format in {file_path.name}: {course_code} is not a list"
-                    )
-                    continue
-
-                course_count += 1
-
-                for paper in papers_list:
-                    # Deduplicate by URL
-                    url = paper.get("url")
-                    if url and url not in self.seen_urls:
-                        self.papers.append(paper)
-                        self.seen_urls.add(url)
-                        paper_count += 1
-
-            # Track file stats
-            try:
-                relative_path = str(file_path.relative_to(self.data_directory))
-            except ValueError:
-                relative_path = file_path.name
-                logger.debug(
-                    f"Could not determine relative path for {file_path}, using filename only"
-                )
-
-            self.stats.file_stats[relative_path] = FileStats(
-                path=str(file_path),
-                papers_count=paper_count,
-                courses_count=course_count,
-                last_modified=datetime.fromtimestamp(
-                    file_path.stat().st_mtime
-                ).isoformat(),
+            data = self._read_json_file(file_path)
+            paper_count, course_count = self._add_unique_papers_from_file(
+                file_path, data
             )
-
+            relative_path = self._relative_data_path(file_path)
+            self._record_file_stats(file_path, relative_path, paper_count, course_count)
             logger.debug(f"Loaded {paper_count} papers from {relative_path}")
-
         except orjson.JSONDecodeError as e:
             error_msg = f"Invalid JSON in {file_path.name}: {e.__class__.__name__}"
             logger.error(f"Invalid JSON in {file_path.name}: {e}")
