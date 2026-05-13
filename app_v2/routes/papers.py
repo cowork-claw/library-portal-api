@@ -1,8 +1,4 @@
-"""
-Papers Routes for Library Portal API V2
-
-Endpoints for retrieving and searching question papers.
-"""
+"""Question-paper retrieval routes."""
 
 import time
 from typing import (
@@ -72,6 +68,10 @@ LimitParam = Annotated[
     int, Query(ge=1, le=500, description="Number of results per page")
 ]
 OffsetParam = Annotated[int, Query(ge=0, description="Offset for pagination")]
+LOOKUP_OPERATION_ID = "lookup_paper_api_papers_lookup_get"
+YEAR_OPERATION_ID = "get_papers_by_year_api_papers_year__year__get"
+COURSE_OPERATION_ID = "get_papers_by_course_api_papers_course__course_code__get"
+SEMESTER_OPERATION_ID = "get_papers_by_semester_api_papers_semester__semester__get"
 
 
 def _to_public_paper(paper: Dict[str, Any]) -> Dict[str, Any]:
@@ -247,11 +247,7 @@ async def _get_papers(
     return _create_paginated_response(results, total, limit, offset, execution_time)
 
 
-@router.get(
-    "/lookup",
-    response_model=Paper,
-    operation_id="lookup_paper_api_papers_lookup_get",
-)
+@router.get("/lookup", response_model=Paper, operation_id=LOOKUP_OPERATION_ID)
 async def _lookup_paper(
     url: HttpUrl = Query(..., description="Exact paper URL to look up"),
 ) -> Paper:
@@ -263,9 +259,7 @@ async def _lookup_paper(
 
 
 @router.get(
-    "/year/{year}",
-    response_model=PapersResponse,
-    operation_id="get_papers_by_year_api_papers_year__year__get",
+    "/year/{year}", response_model=PapersResponse, operation_id=YEAR_OPERATION_ID
 )
 async def _get_papers_by_year(
     year: int = Path(..., ge=2000, le=2100, description="Academic Year"),
@@ -277,8 +271,6 @@ async def _get_papers_by_year(
     urls = paper_index.get_urls_by_year(year)
 
     if not urls:
-        # Note: get_papers returns empty list, but this endpoint historically returns 404
-        # We preserve this behavior.
         raise HTTPException(status_code=404, detail=f"No papers found for year {year}")
 
     if semester is not None:
@@ -290,7 +282,7 @@ async def _get_papers_by_year(
 @router.get(
     "/course/{course_code}",
     response_model=CourseResponse,
-    operation_id="get_papers_by_course_api_papers_course__course_code__get",
+    operation_id=COURSE_OPERATION_ID,
 )
 async def _get_papers_by_course(
     course_code: str = Path(..., max_length=20, description="Course code")
@@ -303,7 +295,6 @@ async def _get_papers_by_course(
             status_code=404, detail=f"No papers found for course {course_code}"
         )
 
-    # Get course name from first paper
     course_name = papers[0].get("course_name") if papers else None
 
     return CourseResponse(
@@ -317,7 +308,7 @@ async def _get_papers_by_course(
 @router.get(
     "/semester/{semester}",
     response_model=PapersResponse,
-    operation_id="get_papers_by_semester_api_papers_semester__semester__get",
+    operation_id=SEMESTER_OPERATION_ID,
 )
 async def _get_papers_by_semester(
     semester: int = Path(..., ge=1, le=8, description="Semester (1-8)"),
