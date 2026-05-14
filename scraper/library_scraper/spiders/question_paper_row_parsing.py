@@ -6,36 +6,31 @@ class QuestionPaperRowParsingMixin:
     def _extract_form_data(self, response):
         form_data = {}
 
-        for field in response.css('input[type="hidden"]'):
-            name = field.css("::attr(name)").get()
-            value = field.css("::attr(value)").get("")
-            if name:
-                form_data[name] = value
-
-        for field in response.css('input[type="text"], input[type="submit"], select'):
-            name = field.css("::attr(name)").get()
-            value = field.css("::attr(value)").get("")
-            if name and name not in form_data:
-                form_data[name] = value
+        for selector, overwrite in (
+            ('input[type="hidden"]', True),
+            ('input[type="text"], input[type="submit"], select', False),
+        ):
+            for field in response.css(selector):
+                name = field.css("::attr(name)").get()
+                if name and (overwrite or name not in form_data):
+                    form_data[name] = field.css("::attr(value)").get("")
 
         return form_data
 
     def _extract_items(self, response):
-        items = []
         table_selector = response.css('table[id*="gvFiles"]')
         if not table_selector.get():
             self.logger.debug("No file table found with gvFiles ID")
-            return items
+            return []
 
         rows = table_selector.css("tr")[1:]
         self.logger.debug(f"Found table with {len(rows)} rows")
 
-        for row in rows:
-            item = self._extract_item_from_row(row, response)
-            if item and item.get("name"):
-                items.append(item)
-
-        return items
+        return [
+            item
+            for row in rows
+            if (item := self._extract_item_from_row(row, response)) and item.get("name")
+        ]
 
     def _extract_item_from_row(self, row, response):
         cells = row.css("td")
@@ -72,8 +67,7 @@ class QuestionPaperRowParsingMixin:
         }
 
     def _extract_link_name(self, first_cell, link_elem):
-        full_text = "".join(first_cell.css("a ::text").getall()).strip()
-        if full_text:
+        if full_text := "".join(first_cell.css("a ::text").getall()).strip():
             return full_text
 
         link_html = link_elem.get()
@@ -95,9 +89,7 @@ class QuestionPaperRowParsingMixin:
             return False, None
         if not href or href.startswith("javascript:"):
             return True, None
-        if href.startswith("http"):
-            return True, href
-        return True, urljoin(response.url, href)
+        return True, href if href.startswith("http") else urljoin(response.url, href)
 
     def _classify_item(self, name, item_type, href, link_id, response):
         name_lower = name.lower()

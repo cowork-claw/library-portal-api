@@ -4,7 +4,7 @@ import os
 # Import configuration
 from contextlib import asynccontextmanager
 
-from fastapi import APIRouter, FastAPI, Response
+from fastapi import FastAPI, Response
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.middleware.gzip import GZipMiddleware
 
@@ -152,24 +152,21 @@ if settings.METRICS_ENABLED:
 
             start = time.perf_counter()
             response = await call_next(request)
-            duration = time.perf_counter() - start
-            route = request.scope.get("route")
-            route_path = getattr(route, "path", request.url.path)
+            route_path = getattr(request.scope.get("route"), "path", request.url.path)
 
             REQUEST_COUNT.labels(
                 request.method, route_path, f"{response.status_code}"
             ).inc()
-            REQUEST_LATENCY.labels(request.method, route_path).observe(duration)
+            REQUEST_LATENCY.labels(request.method, route_path).observe(
+                time.perf_counter() - start
+            )
             return response
 
-    metrics_router = APIRouter(tags=["Metrics"])
-
-    @metrics_router.get("/metrics")
+    @app.get("/metrics", tags=["Metrics"])
     def _metrics() -> Response:
         return Response(prom.generate_latest(), media_type=prom.CONTENT_TYPE_LATEST)
 
     app.add_middleware(MetricsMiddleware)
-    app.include_router(metrics_router)
 
 # Include routers
 app.include_router(papers_router)
