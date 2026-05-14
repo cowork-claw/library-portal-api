@@ -13,22 +13,13 @@ logger = logging.getLogger(__name__)
 
 
 @dataclass
-class FileStats:
-
-    path: str
-    papers_count: int
-    courses_count: int
-    last_modified: str
-
-
-@dataclass
 class LoaderStats:
 
     total_papers: int = 0
     unique_urls: int = 0
     files_loaded: int = 0
     last_loaded: Optional[str] = None
-    file_stats: Dict[str, FileStats] = field(default_factory=dict)
+    file_stats: Dict[str, Dict[str, Any]] = field(default_factory=dict)
     errors: List[str] = field(default_factory=list)
 
 
@@ -108,12 +99,11 @@ class DataLoader:
     def _record_file_stats(
         self, file_path: Path, relative_path: str, paper_count: int, course_count: int
     ) -> None:
-        self.stats.file_stats[relative_path] = FileStats(
-            path=str(file_path),
-            papers_count=paper_count,
-            courses_count=course_count,
-            last_modified=datetime.fromtimestamp(file_path.stat().st_mtime).isoformat(),
-        )
+        self.stats.file_stats[relative_path] = {
+            "papers": paper_count,
+            "courses": course_count,
+            "modified": datetime.fromtimestamp(file_path.stat().st_mtime).isoformat(),
+        }
 
     def _load_file(self, file_path: Path) -> None:
         try:
@@ -140,12 +130,5 @@ class DataLoader:
             "files_loaded": self.stats.files_loaded,
             "last_loaded": self.stats.last_loaded,
             "errors": self.stats.errors,
-            "file_stats": {
-                path: {
-                    "papers": stats.papers_count,
-                    "courses": stats.courses_count,
-                    "modified": stats.last_modified,
-                }
-                for path, stats in self.stats.file_stats.items()
-            },
+            "file_stats": self.stats.file_stats,
         }
