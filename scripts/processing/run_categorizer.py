@@ -32,14 +32,12 @@ class StagingHandler:
         self._load()
 
     def _load(self) -> None:
-        if self.staging_file.exists():
-            try:
-                with open(self.staging_file, "r", encoding="utf-8") as f:
-                    self.data = json.load(f)
-            except (json.JSONDecodeError, IOError) as e:
-                logger.warning(f"Error loading staging file, creating new: {e}")
-                self.data = self._empty_data()
-        else:
+        try:
+            self.data = json.loads(self.staging_file.read_text(encoding="utf-8"))
+        except FileNotFoundError:
+            self.data = self._empty_data()
+        except (json.JSONDecodeError, IOError) as e:
+            logger.warning(f"Error loading staging file, creating new: {e}")
             self.data = self._empty_data()
 
     def _empty_data(self) -> Dict[str, Any]:
@@ -148,41 +146,6 @@ def _record_result(stats: dict, category: str, confidence: float) -> None:
         stats["by_confidence"]["low"] += 1
 
 
-def _merge_metadata(paper: dict, metadata: dict) -> None:
-    for key, value in metadata.items():
-        if key not in paper or paper[key] is None:
-            paper[key] = value
-
-
-def _handle_auto_write(paper: dict, result, dry_run: bool, stats: dict) -> None:
-    course_code = paper.get("course_code", "UNKNOWN")
-    if dry_run:
-        logger.info("DRY RUN: Would write %s to %s", course_code, result.target_file)
-        stats["auto_written"] += 1
-        return
-
-    _merge_metadata(paper, result.metadata_filled)
-    if _write_paper_to_file(paper, result.target_file):
-        stats["auto_written"] += 1
-    else:
-        stats["skipped_duplicate"] += 1
-
-
-def _handle_staging(
-    paper: dict, result, dry_run: bool, stats: dict, staging_handler
-) -> None:
-    course_code = paper.get("course_code", "UNKNOWN")
-    if dry_run:
-        logger.info(
-            "DRY RUN: Would stage %s (conf: %.2f)", course_code, result.confidence
-        )
-    else:
-        staging_handler._add_paper(
-            paper, result.confidence, result.reasoning, result.target_file
-        )
-    stats["staged"] += 1
-
-
 def _process_paper(
     paper: dict,
     index: int,
@@ -206,9 +169,31 @@ def _process_paper(
     )
 
     if result.confidence >= AUTO_WRITE_CONFIDENCE and result.target_file:
-        _handle_auto_write(paper, result, dry_run, stats)
+        if dry_run:
+            logger.info(
+                "DRY RUN: Would write %s to %s", course_code, result.target_file
+            )
+            stats["auto_written"] += 1
+            return
+
+        for key, value in result.metadata_filled.items():
+            if key not in paper or paper[key] is None:
+                paper[key] = value
+        if _write_paper_to_file(paper, result.target_file):
+            stats["auto_written"] += 1
+        else:
+            stats["skipped_duplicate"] += 1
+        return
+
+    if dry_run:
+        logger.info(
+            "DRY RUN: Would stage %s (conf: %.2f)", course_code, result.confidence
+        )
     else:
-        _handle_staging(paper, result, dry_run, stats, staging_handler)
+        staging_handler._add_paper(
+            paper, result.confidence, result.reasoning, result.target_file
+        )
+    stats["staged"] += 1
 
 
 def _log_summary(stats: dict, dry_run: bool, staging_handler: StagingHandler) -> None:
@@ -235,8 +220,7 @@ def _log_summary(stats: dict, dry_run: bool, staging_handler: StagingHandler) ->
 
 def _run_categorizer(input_file: Path, dry_run: bool = False) -> dict:
     logger.info("Loading papers from: %s", input_file)
-    with open(input_file, "r", encoding="utf-8") as f:
-        papers = json.load(f)
+    papers = json.loads(input_file.read_text(encoding="utf-8"))
 
     if not isinstance(papers, list):
         logger.error("Input file must contain a list of papers")
