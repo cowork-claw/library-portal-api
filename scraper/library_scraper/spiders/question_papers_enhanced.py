@@ -18,14 +18,24 @@ BLACKLISTED_YEARS = set(settings.BLACKLISTED_YEARS)
 DATA_DIRECTORY = settings.DATA_DIRECTORY
 SCRAPE_LOG_FILE = settings.SCRAPE_LOG_FILE
 TARGET_YEAR_THRESHOLD = settings.TARGET_YEAR_THRESHOLD
+PROGRAM_NAMES = (
+    "B.Tech",
+    "M.Tech",
+    "B.Sc",
+    "M.Sc",
+    "MBA",
+    "MCA",
+    "B.Com",
+    "M.Com",
+    "BBA",
+    "BCA",
+)
 
-from .question_paper_metadata import QuestionPaperMetadataMixin
+
 from .question_paper_row_parsing import QuestionPaperRowParsingMixin
 
 
-class QuestionPapersEnhancedSpider(
-    QuestionPaperRowParsingMixin, QuestionPaperMetadataMixin, scrapy.Spider
-):
+class QuestionPapersEnhancedSpider(QuestionPaperRowParsingMixin, scrapy.Spider):
     name = "question_papers_enhanced"
     allowed_domains = ["libportal.manipal.edu"]
     start_urls = ["https://libportal.manipal.edu/MIT/Question%20Paper.aspx"]
@@ -91,8 +101,63 @@ class QuestionPapersEnhancedSpider(
 
         return year_int >= TARGET_YEAR_THRESHOLD and year_int not in BLACKLISTED_YEARS
 
+    def _extract_metadata(self, item):
+        path_parts = item["path"].split("/")
+        file_name = item["file_name"]
+        item["year"] = self._extract_year(path_parts, file_name)
+        if not item["year"]:
+            self.logger.warning(
+                f"Could not extract valid year from path: {item['path']}"
+            )
+        program = self._extract_program(path_parts)
+        if program:
+            item["program"] = program
+        semester = self._extract_semester(path_parts)
+        if semester:
+            item["semester"] = semester
+        item["subject"] = self._extract_subject(file_name)
+
+    def _extract_year(self, path_parts, file_name):
+        if not path_parts:
+            return None
+        potential_year = path_parts[0].strip()
+        current_year = datetime.now().year
+        if potential_year.isdigit() and len(potential_year) == 4:
+            if self._is_valid_year(potential_year, current_year):
+                return potential_year
+            self.logger.warning(
+                f"Year {int(potential_year)} outside valid range for paper: {file_name}"
+            )
+            return None
+
+        year_match = re.search(r"\b(20\d{2})\b", potential_year)
+        if year_match and self._is_valid_year(year_match.group(1), current_year):
+            return year_match.group(1)
+        return None
+
+    def _is_valid_year(self, year_text, current_year):
+        year_int = int(year_text)
+        return 2005 <= year_int <= current_year + 1
+
+    def _extract_program(self, path_parts):
+        for part in path_parts:
+            if any(program in part for program in PROGRAM_NAMES):
+                return part
+        return None
+
+    def _extract_semester(self, path_parts):
+        for part in path_parts:
+            sem_match = re.search(r"(I+|[1-9])\s*(st|nd|rd|th)?\s*[Ss]em", part)
+            if sem_match:
+                return sem_match.group()
+        return None
+
+    def _extract_subject(self, file_name):
+        subject = re.sub(r"\.pdf$", "", file_name, flags=re.IGNORECASE)
+        subject_match = re.search(r"^([^([(]+)", subject)
+        return subject_match.group(1).strip() if subject_match else subject
+
     def parse(self, response):
-        """Parse any page and handle navigation."""
         current_path = self._get_current_path(response)
         depth = response.meta.get("depth", 0)
 
@@ -230,7 +295,6 @@ class QuestionPapersEnhancedSpider(
                 path = re.sub(r"<[^>]+>", "", path)
                 return path.strip()
 
-        # If no path found, try to reconstruct from navigation stack
         nav_stack = response.meta.get("navigation_stack", [])
         if nav_stack:
             return " / ".join(nav_stack)
@@ -263,7 +327,6 @@ class QuestionPapersEnhancedSpider(
         return item
 
     def closed(self, reason):
-        """Record scrape-log stats when Scrapy closes the spider."""
         self.logger.info(f"Spider closed: {reason}")
         self.logger.info(
             f"Scraping mode: {'INCREMENTAL (V2)' if self.is_incremental else 'INITIAL'}"
