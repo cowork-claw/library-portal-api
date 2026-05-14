@@ -18,8 +18,7 @@ REQUIRED_FIELDS = {"url", "file_name", "course_code"}
 
 def _load_json(file_path: Path) -> Tuple[Any, List[str]]:
     try:
-        with open(file_path, "r", encoding="utf-8") as f:
-            return json.load(f), []
+        return json.loads(file_path.read_text(encoding="utf-8")), []
     except json.JSONDecodeError as e:
         return None, [f"Invalid JSON: {e}"]
     except IOError as e:
@@ -172,10 +171,7 @@ def _validate_all(data_dir: Path = DATA_DIRECTORY) -> Dict[str, Any]:
         report["error"] = "Data directory not found"
         return report
 
-    json_files = list(data_dir.rglob("*.json"))
-    logger.info("Found %d JSON files to validate", len(json_files))
-
-    for json_file in json_files:
+    for json_file in data_dir.rglob("*.json"):
         relative_path = str(json_file.relative_to(data_dir))
         report["files_checked"] += 1
         is_valid, errors = _validate_json_file(json_file)
