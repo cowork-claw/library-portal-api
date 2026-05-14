@@ -38,15 +38,10 @@ class QuestionPapersEnhancedSpider(QuestionPaperRowParsingMixin, scrapy.Spider):
         "DUPEFILTER_CLASS": "scrapy.dupefilters.BaseDupeFilter",  # Disable duplicate filtering
     }
 
-    SKIP_PATTERNS = [
-        "Source Publication List",
-        "Policy, Rules & Regulations",
-        "MAHE Plagiarism report",
-        "Faculty / Staff",
-        "Students",
-        "Agreement",
-        "Open Access",
-    ]
+    SKIP_PATTERN = re.compile(
+        r"Source Publication List|Policy, Rules & Regulations|MAHE Plagiarism report|Faculty / Staff|Students|Agreement|Open Access",
+        re.IGNORECASE,
+    )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -257,8 +252,7 @@ class QuestionPapersEnhancedSpider(QuestionPaperRowParsingMixin, scrapy.Spider):
         )
 
     def _should_skip(self, name):
-        name_lower = name.lower()
-        return any(pattern.lower() in name_lower for pattern in self.SKIP_PATTERNS)
+        return bool(self.SKIP_PATTERN.search(name))
 
     def _get_current_path(self, response):
         selectors = [

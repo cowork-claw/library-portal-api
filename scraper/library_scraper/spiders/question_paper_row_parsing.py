@@ -22,12 +22,11 @@ class QuestionPaperRowParsingMixin:
 
     def _extract_items(self, response):
         items = []
-        table = response.css('table[id*="gvFiles"]').get()
-        if not table:
+        table_selector = response.css('table[id*="gvFiles"]')
+        if not table_selector.get():
             self.logger.debug("No file table found with gvFiles ID")
             return items
 
-        table_selector = response.css('table[id*="gvFiles"]')
         rows = table_selector.css("tr")[1:]
         self.logger.debug(f"Found table with {len(rows)} rows")
 
@@ -85,8 +84,7 @@ class QuestionPaperRowParsingMixin:
         if "__doPostBack" not in href:
             return False, None, None
 
-        postback_match = re.search(r"__doPostBack\('([^']+)','([^']*)'\)", href)
-        if postback_match:
+        if postback_match := re.search(r"__doPostBack\('([^']+)','([^']*)'\)", href):
             return True, postback_match.group(1), postback_match.group(2)
         if link_id:
             return True, link_id, ""
@@ -108,9 +106,7 @@ class QuestionPaperRowParsingMixin:
         is_pdf, pdf_url = self._pdf_url(name_lower, item_type_lower, href, response)
 
         if not is_folder and not is_pdf:
-            if "folder" in item_type_lower:
-                is_folder = True
-            elif "pdf" in item_type_lower:
-                is_pdf = True
+            is_folder = "folder" in item_type_lower
+            is_pdf = not is_folder and "pdf" in item_type_lower
 
         return is_folder, is_pdf, event_target, event_argument, pdf_url
