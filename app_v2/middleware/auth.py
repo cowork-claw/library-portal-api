@@ -14,13 +14,7 @@ API_KEY_ENV = "LIBRARY_PORTAL_API_KEY"
 OPENCLAW_BOT_API_KEY_ENV = "LIBRARY_PORTAL_OPENCLAW_BOT_API_KEY"
 
 # Public paths that don't require authentication
-PUBLIC_PATHS = {
-    "/",
-    "/docs",
-    "/redoc",
-    "/openapi.json",
-    "/health",
-}
+PUBLIC_PATHS = {"/", "/docs", "/redoc", "/openapi.json", "/health"}
 SECURITY_HEADERS = {
     "X-Content-Type-Options": "nosniff",
     "X-Frame-Options": "DENY",
@@ -55,33 +49,6 @@ class APIKeyMiddleware(BaseHTTPMiddleware):
                     "All requests will be blocked."
                 )
 
-    def _missing_configuration_response(self) -> JSONResponse:
-        logger.error("Blocked request due to missing API key configuration")
-        return JSONResponse(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            content={
-                "detail": "Server security misconfiguration",
-                "hint": "API Key is required in this environment",
-            },
-        )
-
-    def _missing_api_key_response(self) -> JSONResponse:
-        return JSONResponse(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            content={
-                "detail": "API key required",
-                "hint": "Provide API key via 'X-API-Key' header",
-            },
-        )
-
-    def _invalid_api_key_response(self, request: Request) -> JSONResponse:
-        client_host = request.client.host if request.client else "unknown"
-        logger.warning(f"Invalid API key attempt from {client_host}")
-        return JSONResponse(
-            status_code=status.HTTP_403_FORBIDDEN,
-            content={"detail": "Invalid API key"},
-        )
-
     def _is_valid_api_key(self, provided_key: str) -> bool:
         return any(
             secrets.compare_digest(provided_key, configured_key)
@@ -89,31 +56,42 @@ class APIKeyMiddleware(BaseHTTPMiddleware):
         )
 
     async def dispatch(self, request: Request, call_next: Callable):
-        if request.method == "OPTIONS" or self._is_public_path(request.url.path):
+        if (
+            request.method == "OPTIONS"
+            or (request.url.path.rstrip("/") or "/") in PUBLIC_PATHS
+        ):
             return await call_next(request)
 
         if not self.api_keys:
             if self.environment == "development":
                 return await call_next(request)
-            return self._missing_configuration_response()
+            logger.error("Blocked request due to missing API key configuration")
+            return JSONResponse(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                content={
+                    "detail": "Server security misconfiguration",
+                    "hint": "API Key is required in this environment",
+                },
+            )
 
-        provided_key = self._extract_api_key(request)
+        provided_key = request.headers.get("X-API-Key")
         if not provided_key:
-            return self._missing_api_key_response()
+            return JSONResponse(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                content={
+                    "detail": "API key required",
+                    "hint": "Provide API key via 'X-API-Key' header",
+                },
+            )
 
         if not self._is_valid_api_key(provided_key):
-            return self._invalid_api_key_response(request)
+            client_host = request.client.host if request.client else "unknown"
+            logger.warning(f"Invalid API key attempt from {client_host}")
+            return JSONResponse(
+                status_code=status.HTTP_403_FORBIDDEN,
+                content={"detail": "Invalid API key"},
+            )
         return await call_next(request)
-
-    def _is_public_path(self, path: str) -> bool:
-        # Normalize path by removing trailing slash for consistent matching
-        path_normalized = path.rstrip("/") if path != "/" else "/"
-
-        # Check against the set of defined public paths
-        return path_normalized in PUBLIC_PATHS
-
-    def _extract_api_key(self, request: Request) -> Optional[str]:
-        return request.headers.get("X-API-Key")
 
 
 class SecurityHeadersMiddleware(BaseHTTPMiddleware):
