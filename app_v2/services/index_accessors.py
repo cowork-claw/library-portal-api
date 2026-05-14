@@ -15,9 +15,7 @@ class PaperIndexAccessors:
 
     def _search(self, query: str) -> List[str]:
         normalized_query = query.strip().lower()
-        if not normalized_query:
-            return []
-        return list(self._search_cached(normalized_query))
+        return list(self._search_cached(normalized_query)) if normalized_query else []
 
     def _get_by_url(self, url: str) -> Optional[Dict[str, Any]]:
         return self._by_url.get(url)
@@ -35,8 +33,7 @@ class PaperIndexAccessors:
         return self._by_course.get(course_code.upper(), set())
 
     def _get_papers_by_course(self, course_code: str) -> List[Dict[str, Any]]:
-        urls = self._get_urls_by_course(course_code)
-        return self._get_by_urls(urls)
+        return self._get_by_urls(self._get_urls_by_course(course_code))
 
     def _get_urls_by_program(self, program: str) -> Set[str]:
         return self._by_program.get(program, set())

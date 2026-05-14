@@ -59,7 +59,6 @@ class QuestionPapersEnhancedSpider(QuestionPaperRowParsingMixin, scrapy.Spider):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.navigation_stack = []
         self.pdf_count = 0
         self.folder_count = 0
         self.new_pdf_count = 0
@@ -75,8 +74,7 @@ class QuestionPapersEnhancedSpider(QuestionPaperRowParsingMixin, scrapy.Spider):
         self.seen_urls = _load_existing_urls_from_organized_data(DATA_DIRECTORY)
 
         self.scrape_log = ScrapeLog(SCRAPE_LOG_FILE)
-        scrape_log_urls = self.scrape_log._get_scraped_urls()
-        self.seen_urls.update(scrape_log_urls)
+        self.seen_urls.update(self.scrape_log._get_scraped_urls())
 
         if self.seen_urls:
             self.is_incremental = True
@@ -107,11 +105,9 @@ class QuestionPapersEnhancedSpider(QuestionPaperRowParsingMixin, scrapy.Spider):
             self.logger.warning(
                 f"Could not extract valid year from path: {item['path']}"
             )
-        program = self._extract_program(path_parts)
-        if program:
+        if program := self._extract_program(path_parts):
             item["program"] = program
-        semester = self._extract_semester(path_parts)
-        if semester:
+        if semester := self._extract_semester(path_parts):
             item["semester"] = semester
         item["subject"] = self._extract_subject(file_name)
 
@@ -119,9 +115,8 @@ class QuestionPapersEnhancedSpider(QuestionPaperRowParsingMixin, scrapy.Spider):
         if not path_parts:
             return None
         potential_year = path_parts[0].strip()
-        current_year = datetime.now().year
         if potential_year.isdigit() and len(potential_year) == 4:
-            if self._is_valid_year(potential_year, current_year):
+            if self._is_valid_year(potential_year):
                 return potential_year
             self.logger.warning(
                 f"Year {int(potential_year)} outside valid range for paper: {file_name}"
@@ -129,19 +124,26 @@ class QuestionPapersEnhancedSpider(QuestionPaperRowParsingMixin, scrapy.Spider):
             return None
 
         year_match = re.search(r"\b(20\d{2})\b", potential_year)
-        if year_match and self._is_valid_year(year_match.group(1), current_year):
+        if year_match and self._is_valid_year(year_match.group(1)):
             return year_match.group(1)
         return None
 
-    def _is_valid_year(self, year_text, current_year):
-        year_int = int(year_text)
-        return 2005 <= year_int <= current_year + 1
+    def _is_valid_year(self, year_text):
+        return (
+            2005
+            <= int(year_text)
+            <= getattr(self, "current_year", datetime.now().year) + 1
+        )
 
     def _extract_program(self, path_parts):
-        for part in path_parts:
-            if any(program in part for program in PROGRAM_NAMES):
-                return part
-        return None
+        return next(
+            (
+                part
+                for part in path_parts
+                if any(program in part for program in PROGRAM_NAMES)
+            ),
+            None,
+        )
 
     def _extract_semester(self, path_parts):
         for part in path_parts:
@@ -220,18 +222,17 @@ class QuestionPapersEnhancedSpider(QuestionPaperRowParsingMixin, scrapy.Spider):
         return self._path_contains_target_year(current_path)
 
     def _path_contains_target_year(self, current_path):
-        for year in range(self.current_year, self.current_year + 5):
-            if str(year) in current_path:
-                return True
-
+        if any(
+            str(year) in current_path
+            for year in range(self.current_year, self.current_year + 5)
+        ):
+            return True
         if self.is_incremental:
             return False
-
-        for year in range(TARGET_YEAR_THRESHOLD, self.current_year + 5):
-            if str(year) in current_path:
-                return True
-
-        return False
+        return any(
+            str(year) in current_path
+            for year in range(TARGET_YEAR_THRESHOLD, self.current_year + 5)
+        )
 
     def _build_navigation_request(self, folder, response, current_path, depth):
         folder_name = folder["name"]
@@ -309,16 +310,15 @@ class QuestionPapersEnhancedSpider(QuestionPaperRowParsingMixin, scrapy.Spider):
             "scraped_at": datetime.now().isoformat(),
         }
         current_path = item["path"]
+        encoded_filename = quote(item["file_name"], safe="")
 
         if current_path and current_path != "Root":
             path_parts = [part.strip() for part in current_path.split("/")]
             encoded_path = "/".join(quote(part, safe="") for part in path_parts)
-            encoded_filename = quote(item["file_name"], safe="")
             item["url"] = (
                 f"https://libportal.manipal.edu/RootFolder/{encoded_path}/{encoded_filename}"
             )
         else:
-            encoded_filename = quote(item["file_name"], safe="")
             item["url"] = f"https://libportal.manipal.edu/RootFolder/{encoded_filename}"
 
         self._extract_metadata(item)

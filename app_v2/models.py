@@ -3,14 +3,10 @@ from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, ConfigDict, Field
 
 
-def _default_streams_factory() -> List[str]:
-    return ["all"]
-
-
 class CurriculumContext(BaseModel):
 
     curriculum_id: Optional[str] = None
-    valid_for_streams: List[str] = Field(default_factory=_default_streams_factory)
+    valid_for_streams: List[str] = Field(default_factory=lambda: ["all"])
     valid_for_batches: List[int] = Field(default_factory=list)
     valid_for_branches: Optional[List[str]] = None
 

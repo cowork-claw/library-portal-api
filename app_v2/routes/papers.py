@@ -120,9 +120,7 @@ def _sort_papers(
     if sort_field == "relevance":
         # Relevance order is already set by search results.
         # Reverse if ascending order is requested (relevance is naturally desc).
-        if order == "asc":
-            return list(reversed(papers))
-        return papers
+        return list(reversed(papers)) if order == "asc" else papers
 
     reverse = order == "desc"
 

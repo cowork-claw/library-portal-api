@@ -17,8 +17,7 @@ class ScrapeLog:
     def _load(self) -> Dict[str, Any]:
         if self.log_file.exists():
             try:
-                with open(self.log_file, "r", encoding="utf-8") as f:
-                    data = json.load(f)
+                data = json.loads(self.log_file.read_text(encoding="utf-8"))
                 logger.info(
                     f"Loaded scrape log with {len(data.get('scraped_urls', []))} URLs"
                 )
@@ -39,10 +38,8 @@ class ScrapeLog:
             return
 
         self.log_file.parent.mkdir(parents=True, exist_ok=True)
-        with open(self.log_file, "w", encoding="utf-8") as f:
-            json.dump(self.data, f, indent=2)
+        self.log_file.write_text(json.dumps(self.data, indent=2), encoding="utf-8")
         self._dirty = False
-        logger.debug(f"Saved scrape log to {self.log_file}")
 
     def _get_scraped_urls(self) -> Set[str]:
         return self._scraped_urls_set.copy()
@@ -100,8 +97,7 @@ def _load_existing_urls_from_organized_data(data_directory: Path) -> Set[str]:
 
     for json_file in json_files:
         try:
-            with open(json_file, "r", encoding="utf-8") as f:
-                data = json.load(f)
+            data = json.loads(json_file.read_text(encoding="utf-8"))
 
             for course_code, papers_list in data.items():
                 if isinstance(papers_list, list):
