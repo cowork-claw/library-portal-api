@@ -12,11 +12,6 @@ from starlette.middleware.base import BaseHTTPMiddleware
 
 logger = logging.getLogger(__name__)
 
-# Paths that are exempt from rate limiting
-EXEMPT_PATHS: frozenset[str] = frozenset(
-    {"/", "/docs", "/redoc", "/openapi.json", "/health"}
-)
-
 
 def _is_rate_limited_path(path: str) -> bool:
     return path.startswith("/api") or path.startswith("/health/data")

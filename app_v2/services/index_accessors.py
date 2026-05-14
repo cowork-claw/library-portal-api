@@ -5,7 +5,6 @@ from typing import Any, Dict, Iterable, List, Mapping, Optional, Set, Tuple
 
 from thefuzz import fuzz
 
-SEARCH_CACHE_MAXSIZE = 32
 WORD_MATCH_SCORE_FACTOR = 0.7
 WORD_TOKEN_PATTERN = re.compile(r"\w+")
 SEARCH_FIELDS = [
@@ -125,7 +124,7 @@ def _calculate_relevance(
 
 
 class PaperIndexAccessors:
-    @lru_cache(maxsize=SEARCH_CACHE_MAXSIZE)
+    @lru_cache(maxsize=32)
     def _search_cached(self, normalized_query: str) -> Tuple[str, ...]:
         results = _search_papers(self.papers, normalized_query)
         return tuple(url for paper in results if (url := paper.get("url")))
