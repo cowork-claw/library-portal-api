@@ -136,19 +136,14 @@ class QuestionPapersEnhancedSpider(QuestionPaperRowParsingMixin, scrapy.Spider):
         )
 
     def _extract_program(self, path_parts):
-        return next(
-            (
-                part
-                for part in path_parts
-                if any(program in part for program in PROGRAM_NAMES)
-            ),
-            None,
-        )
+        for part in path_parts:
+            if any(program in part for program in PROGRAM_NAMES):
+                return part
+        return None
 
     def _extract_semester(self, path_parts):
         for part in path_parts:
-            sem_match = re.search(r"(I+|[1-9])\s*(st|nd|rd|th)?\s*[Ss]em", part)
-            if sem_match:
+            if sem_match := re.search(r"(I+|[1-9])\s*(st|nd|rd|th)?\s*[Ss]em", part):
                 return sem_match.group()
         return None
 
@@ -227,9 +222,7 @@ class QuestionPapersEnhancedSpider(QuestionPaperRowParsingMixin, scrapy.Spider):
             for year in range(self.current_year, self.current_year + 5)
         ):
             return True
-        if self.is_incremental:
-            return False
-        return any(
+        return not self.is_incremental and any(
             str(year) in current_path
             for year in range(TARGET_YEAR_THRESHOLD, self.current_year + 5)
         )
@@ -273,10 +266,8 @@ class QuestionPapersEnhancedSpider(QuestionPaperRowParsingMixin, scrapy.Spider):
         )
 
     def _should_skip(self, name):
-        for pattern in self.SKIP_PATTERNS:
-            if pattern.lower() in name.lower():
-                return True
-        return False
+        name_lower = name.lower()
+        return any(pattern.lower() in name_lower for pattern in self.SKIP_PATTERNS)
 
     def _get_current_path(self, response):
         selectors = [
