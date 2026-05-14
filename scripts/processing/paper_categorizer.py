@@ -1,20 +1,72 @@
 import json
 import logging
 import re
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-from .paper_categorizer_rules import (
-    CORE_STREAM_PATTERN,
-    CS_STREAM_PATTERN,
-    CSS_PREFIX_PATTERN,
-    FIRST_YEAR_CORE_PREFIXES,
-    FIRST_YEAR_CS_PREFIXES,
-    ICAS_PREFIXES,
-    PREFIX_TO_BRANCH,
-    SEMESTER_BY_CODE_DIGITS,
-    CategorizationResult,
-)
+AUTO_WRITE_CONFIDENCE = 0.85
+
+
+@dataclass
+class CategorizationResult:
+    target_file: Optional[Path]
+    confidence: float
+    category: str
+    reasoning: List[str] = field(default_factory=list)
+    metadata_filled: Dict[str, Any] = field(default_factory=dict)
+
+
+PREFIX_TO_BRANCH = {
+    "AAE": "Aeronautical",
+    "BME": "Biomedical",
+    "BIO": "Biotechnology",
+    "CHE": "Chemical",
+    "CIV": "Civil",
+    "CSE": "CSE",
+    "DSE": "CSE",
+    "ECE": "ECE",
+    "EEE": "EEE",
+    "ELE": "EEE",
+    "ICE": "EIE",
+    "ICT": "CSE",
+    "IND": "Industrial",
+    "INF": "IT",
+    "MEC": "Mechanical",
+    "MME": "Mechanical",
+    "MTE": "Mechatronics",
+    "MED": "MediaPrint",
+    "CSS": "CSE",
+}
+
+FIRST_YEAR_CORE_PREFIXES = {
+    "MAT",
+    "PHY",
+    "CHM",
+    "HUM",
+    "CIE",
+    "MME",
+    "IPE",
+    "BIO",
+    "EEE",
+    "ELE",
+}
+FIRST_YEAR_CS_PREFIXES = {"MAT", "PHY", "CHM", "HUM", "CIV", "MME", "CSS", "ECE", "ELE"}
+CS_STREAM_PATTERN = re.compile(r"^[A-Z]{2,3}1[0-2]0[0-9]$")
+CSS_PREFIX_PATTERN = re.compile(r"^CSS\d{4}$")
+CORE_STREAM_PATTERN = re.compile(r"^[A-Z]{2,3}1[0-2]7[12]$")
+ICAS_PREFIXES = {"ICS", "IMA", "IPH", "ICH", "IBI"}
+SEMESTER_BY_CODE_DIGITS = {
+    (1, 0): 1,
+    (1, 1): 1,
+    (1, 2): 2,
+    (1, 7): 1,
+    (2, 1): 3,
+    (2, 2): 4,
+    (3, 1): 5,
+    (3, 2): 6,
+    **{(4, sem_type): 7 if sem_type < 2 else 8 for sem_type in range(10)},
+}
 
 logger = logging.getLogger(__name__)
 

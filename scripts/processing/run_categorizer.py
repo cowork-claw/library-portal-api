@@ -8,8 +8,11 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from scraper.scraper_config import DATA_DIRECTORY, STAGING_FILE
-from scripts.processing.paper_categorizer import PaperCategorizer, _write_paper_to_file
-from scripts.processing.paper_categorizer_rules import AUTO_WRITE_CONFIDENCE
+from scripts.processing.paper_categorizer import (
+    AUTO_WRITE_CONFIDENCE,
+    PaperCategorizer,
+    _write_paper_to_file,
+)
 from scripts.processing.staging_handler import StagingHandler
 
 # Configure logging
