@@ -246,11 +246,6 @@ class PaperIndex(PaperIndexAccessors):
         )
         self._index_streams(url, paper.get("streams") or [])
 
-        self._compute_search_meta(paper, field_meta_cache)
-
-    def _compute_search_meta(
-        self, paper: Dict[str, Any], field_meta_cache: Dict[str, Any]
-    ) -> None:
         paper["_search_meta"] = _build_search_meta(paper, field_meta_cache)
 
     def _finalize_indexes(self) -> None:

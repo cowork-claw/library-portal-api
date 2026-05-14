@@ -33,8 +33,6 @@ SCRAPER_HEALTH_OPERATION_ID = "scraper_health_health_scraper_get"
 @router.get("", response_model=HealthResponse, operation_id="health_check_health_get")
 async def _health_check() -> HealthResponse:
     """Return overall system health with component statuses."""
-    uptime = (datetime.now() - APP_START_TIME).total_seconds()
-
     # Check data component — "degraded" when no data (not "unhealthy")
     data_healthy = paper_index._paper_count > 0
     data_status = ComponentHealth(
@@ -56,18 +54,17 @@ async def _health_check() -> HealthResponse:
     # Check staging
     staging_status = await run_in_threadpool(_check_staging_health)
 
-    # Overall status
-    overall = "healthy"
-    if not data_healthy:
-        overall = "degraded"
-    elif scraper_status.status != "healthy":
-        overall = "degraded"
+    overall = (
+        "degraded"
+        if not data_healthy or scraper_status.status != "healthy"
+        else "healthy"
+    )
 
     return HealthResponse(
         status=overall,
         timestamp=datetime.now().isoformat(),
         version=settings.APP_VERSION,
-        uptime_seconds=round(uptime, 2),
+        uptime_seconds=round((datetime.now() - APP_START_TIME).total_seconds(), 2),
         components={
             "data": data_status,
             "scraper": scraper_status,
@@ -138,19 +135,14 @@ async def _reload_data(background_tasks: BackgroundTasks) -> ReloadResponse:
 
     background_tasks.add_task(_do_reload, reload_id, data_directory)
 
-    return ReloadResponse(
-        reload_id=reload_id,
-        message="Reload started",
-    )
+    return ReloadResponse(reload_id=reload_id, message="Reload started")
 
 
 def _do_reload(reload_id: str, data_directory) -> None:
     try:
         paper_index._reload_from_directory(DataLoader(data_directory))
         logger.info(
-            "Reload %s complete: %d papers loaded",
-            reload_id,
-            paper_index._paper_count,
+            "Reload %s complete: %d papers loaded", reload_id, paper_index._paper_count
         )
     except Exception:
         logger.exception("Reload %s failed", reload_id)
@@ -209,9 +201,10 @@ def _check_staging_health() -> ComponentHealth:
 
 def _load_scrape_log() -> dict:
     try:
-        if settings.SCRAPE_LOG_FILE.exists():
-            with open(settings.SCRAPE_LOG_FILE, "r") as f:
-                return json.load(f)
+        return (
+            json.loads(settings.SCRAPE_LOG_FILE.read_text())
+            if settings.SCRAPE_LOG_FILE.exists()
+            else {}
+        )
     except Exception:
-        pass
-    return {}
+        return {}

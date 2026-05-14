@@ -62,9 +62,6 @@ class DataLoader:
 
         return self.papers
 
-    def _read_json_file(self, file_path: Path) -> Dict[str, Any]:
-        return orjson.loads(file_path.read_bytes())
-
     def _add_unique_papers_from_file(
         self, file_path: Path, data: Dict[str, Any]
     ) -> tuple[int, int]:
@@ -107,7 +104,7 @@ class DataLoader:
 
     def _load_file(self, file_path: Path) -> None:
         try:
-            data = self._read_json_file(file_path)
+            data = orjson.loads(file_path.read_bytes())
             paper_count, course_count = self._add_unique_papers_from_file(
                 file_path, data
             )
