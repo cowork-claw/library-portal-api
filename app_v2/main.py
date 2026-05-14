@@ -52,11 +52,10 @@ async def _lifespan(app: FastAPI):
     logger.info("🚀 Starting Library Portal API V2...")
 
     # Load data from organized folder
-    data_directory = settings.DATA_DIRECTORY
-    logger.info(f"Loading data from: {data_directory}")
+    logger.info(f"Loading data from: {settings.DATA_DIRECTORY}")
 
     try:
-        loader = DataLoader(data_directory)
+        loader = DataLoader(settings.DATA_DIRECTORY)
         paper_index._load_from_directory(loader)
     except Exception:
         logger.exception("Failed to load data — starting with empty index")
@@ -86,8 +85,6 @@ app = FastAPI(
     description=settings.APP_DESCRIPTION,
     version=settings.APP_VERSION,
     lifespan=_lifespan,
-    docs_url="/docs",
-    redoc_url="/redoc",
 )
 
 # Add Gzip Compression middleware first so it stays innermost among the
@@ -132,21 +129,16 @@ if settings.METRICS_ENABLED:
     import time
     from typing import Callable
 
+    import prometheus_client as prom
     from fastapi import Request
-    from prometheus_client import (
-        CONTENT_TYPE_LATEST,
-        Counter,
-        Histogram,
-        generate_latest,
-    )
     from starlette.middleware.base import BaseHTTPMiddleware
 
-    REQUEST_COUNT = Counter(
+    REQUEST_COUNT = prom.Counter(
         "http_requests_total",
         "Total HTTP requests",
         ["method", "route", "status_code"],
     )
-    REQUEST_LATENCY = Histogram(
+    REQUEST_LATENCY = prom.Histogram(
         "http_request_duration_seconds",
         "HTTP request duration in seconds",
         ["method", "route"],
@@ -165,20 +157,16 @@ if settings.METRICS_ENABLED:
             route_path = getattr(route, "path", request.url.path)
 
             REQUEST_COUNT.labels(
-                method=request.method,
-                route=route_path,
-                status_code=str(response.status_code),
+                request.method, route_path, f"{response.status_code}"
             ).inc()
-            REQUEST_LATENCY.labels(method=request.method, route=route_path).observe(
-                duration
-            )
+            REQUEST_LATENCY.labels(request.method, route_path).observe(duration)
             return response
 
     metrics_router = APIRouter(tags=["Metrics"])
 
     @metrics_router.get("/metrics")
     def _metrics() -> Response:
-        return Response(generate_latest(), media_type=CONTENT_TYPE_LATEST)
+        return Response(prom.generate_latest(), media_type=prom.CONTENT_TYPE_LATEST)
 
     app.add_middleware(MetricsMiddleware)
     app.include_router(metrics_router)
