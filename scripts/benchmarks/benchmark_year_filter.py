@@ -14,7 +14,7 @@ from config.config_v2 import settings
 def setup():
     print("Loading data...")
     loader = DataLoader(settings.DATA_DIRECTORY)
-    paper_index.load_from_directory(loader)
+    paper_index._load_from_directory(loader)
     print(f"Loaded {paper_index.total_papers} papers.")
 
 

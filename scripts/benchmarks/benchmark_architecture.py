@@ -236,7 +236,7 @@ def exercise_data_and_index(suite: CheckSuite) -> Any:
     )
 
     index = PaperIndex()
-    index.load_from_directory(DataLoader(DATA_DIR))
+    index._load_from_directory(DataLoader(DATA_DIR))
     suite.require(index.total_papers == len(papers), "index total differs from loader")
     suite.require(len(index.unique_years) > 0, "index has no years")
     suite.require(

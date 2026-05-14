@@ -95,8 +95,7 @@ class PaperIndex(PaperIndexAccessors):
         # Stats
         self._files_loaded: int = 0
 
-    def load_from_directory(self, loader: DataLoader) -> None:
-        """Load papers from data loader and build indexes."""
+    def _load_from_directory(self, loader: DataLoader) -> None:
         self.loader = loader
         self.papers = loader.load_all()
         self._build_indexes()
@@ -117,7 +116,7 @@ class PaperIndex(PaperIndexAccessors):
 
     def _reload_from_directory(self, loader: DataLoader) -> None:
         new_index = PaperIndex()
-        new_index.load_from_directory(loader)
+        new_index._load_from_directory(loader)
         if new_index.loader and new_index.loader.stats.errors:
             raise RuntimeError("Data reload failed; keeping previous index")
         self._replace_with(new_index)
