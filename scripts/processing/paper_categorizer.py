@@ -210,15 +210,39 @@ class PaperCategorizer:
             prefix.startswith("I") and prefix not in {"ICE", "ICT", "IND", "INF"}
         )
 
-    def _first_year_result(
-        self,
-        filename: str,
-        confidence: float,
-        category: str,
-        stream: str,
-        reason: str,
-        reasoning: List[str],
-    ) -> CategorizationResult:
+    def _check_first_year(
+        self, course_code: str, prefix: str, reasoning: List[str]
+    ) -> Optional[CategorizationResult]:
+        if CSS_PREFIX_PATTERN.match(course_code) or prefix == "CSS":
+            result_args = (
+                "cs_stream.json",
+                0.95,
+                "first_year_cs",
+                "cs",
+                "CSS prefix = CS Stream (2024+)",
+            )
+        elif CS_STREAM_PATTERN.match(course_code):
+            result_args = (
+                "cs_stream.json",
+                0.9,
+                "first_year_cs",
+                "cs",
+                f"CS Stream pattern matched: {course_code}",
+            )
+        elif CORE_STREAM_PATTERN.match(course_code):
+            result_args = (
+                "non_cs_stream.json",
+                0.9,
+                "first_year_core",
+                "core",
+                f"Core Stream pattern matched: {course_code}",
+            )
+        else:
+            if FIRST_YEAR_PREFIX_PATTERN.match(prefix):
+                reasoning.append(f"First year prefix ({prefix}) but unclear pattern")
+            return None
+
+        filename, confidence, category, stream, reason = result_args
         reasoning.append(reason)
         return CategorizationResult(
             self.data_dir / "btech" / "first_year" / filename,
@@ -227,44 +251,6 @@ class PaperCategorizer:
             reasoning,
             {"degree_type": "B.Tech", "streams": [stream]},
         )
-
-    def _check_first_year(
-        self, course_code: str, prefix: str, reasoning: List[str]
-    ) -> Optional[CategorizationResult]:
-        if CSS_PREFIX_PATTERN.match(course_code) or prefix == "CSS":
-            return self._first_year_result(
-                "cs_stream.json",
-                0.95,
-                "first_year_cs",
-                "cs",
-                "CSS prefix = CS Stream (2024+)",
-                reasoning,
-            )
-
-        if CS_STREAM_PATTERN.match(course_code):
-            return self._first_year_result(
-                "cs_stream.json",
-                0.9,
-                "first_year_cs",
-                "cs",
-                f"CS Stream pattern matched: {course_code}",
-                reasoning,
-            )
-
-        if CORE_STREAM_PATTERN.match(course_code):
-            return self._first_year_result(
-                "non_cs_stream.json",
-                0.9,
-                "first_year_core",
-                "core",
-                f"Core Stream pattern matched: {course_code}",
-                reasoning,
-            )
-
-        if FIRST_YEAR_PREFIX_PATTERN.match(prefix):
-            reasoning.append(f"First year prefix ({prefix}) but unclear pattern")
-
-        return None
 
     def _get_semester_from_code(self, code: str) -> Optional[int]:
         match = re.match(r"^[A-Z]{2,4}(\d)(\d)", code)
