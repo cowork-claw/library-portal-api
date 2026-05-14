@@ -199,20 +199,12 @@ class PaperCategorizer:
         return self._categorize_other(reasoning, metadata)
 
     def _is_masters(self, program: str, degree_type: str, course_code: str) -> bool:
-        masters_keywords = ["M.Tech", "MTech", "M.E", "ME", "MCA", "M.Sc", "MSc"]
-
-        for keyword in masters_keywords:
-            if (
-                keyword.lower() in program.lower()
-                or keyword.lower() in degree_type.lower()
-            ):
-                return True
-
-        # Course codes starting with 5XXX are typically masters level
-        if re.match(r"^[A-Z]{2,4}5\d{3}$", course_code):
-            return True
-
-        return False
+        program_lower, degree_type_lower = program.lower(), degree_type.lower()
+        masters_keywords = ("m.tech", "mtech", "m.e", "me", "mca", "m.sc", "msc")
+        return any(
+            keyword in program_lower or keyword in degree_type_lower
+            for keyword in masters_keywords
+        ) or bool(re.match(r"^[A-Z]{2,4}5\d{3}$", course_code))
 
     def _categorize_masters(
         self,
@@ -253,16 +245,9 @@ class PaperCategorizer:
         )
 
     def _is_icas(self, prefix: str, course_code: str) -> bool:
-        # ICAS codes start with 'I' followed by subject area
-        if prefix in ICAS_PREFIXES:
-            return True
-
-        # General I-prefix that's not a known engineering prefix
-        engineering_i_prefixes = {"ICE", "ICT", "IND", "INF"}
-        if prefix.startswith("I") and prefix not in engineering_i_prefixes:
-            return True
-
-        return False
+        return prefix in ICAS_PREFIXES or (
+            prefix.startswith("I") and prefix not in {"ICE", "ICT", "IND", "INF"}
+        )
 
     def _first_year_result(
         self,
