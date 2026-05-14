@@ -39,12 +39,12 @@ class PaperIndexAccessors:
         """Get paper URLs for a specific semester."""
         return self._by_semester.get(semester, set())
 
-    def get_urls_by_course(self, course_code: str) -> Set[str]:
+    def _get_urls_by_course(self, course_code: str) -> Set[str]:
         """Get paper URLs for a specific course code."""
         return self._by_course.get(course_code.upper(), set())
 
     def _get_papers_by_course(self, course_code: str) -> List[Dict[str, Any]]:
-        urls = self.get_urls_by_course(course_code)
+        urls = self._get_urls_by_course(course_code)
         return self.get_by_urls(urls)
 
     def _get_urls_by_program(self, program: str) -> Set[str]:
