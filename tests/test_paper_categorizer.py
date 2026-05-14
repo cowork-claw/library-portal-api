@@ -19,7 +19,7 @@ def test_categorize_btech_branch_extracts_semester(tmp_path):
     categorizer = _categorizer(tmp_path)
     (categorizer.data_dir / "btech" / "branches" / "CSE.json").write_text("{}")
 
-    result = categorizer.categorize({"course_code": "CSE2201", "program": "B.Tech"})
+    result = categorizer._categorize({"course_code": "CSE2201", "program": "B.Tech"})
 
     assert result.category == "btech_branch"
     assert _relative_target(result, categorizer.data_dir) == "btech/branches/CSE.json"
@@ -29,8 +29,8 @@ def test_categorize_btech_branch_extracts_semester(tmp_path):
 def test_categorize_first_year_streams(tmp_path):
     categorizer = _categorizer(tmp_path)
 
-    cs_result = categorizer.categorize({"course_code": "CSS1001"})
-    core_result = categorizer.categorize({"course_code": "MAT1171"})
+    cs_result = categorizer._categorize({"course_code": "CSS1001"})
+    core_result = categorizer._categorize({"course_code": "MAT1171"})
 
     assert cs_result.category == "first_year_cs"
     assert (
@@ -49,7 +49,7 @@ def test_categorize_first_year_streams(tmp_path):
 def test_categorize_malformed_course_code_is_uncertain(tmp_path):
     categorizer = _categorizer(tmp_path)
 
-    result = categorizer.categorize({"course_code": "1234"})
+    result = categorizer._categorize({"course_code": "1234"})
 
     assert result.category == "uncertain"
     assert result.target_file is None
@@ -59,7 +59,7 @@ def test_categorize_malformed_course_code_is_uncertain(tmp_path):
 def test_categorize_missing_branch_file_falls_back_to_other(tmp_path):
     categorizer = _categorizer(tmp_path)
 
-    result = categorizer.categorize({"course_code": "CSE2201", "program": "B.Tech"})
+    result = categorizer._categorize({"course_code": "CSE2201", "program": "B.Tech"})
 
     assert result.category == "other"
     assert _relative_target(result, categorizer.data_dir) == "other.json"

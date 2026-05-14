@@ -419,7 +419,7 @@ def exercise_categorizer_contract(suite: CheckSuite) -> None:
     with tempfile.TemporaryDirectory(prefix="autoresearch-staging-") as staging_dir:
         categorizer = PaperCategorizer(DATA_DIR, Path(staging_dir))
         for paper, expected_suffix, expected_category in fixtures:
-            result = categorizer.categorize(paper)
+            result = categorizer._categorize(paper)
             target = (
                 result.target_file.relative_to(DATA_DIR).as_posix()
                 if result.target_file

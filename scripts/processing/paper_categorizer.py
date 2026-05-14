@@ -114,7 +114,7 @@ class PaperCategorizer:
             self.data_dir / "other.json", 0.5, "other", reasoning, metadata
         )
 
-    def categorize(self, paper: Dict[str, Any]) -> CategorizationResult:
+    def _categorize(self, paper: Dict[str, Any]) -> CategorizationResult:
         reasoning: List[str] = []
         metadata: Dict[str, Any] = {}
         course_code = self._normalized_course_code(paper)

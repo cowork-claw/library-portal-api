@@ -86,7 +86,7 @@ def _process_paper(
     dry_run: bool,
     stats: dict,
 ) -> None:
-    result = categorizer.categorize(paper)
+    result = categorizer._categorize(paper)
     _record_result(stats, result.category, result.confidence)
 
     course_code = paper.get("course_code", "UNKNOWN")
