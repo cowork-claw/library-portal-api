@@ -152,7 +152,6 @@ class PaperCategorizer:
         return self._categorize_other(reasoning, metadata)
 
     def _is_masters(self, program: str, degree_type: str, course_code: str) -> bool:
-        """Return whether scraper metadata or course code indicates masters level."""
         masters_keywords = ["M.Tech", "MTech", "M.E", "ME", "MCA", "M.Sc", "MSc"]
 
         for keyword in masters_keywords:
@@ -176,7 +175,6 @@ class PaperCategorizer:
         course_code: str,
         reasoning: List[str],
     ) -> CategorizationResult:
-        """Categorize a masters-level paper by program family."""
         if "MCA" in program or "MCA" in degree_type:
             reasoning.append("MCA program detected")
             return CategorizationResult(
@@ -208,7 +206,6 @@ class PaperCategorizer:
         )
 
     def _is_icas(self, prefix: str, course_code: str) -> bool:
-        """Return whether the prefix/course code belongs to B.Sc ICAS."""
         # ICAS codes start with 'I' followed by subject area
         if prefix in ICAS_PREFIXES:
             return True
@@ -229,7 +226,6 @@ class PaperCategorizer:
         reason: str,
         reasoning: List[str],
     ) -> CategorizationResult:
-        """Build a first-year categorization result with stream metadata."""
         reasoning.append(reason)
         return CategorizationResult(
             self.data_dir / "btech" / "first_year" / filename,
@@ -242,7 +238,6 @@ class PaperCategorizer:
     def _check_first_year(
         self, course_code: str, prefix: str, reasoning: List[str]
     ) -> Optional[CategorizationResult]:
-        """Return a first-year stream result when the course pattern is known."""
         if CSS_PREFIX_PATTERN.match(course_code) or prefix == "CSS":
             return self._first_year_result(
                 "cs_stream.json",
@@ -279,7 +274,6 @@ class PaperCategorizer:
         return None
 
     def _get_semester_from_code(self, code: str) -> Optional[int]:
-        """Extract semester number 1-8 from a branch course code."""
         match = re.match(r"^[A-Z]{2,4}(\d)(\d)", code)
         if not match:
             return None

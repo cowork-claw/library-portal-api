@@ -183,7 +183,6 @@ class PaperIndex(PaperIndexAccessors):
         value: Any,
         counts: Dict[Any, int] | None = None,
     ) -> None:
-        """Add one scalar value to an index, unique set, and optional count map."""
         if not value:
             return
         index[value].add(url)
@@ -192,13 +191,11 @@ class PaperIndex(PaperIndexAccessors):
             counts[value] += 1
 
     def _index_streams(self, url: str, streams: Iterable[str]) -> None:
-        """Index stream membership for a paper URL."""
         for stream in streams:
             self._by_stream[stream].add(url)
             self._unique_streams.add(stream)
 
     def _index_program_abbrev(self, url: str, program_abbrev: Any) -> None:
-        """Index a normalized program abbreviation for a paper URL."""
         if not program_abbrev:
             return
         self._add_index_value(
@@ -212,7 +209,6 @@ class PaperIndex(PaperIndexAccessors):
     def _index_paper(
         self, paper: Dict[str, Any], field_meta_cache: Dict[str, Any]
     ) -> None:
-        """Index a single paper and build aggregations."""
         url = paper.get("url")
         if not url:
             return
@@ -261,7 +257,6 @@ class PaperIndex(PaperIndexAccessors):
     def _compute_search_meta(
         self, paper: Dict[str, Any], field_meta_cache: Dict[str, Any]
     ) -> None:
-        """Pre-compute and cache search metadata for a paper."""
         paper["_search_meta"] = _build_search_meta(paper, field_meta_cache)
 
     def _finalize_indexes(self) -> None:
