@@ -1,6 +1,11 @@
 import tempfile
 import time
 from pathlib import Path
+import sys
+
+ROOT = Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
 from scraper.scrape_log import ScrapeLog, _load_existing_urls_from_organized_data
 
@@ -32,7 +37,7 @@ def benchmark_scrape_log():
         # Benchmark add_scraped_url
         start_time = time.perf_counter()
         for url in urls:
-            scrape_log.add_scraped_url(url)
+            scrape_log._add_scraped_url(url)
         end_time = time.perf_counter()
 
         print(f"Added {len(urls)} URLs in {end_time - start_time:.4f} seconds")
@@ -40,7 +45,7 @@ def benchmark_scrape_log():
         # Benchmark has_url
         start_time = time.perf_counter()
         for url in urls:
-            scrape_log.has_url(url)
+            scrape_log._has_url(url)
         end_time = time.perf_counter()
 
         print(
@@ -50,7 +55,7 @@ def benchmark_scrape_log():
         # Benchmark add_scraped_url with existing URLs
         start_time = time.perf_counter()
         for url in urls:
-            scrape_log.add_scraped_url(url)
+            scrape_log._add_scraped_url(url)
         end_time = time.perf_counter()
 
         print(

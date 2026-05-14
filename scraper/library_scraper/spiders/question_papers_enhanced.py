@@ -65,7 +65,7 @@ class QuestionPapersEnhancedSpider(
         self.seen_urls = _load_existing_urls_from_organized_data(DATA_DIRECTORY)
 
         self.scrape_log = ScrapeLog(SCRAPE_LOG_FILE)
-        scrape_log_urls = self.scrape_log.get_scraped_urls()
+        scrape_log_urls = self.scrape_log._get_scraped_urls()
         self.seen_urls.update(scrape_log_urls)
 
         if self.seen_urls:
@@ -273,7 +273,7 @@ class QuestionPapersEnhancedSpider(
         self.logger.info(f"Total unique folders visited: {self.folder_count}")
 
         if hasattr(self, "scrape_log"):
-            self.scrape_log.record_run(
+            self.scrape_log._record_run(
                 new_papers=self.new_pdf_count,
                 skipped=self.skipped_pdf_count,
                 errors=0,

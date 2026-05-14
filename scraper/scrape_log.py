@@ -34,7 +34,7 @@ class ScrapeLog:
             "stats": {"total_scraped": 0, "total_skipped": 0, "total_errors": 0},
         }
 
-    def save(self) -> None:
+    def _save(self) -> None:
         if not self._dirty:
             return
 
@@ -44,13 +44,13 @@ class ScrapeLog:
         self._dirty = False
         logger.debug(f"Saved scrape log to {self.log_file}")
 
-    def get_scraped_urls(self) -> Set[str]:
+    def _get_scraped_urls(self) -> Set[str]:
         return self._scraped_urls_set.copy()
 
-    def has_url(self, url: str) -> bool:
+    def _has_url(self, url: str) -> bool:
         return url in self._scraped_urls_set
 
-    def add_scraped_url(self, url: str) -> bool:
+    def _add_scraped_url(self, url: str) -> bool:
         if url not in self._scraped_urls_set:
             self._scraped_urls_set.add(url)
             self.data["scraped_urls"].append(url)
@@ -58,7 +58,7 @@ class ScrapeLog:
             return True
         return False
 
-    def record_run(
+    def _record_run(
         self,
         new_papers: int,
         skipped: int,
@@ -81,7 +81,7 @@ class ScrapeLog:
         self.data["stats"]["total_skipped"] += skipped
         self.data["stats"]["total_errors"] += errors
         self._dirty = True
-        self.save()
+        self._save()
 
         logger.info(
             f"Recorded run: {new_papers} new, {skipped} skipped, {errors} errors"
