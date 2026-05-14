@@ -206,8 +206,7 @@ To measure the performance of key endpoints and optimizations:
 # Run year filter benchmark
 python scripts/benchmarks/benchmark_year_filter.py
 
-# Run search benchmark
-python scripts/benchmarks/benchmark_search.py
+
 
 # Run scraper log benchmark
 python scripts/benchmarks/benchmark_scrape_log.py

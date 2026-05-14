@@ -1,4 +1,4 @@
-from app_v2.services.search import _search_papers
+from app_v2.services.index_accessors import _search_papers
 
 
 def _sample_papers():

@@ -60,7 +60,7 @@ jobs:
             │   ├── models.py             # Pydantic models (Paper, CurriculumContext, responses)
             │   ├── data_loader.py        # JSON data loading
             │   ├── routes/               # API endpoints (papers.py, metadata.py, health.py, metrics.py)
-            │   ├── services/             # Business logic (indexing.py, search.py)
+            │   ├── services/             # Business logic (indexing.py)
             │   └── middleware/auth.py    # API key authentication
             ├── scraper/                   # Scrapy web scraper
             │   ├── library_scraper/      # Spider, middlewares, settings

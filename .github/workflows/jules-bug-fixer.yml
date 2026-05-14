@@ -58,8 +58,7 @@ jobs:
             │   │   ├── metadata.py        # GET /api/metadata, /api/statistics
             │   │   └── health.py          # Health check endpoints
             │   ├── services/
-            │   │   ├── indexing.py        # PaperIndex - pre-built Dict indexes
-            │   │   └── search.py          # Fuzzy search with TheFuzz
+            │   │   └── indexing.py        # PaperIndex and fuzzy search helpers
             │   └── middleware/auth.py     # APIKeyMiddleware
             ├── scraper/
             │   ├── library_scraper/spiders/  # Scrapy spider

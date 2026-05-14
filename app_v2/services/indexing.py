@@ -5,8 +5,7 @@ from types import MappingProxyType
 from typing import Any, Dict, Iterable, List, Mapping, Optional, Set, Tuple
 
 from ..data_loader import DataLoader
-from .index_accessors import PaperIndexAccessors
-from .search import WORD_TOKEN_PATTERN
+from .index_accessors import WORD_TOKEN_PATTERN, PaperIndexAccessors
 
 logger = logging.getLogger(__name__)
 
