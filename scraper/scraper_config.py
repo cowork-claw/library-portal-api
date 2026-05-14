@@ -1,5 +1,3 @@
-"""Scraper paths and year-window configuration."""
-
 from pathlib import Path
 from typing import Set
 

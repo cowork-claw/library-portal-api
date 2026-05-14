@@ -1,5 +1,3 @@
-"""Fuzzy search service for paper metadata."""
-
 import re
 from typing import Any, Dict, List, Optional, Set
 

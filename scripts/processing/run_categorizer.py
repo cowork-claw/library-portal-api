@@ -1,5 +1,3 @@
-"""Categorize scraped papers from the command line."""
-
 import argparse
 import json
 import logging

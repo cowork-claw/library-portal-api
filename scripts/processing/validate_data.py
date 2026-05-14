@@ -1,5 +1,3 @@
-"""Validate organized paper JSON files."""
-
 import json
 import logging
 import sys
