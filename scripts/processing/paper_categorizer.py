@@ -23,20 +23,15 @@ PREFIX_TO_BRANCH = {
     "BIO": "Biotechnology",
     "CHE": "Chemical",
     "CIV": "Civil",
-    "CSE": "CSE",
-    "DSE": "CSE",
+    **dict.fromkeys(("CSE", "DSE", "ICT", "CSS"), "CSE"),
     "ECE": "ECE",
-    "EEE": "EEE",
-    "ELE": "EEE",
+    **dict.fromkeys(("EEE", "ELE"), "EEE"),
     "ICE": "EIE",
-    "ICT": "CSE",
     "IND": "Industrial",
     "INF": "IT",
-    "MEC": "Mechanical",
-    "MME": "Mechanical",
+    **dict.fromkeys(("MEC", "MME"), "Mechanical"),
     "MTE": "Mechatronics",
     "MED": "MediaPrint",
-    "CSS": "CSE",
 }
 
 FIRST_YEAR_PREFIX_PATTERN = re.compile(
@@ -46,17 +41,6 @@ CS_STREAM_PATTERN = re.compile(r"^[A-Z]{2,3}1[0-2]0[0-9]$")
 CSS_PREFIX_PATTERN = re.compile(r"^CSS\d{4}$")
 CORE_STREAM_PATTERN = re.compile(r"^[A-Z]{2,3}1[0-2]7[12]$")
 ICAS_PREFIXES = {"ICS", "IMA", "IPH", "ICH", "IBI"}
-SEMESTER_BY_CODE_DIGITS = {
-    (1, 0): 1,
-    (1, 1): 1,
-    (1, 2): 2,
-    (1, 7): 1,
-    (2, 1): 3,
-    (2, 2): 4,
-    (3, 1): 5,
-    (3, 2): 6,
-    **{(4, sem_type): 7 if sem_type < 2 else 8 for sem_type in range(10)},
-}
 
 logger = logging.getLogger(__name__)
 
@@ -138,8 +122,7 @@ class PaperCategorizer:
         confidence = 0.85
         reasoning.append(f"Branch mapped: {prefix} → {branch}")
 
-        semester = self._get_semester_from_code(course_code)
-        if semester:
+        if semester := self._get_semester_from_code(course_code):
             metadata["semester"] = semester
             reasoning.append(f"Semester extracted: {semester}")
             confidence += 0.05
@@ -190,10 +173,9 @@ class PaperCategorizer:
 
     def _is_masters(self, program: str, degree_type: str, course_code: str) -> bool:
         program_lower, degree_type_lower = program.lower(), degree_type.lower()
-        masters_keywords = ("m.tech", "mtech", "m.e", "me", "mca", "m.sc", "msc")
         return any(
             keyword in program_lower or keyword in degree_type_lower
-            for keyword in masters_keywords
+            for keyword in ("m.tech", "mtech", "m.e", "me", "mca", "m.sc", "msc")
         ) or bool(re.match(r"^[A-Z]{2,4}5\d{3}$", course_code))
 
     def _categorize_masters(
@@ -300,4 +282,11 @@ class PaperCategorizer:
         if not match:
             return None
 
-        return SEMESTER_BY_CODE_DIGITS.get((int(match.group(1)), int(match.group(2))))
+        year_digit, sem_type = int(match.group(1)), int(match.group(2))
+        if year_digit == 1:
+            return {0: 1, 1: 1, 2: 2, 7: 1}.get(sem_type)
+        if year_digit in (2, 3) and sem_type in (1, 2):
+            return (year_digit - 1) * 2 + sem_type
+        if year_digit == 4:
+            return 7 if sem_type < 2 else 8
+        return None
