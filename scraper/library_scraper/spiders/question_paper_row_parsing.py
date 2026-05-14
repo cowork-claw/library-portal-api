@@ -3,8 +3,6 @@ from urllib.parse import urljoin
 
 
 class QuestionPaperRowParsingMixin:
-    """Extract folder/PDF rows and ASP.NET form metadata from library pages."""
-
     def _extract_form_data(self, response):
         form_data = {}
 

@@ -8,8 +8,6 @@ AUTO_WRITE_CONFIDENCE = 0.85
 
 @dataclass
 class CategorizationResult:
-    """Result of categorizing a single paper."""
-
     target_file: Optional[Path]
     confidence: float
     category: str  # 'btech_branch', 'first_year_cs', 'first_year_core', 'masters', 'bsc', 'other', 'uncertain'

@@ -8,8 +8,6 @@ logger = logging.getLogger(__name__)
 
 
 class ScrapeLog:
-    """Track scraped URLs and scraper run history."""
-
     def __init__(self, log_file: Path):
         self.log_file = log_file
         self.data = self._load()

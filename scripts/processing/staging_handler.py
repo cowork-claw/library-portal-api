@@ -8,8 +8,6 @@ logger = logging.getLogger(__name__)
 
 
 class StagingHandler:
-    """Manage papers queued for manual classification review."""
-
     def __init__(self, staging_file: Path):
         self.staging_file = staging_file
         self.staging_file.parent.mkdir(parents=True, exist_ok=True)

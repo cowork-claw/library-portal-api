@@ -49,8 +49,6 @@ def _write_paper_to_file(paper: Dict[str, Any], target_file: Path) -> bool:
 
 
 class PaperCategorizer:
-    """Categorize papers by target file, confidence, and derived metadata."""
-
     def __init__(self, data_directory: Path, staging_directory: Path) -> None:
         self.data_dir = data_directory
         self.staging_dir = staging_directory
@@ -117,7 +115,6 @@ class PaperCategorizer:
         )
 
     def categorize(self, paper: Dict[str, Any]) -> CategorizationResult:
-        """Determine the target file, confidence, and reasoning for a paper."""
         reasoning: List[str] = []
         metadata: Dict[str, Any] = {}
         course_code = self._normalized_course_code(paper)

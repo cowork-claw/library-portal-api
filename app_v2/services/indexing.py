@@ -42,8 +42,6 @@ def _build_search_meta(
 
 
 class PaperIndex(PaperIndexAccessors):
-    """In-memory paper index built from organized JSON data."""
-
     def __init__(self):
         self._swap_lock = RLock()
         self.papers: List[Dict[str, Any]] = []
@@ -256,9 +254,6 @@ class PaperIndex(PaperIndexAccessors):
         paper["_search_meta"] = _build_search_meta(paper, field_meta_cache)
 
     def _finalize_indexes(self) -> None:
-        """Pre-sort and cache properties after index construction."""
-        # Pre-sort and cache properties
-        # Use tuples for immutable sequence caching
         self._cached_unique_years = tuple(sorted(self._unique_years, reverse=True))
         self._cached_unique_semesters = tuple(sorted(self._unique_semesters))
         self._cached_unique_course_codes = tuple(sorted(self._unique_course_codes))
@@ -270,7 +265,6 @@ class PaperIndex(PaperIndexAccessors):
         self._cached_unique_degree_types = tuple(sorted(self._unique_degree_types))
         self._cached_unique_streams = tuple(sorted(self._unique_streams))
 
-        # Use MappingProxyType for immutable dictionary caching
         self._cached_count_by_year = self._sort_and_proxy(
             self._count_by_year, reverse=True
         )
@@ -290,9 +284,7 @@ class PaperIndex(PaperIndexAccessors):
         )
 
     def _sort_and_proxy(self, data: Dict, key=None, reverse=False) -> MappingProxyType:
-        """Helper to sort a dictionary and return an immutable proxy."""
         return MappingProxyType(dict(sorted(data.items(), key=key, reverse=reverse)))
 
 
-# Global paper index instance
 paper_index = PaperIndex()

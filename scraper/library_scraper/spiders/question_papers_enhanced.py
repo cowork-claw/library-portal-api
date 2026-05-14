@@ -169,7 +169,6 @@ class QuestionPapersEnhancedSpider(
         return False
 
     def _build_navigation_request(self, folder, response, current_path, depth):
-        """Create a postback request for a folder, or None if it should not be visited."""
         folder_name = folder["name"]
         if not self._should_visit_folder(folder_name, current_path):
             return None
@@ -208,14 +207,12 @@ class QuestionPapersEnhancedSpider(
         )
 
     def _should_skip(self, name):
-        """Check if a folder should be skipped."""
         for pattern in self.SKIP_PATTERNS:
             if pattern.lower() in name.lower():
                 return True
         return False
 
     def _get_current_path(self, response):
-        """Extract the current folder path."""
         selectors = [
             'span[id*="lblCurrentFolder"]::text',
             'span[id*="CurrentFolder"]::text',
@@ -239,7 +236,6 @@ class QuestionPapersEnhancedSpider(
         return "Root"
 
     def _create_pdf_item(self, item_data, response):
-        """Create a PDF item from PDF data."""
         if not item_data.get("is_pdf"):
             return None
 
