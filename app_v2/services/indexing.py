@@ -12,7 +12,6 @@ from .search import WORD_TOKEN_PATTERN
 
 logger = logging.getLogger(__name__)
 
-__all__ = ["PaperIndex", "paper_index"]
 SEARCH_META_FIELDS = (
     "course_code",
     "course_name",
