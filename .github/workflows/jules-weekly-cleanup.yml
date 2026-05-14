@@ -64,7 +64,7 @@ jobs:
             │   └── middleware/auth.py    # API key authentication
             ├── scraper/                   # Scrapy web scraper
             │   ├── library_scraper/      # Spider, middlewares, settings
-            │   └── scraper_config.py     # Year thresholds (TARGET_YEAR_THRESHOLD=2024)
+            │   └── ../config/config_v2.py # Year thresholds (TARGET_YEAR_THRESHOLD=2024)
             ├── scripts/processing/        # Data processing
             │   ├── paper_categorizer.py  # Categorization logic with confidence scoring
             │   ├── validate_data.py      # Data integrity validation

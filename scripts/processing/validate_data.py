@@ -5,10 +5,11 @@ from pathlib import Path
 from typing import Any, Dict, List, Tuple
 
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
-from scraper.scraper_config import DATA_DIRECTORY
+from config.config_v2 import settings
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 logger = logging.getLogger(__name__)
+DATA_DIRECTORY = settings.DATA_DIRECTORY
 
 
 # Required fields for each paper

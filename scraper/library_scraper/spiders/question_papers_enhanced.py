@@ -1,3 +1,4 @@
+# ruff: noqa: E402, I001
 import re
 import sys
 from datetime import datetime
@@ -7,15 +8,16 @@ from urllib.parse import quote
 import scrapy
 from scrapy import FormRequest
 
-sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+SCRAPER_ROOT = Path(__file__).resolve().parents[2]
+PROJECT_ROOT = SCRAPER_ROOT.parent
+sys.path[:0] = [str(SCRAPER_ROOT), str(PROJECT_ROOT)]
 from scrape_log import ScrapeLog, _load_existing_urls_from_organized_data
-from scraper_config import (
-    BLACKLISTED_YEARS,
-    DATA_DIRECTORY,
-    SCRAPE_LOG_FILE,
-    TARGET_YEAR_THRESHOLD,
-)
-from scraper_config import _should_scrape_year as config_should_scrape_year
+from config.config_v2 import settings
+
+BLACKLISTED_YEARS = set(settings.BLACKLISTED_YEARS)
+DATA_DIRECTORY = settings.DATA_DIRECTORY
+SCRAPE_LOG_FILE = settings.SCRAPE_LOG_FILE
+TARGET_YEAR_THRESHOLD = settings.TARGET_YEAR_THRESHOLD
 
 from .question_paper_metadata import QuestionPaperMetadataMixin
 from .question_paper_row_parsing import QuestionPaperRowParsingMixin
@@ -87,7 +89,7 @@ class QuestionPapersEnhancedSpider(
         except (ValueError, TypeError):
             return False
 
-        return config_should_scrape_year(year_int)
+        return year_int >= TARGET_YEAR_THRESHOLD and year_int not in BLACKLISTED_YEARS
 
     def parse(self, response):
         """Parse any page and handle navigation."""

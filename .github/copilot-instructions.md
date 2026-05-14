@@ -46,7 +46,6 @@ library-portal-api/
 ├── scraper/                   # Scrapy-based web scraper
 │   ├── library_scraper/       # Scrapy spider, middlewares, settings
 │   │   └── spiders/           # question_papers_enhanced.py
-│   ├── scraper_config.py      # Year thresholds (TARGET_YEAR_THRESHOLD=2024)
 │   └── scrape_log.json        # Scraping history log
 ├── scripts/                   # Utility scripts
 │   ├── add_program_abbrev.py  # Add/update program_abbrev field
@@ -178,7 +177,7 @@ Each paper object includes a `program_abbrev` field containing a short abbreviat
 - Check for duplicate papers by URL
 
 ### Scraper Configuration
-- **Target years:** 2024 and newer (configured in `scraper/scraper_config.py`)
+- **Target years:** 2024 and newer (configured in `config/config_v2.py`)
 - **Blacklisted years:** 2006-2023 (already organized, avoid re-scraping)
 - Scraper runs weekly via GitHub Actions (Sunday 2 AM UTC)
 - Manual trigger available via workflow_dispatch
@@ -246,7 +245,7 @@ Monitors the Library Portal V2 Scraper workflow and fixes failures:
 - Identifies common failure patterns:
   - KeyError: Missing expected fields in scraped data
   - TypeError: Async/sync generator issues in middlewares
-  - Configuration mismatches in scraper_config.py
+  - Configuration mismatches in `config/config_v2.py`
 - Implements targeted fixes
 - Creates a PR with the fix and references the failed run
 
@@ -343,7 +342,7 @@ Optimizes API performance (Wednesday 4 AM UTC):
 - Fallback: "UNKNOWN" if no derivation succeeds
 
 ### Updating Scraper Configuration
-1. Modify `scraper/scraper_config.py` for target years/blacklist
+1. Modify `config/config_v2.py` for target years/blacklist
 2. Update spider logic in `scraper/library_scraper/spiders/`
 3. Test locally: `cd scraper && scrapy crawl question_papers_enhanced`
 4. Verify output in `scraper/scraped_output.json`

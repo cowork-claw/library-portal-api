@@ -63,7 +63,7 @@ jobs:
             │   └── middleware/auth.py     # APIKeyMiddleware
             ├── scraper/
             │   ├── library_scraper/spiders/  # Scrapy spider
-            │   └── scraper_config.py      # TARGET_YEAR_THRESHOLD=2024
+            │   └── ../config/config_v2.py # TARGET_YEAR_THRESHOLD=2024
             ├── scripts/processing/
             │   ├── paper_categorizer.py   # Categorization logic
             │   └── validate_data.py       # Data validation

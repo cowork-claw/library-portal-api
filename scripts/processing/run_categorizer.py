@@ -9,7 +9,7 @@ from typing import Any, Dict, List, Optional
 # Add parent directories to path for imports
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
-from scraper.scraper_config import DATA_DIRECTORY, STAGING_FILE
+from config.config_v2 import settings
 from scripts.processing.paper_categorizer import (
     AUTO_WRITE_CONFIDENCE,
     PaperCategorizer,
@@ -21,6 +21,8 @@ logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 )
 logger = logging.getLogger(__name__)
+DATA_DIRECTORY = settings.DATA_DIRECTORY
+STAGING_FILE = settings.STAGING_DIRECTORY / "pending_review.json"
 
 
 class StagingHandler:
