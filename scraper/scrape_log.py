@@ -37,7 +37,6 @@ class ScrapeLog:
         }
 
     def save(self) -> None:
-        """Save log to file."""
         if not self._dirty:
             return
 
@@ -48,15 +47,12 @@ class ScrapeLog:
         logger.debug(f"Saved scrape log to {self.log_file}")
 
     def get_scraped_urls(self) -> Set[str]:
-        """Get all previously scraped URLs."""
         return self._scraped_urls_set.copy()
 
     def has_url(self, url: str) -> bool:
-        """Check if URL has already been scraped."""
         return url in self._scraped_urls_set
 
     def add_scraped_url(self, url: str) -> bool:
-        """Add a URL; return whether it was new."""
         if url not in self._scraped_urls_set:
             self._scraped_urls_set.add(url)
             self.data["scraped_urls"].append(url)
@@ -72,7 +68,6 @@ class ScrapeLog:
         year_threshold: int = 2025,
         notes: Optional[str] = None,
     ) -> None:
-        """Record a scraper run with statistics."""
         run_record = {
             "timestamp": datetime.now().isoformat(),
             "new_papers": new_papers,
