@@ -39,19 +39,9 @@ PREFIX_TO_BRANCH = {
     "CSS": "CSE",
 }
 
-FIRST_YEAR_CORE_PREFIXES = {
-    "MAT",
-    "PHY",
-    "CHM",
-    "HUM",
-    "CIE",
-    "MME",
-    "IPE",
-    "BIO",
-    "EEE",
-    "ELE",
-}
-FIRST_YEAR_CS_PREFIXES = {"MAT", "PHY", "CHM", "HUM", "CIV", "MME", "CSS", "ECE", "ELE"}
+FIRST_YEAR_PREFIX_PATTERN = re.compile(
+    r"^(MAT|PHY|CHM|HUM|CIE|MME|IPE|BIO|EEE|ELE|CIV|CSS|ECE)$"
+)
 CS_STREAM_PATTERN = re.compile(r"^[A-Z]{2,3}1[0-2]0[0-9]$")
 CSS_PREFIX_PATTERN = re.compile(r"^CSS\d{4}$")
 CORE_STREAM_PATTERN = re.compile(r"^[A-Z]{2,3}1[0-2]7[12]$")
@@ -300,7 +290,7 @@ class PaperCategorizer:
                 reasoning,
             )
 
-        if prefix in FIRST_YEAR_CORE_PREFIXES or prefix in FIRST_YEAR_CS_PREFIXES:
+        if FIRST_YEAR_PREFIX_PATTERN.match(prefix):
             reasoning.append(f"First year prefix ({prefix}) but unclear pattern")
 
         return None
