@@ -108,7 +108,6 @@ def _process_paper(
 
 
 def _log_summary(stats: dict, dry_run: bool, staging_handler: StagingHandler) -> None:
-    """Log the categorization run summary."""
     logger.info("=" * 60)
     logger.info("CATEGORIZATION COMPLETE")
     logger.info("  Total papers: %s", stats["total"])
@@ -131,7 +130,6 @@ def _log_summary(stats: dict, dry_run: bool, staging_handler: StagingHandler) ->
 
 
 def _run_categorizer(input_file: Path, dry_run: bool = False) -> dict:
-    """Categorize papers from an input JSON file."""
     logger.info("Loading papers from: %s", input_file)
     with open(input_file, "r", encoding="utf-8") as f:
         papers = json.load(f)

@@ -93,7 +93,6 @@ class StagingHandler:
         }
 
     def _get_stats(self) -> Dict[str, Any]:
-        """Get staging statistics."""
         papers = self.data.get("papers", [])
         return {
             "total_staged": len(papers),
@@ -103,7 +102,6 @@ class StagingHandler:
         }
 
     def _group_by_confidence(self, papers: List[Dict]) -> Dict[str, int]:
-        """Group papers by confidence ranges."""
         groups = {"high_0.5+": 0, "medium_0.3-0.5": 0, "low_<0.3": 0}
         for p in papers:
             conf = p.get("categorization", {}).get("confidence", 0)

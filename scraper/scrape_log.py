@@ -98,7 +98,6 @@ class ScrapeLog:
 
 
 def _load_existing_urls_from_organized_data(data_directory: Path) -> Set[str]:
-    """Load existing paper URLs from organized JSON files."""
     urls = set()
 
     if not data_directory.exists():
