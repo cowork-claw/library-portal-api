@@ -8,7 +8,6 @@ SEARCH_CACHE_MAXSIZE = 32
 
 
 class PaperIndexAccessors:
-
     @lru_cache(maxsize=SEARCH_CACHE_MAXSIZE)
     def _search_cached(self, normalized_query: str) -> Tuple[str, ...]:
         results = _search_papers(self.papers, normalized_query)
@@ -55,57 +54,57 @@ class PaperIndexAccessors:
         return self._by_program_abbrev.get(program_abbrev.upper(), set())
 
     @property
-    def total_papers(self) -> int:
+    def _paper_count(self) -> int:
         return len(self.papers)
 
     @property
-    def files_loaded(self) -> int:
+    def _loaded_file_count(self) -> int:
         return self._files_loaded
 
     @property
-    def unique_years(self) -> Tuple[int, ...]:
+    def _unique_year_values(self) -> Tuple[int, ...]:
         return self._cached_unique_years or ()
 
     @property
-    def unique_semesters(self) -> Tuple[int, ...]:
+    def _unique_semester_values(self) -> Tuple[int, ...]:
         return self._cached_unique_semesters or ()
 
     @property
-    def unique_course_codes(self) -> Tuple[str, ...]:
+    def _unique_course_code_values(self) -> Tuple[str, ...]:
         return self._cached_unique_course_codes or ()
 
     @property
-    def unique_programs(self) -> Tuple[str, ...]:
+    def _unique_program_values(self) -> Tuple[str, ...]:
         return self._cached_unique_programs or ()
 
     @property
-    def unique_program_abbrevs(self) -> Tuple[str, ...]:
+    def _unique_program_abbrev_values(self) -> Tuple[str, ...]:
         return self._cached_unique_program_abbrevs or ()
 
     @property
-    def unique_paper_types(self) -> Tuple[str, ...]:
+    def _unique_paper_type_values(self) -> Tuple[str, ...]:
         return self._cached_unique_paper_types or ()
 
     @property
-    def unique_degree_types(self) -> Tuple[str, ...]:
+    def _unique_degree_type_values(self) -> Tuple[str, ...]:
         return self._cached_unique_degree_types or ()
 
     @property
-    def unique_streams(self) -> Tuple[str, ...]:
+    def _unique_stream_values(self) -> Tuple[str, ...]:
         return self._cached_unique_streams or ()
 
     @property
-    def count_by_year(self) -> Mapping[int, int]:
+    def _count_by_year_values(self) -> Mapping[int, int]:
         return self._cached_count_by_year or MappingProxyType({})
 
     @property
-    def count_by_semester(self) -> Mapping[int, int]:
+    def _count_by_semester_values(self) -> Mapping[int, int]:
         return self._cached_count_by_semester or MappingProxyType({})
 
     @property
-    def count_by_program(self) -> Mapping[str, int]:
+    def _count_by_program_values(self) -> Mapping[str, int]:
         return self._cached_count_by_program or MappingProxyType({})
 
     @property
-    def count_by_program_abbrev(self) -> Mapping[str, int]:
+    def _count_by_program_abbrev_values(self) -> Mapping[str, int]:
         return self._cached_count_by_program_abbrev or MappingProxyType({})

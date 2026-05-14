@@ -64,17 +64,17 @@ async def _lifespan(app: FastAPI):
         logger.exception("Failed to load data — starting with empty index")
         # paper_index remains empty; API will serve zero-paper responses
 
-    if paper_index.total_papers == 0:
+    if paper_index._paper_count == 0:
         logger.warning(
             "⚠️  No papers loaded — API is running in degraded mode. "
             "Check that DATA_DIRECTORY points to valid JSON files."
         )
     else:
         logger.info(
-            f"✅ Loaded {paper_index.total_papers} papers from {paper_index.files_loaded} files"
+            f"✅ Loaded {paper_index._paper_count} papers from {paper_index._loaded_file_count} files"
         )
-        logger.info(f"   Years: {paper_index.unique_years[:5]}...")
-        logger.info(f"   Courses: {len(paper_index.unique_course_codes)}")
+        logger.info(f"   Years: {paper_index._unique_year_values[:5]}...")
+        logger.info(f"   Courses: {len(paper_index._unique_course_code_values)}")
 
     yield
 
@@ -201,8 +201,8 @@ async def _root() -> dict:
         "docs": "/docs",
         "health": "/health",
         "papers": {
-            "total": paper_index.total_papers,
-            "files": paper_index.files_loaded,
+            "total": paper_index._paper_count,
+            "files": paper_index._loaded_file_count,
         },
         "endpoints": {
             "papers": "/api/papers",
@@ -220,7 +220,7 @@ async def _api_info() -> dict:
     return {
         "version": "2.0.0",
         "status": "healthy",
-        "papers_loaded": paper_index.total_papers,
+        "papers_loaded": paper_index._paper_count,
         "endpoints": [
             "GET /api/papers - List papers with filters",
             "GET /api/papers/year/{year} - Papers by year",

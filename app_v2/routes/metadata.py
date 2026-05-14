@@ -14,15 +14,15 @@ STATISTICS_OPERATION_ID = "get_statistics_api_statistics_get"
 async def _get_metadata() -> MetadataResponse:
     """Return available filter values for clients."""
     return MetadataResponse(
-        years=list(paper_index.unique_years),
-        programs=list(paper_index.unique_programs),
-        program_abbrevs=list(paper_index.unique_program_abbrevs),
-        semesters=list(paper_index.unique_semesters),
-        paper_types=list(paper_index.unique_paper_types),
-        degree_types=list(paper_index.unique_degree_types),
-        course_codes=list(paper_index.unique_course_codes[:100]),  # Limit to 100
-        streams=list(paper_index.unique_streams),
-        total_papers=paper_index.total_papers,
+        years=list(paper_index._unique_year_values),
+        programs=list(paper_index._unique_program_values),
+        program_abbrevs=list(paper_index._unique_program_abbrev_values),
+        semesters=list(paper_index._unique_semester_values),
+        paper_types=list(paper_index._unique_paper_type_values),
+        degree_types=list(paper_index._unique_degree_type_values),
+        course_codes=list(paper_index._unique_course_code_values[:100]),  # Limit to 100
+        streams=list(paper_index._unique_stream_values),
+        total_papers=paper_index._paper_count,
     )
 
 
@@ -34,11 +34,11 @@ async def _get_metadata() -> MetadataResponse:
 async def _get_statistics() -> StatisticsResponse:
     """Return aggregate paper collection counts."""
     return StatisticsResponse(
-        total_papers=paper_index.total_papers,
-        papers_by_year=dict(paper_index.count_by_year),
-        papers_by_program=dict(paper_index.count_by_program),
-        papers_by_program_abbrev=dict(paper_index.count_by_program_abbrev),
-        papers_by_semester=dict(paper_index.count_by_semester),
-        courses_count=len(paper_index.unique_course_codes),
-        files_loaded=paper_index.files_loaded,
+        total_papers=paper_index._paper_count,
+        papers_by_year=dict(paper_index._count_by_year_values),
+        papers_by_program=dict(paper_index._count_by_program_values),
+        papers_by_program_abbrev=dict(paper_index._count_by_program_abbrev_values),
+        papers_by_semester=dict(paper_index._count_by_semester_values),
+        courses_count=len(paper_index._unique_course_code_values),
+        files_loaded=paper_index._loaded_file_count,
     )

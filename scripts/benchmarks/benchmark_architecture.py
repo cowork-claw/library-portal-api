@@ -237,17 +237,18 @@ def exercise_data_and_index(suite: CheckSuite) -> Any:
 
     index = PaperIndex()
     index._load_from_directory(DataLoader(DATA_DIR))
-    suite.require(index.total_papers == len(papers), "index total differs from loader")
-    suite.require(len(index.unique_years) > 0, "index has no years")
+    suite.require(index._paper_count == len(papers), "index total differs from loader")
+    suite.require(len(index._unique_year_values) > 0, "index has no years")
     suite.require(
-        len(index.unique_program_abbrevs) > 0, "index has no program abbreviations"
+        len(index._unique_program_abbrev_values) > 0,
+        "index has no program abbreviations",
     )
     suite.require(
-        sum(index.count_by_year.values()) == index.total_papers,
+        sum(index._count_by_year_values.values()) == index._paper_count,
         "year counts do not sum to total",
     )
     suite.require(
-        sum(index.count_by_program_abbrev.values()) == index.total_papers,
+        sum(index._count_by_program_abbrev_values.values()) == index._paper_count,
         "program abbreviation counts do not sum to total",
     )
     return index
@@ -297,7 +298,7 @@ def exercise_api_contract(suite: CheckSuite, index: Any) -> None:
             "metadata response missing expected keys",
         )
         suite.require(
-            metadata.get("years") == list(index.unique_years),
+            metadata.get("years") == list(index._unique_year_values),
             "metadata years differ from index",
         )
 
@@ -307,7 +308,7 @@ def exercise_api_contract(suite: CheckSuite, index: Any) -> None:
         )
         statistics = _json(statistics_response)
         suite.require(
-            statistics.get("total_papers") == index.total_papers,
+            statistics.get("total_papers") == index._paper_count,
             "statistics total_papers differs from index",
         )
 
@@ -317,11 +318,11 @@ def exercise_api_contract(suite: CheckSuite, index: Any) -> None:
         suite.require(list_response.status_code == 200, "papers list endpoint failed")
         list_payload = _json(list_response)
         suite.require(
-            list_payload.get("total") == index.total_papers,
+            list_payload.get("total") == index._paper_count,
             "unfiltered papers total differs from index",
         )
         suite.require(
-            len(list_payload.get("papers", [])) == min(5, index.total_papers),
+            len(list_payload.get("papers", [])) == min(5, index._paper_count),
             "papers limit not honored",
         )
 
@@ -354,7 +355,7 @@ def exercise_api_contract(suite: CheckSuite, index: Any) -> None:
                 "search for known course code returned no hits",
             )
 
-        first_abbrev = index.unique_program_abbrevs[0]
+        first_abbrev = index._unique_program_abbrev_values[0]
         abbrev_response = client.get(
             "/api/papers",
             headers=headers,
@@ -365,7 +366,8 @@ def exercise_api_contract(suite: CheckSuite, index: Any) -> None:
         )
         abbrev_payload = _json(abbrev_response)
         suite.require(
-            abbrev_payload.get("total") == index.count_by_program_abbrev[first_abbrev],
+            abbrev_payload.get("total")
+            == index._count_by_program_abbrev_values[first_abbrev],
             "program_abbrev total differs from index",
         )
 
@@ -471,7 +473,7 @@ def main() -> int:
         "public_surface_score": static_metrics.public_surface_score,
         "max_function_lines": static_metrics.max_function_lines,
         "max_cyclomatic_complexity": static_metrics.max_cyclomatic_complexity,
-        "indexed_papers": index.total_papers,
+        "indexed_papers": index._paper_count,
     }
 
     for name, value in metrics.items():

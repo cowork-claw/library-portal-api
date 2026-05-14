@@ -15,7 +15,7 @@ def setup():
     print("Loading data...")
     loader = DataLoader(settings.DATA_DIRECTORY)
     paper_index._load_from_directory(loader)
-    print(f"Loaded {paper_index.total_papers} papers.")
+    print(f"Loaded {paper_index._paper_count} papers.")
 
 
 def current_implementation(year, semester):
@@ -110,8 +110,8 @@ if __name__ == "__main__":
     setup()
 
     # Find a good year/semester to test
-    if paper_index.unique_years:
-        test_year = paper_index.unique_years[0]
+    if paper_index._unique_year_values:
+        test_year = paper_index._unique_year_values[0]
         # Find a semester that exists in this year
         urls = paper_index._get_urls_by_year(test_year)
         papers = paper_index._get_by_urls(urls)

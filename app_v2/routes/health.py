@@ -36,15 +36,18 @@ async def _health_check() -> HealthResponse:
     uptime = (datetime.now() - APP_START_TIME).total_seconds()
 
     # Check data component — "degraded" when no data (not "unhealthy")
-    data_healthy = paper_index.total_papers > 0
+    data_healthy = paper_index._paper_count > 0
     data_status = ComponentHealth(
         status="healthy" if data_healthy else "degraded",
         message=(
-            f"Loaded {paper_index.total_papers} papers"
+            f"Loaded {paper_index._paper_count} papers"
             if data_healthy
             else "No papers loaded"
         ),
-        details={"total": paper_index.total_papers, "files": paper_index.files_loaded},
+        details={
+            "total": paper_index._paper_count,
+            "files": paper_index._loaded_file_count,
+        },
     )
 
     # Check scraper log
@@ -81,15 +84,15 @@ async def _data_health() -> DataHealthResponse:
     loader_stats = paper_index.loader._get_stats() if paper_index.loader else {}
 
     return DataHealthResponse(
-        status="healthy" if paper_index.total_papers > 0 else "degraded",
-        total_papers=paper_index.total_papers,
+        status="healthy" if paper_index._paper_count > 0 else "degraded",
+        total_papers=paper_index._paper_count,
         unique_urls=loader_stats.get("unique_urls", 0),
-        files_loaded=paper_index.files_loaded,
-        courses_count=len(paper_index.unique_course_codes),
+        files_loaded=paper_index._loaded_file_count,
+        courses_count=len(paper_index._unique_course_code_values),
         last_loaded=loader_stats.get("last_loaded"),
         errors=loader_stats.get("errors", []),
-        papers_by_year=dict(paper_index.count_by_year),
-        papers_by_program=dict(paper_index.count_by_program),
+        papers_by_year=dict(paper_index._count_by_year_values),
+        papers_by_program=dict(paper_index._count_by_program_values),
     )
 
 
@@ -147,7 +150,7 @@ def _do_reload(reload_id: str, data_directory) -> None:
         logger.info(
             "Reload %s complete: %d papers loaded",
             reload_id,
-            paper_index.total_papers,
+            paper_index._paper_count,
         )
     except Exception:
         logger.exception("Reload %s failed", reload_id)

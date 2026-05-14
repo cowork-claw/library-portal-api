@@ -49,8 +49,8 @@ def test_indexing_urls_and_program_abbrevs():
     assert index._get_urls_by_course("cs101") == {"u1"}
     assert index._get_urls_by_paper_type("Regular") == {"u1", "u2"}
     assert index._get_urls_by_degree_type("B.Tech") == {"u1", "u2", "u3"}
-    assert set(index.unique_program_abbrevs) == {"CSE", "ECE"}
-    assert index.count_by_program_abbrev["CSE"] == 2
+    assert set(index._unique_program_abbrev_values) == {"CSE", "ECE"}
+    assert index._count_by_program_abbrev_values["CSE"] == 2
 
 
 def test_pagination_info_and_response():
