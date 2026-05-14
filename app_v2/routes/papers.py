@@ -2,9 +2,7 @@ import time
 from typing import (
     Annotated,
     Any,
-    Callable,
     Dict,
-    Iterable,
     List,
     Literal,
     Optional,
@@ -140,12 +138,6 @@ def _get_papers_response_from_urls(
     return _create_paginated_response(papers, len(papers), limit, offset)
 
 
-def _collect_filter_url_sets(
-    filters: Iterable[tuple[Any, Callable[[Any], Set[str]]]],
-) -> List[Set[str]]:
-    return [method(value) for value, method in filters if value is not None]
-
-
 def _intersect_filter_url_sets(filter_url_sets: List[Set[str]]) -> Optional[Set[str]]:
     if not filter_url_sets:
         return None
@@ -170,16 +162,6 @@ async def _resolve_paper_results(
     if filter_urls is not None:
         return paper_index._get_by_urls(filter_urls)
     return paper_index.papers
-
-
-def _effective_sort_field(
-    sort: Optional[Literal["year", "semester", "relevance"]], search: Optional[str]
-) -> Literal["year", "semester", "relevance"]:
-    if sort is None:
-        return "relevance" if search else "year"
-    if sort == "relevance" and not search:
-        return "year"
-    return sort
 
 
 @router.get("", response_model=PapersResponse, operation_id="get_papers_api_papers_get")
@@ -212,18 +194,19 @@ async def _get_papers(
         (program_abbrev, paper_index._get_urls_by_program_abbrev),
     ]
 
-    filter_urls = _intersect_filter_url_sets(_collect_filter_url_sets(filters))
+    filter_urls = _intersect_filter_url_sets(
+        [method(value) for value, method in filters if value is not None]
+    )
     if filter_urls is not None and not filter_urls:
         return _create_paginated_response(
             [], 0, limit, offset, (time.time() - start_time) * 1000
         )
 
     results = await _resolve_paper_results(search, filter_urls)
-    results = _sort_papers(
-        results,
-        _effective_sort_field(sort, search),
-        order if order is not None else "desc",
-    )
+    sort_field = sort or ("relevance" if search else "year")
+    if sort_field == "relevance" and not search:
+        sort_field = "year"
+    results = _sort_papers(results, sort_field, order if order is not None else "desc")
 
     return _create_paginated_response(
         results, len(results), limit, offset, (time.time() - start_time) * 1000
