@@ -29,8 +29,7 @@ class _FixedWindow:
     def __post_init__(self) -> None:
         now = time.monotonic()
         self.count = 0
-        self.window_start = now
-        self.last_seen = now
+        self.window_start = self.last_seen = now
 
     def _reset_if_expired(self, now: float) -> None:
         if now - self.window_start >= self.window_seconds:
@@ -70,15 +69,10 @@ class RateLimitMiddleware(BaseHTTPMiddleware):
         self._windows: dict[str, _FixedWindow] = {}
 
     async def dispatch(self, request: Request, call_next: Callable):
-        # Allow CORS preflight without rate limiting
-        if request.method == "OPTIONS":
+        if request.method == "OPTIONS" or not _is_rate_limited_path(request.url.path):
             return await call_next(request)
 
         path = request.url.path
-
-        # Exempt public paths
-        if not _is_rate_limited_path(path):
-            return await call_next(request)
 
         # Identify client
         client_id = self._identify_client(request)
@@ -88,14 +82,12 @@ class RateLimitMiddleware(BaseHTTPMiddleware):
         window = self._get_or_create_window(client_id, now)
 
         if not window._try_consume(now):
-            retry_after = window._retry_after_seconds
             logger.warning("Rate limit exceeded for client %s on %s", client_id, path)
-            response = JSONResponse(
+            return JSONResponse(
                 status_code=status.HTTP_429_TOO_MANY_REQUESTS,
                 content={"detail": "Rate limit exceeded"},
-                headers={"Retry-After": str(retry_after)},
+                headers={"Retry-After": str(window._retry_after_seconds)},
             )
-            return response
 
         return await call_next(request)
 
@@ -104,8 +96,7 @@ class RateLimitMiddleware(BaseHTTPMiddleware):
         if api_key and self._is_configured_key(api_key):
             fingerprint = hashlib.sha256(api_key.encode("utf-8")).hexdigest()[:16]
             return f"key:{fingerprint}"
-        client_host = request.client.host if request.client else "unknown"
-        return f"ip:{client_host}"
+        return f"ip:{request.client.host if request.client else 'unknown'}"
 
     def _is_configured_key(self, api_key: str) -> bool:
         return any(secrets.compare_digest(api_key, key) for key in self._valid_api_keys)

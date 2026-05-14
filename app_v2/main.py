@@ -2,15 +2,12 @@ import logging
 import os
 
 # Import configuration
-import sys
 from contextlib import asynccontextmanager
-from pathlib import Path
 
 from fastapi import APIRouter, FastAPI, Response
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.middleware.gzip import GZipMiddleware
 
-sys.path.insert(0, str(Path(__file__).parent.parent))
 from config.config_v2 import settings
 
 # Optional error tracking (enabled only when SENTRY_DSN is set)
@@ -273,10 +270,3 @@ async def _api_info() -> dict:
             "GET /health/scraper - Scraper health",
         ],
     }
-
-
-# For running directly with uvicorn
-if __name__ == "__main__":
-    import uvicorn
-
-    uvicorn.run("app_v2.main:app", host="0.0.0.0", port=8000, reload=True)
