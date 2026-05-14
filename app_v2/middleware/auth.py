@@ -29,24 +29,8 @@ class APIKeyMiddleware(BaseHTTPMiddleware):
         self, app, api_key: Optional[str] = None, environment: str = "production"
     ):
         super().__init__(app)
-        configured_keys: list[str] = []
-
-        # Explicitly injected key (used in tests/local wiring)
-        if api_key:
-            configured_keys.append(api_key)
-
-        # Primary API key
-        primary_env_key = os.getenv(API_KEY_ENV)
-        if primary_env_key:
-            configured_keys.append(primary_env_key)
-
-        # Dedicated bot key
-        bot_env_key = os.getenv(OPENCLAW_BOT_API_KEY_ENV)
-        if bot_env_key:
-            configured_keys.append(bot_env_key)
-
-        # Deduplicate while preserving insertion order
-        self.api_keys = list(dict.fromkeys(configured_keys))
+        keys = api_key, os.getenv(API_KEY_ENV), os.getenv(OPENCLAW_BOT_API_KEY_ENV)
+        self.api_keys = list(dict.fromkeys(filter(None, keys)))
         self.environment = environment
 
         if not self.api_keys:
