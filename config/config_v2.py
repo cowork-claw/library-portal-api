@@ -1,5 +1,3 @@
-"""Pydantic settings for the Library Portal API."""
-
 from functools import lru_cache
 from pathlib import Path
 from typing import List, Optional
@@ -8,8 +6,6 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    """Application settings with environment variable support."""
-
     # Organized data directory containing all JSON files
     DATA_DIRECTORY: Path = (
         Path(__file__).parent.parent / "data" / "classified" / "organized"
@@ -58,7 +54,6 @@ class Settings(BaseSettings):
 
 @lru_cache()
 def _get_settings() -> Settings:
-    """Get cached settings instance."""
     return Settings()
 
 
