@@ -223,7 +223,7 @@ def exercise_data_and_index(suite: CheckSuite) -> Any:
     from app_v2.services.indexing import PaperIndex
 
     loader = DataLoader(DATA_DIR)
-    papers = loader.load_all()
+    papers = loader._load_all()
     urls = [paper.get("url") for paper in papers if paper.get("url")]
     suite.require(len(papers) > 0, "data loader returned no papers")
     suite.require(len(urls) == len(set(urls)), "data loader returned duplicate URLs")

@@ -17,7 +17,7 @@ def main():
         return
 
     loader = DataLoader(data_dir)
-    papers = loader.load_all()
+    papers = loader._load_all()
 
     tracemalloc.start()
     papers_copy = [dict(p) for p in papers]

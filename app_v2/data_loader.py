@@ -31,7 +31,7 @@ class DataLoader:
         self.seen_urls: set[str] = set()
         self.stats = LoaderStats()
 
-    def load_all(self) -> List[Dict[str, Any]]:
+    def _load_all(self) -> List[Dict[str, Any]]:
         self.papers = []
         self.seen_urls = set()
         self.stats = LoaderStats()

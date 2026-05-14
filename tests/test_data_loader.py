@@ -10,7 +10,7 @@ def test_data_loader_sanitizes_invalid_json_paths():
         bad_file.write_text("{not valid json", encoding="utf-8")
 
         loader = DataLoader(Path(tmpdir))
-        loader.load_all()
+        loader._load_all()
 
         assert loader.stats.errors
         error = loader.stats.errors[0]

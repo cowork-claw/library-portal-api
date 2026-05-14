@@ -97,7 +97,7 @@ class PaperIndex(PaperIndexAccessors):
 
     def _load_from_directory(self, loader: DataLoader) -> None:
         self.loader = loader
-        self.papers = loader.load_all()
+        self.papers = loader._load_all()
         self._build_indexes()
 
         stats = loader._get_stats()
@@ -105,7 +105,7 @@ class PaperIndex(PaperIndexAccessors):
 
         # Clear loader data to free memory (data is now in self.papers)
         # Note: We must reassign to new empty structures rather than clearing the existing objects,
-        # because self.papers might reference the same list object returned by load_all().
+        # because self.papers might reference the same list object returned by _load_all().
         loader.papers = []
         loader.seen_urls = set()
 
