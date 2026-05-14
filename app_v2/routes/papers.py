@@ -210,7 +210,7 @@ async def _get_papers(
 
     filters = [
         (year, paper_index.get_urls_by_year),
-        (semester, paper_index.get_urls_by_semester),
+        (semester, paper_index._get_urls_by_semester),
         (program, paper_index._get_urls_by_program),
         (course_code, paper_index.get_urls_by_course),
         (stream, paper_index._get_urls_by_stream),
@@ -264,7 +264,7 @@ async def _get_papers_by_year(
         raise HTTPException(status_code=404, detail=f"No papers found for year {year}")
 
     if semester is not None:
-        urls = urls.intersection(paper_index.get_urls_by_semester(semester))
+        urls = urls.intersection(paper_index._get_urls_by_semester(semester))
 
     return _get_papers_response_from_urls(urls, limit, offset)
 
@@ -307,7 +307,7 @@ async def _get_papers_by_semester(
     offset: int = Query(0, ge=0),
 ) -> PapersResponse:
     """Get papers for a specific semester with optional year filter."""
-    urls = paper_index.get_urls_by_semester(semester)
+    urls = paper_index._get_urls_by_semester(semester)
 
     if year is not None:
         urls = urls.intersection(paper_index.get_urls_by_year(year))

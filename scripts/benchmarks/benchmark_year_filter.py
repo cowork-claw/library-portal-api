@@ -41,7 +41,7 @@ def optimized_implementation(year, semester):
         return []
 
     if semester is not None:
-        semester_urls = paper_index.get_urls_by_semester(semester)
+        semester_urls = paper_index._get_urls_by_semester(semester)
         intersected_urls = year_urls.intersection(semester_urls)
         papers = paper_index.get_by_urls(intersected_urls)
     else:

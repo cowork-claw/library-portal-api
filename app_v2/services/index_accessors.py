@@ -35,7 +35,7 @@ class PaperIndexAccessors:
         """Get paper URLs for a specific year."""
         return self._by_year.get(year, set())
 
-    def get_urls_by_semester(self, semester: int) -> Set[str]:
+    def _get_urls_by_semester(self, semester: int) -> Set[str]:
         """Get paper URLs for a specific semester."""
         return self._by_semester.get(semester, set())
 
