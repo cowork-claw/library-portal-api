@@ -77,15 +77,12 @@ def _to_public_paper(paper: Dict[str, Any]) -> Dict[str, Any]:
 
 
 def _create_pagination(total: int, limit: int, offset: int) -> PaginationInfo:
-    total_pages = max(1, (total + limit - 1) // limit) if limit > 0 else 1
-    current_page = (offset // limit) + 1 if limit > 0 else 1
-
     return PaginationInfo(
         total=total,
         limit=limit,
         offset=offset,
-        page=current_page,
-        total_pages=total_pages,
+        page=(offset // limit) + 1 if limit > 0 else 1,
+        total_pages=max(1, (total + limit - 1) // limit) if limit > 0 else 1,
         has_next=offset + limit < total,
         has_prev=offset > 0,
     )
@@ -142,8 +139,7 @@ def _get_papers_response_from_urls(
     urls: set, limit: int, offset: int
 ) -> PapersResponse:
     papers = paper_index._get_by_urls(urls)
-    total = len(papers)
-    return _create_paginated_response(papers, total, limit, offset)
+    return _create_paginated_response(papers, len(papers), limit, offset)
 
 
 def _collect_filter_url_sets(
@@ -220,20 +216,20 @@ async def _get_papers(
 
     filter_urls = _intersect_filter_url_sets(_collect_filter_url_sets(filters))
     if filter_urls is not None and not filter_urls:
-        execution_time = (time.time() - start_time) * 1000
-        return _create_paginated_response([], 0, limit, offset, execution_time)
+        return _create_paginated_response(
+            [], 0, limit, offset, (time.time() - start_time) * 1000
+        )
 
     results = await _resolve_paper_results(search, filter_urls)
-    effective_sort = _effective_sort_field(sort, search)
-    effective_order = order if order is not None else "desc"
-    results = _sort_papers(results, effective_sort, effective_order)
+    results = _sort_papers(
+        results,
+        _effective_sort_field(sort, search),
+        order if order is not None else "desc",
+    )
 
-    # Get total before pagination
-    total = len(results)
-
-    execution_time = (time.time() - start_time) * 1000
-
-    return _create_paginated_response(results, total, limit, offset, execution_time)
+    return _create_paginated_response(
+        results, len(results), limit, offset, (time.time() - start_time) * 1000
+    )
 
 
 @router.get("/lookup", response_model=Paper, operation_id=LOOKUP_OPERATION_ID)
@@ -284,11 +280,9 @@ async def _get_papers_by_course(
             status_code=404, detail=f"No papers found for course {course_code}"
         )
 
-    course_name = papers[0].get("course_name") if papers else None
-
     return CourseResponse(
         course_code=course_code.upper(),
-        course_name=course_name,
+        course_name=papers[0].get("course_name"),
         papers=[Paper(**_to_public_paper(p)) for p in papers],
         total_papers=len(papers),
     )

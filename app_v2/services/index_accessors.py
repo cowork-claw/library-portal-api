@@ -1,5 +1,3 @@
-"""Lookup and read-only accessor methods for the paper index."""
-
 from functools import lru_cache
 from types import MappingProxyType
 from typing import Any, Dict, Iterable, List, Mapping, Optional, Set, Tuple
@@ -10,7 +8,6 @@ SEARCH_CACHE_MAXSIZE = 32
 
 
 class PaperIndexAccessors:
-    """Mixin containing PaperIndex lookup methods and immutable properties."""
 
     @lru_cache(maxsize=SEARCH_CACHE_MAXSIZE)
     def _search_cached(self, normalized_query: str) -> Tuple[str, ...]:
@@ -18,7 +15,6 @@ class PaperIndexAccessors:
         return tuple(url for paper in results if (url := paper.get("url")))
 
     def _search(self, query: str) -> List[str]:
-        """Search all papers and return matching URLs sorted by relevance."""
         normalized_query = query.strip().lower()
         if not normalized_query:
             return []
@@ -28,19 +24,15 @@ class PaperIndexAccessors:
         return self._by_url.get(url)
 
     def _get_by_urls(self, urls: Iterable[str]) -> List[Dict[str, Any]]:
-        """Get multiple papers from a set of URLs."""
         return [self._by_url[url] for url in urls if url in self._by_url]
 
     def _get_urls_by_year(self, year: int) -> Set[str]:
-        """Get paper URLs for a specific year."""
         return self._by_year.get(year, set())
 
     def _get_urls_by_semester(self, semester: int) -> Set[str]:
-        """Get paper URLs for a specific semester."""
         return self._by_semester.get(semester, set())
 
     def _get_urls_by_course(self, course_code: str) -> Set[str]:
-        """Get paper URLs for a specific course code."""
         return self._by_course.get(course_code.upper(), set())
 
     def _get_papers_by_course(self, course_code: str) -> List[Dict[str, Any]]:
