@@ -1,4 +1,3 @@
-from functools import lru_cache
 from pathlib import Path
 from typing import List, Optional
 
@@ -46,16 +45,9 @@ class Settings(BaseSettings):
     METRICS_ENABLED: bool = False
 
     model_config = SettingsConfigDict(
-        env_prefix="LIBRARY_PORTAL_",
-        env_file=".env",
-        env_file_encoding="utf-8",
+        env_prefix="LIBRARY_PORTAL_", env_file=".env", env_file_encoding="utf-8"
     )
 
 
-@lru_cache()
-def _get_settings() -> Settings:
-    return Settings()
-
-
 # Convenience access
-settings = _get_settings()
+settings = Settings()

@@ -60,12 +60,12 @@ class StagingHandler:
         reasoning: List[str],
         suggested_target: Optional[str] = None,
     ) -> None:
-        url = paper.get("url")
-        if url:
-            for existing in self.data["papers"]:
-                if existing.get("paper", {}).get("url") == url:
-                    logger.debug(f"Paper already staged: {url}")
-                    return
+        if (url := paper.get("url")) and any(
+            existing.get("paper", {}).get("url") == url
+            for existing in self.data["papers"]
+        ):
+            logger.debug(f"Paper already staged: {url}")
+            return
 
         staged = {
             "paper": paper,
@@ -78,7 +78,17 @@ class StagingHandler:
             "reviewed": False,
             "review_notes": None,
             "final_target": None,
-            "extractable_info": self._extract_info(paper),
+            "extractable_info": {
+                "course_code": paper.get("course_code") or paper.get("subject_code"),
+                "course_name": paper.get("course_name") or paper.get("subject_name"),
+                "year": paper.get("year"),
+                "semester": paper.get("semester"),
+                "program": paper.get("program"),
+                "degree_type": paper.get("degree_type"),
+                "file_name": paper.get("file_name"),
+                "url": paper.get("url"),
+                "path": paper.get("path"),
+            },
         }
 
         self.data["papers"].append(staged)
@@ -87,19 +97,6 @@ class StagingHandler:
             f"Staged paper for review: {paper.get('course_code', 'UNKNOWN')} "
             f"(confidence: {confidence:.2f})"
         )
-
-    def _extract_info(self, paper: Dict[str, Any]) -> Dict[str, Any]:
-        return {
-            "course_code": paper.get("course_code") or paper.get("subject_code"),
-            "course_name": paper.get("course_name") or paper.get("subject_name"),
-            "year": paper.get("year"),
-            "semester": paper.get("semester"),
-            "program": paper.get("program"),
-            "degree_type": paper.get("degree_type"),
-            "file_name": paper.get("file_name"),
-            "url": paper.get("url"),
-            "path": paper.get("path"),
-        }
 
     def _get_stats(self) -> Dict[str, Any]:
         papers = self.data.get("papers", [])
@@ -121,18 +118,6 @@ class StagingHandler:
             else:
                 groups["low_<0.3"] += 1
         return groups
-
-
-def _new_stats(total: int) -> dict:
-    return {
-        "total": total,
-        "auto_written": 0,
-        "staged": 0,
-        "skipped_duplicate": 0,
-        "errors": 0,
-        "by_category": {},
-        "by_confidence": {"high": 0, "medium": 0, "low": 0},
-    }
 
 
 def _record_result(stats: dict, category: str, confidence: float) -> None:
@@ -230,7 +215,15 @@ def _run_categorizer(input_file: Path, dry_run: bool = False) -> dict:
 
     categorizer = PaperCategorizer(DATA_DIRECTORY, STAGING_FILE.parent)
     staging_handler = StagingHandler(STAGING_FILE)
-    stats = _new_stats(len(papers))
+    stats = {
+        "total": len(papers),
+        "auto_written": 0,
+        "staged": 0,
+        "skipped_duplicate": 0,
+        "errors": 0,
+        "by_category": {},
+        "by_confidence": {"high": 0, "medium": 0, "low": 0},
+    }
 
     for index, paper in enumerate(papers, 1):
         try:
