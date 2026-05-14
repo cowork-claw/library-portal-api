@@ -57,8 +57,6 @@ class QuestionPapersEnhancedSpider(QuestionPaperRowParsingMixin, scrapy.Spider):
         "Open Access",
     ]
 
-    TARGET_YEAR_THRESHOLD = TARGET_YEAR_THRESHOLD
-
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.navigation_stack = []
