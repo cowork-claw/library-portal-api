@@ -31,7 +31,7 @@ class PaperIndexAccessors:
         """Get multiple papers from a set of URLs."""
         return [self._by_url[url] for url in urls if url in self._by_url]
 
-    def get_urls_by_year(self, year: int) -> Set[str]:
+    def _get_urls_by_year(self, year: int) -> Set[str]:
         """Get paper URLs for a specific year."""
         return self._by_year.get(year, set())
 

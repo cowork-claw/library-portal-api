@@ -45,7 +45,7 @@ def test_indexing_urls_and_program_abbrevs():
     index.papers = _sample_papers()
     index._build_indexes()
 
-    assert index.get_urls_by_year(2024) == {"u1", "u2"}
+    assert index._get_urls_by_year(2024) == {"u1", "u2"}
     assert index._get_urls_by_course("cs101") == {"u1"}
     assert index._get_urls_by_paper_type("Regular") == {"u1", "u2"}
     assert index._get_urls_by_degree_type("B.Tech") == {"u1", "u2", "u3"}
