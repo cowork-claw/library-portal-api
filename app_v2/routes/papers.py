@@ -166,7 +166,7 @@ async def _resolve_paper_results(
     search: Optional[str], filter_urls: Optional[Set[str]]
 ) -> List[Dict[str, Any]]:
     if search:
-        search_urls = await run_in_threadpool(paper_index.search, search)
+        search_urls = await run_in_threadpool(paper_index._search, search)
         if filter_urls is not None:
             return paper_index._get_by_urls(
                 [url for url in search_urls if url in filter_urls]

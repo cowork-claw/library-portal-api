@@ -32,11 +32,11 @@ def test_search_is_offloaded_to_threadpool(client):
     # We also mock search_papers to ensure we don't actually run a search and just verify the call.
 
     # Note: We need to patch 'app_v2.routes.papers.run_in_threadpool'
-    # and 'app_v2.routes.papers.paper_index.search'
+    # and 'app_v2.routes.papers.paper_index._search'
 
     with (
         patch("app_v2.routes.papers.run_in_threadpool") as mock_run_in_threadpool,
-        patch("app_v2.routes.papers.paper_index.search") as mock_search,
+        patch("app_v2.routes.papers.paper_index._search") as mock_search,
     ):
         # Configure the mock to return a dummy list so the endpoint continues
         # run_in_threadpool is async-ish when awaited.
@@ -69,12 +69,12 @@ def test_search_is_offloaded_to_threadpool(client):
             # Verify run_in_threadpool was called
             assert mock_run_in_threadpool.called
 
-            # Verify arguments: first arg should be the function paper_index.search
+            # Verify arguments: first arg should be the function paper_index._search
             call_args = mock_run_in_threadpool.call_args
             assert call_args is not None
 
             func_arg = call_args[0][0]
-            # In the route: await run_in_threadpool(paper_index.search, search)
+            # In the route: await run_in_threadpool(paper_index._search, search)
 
             assert func_arg == mock_search
 

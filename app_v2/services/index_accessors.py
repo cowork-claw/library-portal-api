@@ -17,7 +17,7 @@ class PaperIndexAccessors:
         results = _search_papers(self.papers, normalized_query)
         return tuple(url for paper in results if (url := paper.get("url")))
 
-    def search(self, query: str) -> List[str]:
+    def _search(self, query: str) -> List[str]:
         """Search all papers and return matching URLs sorted by relevance."""
         normalized_query = query.strip().lower()
         if not normalized_query:
