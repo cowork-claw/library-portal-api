@@ -4,10 +4,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-try:
-    import orjson
-except ImportError:
-    import json as orjson  # type: ignore[no-redef]
+import orjson
 
 logger = logging.getLogger(__name__)
 

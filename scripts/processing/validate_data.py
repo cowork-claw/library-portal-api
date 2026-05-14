@@ -40,12 +40,10 @@ def _validate_unique_url(
     urls_seen: set,
     errors: List[str],
 ) -> None:
-    url = paper.get("url")
-    if not url:
-        return
-    if url in urls_seen:
-        errors.append(f"{course_code}[{index}]: duplicate URL")
-    urls_seen.add(url)
+    if url := paper.get("url"):
+        if url in urls_seen:
+            errors.append(f"{course_code}[{index}]: duplicate URL")
+        urls_seen.add(url)
 
 
 def _validate_int_range(
@@ -58,9 +56,9 @@ def _validate_int_range(
     errors: List[str],
 ) -> None:
     value = paper.get(field)
-    if value is None:
-        return
-    if not isinstance(value, int) or value < lower or value > upper:
+    if value is not None and (
+        not isinstance(value, int) or value < lower or value > upper
+    ):
         errors.append(f"{course_code}[{index}]: invalid {field} {value}")
 
 
@@ -197,8 +195,6 @@ def _main() -> None:
     report = _validate_all(args.dir)
 
     if args.json:
-        import json
-
         print(json.dumps(report, indent=2, default=str))
 
     sys.exit(0 if report["valid"] else 1)

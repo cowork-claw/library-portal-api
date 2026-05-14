@@ -18,9 +18,6 @@ class ScrapeLog:
         if self.log_file.exists():
             try:
                 data = json.loads(self.log_file.read_text(encoding="utf-8"))
-                logger.info(
-                    f"Loaded scrape log with {len(data.get('scraped_urls', []))} URLs"
-                )
                 return data
             except (json.JSONDecodeError, IOError) as e:
                 logger.warning(f"Error loading scrape log, creating new: {e}")
@@ -85,12 +82,11 @@ def _load_existing_urls_from_organized_data(data_directory: Path) -> Set[str]:
         try:
             data = json.loads(json_file.read_text(encoding="utf-8"))
 
-            for course_code, papers_list in data.items():
+            for papers_list in data.values():
                 if isinstance(papers_list, list):
-                    for paper in papers_list:
-                        url = paper.get("url")
-                        if url:
-                            urls.add(url)
+                    urls.update(
+                        paper["url"] for paper in papers_list if paper.get("url")
+                    )
         except Exception as e:
             logger.error(f"Error loading {json_file}: {e}")
 
