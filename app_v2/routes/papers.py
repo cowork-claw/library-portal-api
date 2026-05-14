@@ -112,30 +112,14 @@ def _sort_papers(
     sort_field: str,
     order: str,
 ) -> List[Dict[str, Any]]:
-    if not papers:
-        return papers
-
     if sort_field == "relevance":
         # Relevance order is already set by search results.
         # Reverse if ascending order is requested (relevance is naturally desc).
         return list(reversed(papers)) if order == "asc" else papers
 
-    reverse = order == "desc"
-
-    # Split into non-null and null groups to guarantee nulls always come last
     non_null = [p for p in papers if p.get(sort_field) is not None]
-    nulls = [p for p in papers if p.get(sort_field) is None]
-
-    non_null.sort(key=lambda p: p.get(sort_field, 0), reverse=reverse)
-
-    return non_null + nulls
-
-
-def _get_papers_response_from_urls(
-    urls: set, limit: int, offset: int
-) -> PapersResponse:
-    papers = paper_index._get_by_urls(urls)
-    return _create_paginated_response(papers, len(papers), limit, offset)
+    non_null.sort(key=lambda p: p.get(sort_field, 0), reverse=order == "desc")
+    return non_null + [p for p in papers if p.get(sort_field) is None]
 
 
 def _intersect_filter_url_sets(filter_url_sets: List[Set[str]]) -> Optional[Set[str]]:
@@ -242,7 +226,8 @@ async def _get_papers_by_year(
     if semester is not None:
         urls = urls.intersection(paper_index._get_urls_by_semester(semester))
 
-    return _get_papers_response_from_urls(urls, limit, offset)
+    papers = paper_index._get_by_urls(urls)
+    return _create_paginated_response(papers, len(papers), limit, offset)
 
 
 @router.get(
@@ -286,4 +271,5 @@ async def _get_papers_by_semester(
     if year is not None:
         urls = urls.intersection(paper_index._get_urls_by_year(year))
 
-    return _get_papers_response_from_urls(urls, limit, offset)
+    papers = paper_index._get_by_urls(urls)
+    return _create_paginated_response(papers, len(papers), limit, offset)

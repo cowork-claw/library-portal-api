@@ -43,10 +43,7 @@ class DataLoader:
             )
             return []
 
-        json_files = list(self.data_directory.rglob("*.json"))
-        logger.info(f"Found {len(json_files)} JSON files to load")
-
-        for json_file in json_files:
+        for json_file in self.data_directory.rglob("*.json"):
             self._load_file(json_file)
 
         self.stats.total_papers = len(self.papers)
