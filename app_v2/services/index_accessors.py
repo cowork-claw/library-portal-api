@@ -16,20 +16,13 @@ SEARCH_FIELDS = [
 ]
 
 
-def _tokenize_words(text: str) -> Set[str]:
-    return set(WORD_TOKEN_PATTERN.findall(text))
-
-
 def _search_papers(
     papers: List[Dict[str, Any]], query: str, threshold: float = 0.5
 ) -> List[Dict[str, Any]]:
+    query = query.strip().lower() if query else ""
     if not query or not papers:
         return papers
-
-    query = query.strip().lower()
-    if not query:
-        return papers
-    query_words = _tokenize_words(query)
+    query_words = set(WORD_TOKEN_PATTERN.findall(query))
     effective_threshold = max(threshold, 0.01) if threshold <= 0 else threshold
 
     results = [
@@ -49,9 +42,7 @@ def _field_search_data(
         return meta["lower"], meta["words"]
 
     value = paper.get(field_name)
-    if not value:
-        return None
-    return str(value).lower(), None
+    return (str(value).lower(), None) if value else None
 
 
 def _exact_or_contains_score(
@@ -59,16 +50,9 @@ def _exact_or_contains_score(
 ) -> Optional[float]:
     if query == value_lower:
         return weight
-    if query not in value_lower:
-        return None
-    return (0.95 if value_lower.startswith(query) else 0.8) * weight
-
-
-def _fuzzy_score(query: str, value_lower: str, weight: float) -> float:
-    ratio = fuzz.WRatio(query, value_lower) / 100.0
-    if ratio > WORD_MATCH_SCORE_FACTOR:
-        return ratio * weight
-    return 0.0
+    if query in value_lower:
+        return (0.95 if value_lower.startswith(query) else 0.8) * weight
+    return None
 
 
 def _word_overlap_score(
@@ -77,16 +61,13 @@ def _word_overlap_score(
     value_lower: str,
     weight: float,
 ) -> float:
-    if not query_words:
-        return 0.0
-
-    if value_words is None:
-        value_words = _tokenize_words(value_lower)
-
-    matching_words = query_words & value_words
-    if not matching_words:
-        return 0.0
-    return (len(matching_words) / len(query_words)) * WORD_MATCH_SCORE_FACTOR * weight
+    matching_words = query_words & (
+        value_words
+        if value_words is not None
+        else set(WORD_TOKEN_PATTERN.findall(value_lower))
+    )
+    match_ratio = len(matching_words) / len(query_words) if matching_words else 0.0
+    return match_ratio * WORD_MATCH_SCORE_FACTOR * weight
 
 
 def _calculate_relevance(
@@ -111,7 +92,9 @@ def _calculate_relevance(
             max_score = max(max_score, phrase_score)
             continue
 
-        max_score = max(max_score, _fuzzy_score(query, value_lower, weight))
+        ratio = fuzz.WRatio(query, value_lower) / 100.0
+        if ratio > WORD_MATCH_SCORE_FACTOR:
+            max_score = max(max_score, ratio * weight)
         if max_score >= WORD_MATCH_SCORE_FACTOR * weight:
             continue
 
