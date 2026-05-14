@@ -152,9 +152,7 @@ def _check_scraper_health() -> ComponentHealth:
     log_data = _load_scrape_log()
 
     if not log_data:
-        return ComponentHealth(
-            status="unknown", message="No scrape log found", details=None
-        )
+        return ComponentHealth(status="unknown", message="No scrape log found")
 
     runs = log_data.get("runs", [])
     if not runs:
@@ -194,7 +192,6 @@ def _check_staging_health() -> ComponentHealth:
         return ComponentHealth(
             status="degraded",
             message=f"Error reading staging file: {e.__class__.__name__}",
-            details=None,
         )
 
 

@@ -17,9 +17,7 @@ HEADER_NAME = "X-Request-ID"
 class RequestIDMiddleware(BaseHTTPMiddleware):
 
     async def dispatch(self, request: Request, call_next: Callable) -> Response:
-        request_id = request.headers.get(HEADER_NAME, "").strip()
-        if not request_id:
-            request_id = str(uuid.uuid4())
+        request_id = request.headers.get(HEADER_NAME, "").strip() or str(uuid.uuid4())
 
         request.state.request_id = request_id
         response = await call_next(request)
