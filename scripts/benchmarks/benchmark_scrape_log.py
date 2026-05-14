@@ -33,33 +33,22 @@ def benchmark_scrape_log():
     with tempfile.TemporaryDirectory() as tmp_dir:
         log_file = Path(tmp_dir) / "scrape_log.json"
         scrape_log = ScrapeLog(log_file)
+        scrape_log.data["scraped_urls"] = urls
+        scrape_log._scraped_urls_set = set(urls)
 
-        # Benchmark add_scraped_url
         start_time = time.perf_counter()
-        for url in urls:
-            scrape_log._add_scraped_url(url)
+        scraped_urls = scrape_log._get_scraped_urls()
         end_time = time.perf_counter()
 
-        print(f"Added {len(urls)} URLs in {end_time - start_time:.4f} seconds")
+        print(f"Copied {len(scraped_urls)} URLs in {end_time - start_time:.4f} seconds")
 
-        # Benchmark has_url
         start_time = time.perf_counter()
         for url in urls:
-            scrape_log._has_url(url)
+            url in scraped_urls
         end_time = time.perf_counter()
 
         print(
             f"Checked {len(urls)} existing URLs in {end_time - start_time:.4f} seconds"
-        )
-
-        # Benchmark add_scraped_url with existing URLs
-        start_time = time.perf_counter()
-        for url in urls:
-            scrape_log._add_scraped_url(url)
-        end_time = time.perf_counter()
-
-        print(
-            f"Attempted to add {len(urls)} existing URLs in {end_time - start_time:.4f} seconds"
         )
 
 

@@ -1,3 +1,4 @@
+import json
 import tempfile
 from pathlib import Path
 
@@ -12,45 +13,55 @@ def tmp_log_path():
         yield Path(tmp_dir) / "scrape_log.json"
 
 
+def _write_log(path: Path, urls: list[str]) -> None:
+    path.write_text(
+        json.dumps({"scraped_urls": urls, "runs": [], "stats": {}}), encoding="utf-8"
+    )
+
+
 def test_initialization(tmp_log_path):
     log = ScrapeLog(tmp_log_path)
     assert len(log._get_scraped_urls()) == 0
 
 
-def test_add_url(tmp_log_path):
-    log = ScrapeLog(tmp_log_path)
+def test_loads_existing_urls(tmp_log_path):
     url = "https://example.com/1"
-    assert log._add_scraped_url(url)
-    assert log._has_url(url)
+    _write_log(tmp_log_path, [url])
+
+    log = ScrapeLog(tmp_log_path)
+
     assert url in log._get_scraped_urls()
-    log._save()
-    assert ScrapeLog(tmp_log_path)._has_url(url)
 
 
-def test_add_duplicate_url(tmp_log_path):
-    log = ScrapeLog(tmp_log_path)
+def test_get_scraped_urls_deduplicates_loaded_data(tmp_log_path):
     url = "https://example.com/1"
-    log._add_scraped_url(url)
-    assert not log._add_scraped_url(url)
-    assert len(log._get_scraped_urls()) == 1
+    _write_log(tmp_log_path, [url, url])
 
-
-def test_persistence(tmp_log_path):
     log = ScrapeLog(tmp_log_path)
-    url = "https://example.com/persist"
-    log._add_scraped_url(url)
-    log._save()
 
-    # Load in new instance
+    assert log._get_scraped_urls() == {url}
+
+
+def test_record_run_persists_stats(tmp_log_path):
+    log = ScrapeLog(tmp_log_path)
+
+    log._record_run(new_papers=2, skipped=3, errors=1, year_threshold=2024, notes="ok")
+
     log2 = ScrapeLog(tmp_log_path)
-    assert log2._has_url(url)
-    assert len(log2._get_scraped_urls()) == 1
+    assert log2.data["runs"][-1]["notes"] == "ok"
+    assert log2.data["stats"] == {
+        "total_scraped": 2,
+        "total_skipped": 3,
+        "total_errors": 1,
+    }
 
 
 def test_get_scraped_urls_is_copy(tmp_log_path):
-    log = ScrapeLog(tmp_log_path)
     url = "url1"
-    log._add_scraped_url(url)
+    _write_log(tmp_log_path, [url])
+    log = ScrapeLog(tmp_log_path)
+
     urls = log._get_scraped_urls()
     urls.add("evil_url")
-    assert not log._has_url("evil_url")
+
+    assert log._get_scraped_urls() == {url}

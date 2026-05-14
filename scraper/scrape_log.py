@@ -44,17 +44,6 @@ class ScrapeLog:
     def _get_scraped_urls(self) -> Set[str]:
         return self._scraped_urls_set.copy()
 
-    def _has_url(self, url: str) -> bool:
-        return url in self._scraped_urls_set
-
-    def _add_scraped_url(self, url: str) -> bool:
-        if url not in self._scraped_urls_set:
-            self._scraped_urls_set.add(url)
-            self.data["scraped_urls"].append(url)
-            self._dirty = True
-            return True
-        return False
-
     def _record_run(
         self,
         new_papers: int,
@@ -92,10 +81,7 @@ def _load_existing_urls_from_organized_data(data_directory: Path) -> Set[str]:
         logger.warning(f"Data directory not found: {data_directory}")
         return urls
 
-    json_files = list(data_directory.rglob("*.json"))
-    logger.info(f"Loading existing URLs from {len(json_files)} JSON files")
-
-    for json_file in json_files:
+    for json_file in data_directory.rglob("*.json"):
         try:
             data = json.loads(json_file.read_text(encoding="utf-8"))
 
