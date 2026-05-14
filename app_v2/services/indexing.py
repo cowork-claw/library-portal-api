@@ -1,5 +1,3 @@
-"""In-memory indexes for fast paper filtering and lookup."""
-
 import logging
 from collections import defaultdict
 from threading import RLock

@@ -1,5 +1,3 @@
-"""Table row and ASP.NET postback parsing helpers for the question-paper spider."""
-
 import re
 from urllib.parse import urljoin
 

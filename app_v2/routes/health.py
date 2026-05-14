@@ -1,5 +1,3 @@
-"""Health and operational status routes."""
-
 import json
 import logging
 import os

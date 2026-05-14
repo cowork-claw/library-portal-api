@@ -1,5 +1,3 @@
-"""Metadata and collection statistics routes."""
-
 from fastapi import APIRouter
 
 from ..models import MetadataResponse, StatisticsResponse

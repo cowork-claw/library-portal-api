@@ -1,5 +1,3 @@
-"""Load and aggregate papers from organized JSON files."""
-
 import logging
 from dataclasses import dataclass, field
 from datetime import datetime

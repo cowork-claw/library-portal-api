@@ -1,5 +1,3 @@
-"""Categorize scraped papers into organized JSON targets."""
-
 import json
 import logging
 import re

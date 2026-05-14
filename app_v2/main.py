@@ -1,5 +1,3 @@
-"""FastAPI application wiring for the Library Portal API."""
-
 import logging
 import os
 

@@ -1,5 +1,3 @@
-"""Metadata extraction helpers for scraped question-paper PDFs."""
-
 import re
 from datetime import datetime
 

@@ -1,5 +1,3 @@
-"""Persistent scrape-log state for URL deduplication."""
-
 import json
 import logging
 from datetime import datetime

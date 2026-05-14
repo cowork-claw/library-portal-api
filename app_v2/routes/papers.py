@@ -1,5 +1,3 @@
-"""Question-paper retrieval routes."""
-
 import time
 from typing import (
     Annotated,

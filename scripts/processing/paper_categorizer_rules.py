@@ -1,5 +1,3 @@
-"""Categorization result type and course-code routing rules."""
-
 import re
 from dataclasses import dataclass, field
 from pathlib import Path
