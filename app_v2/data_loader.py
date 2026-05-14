@@ -14,7 +14,6 @@ logger = logging.getLogger(__name__)
 
 @dataclass
 class FileStats:
-    """Statistics for a single JSON file."""
 
     path: str
     papers_count: int
@@ -24,7 +23,6 @@ class FileStats:
 
 @dataclass
 class LoaderStats:
-    """Overall loader statistics."""
 
     total_papers: int = 0
     unique_urls: int = 0
@@ -35,7 +33,6 @@ class LoaderStats:
 
 
 class DataLoader:
-    """Load organized course-code JSON files with URL deduplication."""
 
     def __init__(self, data_directory: Path):
         self.data_directory = data_directory
@@ -44,7 +41,6 @@ class DataLoader:
         self.stats = LoaderStats()
 
     def load_all(self) -> List[Dict[str, Any]]:
-        """Load all papers from the organized data directory."""
         self.papers = []
         self.seen_urls = set()
         self.stats = LoaderStats()
@@ -138,7 +134,6 @@ class DataLoader:
             self.stats.errors.append(error_msg)
 
     def _get_stats(self) -> Dict[str, Any]:
-        """Get statistics about loaded data."""
         return {
             "total_papers": self.stats.total_papers,
             "unique_urls": self.stats.unique_urls,

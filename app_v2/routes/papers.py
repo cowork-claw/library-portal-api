@@ -117,7 +117,6 @@ def _sort_papers(
     sort_field: str,
     order: str,
 ) -> List[Dict[str, Any]]:
-    """Sort papers with null values placed after non-null values."""
     if not papers:
         return papers
 

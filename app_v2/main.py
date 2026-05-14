@@ -51,7 +51,6 @@ logger = logging.getLogger(__name__)
 
 @asynccontextmanager
 async def _lifespan(app: FastAPI):
-    """Load paper data for the application lifespan."""
     logger.info("🚀 Starting Library Portal API V2...")
 
     # Load data from organized folder
@@ -156,7 +155,6 @@ if settings.METRICS_ENABLED:
     )
 
     class MetricsMiddleware(BaseHTTPMiddleware):
-        """Middleware to record request count and duration."""
 
         async def dispatch(self, request: Request, call_next: Callable) -> Response:
             if request.url.path == "/metrics":
