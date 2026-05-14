@@ -41,6 +41,11 @@ CS_STREAM_PATTERN = re.compile(r"^[A-Z]{2,3}1[0-2]0[0-9]$")
 CSS_PREFIX_PATTERN = re.compile(r"^CSS\d{4}$")
 CORE_STREAM_PATTERN = re.compile(r"^[A-Z]{2,3}1[0-2]7[12]$")
 ICAS_PREFIXES = {"ICS", "IMA", "IPH", "ICH", "IBI"}
+MASTERS_CATEGORIES = {
+    "MCA": ("mca.json", 0.9, "MCA program detected"),
+    "M.E": ("me.json", 0.9, "M.E program detected"),
+    "M.Tech": ("mtech.json", 0.85, "M.Tech program detected (default masters)"),
+}
 
 logger = logging.getLogger(__name__)
 
@@ -159,10 +164,9 @@ class PaperCategorizer:
         if self._is_icas(prefix, course_code):
             return self._categorize_icas(prefix, reasoning)
 
-        first_year_result = self._check_first_year(
+        if first_year_result := self._check_first_year(
             course_code, prefix, reasoning.copy()
-        )
-        if first_year_result is not None:
+        ):
             return first_year_result
 
         branch_result = self._categorize_btech_branch(prefix, course_code, reasoning)
@@ -186,34 +190,19 @@ class PaperCategorizer:
         course_code: str,
         reasoning: List[str],
     ) -> CategorizationResult:
-        if "MCA" in program or "MCA" in degree_type:
-            reasoning.append("MCA program detected")
-            return CategorizationResult(
-                self.data_dir / "masters" / "mca.json",
-                0.9,
-                "masters",
-                reasoning,
-                {"degree_type": "MCA"},
-            )
-
-        if "M.E" in program or "ME" == degree_type:
-            reasoning.append("M.E program detected")
-            return CategorizationResult(
-                self.data_dir / "masters" / "me.json",
-                0.9,
-                "masters",
-                reasoning,
-                {"degree_type": "M.E"},
-            )
-
-        # Default to M.Tech
-        reasoning.append("M.Tech program detected (default masters)")
+        degree = (
+            "MCA"
+            if "MCA" in program or "MCA" in degree_type
+            else "M.E" if "M.E" in program or "ME" == degree_type else "M.Tech"
+        )
+        filename, confidence, reason = MASTERS_CATEGORIES[degree]
+        reasoning.append(reason)
         return CategorizationResult(
-            self.data_dir / "masters" / "mtech.json",
-            0.85,
+            self.data_dir / "masters" / filename,
+            confidence,
             "masters",
             reasoning,
-            {"degree_type": "M.Tech"},
+            {"degree_type": degree},
         )
 
     def _is_icas(self, prefix: str, course_code: str) -> bool:
