@@ -19,13 +19,7 @@ EXEMPT_PATHS: frozenset[str] = frozenset(
 
 
 def _is_rate_limited_path(path: str) -> bool:
-    if path in EXEMPT_PATHS:
-        return False
-    if path.startswith("/api"):
-        return True
-    if path.startswith("/health/data"):
-        return True
-    return False
+    return path.startswith("/api") or path.startswith("/health/data")
 
 
 @dataclass
@@ -59,11 +53,7 @@ class _FixedWindow:
 
     @property
     def _retry_after_seconds(self) -> int:
-        now = time.monotonic()
-        elapsed = now - self.window_start
-        remaining = self.window_seconds - elapsed
-        if remaining <= 0:
-            return 1
+        remaining = self.window_seconds - (time.monotonic() - self.window_start)
         return max(1, math.ceil(remaining))
 
 
