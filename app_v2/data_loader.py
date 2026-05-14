@@ -84,32 +84,26 @@ class DataLoader:
 
         return paper_count, course_count
 
-    def _relative_data_path(self, file_path: Path) -> str:
-        try:
-            return str(file_path.relative_to(self.data_directory))
-        except ValueError:
-            logger.debug(
-                f"Could not determine relative path for {file_path}, using filename only"
-            )
-            return file_path.name
-
-    def _record_file_stats(
-        self, file_path: Path, relative_path: str, paper_count: int, course_count: int
-    ) -> None:
-        self.stats.file_stats[relative_path] = {
-            "papers": paper_count,
-            "courses": course_count,
-            "modified": datetime.fromtimestamp(file_path.stat().st_mtime).isoformat(),
-        }
-
     def _load_file(self, file_path: Path) -> None:
         try:
             data = orjson.loads(file_path.read_bytes())
             paper_count, course_count = self._add_unique_papers_from_file(
                 file_path, data
             )
-            relative_path = self._relative_data_path(file_path)
-            self._record_file_stats(file_path, relative_path, paper_count, course_count)
+            if file_path.is_relative_to(self.data_directory):
+                relative_path = str(file_path.relative_to(self.data_directory))
+            else:
+                logger.debug(
+                    f"Could not determine relative path for {file_path}, using filename only"
+                )
+                relative_path = file_path.name
+            self.stats.file_stats[relative_path] = {
+                "papers": paper_count,
+                "courses": course_count,
+                "modified": datetime.fromtimestamp(
+                    file_path.stat().st_mtime
+                ).isoformat(),
+            }
             logger.debug(f"Loaded {paper_count} papers from {relative_path}")
         except orjson.JSONDecodeError as e:
             error_msg = f"Invalid JSON in {file_path.name}: {e.__class__.__name__}"

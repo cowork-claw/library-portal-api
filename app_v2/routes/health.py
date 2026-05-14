@@ -183,7 +183,6 @@ def _check_staging_health() -> ComponentHealth:
     try:
         with open(staging_file, "r") as f:
             data = json.load(f)
-
         count = len(data.get("papers", []))
         return ComponentHealth(
             status="healthy",
@@ -201,10 +200,6 @@ def _check_staging_health() -> ComponentHealth:
 
 def _load_scrape_log() -> dict:
     try:
-        return (
-            json.loads(settings.SCRAPE_LOG_FILE.read_text())
-            if settings.SCRAPE_LOG_FILE.exists()
-            else {}
-        )
+        return json.loads(settings.SCRAPE_LOG_FILE.read_text())
     except Exception:
         return {}
