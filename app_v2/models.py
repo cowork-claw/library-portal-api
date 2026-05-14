@@ -1,5 +1,3 @@
-"""Pydantic request and response models for Library Portal API V2."""
-
 from typing import Any, Dict, List, Optional
 
 from pydantic import BaseModel, ConfigDict, Field
@@ -10,7 +8,6 @@ def _default_streams_factory() -> List[str]:
 
 
 class CurriculumContext(BaseModel):
-    """Curriculum applicability metadata for a paper."""
 
     curriculum_id: Optional[str] = None
     valid_for_streams: List[str] = Field(default_factory=_default_streams_factory)
@@ -19,7 +16,6 @@ class CurriculumContext(BaseModel):
 
 
 class Paper(BaseModel):
-    """Single question paper with optional scraper and curriculum metadata."""
 
     # File info
     file_name: str
@@ -59,7 +55,6 @@ class Paper(BaseModel):
 
 
 class PaginationInfo(BaseModel):
-    """Pagination metadata included in list responses."""
 
     total: int
     limit: int
@@ -71,7 +66,6 @@ class PaginationInfo(BaseModel):
 
 
 class PapersResponse(BaseModel):
-    """Paginated paper listing response."""
 
     papers: List[Paper]
     total: int
@@ -82,7 +76,6 @@ class PapersResponse(BaseModel):
 
 
 class MetadataResponse(BaseModel):
-    """Available filter values and indexed collection size."""
 
     years: List[int]
     programs: List[str]
@@ -96,7 +89,6 @@ class MetadataResponse(BaseModel):
 
 
 class CourseResponse(BaseModel):
-    """Single course details and matching papers."""
 
     course_code: str
     course_name: Optional[str]
@@ -105,7 +97,6 @@ class CourseResponse(BaseModel):
 
 
 class ComponentHealth(BaseModel):
-    """Health status of one system component."""
 
     status: str  # "healthy", "degraded", "unhealthy"
     message: str
@@ -113,7 +104,6 @@ class ComponentHealth(BaseModel):
 
 
 class HealthResponse(BaseModel):
-    """Overall system health response."""
 
     status: str  # "healthy", "degraded", "unhealthy"
     timestamp: str
@@ -123,7 +113,6 @@ class HealthResponse(BaseModel):
 
 
 class DataHealthResponse(BaseModel):
-    """Data integrity and loader health response."""
 
     status: str
     total_papers: int
@@ -137,7 +126,6 @@ class DataHealthResponse(BaseModel):
 
 
 class ScraperHealthResponse(BaseModel):
-    """Scraper status response."""
 
     status: str
     last_run: Optional[str]
@@ -149,14 +137,12 @@ class ScraperHealthResponse(BaseModel):
 
 
 class ReloadResponse(BaseModel):
-    """POST /health/data/reload response."""
 
     reload_id: str
     message: str
 
 
 class StatisticsResponse(BaseModel):
-    """Global collection statistics response."""
 
     total_papers: int
     papers_by_year: Dict[int, int]
