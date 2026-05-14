@@ -92,7 +92,7 @@ class StructuredLoggingMiddleware(BaseHTTPMiddleware):
             current_request_id.reset(token)
 
 
-def setup_structured_logging(level: str = "INFO") -> None:
+def _setup_structured_logging(level: str = "INFO") -> None:
     root_logger = logging.getLogger()
     root_logger.setLevel(getattr(logging, level.upper(), logging.INFO))
 

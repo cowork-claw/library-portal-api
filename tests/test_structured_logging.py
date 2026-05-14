@@ -27,7 +27,7 @@ from app_v2.middleware.structured_logging import (
     StructuredJSONFormatter,
     StructuredLoggingMiddleware,
     current_request_id,
-    setup_structured_logging,
+    _setup_structured_logging,
 )
 
 API_KEY = "test-key"
@@ -605,16 +605,16 @@ class TestStructuredLoggingWithFullApp:
 
 
 # ---------------------------------------------------------------------------
-# Test: setup_structured_logging function
+# Test: _setup_structured_logging function
 # ---------------------------------------------------------------------------
 
 
 class TestSetupStructuredLogging:
-    """Tests for the setup_structured_logging() configuration function."""
+    """Tests for the _setup_structured_logging() configuration function."""
 
     def test_setup_configures_root_logger(self):
-        """setup_structured_logging() configures the root logger with JSON handler."""
-        setup_structured_logging("INFO")
+        """_setup_structured_logging() configures the root logger with JSON handler."""
+        _setup_structured_logging("INFO")
 
         root_logger = logging.getLogger()
         assert root_logger.level == logging.INFO
@@ -629,12 +629,12 @@ class TestSetupStructuredLogging:
         assert has_structured, "No handler with StructuredJSONFormatter found"
 
     def test_setup_respects_log_level(self):
-        """setup_structured_logging() respects the provided log level."""
-        setup_structured_logging("DEBUG")
+        """_setup_structured_logging() respects the provided log level."""
+        _setup_structured_logging("DEBUG")
         root_logger = logging.getLogger()
         assert root_logger.level == logging.DEBUG
 
-        setup_structured_logging("WARNING")
+        _setup_structured_logging("WARNING")
         root_logger = logging.getLogger()
         assert root_logger.level == logging.WARNING
 

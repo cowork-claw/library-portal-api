@@ -38,14 +38,14 @@ from .middleware.rate_limit import RateLimitMiddleware
 from .middleware.structured_logging import (
     RequestIDMiddleware,
     StructuredLoggingMiddleware,
-    setup_structured_logging,
+    _setup_structured_logging,
 )
 from .routes import health_router, metadata_router, papers_router
 from .services.indexing import paper_index
 
 # Configure structured JSON logging (replaces basicConfig)
 COMPRESSION_MINIMUM_SIZE = 1024
-setup_structured_logging(settings.LOG_LEVEL)
+_setup_structured_logging(settings.LOG_LEVEL)
 logger = logging.getLogger(__name__)
 
 
