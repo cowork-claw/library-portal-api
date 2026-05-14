@@ -27,7 +27,7 @@ class PaperIndexAccessors:
     def _get_by_url(self, url: str) -> Optional[Dict[str, Any]]:
         return self._by_url.get(url)
 
-    def get_by_urls(self, urls: Iterable[str]) -> List[Dict[str, Any]]:
+    def _get_by_urls(self, urls: Iterable[str]) -> List[Dict[str, Any]]:
         """Get multiple papers from a set of URLs."""
         return [self._by_url[url] for url in urls if url in self._by_url]
 
@@ -45,7 +45,7 @@ class PaperIndexAccessors:
 
     def _get_papers_by_course(self, course_code: str) -> List[Dict[str, Any]]:
         urls = self._get_urls_by_course(course_code)
-        return self.get_by_urls(urls)
+        return self._get_by_urls(urls)
 
     def _get_urls_by_program(self, program: str) -> Set[str]:
         return self._by_program.get(program, set())

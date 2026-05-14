@@ -21,7 +21,7 @@ def setup():
 def current_implementation(year, semester):
     """Replicates the logic in app_v2/routes/papers.py before optimization"""
     urls = paper_index.get_urls_by_year(year)
-    papers = paper_index.get_by_urls(urls)
+    papers = paper_index._get_by_urls(urls)
 
     if not papers:
         # simulating the check, though we don't raise exception in benchmark
@@ -43,9 +43,9 @@ def optimized_implementation(year, semester):
     if semester is not None:
         semester_urls = paper_index._get_urls_by_semester(semester)
         intersected_urls = year_urls.intersection(semester_urls)
-        papers = paper_index.get_by_urls(intersected_urls)
+        papers = paper_index._get_by_urls(intersected_urls)
     else:
-        papers = paper_index.get_by_urls(year_urls)
+        papers = paper_index._get_by_urls(year_urls)
 
     return papers
 
@@ -114,7 +114,7 @@ if __name__ == "__main__":
         test_year = paper_index.unique_years[0]
         # Find a semester that exists in this year
         urls = paper_index.get_urls_by_year(test_year)
-        papers = paper_index.get_by_urls(urls)
+        papers = paper_index._get_by_urls(urls)
         semesters = list(set(p.get("semester") for p in papers if p.get("semester")))
 
         if semesters:

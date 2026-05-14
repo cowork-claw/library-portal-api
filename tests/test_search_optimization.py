@@ -50,8 +50,8 @@ def test_search_is_offloaded_to_threadpool(client):
 
         mock_run_in_threadpool.side_effect = async_return
 
-        # Also need to ensure get_by_urls returns valid paper objects
-        with patch("app_v2.routes.papers.paper_index.get_by_urls") as mock_get_by_urls:
+        # Also need to ensure _get_by_urls returns valid paper objects
+        with patch("app_v2.routes.papers.paper_index._get_by_urls") as mock_get_by_urls:
             mock_get_by_urls.return_value = [
                 {
                     "file_name": "test_paper.pdf",

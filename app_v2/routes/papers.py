@@ -142,7 +142,7 @@ def _sort_papers(
 def _get_papers_response_from_urls(
     urls: set, limit: int, offset: int
 ) -> PapersResponse:
-    papers = paper_index.get_by_urls(urls)
+    papers = paper_index._get_by_urls(urls)
     total = len(papers)
     return _create_paginated_response(papers, total, limit, offset)
 
@@ -169,13 +169,13 @@ async def _resolve_paper_results(
     if search:
         search_urls = await run_in_threadpool(paper_index.search, search)
         if filter_urls is not None:
-            return paper_index.get_by_urls(
+            return paper_index._get_by_urls(
                 [url for url in search_urls if url in filter_urls]
             )
-        return paper_index.get_by_urls(search_urls)
+        return paper_index._get_by_urls(search_urls)
 
     if filter_urls is not None:
-        return paper_index.get_by_urls(filter_urls)
+        return paper_index._get_by_urls(filter_urls)
     return paper_index.papers
 
 
