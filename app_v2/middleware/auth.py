@@ -21,6 +21,16 @@ PUBLIC_PATHS = {
     "/openapi.json",
     "/health",
 }
+SECURITY_HEADERS = {
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "DENY",
+    "X-XSS-Protection": "1; mode=block",
+    "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "Permissions-Policy": "geolocation=(), microphone=(), camera=(), payment=(), usb=(), xr-spatial-tracking=()",
+}
+DOCS_CSP = "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; img-src 'self' https://fastapi.tiangolo.com https://cdn.jsdelivr.net data:; connect-src 'self' https://cdn.jsdelivr.net; object-src 'none'; frame-src 'none'; upgrade-insecure-requests"
+API_CSP = "default-src 'self'; img-src 'self' https://libportal.manipal.edu data:; object-src 'none'; frame-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"
 
 
 class APIKeyMiddleware(BaseHTTPMiddleware):
@@ -110,37 +120,11 @@ class SecurityHeadersMiddleware(BaseHTTPMiddleware):
 
     async def dispatch(self, request: Request, call_next: Callable) -> Response:
         response = await call_next(request)
-        response.headers["X-Content-Type-Options"] = "nosniff"
-        response.headers["X-Frame-Options"] = "DENY"
-        response.headers["X-XSS-Protection"] = "1; mode=block"
-        response.headers["Strict-Transport-Security"] = (
-            "max-age=31536000; includeSubDomains"
+        response.headers.update(SECURITY_HEADERS)
+        response.headers["Content-Security-Policy"] = (
+            DOCS_CSP
+            if request.url.path.startswith(("/docs", "/redoc", "/openapi.json"))
+            else API_CSP
         )
-        response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
-        response.headers["Permissions-Policy"] = (
-            "geolocation=(), microphone=(), camera=(), payment=(), usb=(), xr-spatial-tracking=()"
-        )
-
-        if request.url.path.startswith(("/docs", "/redoc", "/openapi.json")):
-            response.headers["Content-Security-Policy"] = (
-                "default-src 'self'; "
-                "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; "
-                "style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; "
-                "img-src 'self' https://fastapi.tiangolo.com https://cdn.jsdelivr.net data:; "
-                "connect-src 'self' https://cdn.jsdelivr.net; "
-                "object-src 'none'; "
-                "frame-src 'none'; "
-                "upgrade-insecure-requests"
-            )
-        else:
-            response.headers["Content-Security-Policy"] = (
-                "default-src 'self'; "
-                "img-src 'self' https://libportal.manipal.edu data:; "
-                "object-src 'none'; "
-                "frame-src 'none'; "
-                "base-uri 'self'; "
-                "form-action 'self'; "
-                "upgrade-insecure-requests"
-            )
 
         return response
