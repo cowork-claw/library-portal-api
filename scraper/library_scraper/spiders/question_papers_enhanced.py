@@ -18,17 +18,8 @@ BLACKLISTED_YEARS = set(settings.BLACKLISTED_YEARS)
 DATA_DIRECTORY = settings.DATA_DIRECTORY
 SCRAPE_LOG_FILE = settings.SCRAPE_LOG_FILE
 TARGET_YEAR_THRESHOLD = settings.TARGET_YEAR_THRESHOLD
-PROGRAM_NAMES = (
-    "B.Tech",
-    "M.Tech",
-    "B.Sc",
-    "M.Sc",
-    "MBA",
-    "MCA",
-    "B.Com",
-    "M.Com",
-    "BBA",
-    "BCA",
+PROGRAM_NAME_PATTERN = re.compile(
+    r"B[.]Tech|M[.]Tech|B[.]Sc|M[.]Sc|MBA|MCA|B[.]Com|M[.]Com|BBA|BCA"
 )
 
 
@@ -137,7 +128,7 @@ class QuestionPapersEnhancedSpider(QuestionPaperRowParsingMixin, scrapy.Spider):
 
     def _extract_program(self, path_parts):
         for part in path_parts:
-            if any(program in part for program in PROGRAM_NAMES):
+            if PROGRAM_NAME_PATTERN.search(part):
                 return part
         return None
 
