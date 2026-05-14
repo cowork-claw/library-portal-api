@@ -1,5 +1,3 @@
-"""API key authentication and security header middleware."""
-
 import logging
 import os
 import secrets
@@ -26,7 +24,6 @@ PUBLIC_PATHS = {
 
 
 class APIKeyMiddleware(BaseHTTPMiddleware):
-    """Validate API keys on protected routes."""
 
     def __init__(
         self, app, api_key: Optional[str] = None, environment: str = "production"
@@ -126,7 +123,6 @@ class APIKeyMiddleware(BaseHTTPMiddleware):
 
 
 class SecurityHeadersMiddleware(BaseHTTPMiddleware):
-    """Add security headers to all responses."""
 
     async def dispatch(self, request: Request, call_next: Callable) -> Response:
         response = await call_next(request)

@@ -1,5 +1,3 @@
-"""Fixed-window rate limiting for protected API and data-health routes."""
-
 import hashlib
 import logging
 import math
@@ -32,7 +30,6 @@ def _is_rate_limited_path(path: str) -> bool:
 
 @dataclass
 class _FixedWindow:
-    """Fixed-window request counter."""
 
     max_requests: int
     window_seconds: int
@@ -71,7 +68,6 @@ class _FixedWindow:
 
 
 class RateLimitMiddleware(BaseHTTPMiddleware):
-    """Per-client fixed-window rate limiter."""
 
     def __init__(
         self,

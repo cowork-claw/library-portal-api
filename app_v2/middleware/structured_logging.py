@@ -1,5 +1,3 @@
-"""Structured JSON logging and request ID middleware."""
-
 import json
 import logging
 import sys
@@ -17,7 +15,6 @@ HEADER_NAME = "X-Request-ID"
 
 
 class RequestIDMiddleware(BaseHTTPMiddleware):
-    """Ensure every response carries an X-Request-ID header."""
 
     async def dispatch(self, request: Request, call_next: Callable) -> Response:
         request_id = request.headers.get(HEADER_NAME, "").strip()
@@ -31,7 +28,6 @@ class RequestIDMiddleware(BaseHTTPMiddleware):
 
 
 class RequestIDLogFilter(logging.Filter):
-    """Inject the current request ID into every log record."""
 
     def filter(self, record: logging.LogRecord) -> bool:
         record.request_id = current_request_id.get("-")
@@ -39,7 +35,6 @@ class RequestIDLogFilter(logging.Filter):
 
 
 class StructuredJSONFormatter(logging.Formatter):
-    """Serialize each log record as one JSON object."""
 
     def format(self, record: logging.LogRecord) -> str:
         log_entry: dict[str, Any] = {
@@ -70,7 +65,6 @@ _STRUCTURED_HANDLER_MARKER = "_library_portal_structured_handler"
 
 
 class StructuredLoggingMiddleware(BaseHTTPMiddleware):
-    """Set request ID logging context and emit access log records."""
 
     async def dispatch(self, request: Request, call_next: Callable) -> Response:
         # Propagate request ID into the logging context var
@@ -99,7 +93,6 @@ class StructuredLoggingMiddleware(BaseHTTPMiddleware):
 
 
 def setup_structured_logging(level: str = "INFO") -> None:
-    """Configure the root logger with this module's JSON stdout handler."""
     root_logger = logging.getLogger()
     root_logger.setLevel(getattr(logging, level.upper(), logging.INFO))
 
