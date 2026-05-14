@@ -124,11 +124,4 @@ class DataLoader:
             self.stats.errors.append(error_msg)
 
     def _get_stats(self) -> Dict[str, Any]:
-        return {
-            "total_papers": self.stats.total_papers,
-            "unique_urls": self.stats.unique_urls,
-            "files_loaded": self.stats.files_loaded,
-            "last_loaded": self.stats.last_loaded,
-            "errors": self.stats.errors,
-            "file_stats": self.stats.file_stats,
-        }
+        return vars(self.stats).copy()
