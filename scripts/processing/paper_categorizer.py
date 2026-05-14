@@ -136,17 +136,14 @@ class PaperCategorizer:
             target, confidence, "btech_branch", reasoning, metadata
         )
 
-    def _categorize_other(
-        self, reasoning: List[str], metadata: Dict[str, Any]
-    ) -> CategorizationResult:
+    def _categorize_other(self, reasoning: List[str]) -> CategorizationResult:
         reasoning.append("No clear category - defaulting to other.json")
         return CategorizationResult(
-            self.data_dir / "other.json", 0.5, "other", reasoning, metadata
+            self.data_dir / "other.json", 0.5, "other", reasoning, {}
         )
 
     def _categorize(self, paper: Dict[str, Any]) -> CategorizationResult:
         reasoning: List[str] = []
-        metadata: Dict[str, Any] = {}
         course_code = self._normalized_course_code(paper)
         program = str(paper.get("program", "") or "")
         degree_type = str(paper.get("degree_type", "") or "")
@@ -157,9 +154,7 @@ class PaperCategorizer:
 
         reasoning.append(f"Valid prefix: {prefix}")
         if self._is_masters(program, degree_type, course_code):
-            return self._categorize_masters(
-                program, degree_type, prefix, course_code, reasoning
-            )
+            return self._categorize_masters(program, degree_type, reasoning)
 
         if self._is_icas(prefix, course_code):
             return self._categorize_icas(prefix, reasoning)
@@ -173,7 +168,7 @@ class PaperCategorizer:
         if branch_result is not None:
             return branch_result
 
-        return self._categorize_other(reasoning, metadata)
+        return self._categorize_other(reasoning)
 
     def _is_masters(self, program: str, degree_type: str, course_code: str) -> bool:
         program_lower, degree_type_lower = program.lower(), degree_type.lower()
@@ -183,12 +178,7 @@ class PaperCategorizer:
         ) or bool(re.match(r"^[A-Z]{2,4}5\d{3}$", course_code))
 
     def _categorize_masters(
-        self,
-        program: str,
-        degree_type: str,
-        prefix: str,
-        course_code: str,
-        reasoning: List[str],
+        self, program: str, degree_type: str, reasoning: List[str]
     ) -> CategorizationResult:
         degree = (
             "MCA"
