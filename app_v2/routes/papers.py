@@ -74,6 +74,7 @@ def _create_paginated_response(
 ) -> PapersResponse:
     paginated = papers[offset : offset + limit]
     total = len(papers)
+    execution_time_ms = None if execution_time is None else round(execution_time, 2)
 
     return PapersResponse(
         papers=[Paper(**_to_public_paper(p)) for p in paginated],
@@ -89,9 +90,7 @@ def _create_paginated_response(
             has_next=offset + limit < total,
             has_prev=offset > 0,
         ),
-        execution_time_ms=(
-            round(execution_time, 2) if execution_time is not None else None
-        ),
+        execution_time_ms=execution_time_ms,
     )
 
 

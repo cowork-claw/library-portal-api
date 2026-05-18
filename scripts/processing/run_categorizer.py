@@ -21,7 +21,6 @@ logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 )
 logger = logging.getLogger(__name__)
-DATA_DIRECTORY = settings.DATA_DIRECTORY
 STAGING_FILE = settings.STAGING_DIRECTORY / "pending_review.json"
 
 
@@ -99,17 +98,6 @@ class StagingHandler:
         )
 
 
-def _record_result(stats: dict, category: str, confidence: float) -> None:
-    stats["by_category"][category] = stats["by_category"].get(category, 0) + 1
-
-    if confidence >= AUTO_WRITE_CONFIDENCE:
-        stats["by_confidence"]["high"] += 1
-    elif confidence >= 0.5:
-        stats["by_confidence"]["medium"] += 1
-    else:
-        stats["by_confidence"]["low"] += 1
-
-
 def _process_paper(
     paper: dict,
     index: int,
@@ -120,7 +108,8 @@ def _process_paper(
     stats: dict,
 ) -> None:
     result = categorizer._categorize(paper)
-    _record_result(stats, result.category, result.confidence)
+    by_category = stats["by_category"]
+    by_category[result.category] = by_category.get(result.category, 0) + 1
 
     course_code = paper.get("course_code", "UNKNOWN")
     logger.debug(
@@ -193,7 +182,7 @@ def _run_categorizer(input_file: Path, dry_run: bool = False) -> dict:
 
     logger.info("Loaded %d papers to categorize", len(papers))
 
-    categorizer = PaperCategorizer(DATA_DIRECTORY, STAGING_FILE.parent)
+    categorizer = PaperCategorizer(settings.DATA_DIRECTORY, STAGING_FILE.parent)
     staging_handler = StagingHandler(STAGING_FILE)
     stats = {
         "total": len(papers),
@@ -202,7 +191,6 @@ def _run_categorizer(input_file: Path, dry_run: bool = False) -> dict:
         "skipped_duplicate": 0,
         "errors": 0,
         "by_category": {},
-        "by_confidence": {"high": 0, "medium": 0, "low": 0},
     }
 
     for index, paper in enumerate(papers, 1):
