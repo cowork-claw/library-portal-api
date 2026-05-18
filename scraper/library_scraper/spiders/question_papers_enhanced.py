@@ -18,9 +18,7 @@ BLACKLISTED_YEARS = set(settings.BLACKLISTED_YEARS)
 DATA_DIRECTORY = settings.DATA_DIRECTORY
 SCRAPE_LOG_FILE = settings.SCRAPE_LOG_FILE
 TARGET_YEAR_THRESHOLD = settings.TARGET_YEAR_THRESHOLD
-PROGRAM_NAME_PATTERN = re.compile(
-    r"B[.]Tech|M[.]Tech|B[.]Sc|M[.]Sc|MBA|MCA|B[.]Com|M[.]Com|BBA|BCA"
-)
+PROGRAM_NAME_PATTERN = re.compile(r"[BM][.]Tech|[BM][.]Sc|MBA|MCA|[BM][.]Com|BBA|BCA")
 
 
 from .question_paper_row_parsing import QuestionPaperRowParsingMixin
@@ -122,10 +120,9 @@ class QuestionPapersEnhancedSpider(QuestionPaperRowParsingMixin, scrapy.Spider):
         )
 
     def _extract_program(self, path_parts):
-        for part in path_parts:
-            if PROGRAM_NAME_PATTERN.search(part):
-                return part
-        return None
+        return next(
+            (part for part in path_parts if PROGRAM_NAME_PATTERN.search(part)), None
+        )
 
     def _extract_semester(self, path_parts):
         for part in path_parts:
@@ -168,7 +165,7 @@ class QuestionPapersEnhancedSpider(QuestionPaperRowParsingMixin, scrapy.Spider):
         folders = [
             item
             for item in items
-            if item.get("is_folder") and not self._should_skip(item["name"])
+            if item.get("is_folder") and not self.SKIP_PATTERN.search(item["name"])
         ]
         return pdfs, folders
 
@@ -191,16 +188,14 @@ class QuestionPapersEnhancedSpider(QuestionPaperRowParsingMixin, scrapy.Spider):
             yield pdf_item
 
     def _should_visit_folder(self, folder_name, current_path):
-        if folder_name.isdigit():
-            if not self._should_scrape_year(folder_name):
-                self.logger.info(
-                    f"Skipping year folder '{folder_name}' based on scraping mode"
-                )
-                return False
+        if not folder_name.isdigit():
+            return self._path_contains_target_year(current_path)
+
+        if self._should_scrape_year(folder_name):
             self.logger.info(f"Will scrape year folder '{folder_name}'")
             return True
-
-        return self._path_contains_target_year(current_path)
+        self.logger.info(f"Skipping year folder '{folder_name}' based on scraping mode")
+        return False
 
     def _path_contains_target_year(self, current_path):
         if any(
@@ -221,8 +216,7 @@ class QuestionPapersEnhancedSpider(QuestionPaperRowParsingMixin, scrapy.Spider):
         if "event_target" not in folder or "event_argument" not in folder:
             return None
 
-        event_target = folder["event_target"]
-        event_argument = folder["event_argument"]
+        event_target, event_argument = folder["event_target"], folder["event_argument"]
         folder_signature = (event_target, event_argument)
         if folder_signature in self.seen_folders:
             self.logger.debug(f"Skipping already visited folder: {folder_name}")
@@ -251,18 +245,13 @@ class QuestionPapersEnhancedSpider(QuestionPaperRowParsingMixin, scrapy.Spider):
             priority=10 - depth,
         )
 
-    def _should_skip(self, name):
-        return bool(self.SKIP_PATTERN.search(name))
-
     def _get_current_path(self, response):
-        selectors = [
+        for selector in (
             'span[id*="lblCurrentFolder"]::text',
             'span[id*="CurrentFolder"]::text',
             "div.breadcrumb::text",
             "div.path::text",
-        ]
-
-        for selector in selectors:
+        ):
             path = response.css(selector).get()
             if path:
                 path = path.replace("Viewing the folder ", "")
@@ -270,8 +259,7 @@ class QuestionPapersEnhancedSpider(QuestionPaperRowParsingMixin, scrapy.Spider):
                 path = re.sub(r"<[^>]+>", "", path)
                 return path.strip()
 
-        nav_stack = response.meta.get("navigation_stack", [])
-        if nav_stack:
+        if nav_stack := response.meta.get("navigation_stack", []):
             return " / ".join(nav_stack)
 
         return "Root"
@@ -287,15 +275,14 @@ class QuestionPapersEnhancedSpider(QuestionPaperRowParsingMixin, scrapy.Spider):
         }
         current_path = item["path"]
         encoded_filename = quote(item["file_name"], safe="")
+        root_url = "https://libportal.manipal.edu/RootFolder"
 
         if current_path and current_path != "Root":
             path_parts = [part.strip() for part in current_path.split("/")]
             encoded_path = "/".join(quote(part, safe="") for part in path_parts)
-            item["url"] = (
-                f"https://libportal.manipal.edu/RootFolder/{encoded_path}/{encoded_filename}"
-            )
+            item["url"] = f"{root_url}/{encoded_path}/{encoded_filename}"
         else:
-            item["url"] = f"https://libportal.manipal.edu/RootFolder/{encoded_filename}"
+            item["url"] = f"{root_url}/{encoded_filename}"
 
         self._extract_metadata(item)
         return item
