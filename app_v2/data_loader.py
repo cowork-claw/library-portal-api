@@ -98,6 +98,3 @@ class DataLoader:
             error_msg = f"Error loading {file_path.name}: {e.__class__.__name__}"
             logger.error(f"Error loading {file_path.name}: {e}")
             self.stats.errors.append(error_msg)
-
-    def _get_stats(self) -> dict[str, Any]:
-        return vars(self.stats).copy()

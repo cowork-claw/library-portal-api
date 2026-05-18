@@ -78,7 +78,7 @@ async def _health_check() -> HealthResponse:
 )
 async def _data_health() -> DataHealthResponse:
     """Return loaded paper and data integrity status."""
-    loader_stats = paper_index.loader._get_stats() if paper_index.loader else {}
+    loader_stats = vars(paper_index.loader.stats) if paper_index.loader else {}
 
     return DataHealthResponse(
         status="healthy" if paper_index._paper_count > 0 else "degraded",

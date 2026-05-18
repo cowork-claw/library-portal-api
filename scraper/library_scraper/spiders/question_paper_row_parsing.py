@@ -78,9 +78,7 @@ class QuestionPaperRowParsingMixin:
 
         if postback_match := re.search(r"__doPostBack\('([^']+)','([^']*)'\)", href):
             return True, postback_match.group(1), postback_match.group(2)
-        if link_id:
-            return True, link_id, ""
-        return False, None, None
+        return (True, link_id, "") if link_id else (False, None, None)
 
     def _pdf_url(self, name_lower, item_type_lower, href, response):
         if ".pdf" not in name_lower and "pdf" not in item_type_lower:
