@@ -176,11 +176,8 @@ def _log_summary(stats: dict, dry_run: bool, staging_handler: StagingHandler) ->
     if dry_run:
         return
 
-    pending_review = sum(
-        1
-        for paper in staging_handler.data.get("papers", [])
-        if not paper.get("reviewed", False)
-    )
+    papers = staging_handler.data.get("papers", ())
+    pending_review = sum(not paper.get("reviewed", False) for paper in papers)
     if pending_review > 0:
         logger.warning("%s papers need manual review", pending_review)
         logger.info("   See: %s", STAGING_FILE)
