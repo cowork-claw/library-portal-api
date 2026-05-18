@@ -28,6 +28,17 @@ def test_metrics_enabled_main_reload_is_idempotent(monkeypatch) -> None:
     assert "http_requests_total" in authenticated.text
     assert "http_request_duration_seconds" in authenticated.text
 
+    import prometheus_client as prom
+
+    delattr(prom, "_library_portal_metrics_collectors")
+    importlib.reload(main_module)
+
+    with TestClient(main_module.app) as client:
+        fallback = client.get("/metrics", headers={"X-API-Key": "test-key"})
+
+    assert fallback.status_code == 200
+    assert "http_requests_total" in fallback.text
+
     monkeypatch.setenv("LIBRARY_PORTAL_METRICS_ENABLED", "false")
     importlib.reload(config_module)
     importlib.reload(main_module)
