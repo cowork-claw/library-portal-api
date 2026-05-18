@@ -128,21 +128,52 @@ app.add_middleware(RequestIDMiddleware)
 if settings.METRICS_ENABLED:
     import time
     from collections.abc import Callable
+    from typing import Any
 
     import prometheus_client as prom
     from fastapi import Request
     from starlette.middleware.base import BaseHTTPMiddleware
 
-    REQUEST_COUNT = prom.Counter(
-        "http_requests_total",
-        "Total HTTP requests",
-        ["method", "route", "status_code"],
-    )
-    REQUEST_LATENCY = prom.Histogram(
-        "http_request_duration_seconds",
-        "HTTP request duration in seconds",
-        ["method", "route"],
-    )
+    def _registered_collector(*names: str) -> Any | None:
+        collectors = getattr(prom.REGISTRY, "_names_to_collectors", {})
+        for name in names:
+            collector = collectors.get(name)
+            if collector is not None:
+                return collector
+        return None
+
+    def _get_or_create_metrics_collectors() -> tuple[Any, Any]:
+        collectors = getattr(prom, "_library_portal_metrics_collectors", None)
+        if collectors is not None:
+            return collectors
+
+        try:
+            request_count = prom.Counter(
+                "http_requests_total",
+                "Total HTTP requests",
+                ["method", "route", "status_code"],
+            )
+        except ValueError:
+            request_count = _registered_collector("http_requests", "http_requests_total")
+            if request_count is None:
+                raise
+
+        try:
+            request_latency = prom.Histogram(
+                "http_request_duration_seconds",
+                "HTTP request duration in seconds",
+                ["method", "route"],
+            )
+        except ValueError:
+            request_latency = _registered_collector("http_request_duration_seconds")
+            if request_latency is None:
+                raise
+
+        collectors = (request_count, request_latency)
+        setattr(prom, "_library_portal_metrics_collectors", collectors)
+        return collectors
+
+    REQUEST_COUNT, REQUEST_LATENCY = _get_or_create_metrics_collectors()
 
     class MetricsMiddleware(BaseHTTPMiddleware):
 
