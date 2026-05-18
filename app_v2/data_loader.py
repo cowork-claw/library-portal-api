@@ -67,8 +67,7 @@ class DataLoader:
 
             course_count += 1
             for paper in papers_list:
-                url = paper.get("url")
-                if url and url not in self.seen_urls:
+                if (url := paper.get("url")) and url not in self.seen_urls:
                     self.papers.append(paper)
                     self.seen_urls.add(url)
                     paper_count += 1
@@ -89,12 +88,13 @@ class DataLoader:
                     file_path.stat().st_mtime
                 ).isoformat(),
             }
-            logger.debug(f"Loaded {paper_count} papers from {relative_path}")
         except orjson.JSONDecodeError as e:
-            error_msg = f"Invalid JSON in {file_path.name}: {e.__class__.__name__}"
             logger.error(f"Invalid JSON in {file_path.name}: {e}")
-            self.stats.errors.append(error_msg)
+            self.stats.errors.append(
+                f"Invalid JSON in {file_path.name}: {e.__class__.__name__}"
+            )
         except Exception as e:
-            error_msg = f"Error loading {file_path.name}: {e.__class__.__name__}"
             logger.error(f"Error loading {file_path.name}: {e}")
-            self.stats.errors.append(error_msg)
+            self.stats.errors.append(
+                f"Error loading {file_path.name}: {e.__class__.__name__}"
+            )

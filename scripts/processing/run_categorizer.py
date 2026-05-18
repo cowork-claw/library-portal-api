@@ -50,7 +50,6 @@ class StagingHandler:
         self.data["last_updated"] = datetime.now().isoformat()
         with open(self.staging_file, "w", encoding="utf-8") as f:
             json.dump(self.data, f, indent=2, ensure_ascii=False)
-        logger.debug(f"Saved {len(self.data['papers'])} staged papers")
 
     def _add_paper(
         self,

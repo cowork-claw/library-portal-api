@@ -60,19 +60,6 @@ def _validate_int_range(
         errors.append(f"{course_code}[{index}]: invalid {field} {value}")
 
 
-def _validate_paper(
-    course_code: str,
-    index: int,
-    paper: dict[str, Any],
-    urls_seen: set,
-    errors: list[str],
-) -> None:
-    _validate_required_fields(course_code, index, paper, errors)
-    _validate_unique_url(course_code, index, paper, urls_seen, errors)
-    _validate_int_range(course_code, index, paper, "year", 2006, 2030, errors)
-    _validate_int_range(course_code, index, paper, "semester", 1, 10, errors)
-
-
 def _validate_json_file(file_path: Path) -> tuple[bool, list[str]]:
     data, errors = _load_json(file_path)
     if errors:
@@ -88,7 +75,10 @@ def _validate_json_file(file_path: Path) -> tuple[bool, list[str]]:
             continue
         for index, paper in enumerate(papers):
             paper_count += 1
-            _validate_paper(course_code, index, paper, urls_seen, errors)
+            _validate_required_fields(course_code, index, paper, errors)
+            _validate_unique_url(course_code, index, paper, urls_seen, errors)
+            _validate_int_range(course_code, index, paper, "year", 2006, 2030, errors)
+            _validate_int_range(course_code, index, paper, "semester", 1, 10, errors)
 
     if paper_count == 0:
         errors.append("File contains no papers")
