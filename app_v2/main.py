@@ -127,7 +127,7 @@ app.add_middleware(RequestIDMiddleware)
 # Optional Prometheus metrics (disabled by default)
 if settings.METRICS_ENABLED:
     import time
-    from typing import Callable
+    from collections.abc import Callable
 
     import prometheus_client as prom
     from fastapi import Request

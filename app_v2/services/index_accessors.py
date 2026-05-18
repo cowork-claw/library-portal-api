@@ -1,7 +1,8 @@
 import re
+from collections.abc import Iterable, Mapping
 from functools import lru_cache
 from types import MappingProxyType
-from typing import Any, Dict, Iterable, List, Mapping, Optional, Set, Tuple
+from typing import Any
 
 from thefuzz import fuzz
 
@@ -17,8 +18,8 @@ SEARCH_FIELDS = [
 
 
 def _search_papers(
-    papers: List[Dict[str, Any]], query: str, threshold: float = 0.5
-) -> List[Dict[str, Any]]:
+    papers: list[dict[str, Any]], query: str, threshold: float = 0.5
+) -> list[dict[str, Any]]:
     query = query.strip().lower() if query else ""
     if not query or not papers:
         return papers
@@ -36,8 +37,8 @@ def _search_papers(
 
 
 def _field_search_data(
-    paper: Dict[str, Any], search_meta: Optional[Dict[str, Any]], field_name: str
-) -> Optional[tuple[str, Optional[Set[str]]]]:
+    paper: dict[str, Any], search_meta: dict[str, Any] | None, field_name: str
+) -> tuple[str, set[str] | None] | None:
     if search_meta and (meta := search_meta.get(field_name)):
         return meta["lower"], meta["words"]
 
@@ -47,7 +48,7 @@ def _field_search_data(
 
 def _exact_or_contains_score(
     query: str, value_lower: str, weight: float
-) -> Optional[float]:
+) -> float | None:
     if query == value_lower:
         return weight
     if query in value_lower:
@@ -56,8 +57,8 @@ def _exact_or_contains_score(
 
 
 def _word_overlap_score(
-    query_words: Set[str],
-    value_words: Optional[Set[str]],
+    query_words: set[str],
+    value_words: set[str] | None,
     value_lower: str,
     weight: float,
 ) -> float:
@@ -71,7 +72,7 @@ def _word_overlap_score(
 
 
 def _calculate_relevance(
-    paper: Dict[str, Any], query: str, query_words: Set[str]
+    paper: dict[str, Any], query: str, query_words: set[str]
 ) -> float:
     max_score = 0.0
     search_meta = paper.get("_search_meta")
@@ -108,45 +109,45 @@ def _calculate_relevance(
 
 class PaperIndexAccessors:
     @lru_cache(maxsize=32)
-    def _search_cached(self, normalized_query: str) -> Tuple[str, ...]:
+    def _search_cached(self, normalized_query: str) -> tuple[str, ...]:
         results = _search_papers(self.papers, normalized_query)
         return tuple(url for paper in results if (url := paper.get("url")))
 
-    def _search(self, query: str) -> List[str]:
+    def _search(self, query: str) -> list[str]:
         normalized_query = query.strip().lower()
         return list(self._search_cached(normalized_query)) if normalized_query else []
 
-    def _get_by_url(self, url: str) -> Optional[Dict[str, Any]]:
+    def _get_by_url(self, url: str) -> dict[str, Any] | None:
         return self._by_url.get(url)
 
-    def _get_by_urls(self, urls: Iterable[str]) -> List[Dict[str, Any]]:
+    def _get_by_urls(self, urls: Iterable[str]) -> list[dict[str, Any]]:
         return [self._by_url[url] for url in urls if url in self._by_url]
 
-    def _get_urls_by_year(self, year: int) -> Set[str]:
+    def _get_urls_by_year(self, year: int) -> set[str]:
         return self._by_year.get(year, set())
 
-    def _get_urls_by_semester(self, semester: int) -> Set[str]:
+    def _get_urls_by_semester(self, semester: int) -> set[str]:
         return self._by_semester.get(semester, set())
 
-    def _get_urls_by_course(self, course_code: str) -> Set[str]:
+    def _get_urls_by_course(self, course_code: str) -> set[str]:
         return self._by_course.get(course_code.upper(), set())
 
-    def _get_papers_by_course(self, course_code: str) -> List[Dict[str, Any]]:
+    def _get_papers_by_course(self, course_code: str) -> list[dict[str, Any]]:
         return self._get_by_urls(self._get_urls_by_course(course_code))
 
-    def _get_urls_by_program(self, program: str) -> Set[str]:
+    def _get_urls_by_program(self, program: str) -> set[str]:
         return self._by_program.get(program, set())
 
-    def _get_urls_by_stream(self, stream: str) -> Set[str]:
+    def _get_urls_by_stream(self, stream: str) -> set[str]:
         return self._by_stream.get(stream, set())
 
-    def _get_urls_by_paper_type(self, paper_type: str) -> Set[str]:
+    def _get_urls_by_paper_type(self, paper_type: str) -> set[str]:
         return self._by_paper_type.get(paper_type, set())
 
-    def _get_urls_by_degree_type(self, degree_type: str) -> Set[str]:
+    def _get_urls_by_degree_type(self, degree_type: str) -> set[str]:
         return self._by_degree_type.get(degree_type, set())
 
-    def _get_urls_by_program_abbrev(self, program_abbrev: str) -> Set[str]:
+    def _get_urls_by_program_abbrev(self, program_abbrev: str) -> set[str]:
         return self._by_program_abbrev.get(program_abbrev.upper(), set())
 
     @property
@@ -158,35 +159,35 @@ class PaperIndexAccessors:
         return self._files_loaded
 
     @property
-    def _unique_year_values(self) -> Tuple[int, ...]:
+    def _unique_year_values(self) -> tuple[int, ...]:
         return self._cached_unique_years or ()
 
     @property
-    def _unique_semester_values(self) -> Tuple[int, ...]:
+    def _unique_semester_values(self) -> tuple[int, ...]:
         return self._cached_unique_semesters or ()
 
     @property
-    def _unique_course_code_values(self) -> Tuple[str, ...]:
+    def _unique_course_code_values(self) -> tuple[str, ...]:
         return self._cached_unique_course_codes or ()
 
     @property
-    def _unique_program_values(self) -> Tuple[str, ...]:
+    def _unique_program_values(self) -> tuple[str, ...]:
         return self._cached_unique_programs or ()
 
     @property
-    def _unique_program_abbrev_values(self) -> Tuple[str, ...]:
+    def _unique_program_abbrev_values(self) -> tuple[str, ...]:
         return self._cached_unique_program_abbrevs or ()
 
     @property
-    def _unique_paper_type_values(self) -> Tuple[str, ...]:
+    def _unique_paper_type_values(self) -> tuple[str, ...]:
         return self._cached_unique_paper_types or ()
 
     @property
-    def _unique_degree_type_values(self) -> Tuple[str, ...]:
+    def _unique_degree_type_values(self) -> tuple[str, ...]:
         return self._cached_unique_degree_types or ()
 
     @property
-    def _unique_stream_values(self) -> Tuple[str, ...]:
+    def _unique_stream_values(self) -> tuple[str, ...]:
         return self._cached_unique_streams or ()
 
     @property

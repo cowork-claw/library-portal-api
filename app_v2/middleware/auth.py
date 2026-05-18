@@ -1,7 +1,7 @@
 import logging
 import os
 import secrets
-from typing import Callable, Optional
+from collections.abc import Callable
 
 from fastapi import Request, Response, status
 from fastapi.responses import JSONResponse
@@ -30,7 +30,7 @@ API_CSP = "default-src 'self'; img-src 'self' https://libportal.manipal.edu data
 class APIKeyMiddleware(BaseHTTPMiddleware):
 
     def __init__(
-        self, app, api_key: Optional[str] = None, environment: str = "production"
+        self, app, api_key: str | None = None, environment: str = "production"
     ):
         super().__init__(app)
         keys = api_key, os.getenv(API_KEY_ENV), os.getenv(OPENCLAW_BOT_API_KEY_ENV)

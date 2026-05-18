@@ -2,7 +2,7 @@ import json
 import logging
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict, Optional, Set
+from typing import Any
 
 logger = logging.getLogger(__name__)
 
@@ -14,12 +14,12 @@ class ScrapeLog:
         self._scraped_urls_set = set(self.data.setdefault("scraped_urls", []))
         self._dirty = False
 
-    def _load(self) -> Dict[str, Any]:
+    def _load(self) -> dict[str, Any]:
         if self.log_file.exists():
             try:
                 data = json.loads(self.log_file.read_text(encoding="utf-8"))
                 return data
-            except (json.JSONDecodeError, IOError) as e:
+            except (OSError, json.JSONDecodeError) as e:
                 logger.warning(f"Error loading scrape log, creating new: {e}")
 
         return {
@@ -38,7 +38,7 @@ class ScrapeLog:
         self.log_file.write_text(json.dumps(self.data, indent=2), encoding="utf-8")
         self._dirty = False
 
-    def _get_scraped_urls(self) -> Set[str]:
+    def _get_scraped_urls(self) -> set[str]:
         return self._scraped_urls_set.copy()
 
     def _record_run(
@@ -47,7 +47,7 @@ class ScrapeLog:
         skipped: int,
         errors: int = 0,
         year_threshold: int = 2025,
-        notes: Optional[str] = None,
+        notes: str | None = None,
     ) -> None:
         run_record = {
             "timestamp": datetime.now().isoformat(),
@@ -71,7 +71,7 @@ class ScrapeLog:
         )
 
 
-def _load_existing_urls_from_organized_data(data_directory: Path) -> Set[str]:
+def _load_existing_urls_from_organized_data(data_directory: Path) -> set[str]:
     urls = set()
 
     if not data_directory.exists():

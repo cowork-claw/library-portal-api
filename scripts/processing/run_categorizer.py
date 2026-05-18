@@ -4,7 +4,7 @@ import logging
 import sys
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 # Add parent directories to path for imports
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
@@ -36,11 +36,11 @@ class StagingHandler:
             self.data = json.loads(self.staging_file.read_text(encoding="utf-8"))
         except FileNotFoundError:
             self.data = self._empty_data()
-        except (json.JSONDecodeError, IOError) as e:
+        except (OSError, json.JSONDecodeError) as e:
             logger.warning(f"Error loading staging file, creating new: {e}")
             self.data = self._empty_data()
 
-    def _empty_data(self) -> Dict[str, Any]:
+    def _empty_data(self) -> dict[str, Any]:
         return {
             "created_at": datetime.now().isoformat(),
             "description": "Papers needing manual review due to low categorization confidence",
@@ -55,10 +55,10 @@ class StagingHandler:
 
     def _add_paper(
         self,
-        paper: Dict[str, Any],
+        paper: dict[str, Any],
         confidence: float,
-        reasoning: List[str],
-        suggested_target: Optional[str] = None,
+        reasoning: list[str],
+        suggested_target: str | None = None,
     ) -> None:
         if (url := paper.get("url")) and any(
             existing.get("paper", {}).get("url") == url
@@ -97,27 +97,6 @@ class StagingHandler:
             f"Staged paper for review: {paper.get('course_code', 'UNKNOWN')} "
             f"(confidence: {confidence:.2f})"
         )
-
-    def _get_stats(self) -> Dict[str, Any]:
-        papers = self.data.get("papers", [])
-        return {
-            "total_staged": len(papers),
-            "pending_review": sum(1 for p in papers if not p.get("reviewed", False)),
-            "reviewed": sum(1 for p in papers if p.get("reviewed", False)),
-            "by_confidence": self._group_by_confidence(papers),
-        }
-
-    def _group_by_confidence(self, papers: List[Dict]) -> Dict[str, int]:
-        groups = {"high_0.5+": 0, "medium_0.3-0.5": 0, "low_<0.3": 0}
-        for p in papers:
-            conf = p.get("categorization", {}).get("confidence", 0)
-            if conf >= 0.5:
-                groups["high_0.5+"] += 1
-            elif conf >= 0.3:
-                groups["medium_0.3-0.5"] += 1
-            else:
-                groups["low_<0.3"] += 1
-        return groups
 
 
 def _record_result(stats: dict, category: str, confidence: float) -> None:
@@ -197,9 +176,13 @@ def _log_summary(stats: dict, dry_run: bool, staging_handler: StagingHandler) ->
     if dry_run:
         return
 
-    staging_stats = staging_handler._get_stats()
-    if staging_stats["pending_review"] > 0:
-        logger.warning("%s papers need manual review", staging_stats["pending_review"])
+    pending_review = sum(
+        1
+        for paper in staging_handler.data.get("papers", [])
+        if not paper.get("reviewed", False)
+    )
+    if pending_review > 0:
+        logger.warning("%s papers need manual review", pending_review)
         logger.info("   See: %s", STAGING_FILE)
 
 

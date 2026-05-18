@@ -1,5 +1,4 @@
 from pathlib import Path
-from typing import List, Optional
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -21,10 +20,10 @@ class Settings(BaseSettings):
     APP_VERSION: str = "2.0.0"
 
     # API Key for protected endpoints (set via environment variable)
-    API_SECRET_KEY: Optional[str] = None
+    API_SECRET_KEY: str | None = None
 
     # Local development defaults; production should set explicit origins.
-    CORS_ORIGINS: List[str] = [
+    CORS_ORIGINS: list[str] = [
         "http://localhost:4321",
         "http://localhost:3000",
         "http://localhost:5173",
@@ -34,13 +33,13 @@ class Settings(BaseSettings):
     ]
 
     TARGET_YEAR_THRESHOLD: int = 2024
-    BLACKLISTED_YEARS: List[int] = list(range(2006, 2024))
+    BLACKLISTED_YEARS: list[int] = list(range(2006, 2024))
 
     ENVIRONMENT: str = "development"
     DEBUG: bool = False
     LOG_LEVEL: str = "INFO"
 
-    SENTRY_DSN: Optional[str] = None
+    SENTRY_DSN: str | None = None
     SENTRY_TRACES_SAMPLE_RATE: float = 0.0
     METRICS_ENABLED: bool = False
 

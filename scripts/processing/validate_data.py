@@ -2,7 +2,7 @@ import json
 import logging
 import sys
 from pathlib import Path
-from typing import Any, Dict, List, Tuple
+from typing import Any
 
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 from config.config_v2 import settings
@@ -16,17 +16,17 @@ DATA_DIRECTORY = settings.DATA_DIRECTORY
 REQUIRED_FIELDS = {"url", "file_name", "course_code"}
 
 
-def _load_json(file_path: Path) -> Tuple[Any, List[str]]:
+def _load_json(file_path: Path) -> tuple[Any, list[str]]:
     try:
         return json.loads(file_path.read_text(encoding="utf-8")), []
     except json.JSONDecodeError as e:
         return None, [f"Invalid JSON: {e}"]
-    except IOError as e:
+    except OSError as e:
         return None, [f"Cannot read file: {e}"]
 
 
 def _validate_required_fields(
-    course_code: str, index: int, paper: Dict[str, Any], errors: List[str]
+    course_code: str, index: int, paper: dict[str, Any], errors: list[str]
 ) -> None:
     for field in REQUIRED_FIELDS:
         if field not in paper or paper[field] is None:
@@ -36,9 +36,9 @@ def _validate_required_fields(
 def _validate_unique_url(
     course_code: str,
     index: int,
-    paper: Dict[str, Any],
+    paper: dict[str, Any],
     urls_seen: set,
-    errors: List[str],
+    errors: list[str],
 ) -> None:
     if url := paper.get("url"):
         if url in urls_seen:
@@ -49,11 +49,11 @@ def _validate_unique_url(
 def _validate_int_range(
     course_code: str,
     index: int,
-    paper: Dict[str, Any],
+    paper: dict[str, Any],
     field: str,
     lower: int,
     upper: int,
-    errors: List[str],
+    errors: list[str],
 ) -> None:
     value = paper.get(field)
     if value is not None and (
@@ -65,9 +65,9 @@ def _validate_int_range(
 def _validate_paper(
     course_code: str,
     index: int,
-    paper: Dict[str, Any],
+    paper: dict[str, Any],
     urls_seen: set,
-    errors: List[str],
+    errors: list[str],
 ) -> None:
     _validate_required_fields(course_code, index, paper, errors)
     _validate_unique_url(course_code, index, paper, urls_seen, errors)
@@ -75,7 +75,7 @@ def _validate_paper(
     _validate_int_range(course_code, index, paper, "semester", 1, 10, errors)
 
 
-def _validate_json_file(file_path: Path) -> Tuple[bool, List[str]]:
+def _validate_json_file(file_path: Path) -> tuple[bool, list[str]]:
     data, errors = _load_json(file_path)
     if errors:
         return False, errors
@@ -97,7 +97,7 @@ def _validate_json_file(file_path: Path) -> Tuple[bool, List[str]]:
     return len(errors) == 0, errors
 
 
-def _new_report() -> Dict[str, Any]:
+def _new_report() -> dict[str, Any]:
     return {
         "valid": True,
         "files_checked": 0,
@@ -110,7 +110,7 @@ def _new_report() -> Dict[str, Any]:
     }
 
 
-def _count_file_papers(report: Dict[str, Any], json_file: Path) -> None:
+def _count_file_papers(report: dict[str, Any], json_file: Path) -> None:
     data, errors = _load_json(json_file)
     if errors or not isinstance(data, dict):
         return
@@ -129,7 +129,7 @@ def _count_file_papers(report: Dict[str, Any], json_file: Path) -> None:
 
 
 def _record_file_result(
-    report: Dict[str, Any], relative_path: str, is_valid: bool, errors: List[str]
+    report: dict[str, Any], relative_path: str, is_valid: bool, errors: list[str]
 ) -> None:
     if is_valid:
         report["files_valid"] += 1
@@ -146,7 +146,7 @@ def _record_file_result(
     report["file_reports"][relative_path] = {"valid": is_valid, "errors": errors}
 
 
-def _log_summary(report: Dict[str, Any]) -> None:
+def _log_summary(report: dict[str, Any]) -> None:
     logger.info("=" * 60)
     logger.info("VALIDATION SUMMARY")
     logger.info("  Files checked: %s", report["files_checked"])
@@ -161,7 +161,7 @@ def _log_summary(report: Dict[str, Any]) -> None:
     logger.info("=" * 60)
 
 
-def _validate_all(data_dir: Path = DATA_DIRECTORY) -> Dict[str, Any]:
+def _validate_all(data_dir: Path = DATA_DIRECTORY) -> dict[str, Any]:
     report = _new_report()
     if not data_dir.exists():
         logger.error("Data directory not found: %s", data_dir)

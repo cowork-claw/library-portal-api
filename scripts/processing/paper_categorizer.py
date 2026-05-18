@@ -3,18 +3,18 @@ import logging
 import re
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 AUTO_WRITE_CONFIDENCE = 0.85
 
 
 @dataclass
 class CategorizationResult:
-    target_file: Optional[Path]
+    target_file: Path | None
     confidence: float
     category: str
-    reasoning: List[str] = field(default_factory=list)
-    metadata_filled: Dict[str, Any] = field(default_factory=dict)
+    reasoning: list[str] = field(default_factory=list)
+    metadata_filled: dict[str, Any] = field(default_factory=dict)
 
 
 PREFIX_TO_BRANCH = {
@@ -50,10 +50,10 @@ MASTERS_CATEGORIES = {
 logger = logging.getLogger(__name__)
 
 
-def _write_paper_to_file(paper: Dict[str, Any], target_file: Path) -> bool:
+def _write_paper_to_file(paper: dict[str, Any], target_file: Path) -> bool:
     try:
         if target_file.exists():
-            with open(target_file, "r", encoding="utf-8") as f:
+            with open(target_file, encoding="utf-8") as f:
                 data = json.load(f)
         else:
             data = {}
@@ -85,7 +85,7 @@ class PaperCategorizer:
         self.staging_dir = staging_directory
         self.staging_dir.mkdir(parents=True, exist_ok=True)
 
-    def _normalized_course_code(self, paper: Dict[str, Any]) -> str:
+    def _normalized_course_code(self, paper: dict[str, Any]) -> str:
         course_code = str(
             paper.get("course_code", "") or paper.get("subject_code", "")
         ).upper()
@@ -95,12 +95,12 @@ class PaperCategorizer:
         prefix_match = re.match(r"^([A-Z]{2,4})", course_code)
         return prefix_match.group(1) if prefix_match else ""
 
-    def _uncertain_result(self, reasoning: List[str]) -> CategorizationResult:
+    def _uncertain_result(self, reasoning: list[str]) -> CategorizationResult:
         reasoning.append("Could not extract prefix from course code")
         return CategorizationResult(None, 0.1, "uncertain", reasoning, {})
 
     def _categorize_icas(
-        self, prefix: str, reasoning: List[str]
+        self, prefix: str, reasoning: list[str]
     ) -> CategorizationResult:
         reasoning.append(f"ICAS pattern detected: {prefix}")
         return CategorizationResult(
@@ -112,8 +112,8 @@ class PaperCategorizer:
         )
 
     def _categorize_btech_branch(
-        self, prefix: str, course_code: str, reasoning: List[str]
-    ) -> Optional[CategorizationResult]:
+        self, prefix: str, course_code: str, reasoning: list[str]
+    ) -> CategorizationResult | None:
         branch = PREFIX_TO_BRANCH.get(prefix)
         if not branch:
             return None
@@ -123,7 +123,7 @@ class PaperCategorizer:
             reasoning.append(f"Branch file not found: {branch}.json")
             return None
 
-        metadata: Dict[str, Any] = {"degree_type": "B.Tech"}
+        metadata: dict[str, Any] = {"degree_type": "B.Tech"}
         confidence = 0.85
         reasoning.append(f"Branch mapped: {prefix} → {branch}")
 
@@ -136,14 +136,14 @@ class PaperCategorizer:
             target, confidence, "btech_branch", reasoning, metadata
         )
 
-    def _categorize_other(self, reasoning: List[str]) -> CategorizationResult:
+    def _categorize_other(self, reasoning: list[str]) -> CategorizationResult:
         reasoning.append("No clear category - defaulting to other.json")
         return CategorizationResult(
             self.data_dir / "other.json", 0.5, "other", reasoning, {}
         )
 
-    def _categorize(self, paper: Dict[str, Any]) -> CategorizationResult:
-        reasoning: List[str] = []
+    def _categorize(self, paper: dict[str, Any]) -> CategorizationResult:
+        reasoning: list[str] = []
         course_code = self._normalized_course_code(paper)
         program = str(paper.get("program", "") or "")
         degree_type = str(paper.get("degree_type", "") or "")
@@ -178,7 +178,7 @@ class PaperCategorizer:
         ) or bool(re.match(r"^[A-Z]{2,4}5\d{3}$", course_code))
 
     def _categorize_masters(
-        self, program: str, degree_type: str, reasoning: List[str]
+        self, program: str, degree_type: str, reasoning: list[str]
     ) -> CategorizationResult:
         degree = (
             "MCA"
@@ -201,8 +201,8 @@ class PaperCategorizer:
         )
 
     def _check_first_year(
-        self, course_code: str, prefix: str, reasoning: List[str]
-    ) -> Optional[CategorizationResult]:
+        self, course_code: str, prefix: str, reasoning: list[str]
+    ) -> CategorizationResult | None:
         if CSS_PREFIX_PATTERN.match(course_code) or prefix == "CSS":
             result_args = (
                 "cs_stream.json",
@@ -242,7 +242,7 @@ class PaperCategorizer:
             {"degree_type": "B.Tech", "streams": [stream]},
         )
 
-    def _get_semester_from_code(self, code: str) -> Optional[int]:
+    def _get_semester_from_code(self, code: str) -> int | None:
         match = re.match(r"^[A-Z]{2,4}(\d)(\d)", code)
         if not match:
             return None

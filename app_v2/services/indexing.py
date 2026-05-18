@@ -1,8 +1,9 @@
 import logging
 from collections import defaultdict
+from collections.abc import Iterable, Mapping
 from threading import RLock
 from types import MappingProxyType
-from typing import Any, Dict, Iterable, List, Mapping, Optional, Set, Tuple
+from typing import Any
 
 from ..data_loader import DataLoader
 from .index_accessors import WORD_TOKEN_PATTERN, PaperIndexAccessors
@@ -19,9 +20,9 @@ SEARCH_META_FIELDS = (
 
 
 def _build_search_meta(
-    paper: Dict[str, Any], field_meta_cache: Optional[Dict[str, Dict[str, Any]]] = None
-) -> Dict[str, Dict[str, Any]]:
-    search_meta: Dict[str, Dict[str, Any]] = {}
+    paper: dict[str, Any], field_meta_cache: dict[str, dict[str, Any]] | None = None
+) -> dict[str, dict[str, Any]]:
+    search_meta: dict[str, dict[str, Any]] = {}
     for field in SEARCH_META_FIELDS:
         if (val := paper.get(field)) and (val_lower := str(val).lower()):
             if field_meta_cache is None:
@@ -43,51 +44,51 @@ def _build_search_meta(
 class PaperIndex(PaperIndexAccessors):
     def __init__(self):
         self._swap_lock = RLock()
-        self.papers: List[Dict[str, Any]] = []
-        self.loader: Optional[DataLoader] = None
+        self.papers: list[dict[str, Any]] = []
+        self.loader: DataLoader | None = None
 
         # Main lookup table
-        self._by_url: Dict[str, Dict] = {}
+        self._by_url: dict[str, dict] = {}
 
         # Indexes for fast lookup (storing URLs instead of full objects)
-        self._by_year: Dict[int, Set[str]] = defaultdict(set)
-        self._by_semester: Dict[int, Set[str]] = defaultdict(set)
-        self._by_course: Dict[str, Set[str]] = defaultdict(set)
-        self._by_program: Dict[str, Set[str]] = defaultdict(set)
-        self._by_stream: Dict[str, Set[str]] = defaultdict(set)
-        self._by_paper_type: Dict[str, Set[str]] = defaultdict(set)
-        self._by_degree_type: Dict[str, Set[str]] = defaultdict(set)
-        self._by_program_abbrev: Dict[str, Set[str]] = defaultdict(set)
+        self._by_year: dict[int, set[str]] = defaultdict(set)
+        self._by_semester: dict[int, set[str]] = defaultdict(set)
+        self._by_course: dict[str, set[str]] = defaultdict(set)
+        self._by_program: dict[str, set[str]] = defaultdict(set)
+        self._by_stream: dict[str, set[str]] = defaultdict(set)
+        self._by_paper_type: dict[str, set[str]] = defaultdict(set)
+        self._by_degree_type: dict[str, set[str]] = defaultdict(set)
+        self._by_program_abbrev: dict[str, set[str]] = defaultdict(set)
 
         # Unique values for metadata
-        self._unique_years: Set[int] = set()
-        self._unique_semesters: Set[int] = set()
-        self._unique_course_codes: Set[str] = set()
-        self._unique_programs: Set[str] = set()
-        self._unique_program_abbrevs: Set[str] = set()
-        self._unique_paper_types: Set[str] = set()
-        self._unique_degree_types: Set[str] = set()
-        self._unique_streams: Set[str] = set()
+        self._unique_years: set[int] = set()
+        self._unique_semesters: set[int] = set()
+        self._unique_course_codes: set[str] = set()
+        self._unique_programs: set[str] = set()
+        self._unique_program_abbrevs: set[str] = set()
+        self._unique_paper_types: set[str] = set()
+        self._unique_degree_types: set[str] = set()
+        self._unique_streams: set[str] = set()
 
         # Count aggregations
-        self._count_by_year: Dict[int, int] = {}
-        self._count_by_semester: Dict[int, int] = {}
-        self._count_by_program: Dict[str, int] = {}
-        self._count_by_program_abbrev: Dict[str, int] = {}
+        self._count_by_year: dict[int, int] = {}
+        self._count_by_semester: dict[int, int] = {}
+        self._count_by_program: dict[str, int] = {}
+        self._count_by_program_abbrev: dict[str, int] = {}
 
         # Cached sorted properties
-        self._cached_unique_years: Optional[Tuple[int, ...]] = None
-        self._cached_unique_semesters: Optional[Tuple[int, ...]] = None
-        self._cached_unique_course_codes: Optional[Tuple[str, ...]] = None
-        self._cached_unique_programs: Optional[Tuple[str, ...]] = None
-        self._cached_unique_program_abbrevs: Optional[Tuple[str, ...]] = None
-        self._cached_unique_paper_types: Optional[Tuple[str, ...]] = None
-        self._cached_unique_degree_types: Optional[Tuple[str, ...]] = None
-        self._cached_unique_streams: Optional[Tuple[str, ...]] = None
-        self._cached_count_by_year: Optional[Mapping[int, int]] = None
-        self._cached_count_by_semester: Optional[Mapping[int, int]] = None
-        self._cached_count_by_program: Optional[Mapping[str, int]] = None
-        self._cached_count_by_program_abbrev: Optional[Mapping[str, int]] = None
+        self._cached_unique_years: tuple[int, ...] | None = None
+        self._cached_unique_semesters: tuple[int, ...] | None = None
+        self._cached_unique_course_codes: tuple[str, ...] | None = None
+        self._cached_unique_programs: tuple[str, ...] | None = None
+        self._cached_unique_program_abbrevs: tuple[str, ...] | None = None
+        self._cached_unique_paper_types: tuple[str, ...] | None = None
+        self._cached_unique_degree_types: tuple[str, ...] | None = None
+        self._cached_unique_streams: tuple[str, ...] | None = None
+        self._cached_count_by_year: Mapping[int, int] | None = None
+        self._cached_count_by_semester: Mapping[int, int] | None = None
+        self._cached_count_by_program: Mapping[str, int] | None = None
+        self._cached_count_by_program_abbrev: Mapping[str, int] | None = None
 
         # Stats
         self._files_loaded: int = 0
@@ -158,7 +159,7 @@ class PaperIndex(PaperIndexAccessors):
         self._count_by_program = defaultdict(int)
         self._count_by_program_abbrev = defaultdict(int)
 
-        field_meta_cache: Dict[str, Dict[str, Any]] = {}
+        field_meta_cache: dict[str, dict[str, Any]] = {}
 
         # Build indexes and aggregations in a single pass
         for paper in self.papers:
@@ -168,11 +169,11 @@ class PaperIndex(PaperIndexAccessors):
 
     def _add_index_value(
         self,
-        index: Dict[Any, Set[str]],
-        unique_values: Set[Any],
+        index: dict[Any, set[str]],
+        unique_values: set[Any],
         url: str,
         value: Any,
-        counts: Dict[Any, int] | None = None,
+        counts: dict[Any, int] | None = None,
     ) -> None:
         if not value:
             return
@@ -198,7 +199,7 @@ class PaperIndex(PaperIndexAccessors):
         )
 
     def _index_paper(
-        self, paper: Dict[str, Any], field_meta_cache: Dict[str, Any]
+        self, paper: dict[str, Any], field_meta_cache: dict[str, Any]
     ) -> None:
         url = paper.get("url")
         if not url:
@@ -275,7 +276,7 @@ class PaperIndex(PaperIndexAccessors):
             f"{len(self._unique_streams)} streams"
         )
 
-    def _sort_and_proxy(self, data: Dict, key=None, reverse=False) -> MappingProxyType:
+    def _sort_and_proxy(self, data: dict, key=None, reverse=False) -> MappingProxyType:
         return MappingProxyType(dict(sorted(data.items(), key=key, reverse=reverse)))
 
 

@@ -2,7 +2,7 @@ import logging
 from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 import orjson
 
@@ -15,20 +15,20 @@ class LoaderStats:
     total_papers: int = 0
     unique_urls: int = 0
     files_loaded: int = 0
-    last_loaded: Optional[str] = None
-    file_stats: Dict[str, Dict[str, Any]] = field(default_factory=dict)
-    errors: List[str] = field(default_factory=list)
+    last_loaded: str | None = None
+    file_stats: dict[str, dict[str, Any]] = field(default_factory=dict)
+    errors: list[str] = field(default_factory=list)
 
 
 class DataLoader:
 
     def __init__(self, data_directory: Path):
         self.data_directory = data_directory
-        self.papers: List[Dict[str, Any]] = []
+        self.papers: list[dict[str, Any]] = []
         self.seen_urls: set[str] = set()
         self.stats = LoaderStats()
 
-    def _load_all(self) -> List[Dict[str, Any]]:
+    def _load_all(self) -> list[dict[str, Any]]:
         self.papers = []
         self.seen_urls = set()
         self.stats = LoaderStats()
@@ -57,7 +57,7 @@ class DataLoader:
         return self.papers
 
     def _add_unique_papers_from_file(
-        self, file_path: Path, data: Dict[str, Any]
+        self, file_path: Path, data: dict[str, Any]
     ) -> tuple[int, int]:
         paper_count = 0
         course_count = 0
@@ -108,5 +108,5 @@ class DataLoader:
             logger.error(f"Error loading {file_path.name}: {e}")
             self.stats.errors.append(error_msg)
 
-    def _get_stats(self) -> Dict[str, Any]:
+    def _get_stats(self) -> dict[str, Any]:
         return vars(self.stats).copy()

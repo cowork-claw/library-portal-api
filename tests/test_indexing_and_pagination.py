@@ -1,4 +1,4 @@
-from app_v2.routes.papers import _create_paginated_response, _create_pagination
+from app_v2.routes.papers import _create_paginated_response
 from app_v2.services.indexing import PaperIndex
 
 
@@ -55,12 +55,11 @@ def test_indexing_urls_and_program_abbrevs():
 
 def test_pagination_info_and_response():
     papers = _sample_papers()
-    pagination = _create_pagination(total=3, limit=2, offset=0)
-    assert pagination.total_pages == 2
-    assert pagination.has_next is True
-    assert pagination.has_prev is False
+    response = _create_paginated_response(papers, limit=2, offset=2)
 
-    response = _create_paginated_response(papers, total=3, limit=2, offset=2)
+    assert response.pagination.total_pages == 2
+    assert response.pagination.has_next is False
+    assert response.pagination.has_prev is True
     assert response.pagination.page == 2
     assert len(response.papers) == 1
 
@@ -100,7 +99,7 @@ def test_create_paginated_response_hides_internal_fields():
     papers = _sample_papers()
     papers[0]["_search_meta"] = {"course_name": {"lower": "x", "words": {"x"}}}
 
-    response = _create_paginated_response(papers, total=3, limit=1, offset=0)
+    response = _create_paginated_response(papers, limit=1, offset=0)
     serialized = response.model_dump()
 
     assert "_search_meta" not in serialized["papers"][0]

@@ -179,7 +179,7 @@ def _check_staging_health() -> ComponentHealth:
         )
 
     try:
-        with open(staging_file, "r") as f:
+        with open(staging_file) as f:
             data = json.load(f)
         count = len(data.get("papers", []))
         return ComponentHealth(

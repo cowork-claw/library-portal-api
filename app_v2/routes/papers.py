@@ -1,5 +1,5 @@
 import time
-from typing import Annotated, Any, Dict, List, Literal, Optional, Set
+from typing import Annotated, Any, Literal
 
 from fastapi import APIRouter, HTTPException, Path, Query
 from fastapi.concurrency import run_in_threadpool
@@ -11,29 +11,29 @@ from ..services.indexing import paper_index
 router = APIRouter(prefix="/api/papers", tags=["Papers"])
 
 YearFilter = Annotated[
-    Optional[int], Query(ge=2000, le=2100, description="Filter by year")
+    int | None, Query(ge=2000, le=2100, description="Filter by year")
 ]
 SemesterFilter = Annotated[
-    Optional[int], Query(ge=1, le=8, description="Filter by semester (1-8)")
+    int | None, Query(ge=1, le=8, description="Filter by semester (1-8)")
 ]
 ProgramFilter = Annotated[
-    Optional[str], Query(max_length=50, description="Filter by program")
+    str | None, Query(max_length=50, description="Filter by program")
 ]
 DegreeTypeFilter = Annotated[
-    Optional[str], Query(max_length=50, description="Filter by degree type")
+    str | None, Query(max_length=50, description="Filter by degree type")
 ]
 PaperTypeFilter = Annotated[
-    Optional[str],
+    str | None,
     Query(max_length=50, description="Filter by paper type (Regular, Makeup, etc.)"),
 ]
 CourseCodeFilter = Annotated[
-    Optional[str], Query(max_length=20, description="Filter by course code")
+    str | None, Query(max_length=20, description="Filter by course code")
 ]
 StreamFilter = Annotated[
-    Optional[str], Query(max_length=20, description="Filter by stream (cs, core)")
+    str | None, Query(max_length=20, description="Filter by stream (cs, core)")
 ]
 ProgramAbbrevFilter = Annotated[
-    Optional[str],
+    str | None,
     Query(
         min_length=1,
         max_length=20,
@@ -42,14 +42,14 @@ ProgramAbbrevFilter = Annotated[
     ),
 ]
 SearchQuery = Annotated[
-    Optional[str], Query(min_length=2, max_length=100, description="Search query")
+    str | None, Query(min_length=2, max_length=100, description="Search query")
 ]
 SortField = Annotated[
-    Optional[Literal["year", "semester", "relevance"]],
+    Literal["year", "semester", "relevance"] | None,
     Query(description="Sort field: year, semester, or relevance"),
 ]
 SortOrder = Annotated[
-    Optional[Literal["asc", "desc"]],
+    Literal["asc", "desc"] | None,
     Query(description="Sort order: asc or desc (default: desc)"),
 ]
 LimitParam = Annotated[
@@ -62,37 +62,33 @@ COURSE_OPERATION_ID = "get_papers_by_course_api_papers_course__course_code__get"
 SEMESTER_OPERATION_ID = "get_papers_by_semester_api_papers_semester__semester__get"
 
 
-def _to_public_paper(paper: Dict[str, Any]) -> Dict[str, Any]:
+def _to_public_paper(paper: dict[str, Any]) -> dict[str, Any]:
     return {k: v for k, v in paper.items() if not k.startswith("_")}
 
 
-def _create_pagination(total: int, limit: int, offset: int) -> PaginationInfo:
-    return PaginationInfo(
-        total=total,
-        limit=limit,
-        offset=offset,
-        page=(offset // limit) + 1 if limit > 0 else 1,
-        total_pages=max(1, (total + limit - 1) // limit) if limit > 0 else 1,
-        has_next=offset + limit < total,
-        has_prev=offset > 0,
-    )
-
-
 def _create_paginated_response(
-    papers: List[Dict[str, Any]],
-    total: int,
+    papers: list[dict[str, Any]],
     limit: int,
     offset: int,
-    execution_time: Optional[float] = None,
+    execution_time: float | None = None,
 ) -> PapersResponse:
     paginated = papers[offset : offset + limit]
+    total = len(papers)
 
     return PapersResponse(
         papers=[Paper(**_to_public_paper(p)) for p in paginated],
         total=total,
         limit=limit,
         offset=offset,
-        pagination=_create_pagination(total, limit, offset),
+        pagination=PaginationInfo(
+            total=total,
+            limit=limit,
+            offset=offset,
+            page=(offset // limit) + 1 if limit > 0 else 1,
+            total_pages=max(1, (total + limit - 1) // limit) if limit > 0 else 1,
+            has_next=offset + limit < total,
+            has_prev=offset > 0,
+        ),
         execution_time_ms=(
             round(execution_time, 2) if execution_time is not None else None
         ),
@@ -100,10 +96,10 @@ def _create_paginated_response(
 
 
 def _sort_papers(
-    papers: List[Dict[str, Any]],
+    papers: list[dict[str, Any]],
     sort_field: str,
     order: str,
-) -> List[Dict[str, Any]]:
+) -> list[dict[str, Any]]:
     if sort_field == "relevance":
         # Relevance order is already set by search results.
         # Reverse if ascending order is requested (relevance is naturally desc).
@@ -114,7 +110,7 @@ def _sort_papers(
     return non_null + [p for p in papers if p.get(sort_field) is None]
 
 
-def _intersect_filter_url_sets(filter_url_sets: List[Set[str]]) -> Optional[Set[str]]:
+def _intersect_filter_url_sets(filter_url_sets: list[set[str]]) -> set[str] | None:
     if not filter_url_sets:
         return None
 
@@ -125,8 +121,8 @@ def _intersect_filter_url_sets(filter_url_sets: List[Set[str]]) -> Optional[Set[
 
 
 async def _resolve_paper_results(
-    search: Optional[str], filter_urls: Optional[Set[str]]
-) -> List[Dict[str, Any]]:
+    search: str | None, filter_urls: set[str] | None
+) -> list[dict[str, Any]]:
     if search:
         search_urls = await run_in_threadpool(paper_index._search, search)
         if filter_urls is not None:
@@ -175,7 +171,7 @@ async def _get_papers(
     )
     if filter_urls is not None and not filter_urls:
         return _create_paginated_response(
-            [], 0, limit, offset, (time.time() - start_time) * 1000
+            [], limit, offset, (time.time() - start_time) * 1000
         )
 
     results = await _resolve_paper_results(search, filter_urls)
@@ -185,7 +181,7 @@ async def _get_papers(
     results = _sort_papers(results, sort_field, order if order is not None else "desc")
 
     return _create_paginated_response(
-        results, len(results), limit, offset, (time.time() - start_time) * 1000
+        results, limit, offset, (time.time() - start_time) * 1000
     )
 
 
@@ -205,7 +201,7 @@ async def _lookup_paper(
 )
 async def _get_papers_by_year(
     year: int = Path(..., ge=2000, le=2100, description="Academic Year"),
-    semester: Optional[int] = Query(None, ge=1, le=8),
+    semester: int | None = Query(None, ge=1, le=8),
     limit: int = Query(100, ge=1, le=500),
     offset: int = Query(0, ge=0),
 ) -> PapersResponse:
@@ -219,7 +215,7 @@ async def _get_papers_by_year(
         urls = urls.intersection(paper_index._get_urls_by_semester(semester))
 
     papers = paper_index._get_by_urls(urls)
-    return _create_paginated_response(papers, len(papers), limit, offset)
+    return _create_paginated_response(papers, limit, offset)
 
 
 @router.get(
@@ -253,7 +249,7 @@ async def _get_papers_by_course(
 )
 async def _get_papers_by_semester(
     semester: int = Path(..., ge=1, le=8, description="Semester (1-8)"),
-    year: Optional[int] = Query(None, ge=2000, le=2100, description="Academic Year"),
+    year: int | None = Query(None, ge=2000, le=2100, description="Academic Year"),
     limit: int = Query(100, ge=1, le=500),
     offset: int = Query(0, ge=0),
 ) -> PapersResponse:
@@ -264,4 +260,4 @@ async def _get_papers_by_semester(
         urls = urls.intersection(paper_index._get_urls_by_year(year))
 
     papers = paper_index._get_by_urls(urls)
-    return _create_paginated_response(papers, len(papers), limit, offset)
+    return _create_paginated_response(papers, limit, offset)

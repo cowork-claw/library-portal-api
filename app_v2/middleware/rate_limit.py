@@ -3,8 +3,8 @@ import logging
 import math
 import secrets
 import time
+from collections.abc import Callable, Iterable
 from dataclasses import dataclass, field
-from typing import Callable, Iterable
 
 from fastapi import Request, status
 from fastapi.responses import JSONResponse
