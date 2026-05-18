@@ -28,8 +28,7 @@ library-portal-api/
 │   │   ├── metadata.py        # GET /api/metadata, /api/statistics
 │   │   └── health.py          # Health check endpoints
 │   ├── services/              # Business logic
-│   │   ├── indexing.py        # PaperIndex class - pre-builds Dict indexes
-│   │   └── search.py          # Fuzzy search using TheFuzz
+│   │   └── indexing.py        # PaperIndex and fuzzy search helpers
 │   └── middleware/            # Authentication & Security middleware
 │       ├── auth.py            # APIKeyMiddleware - validates X-API-Key
 │       └── security.py        # SecurityHeadersMiddleware - adds CSP, HSTS, etc.
@@ -46,7 +45,6 @@ library-portal-api/
 ├── scraper/                   # Scrapy-based web scraper
 │   ├── library_scraper/       # Scrapy spider, middlewares, settings
 │   │   └── spiders/           # question_papers_enhanced.py
-│   ├── scraper_config.py      # Year thresholds (TARGET_YEAR_THRESHOLD=2024)
 │   └── scrape_log.json        # Scraping history log
 ├── scripts/                   # Utility scripts
 │   ├── add_program_abbrev.py  # Add/update program_abbrev field
@@ -178,7 +176,7 @@ Each paper object includes a `program_abbrev` field containing a short abbreviat
 - Check for duplicate papers by URL
 
 ### Scraper Configuration
-- **Target years:** 2024 and newer (configured in `scraper/scraper_config.py`)
+- **Target years:** 2024 and newer (configured in `config/config_v2.py`)
 - **Blacklisted years:** 2006-2023 (already organized, avoid re-scraping)
 - Scraper runs weekly via GitHub Actions (Sunday 2 AM UTC)
 - Manual trigger available via workflow_dispatch
@@ -246,7 +244,7 @@ Monitors the Library Portal V2 Scraper workflow and fixes failures:
 - Identifies common failure patterns:
   - KeyError: Missing expected fields in scraped data
   - TypeError: Async/sync generator issues in middlewares
-  - Configuration mismatches in scraper_config.py
+  - Configuration mismatches in `config/config_v2.py`
 - Implements targeted fixes
 - Creates a PR with the fix and references the failed run
 
@@ -287,10 +285,10 @@ Optimizes API performance (Wednesday 4 AM UTC):
 - **Tip:** When optimizing filtering logic, prefer `PaperIndex` methods that return sets of URLs (`get_urls_by_*`) over those that return full objects, to allow for efficient set intersection before object hydration.
 - **Search Optimization:** Global search results are cached using `@lru_cache` in `PaperIndex` for instant repeated queries, significantly reducing latency for common searches. The implementation uses `thefuzz` (backed by `Levenshtein`) which provides a good balance of accuracy and performance.
 - **Token Pre-computation:** Search tokens are pre-computed during indexing to avoid redundant text processing (`re.split`, `.lower()`) during search requests, reducing latency by ~24%.
-- **Early Exit Strategy:** The search service implements an optimization in `_calculate_relevance` to break the scoring loop early if a high-quality match (e.g., exact match on a high-weight field) is found, skipping redundant fuzzy matching on lower-priority fields. This improves search performance by ~49% on average.
+- **Early Exit Strategy:** Search helpers in `index_accessors.py` break the scoring loop early if a high-quality match (e.g., exact match on a high-weight field) is found, skipping redundant fuzzy matching on lower-priority fields. This improves search performance by ~49% on average.
 - **Memory Optimization:** The `DataLoader` uses a lightweight `seen_urls` set for O(1) URL deduplication instead of a dictionary mapping to full paper objects, reducing memory overhead during data loading. The `PaperIndex` service clears the `DataLoader`'s internal memory immediately after initialization to prevent data duplication. The `get_papers` route optimizes memory usage by using a direct reference to the paper list when no filters are applied, avoiding unnecessary list copying. The `PaperIndex` service also deduplicates search metadata using a Flyweight pattern (`field_meta_cache`) during initialization, reducing the overall metadata memory footprint by significantly sharing duplicate course code, name, subject, and file name metadata instances.
 - **Scraper Log Optimization:** The `ScrapeLog` class uses an in-memory set for O(1) membership lookups, significantly speeding up the scraping process when tracking seen URLs.
-- **Benchmarking:** Use `python scripts/benchmarks/benchmark_search.py`, `python scripts/benchmarks/benchmark_scrape_log.py`, and `python scripts/benchmarks/benchmark_memory.py` to verify performance improvements.
+- **Benchmarking:** Use `python scripts/benchmarks/benchmark_scrape_log.py` and `python scripts/benchmarks/benchmark_memory.py` to verify performance improvements.
 
 > ⚡ **Jules Performance Tip:** For optimizations, follow the "Turbo" methodology and reference [Copilot coding agent tips](https://gh.io/copilot-coding-agent-tips) for better collaboration.
 
@@ -343,7 +341,7 @@ Optimizes API performance (Wednesday 4 AM UTC):
 - Fallback: "UNKNOWN" if no derivation succeeds
 
 ### Updating Scraper Configuration
-1. Modify `scraper/scraper_config.py` for target years/blacklist
+1. Modify `config/config_v2.py` for target years/blacklist
 2. Update spider logic in `scraper/library_scraper/spiders/`
 3. Test locally: `cd scraper && scrapy crawl question_papers_enhanced`
 4. Verify output in `scraper/scraped_output.json`
@@ -555,7 +553,7 @@ The `PaperIndex` service pre-builds indexes for fast lookups:
 - **Code Quality:** Added missing Google-style docstrings in `app_v2/routes/papers.py` and resolved DRY violations by extracting pagination logic into `_get_papers_response_from_urls`.
 - **Models:** Updated Pydantic models in `app_v2/models.py` to V2 style (`model_config`) and added Google-style docstrings.
 - **Indexing:** Refactored `app_v2/services/indexing.py` to use correct type hints for immutable properties (`Tuple`, `Mapping`).
-- **Search:** Optimized `app_v2/services/search.py` with early filtering and extracted constants.
+- **Search:** Optimized search helpers with early filtering and extracted constants.
 - **Routes:** Refactored `app_v2/routes/papers.py` for consistent filtering logic.
 - **Data Loader:** Improved robustness in `app_v2/data_loader.py`.
 

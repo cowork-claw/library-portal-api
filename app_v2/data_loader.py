@@ -1,89 +1,44 @@
-"""
-Multi-file Data Loader for Library Portal V2
-
-Loads and aggregates papers from the organized folder structure:
-data/classified/organized/
-├── btech/branches/*.json
-├── btech/first_year/*.json
-├── masters/*.json
-├── bsc/*.json
-└── other.json
-"""
-
 import logging
 from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any
 
-try:
-    import orjson
-except ImportError:
-    import json as orjson  # type: ignore[no-redef]
+import orjson
 
 logger = logging.getLogger(__name__)
 
 
 @dataclass
-class FileStats:
-    """Statistics for a single JSON file."""
-
-    path: str
-    papers_count: int
-    courses_count: int
-    last_modified: str
-
-
-@dataclass
 class LoaderStats:
-    """Overall loader statistics."""
 
     total_papers: int = 0
     unique_urls: int = 0
     files_loaded: int = 0
-    last_loaded: Optional[str] = None
-    file_stats: Dict[str, FileStats] = field(default_factory=dict)
-    errors: List[str] = field(default_factory=list)
+    last_loaded: str | None = None
+    file_stats: dict[str, dict[str, Any]] = field(default_factory=dict)
+    errors: list[str] = field(default_factory=list)
 
 
 class DataLoader:
-    """
-    Load and aggregate papers from organized folder structure.
-
-    The data is organized as:
-    - Each JSON file contains: {course_code: [paper_objects...]}
-    - Papers are deduplicated by URL
-    - File metadata is tracked for health checks
-    """
 
     def __init__(self, data_directory: Path):
         self.data_directory = data_directory
-        self.papers: List[Dict[str, Any]] = []
+        self.papers: list[dict[str, Any]] = []
         self.seen_urls: set[str] = set()
         self.stats = LoaderStats()
 
-    def load_all(self) -> List[Dict[str, Any]]:
-        """
-        Load all papers from organized JSON files.
-
-        Returns:
-            List of all paper dictionaries, deduplicated by URL
-        """
+    def _load_all(self) -> list[dict[str, Any]]:
         self.papers = []
         self.seen_urls = set()
         self.stats = LoaderStats()
 
         if not self.data_directory.exists():
             logger.warning("Data directory not found: %s", self.data_directory.name)
-            self.stats.errors.append(
-                "Data directory not found: <data directory does not exist>"
-            )
+            self.stats.errors.append("Data directory not found")
             return []
 
-        json_files = list(self.data_directory.rglob("*.json"))
-        logger.info(f"Found {len(json_files)} JSON files to load")
-
-        for json_file in json_files:
+        for json_file in self.data_directory.rglob("*.json"):
             self._load_file(json_file)
 
         self.stats.total_papers = len(self.papers)
@@ -99,78 +54,47 @@ class DataLoader:
 
         return self.papers
 
-    def _load_file(self, file_path: Path) -> None:
-        """Load papers from a single JSON file."""
-        try:
-            with open(file_path, "rb") as f:
-                data = orjson.loads(f.read())
-
-            # Papers added from this file (might be duplicates of papers in other files)
-            # but we track how many we *processed* from this file that were unique so far.
-            paper_count = 0
-            course_count = 0
-
-            # Data format: {course_code: [papers...]}
-            for course_code, papers_list in data.items():
-                if not isinstance(papers_list, list):
-                    logger.warning(
-                        f"Invalid format in {file_path.name}: {course_code} is not a list"
-                    )
-                    continue
-
-                course_count += 1
-
-                for paper in papers_list:
-                    # Deduplicate by URL
-                    url = paper.get("url")
-                    if url and url not in self.seen_urls:
-                        self.papers.append(paper)
-                        self.seen_urls.add(url)
-                        paper_count += 1
-
-            # Track file stats
-            try:
-                relative_path = str(file_path.relative_to(self.data_directory))
-            except ValueError:
-                relative_path = file_path.name
-                logger.debug(
-                    f"Could not determine relative path for {file_path}, using filename only"
+    def _add_unique_papers_from_file(
+        self, file_path: Path, data: dict[str, Any]
+    ) -> tuple[int, int]:
+        paper_count = course_count = 0
+        for course_code, papers_list in data.items():
+            if not isinstance(papers_list, list):
+                logger.warning(
+                    f"Invalid format in {file_path.name}: {course_code} is not a list"
                 )
+                continue
 
-            self.stats.file_stats[relative_path] = FileStats(
-                path=str(file_path),
-                papers_count=paper_count,
-                courses_count=course_count,
-                last_modified=datetime.fromtimestamp(
+            course_count += 1
+            for paper in papers_list:
+                if (url := paper.get("url")) and url not in self.seen_urls:
+                    self.papers.append(paper)
+                    self.seen_urls.add(url)
+                    paper_count += 1
+
+        return paper_count, course_count
+
+    def _load_file(self, file_path: Path) -> None:
+        try:
+            data = orjson.loads(file_path.read_bytes())
+            paper_count, course_count = self._add_unique_papers_from_file(
+                file_path, data
+            )
+            relative_path = str(file_path.relative_to(self.data_directory))
+            self.stats.file_stats[relative_path] = {
+                "papers": paper_count,
+                "courses": course_count,
+                "modified": datetime.fromtimestamp(
                     file_path.stat().st_mtime
                 ).isoformat(),
-            )
-
-            logger.debug(f"Loaded {paper_count} papers from {relative_path}")
-
+            }
         except orjson.JSONDecodeError as e:
-            error_msg = f"Invalid JSON in {file_path.name}: {e.__class__.__name__}"
             logger.error(f"Invalid JSON in {file_path.name}: {e}")
-            self.stats.errors.append(error_msg)
+            self.stats.errors.append(
+                f"Invalid JSON in {file_path.name}: {e.__class__.__name__}"
+            )
         except Exception as e:
-            error_msg = f"Error loading {file_path.name}: {e.__class__.__name__}"
             logger.error(f"Error loading {file_path.name}: {e}")
-            self.stats.errors.append(error_msg)
-
-    def get_stats(self) -> Dict[str, Any]:
-        """Get statistics about loaded data."""
-        return {
-            "total_papers": self.stats.total_papers,
-            "unique_urls": self.stats.unique_urls,
-            "files_loaded": self.stats.files_loaded,
-            "last_loaded": self.stats.last_loaded,
-            "errors": self.stats.errors,
-            "file_stats": {
-                path: {
-                    "papers": stats.papers_count,
-                    "courses": stats.courses_count,
-                    "modified": stats.last_modified,
-                }
-                for path, stats in self.stats.file_stats.items()
-            },
-        }
+            self.stats.errors.append(
+                f"Error loading {file_path.name}: {e.__class__.__name__}"
+            )

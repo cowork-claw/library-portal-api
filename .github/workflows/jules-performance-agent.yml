@@ -69,8 +69,7 @@ jobs:
             │   ├── main.py             # FastAPI app, lifespan loads ~3000+ papers at startup
             │   ├── data_loader.py      # Loads JSON files from data/classified/organized/
             │   ├── services/
-            │   │   ├── indexing.py     # PaperIndex class - pre-builds Dict indexes for O(1) lookups
-            │   │   └── search.py       # Fuzzy search using TheFuzz library
+            │   │   └── indexing.py     # PaperIndex and fuzzy search helpers
             │   └── routes/
             │       ├── papers.py       # GET /api/papers with filtering & pagination
             │       └── metadata.py     # GET /api/metadata, /api/statistics
@@ -85,8 +84,8 @@ jobs:
             ## Optimization Process
 
             1. 🔍 PROFILE — Measure current performance with a concrete benchmark:
-               `python scripts/benchmarks/benchmark_search.py` or
-               `python scripts/benchmarks/benchmark_memory.py`
+               `python scripts/benchmarks/benchmark_memory.py` or
+               `python scripts/benchmarks/benchmark_scrape_log.py`
             2. ⚡ SELECT — Pick a bottleneck that is measurably slow (>10ms or >1MB)
             3. 🔧 OPTIMIZE — Implement with before/after measurements
             4. ✅ VERIFY — Run benchmarks again, confirm measurable improvement

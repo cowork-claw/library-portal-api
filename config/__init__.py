@@ -1,7 +1,5 @@
-"""
-Config package for Library Portal API V2
-"""
+"""Configuration package."""
 
-from .config_v2 import get_settings, settings
+from .config_v2 import settings
 
-__all__ = ["settings", "get_settings"]
+__all__ = ["settings"]

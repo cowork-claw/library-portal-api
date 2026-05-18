@@ -342,11 +342,11 @@ class TestDataLoaderUnit:
     """Unit tests for DataLoader class."""
 
     def test_missing_directory_returns_empty(self, tmp_path):
-        """DataLoader.load_all() should return [] when directory doesn't exist."""
+        """DataLoader._load_all() should return [] when directory doesn't exist."""
         from app_v2.data_loader import DataLoader
 
         loader = DataLoader(tmp_path / "nonexistent")
-        result = loader.load_all()
+        result = loader._load_all()
         assert result == []
         assert loader.stats.errors
         # Error should not contain absolute path
@@ -354,11 +354,11 @@ class TestDataLoaderUnit:
             assert str(tmp_path) not in err
 
     def test_empty_directory_returns_empty(self, tmp_path):
-        """DataLoader.load_all() should return [] when directory is empty."""
+        """DataLoader._load_all() should return [] when directory is empty."""
         from app_v2.data_loader import DataLoader
 
         loader = DataLoader(tmp_path)
-        result = loader.load_all()
+        result = loader._load_all()
         assert result == []
 
     def test_corrupt_file_records_error(self, tmp_path):
@@ -367,7 +367,7 @@ class TestDataLoaderUnit:
 
         _write_corrupt_json(tmp_path)
         loader = DataLoader(tmp_path)
-        result = loader.load_all()
+        result = loader._load_all()
         assert result == []
         assert len(loader.stats.errors) == 1
         assert "corrupt.json" in loader.stats.errors[0]
@@ -378,7 +378,7 @@ class TestDataLoaderUnit:
 
         _write_valid_json(tmp_path)
         loader = DataLoader(tmp_path)
-        result = loader.load_all()
+        result = loader._load_all()
         assert len(result) == 1
         assert result[0]["url"] == "https://example.com/paper1.pdf"
 
@@ -389,7 +389,7 @@ class TestDataLoaderUnit:
         _write_valid_json(tmp_path)
         _write_corrupt_json(tmp_path)
         loader = DataLoader(tmp_path)
-        result = loader.load_all()
+        result = loader._load_all()
         assert len(result) == 1
         assert len(loader.stats.errors) == 1
 
@@ -399,7 +399,7 @@ class TestDataLoaderUnit:
 
         _write_corrupt_json(tmp_path, "bad.json")
         loader = DataLoader(tmp_path)
-        loader.load_all()
+        loader._load_all()
         for err in loader.stats.errors:
             # Check that absolute path is not present
             assert str(tmp_path) not in err, f"Error leaks absolute path: {err}"

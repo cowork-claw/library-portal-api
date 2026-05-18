@@ -1,4 +1,4 @@
-from app_v2.services.search import search_papers
+from app_v2.services.index_accessors import _search_papers
 
 
 def _sample_papers():
@@ -23,18 +23,18 @@ def _sample_papers():
 
 
 def test_search_papers_exact_match():
-    results = search_papers(_sample_papers(), "CS101")
+    results = _search_papers(_sample_papers(), "CS101")
     assert results
     assert results[0]["course_code"] == "CS101"
 
 
 def test_search_papers_contains_match():
-    results = search_papers(_sample_papers(), "calcul")
+    results = _search_papers(_sample_papers(), "calcul")
     assert any(p["course_code"] == "MA201" for p in results)
 
 
 def test_search_papers_no_match_returns_empty():
-    results = search_papers(_sample_papers(), "zzzzzz")
+    results = _search_papers(_sample_papers(), "zzzzzz")
     assert results == []
 
 
@@ -52,17 +52,17 @@ def test_search_papers_uses_precomputed_meta():
         }
     ]
 
-    results = search_papers(papers, "algorithms")
+    results = _search_papers(papers, "algorithms")
     assert len(results) == 1
     assert results[0]["url"] == "u-meta"
 
 
 def test_search_papers_punctuation_query_returns_empty():
-    results = search_papers(_sample_papers(), "!!!")
+    results = _search_papers(_sample_papers(), "!!!")
     assert results == []
 
 
 def test_search_papers_whitespace_query_returns_original_list():
     papers = _sample_papers()
-    results = search_papers(papers, "   ")
+    results = _search_papers(papers, "   ")
     assert results is papers

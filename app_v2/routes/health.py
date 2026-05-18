@@ -1,9 +1,3 @@
-"""
-Health Routes for Library Portal API V2
-
-Comprehensive health check endpoints for monitoring system status.
-"""
-
 import json
 import logging
 import os
@@ -32,27 +26,26 @@ router = APIRouter(prefix="/health", tags=["Health"])
 
 # Track application start time
 APP_START_TIME = datetime.now()
+DATA_HEALTH_OPERATION_ID = "data_health_health_data_get"
+SCRAPER_HEALTH_OPERATION_ID = "scraper_health_health_scraper_get"
 
 
-@router.get("", response_model=HealthResponse)
-async def health_check() -> HealthResponse:
-    """
-    Basic health check endpoint.
-
-    Returns overall system health status with component breakdown.
-    """
-    uptime = (datetime.now() - APP_START_TIME).total_seconds()
-
+@router.get("", response_model=HealthResponse, operation_id="health_check_health_get")
+async def _health_check() -> HealthResponse:
+    """Return overall system health with component statuses."""
     # Check data component — "degraded" when no data (not "unhealthy")
-    data_healthy = paper_index.total_papers > 0
+    data_healthy = paper_index._paper_count > 0
     data_status = ComponentHealth(
         status="healthy" if data_healthy else "degraded",
         message=(
-            f"Loaded {paper_index.total_papers} papers"
+            f"Loaded {paper_index._paper_count} papers"
             if data_healthy
             else "No papers loaded"
         ),
-        details={"total": paper_index.total_papers, "files": paper_index.files_loaded},
+        details={
+            "total": paper_index._paper_count,
+            "files": paper_index._loaded_file_count,
+        },
     )
 
     # Check scraper log
@@ -61,18 +54,17 @@ async def health_check() -> HealthResponse:
     # Check staging
     staging_status = await run_in_threadpool(_check_staging_health)
 
-    # Overall status
-    overall = "healthy"
-    if not data_healthy:
-        overall = "degraded"
-    elif scraper_status.status != "healthy":
-        overall = "degraded"
+    overall = (
+        "degraded"
+        if not data_healthy or scraper_status.status != "healthy"
+        else "healthy"
+    )
 
     return HealthResponse(
         status=overall,
         timestamp=datetime.now().isoformat(),
         version=settings.APP_VERSION,
-        uptime_seconds=round(uptime, 2),
+        uptime_seconds=round((datetime.now() - APP_START_TIME).total_seconds(), 2),
         components={
             "data": data_status,
             "scraper": scraper_status,
@@ -81,35 +73,33 @@ async def health_check() -> HealthResponse:
     )
 
 
-@router.get("/data", response_model=DataHealthResponse)
-async def data_health() -> DataHealthResponse:
-    """
-    Detailed data health check.
-
-    Returns comprehensive information about loaded papers and data integrity.
-    """
-    loader_stats = paper_index.loader.get_stats() if paper_index.loader else {}
+@router.get(
+    "/data", response_model=DataHealthResponse, operation_id=DATA_HEALTH_OPERATION_ID
+)
+async def _data_health() -> DataHealthResponse:
+    """Return loaded paper and data integrity status."""
+    loader_stats = vars(paper_index.loader.stats) if paper_index.loader else {}
 
     return DataHealthResponse(
-        status="healthy" if paper_index.total_papers > 0 else "degraded",
-        total_papers=paper_index.total_papers,
+        status="healthy" if paper_index._paper_count > 0 else "degraded",
+        total_papers=paper_index._paper_count,
         unique_urls=loader_stats.get("unique_urls", 0),
-        files_loaded=paper_index.files_loaded,
-        courses_count=len(paper_index.unique_course_codes),
+        files_loaded=paper_index._loaded_file_count,
+        courses_count=len(paper_index._unique_course_code_values),
         last_loaded=loader_stats.get("last_loaded"),
         errors=loader_stats.get("errors", []),
-        papers_by_year=dict(paper_index.count_by_year),
-        papers_by_program=dict(paper_index.count_by_program),
+        papers_by_year=dict(paper_index._count_by_year_values),
+        papers_by_program=dict(paper_index._count_by_program_values),
     )
 
 
-@router.get("/scraper", response_model=ScraperHealthResponse)
-async def scraper_health() -> ScraperHealthResponse:
-    """
-    Scraper health check.
-
-    Returns scraper run history and configuration.
-    """
+@router.get(
+    "/scraper",
+    response_model=ScraperHealthResponse,
+    operation_id=SCRAPER_HEALTH_OPERATION_ID,
+)
+async def _scraper_health() -> ScraperHealthResponse:
+    """Return scraper run history and configuration status."""
     log_data = await run_in_threadpool(_load_scrape_log)
 
     runs = log_data.get("runs", [])
@@ -131,17 +121,10 @@ async def scraper_health() -> ScraperHealthResponse:
     "/data/reload",
     response_model=ReloadResponse,
     status_code=status.HTTP_202_ACCEPTED,
+    operation_id="reload_data_health_data_reload_post",
 )
-async def reload_data(background_tasks: BackgroundTasks) -> ReloadResponse:
-    """
-    Trigger a background reload of JSON data.
-
-    Requires API key authentication. Returns immediately with a unique
-    ``reload_id`` and schedules the reload as a FastAPI background task.
-
-    Returns:
-        ReloadResponse: Contains ``reload_id`` and a status message.
-    """
+async def _reload_data(background_tasks: BackgroundTasks) -> ReloadResponse:
+    """Schedule a background JSON data reload."""
     reload_id = str(uuid.uuid4())
     # Read DATA_DIRECTORY directly from env so reload always uses the current
     # value, even if the module-level ``settings`` is stale after tests reload
@@ -152,49 +135,24 @@ async def reload_data(background_tasks: BackgroundTasks) -> ReloadResponse:
 
     background_tasks.add_task(_do_reload, reload_id, data_directory)
 
-    return ReloadResponse(
-        reload_id=reload_id,
-        message="Reload started",
-    )
+    return ReloadResponse(reload_id=reload_id, message="Reload started")
 
 
 def _do_reload(reload_id: str, data_directory) -> None:
-    """Perform the actual data reload.
-
-    Runs as a background task. Creates a new DataLoader, loads data from
-    disk, and atomically swaps the index. Existing requests continue
-    against the old index until the swap is complete.
-
-    Args:
-        reload_id: Unique identifier for this reload operation.
-        data_directory: Path to the data directory to reload from.
-    """
     try:
-        paper_index.reload_from_directory(DataLoader(data_directory))
+        paper_index._reload_from_directory(DataLoader(data_directory))
         logger.info(
-            "Reload %s complete: %d papers loaded",
-            reload_id,
-            paper_index.total_papers,
+            "Reload %s complete: %d papers loaded", reload_id, paper_index._paper_count
         )
     except Exception:
         logger.exception("Reload %s failed", reload_id)
 
 
 def _check_scraper_health() -> ComponentHealth:
-    """
-    Check the health of the scraper component.
-
-    Reads the latest scraper log to determine status and last run time.
-
-    Returns:
-        ComponentHealth: Health status object for the scraper.
-    """
     log_data = _load_scrape_log()
 
     if not log_data:
-        return ComponentHealth(
-            status="unknown", message="No scrape log found", details=None
-        )
+        return ComponentHealth(status="unknown", message="No scrape log found")
 
     runs = log_data.get("runs", [])
     if not runs:
@@ -213,14 +171,6 @@ def _check_scraper_health() -> ComponentHealth:
 
 
 def _check_staging_health() -> ComponentHealth:
-    """
-    Check the health of the staging area.
-
-    Verifies if there are any papers pending review in the staging file.
-
-    Returns:
-        ComponentHealth: Health status object for the staging component.
-    """
     staging_file = settings.STAGING_DIRECTORY / "pending_review.json"
 
     if not staging_file.exists():
@@ -229,9 +179,8 @@ def _check_staging_health() -> ComponentHealth:
         )
 
     try:
-        with open(staging_file, "r") as f:
+        with open(staging_file) as f:
             data = json.load(f)
-
         count = len(data.get("papers", []))
         return ComponentHealth(
             status="healthy",
@@ -243,22 +192,11 @@ def _check_staging_health() -> ComponentHealth:
         return ComponentHealth(
             status="degraded",
             message=f"Error reading staging file: {e.__class__.__name__}",
-            details=None,
         )
 
 
 def _load_scrape_log() -> dict:
-    """
-    Load the scraper log file safely.
-
-    Returns:
-        dict: The content of the scraper log, or an empty dict if
-              the file doesn't exist or is invalid.
-    """
     try:
-        if settings.SCRAPE_LOG_FILE.exists():
-            with open(settings.SCRAPE_LOG_FILE, "r") as f:
-                return json.load(f)
+        return json.loads(settings.SCRAPE_LOG_FILE.read_text())
     except Exception:
-        pass
-    return {}
+        return {}

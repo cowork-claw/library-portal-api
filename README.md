@@ -166,7 +166,7 @@ The scraper runs weekly via GitHub Actions, fetching new papers (2024+).
 cd scraper && scrapy crawl question_papers_enhanced
 ```
 
-Configuration: `scraper/scraper_config.py`
+Configuration: `config/config_v2.py` (`TARGET_YEAR_THRESHOLD`, `BLACKLISTED_YEARS`)
 
 - Target: 2024+ papers only
 - Blacklist: 2006-2023 (already organized)
@@ -206,8 +206,7 @@ To measure the performance of key endpoints and optimizations:
 # Run year filter benchmark
 python scripts/benchmarks/benchmark_year_filter.py
 
-# Run search benchmark
-python scripts/benchmarks/benchmark_search.py
+
 
 # Run scraper log benchmark
 python scripts/benchmarks/benchmark_scrape_log.py

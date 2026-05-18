@@ -60,11 +60,11 @@ jobs:
             │   ├── models.py             # Pydantic models (Paper, CurriculumContext, responses)
             │   ├── data_loader.py        # JSON data loading
             │   ├── routes/               # API endpoints (papers.py, metadata.py, health.py, metrics.py)
-            │   ├── services/             # Business logic (indexing.py, search.py)
+            │   ├── services/             # Business logic (indexing.py)
             │   └── middleware/auth.py    # API key authentication
             ├── scraper/                   # Scrapy web scraper
             │   ├── library_scraper/      # Spider, middlewares, settings
-            │   └── scraper_config.py     # Year thresholds (TARGET_YEAR_THRESHOLD=2024)
+            │   └── ../config/config_v2.py # Year thresholds (TARGET_YEAR_THRESHOLD=2024)
             ├── scripts/processing/        # Data processing
             │   ├── paper_categorizer.py  # Categorization logic with confidence scoring
             │   ├── validate_data.py      # Data integrity validation
