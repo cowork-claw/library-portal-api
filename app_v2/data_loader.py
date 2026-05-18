@@ -35,9 +35,7 @@ class DataLoader:
 
         if not self.data_directory.exists():
             logger.warning("Data directory not found: %s", self.data_directory.name)
-            self.stats.errors.append(
-                "Data directory not found: <data directory does not exist>"
-            )
+            self.stats.errors.append("Data directory not found")
             return []
 
         for json_file in self.data_directory.rglob("*.json"):
@@ -59,8 +57,7 @@ class DataLoader:
     def _add_unique_papers_from_file(
         self, file_path: Path, data: dict[str, Any]
     ) -> tuple[int, int]:
-        paper_count = 0
-        course_count = 0
+        paper_count = course_count = 0
         for course_code, papers_list in data.items():
             if not isinstance(papers_list, list):
                 logger.warning(
@@ -84,13 +81,7 @@ class DataLoader:
             paper_count, course_count = self._add_unique_papers_from_file(
                 file_path, data
             )
-            if file_path.is_relative_to(self.data_directory):
-                relative_path = str(file_path.relative_to(self.data_directory))
-            else:
-                logger.debug(
-                    f"Could not determine relative path for {file_path}, using filename only"
-                )
-                relative_path = file_path.name
+            relative_path = str(file_path.relative_to(self.data_directory))
             self.stats.file_stats[relative_path] = {
                 "papers": paper_count,
                 "courses": course_count,
