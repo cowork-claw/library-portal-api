@@ -23,5 +23,6 @@ DEP002 = [
   "python-multipart",
   "requests",
   "ruff",
+  "uvicorn",
   "vulture",
 ]
