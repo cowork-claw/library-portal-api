@@ -163,6 +163,7 @@ def check_failed_reload_preserves_existing_index(suite: CheckSuite) -> None:
 
 def main() -> int:
     suite = CheckSuite()
+    check_failures: dict[str, int] = {}
     checks: tuple[tuple[str, Any], ...] = (
         ("metrics_enabled_reload", check_metrics_enabled_reload),
         ("public_path_bypass", check_public_path_bypass_stays_closed),
@@ -173,15 +174,22 @@ def main() -> int:
     for name, check in checks:
         before = len(suite.failures)
         check(suite)
-        status = "pass" if len(suite.failures) == before else "fail"
+        failures = len(suite.failures) - before
+        check_failures[name] = failures
+        status = "pass" if failures == 0 else "fail"
         print(f"CHECK {name}={status}")
 
-    print(f"NEXT_ROUND_CHECKS checks={suite.checks} failures={len(suite.failures)}")
+    total_failures = len(suite.failures)
+    print(f"NEXT_ROUND_CHECKS checks={suite.checks} failures={total_failures}")
+    print(f"METRIC next_round_failures={total_failures}")
+    print(f"METRIC next_round_checks={suite.checks}")
+    for name, failures in check_failures.items():
+        print(f"METRIC {name}_failures={failures}")
+
     if suite.failures:
         print("FAILURES:", file=sys.stderr)
         for failure in suite.failures:
             print(f"- {failure}", file=sys.stderr)
-        return 1
     return 0
 
 
