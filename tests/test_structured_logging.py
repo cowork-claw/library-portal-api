@@ -26,8 +26,8 @@ from app_v2.middleware.structured_logging import (
     RequestIDMiddleware,
     StructuredJSONFormatter,
     StructuredLoggingMiddleware,
-    current_request_id,
     _setup_structured_logging,
+    current_request_id,
 )
 
 API_KEY = "test-key"

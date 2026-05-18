@@ -1,13 +1,16 @@
+import sys
 import tempfile
 import time
 from pathlib import Path
-import sys
 
 ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from scraper.scrape_log import ScrapeLog, _load_existing_urls_from_organized_data
+from scraper.scrape_log import (  # noqa: E402
+    ScrapeLog,
+    _load_existing_urls_from_organized_data,
+)
 
 
 def benchmark_scrape_log():
