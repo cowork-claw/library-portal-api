@@ -1,0 +1,54 @@
+# Qodo (PR-Agent) Configuration
+# https://docs.qodo.ai/v1/configuration/configuration-file
+#
+# This file configures Qodo's code review behavior for this repository.
+# Keep it minimal — only override settings that differ from defaults.
+
+[pr_reviewer]
+# Extra instructions for the review agent
+extra_instructions = """
+## Project Context
+This is a FastAPI service (Python 3.12+) serving library question papers from JSON data.
+The app uses a layered architecture: routes → services → middleware → data_loader.
+
+## Architecture Notes
+- Middleware stack in app_v2/main.py is intentionally ordered. In FastAPI, middleware
+  added last executes first (outermost). Do NOT suggest reordering middleware — each
+  layer's position is documented with inline comments.
+- PaperIndex uses @lru_cache for fuzzy search and URL-set intersections for filtering.
+- Only /, /docs, /redoc, /openapi.json, /health are public. All /api/* routes require
+  X-API-Key authentication.
+
+## Anti-Patterns (Do NOT Flag)
+1. Dependency versions: Never flag package version numbers as invalid. Dependabot
+   manages all dependency updates. If a version is in requirements.txt, it is valid.
+2. Middleware registration order: The order is intentional. Do not suggest reordering.
+3. Pydantic version ranges: This project intentionally uses >= ranges for pydantic.
+   Do not suggest pinning to exact versions.
+4. Rate limiter memory: The _FixedWindow cleanup with _prune_windows() and
+   _evict_oldest_if_full() already handles stale entries. Do not suggest external caches.
+5. Compression middleware streaming: This API only serves JSON. Do not suggest
+   streaming compression for hypothetical large-file scenarios.
+6. Speculative architecture: Do not suggest refactoring or restructuring unless you
+   can identify a concrete bug or security vulnerability.
+
+## Focus Areas
+- Security vulnerabilities (injection, auth bypass, data exposure)
+- Logic errors and correctness bugs
+- Edge case handling and error propagation
+- Missing or incorrect type hints on public API boundaries
+
+## Style
+- Formatting is handled by Black (88 char line length). Do not comment on formatting.
+- Linting is handled by ruff. Do not duplicate linter findings.
+"""
+
+# Review behavior
+num_code_suggestions = 8
+inline_code_comments = true
+require_tests_review = false
+ask_and_debug = false
+
+[config]
+# Show relevant configuration in review output for transparency
+output_relevant_configurations = false

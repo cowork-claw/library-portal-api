@@ -1,446 +1,73 @@
-"""
-Paper Categorizer for Library Portal V2
-
-Intelligent categorization of scraped papers into the organized folder structure.
-Uses course code patterns and program information to determine target file.
-
-Key features:
-- 2024+ two-track first year detection (CS vs Core)
-- Confidence scoring for auto-write vs staging
-- CSS prefix handling for new curriculum
-"""
-
 import json
 import logging
 import re
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any
 
-logger = logging.getLogger(__name__)
+AUTO_WRITE_CONFIDENCE = 0.85
 
 
 @dataclass
 class CategorizationResult:
-    """Result of categorizing a single paper."""
-
-    target_file: Optional[Path]
+    target_file: Path | None
     confidence: float
-    category: str  # 'btech_branch', 'first_year_cs', 'first_year_core', 'masters', 'bsc', 'other', 'uncertain'
-    reasoning: List[str] = field(default_factory=list)
-    metadata_filled: Dict[str, Any] = field(default_factory=dict)
-
-    @property
-    def should_auto_write(self) -> bool:
-        """Papers with >=0.85 confidence are auto-written."""
-        return self.confidence >= 0.85
+    category: str
+    reasoning: list[str] = field(default_factory=list)
+    metadata_filled: dict[str, Any] = field(default_factory=dict)
 
 
-# =============================================================================
-# MAPPINGS (from REMOVED_SCRIPTS_LOG.md + 2024+ curriculum)
-# =============================================================================
-
-# Course code prefix to branch mapping
 PREFIX_TO_BRANCH = {
     "AAE": "Aeronautical",
     "BME": "Biomedical",
     "BIO": "Biotechnology",
     "CHE": "Chemical",
     "CIV": "Civil",
-    "CSE": "CSE",
-    "DSE": "CSE",  # Data Science -> CSE
+    **dict.fromkeys(("CSE", "DSE", "ICT", "CSS"), "CSE"),
     "ECE": "ECE",
-    "EEE": "EEE",
-    "ELE": "EEE",  # Electrical -> EEE
+    **dict.fromkeys(("EEE", "ELE"), "EEE"),
     "ICE": "EIE",
-    "ICT": "CSE",  # ICT -> CSE
     "IND": "Industrial",
     "INF": "IT",
-    "MEC": "Mechanical",
-    "MME": "Mechanical",  # Mechanical Manufacturing
+    **dict.fromkeys(("MEC", "MME"), "Mechanical"),
     "MTE": "Mechatronics",
     "MED": "MediaPrint",
-    # 2024+ CS Stream new prefix
-    "CSS": "CSE",
 }
 
-# First year prefixes (Core stream - 2022-2023 all branches, 2024+ non-CS only)
-FIRST_YEAR_CORE_PREFIXES = {
-    "MAT",
-    "PHY",
-    "CHM",
-    "HUM",
-    "CIE",
-    "MME",
-    "IPE",
-    "BIO",
-    "EEE",
-    "ELE",
-}
-
-# First year prefixes (CS stream - 2024+ only)
-FIRST_YEAR_CS_PREFIXES = {"MAT", "PHY", "CHM", "HUM", "CIV", "MME", "CSS", "ECE", "ELE"}
-
-# =============================================================================
-# PATTERNS (2024+ Two-Track System)
-# =============================================================================
-
-# CS Stream (2024+): Codes ending in 0X (01, 02, 03, etc.) in first year
-# Examples: MAT1102, PHY1002, CSS1001, CSS1011, ECE1002, HUM1001
+FIRST_YEAR_PREFIX_PATTERN = re.compile(
+    r"^(MAT|PHY|CHM|HUM|CIE|MME|IPE|BIO|EEE|ELE|CIV|CSS|ECE)$"
+)
 CS_STREAM_PATTERN = re.compile(r"^[A-Z]{2,3}1[0-2]0[0-9]$")
-
-# CSS prefix is ALWAYS CS stream (2024+ only)
 CSS_PREFIX_PATTERN = re.compile(r"^CSS\d{4}$")
-
-# Core Stream (Non-CS): Codes ending in 71/72 pattern
-# Examples: MAT1171, MAT1271, PHY1071, CSE1071, HUM1071, EEE1071
 CORE_STREAM_PATTERN = re.compile(r"^[A-Z]{2,3}1[0-2]7[12]$")
+ICAS_PREFIXES = {"ICS", "IMA", "IPH", "ICH", "IBI"}
+MASTERS_CATEGORIES = {
+    "MCA": ("mca.json", 0.9, "MCA program detected"),
+    "M.E": ("me.json", 0.9, "M.E program detected"),
+    "M.Tech": ("mtech.json", 0.85, "M.Tech program detected (default masters)"),
+}
 
-# ICAS (B.Sc) pattern - starts with I but not ICE, ICT, IND, INF
-ICAS_PREFIXES = {"ICS", "IMA", "IPH", "ICH", "IBI"}  # ICAS-specific prefixes
-
-
-class PaperCategorizer:
-    """
-    Categorizes papers into the organized folder structure.
-
-    Uses course code patterns and program information to determine:
-    1. Target JSON file
-    2. Confidence score
-    3. Any metadata that can be auto-filled
-    """
-
-    def __init__(self, data_directory: Path, staging_directory: Path) -> None:
-        """
-        Initialize the PaperCategorizer.
-
-        Args:
-            data_directory: Path to the organized data folder.
-            staging_directory: Path to the folder for papers needing review.
-        """
-        self.data_dir = data_directory
-        self.staging_dir = staging_directory
-        self.staging_dir.mkdir(parents=True, exist_ok=True)
-
-    def categorize(self, paper: Dict[str, Any]) -> CategorizationResult:
-        """
-        Determine the correct file for a paper and calculate confidence.
-
-        Args:
-            paper: Paper dictionary from scraper
-
-        Returns:
-            CategorizationResult with target file, confidence, and reasoning
-        """
-        reasoning = []
-        confidence = 0.0
-        metadata = {}
-
-        course_code = (
-            str(paper.get("course_code", "") or paper.get("subject_code", ""))
-            .upper()
-            .strip()
-        )
-        course_code = re.sub(r"\s+", "", course_code)  # Remove spaces
-
-        program = str(paper.get("program", "") or "")
-        degree_type = str(paper.get("degree_type", "") or "")
-        year = paper.get("year")
-
-        # 1. Extract prefix from course code
-        prefix_match = re.match(r"^([A-Z]{2,4})", course_code)
-        prefix = prefix_match.group(1) if prefix_match else ""
-
-        if prefix:
-            confidence += 0.2
-            reasoning.append(f"Valid prefix: {prefix}")
-        else:
-            reasoning.append("Could not extract prefix from course code")
-            return CategorizationResult(None, 0.1, "uncertain", reasoning, metadata)
-
-        # 2. Check for Masters programs first
-        if self._is_masters(program, degree_type, course_code):
-            return self._categorize_masters(
-                program, degree_type, prefix, course_code, reasoning
-            )
-
-        # 3. Check for B.Sc ICAS
-        if self._is_icas(prefix, course_code):
-            target = self.data_dir / "bsc" / "icas.json"
-            reasoning.append(f"ICAS pattern detected: {prefix}")
-            return CategorizationResult(
-                target, 0.85, "bsc", reasoning, {"degree_type": "B.Sc"}
-            )
-
-        # 4. Check for first year patterns
-        first_year_result = self._check_first_year(
-            course_code, prefix, year, reasoning.copy()
-        )
-        if first_year_result is not None:
-            return first_year_result
-
-        # 5. Check for branch-specific courses (B.Tech 2nd year onwards)
-        if prefix in PREFIX_TO_BRANCH:
-            branch = PREFIX_TO_BRANCH[prefix]
-            target = self.data_dir / "btech" / "branches" / f"{branch}.json"
-
-            if target.exists():
-                reasoning.append(f"Branch mapped: {prefix} → {branch}")
-                confidence = 0.85
-                metadata["degree_type"] = "B.Tech"
-
-                # Try to extract semester from code
-                semester = self._get_semester_from_code(course_code)
-                if semester:
-                    metadata["semester"] = semester
-                    reasoning.append(f"Semester extracted: {semester}")
-                    confidence += 0.05
-
-                return CategorizationResult(
-                    target, confidence, "btech_branch", reasoning, metadata
-                )
-            else:
-                reasoning.append(f"Branch file not found: {branch}.json")
-
-        # 6. Fallback to other.json
-        reasoning.append("No clear category - defaulting to other.json")
-        return CategorizationResult(
-            self.data_dir / "other.json", 0.5, "other", reasoning, metadata
-        )
-
-    def _is_masters(self, program: str, degree_type: str, course_code: str) -> bool:
-        """
-        Check if a paper belongs to a Master's program.
-
-        Args:
-            program: The program name from the paper.
-            degree_type: The degree type from the paper.
-            course_code: The course code of the paper.
-
-        Returns:
-            True if the paper is determined to be a Master's level paper.
-        """
-        masters_keywords = ["M.Tech", "MTech", "M.E", "ME", "MCA", "M.Sc", "MSc"]
-
-        for keyword in masters_keywords:
-            if (
-                keyword.lower() in program.lower()
-                or keyword.lower() in degree_type.lower()
-            ):
-                return True
-
-        # Course codes starting with 5XXX are typically masters level
-        if re.match(r"^[A-Z]{2,4}5\d{3}$", course_code):
-            return True
-
-        return False
-
-    def _categorize_masters(
-        self,
-        program: str,
-        degree_type: str,
-        prefix: str,
-        course_code: str,
-        reasoning: List[str],
-    ) -> CategorizationResult:
-        """
-        Categorize a paper determined to be for a Master's program.
-
-        Args:
-            program: The program name from the paper.
-            degree_type: The degree type from the paper.
-            prefix: The extracted course code prefix.
-            course_code: The full course code.
-            reasoning: A list of reasons for the categorization.
-
-        Returns:
-            A CategorizationResult for the Master's paper.
-        """
-        if "MCA" in program or "MCA" in degree_type:
-            reasoning.append("MCA program detected")
-            return CategorizationResult(
-                self.data_dir / "masters" / "mca.json",
-                0.9,
-                "masters",
-                reasoning,
-                {"degree_type": "MCA"},
-            )
-
-        if "M.E" in program or "ME" == degree_type:
-            reasoning.append("M.E program detected")
-            return CategorizationResult(
-                self.data_dir / "masters" / "me.json",
-                0.9,
-                "masters",
-                reasoning,
-                {"degree_type": "M.E"},
-            )
-
-        # Default to M.Tech
-        reasoning.append("M.Tech program detected (default masters)")
-        return CategorizationResult(
-            self.data_dir / "masters" / "mtech.json",
-            0.85,
-            "masters",
-            reasoning,
-            {"degree_type": "M.Tech"},
-        )
-
-    def _is_icas(self, prefix: str, course_code: str) -> bool:
-        """
-        Check if a paper belongs to the B.Sc ICAS program.
-
-        Args:
-            prefix: The extracted course code prefix.
-            course_code: The full course code.
-
-        Returns:
-            True if the paper is determined to be an ICAS paper.
-        """
-        # ICAS codes start with 'I' followed by subject area
-        if prefix in ICAS_PREFIXES:
-            return True
-
-        # General I-prefix that's not a known engineering prefix
-        engineering_i_prefixes = {"ICE", "ICT", "IND", "INF"}
-        if prefix.startswith("I") and prefix not in engineering_i_prefixes:
-            return True
-
-        return False
-
-    def _check_first_year(
-        self, course_code: str, prefix: str, year: Optional[int], reasoning: List[str]
-    ) -> Optional[CategorizationResult]:
-        """
-        Check if a paper is a first-year paper and determine its stream.
-
-        Args:
-            course_code: The full course code.
-            prefix: The extracted course code prefix.
-            year: The year of the paper.
-            reasoning: A list of reasons for the categorization.
-
-        Returns:
-            A CategorizationResult if the paper is a first-year paper, otherwise None.
-        """
-        # CSS prefix is always CS stream (2024+)
-        if CSS_PREFIX_PATTERN.match(course_code) or prefix == "CSS":
-            reasoning.append("CSS prefix = CS Stream (2024+)")
-            return CategorizationResult(
-                self.data_dir / "btech" / "first_year" / "cs_stream.json",
-                0.95,
-                "first_year_cs",
-                reasoning,
-                {"degree_type": "B.Tech", "streams": ["cs"]},
-            )
-
-        # CS Stream pattern: XX0X (e.g., MAT1102, PHY1002)
-        if CS_STREAM_PATTERN.match(course_code):
-            reasoning.append(f"CS Stream pattern matched: {course_code}")
-            return CategorizationResult(
-                self.data_dir / "btech" / "first_year" / "cs_stream.json",
-                0.9,
-                "first_year_cs",
-                reasoning,
-                {"degree_type": "B.Tech", "streams": ["cs"]},
-            )
-
-        # Core Stream pattern: XX71/72 (e.g., MAT1171, PHY1071)
-        if CORE_STREAM_PATTERN.match(course_code):
-            reasoning.append(f"Core Stream pattern matched: {course_code}")
-            return CategorizationResult(
-                self.data_dir / "btech" / "first_year" / "non_cs_stream.json",
-                0.9,
-                "first_year_core",
-                reasoning,
-                {"degree_type": "B.Tech", "streams": ["core"]},
-            )
-
-        # Check if prefix is a first-year subject but pattern doesn't match
-        if prefix in FIRST_YEAR_CORE_PREFIXES or prefix in FIRST_YEAR_CS_PREFIXES:
-            # Might be first year but ambiguous pattern
-            reasoning.append(f"First year prefix ({prefix}) but unclear pattern")
-            return None  # Let it fall through to branch detection
-
-        return None  # Not a first year course
-
-    def _get_semester_from_code(self, code: str) -> Optional[int]:
-        """
-        Extract semester from the course code pattern.
-
-        Args:
-            code: The course code.
-
-        Returns:
-            The extracted semester number (1-8) or None if not found.
-        """
-        # Pattern: PREFIX + XYZW
-        # X = Year digit (1-5)
-        # Y = Semester type (1=odd, 2=even, 0/7=first year variants)
-        match = re.match(r"^[A-Z]{2,4}(\d)(\d)", code)
-        if not match:
-            return None
-
-        year_digit = int(match.group(1))
-        sem_type = int(match.group(2))
-
-        if year_digit == 1:
-            # First year
-            if sem_type in [0, 7]:
-                return 1
-            elif sem_type in [1, 2]:
-                return 2 if sem_type == 2 else 1
-            return None
-        elif year_digit == 2:
-            return 3 if sem_type == 1 else 4
-        elif year_digit == 3:
-            return 5 if sem_type == 1 else 6
-        elif year_digit == 4:
-            return 7 if sem_type < 2 else 8
-        elif year_digit == 5:
-            # Masters level
-            return None
-
-        return None
+logger = logging.getLogger(__name__)
 
 
-def write_paper_to_file(paper: Dict[str, Any], target_file: Path) -> bool:
-    """
-    Write a paper to the target JSON file.
-
-    The file format is: {course_code: [papers...]}
-
-    Args:
-        paper: The paper dictionary to write.
-        target_file: The path to the JSON file where the paper should be stored.
-
-    Returns:
-        True if the paper was successfully written (or was a duplicate), False otherwise.
-    """
+def _write_paper_to_file(paper: dict[str, Any], target_file: Path) -> bool:
     try:
-        # Load existing data
         if target_file.exists():
-            with open(target_file, "r", encoding="utf-8") as f:
+            with open(target_file, encoding="utf-8") as f:
                 data = json.load(f)
         else:
             data = {}
 
         course_code = paper.get("course_code", "UNKNOWN")
-
-        # Initialize course list if needed
         if course_code not in data:
             data[course_code] = []
 
-        # Check for duplicates by URL
         existing_urls = {p.get("url") for p in data[course_code]}
         if paper.get("url") in existing_urls:
             logger.debug(f"Paper already exists in {target_file}: {paper.get('url')}")
             return False
 
-        # Add the paper
         data[course_code].append(paper)
-
-        # Save with sorted keys
         with open(target_file, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=2, ensure_ascii=False, sort_keys=True)
 
@@ -450,3 +77,181 @@ def write_paper_to_file(paper: Dict[str, Any], target_file: Path) -> bool:
     except Exception as e:
         logger.error(f"Error writing paper to {target_file}: {e}")
         return False
+
+
+class PaperCategorizer:
+    def __init__(self, data_directory: Path, staging_directory: Path) -> None:
+        self.data_dir = data_directory
+        self.staging_dir = staging_directory
+        self.staging_dir.mkdir(parents=True, exist_ok=True)
+
+    def _normalized_course_code(self, paper: dict[str, Any]) -> str:
+        course_code = str(
+            paper.get("course_code", "") or paper.get("subject_code", "")
+        ).upper()
+        return re.sub(r"\s+", "", course_code.strip())
+
+    def _course_prefix(self, course_code: str) -> str:
+        prefix_match = re.match(r"^([A-Z]{2,4})", course_code)
+        return prefix_match.group(1) if prefix_match else ""
+
+    def _uncertain_result(self, reasoning: list[str]) -> CategorizationResult:
+        reasoning.append("Could not extract prefix from course code")
+        return CategorizationResult(None, 0.1, "uncertain", reasoning, {})
+
+    def _categorize_icas(
+        self, prefix: str, reasoning: list[str]
+    ) -> CategorizationResult:
+        reasoning.append(f"ICAS pattern detected: {prefix}")
+        return CategorizationResult(
+            self.data_dir / "bsc" / "icas.json",
+            0.85,
+            "bsc",
+            reasoning,
+            {"degree_type": "B.Sc"},
+        )
+
+    def _categorize_btech_branch(
+        self, prefix: str, course_code: str, reasoning: list[str]
+    ) -> CategorizationResult | None:
+        branch = PREFIX_TO_BRANCH.get(prefix)
+        if not branch:
+            return None
+
+        target = self.data_dir / "btech" / "branches" / f"{branch}.json"
+        if not target.exists():
+            reasoning.append(f"Branch file not found: {branch}.json")
+            return None
+
+        metadata: dict[str, Any] = {"degree_type": "B.Tech"}
+        confidence = 0.85
+        reasoning.append(f"Branch mapped: {prefix} → {branch}")
+
+        if semester := self._get_semester_from_code(course_code):
+            metadata["semester"] = semester
+            reasoning.append(f"Semester extracted: {semester}")
+            confidence += 0.05
+
+        return CategorizationResult(
+            target, confidence, "btech_branch", reasoning, metadata
+        )
+
+    def _categorize_other(self, reasoning: list[str]) -> CategorizationResult:
+        reasoning.append("No clear category - defaulting to other.json")
+        return CategorizationResult(
+            self.data_dir / "other.json", 0.5, "other", reasoning, {}
+        )
+
+    def _categorize(self, paper: dict[str, Any]) -> CategorizationResult:
+        reasoning: list[str] = []
+        course_code = self._normalized_course_code(paper)
+        program = str(paper.get("program", "") or "")
+        degree_type = str(paper.get("degree_type", "") or "")
+        prefix = self._course_prefix(course_code)
+
+        if not prefix:
+            return self._uncertain_result(reasoning)
+
+        reasoning.append(f"Valid prefix: {prefix}")
+        if self._is_masters(program, degree_type, course_code):
+            return self._categorize_masters(program, degree_type, reasoning)
+
+        if self._is_icas(prefix, course_code):
+            return self._categorize_icas(prefix, reasoning)
+
+        if first_year_result := self._check_first_year(
+            course_code, prefix, reasoning.copy()
+        ):
+            return first_year_result
+
+        branch_result = self._categorize_btech_branch(prefix, course_code, reasoning)
+        if branch_result is not None:
+            return branch_result
+
+        return self._categorize_other(reasoning)
+
+    def _is_masters(self, program: str, degree_type: str, course_code: str) -> bool:
+        program_lower, degree_type_lower = program.lower(), degree_type.lower()
+        return any(
+            keyword in program_lower or keyword in degree_type_lower
+            for keyword in ("m.tech", "mtech", "m.e", "me", "mca", "m.sc", "msc")
+        ) or bool(re.match(r"^[A-Z]{2,4}5\d{3}$", course_code))
+
+    def _categorize_masters(
+        self, program: str, degree_type: str, reasoning: list[str]
+    ) -> CategorizationResult:
+        degree = (
+            "MCA"
+            if "MCA" in program or "MCA" in degree_type
+            else "M.E" if "M.E" in program or "ME" == degree_type else "M.Tech"
+        )
+        filename, confidence, reason = MASTERS_CATEGORIES[degree]
+        reasoning.append(reason)
+        return CategorizationResult(
+            self.data_dir / "masters" / filename,
+            confidence,
+            "masters",
+            reasoning,
+            {"degree_type": degree},
+        )
+
+    def _is_icas(self, prefix: str, course_code: str) -> bool:
+        return prefix in ICAS_PREFIXES or (
+            prefix.startswith("I") and prefix not in {"ICE", "ICT", "IND", "INF"}
+        )
+
+    def _check_first_year(
+        self, course_code: str, prefix: str, reasoning: list[str]
+    ) -> CategorizationResult | None:
+        if CSS_PREFIX_PATTERN.match(course_code) or prefix == "CSS":
+            result_args = (
+                "cs_stream.json",
+                0.95,
+                "first_year_cs",
+                "cs",
+                "CSS prefix = CS Stream (2024+)",
+            )
+        elif CS_STREAM_PATTERN.match(course_code):
+            result_args = (
+                "cs_stream.json",
+                0.9,
+                "first_year_cs",
+                "cs",
+                f"CS Stream pattern matched: {course_code}",
+            )
+        elif CORE_STREAM_PATTERN.match(course_code):
+            result_args = (
+                "non_cs_stream.json",
+                0.9,
+                "first_year_core",
+                "core",
+                f"Core Stream pattern matched: {course_code}",
+            )
+        else:
+            if FIRST_YEAR_PREFIX_PATTERN.match(prefix):
+                reasoning.append(f"First year prefix ({prefix}) but unclear pattern")
+            return None
+
+        filename, confidence, category, stream, reason = result_args
+        reasoning.append(reason)
+        return CategorizationResult(
+            self.data_dir / "btech" / "first_year" / filename,
+            confidence,
+            category,
+            reasoning,
+            {"degree_type": "B.Tech", "streams": [stream]},
+        )
+
+    def _get_semester_from_code(self, code: str) -> int | None:
+        match = re.match(r"^[A-Z]{2,4}(\d)(\d)", code)
+        if not match:
+            return None
+
+        year_digit, sem_type = int(match.group(1)), int(match.group(2))
+        if year_digit == 1:
+            return {0: 1, 1: 1, 2: 2, 7: 1}.get(sem_type)
+        if year_digit in (2, 3) and sem_type in (1, 2):
+            return (year_digit - 1) * 2 + sem_type
+        if year_digit == 4:
+            return 7 if sem_type < 2 else 8
+        return None

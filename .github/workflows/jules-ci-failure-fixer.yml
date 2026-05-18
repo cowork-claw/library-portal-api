@@ -54,7 +54,7 @@ jobs:
             │   │   ├── spiders/question_papers_enhanced.py  # Main spider
             │   │   ├── middlewares.py                       # Scrapy middlewares
             │   │   └── settings.py                          # Scrapy settings
-            │   └── scraper_config.py  # TARGET_YEAR_THRESHOLD=2024, BLACKLISTED_YEARS
+            │   └── ../config/config_v2.py  # TARGET_YEAR_THRESHOLD=2024, BLACKLISTED_YEARS
             ├── scripts/processing/
             │   ├── paper_categorizer.py  # Categorization with confidence scoring
             │   ├── run_categorizer.py    # CLI for categorizer
@@ -73,7 +73,7 @@ jobs:
             2. **Configuration Mismatches**
                - TARGET_YEAR_THRESHOLD inconsistencies
                - BLACKLISTED_YEARS not matching actual data
-               - File: `scraper/scraper_config.py`
+               - File: `config/config_v2.py`
 
             3. **Categorization Errors**
                - Paper validation failures (missing required fields)

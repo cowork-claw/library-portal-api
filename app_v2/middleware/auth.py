@@ -1,16 +1,9 @@
-"""
-API Authentication Middleware for Library Portal V2
-
-Protects API endpoints with API key authentication.
-Public endpoints (health, docs) are accessible without authentication.
-"""
-
 import logging
 import os
 import secrets
-from typing import Callable, Optional
+from collections.abc import Callable
 
-from fastapi import Request, status
+from fastapi import Request, Response, status
 from fastapi.responses import JSONResponse
 from starlette.middleware.base import BaseHTTPMiddleware
 
@@ -21,46 +14,27 @@ API_KEY_ENV = "LIBRARY_PORTAL_API_KEY"
 OPENCLAW_BOT_API_KEY_ENV = "LIBRARY_PORTAL_OPENCLAW_BOT_API_KEY"
 
 # Public paths that don't require authentication
-PUBLIC_PATHS = {
-    "/",
-    "/docs",
-    "/redoc",
-    "/openapi.json",
-    "/health",
+PUBLIC_PATHS = {"/", "/docs", "/redoc", "/openapi.json", "/health"}
+SECURITY_HEADERS = {
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "DENY",
+    "X-XSS-Protection": "1; mode=block",
+    "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "Permissions-Policy": "geolocation=(), microphone=(), camera=(), payment=(), usb=(), xr-spatial-tracking=()",
 }
+DOCS_CSP = "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; img-src 'self' https://fastapi.tiangolo.com https://cdn.jsdelivr.net data:; connect-src 'self' https://cdn.jsdelivr.net; object-src 'none'; frame-src 'none'; upgrade-insecure-requests"
+API_CSP = "default-src 'self'; img-src 'self' https://libportal.manipal.edu data:; object-src 'none'; frame-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"
 
 
 class APIKeyMiddleware(BaseHTTPMiddleware):
-    """
-    Middleware for API key authentication.
-
-    API key must be provided via the 'X-API-Key' header.
-
-    Public endpoints (/, /docs, /health/*) don't require authentication.
-    """
 
     def __init__(
-        self, app, api_key: Optional[str] = None, environment: str = "production"
+        self, app, api_key: str | None = None, environment: str = "production"
     ):
         super().__init__(app)
-        configured_keys: list[str] = []
-
-        # Explicitly injected key (used in tests/local wiring)
-        if api_key:
-            configured_keys.append(api_key)
-
-        # Primary API key
-        primary_env_key = os.getenv(API_KEY_ENV)
-        if primary_env_key:
-            configured_keys.append(primary_env_key)
-
-        # Dedicated bot key
-        bot_env_key = os.getenv(OPENCLAW_BOT_API_KEY_ENV)
-        if bot_env_key:
-            configured_keys.append(bot_env_key)
-
-        # Deduplicate while preserving insertion order
-        self.api_keys = list(dict.fromkeys(configured_keys))
+        keys = api_key, os.getenv(API_KEY_ENV), os.getenv(OPENCLAW_BOT_API_KEY_ENV)
+        self.api_keys = list(dict.fromkeys(filter(None, keys)))
         self.environment = environment
 
         if not self.api_keys:
@@ -75,36 +49,32 @@ class APIKeyMiddleware(BaseHTTPMiddleware):
                     "All requests will be blocked."
                 )
 
+    def _is_valid_api_key(self, provided_key: str) -> bool:
+        return any(
+            secrets.compare_digest(provided_key, configured_key)
+            for configured_key in self.api_keys
+        )
+
     async def dispatch(self, request: Request, call_next: Callable):
-        # Allow CORS preflight requests through without authentication
-        if request.method == "OPTIONS":
+        if (
+            request.method == "OPTIONS"
+            or (request.url.path.rstrip("/") or "/") in PUBLIC_PATHS
+        ):
             return await call_next(request)
 
-        path = request.url.path
-
-        # Allow public paths without authentication
-        if self._is_public_path(path):
-            return await call_next(request)
-
-        # If no API key configured
         if not self.api_keys:
-            # Only allow in development mode
             if self.environment == "development":
                 return await call_next(request)
-            else:
-                # Block all requests in non-development environments
-                logger.error("Blocked request due to missing API key configuration")
-                return JSONResponse(
-                    status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-                    content={
-                        "detail": "Server security misconfiguration",
-                        "hint": "API Key is required in this environment",
-                    },
-                )
+            logger.error("Blocked request due to missing API key configuration")
+            return JSONResponse(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                content={
+                    "detail": "Server security misconfiguration",
+                    "hint": "API Key is required in this environment",
+                },
+            )
 
-        # Check for API key in request
-        provided_key = self._extract_api_key(request)
-
+        provided_key = request.headers.get("X-API-Key")
         if not provided_key:
             return JSONResponse(
                 status_code=status.HTTP_401_UNAUTHORIZED,
@@ -114,36 +84,25 @@ class APIKeyMiddleware(BaseHTTPMiddleware):
                 },
             )
 
-        if not any(
-            secrets.compare_digest(provided_key, configured_key)
-            for configured_key in self.api_keys
-        ):
+        if not self._is_valid_api_key(provided_key):
             client_host = request.client.host if request.client else "unknown"
             logger.warning(f"Invalid API key attempt from {client_host}")
             return JSONResponse(
                 status_code=status.HTTP_403_FORBIDDEN,
                 content={"detail": "Invalid API key"},
             )
-
         return await call_next(request)
 
-    def _is_public_path(self, path: str) -> bool:
-        """
-        Check if path is public (no auth required).
 
-        Paths are considered public if they are in PUBLIC_PATHS.
-        """
-        # Normalize path by removing trailing slash for consistent matching
-        path_normalized = path.rstrip("/") if path != "/" else "/"
+class SecurityHeadersMiddleware(BaseHTTPMiddleware):
 
-        # Check against the set of defined public paths
-        return path_normalized in PUBLIC_PATHS
+    async def dispatch(self, request: Request, call_next: Callable) -> Response:
+        response = await call_next(request)
+        response.headers.update(SECURITY_HEADERS)
+        response.headers["Content-Security-Policy"] = (
+            DOCS_CSP
+            if request.url.path.startswith(("/docs", "/redoc", "/openapi.json"))
+            else API_CSP
+        )
 
-    def _extract_api_key(self, request: Request) -> Optional[str]:
-        """Extract API key from request headers."""
-        return request.headers.get("X-API-Key")
-
-
-def get_api_key_from_env() -> Optional[str]:
-    """Get API key from environment variable."""
-    return os.getenv(API_KEY_ENV)
+        return response
