@@ -22,24 +22,19 @@ class _FixedWindow:
 
     max_requests: int
     window_seconds: int
-    count: int = field(init=False)
-    window_start: float = field(init=False)
+    count: int = field(default=0, init=False)
+    window_start: float = field(default_factory=time.monotonic, init=False)
     last_seen: float = field(init=False)
 
     def __post_init__(self) -> None:
-        now = time.monotonic()
-        self.count = 0
-        self.window_start = self.last_seen = now
-
-    def _reset_if_expired(self, now: float) -> None:
-        if now - self.window_start >= self.window_seconds:
-            self.count = 0
-            self.window_start = now
+        self.last_seen = self.window_start
 
     def _try_consume(self, now: float | None = None) -> bool:
         now = now or time.monotonic()
         self.last_seen = now
-        self._reset_if_expired(now)
+        if now - self.window_start >= self.window_seconds:
+            self.count = 0
+            self.window_start = now
         if self.count < self.max_requests:
             self.count += 1
             return True
@@ -94,8 +89,7 @@ class RateLimitMiddleware(BaseHTTPMiddleware):
     def _identify_client(self, request: Request) -> str:
         api_key = request.headers.get("X-API-Key", "").strip()
         if api_key and self._is_configured_key(api_key):
-            fingerprint = hashlib.sha256(api_key.encode("utf-8")).hexdigest()[:16]
-            return f"key:{fingerprint}"
+            return f"key:{hashlib.sha256(api_key.encode('utf-8')).hexdigest()[:16]}"
         return f"ip:{request.client.host if request.client else 'unknown'}"
 
     def _is_configured_key(self, api_key: str) -> bool:
@@ -103,40 +97,34 @@ class RateLimitMiddleware(BaseHTTPMiddleware):
 
     def _get_or_create_window(self, client_id: str, now: float) -> _FixedWindow:
         self._prune_windows(now)
-        if client_id not in self._windows:
-            self._evict_oldest_if_full()
-            self._windows[client_id] = _FixedWindow(
-                max_requests=self.max_requests,
-                window_seconds=self.window_seconds,
+        if client_id in self._windows:
+            return self._windows[client_id]
+
+        if len(self._windows) >= self.max_clients:
+            oldest_client_id = min(
+                self._windows,
+                key=lambda client_id: self._windows[client_id].last_seen,
             )
+            self._windows.pop(oldest_client_id, None)
+        self._windows[client_id] = _FixedWindow(
+            max_requests=self.max_requests,
+            window_seconds=self.window_seconds,
+        )
         return self._windows[client_id]
 
     def _prune_windows(self, now: float) -> None:
-        expired = [
+        for client_id in [
             client_id
             for client_id, window in self._windows.items()
             if now - window.last_seen >= self.window_seconds
-        ]
-        for client_id in expired:
+        ]:
             self._windows.pop(client_id, None)
 
-        overflow = len(self._windows) - self.max_clients
-        if overflow <= 0:
+        if (overflow := len(self._windows) - self.max_clients) <= 0:
             return
 
-        oldest_client_ids = sorted(
+        for client_id in sorted(
             self._windows,
             key=lambda client_id: self._windows[client_id].last_seen,
-        )[:overflow]
-        for client_id in oldest_client_ids:
+        )[:overflow]:
             self._windows.pop(client_id, None)
-
-    def _evict_oldest_if_full(self) -> None:
-        if len(self._windows) < self.max_clients:
-            return
-
-        oldest_client_id = min(
-            self._windows,
-            key=lambda client_id: self._windows[client_id].last_seen,
-        )
-        self._windows.pop(oldest_client_id, None)
