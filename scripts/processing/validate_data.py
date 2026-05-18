@@ -56,9 +56,7 @@ def _validate_int_range(
     errors: list[str],
 ) -> None:
     value = paper.get(field)
-    if value is not None and (
-        not isinstance(value, int) or value < lower or value > upper
-    ):
+    if value is not None and not (isinstance(value, int) and lower <= value <= upper):
         errors.append(f"{course_code}[{index}]: invalid {field} {value}")
 
 
@@ -120,12 +118,10 @@ def _count_file_papers(report: dict[str, Any], json_file: Path) -> None:
             continue
         report["total_papers"] += len(papers)
         for paper in papers:
-            url = paper.get("url")
-            if not url:
-                continue
-            if url in report["all_urls"]:
-                report["duplicate_urls"].append(url)
-            report["all_urls"].add(url)
+            if url := paper.get("url"):
+                if url in report["all_urls"]:
+                    report["duplicate_urls"].append(url)
+                report["all_urls"].add(url)
 
 
 def _record_file_result(

@@ -18,8 +18,7 @@ class QuestionPaperRowParsingMixin:
         return form_data
 
     def _extract_items(self, response):
-        table_selector = response.css('table[id*="gvFiles"]')
-        if not table_selector.get():
+        if not (table_selector := response.css('table[id*="gvFiles"]')).get():
             self.logger.debug("No file table found with gvFiles ID")
             return []
 
@@ -70,8 +69,7 @@ class QuestionPaperRowParsingMixin:
         if full_text := "".join(first_cell.css("a ::text").getall()).strip():
             return full_text
 
-        link_html = link_elem.get()
-        text_match = re.search(r"</?\w+[^>]*>\s*([^<]+)", link_html or "")
+        text_match = re.search(r"</?\w+[^>]*>\s*([^<]+)", link_elem.get() or "")
         return text_match.group(1).strip() if text_match else ""
 
     def _postback_target(self, href, link_id):
