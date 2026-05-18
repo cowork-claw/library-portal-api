@@ -121,12 +121,13 @@ class PaperIndex(PaperIndexAccessors):
     def _replace_with(self, other: "PaperIndex") -> None:
         with self._swap_lock:
             swap_lock = self._swap_lock
-            new_state = {
-                key: value
-                for key, value in other.__dict__.items()
-                if key != "_swap_lock"
-            }
-            self.__dict__.update(new_state)
+            self.__dict__.update(
+                {
+                    key: value
+                    for key, value in other.__dict__.items()
+                    if key != "_swap_lock"
+                }
+            )
             self._swap_lock = swap_lock
 
     def _clear_indexes(self) -> None:
@@ -253,13 +254,6 @@ class PaperIndex(PaperIndexAccessors):
         )
         self._cached_count_by_program_abbrev = self._sort_and_proxy(
             self._count_by_program_abbrev, key=lambda x: x[1], reverse=True
-        )
-
-        logger.debug(
-            f"Built indexes: {len(self._unique_years)} years, "
-            f"{len(self._unique_course_codes)} courses, "
-            f"{len(self._unique_programs)} programs, "
-            f"{len(self._unique_streams)} streams"
         )
 
     def _sort_and_proxy(self, data: dict, key=None, reverse=False) -> MappingProxyType:
