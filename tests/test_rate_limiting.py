@@ -22,7 +22,7 @@ from fastapi import FastAPI
 from fastapi.testclient import TestClient
 
 from app_v2.middleware.auth import APIKeyMiddleware, SecurityHeadersMiddleware
-from app_v2.middleware.rate_limit import RateLimitMiddleware
+from app_v2.middleware.rate_limit import RateLimitMiddleware, _FixedWindow
 from app_v2.middleware.structured_logging import RequestIDMiddleware
 
 API_KEY = "test-key"
@@ -297,6 +297,15 @@ class TestPublicPathsExempt:
 
 class TestRateLimitResets:
     """Rate limit resets after the window elapses."""
+
+    def test_try_consume_honors_explicit_zero_timestamp(self):
+        window = _FixedWindow(max_requests=1, window_seconds=60)
+        window.window_start = 0.0
+
+        assert window._try_consume(0.0) is True
+        assert window.last_seen == 0.0
+        assert window._try_consume(0.0) is False
+        assert window.last_seen == 0.0
 
     def test_reset_after_window(self):
         """After the window expires, the quota is restored."""
