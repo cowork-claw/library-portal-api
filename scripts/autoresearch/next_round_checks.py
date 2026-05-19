@@ -194,7 +194,7 @@ def main() -> int:
         print("FAILURES:", file=sys.stderr)
         for failure in suite.failures:
             print(f"- {failure}", file=sys.stderr)
-    return 0
+    return 1 if suite.failures else 0
 
 
 if __name__ == "__main__":
