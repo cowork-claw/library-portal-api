@@ -111,9 +111,11 @@ def _count_file_papers(report: dict[str, Any], json_file: Path) -> None:
     for papers in data.values():
         if not isinstance(papers, list):
             continue
-        report["total_papers"] += len(papers)
         for paper in papers:
-            if isinstance(paper, dict) and (url := paper.get("url")):
+            if not isinstance(paper, dict):
+                continue
+            report["total_papers"] += 1
+            if url := paper.get("url"):
                 if url in report["all_urls"]:
                     report["duplicate_urls"].append(url)
                 report["all_urls"].add(url)

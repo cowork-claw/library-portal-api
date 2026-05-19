@@ -85,6 +85,16 @@ def test_validate_json_file_reports_non_object_paper_entries(tmp_path):
     assert "File contains no papers" not in errors
 
 
+def test_validate_all_counts_only_object_papers(tmp_path):
+    _write_json(tmp_path / "CSE.json", {"CSE101": ["bad item", _paper()]})
+
+    report = _validate_all(tmp_path)
+
+    assert report["valid"] is False
+    assert report["total_papers"] == 1
+    assert len(report["all_urls"]) == 1
+
+
 def test_validate_all_counts_files_papers_and_cross_file_duplicates(tmp_path):
     _write_json(tmp_path / "branches" / "CSE.json", {"CSE101": [_paper()]})
     _write_json(
