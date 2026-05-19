@@ -183,9 +183,12 @@ def _check_staging_health() -> ComponentHealth:
     try:
         with open(staging_file, encoding="utf-8") as f:
             data = json.load(f)
-        if not isinstance(data, dict) or not isinstance(data.get("papers", []), list):
+        papers = data.get("papers", []) if isinstance(data, dict) else None
+        if not isinstance(papers, list) or any(
+            not isinstance(paper, dict) for paper in papers
+        ):
             raise ValueError("Invalid staging file shape")
-        count = len(data.get("papers", []))
+        count = len(papers)
         return ComponentHealth(
             status="healthy",
             message=f"{count} papers pending review" if count else "No pending reviews",
