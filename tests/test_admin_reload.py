@@ -8,9 +8,9 @@ Covers VAL-REL-006, VAL-REL-007, VAL-REL-008, VAL-REL-009,
 import importlib
 import json
 import os
+import shutil
 import sys
 import time
-import shutil
 import uuid
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
