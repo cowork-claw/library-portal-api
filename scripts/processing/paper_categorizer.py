@@ -109,18 +109,6 @@ class PaperCategorizer:
         prefix_match = re.match(r"^([A-Z]{2,4})", course_code)
         return prefix_match.group(1) if prefix_match else ""
 
-    def _categorize_icas(
-        self, prefix: str, reasoning: list[str]
-    ) -> CategorizationResult:
-        reasoning.append(f"ICAS pattern detected: {prefix}")
-        return CategorizationResult(
-            self.data_dir / "bsc" / "icas.json",
-            0.85,
-            "bsc",
-            reasoning,
-            {"degree_type": "B.Sc"},
-        )
-
     def _categorize_btech_branch(
         self, prefix: str, course_code: str, reasoning: list[str]
     ) -> CategorizationResult | None:
@@ -159,10 +147,25 @@ class PaperCategorizer:
 
         reasoning.append(f"Valid prefix: {prefix}")
         if degree := self._masters_degree(program, degree_type, course_code):
-            return self._categorize_masters(degree, reasoning)
+            filename, confidence, reason = MASTERS_CATEGORIES[degree]
+            reasoning.append(reason)
+            return CategorizationResult(
+                self.data_dir / "masters" / filename,
+                confidence,
+                "masters",
+                reasoning,
+                {"degree_type": degree},
+            )
 
         if self._is_icas(prefix):
-            return self._categorize_icas(prefix, reasoning)
+            reasoning.append(f"ICAS pattern detected: {prefix}")
+            return CategorizationResult(
+                self.data_dir / "bsc" / "icas.json",
+                0.85,
+                "bsc",
+                reasoning,
+                {"degree_type": "B.Sc"},
+            )
 
         if first_year_result := self._check_first_year(
             course_code, prefix, reasoning.copy()
@@ -191,19 +194,6 @@ class PaperCategorizer:
         if re.search(r"\bm\s*\.?\s*e\.?\b", descriptor, re.IGNORECASE):
             return "M.E"
         return "M.Tech"
-
-    def _categorize_masters(
-        self, degree: str, reasoning: list[str]
-    ) -> CategorizationResult:
-        filename, confidence, reason = MASTERS_CATEGORIES[degree]
-        reasoning.append(reason)
-        return CategorizationResult(
-            self.data_dir / "masters" / filename,
-            confidence,
-            "masters",
-            reasoning,
-            {"degree_type": degree},
-        )
 
     def _is_icas(self, prefix: str) -> bool:
         return prefix in ICAS_PREFIXES or (
