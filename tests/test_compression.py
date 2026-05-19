@@ -18,9 +18,8 @@ instead of trying to read the raw compressed wire bytes.
 import pytest
 from fastapi.testclient import TestClient
 
-from app_v2.main import COMPRESSION_MINIMUM_SIZE
-
 # ---------------------------------------------------------------------------
+COMPRESSION_MINIMUM_SIZE = 1024
 # Helpers
 # ---------------------------------------------------------------------------
 

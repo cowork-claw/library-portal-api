@@ -43,7 +43,6 @@ from .routes import health_router, papers_router
 from .services.indexing import paper_index
 
 # Configure structured JSON logging (replaces basicConfig)
-COMPRESSION_MINIMUM_SIZE = 1024
 _setup_structured_logging(settings.LOG_LEVEL)
 logger = logging.getLogger(__name__)
 
@@ -89,7 +88,7 @@ app = FastAPI(
 
 # Add Gzip Compression middleware first so it stays innermost among the
 # custom stack; auth/rate-limit errors are generated outside this layer.
-app.add_middleware(GZipMiddleware, minimum_size=COMPRESSION_MINIMUM_SIZE)
+app.add_middleware(GZipMiddleware, minimum_size=1024)
 
 # Add CORS middleware
 app.add_middleware(
