@@ -46,3 +46,25 @@ def test_data_loader_skips_malformed_paper_items_without_dropping_valid_items(tm
         "Invalid paper in mixed.json TEST101[0]: str",
         "Invalid paper in mixed.json TEST101[2]: int",
     ]
+
+
+def test_data_loader_loads_files_in_path_order(tmp_path):
+    for filename, url in (("b.json", "u-b"), ("a.json", "u-a")):
+        (tmp_path / filename).write_text(
+            json.dumps(
+                {
+                    "TEST101": [
+                        {
+                            "url": url,
+                            "file_name": f"{url}.pdf",
+                            "course_code": "TEST101",
+                        }
+                    ]
+                }
+            ),
+            encoding="utf-8",
+        )
+
+    papers = DataLoader(tmp_path)._load_all()
+
+    assert [paper["url"] for paper in papers] == ["u-a", "u-b"]

@@ -38,7 +38,7 @@ class DataLoader:
             self.stats.errors.append("Data directory not found")
             return []
 
-        for json_file in self.data_directory.rglob("*.json"):
+        for json_file in sorted(self.data_directory.rglob("*.json")):
             self._load_file(json_file)
 
         self.stats.total_papers = len(self.papers)
