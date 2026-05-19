@@ -46,14 +46,6 @@ def _field_search_data(
     return (str(value).lower(), None) if value else None
 
 
-def _exact_or_contains_score(
-    query: str, value_lower: str, weight: float
-) -> float | None:
-    if query == value_lower:
-        return weight
-    if query in value_lower:
-        return (0.95 if value_lower.startswith(query) else 0.8) * weight
-    return None
 
 
 def _word_overlap_score(
@@ -86,11 +78,12 @@ def _calculate_relevance(
             continue
 
         value_lower, value_words = field_data
-        phrase_score = _exact_or_contains_score(query, value_lower, weight)
-        if phrase_score is not None:
-            if phrase_score == weight:
-                return phrase_score
-            max_score = max(max_score, phrase_score)
+        if query == value_lower:
+            return weight
+        if query in value_lower:
+            max_score = max(
+                max_score, (0.95 if value_lower.startswith(query) else 0.8) * weight
+            )
             continue
 
         ratio = fuzz.WRatio(query, value_lower) / 100.0
