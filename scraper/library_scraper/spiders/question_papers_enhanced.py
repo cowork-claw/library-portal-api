@@ -20,18 +20,13 @@ SCRAPE_LOG_FILE = settings.SCRAPE_LOG_FILE
 TARGET_YEAR_THRESHOLD = settings.TARGET_YEAR_THRESHOLD
 PROGRAM_NAME_PATTERN = re.compile(r"[BM][.]Tech|[BM][.]Sc|MBA|MCA|[BM][.]Com|BBA|BCA")
 COURSE_CODE_PATTERN = re.compile(r"\(([A-Z]{2,4})\s*([0-9]{3,5})\)")
-ROMAN_SEMESTERS = {
-    "I": 1,
-    "II": 2,
-    "III": 3,
-    "IV": 4,
-    "V": 5,
-    "VI": 6,
-    "VII": 7,
-    "VIII": 8,
-    "IX": 9,
-    "X": 10,
-}
+ROMAN_SEMESTERS = dict(
+    zip(
+        ("I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"),
+        range(1, 11),
+        strict=True,
+    )
+)
 
 
 from .question_paper_row_parsing import QuestionPaperRowParsingMixin
@@ -114,18 +109,17 @@ class QuestionPapersEnhancedSpider(QuestionPaperRowParsingMixin, scrapy.Spider):
     def _extract_year(self, path_parts, file_name):
         if not path_parts:
             return None
-        potential_year = path_parts[0].strip()
-        if potential_year.isdigit() and len(potential_year) == 4:
-            if self._is_valid_year(potential_year):
-                return int(potential_year)
-            self.logger.warning(
-                f"Year {int(potential_year)} outside valid range for paper: {file_name}"
-            )
+
+        year_match = re.search(r"\b(20\d{2})\b", path_parts[0])
+        if not year_match:
             return None
 
-        year_match = re.search(r"\b(20\d{2})\b", potential_year)
-        if year_match and self._is_valid_year(year_match.group(1)):
-            return int(year_match.group(1))
+        year_text = year_match.group(1)
+        if self._is_valid_year(year_text):
+            return int(year_text)
+        self.logger.warning(
+            f"Year {int(year_text)} outside valid range for paper: {file_name}"
+        )
         return None
 
     def _is_valid_year(self, year_text):
@@ -223,14 +217,10 @@ class QuestionPapersEnhancedSpider(QuestionPaperRowParsingMixin, scrapy.Spider):
         return False
 
     def _path_contains_target_year(self, current_path):
-        if any(
+        start_year = self.current_year if self.is_incremental else TARGET_YEAR_THRESHOLD
+        return any(
             str(year) in current_path
-            for year in range(self.current_year, self.current_year + 5)
-        ):
-            return True
-        return not self.is_incremental and any(
-            str(year) in current_path
-            for year in range(TARGET_YEAR_THRESHOLD, self.current_year + 5)
+            for year in range(start_year, self.current_year + 5)
         )
 
     def _build_navigation_request(self, folder, response, current_path, depth):

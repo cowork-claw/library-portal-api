@@ -123,6 +123,26 @@ def test_extract_metadata_recovers_year_from_text_path_component():
     assert item["course_code"] == "CSE5071"
 
 
+def test_extract_metadata_supports_fourth_semester_roman_numeral():
+    item = {"path": "2026 / B.Tech / IV Sem", "file_name": "Maths (MAT 2251).pdf"}
+
+    _spider()._extract_metadata(item)
+
+    assert item["semester"] == 4
+
+
+def test_path_contains_target_year_respects_incremental_mode():
+    spider = _spider()
+    spider.current_year = 2026
+    spider.is_incremental = True
+
+    assert spider._path_contains_target_year("2026 / B.Tech") is True
+    assert spider._path_contains_target_year("2024 / B.Tech") is False
+
+    spider.is_incremental = False
+    assert spider._path_contains_target_year("2024 / B.Tech") is True
+
+
 def test_create_pdf_item_uses_parsed_pdf_url():
     response = _response("""
         <tr>
