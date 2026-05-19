@@ -45,7 +45,7 @@ class StagingHandler:
 
     def _normalize_data(self, data: Any) -> dict[str, Any]:
         if not isinstance(data, dict):
-            return self._empty_data()
+            data = {}
 
         data.setdefault("created_at", datetime.now().isoformat())
         data.setdefault("description", STAGING_DESCRIPTION)
@@ -57,12 +57,6 @@ class StagingHandler:
         )
         return data
 
-    def _empty_data(self) -> dict[str, Any]:
-        return {
-            "created_at": datetime.now().isoformat(),
-            "description": STAGING_DESCRIPTION,
-            "papers": [],
-        }
 
     def _save(self) -> None:
         self.data["last_updated"] = datetime.now().isoformat()

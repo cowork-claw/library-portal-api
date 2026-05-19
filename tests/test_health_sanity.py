@@ -14,12 +14,16 @@ def client():
         yield test_client
 
 
-def test_health_check_staging_error_sanitization(client):
+def test_health_check_staging_error_sanitization(client, tmp_path, monkeypatch):
     """Test that health check handles staging file errors gracefully and sanitizes messages."""
+    staging_dir = tmp_path / "staging"
+    staging_dir.mkdir()
+    (staging_dir / "pending_review.json").write_text("{}", encoding="utf-8")
+    monkeypatch.setattr(health.settings, "STAGING_DIRECTORY", staging_dir)
 
-    # Mock open to raise an exception
     with patch(
-        "builtins.open", side_effect=PermissionError("/secret/path/to/staging.json")
+        "pathlib.Path.read_text",
+        side_effect=PermissionError("/secret/path/to/staging.json"),
     ):
         response = client.get("/health")
         assert response.status_code == 200
