@@ -90,6 +90,9 @@ def _load_existing_urls_from_organized_data(data_directory: Path) -> set[str]:
     for json_file in data_directory.rglob("*.json"):
         try:
             data = json.loads(json_file.read_text(encoding="utf-8"))
+            if not isinstance(data, dict):
+                continue
+
 
             for papers_list in data.values():
                 if not isinstance(papers_list, list):

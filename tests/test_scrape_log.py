@@ -118,3 +118,15 @@ def test_existing_url_loader_skips_malformed_paper_items(tmp_path):
     assert _load_existing_urls_from_organized_data(tmp_path) == {
         "https://example.com/good.pdf"
     }
+
+
+def test_existing_url_loader_skips_wrong_shaped_json_files(tmp_path):
+    (tmp_path / "bad.json").write_text("[]", encoding="utf-8")
+    (tmp_path / "good.json").write_text(
+        json.dumps({"GOOD101": [{"url": "https://example.com/good.pdf"}]}),
+        encoding="utf-8",
+    )
+
+    assert _load_existing_urls_from_organized_data(tmp_path) == {
+        "https://example.com/good.pdf"
+    }
