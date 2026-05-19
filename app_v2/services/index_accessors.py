@@ -48,19 +48,6 @@ def _field_search_data(
 
 
 
-def _word_overlap_score(
-    query_words: set[str],
-    value_words: set[str] | None,
-    value_lower: str,
-    weight: float,
-) -> float:
-    matching_words = query_words & (
-        value_words
-        if value_words is not None
-        else set(WORD_TOKEN_PATTERN.findall(value_lower))
-    )
-    match_ratio = len(matching_words) / len(query_words) if matching_words else 0.0
-    return match_ratio * WORD_MATCH_SCORE_FACTOR * weight
 
 
 def _calculate_relevance(
@@ -92,10 +79,14 @@ def _calculate_relevance(
         if max_score >= WORD_MATCH_SCORE_FACTOR * weight:
             continue
 
-        max_score = max(
-            max_score,
-            _word_overlap_score(query_words, value_words, value_lower, weight),
+        matching_words = query_words & (
+            value_words or set(WORD_TOKEN_PATTERN.findall(value_lower))
         )
+        if matching_words:
+            max_score = max(
+                max_score,
+                len(matching_words) / len(query_words) * WORD_MATCH_SCORE_FACTOR * weight,
+            )
 
     return max_score
 
