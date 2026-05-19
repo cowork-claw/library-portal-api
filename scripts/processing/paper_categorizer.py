@@ -157,10 +157,10 @@ class PaperCategorizer:
             return self._uncertain_result(reasoning)
 
         reasoning.append(f"Valid prefix: {prefix}")
-        if self._is_masters(program, degree_type, course_code):
-            return self._categorize_masters(program, degree_type, reasoning)
+        if degree := self._masters_degree(program, degree_type, course_code):
+            return self._categorize_masters(degree, reasoning)
 
-        if self._is_icas(prefix, course_code):
+        if self._is_icas(prefix):
             return self._categorize_icas(prefix, reasoning)
 
         if first_year_result := self._check_first_year(
@@ -174,22 +174,23 @@ class PaperCategorizer:
 
         return self._categorize_other(reasoning)
 
-    def _is_masters(self, program: str, degree_type: str, course_code: str) -> bool:
+    def _masters_degree(
+        self, program: str, degree_type: str, course_code: str
+    ) -> str | None:
         descriptor = f"{program} {degree_type}"
-        return bool(MASTERS_PATTERN.search(descriptor)) or bool(
-            re.match(r"^[A-Z]{2,4}5\d{3}$", course_code)
-        )
+        if not MASTERS_PATTERN.search(descriptor) and not re.match(
+            r"^[A-Z]{2,4}5\d{3}$", course_code
+        ):
+            return None
+        if re.search(r"\bmca\b", descriptor, re.IGNORECASE):
+            return "MCA"
+        if re.search(r"\bm\s*\.?\s*e\.?\b", descriptor, re.IGNORECASE):
+            return "M.E"
+        return "M.Tech"
 
     def _categorize_masters(
-        self, program: str, degree_type: str, reasoning: list[str]
+        self, degree: str, reasoning: list[str]
     ) -> CategorizationResult:
-        descriptor = f"{program} {degree_type}"
-        if re.search(r"\bmca\b", descriptor, re.IGNORECASE):
-            degree = "MCA"
-        elif re.search(r"\bm\s*\.?\s*e\.?\b", descriptor, re.IGNORECASE):
-            degree = "M.E"
-        else:
-            degree = "M.Tech"
         filename, confidence, reason = MASTERS_CATEGORIES[degree]
         reasoning.append(reason)
         return CategorizationResult(
@@ -200,7 +201,7 @@ class PaperCategorizer:
             {"degree_type": degree},
         )
 
-    def _is_icas(self, prefix: str, course_code: str) -> bool:
+    def _is_icas(self, prefix: str) -> bool:
         return prefix in ICAS_PREFIXES or (
             prefix.startswith("I") and prefix not in {"ICE", "ICT", "IND", "INF"}
         )

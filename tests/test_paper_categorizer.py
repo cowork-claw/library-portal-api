@@ -56,6 +56,21 @@ def test_categorize_undergraduate_biomedical_is_not_masters(tmp_path):
     )
 
 
+def test_categorize_masters_degrees(tmp_path):
+    categorizer = _categorizer(tmp_path)
+
+    cases = (
+        ({"course_code": "CSE5001", "program": "M.Tech"}, "mtech.json", "M.Tech"),
+        ({"course_code": "MCA5001", "program": "MCA"}, "mca.json", "MCA"),
+        ({"course_code": "ECE5001", "degree_type": "M.E"}, "me.json", "M.E"),
+    )
+    for paper, filename, degree_type in cases:
+        result = categorizer._categorize(paper)
+        assert result.category == "masters"
+        assert _relative_target(result, categorizer.data_dir) == f"masters/{filename}"
+        assert result.metadata_filled == {"degree_type": degree_type}
+
+
 def test_categorize_first_year_streams(tmp_path):
     categorizer = _categorizer(tmp_path)
 
