@@ -109,10 +109,6 @@ class PaperCategorizer:
         prefix_match = re.match(r"^([A-Z]{2,4})", course_code)
         return prefix_match.group(1) if prefix_match else ""
 
-    def _uncertain_result(self, reasoning: list[str]) -> CategorizationResult:
-        reasoning.append("Could not extract prefix from course code")
-        return CategorizationResult(None, 0.1, "uncertain", reasoning, {})
-
     def _categorize_icas(
         self, prefix: str, reasoning: list[str]
     ) -> CategorizationResult:
@@ -150,12 +146,6 @@ class PaperCategorizer:
             target, confidence, "btech_branch", reasoning, metadata
         )
 
-    def _categorize_other(self, reasoning: list[str]) -> CategorizationResult:
-        reasoning.append("No clear category - defaulting to other.json")
-        return CategorizationResult(
-            self.data_dir / "other.json", 0.5, "other", reasoning, {}
-        )
-
     def _categorize(self, paper: dict[str, Any]) -> CategorizationResult:
         reasoning: list[str] = []
         course_code = self._normalized_course_code(paper)
@@ -164,7 +154,8 @@ class PaperCategorizer:
         prefix = self._course_prefix(course_code)
 
         if not prefix:
-            return self._uncertain_result(reasoning)
+            reasoning.append("Could not extract prefix from course code")
+            return CategorizationResult(None, 0.1, "uncertain", reasoning, {})
 
         reasoning.append(f"Valid prefix: {prefix}")
         if degree := self._masters_degree(program, degree_type, course_code):
@@ -182,7 +173,10 @@ class PaperCategorizer:
         if branch_result is not None:
             return branch_result
 
-        return self._categorize_other(reasoning)
+        reasoning.append("No clear category - defaulting to other.json")
+        return CategorizationResult(
+            self.data_dir / "other.json", 0.5, "other", reasoning, {}
+        )
 
     def _masters_degree(
         self, program: str, degree_type: str, course_code: str
