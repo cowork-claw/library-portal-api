@@ -77,7 +77,6 @@ def test_extract_item_from_row_returns_relative_pdf_url():
     assert item["name"] == "CSE101.pdf"
     assert item["is_pdf"] is True
     assert item["is_folder"] is False
-    assert item["size"] == "12 KB"
     assert item["pdf_url"] == "https://libportal.manipal.edu/RootFolder/2026/CSE101.pdf"
 
 

@@ -48,15 +48,12 @@ class QuestionPaperRowParsingMixin:
         href = link_elem.css("::attr(href)").get("")
         link_id = link_elem.css("::attr(id)").get("")
         item_type = cells[1].css("::text").get("").strip()
-        size = cells[3].css("::text").get("").strip() if len(cells) > 3 else ""
         is_folder, is_pdf, event_target, event_argument, pdf_url = self._classify_item(
             name, item_type, href, link_id, response
         )
 
         return {
             "name": name,
-            "type": item_type,
-            "size": size,
             "is_folder": is_folder,
             "is_pdf": is_pdf,
             "event_target": event_target,
