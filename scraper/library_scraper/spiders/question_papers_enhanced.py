@@ -19,6 +19,19 @@ DATA_DIRECTORY = settings.DATA_DIRECTORY
 SCRAPE_LOG_FILE = settings.SCRAPE_LOG_FILE
 TARGET_YEAR_THRESHOLD = settings.TARGET_YEAR_THRESHOLD
 PROGRAM_NAME_PATTERN = re.compile(r"[BM][.]Tech|[BM][.]Sc|MBA|MCA|[BM][.]Com|BBA|BCA")
+COURSE_CODE_PATTERN = re.compile(r"\(([A-Z]{2,4})\s*([0-9]{3,5})\)")
+ROMAN_SEMESTERS = {
+    "I": 1,
+    "II": 2,
+    "III": 3,
+    "IV": 4,
+    "V": 5,
+    "VI": 6,
+    "VII": 7,
+    "VIII": 8,
+    "IX": 9,
+    "X": 10,
+}
 
 
 from .question_paper_row_parsing import QuestionPaperRowParsingMixin
@@ -94,6 +107,9 @@ class QuestionPapersEnhancedSpider(QuestionPaperRowParsingMixin, scrapy.Spider):
         if semester := self._extract_semester(path_parts):
             item["semester"] = semester
         item["subject"] = self._extract_subject(file_name)
+        if course_code := self._extract_course_code(file_name):
+            item["course_code"] = course_code
+            item["subject_code"] = course_code
 
     def _extract_year(self, path_parts, file_name):
         if not path_parts:
@@ -101,7 +117,7 @@ class QuestionPapersEnhancedSpider(QuestionPaperRowParsingMixin, scrapy.Spider):
         potential_year = path_parts[0].strip()
         if potential_year.isdigit() and len(potential_year) == 4:
             if self._is_valid_year(potential_year):
-                return potential_year
+                return int(potential_year)
             self.logger.warning(
                 f"Year {int(potential_year)} outside valid range for paper: {file_name}"
             )
@@ -109,7 +125,7 @@ class QuestionPapersEnhancedSpider(QuestionPaperRowParsingMixin, scrapy.Spider):
 
         year_match = re.search(r"\b(20\d{2})\b", potential_year)
         if year_match and self._is_valid_year(year_match.group(1)):
-            return year_match.group(1)
+            return int(year_match.group(1))
         return None
 
     def _is_valid_year(self, year_text):
@@ -126,8 +142,17 @@ class QuestionPapersEnhancedSpider(QuestionPaperRowParsingMixin, scrapy.Spider):
 
     def _extract_semester(self, path_parts):
         for part in path_parts:
-            if sem_match := re.search(r"(I+|[1-9])\s*(st|nd|rd|th)?\s*[Ss]em", part):
-                return sem_match.group()
+            if sem_match := re.search(
+                r"(VIII|VII|VI|IV|IX|I{1,3}|V|X|[1-9])\s*(st|nd|rd|th)?\s*[Ss]em",
+                part,
+            ):
+                value = sem_match.group(1).upper()
+                return ROMAN_SEMESTERS.get(value) or int(value)
+        return None
+
+    def _extract_course_code(self, file_name):
+        if match := COURSE_CODE_PATTERN.search(file_name.upper()):
+            return f"{match.group(1)}{match.group(2)}"
         return None
 
     def _extract_subject(self, file_name):
@@ -273,16 +298,19 @@ class QuestionPapersEnhancedSpider(QuestionPaperRowParsingMixin, scrapy.Spider):
             "path": self._get_current_path(response),
             "scraped_at": datetime.now().isoformat(),
         }
-        current_path = item["path"]
-        encoded_filename = quote(item["file_name"], safe="")
-        root_url = "https://libportal.manipal.edu/RootFolder"
-
-        if current_path and current_path != "Root":
-            path_parts = [part.strip() for part in current_path.split("/")]
-            encoded_path = "/".join(quote(part, safe="") for part in path_parts)
-            item["url"] = f"{root_url}/{encoded_path}/{encoded_filename}"
+        if item_data.get("pdf_url"):
+            item["url"] = item_data["pdf_url"]
         else:
-            item["url"] = f"{root_url}/{encoded_filename}"
+            current_path = item["path"]
+            encoded_filename = quote(item["file_name"], safe="")
+            root_url = "https://libportal.manipal.edu/RootFolder"
+
+            if current_path and current_path != "Root":
+                path_parts = [part.strip() for part in current_path.split("/")]
+                encoded_path = "/".join(quote(part, safe="") for part in path_parts)
+                item["url"] = f"{root_url}/{encoded_path}/{encoded_filename}"
+            else:
+                item["url"] = f"{root_url}/{encoded_filename}"
 
         self._extract_metadata(item)
         return item

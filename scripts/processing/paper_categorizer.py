@@ -41,6 +41,10 @@ CS_STREAM_PATTERN = re.compile(r"^[A-Z]{2,3}1[0-2]0[0-9]$")
 CSS_PREFIX_PATTERN = re.compile(r"^CSS\d{4}$")
 CORE_STREAM_PATTERN = re.compile(r"^[A-Z]{2,3}1[0-2]7[12]$")
 ICAS_PREFIXES = {"ICS", "IMA", "IPH", "ICH", "IBI"}
+MASTERS_PATTERN = re.compile(
+    r"\b(m\s*\.?\s*tech|mtech|m\s*\.?\s*e\.?|mca|m\s*\.?\s*sc|msc)\b",
+    re.IGNORECASE,
+)
 MASTERS_CATEGORIES = {
     "MCA": ("mca.json", 0.9, "MCA program detected"),
     "M.E": ("me.json", 0.9, "M.E program detected"),
@@ -171,20 +175,21 @@ class PaperCategorizer:
         return self._categorize_other(reasoning)
 
     def _is_masters(self, program: str, degree_type: str, course_code: str) -> bool:
-        program_lower, degree_type_lower = program.lower(), degree_type.lower()
-        return any(
-            keyword in program_lower or keyword in degree_type_lower
-            for keyword in ("m.tech", "mtech", "m.e", "me", "mca", "m.sc", "msc")
-        ) or bool(re.match(r"^[A-Z]{2,4}5\d{3}$", course_code))
+        descriptor = f"{program} {degree_type}"
+        return bool(MASTERS_PATTERN.search(descriptor)) or bool(
+            re.match(r"^[A-Z]{2,4}5\d{3}$", course_code)
+        )
 
     def _categorize_masters(
         self, program: str, degree_type: str, reasoning: list[str]
     ) -> CategorizationResult:
-        degree = (
-            "MCA"
-            if "MCA" in program or "MCA" in degree_type
-            else "M.E" if "M.E" in program or "ME" == degree_type else "M.Tech"
-        )
+        descriptor = f"{program} {degree_type}"
+        if re.search(r"\bmca\b", descriptor, re.IGNORECASE):
+            degree = "MCA"
+        elif re.search(r"\bm\s*\.?\s*e\.?\b", descriptor, re.IGNORECASE):
+            degree = "M.E"
+        else:
+            degree = "M.Tech"
         filename, confidence, reason = MASTERS_CATEGORIES[degree]
         reasoning.append(reason)
         return CategorizationResult(

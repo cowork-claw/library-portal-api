@@ -15,6 +15,7 @@ Validates:
 - VAL-CROSS-010: Lookup returns 404 when under rate limit
 """
 
+import importlib
 import time
 
 from fastapi import FastAPI
@@ -665,6 +666,18 @@ class TestClientIdentification:
         r = client.get("/api/secure", headers=headers)
         assert r.status_code == 429
 
+    def test_requests_with_query_key_identified_by_key(self):
+        """Query-param API key requests use the same per-key bucket as headers."""
+        app = _build_app(max_requests=5, window_seconds=60)
+        client = TestClient(app)
+
+        for _ in range(5):
+            r = client.get("/api/secure", params={"api_key": API_KEY})
+            assert r.status_code == 200
+
+        assert client.get("/api/secure", params={"api_key": API_KEY}).status_code == 429
+        assert client.get("/api/secure").status_code == 401
+
 
 # ---------------------------------------------------------------------------
 # Integration with the full app
@@ -674,12 +687,34 @@ class TestClientIdentification:
 class TestRateLimitWithFullApp:
     """Integration tests using the real app client fixture."""
 
-    def test_api_endpoint_rate_limited(self, client: TestClient, api_key_headers: dict):
-        """Real app: /api/metadata is rate limited."""
-        # We can't easily test 100 requests in integration without resetting state,
-        # but we verify the middleware is present by checking it doesn't break normal requests.
-        response = client.get("/api/metadata", headers=api_key_headers)
-        assert response.status_code == 200
+    def test_documented_api_key_env_uses_key_bucket(self, monkeypatch):
+        """Real app: LIBRARY_PORTAL_API_KEY is also registered with the limiter."""
+        monkeypatch.setenv("LIBRARY_PORTAL_ENVIRONMENT", "production")
+        monkeypatch.setenv("LIBRARY_PORTAL_API_KEY", API_KEY)
+        monkeypatch.delenv("LIBRARY_PORTAL_API_SECRET_KEY", raising=False)
+
+        import config.config_v2 as config_module
+
+        importlib.reload(config_module)
+
+        import app_v2.main as main_module
+
+        importlib.reload(main_module)
+
+        with TestClient(main_module.app) as real_client:
+            for _ in range(100):
+                response = real_client.get(
+                    "/api/metadata", headers={"X-API-Key": API_KEY}
+                )
+                assert response.status_code == 200
+
+            assert (
+                real_client.get(
+                    "/api/metadata", headers={"X-API-Key": API_KEY}
+                ).status_code
+                == 429
+            )
+            assert real_client.get("/api/metadata").status_code == 401
 
     def test_public_endpoints_not_rate_limited(self, client: TestClient):
         """Real app: public endpoints work normally."""

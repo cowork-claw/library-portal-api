@@ -10,6 +10,7 @@ import json
 import os
 import sys
 import time
+import shutil
 import uuid
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
@@ -298,8 +299,8 @@ class TestReloadTriggersDataReload:
 class TestReloadClearsIndex:
     """Reload with deleted data directory should clear the index."""
 
-    def test_reload_clears_when_directory_deleted(self, tmp_path):
-        """After loading data, deleting dir, and reloading, index is empty."""
+    def test_reload_clears_when_json_files_deleted(self, tmp_path):
+        """After loading data, deleting JSON files and reloading clears the index."""
         _write_valid_json(tmp_path)
         app = _build_app(tmp_path)
         with TestClient(app) as client:
@@ -316,6 +317,24 @@ class TestReloadClearsIndex:
             assert resp.status_code == 202
 
             # Index should now be empty
+            resp = client.get("/api/metadata", headers=AUTH_HEADERS)
+            assert resp.json()["total_papers"] == 0
+
+    def test_reload_clears_when_directory_deleted(self, tmp_path):
+        """After loading data, deleting the data directory and reloading clears the index."""
+        data_dir = tmp_path / "data"
+        data_dir.mkdir()
+        _write_valid_json(data_dir)
+        app = _build_app(data_dir)
+        with TestClient(app) as client:
+            resp = client.get("/api/metadata", headers=AUTH_HEADERS)
+            assert resp.json()["total_papers"] > 0
+
+            shutil.rmtree(data_dir)
+
+            resp = client.post("/health/data/reload", headers=AUTH_HEADERS)
+            assert resp.status_code == 202
+
             resp = client.get("/api/metadata", headers=AUTH_HEADERS)
             assert resp.json()["total_papers"] == 0
 

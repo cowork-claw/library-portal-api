@@ -28,7 +28,6 @@ def test_validate_json_file_accepts_valid_course_mapping(tmp_path):
     assert errors == []
 
 
-
 def test_validate_json_file_allows_empty_other_file(tmp_path):
     data_file = tmp_path / "other.json"
     _write_json(data_file, {})
@@ -47,6 +46,7 @@ def test_validate_json_file_rejects_empty_category_file(tmp_path):
 
     assert is_valid is False
     assert errors == ["File contains no papers"]
+
 
 def test_validate_json_file_reports_record_errors(tmp_path):
     data_file = tmp_path / "CSE.json"

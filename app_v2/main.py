@@ -27,6 +27,7 @@ from .data_loader import DataLoader
 
 # Import middleware
 from .middleware.auth import (
+    API_KEY_ENV,
     OPENCLAW_BOT_API_KEY_ENV,
     APIKeyMiddleware,
     SecurityHeadersMiddleware,
@@ -110,7 +111,13 @@ app.add_middleware(
 
 # Add Rate Limiting middleware (wraps APIKey so failed auth counts toward limit)
 rate_limit_valid_keys = [
-    key for key in (settings.API_SECRET_KEY, os.getenv(OPENCLAW_BOT_API_KEY_ENV)) if key
+    key
+    for key in (
+        settings.API_SECRET_KEY,
+        os.getenv(API_KEY_ENV),
+        os.getenv(OPENCLAW_BOT_API_KEY_ENV),
+    )
+    if key
 ]
 app.add_middleware(RateLimitMiddleware, valid_api_keys=rate_limit_valid_keys)
 

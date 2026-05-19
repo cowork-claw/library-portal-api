@@ -98,7 +98,9 @@ def check_public_path_bypass_stays_closed(suite: CheckSuite) -> None:
         "//api/secure",
     ):
         status_code = client.get(path).status_code
-        suite.require(status_code != 200, f"unauthenticated bypass succeeded for {path}")
+        suite.require(
+            status_code != 200, f"unauthenticated bypass succeeded for {path}"
+        )
 
 
 def check_invalid_keys_share_ip_rate_limit_bucket(suite: CheckSuite) -> None:
@@ -121,18 +123,15 @@ def check_invalid_keys_share_ip_rate_limit_bucket(suite: CheckSuite) -> None:
 
     client = TestClient(app)
     suite.require(
-        client.get("/api/secure", headers={"X-API-Key": "wrong-1"}).status_code
-        == 403,
+        client.get("/api/secure", headers={"X-API-Key": "wrong-1"}).status_code == 403,
         "first invalid key request should fail auth, not rate limit",
     )
     suite.require(
-        client.get("/api/secure", headers={"X-API-Key": "wrong-2"}).status_code
-        == 403,
+        client.get("/api/secure", headers={"X-API-Key": "wrong-2"}).status_code == 403,
         "second invalid key request should fail auth, not rate limit",
     )
     suite.require(
-        client.get("/api/secure", headers={"X-API-Key": "wrong-3"}).status_code
-        == 429,
+        client.get("/api/secure", headers={"X-API-Key": "wrong-3"}).status_code == 429,
         "rotating invalid keys did not share the IP rate-limit bucket",
     )
 
@@ -157,7 +156,9 @@ def check_failed_reload_preserves_existing_index(suite: CheckSuite) -> None:
             suite.require(False, "corrupt data reload did not fail")
 
     after_urls = {paper["url"] for paper in index.papers if paper.get("url")}
-    suite.require(index._paper_count == before_count, "failed reload changed paper count")
+    suite.require(
+        index._paper_count == before_count, "failed reload changed paper count"
+    )
     suite.require(after_urls == before_urls, "failed reload changed indexed URLs")
 
 
@@ -167,7 +168,10 @@ def main() -> int:
     checks: tuple[tuple[str, Any], ...] = (
         ("metrics_enabled_reload", check_metrics_enabled_reload),
         ("public_path_bypass", check_public_path_bypass_stays_closed),
-        ("invalid_key_rate_limit_bucket", check_invalid_keys_share_ip_rate_limit_bucket),
+        (
+            "invalid_key_rate_limit_bucket",
+            check_invalid_keys_share_ip_rate_limit_bucket,
+        ),
         ("failed_reload_preserves_index", check_failed_reload_preserves_existing_index),
     )
 

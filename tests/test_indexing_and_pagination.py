@@ -53,6 +53,23 @@ def test_indexing_urls_and_program_abbrevs():
     assert index._count_by_program_abbrev_values["CSE"] == 2
 
 
+def test_program_and_degree_type_indexes_stay_separate():
+    index = PaperIndex()
+    index.papers = [
+        {
+            "file_name": "cs101-midterm.pdf",
+            "url": "u1",
+            "program": "Computer Science",
+            "degree_type": "B.Tech",
+        }
+    ]
+    index._build_indexes()
+
+    assert index._get_urls_by_program("Computer Science") == {"u1"}
+    assert index._get_urls_by_degree_type("B.Tech") == {"u1"}
+    assert index._unique_program_values == ("Computer Science",)
+
+
 def test_pagination_info_and_response():
     papers = _sample_papers()
     response = _create_paginated_response(papers, limit=2, offset=2)

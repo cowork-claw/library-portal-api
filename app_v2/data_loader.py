@@ -66,7 +66,12 @@ class DataLoader:
                 continue
 
             course_count += 1
-            for paper in papers_list:
+            for index, paper in enumerate(papers_list):
+                if not isinstance(paper, dict):
+                    self.stats.errors.append(
+                        f"Invalid paper in {file_path.name} {course_code}[{index}]: {paper.__class__.__name__}"
+                    )
+                    continue
                 if (url := paper.get("url")) and url not in self.seen_urls:
                     self.papers.append(paper)
                     self.seen_urls.add(url)

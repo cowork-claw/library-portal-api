@@ -26,6 +26,36 @@ def test_categorize_btech_branch_extracts_semester(tmp_path):
     assert result.metadata_filled == {"degree_type": "B.Tech", "semester": 4}
 
 
+def test_categorize_undergraduate_mechanical_is_not_masters(tmp_path):
+    categorizer = _categorizer(tmp_path)
+    (categorizer.data_dir / "btech" / "branches" / "Mechanical.json").write_text("{}")
+
+    result = categorizer._categorize(
+        {"course_code": "MEC2201", "program": "B.Tech Mechanical"}
+    )
+
+    assert result.category == "btech_branch"
+    assert (
+        _relative_target(result, categorizer.data_dir)
+        == "btech/branches/Mechanical.json"
+    )
+
+
+def test_categorize_undergraduate_biomedical_is_not_masters(tmp_path):
+    categorizer = _categorizer(tmp_path)
+    (categorizer.data_dir / "btech" / "branches" / "Biomedical.json").write_text("{}")
+
+    result = categorizer._categorize(
+        {"course_code": "BME2201", "program": "Biomedical Engineering"}
+    )
+
+    assert result.category == "btech_branch"
+    assert (
+        _relative_target(result, categorizer.data_dir)
+        == "btech/branches/Biomedical.json"
+    )
+
+
 def test_categorize_first_year_streams(tmp_path):
     categorizer = _categorizer(tmp_path)
 

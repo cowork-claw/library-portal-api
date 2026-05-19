@@ -55,6 +55,13 @@ class APIKeyMiddleware(BaseHTTPMiddleware):
             for configured_key in self.api_keys
         )
 
+    def _api_key_from_request(self, request: Request) -> str:
+        return (
+            request.headers.get("X-API-Key")
+            or request.query_params.get("api_key")
+            or ""
+        ).strip()
+
     async def dispatch(self, request: Request, call_next: Callable):
         if (
             request.method == "OPTIONS"
@@ -74,13 +81,13 @@ class APIKeyMiddleware(BaseHTTPMiddleware):
                 },
             )
 
-        provided_key = request.headers.get("X-API-Key")
+        provided_key = self._api_key_from_request(request)
         if not provided_key:
             return JSONResponse(
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 content={
                     "detail": "API key required",
-                    "hint": "Provide API key via 'X-API-Key' header",
+                    "hint": "Provide API key via 'X-API-Key' header or 'api_key' query parameter",
                 },
             )
 
