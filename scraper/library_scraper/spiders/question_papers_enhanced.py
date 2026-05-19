@@ -125,7 +125,8 @@ class QuestionPapersEnhancedSpider(QuestionPaperRowParsingMixin, scrapy.Spider):
 
     def _extract_program(self, path_parts):
         return next(
-            (part for part in path_parts if PROGRAM_NAME_PATTERN.search(part)), None
+            (part.strip() for part in path_parts if PROGRAM_NAME_PATTERN.search(part)),
+            None,
         )
 
     def _extract_semester(self, path_parts):

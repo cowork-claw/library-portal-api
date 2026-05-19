@@ -100,7 +100,7 @@ def test_extract_metadata_populates_year_program_semester_and_subject():
     _spider()._extract_metadata(item)
 
     assert item["year"] == 2026
-    assert item["program"] == " B.Tech "
+    assert item["program"] == "B.Tech"
     assert item["semester"] == 3
     assert item["subject"] == "Algorithms"
     assert item["course_code"] == "CSE1071"
@@ -116,7 +116,7 @@ def test_extract_metadata_recovers_year_from_text_path_component():
     _spider()._extract_metadata(item)
 
     assert item["year"] == 2026
-    assert item["program"] == " M.Tech "
+    assert item["program"] == "M.Tech"
     assert item["semester"] == 2
     assert item["subject"] == "Advanced Topics"
     assert item["course_code"] == "CSE5071"
