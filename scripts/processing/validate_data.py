@@ -80,7 +80,7 @@ def _validate_json_file(file_path: Path) -> tuple[bool, list[str]]:
             _validate_int_range(course_code, index, paper, "year", 2006, 2030, errors)
             _validate_int_range(course_code, index, paper, "semester", 1, 10, errors)
 
-    if paper_count == 0:
+    if paper_count == 0 and file_path.name != "other.json":
         errors.append("File contains no papers")
     return len(errors) == 0, errors
 
@@ -161,6 +161,8 @@ def _validate_all(data_dir: Path = DATA_DIRECTORY) -> dict[str, Any]:
         is_valid, errors = _validate_json_file(json_file)
         _count_file_papers(report, json_file)
         _record_file_result(report, relative_path, is_valid, errors)
+    if report["duplicate_urls"]:
+        report["valid"] = False
 
     _log_summary(report)
     report["all_urls"] = list(report["all_urls"])[:10]
