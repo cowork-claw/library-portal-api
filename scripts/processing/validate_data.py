@@ -162,7 +162,7 @@ def _validate_all(data_dir: Path = DATA_DIRECTORY) -> dict[str, Any]:
         report["error"] = "Data directory not found"
         return report
 
-    for json_file in data_dir.rglob("*.json"):
+    for json_file in sorted(data_dir.rglob("*.json")):
         relative_path = str(json_file.relative_to(data_dir))
         report["files_checked"] += 1
         is_valid, errors = _validate_json_file(json_file)
