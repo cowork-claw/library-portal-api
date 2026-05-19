@@ -23,7 +23,7 @@ def _search_papers(
     query = query.strip().lower() if query else ""
     if not query or not papers:
         return papers
-    query_words = set(WORD_TOKEN_PATTERN.findall(query))
+    query_words = set(WORD_TOKEN_PATTERN.findall(query)) or {query}
     effective_threshold = max(threshold, 0.01) if threshold <= 0 else threshold
 
     results = [
@@ -82,11 +82,10 @@ def _calculate_relevance(
         matching_words = query_words & (
             value_words or set(WORD_TOKEN_PATTERN.findall(value_lower))
         )
-        if matching_words:
-            max_score = max(
-                max_score,
-                len(matching_words) / len(query_words) * WORD_MATCH_SCORE_FACTOR * weight,
-            )
+        max_score = max(
+            max_score,
+            len(matching_words) / len(query_words) * WORD_MATCH_SCORE_FACTOR * weight,
+        )
 
     return max_score
 
