@@ -292,12 +292,12 @@ class TestReloadTriggersDataReload:
 
 
 # ---------------------------------------------------------------------------
-# VAL-REL-013: Reload clears index when data directory is deleted
+# VAL-REL-013: Reload behavior for empty and missing data directories
 # ---------------------------------------------------------------------------
 
 
 class TestReloadClearsIndex:
-    """Reload with deleted data directory should clear the index."""
+    """Reload clears only for valid empty directories, not missing directories."""
 
     def test_reload_clears_when_json_files_deleted(self, tmp_path):
         """After loading data, deleting JSON files and reloading clears the index."""
@@ -316,19 +316,20 @@ class TestReloadClearsIndex:
             resp = client.post("/health/data/reload", headers=AUTH_HEADERS)
             assert resp.status_code == 202
 
-            # Index should now be empty
+            # Existing empty directory is valid and should clear the index.
             resp = client.get("/api/metadata", headers=AUTH_HEADERS)
             assert resp.json()["total_papers"] == 0
 
-    def test_reload_clears_when_directory_deleted(self, tmp_path):
-        """After loading data, deleting the data directory and reloading clears the index."""
+    def test_reload_preserves_when_directory_deleted(self, tmp_path):
+        """Reload with a missing data directory preserves the serving index."""
         data_dir = tmp_path / "data"
         data_dir.mkdir()
         _write_valid_json(data_dir)
         app = _build_app(data_dir)
         with TestClient(app) as client:
             resp = client.get("/api/metadata", headers=AUTH_HEADERS)
-            assert resp.json()["total_papers"] > 0
+            before_total = resp.json()["total_papers"]
+            assert before_total > 0
 
             shutil.rmtree(data_dir)
 
@@ -336,7 +337,7 @@ class TestReloadClearsIndex:
             assert resp.status_code == 202
 
             resp = client.get("/api/metadata", headers=AUTH_HEADERS)
-            assert resp.json()["total_papers"] == 0
+            assert resp.json()["total_papers"] == before_total
 
 
 # ---------------------------------------------------------------------------

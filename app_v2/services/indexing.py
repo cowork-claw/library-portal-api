@@ -107,11 +107,7 @@ class PaperIndex(PaperIndexAccessors):
     def _reload_from_directory(self, loader: DataLoader) -> None:
         new_index = PaperIndex()
         new_index._load_from_directory(loader)
-        if (
-            new_index.loader
-            and new_index.loader.stats.errors
-            and new_index.loader.stats.errors != ["Data directory not found"]
-        ):
+        if new_index.loader and new_index.loader.stats.errors:
             raise RuntimeError("Data reload failed; keeping previous index")
         self._replace_with(new_index)
 

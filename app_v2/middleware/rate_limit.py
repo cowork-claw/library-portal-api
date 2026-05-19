@@ -87,11 +87,7 @@ class RateLimitMiddleware(BaseHTTPMiddleware):
         return await call_next(request)
 
     def _identify_client(self, request: Request) -> str:
-        api_key = (
-            request.headers.get("X-API-Key")
-            or request.query_params.get("api_key")
-            or ""
-        ).strip()
+        api_key = request.headers.get("X-API-Key", "").strip()
         if api_key and self._is_configured_key(api_key):
             return f"key:{hashlib.sha256(api_key.encode('utf-8')).hexdigest()[:16]}"
         return f"ip:{request.client.host if request.client else 'unknown'}"

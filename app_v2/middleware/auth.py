@@ -56,11 +56,7 @@ class APIKeyMiddleware(BaseHTTPMiddleware):
         )
 
     def _api_key_from_request(self, request: Request) -> str:
-        return (
-            request.headers.get("X-API-Key")
-            or request.query_params.get("api_key")
-            or ""
-        ).strip()
+        return request.headers.get("X-API-Key", "").strip()
 
     async def dispatch(self, request: Request, call_next: Callable):
         if (
@@ -87,7 +83,7 @@ class APIKeyMiddleware(BaseHTTPMiddleware):
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 content={
                     "detail": "API key required",
-                    "hint": "Provide API key via 'X-API-Key' header or 'api_key' query parameter",
+                    "hint": "Provide API key via 'X-API-Key' header",
                 },
             )
 

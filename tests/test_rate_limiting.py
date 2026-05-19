@@ -675,17 +675,19 @@ class TestClientIdentification:
         r = client.get("/api/secure", headers=headers)
         assert r.status_code == 429
 
-    def test_requests_with_query_key_identified_by_key(self):
-        """Query-param API key requests use the same per-key bucket as headers."""
+    def test_requests_with_query_key_identified_by_ip(self):
+        """Query-param API keys are rejected and rate-limited by IP."""
         app = _build_app(max_requests=5, window_seconds=60)
         client = TestClient(app)
 
         for _ in range(5):
             r = client.get("/api/secure", params={"api_key": API_KEY})
-            assert r.status_code == 200
+            assert r.status_code == 401
 
         assert client.get("/api/secure", params={"api_key": API_KEY}).status_code == 429
-        assert client.get("/api/secure").status_code == 401
+        assert (
+            client.get("/api/secure", headers={"X-API-Key": API_KEY}).status_code == 200
+        )
 
 
 # ---------------------------------------------------------------------------

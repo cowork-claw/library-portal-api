@@ -155,6 +155,14 @@ def check_failed_reload_preserves_existing_index(suite: CheckSuite) -> None:
         else:
             suite.require(False, "corrupt data reload did not fail")
 
+    missing_dir = DATA_DIR / "__autoresearch_missing__"
+    try:
+        index._reload_from_directory(DataLoader(missing_dir))
+    except RuntimeError:
+        pass
+    else:
+        suite.require(False, "missing data directory reload did not fail")
+
     after_urls = {paper["url"] for paper in index.papers if paper.get("url")}
     suite.require(
         index._paper_count == before_count, "failed reload changed paper count"

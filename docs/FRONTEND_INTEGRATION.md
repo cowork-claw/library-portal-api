@@ -10,14 +10,13 @@ https://library-portal-api.onrender.com
 
 ## Authentication
 
-All `/api/*` endpoints require an API key.
+All `/api/*` endpoints and `/health/data` require an API key in the `X-API-Key` header.
 
-### Methods
+### Method
 
 | Method | Example |
 |--------|---------|
-| **Header (recommended)** | `X-API-Key: your-key` |
-| **Query parameter** | `?api_key=your-key` |
+| **Header** | `X-API-Key: your-key` |
 
 ### JavaScript Example
 
@@ -183,7 +182,7 @@ LIBRARY_PORTAL_CORS_ORIGINS=https://your-frontend.com
 ```json
 {
   "detail": "API key required",
-  "hint": "Provide API key via 'X-API-Key' header or 'api_key' query parameter"
+  "hint": "Provide API key via 'X-API-Key' header"
 }
 ```
 
