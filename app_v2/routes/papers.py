@@ -1,4 +1,4 @@
-import time
+from time import perf_counter
 from typing import Annotated, Any, Literal
 
 from fastapi import APIRouter, HTTPException, Path, Query
@@ -152,7 +152,7 @@ async def _get_papers(
     offset: OffsetParam = 0,
 ) -> PapersResponse:
     """Get question papers with filtering, fuzzy search, sorting, and pagination."""
-    start_time = time.perf_counter()
+    start_time = perf_counter()
 
     filters = [
         (year, paper_index._get_urls_by_year),
@@ -170,7 +170,7 @@ async def _get_papers(
     )
     if filter_urls is not None and not filter_urls:
         return _create_paginated_response(
-            [], limit, offset, (time.perf_counter() - start_time) * 1000
+            [], limit, offset, (perf_counter() - start_time) * 1000
         )
 
     results = await _resolve_paper_results(search, filter_urls)
@@ -180,7 +180,7 @@ async def _get_papers(
     results = _sort_papers(results, sort_field, order if order is not None else "desc")
 
     return _create_paginated_response(
-        results, limit, offset, (time.perf_counter() - start_time) * 1000
+        results, limit, offset, (perf_counter() - start_time) * 1000
     )
 
 
