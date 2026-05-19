@@ -202,7 +202,7 @@ def _check_staging_health() -> ComponentHealth:
 def _load_scrape_log() -> dict:
     try:
         return _normalize_scrape_log_data(
-            json.loads(settings.SCRAPE_LOG_FILE.read_text())
+            json.loads(settings.SCRAPE_LOG_FILE.read_text(encoding="utf-8"))
         )
     except Exception:
         return {}
