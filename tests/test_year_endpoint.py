@@ -1,5 +1,3 @@
-
-
 def test_get_papers_by_year_success(client, api_key_headers):
     metadata = client.get("/api/metadata", headers=api_key_headers).json()
     years = metadata["years"]
@@ -41,9 +39,9 @@ def test_get_papers_by_year_with_semester(client, api_key_headers):
         if semester is not None:
             break
 
-    assert semester is not None and year is not None, (
-        "Expected at least one paper with a non-null semester value"
-    )
+    assert (
+        semester is not None and year is not None
+    ), "Expected at least one paper with a non-null semester value"
 
     response = client.get(
         f"/api/papers/year/{year}?semester={semester}", headers=api_key_headers

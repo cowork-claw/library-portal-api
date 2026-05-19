@@ -121,6 +121,7 @@ def test_categorize_missing_branch_file_falls_back_to_other(tmp_path):
     assert _relative_target(result, categorizer.data_dir) == "other.json"
     assert "Branch file not found: CSE.json" in result.reasoning
 
+
 def test_write_paper_replaces_wrong_shaped_target_file(tmp_path):
     target = tmp_path / "target.json"
     target.write_text("[]", encoding="utf-8")
@@ -130,7 +131,6 @@ def test_write_paper_replaces_wrong_shaped_target_file(tmp_path):
     )
 
     assert '"CSE101"' in target.read_text(encoding="utf-8")
-
 
 
 def test_write_paper_replaces_malformed_course_bucket(tmp_path):
@@ -170,7 +170,8 @@ def test_staging_handler_recovers_from_wrong_shaped_file(tmp_path):
 def test_staging_handler_drops_malformed_staged_entries(tmp_path):
     staging_file = tmp_path / "pending_review.json"
     staging_file.write_text(
-        '{"papers": ["bad", {"paper": "bad nested"}, {"paper": {"url": "old"}}]}', encoding="utf-8"
+        '{"papers": ["bad", {"paper": "bad nested"}, {"paper": {"url": "old"}}]}',
+        encoding="utf-8",
     )
 
     handler = StagingHandler(staging_file)

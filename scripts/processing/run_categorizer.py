@@ -54,14 +54,12 @@ class StagingHandler:
             [
                 paper
                 for paper in papers
-                if isinstance(paper, dict)
-                and isinstance(paper.get("paper", {}), dict)
+                if isinstance(paper, dict) and isinstance(paper.get("paper", {}), dict)
             ]
             if isinstance(papers, list)
             else []
         )
         return data
-
 
     def _save(self) -> None:
         self.data["last_updated"] = datetime.now().isoformat()

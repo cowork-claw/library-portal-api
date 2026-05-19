@@ -18,7 +18,9 @@ def _normalize_scrape_log_data(data: Any) -> dict[str, Any]:
         else []
     )
     runs = data.get("runs")
-    data["runs"] = [run for run in runs if isinstance(run, dict)] if isinstance(runs, list) else []
+    data["runs"] = (
+        [run for run in runs if isinstance(run, dict)] if isinstance(runs, list) else []
+    )
     if not isinstance(data.get("stats"), dict):
         data["stats"] = {}
     stats = data["stats"]
@@ -98,7 +100,6 @@ def _load_existing_urls_from_organized_data(data_directory: Path) -> set[str]:
             data = json.loads(json_file.read_text(encoding="utf-8"))
             if not isinstance(data, dict):
                 continue
-
 
             for papers_list in data.values():
                 if not isinstance(papers_list, list):

@@ -184,8 +184,7 @@ def _check_staging_health() -> ComponentHealth:
         data = json.loads(staging_file.read_text(encoding="utf-8"))
         papers = data.get("papers", []) if isinstance(data, dict) else None
         if not isinstance(papers, list) or any(
-            not isinstance(paper, dict)
-            or not isinstance(paper.get("paper", {}), dict)
+            not isinstance(paper, dict) or not isinstance(paper.get("paper", {}), dict)
             for paper in papers
         ):
             raise ValueError("Invalid staging file shape")

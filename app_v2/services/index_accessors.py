@@ -46,10 +46,6 @@ def _field_search_data(
     return (str(value).lower(), None) if value else None
 
 
-
-
-
-
 def _calculate_relevance(
     paper: dict[str, Any], query: str, query_words: set[str]
 ) -> float:
