@@ -91,6 +91,29 @@ def test_wrong_shaped_scrape_log_initializes_empty_log(tmp_log_path):
     assert log.data["runs"] == []
 
 
+def test_scrape_log_normalizes_malformed_list_entries(tmp_log_path):
+    tmp_log_path.write_text(
+        json.dumps(
+            {
+                "scraped_urls": ["https://example.com/1", {"bad": "url"}],
+                "runs": ["bad run", {"timestamp": "ok"}],
+                "stats": {"total_scraped": "bad", "total_skipped": 2},
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    log = ScrapeLog(tmp_log_path)
+
+    assert log._get_scraped_urls() == {"https://example.com/1"}
+    assert log.data["runs"] == [{"timestamp": "ok"}]
+    assert log.data["stats"] == {
+        "total_scraped": 0,
+        "total_skipped": 2,
+        "total_errors": 0,
+    }
+
+
 def test_health_scraper_status_tolerates_wrong_shaped_log(tmp_log_path, monkeypatch):
     from app_v2.routes import health
 

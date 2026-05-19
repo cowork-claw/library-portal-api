@@ -11,14 +11,20 @@ def _normalize_scrape_log_data(data: Any) -> dict[str, Any]:
     data = data if isinstance(data, dict) else {}
     data.setdefault("created_at", datetime.now().isoformat())
     data.setdefault("description", "Persistent log tracking scraped paper URLs")
-    for field in ("scraped_urls", "runs"):
-        if not isinstance(data.get(field), list):
-            data[field] = []
+    scraped_urls = data.get("scraped_urls")
+    data["scraped_urls"] = (
+        [url for url in scraped_urls if isinstance(url, str)]
+        if isinstance(scraped_urls, list)
+        else []
+    )
+    runs = data.get("runs")
+    data["runs"] = [run for run in runs if isinstance(run, dict)] if isinstance(runs, list) else []
     if not isinstance(data.get("stats"), dict):
         data["stats"] = {}
     stats = data["stats"]
     for key in ("total_scraped", "total_skipped", "total_errors"):
-        stats.setdefault(key, 0)
+        if not isinstance(stats.get(key), int):
+            stats[key] = 0
     return data
 
 
