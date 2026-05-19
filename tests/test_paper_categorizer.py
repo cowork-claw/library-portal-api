@@ -1,6 +1,7 @@
 from pathlib import Path
 
 from scripts.processing.paper_categorizer import PaperCategorizer
+from scripts.processing.run_categorizer import StagingHandler
 
 
 def _categorizer(tmp_path: Path) -> PaperCategorizer:
@@ -119,3 +120,36 @@ def test_categorize_missing_branch_file_falls_back_to_other(tmp_path):
     assert result.category == "other"
     assert _relative_target(result, categorizer.data_dir) == "other.json"
     assert "Branch file not found: CSE.json" in result.reasoning
+
+
+def test_staging_handler_recovers_from_wrong_shaped_file(tmp_path):
+    staging_file = tmp_path / "pending_review.json"
+    staging_file.write_text("[]", encoding="utf-8")
+
+    handler = StagingHandler(staging_file)
+    handler._add_paper(
+        {"url": "https://example.test/a.pdf", "course_code": "CSE101"},
+        0.2,
+        ["low confidence"],
+    )
+
+    assert handler.data["papers"][0]["paper"]["url"] == "https://example.test/a.pdf"
+
+
+def test_staging_handler_drops_malformed_staged_entries(tmp_path):
+    staging_file = tmp_path / "pending_review.json"
+    staging_file.write_text(
+        '{"papers": ["bad", {"paper": {"url": "old"}}]}', encoding="utf-8"
+    )
+
+    handler = StagingHandler(staging_file)
+    handler._add_paper(
+        {"url": "https://example.test/b.pdf", "course_code": "CSE102"},
+        0.2,
+        ["low confidence"],
+    )
+
+    assert [entry["paper"]["url"] for entry in handler.data["papers"]] == [
+        "old",
+        "https://example.test/b.pdf",
+    ]

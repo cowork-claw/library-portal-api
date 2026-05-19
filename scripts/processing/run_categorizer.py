@@ -22,6 +22,9 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 STAGING_FILE = settings.STAGING_DIRECTORY / "pending_review.json"
+STAGING_DESCRIPTION = (
+    "Papers needing manual review due to low categorization confidence"
+)
 
 
 class StagingHandler:
@@ -32,17 +35,32 @@ class StagingHandler:
 
     def _load(self) -> None:
         try:
-            self.data = json.loads(self.staging_file.read_text(encoding="utf-8"))
+            data = json.loads(self.staging_file.read_text(encoding="utf-8"))
         except FileNotFoundError:
-            self.data = self._empty_data()
+            data = {}
         except (OSError, json.JSONDecodeError) as e:
             logger.warning(f"Error loading staging file, creating new: {e}")
-            self.data = self._empty_data()
+            data = {}
+        self.data = self._normalize_data(data)
+
+    def _normalize_data(self, data: Any) -> dict[str, Any]:
+        if not isinstance(data, dict):
+            return self._empty_data()
+
+        data.setdefault("created_at", datetime.now().isoformat())
+        data.setdefault("description", STAGING_DESCRIPTION)
+        papers = data.get("papers")
+        data["papers"] = (
+            [paper for paper in papers if isinstance(paper, dict)]
+            if isinstance(papers, list)
+            else []
+        )
+        return data
 
     def _empty_data(self) -> dict[str, Any]:
         return {
             "created_at": datetime.now().isoformat(),
-            "description": "Papers needing manual review due to low categorization confidence",
+            "description": STAGING_DESCRIPTION,
             "papers": [],
         }
 
