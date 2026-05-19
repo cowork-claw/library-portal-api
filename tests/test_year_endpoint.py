@@ -1,4 +1,3 @@
-import pytest
 
 
 def test_get_papers_by_year_success(client, api_key_headers):
@@ -42,8 +41,9 @@ def test_get_papers_by_year_with_semester(client, api_key_headers):
         if semester is not None:
             break
 
-    if semester is None or year is None:
-        pytest.skip("Could not find a paper with a non-null semester value")
+    assert semester is not None and year is not None, (
+        "Expected at least one paper with a non-null semester value"
+    )
 
     response = client.get(
         f"/api/papers/year/{year}?semester={semester}", headers=api_key_headers
@@ -89,4 +89,4 @@ def test_get_papers_by_year_with_semester_empty_intersection(client, api_key_hea
                 assert data["papers"] == []
                 return
 
-    pytest.fail("Expected at least one (year, semester) combination with no papers")
+    assert False, "Expected at least one (year, semester) combination with no papers"

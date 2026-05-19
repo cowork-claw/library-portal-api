@@ -15,7 +15,6 @@ compression via the ``Content-Encoding`` and ``Content-Length`` headers
 instead of trying to read the raw compressed wire bytes.
 """
 
-import pytest
 from fastapi.testclient import TestClient
 
 # ---------------------------------------------------------------------------
@@ -405,8 +404,7 @@ class TestCompressionEdgeCases:
         # Get a year with papers
         meta = client.get("/api/metadata", headers=api_key_headers)
         years = meta.json().get("years", [])
-        if not years:
-            pytest.skip("No years available in data")
+        assert years, "Expected at least one year in metadata"
 
         year = years[0]
         uncompressed = client.get(
