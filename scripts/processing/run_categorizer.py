@@ -99,8 +99,6 @@ class StagingHandler:
 
 def _process_paper(
     paper: dict,
-    index: int,
-    total: int,
     categorizer: PaperCategorizer,
     staging_handler: StagingHandler,
     dry_run: bool,
@@ -111,14 +109,7 @@ def _process_paper(
     by_category[result.category] = by_category.get(result.category, 0) + 1
 
     course_code = paper.get("course_code", "UNKNOWN")
-    logger.debug(
-        "[%d/%d] %s: %s (conf: %.2f)",
-        index,
-        total,
-        course_code,
-        result.category,
-        result.confidence,
-    )
+    logger.debug("%s: %s (conf: %.2f)", course_code, result.category, result.confidence)
 
     if result.confidence >= AUTO_WRITE_CONFIDENCE and result.target_file:
         if dry_run:
@@ -194,9 +185,7 @@ def _run_categorizer(input_file: Path, dry_run: bool = False) -> dict:
 
     for index, paper in enumerate(papers, 1):
         try:
-            _process_paper(
-                paper, index, len(papers), categorizer, staging_handler, dry_run, stats
-            )
+            _process_paper(paper, categorizer, staging_handler, dry_run, stats)
         except Exception as e:
             logger.error("Error processing paper %d: %s", index, e)
             stats["errors"] += 1
