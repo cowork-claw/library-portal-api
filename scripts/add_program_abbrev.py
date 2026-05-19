@@ -136,9 +136,9 @@ def process_file(json_path: Path, filename_abbrev: Optional[str]) -> Tuple[int, 
                 abbrev = derive_abbrev(paper, filename_abbrev)
                 paper["program_abbrev"] = abbrev
 
-                # Fix valid_for_branches if null
+                # Fix valid_for_branches if null or empty
                 if paper.get("curriculum_context"):
-                    if paper["curriculum_context"].get("valid_for_branches") is None:
+                    if not paper["curriculum_context"].get("valid_for_branches"):
                         paper["curriculum_context"]["valid_for_branches"] = [abbrev]
 
                 updated += 1
