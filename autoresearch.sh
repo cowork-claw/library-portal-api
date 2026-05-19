@@ -2,20 +2,23 @@
 set -euo pipefail
 
 usage() {
-  printf 'Usage: %s [--once]\n' "${0##*/}"
+  printf 'Usage: %s [--once|--loop]\n' "${0##*/}"
   printf '\n'
-  printf 'Runs autoresearch checks continuously by default. Use --once for CI-style gates.\n'
+  printf 'Runs one deterministic benchmark round by default. Use --loop for continuous local runs.\n'
   printf '\n'
   printf 'Environment:\n'
-  printf '  AUTORESEARCH_MAX_ROUNDS        Stop after this many rounds when set.\n'
-  printf '  AUTORESEARCH_INTERVAL_SECONDS  Sleep between rounds; default 0.\n'
-  printf '  AUTORESEARCH_STOP_ON_FAILURE   Exit on a failing round when true; default false.\n'
+  printf '  AUTORESEARCH_MAX_ROUNDS        Run this many rounds; implies --loop when set.\n'
+  printf '  AUTORESEARCH_INTERVAL_SECONDS  Sleep between loop rounds; default 0.\n'
+  printf '  AUTORESEARCH_STOP_ON_FAILURE   Exit loop on a failing round when true; default false.\n'
 }
 
-run_once=false
+run_loop=false
 case "${1:-}" in
   --once|-1)
-    run_once=true
+    shift
+    ;;
+  --loop)
+    run_loop=true
     shift
     ;;
   --help|-h)
@@ -59,6 +62,10 @@ if [[ "$AUTORESEARCH_MAX_ROUNDS" == "0" ]]; then
   exit 2
 fi
 
+if [[ -n "$AUTORESEARCH_MAX_ROUNDS" ]]; then
+  run_loop=true
+fi
+
 case "$AUTORESEARCH_INTERVAL_SECONDS" in
   *[!0-9]*)
     printf 'AUTORESEARCH_INTERVAL_SECONDS must be a non-negative integer.\n' >&2
@@ -84,7 +91,7 @@ while :; do
 
   printf 'AUTORESEARCH_ROUND_RESULT round=%s status=%s\n' "$round" "$round_status"
 
-  if "$run_once"; then
+  if ! "$run_loop"; then
     exit "$round_status"
   fi
 
