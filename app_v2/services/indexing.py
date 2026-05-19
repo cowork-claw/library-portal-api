@@ -20,18 +20,11 @@ SEARCH_META_FIELDS = (
 
 
 def _build_search_meta(
-    paper: dict[str, Any], field_meta_cache: dict[str, dict[str, Any]] | None = None
+    paper: dict[str, Any], field_meta_cache: dict[str, dict[str, Any]]
 ) -> dict[str, dict[str, Any]]:
     search_meta: dict[str, dict[str, Any]] = {}
     for field in SEARCH_META_FIELDS:
         if (val := paper.get(field)) and (val_lower := str(val).lower()):
-            if field_meta_cache is None:
-                search_meta[field] = {
-                    "lower": val_lower,
-                    "words": set(WORD_TOKEN_PATTERN.findall(val_lower)),
-                }
-                continue
-
             if val_lower not in field_meta_cache:
                 field_meta_cache[val_lower] = {
                     "lower": val_lower,
@@ -207,7 +200,7 @@ class PaperIndex(PaperIndexAccessors):
             (
                 self._by_program,
                 self._unique_programs,
-                paper.get("degree_type") or paper.get("program"),
+                paper.get("program"),
                 self._count_by_program,
             ),
         ):

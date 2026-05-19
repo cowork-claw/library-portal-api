@@ -30,7 +30,7 @@ class _FixedWindow:
         self.last_seen = self.window_start
 
     def _try_consume(self, now: float | None = None) -> bool:
-        now = now or time.monotonic()
+        now = time.monotonic() if now is None else now
         self.last_seen = now
         if now - self.window_start >= self.window_seconds:
             self.count = 0

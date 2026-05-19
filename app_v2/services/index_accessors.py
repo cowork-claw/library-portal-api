@@ -23,7 +23,7 @@ def _search_papers(
     query = query.strip().lower() if query else ""
     if not query or not papers:
         return papers
-    query_words = set(WORD_TOKEN_PATTERN.findall(query))
+    query_words = set(WORD_TOKEN_PATTERN.findall(query)) or {query}
     effective_threshold = max(threshold, 0.01) if threshold <= 0 else threshold
 
     results = [
@@ -46,31 +46,6 @@ def _field_search_data(
     return (str(value).lower(), None) if value else None
 
 
-def _exact_or_contains_score(
-    query: str, value_lower: str, weight: float
-) -> float | None:
-    if query == value_lower:
-        return weight
-    if query in value_lower:
-        return (0.95 if value_lower.startswith(query) else 0.8) * weight
-    return None
-
-
-def _word_overlap_score(
-    query_words: set[str],
-    value_words: set[str] | None,
-    value_lower: str,
-    weight: float,
-) -> float:
-    matching_words = query_words & (
-        value_words
-        if value_words is not None
-        else set(WORD_TOKEN_PATTERN.findall(value_lower))
-    )
-    match_ratio = len(matching_words) / len(query_words) if matching_words else 0.0
-    return match_ratio * WORD_MATCH_SCORE_FACTOR * weight
-
-
 def _calculate_relevance(
     paper: dict[str, Any], query: str, query_words: set[str]
 ) -> float:
@@ -86,11 +61,12 @@ def _calculate_relevance(
             continue
 
         value_lower, value_words = field_data
-        phrase_score = _exact_or_contains_score(query, value_lower, weight)
-        if phrase_score is not None:
-            if phrase_score == weight:
-                return phrase_score
-            max_score = max(max_score, phrase_score)
+        if query == value_lower:
+            return weight
+        if query in value_lower:
+            max_score = max(
+                max_score, (0.95 if value_lower.startswith(query) else 0.8) * weight
+            )
             continue
 
         ratio = fuzz.WRatio(query, value_lower) / 100.0
@@ -99,9 +75,12 @@ def _calculate_relevance(
         if max_score >= WORD_MATCH_SCORE_FACTOR * weight:
             continue
 
+        matching_words = query_words & (
+            value_words or set(WORD_TOKEN_PATTERN.findall(value_lower))
+        )
         max_score = max(
             max_score,
-            _word_overlap_score(query_words, value_words, value_lower, weight),
+            len(matching_words) / len(query_words) * WORD_MATCH_SCORE_FACTOR * weight,
         )
 
     return max_score

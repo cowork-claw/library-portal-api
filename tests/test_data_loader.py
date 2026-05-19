@@ -1,3 +1,4 @@
+import json
 import tempfile
 from pathlib import Path
 
@@ -16,3 +17,54 @@ def test_data_loader_sanitizes_invalid_json_paths():
         error = loader.stats.errors[0]
         assert "bad.json" in error
         assert tmpdir not in error
+
+
+def test_data_loader_skips_malformed_paper_items_without_dropping_valid_items(tmp_path):
+    data_file = tmp_path / "mixed.json"
+    data_file.write_text(
+        json.dumps(
+            {
+                "TEST101": [
+                    "bad item",
+                    {"url": "u1", "file_name": "paper.pdf", "course_code": "TEST101"},
+                    42,
+                    {"url": "u2", "file_name": "paper-2.pdf", "course_code": "TEST101"},
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    loader = DataLoader(tmp_path)
+    papers = loader._load_all()
+
+    assert [paper["url"] for paper in papers] == ["u1", "u2"]
+    assert loader.stats.files_loaded == 1
+    assert loader.stats.file_stats["mixed.json"]["papers"] == 2
+    assert loader.stats.file_stats["mixed.json"]["courses"] == 1
+    assert loader.stats.errors == [
+        "Invalid paper in mixed.json TEST101[0]: str",
+        "Invalid paper in mixed.json TEST101[2]: int",
+    ]
+
+
+def test_data_loader_loads_files_in_path_order(tmp_path):
+    for filename, url in (("b.json", "u-b"), ("a.json", "u-a")):
+        (tmp_path / filename).write_text(
+            json.dumps(
+                {
+                    "TEST101": [
+                        {
+                            "url": url,
+                            "file_name": f"{url}.pdf",
+                            "course_code": "TEST101",
+                        }
+                    ]
+                }
+            ),
+            encoding="utf-8",
+        )
+
+    papers = DataLoader(tmp_path)._load_all()
+
+    assert [paper["url"] for paper in papers] == ["u-a", "u-b"]

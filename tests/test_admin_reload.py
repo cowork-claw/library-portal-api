@@ -8,6 +8,7 @@ Covers VAL-REL-006, VAL-REL-007, VAL-REL-008, VAL-REL-009,
 import importlib
 import json
 import os
+import shutil
 import sys
 import time
 import uuid
@@ -291,15 +292,15 @@ class TestReloadTriggersDataReload:
 
 
 # ---------------------------------------------------------------------------
-# VAL-REL-013: Reload clears index when data directory is deleted
+# VAL-REL-013: Reload behavior for empty and missing data directories
 # ---------------------------------------------------------------------------
 
 
 class TestReloadClearsIndex:
-    """Reload with deleted data directory should clear the index."""
+    """Reload clears only for valid empty directories, not missing directories."""
 
-    def test_reload_clears_when_directory_deleted(self, tmp_path):
-        """After loading data, deleting dir, and reloading, index is empty."""
+    def test_reload_clears_when_json_files_deleted(self, tmp_path):
+        """After loading data, deleting JSON files and reloading clears the index."""
         _write_valid_json(tmp_path)
         app = _build_app(tmp_path)
         with TestClient(app) as client:
@@ -315,9 +316,28 @@ class TestReloadClearsIndex:
             resp = client.post("/health/data/reload", headers=AUTH_HEADERS)
             assert resp.status_code == 202
 
-            # Index should now be empty
+            # Existing empty directory is valid and should clear the index.
             resp = client.get("/api/metadata", headers=AUTH_HEADERS)
             assert resp.json()["total_papers"] == 0
+
+    def test_reload_preserves_when_directory_deleted(self, tmp_path):
+        """Reload with a missing data directory preserves the serving index."""
+        data_dir = tmp_path / "data"
+        data_dir.mkdir()
+        _write_valid_json(data_dir)
+        app = _build_app(data_dir)
+        with TestClient(app) as client:
+            resp = client.get("/api/metadata", headers=AUTH_HEADERS)
+            before_total = resp.json()["total_papers"]
+            assert before_total > 0
+
+            shutil.rmtree(data_dir)
+
+            resp = client.post("/health/data/reload", headers=AUTH_HEADERS)
+            assert resp.status_code == 202
+
+            resp = client.get("/api/metadata", headers=AUTH_HEADERS)
+            assert resp.json()["total_papers"] == before_total
 
 
 # ---------------------------------------------------------------------------

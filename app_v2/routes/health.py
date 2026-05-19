@@ -4,11 +4,13 @@ import os
 import uuid
 from datetime import datetime
 from pathlib import Path
+from time import perf_counter
 
 from fastapi import APIRouter, BackgroundTasks, status
 from fastapi.concurrency import run_in_threadpool
 
 from config.config_v2 import settings
+from scraper.scrape_log import _normalize_scrape_log_data
 
 from ..data_loader import DataLoader
 from ..models import (
@@ -24,8 +26,8 @@ logger = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/health", tags=["Health"])
 
-# Track application start time
-APP_START_TIME = datetime.now()
+# Track application start time with a monotonic clock for stable uptime.
+APP_START_MONOTONIC = perf_counter()
 DATA_HEALTH_OPERATION_ID = "data_health_health_data_get"
 SCRAPER_HEALTH_OPERATION_ID = "scraper_health_health_scraper_get"
 
@@ -64,7 +66,7 @@ async def _health_check() -> HealthResponse:
         status=overall,
         timestamp=datetime.now().isoformat(),
         version=settings.APP_VERSION,
-        uptime_seconds=round((datetime.now() - APP_START_TIME).total_seconds(), 2),
+        uptime_seconds=round(perf_counter() - APP_START_MONOTONIC, 2),
         components={
             "data": data_status,
             "scraper": scraper_status,
@@ -179,9 +181,14 @@ def _check_staging_health() -> ComponentHealth:
         )
 
     try:
-        with open(staging_file) as f:
-            data = json.load(f)
-        count = len(data.get("papers", []))
+        data = json.loads(staging_file.read_text(encoding="utf-8"))
+        papers = data.get("papers", []) if isinstance(data, dict) else None
+        if not isinstance(papers, list) or any(
+            not isinstance(paper, dict) or not isinstance(paper.get("paper", {}), dict)
+            for paper in papers
+        ):
+            raise ValueError("Invalid staging file shape")
+        count = len(papers)
         return ComponentHealth(
             status="healthy",
             message=f"{count} papers pending review" if count else "No pending reviews",
@@ -197,6 +204,8 @@ def _check_staging_health() -> ComponentHealth:
 
 def _load_scrape_log() -> dict:
     try:
-        return json.loads(settings.SCRAPE_LOG_FILE.read_text())
+        return _normalize_scrape_log_data(
+            json.loads(settings.SCRAPE_LOG_FILE.read_text(encoding="utf-8"))
+        )
     except Exception:
         return {}

@@ -34,6 +34,7 @@ def test_public_and_protected_paths():
     headers = {"X-API-Key": "secret"}
     assert client.get("/health/data", headers=headers).status_code == 200
     assert client.get("/api/secure", headers=headers).status_code == 200
+    assert client.get("/api/secure", params={"api_key": "secret"}).status_code == 401
 
 
 def test_openclaw_bot_key_is_accepted(monkeypatch):

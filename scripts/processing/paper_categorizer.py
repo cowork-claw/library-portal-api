@@ -37,10 +37,23 @@ PREFIX_TO_BRANCH = {
 FIRST_YEAR_PREFIX_PATTERN = re.compile(
     r"^(MAT|PHY|CHM|HUM|CIE|MME|IPE|BIO|EEE|ELE|CIV|CSS|ECE)$"
 )
-CS_STREAM_PATTERN = re.compile(r"^[A-Z]{2,3}1[0-2]0[0-9]$")
+CS_STREAM_PATTERN = re.compile(r"^[A-Z]{2,3}1[0-2]02$")
 CSS_PREFIX_PATTERN = re.compile(r"^CSS\d{4}$")
 CORE_STREAM_PATTERN = re.compile(r"^[A-Z]{2,3}1[0-2]7[12]$")
+FIRST_YEAR_CSS_RESULT = (
+    "cs_stream.json",
+    0.95,
+    "first_year_cs",
+    "cs",
+    "CSS prefix = CS Stream (2024+)",
+)
+FIRST_YEAR_CS_RESULT = ("cs_stream.json", 0.9, "first_year_cs", "cs")
+FIRST_YEAR_CORE_RESULT = ("non_cs_stream.json", 0.9, "first_year_core", "core")
 ICAS_PREFIXES = {"ICS", "IMA", "IPH", "ICH", "IBI"}
+MASTERS_PATTERN = re.compile(
+    r"\b(m\s*\.?\s*tech|mtech|m\s*\.?\s*e\.?|mca|m\s*\.?\s*sc|msc)\b",
+    re.IGNORECASE,
+)
 MASTERS_CATEGORIES = {
     "MCA": ("mca.json", 0.9, "MCA program detected"),
     "M.E": ("me.json", 0.9, "M.E program detected"),
@@ -57,17 +70,20 @@ def _write_paper_to_file(paper: dict[str, Any], target_file: Path) -> bool:
                 data = json.load(f)
         else:
             data = {}
+        if not isinstance(data, dict):
+            data = {}
 
         course_code = paper.get("course_code", "UNKNOWN")
-        if course_code not in data:
-            data[course_code] = []
+        papers = data.get(course_code)
+        if not isinstance(papers, list):
+            papers = data[course_code] = []
 
-        existing_urls = {p.get("url") for p in data[course_code]}
+        existing_urls = {p.get("url") for p in papers if isinstance(p, dict)}
         if paper.get("url") in existing_urls:
             logger.debug(f"Paper already exists in {target_file}: {paper.get('url')}")
             return False
 
-        data[course_code].append(paper)
+        papers.append(paper)
         with open(target_file, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=2, ensure_ascii=False, sort_keys=True)
 
@@ -153,10 +169,10 @@ class PaperCategorizer:
             return self._uncertain_result(reasoning)
 
         reasoning.append(f"Valid prefix: {prefix}")
-        if self._is_masters(program, degree_type, course_code):
-            return self._categorize_masters(program, degree_type, reasoning)
+        if degree := self._masters_degree(program, degree_type, course_code):
+            return self._categorize_masters(degree, reasoning)
 
-        if self._is_icas(prefix, course_code):
+        if self._is_icas(prefix):
             return self._categorize_icas(prefix, reasoning)
 
         if first_year_result := self._check_first_year(
@@ -170,21 +186,23 @@ class PaperCategorizer:
 
         return self._categorize_other(reasoning)
 
-    def _is_masters(self, program: str, degree_type: str, course_code: str) -> bool:
-        program_lower, degree_type_lower = program.lower(), degree_type.lower()
-        return any(
-            keyword in program_lower or keyword in degree_type_lower
-            for keyword in ("m.tech", "mtech", "m.e", "me", "mca", "m.sc", "msc")
-        ) or bool(re.match(r"^[A-Z]{2,4}5\d{3}$", course_code))
+    def _masters_degree(
+        self, program: str, degree_type: str, course_code: str
+    ) -> str | None:
+        descriptor = f"{program} {degree_type}"
+        if not MASTERS_PATTERN.search(descriptor) and not re.match(
+            r"^[A-Z]{2,4}5\d{3}$", course_code
+        ):
+            return None
+        if re.search(r"\bmca\b", descriptor, re.IGNORECASE):
+            return "MCA"
+        if re.search(r"\bm\s*\.?\s*e\.?\b", descriptor, re.IGNORECASE):
+            return "M.E"
+        return "M.Tech"
 
     def _categorize_masters(
-        self, program: str, degree_type: str, reasoning: list[str]
+        self, degree: str, reasoning: list[str]
     ) -> CategorizationResult:
-        degree = (
-            "MCA"
-            if "MCA" in program or "MCA" in degree_type
-            else "M.E" if "M.E" in program or "ME" == degree_type else "M.Tech"
-        )
         filename, confidence, reason = MASTERS_CATEGORIES[degree]
         reasoning.append(reason)
         return CategorizationResult(
@@ -195,7 +213,7 @@ class PaperCategorizer:
             {"degree_type": degree},
         )
 
-    def _is_icas(self, prefix: str, course_code: str) -> bool:
+    def _is_icas(self, prefix: str) -> bool:
         return prefix in ICAS_PREFIXES or (
             prefix.startswith("I") and prefix not in {"ICE", "ICT", "IND", "INF"}
         )
@@ -204,27 +222,15 @@ class PaperCategorizer:
         self, course_code: str, prefix: str, reasoning: list[str]
     ) -> CategorizationResult | None:
         if CSS_PREFIX_PATTERN.match(course_code) or prefix == "CSS":
-            result_args = (
-                "cs_stream.json",
-                0.95,
-                "first_year_cs",
-                "cs",
-                "CSS prefix = CS Stream (2024+)",
-            )
+            result_args = FIRST_YEAR_CSS_RESULT
         elif CS_STREAM_PATTERN.match(course_code):
             result_args = (
-                "cs_stream.json",
-                0.9,
-                "first_year_cs",
-                "cs",
+                *FIRST_YEAR_CS_RESULT,
                 f"CS Stream pattern matched: {course_code}",
             )
         elif CORE_STREAM_PATTERN.match(course_code):
             result_args = (
-                "non_cs_stream.json",
-                0.9,
-                "first_year_core",
-                "core",
+                *FIRST_YEAR_CORE_RESULT,
                 f"Core Stream pattern matched: {course_code}",
             )
         else:

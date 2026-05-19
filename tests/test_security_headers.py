@@ -2,7 +2,11 @@
 Tests for Security Headers.
 """
 
+from fastapi import FastAPI
 from fastapi.testclient import TestClient
+
+from app_v2.middleware.auth import SecurityHeadersMiddleware
+from app_v2.middleware.structured_logging import RequestIDMiddleware
 
 
 def test_security_headers_present(client: TestClient):
@@ -28,6 +32,26 @@ def test_security_headers_present(client: TestClient):
     permissions = headers["Permissions-Policy"]
     assert "geolocation=()" in permissions
     assert "xr-spatial-tracking=()" in permissions
+
+
+def test_security_headers_and_request_id_present_on_unhandled_500():
+    app = FastAPI()
+
+    @app.get("/boom")
+    def boom():
+        raise RuntimeError("boom")
+
+    app.add_middleware(SecurityHeadersMiddleware)
+    app.add_middleware(RequestIDMiddleware)
+
+    client = TestClient(app, raise_server_exceptions=False)
+    response = client.get("/boom")
+
+    assert response.status_code == 500
+    assert response.headers["X-Request-ID"]
+    assert response.headers["X-Content-Type-Options"] == "nosniff"
+    assert response.headers["X-Frame-Options"] == "DENY"
+    assert "Content-Security-Policy" in response.headers
 
 
 def test_docs_csp_relaxed(client: TestClient):

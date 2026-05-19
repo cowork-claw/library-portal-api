@@ -27,6 +27,7 @@ from .data_loader import DataLoader
 
 # Import middleware
 from .middleware.auth import (
+    API_KEY_ENV,
     OPENCLAW_BOT_API_KEY_ENV,
     APIKeyMiddleware,
     SecurityHeadersMiddleware,
@@ -42,7 +43,6 @@ from .routes import health_router, papers_router
 from .services.indexing import paper_index
 
 # Configure structured JSON logging (replaces basicConfig)
-COMPRESSION_MINIMUM_SIZE = 1024
 _setup_structured_logging(settings.LOG_LEVEL)
 logger = logging.getLogger(__name__)
 
@@ -55,8 +55,7 @@ async def _lifespan(app: FastAPI):
     logger.info(f"Loading data from: {settings.DATA_DIRECTORY}")
 
     try:
-        loader = DataLoader(settings.DATA_DIRECTORY)
-        paper_index._load_from_directory(loader)
+        paper_index._load_from_directory(DataLoader(settings.DATA_DIRECTORY))
     except Exception:
         logger.exception("Failed to load data — starting with empty index")
         # paper_index remains empty; API will serve zero-paper responses
@@ -89,7 +88,7 @@ app = FastAPI(
 
 # Add Gzip Compression middleware first so it stays innermost among the
 # custom stack; auth/rate-limit errors are generated outside this layer.
-app.add_middleware(GZipMiddleware, minimum_size=COMPRESSION_MINIMUM_SIZE)
+app.add_middleware(GZipMiddleware, minimum_size=1024)
 
 # Add CORS middleware
 app.add_middleware(
@@ -109,9 +108,11 @@ app.add_middleware(
 )
 
 # Add Rate Limiting middleware (wraps APIKey so failed auth counts toward limit)
-rate_limit_valid_keys = [
-    key for key in (settings.API_SECRET_KEY, os.getenv(OPENCLAW_BOT_API_KEY_ENV)) if key
-]
+rate_limit_valid_keys = (
+    settings.API_SECRET_KEY,
+    os.getenv(API_KEY_ENV),
+    os.getenv(OPENCLAW_BOT_API_KEY_ENV),
+)
 app.add_middleware(RateLimitMiddleware, valid_api_keys=rate_limit_valid_keys)
 
 # Add Security Headers middleware
@@ -128,21 +129,36 @@ app.add_middleware(RequestIDMiddleware)
 if settings.METRICS_ENABLED:
     import time
     from collections.abc import Callable
+    from typing import Any
 
     import prometheus_client as prom
     from fastapi import Request
     from starlette.middleware.base import BaseHTTPMiddleware
 
-    REQUEST_COUNT = prom.Counter(
-        "http_requests_total",
-        "Total HTTP requests",
-        ["method", "route", "status_code"],
-    )
-    REQUEST_LATENCY = prom.Histogram(
-        "http_request_duration_seconds",
-        "HTTP request duration in seconds",
-        ["method", "route"],
-    )
+    def _collector(name: str, constructor: Callable[..., Any], *args: Any) -> Any:
+        try:
+            return constructor(name, *args)
+        except ValueError:
+            return prom.REGISTRY._names_to_collectors[name.removesuffix("_total")]
+
+    metrics_collectors = getattr(prom, "_library_portal_metrics_collectors", None)
+    if metrics_collectors is None:
+        metrics_collectors = (
+            _collector(
+                "http_requests_total",
+                prom.Counter,
+                "Total HTTP requests",
+                ["method", "route", "status_code"],
+            ),
+            _collector(
+                "http_request_duration_seconds",
+                prom.Histogram,
+                "HTTP request duration in seconds",
+                ["method", "route"],
+            ),
+        )
+        setattr(prom, "_library_portal_metrics_collectors", metrics_collectors)
+    REQUEST_COUNT, REQUEST_LATENCY = metrics_collectors
 
     class MetricsMiddleware(BaseHTTPMiddleware):
 

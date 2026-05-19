@@ -22,6 +22,9 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 STAGING_FILE = settings.STAGING_DIRECTORY / "pending_review.json"
+STAGING_DESCRIPTION = (
+    "Papers needing manual review due to low categorization confidence"
+)
 
 
 class StagingHandler:
@@ -32,19 +35,31 @@ class StagingHandler:
 
     def _load(self) -> None:
         try:
-            self.data = json.loads(self.staging_file.read_text(encoding="utf-8"))
+            data = json.loads(self.staging_file.read_text(encoding="utf-8"))
         except FileNotFoundError:
-            self.data = self._empty_data()
+            data = {}
         except (OSError, json.JSONDecodeError) as e:
             logger.warning(f"Error loading staging file, creating new: {e}")
-            self.data = self._empty_data()
+            data = {}
+        self.data = self._normalize_data(data)
 
-    def _empty_data(self) -> dict[str, Any]:
-        return {
-            "created_at": datetime.now().isoformat(),
-            "description": "Papers needing manual review due to low categorization confidence",
-            "papers": [],
-        }
+    def _normalize_data(self, data: Any) -> dict[str, Any]:
+        if not isinstance(data, dict):
+            data = {}
+
+        data.setdefault("created_at", datetime.now().isoformat())
+        data.setdefault("description", STAGING_DESCRIPTION)
+        papers = data.get("papers")
+        data["papers"] = (
+            [
+                paper
+                for paper in papers
+                if isinstance(paper, dict) and isinstance(paper.get("paper", {}), dict)
+            ]
+            if isinstance(papers, list)
+            else []
+        )
+        return data
 
     def _save(self) -> None:
         self.data["last_updated"] = datetime.now().isoformat()
@@ -59,7 +74,8 @@ class StagingHandler:
         suggested_target: str | None = None,
     ) -> None:
         if (url := paper.get("url")) and any(
-            existing.get("paper", {}).get("url") == url
+            isinstance(existing_paper := existing.get("paper"), dict)
+            and existing_paper.get("url") == url
             for existing in self.data["papers"]
         ):
             logger.debug(f"Paper already staged: {url}")
@@ -99,8 +115,6 @@ class StagingHandler:
 
 def _process_paper(
     paper: dict,
-    index: int,
-    total: int,
     categorizer: PaperCategorizer,
     staging_handler: StagingHandler,
     dry_run: bool,
@@ -111,14 +125,7 @@ def _process_paper(
     by_category[result.category] = by_category.get(result.category, 0) + 1
 
     course_code = paper.get("course_code", "UNKNOWN")
-    logger.debug(
-        "[%d/%d] %s: %s (conf: %.2f)",
-        index,
-        total,
-        course_code,
-        result.category,
-        result.confidence,
-    )
+    logger.debug("%s: %s (conf: %.2f)", course_code, result.category, result.confidence)
 
     if result.confidence >= AUTO_WRITE_CONFIDENCE and result.target_file:
         if dry_run:
@@ -194,9 +201,7 @@ def _run_categorizer(input_file: Path, dry_run: bool = False) -> dict:
 
     for index, paper in enumerate(papers, 1):
         try:
-            _process_paper(
-                paper, index, len(papers), categorizer, staging_handler, dry_run, stats
-            )
+            _process_paper(paper, categorizer, staging_handler, dry_run, stats)
         except Exception as e:
             logger.error("Error processing paper %d: %s", index, e)
             stats["errors"] += 1

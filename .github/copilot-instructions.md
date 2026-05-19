@@ -142,7 +142,7 @@ Use `.env.development` for local development and `.env.production` for productio
 - Public endpoints: `/`, `/docs`, `/redoc`, `/health`
 - Protected endpoints: All `/api/*` routes
 - Authentication via `APIKeyMiddleware`
-- Support both header (`X-API-Key`) and query parameter (`api_key`)
+- Protected endpoints accept API keys only via the `X-API-Key` header; do not accept query-string API keys.
 
 ### Response Models
 - Always use Pydantic models for request/response validation

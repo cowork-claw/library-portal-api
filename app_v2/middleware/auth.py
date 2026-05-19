@@ -55,6 +55,9 @@ class APIKeyMiddleware(BaseHTTPMiddleware):
             for configured_key in self.api_keys
         )
 
+    def _api_key_from_request(self, request: Request) -> str:
+        return request.headers.get("X-API-Key", "").strip()
+
     async def dispatch(self, request: Request, call_next: Callable):
         if (
             request.method == "OPTIONS"
@@ -74,7 +77,7 @@ class APIKeyMiddleware(BaseHTTPMiddleware):
                 },
             )
 
-        provided_key = request.headers.get("X-API-Key")
+        provided_key = self._api_key_from_request(request)
         if not provided_key:
             return JSONResponse(
                 status_code=status.HTTP_401_UNAUTHORIZED,
@@ -97,7 +100,14 @@ class APIKeyMiddleware(BaseHTTPMiddleware):
 class SecurityHeadersMiddleware(BaseHTTPMiddleware):
 
     async def dispatch(self, request: Request, call_next: Callable) -> Response:
-        response = await call_next(request)
+        try:
+            response = await call_next(request)
+        except Exception:
+            logger.exception("Unhandled request error")
+            response = JSONResponse(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                content={"detail": "Internal server error"},
+            )
         response.headers.update(SECURITY_HEADERS)
         response.headers["Content-Security-Policy"] = (
             DOCS_CSP

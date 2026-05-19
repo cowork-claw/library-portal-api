@@ -28,6 +28,26 @@ def test_validate_json_file_accepts_valid_course_mapping(tmp_path):
     assert errors == []
 
 
+def test_validate_json_file_allows_empty_other_file(tmp_path):
+    data_file = tmp_path / "other.json"
+    _write_json(data_file, {})
+
+    is_valid, errors = _validate_json_file(data_file)
+
+    assert is_valid is True
+    assert errors == []
+
+
+def test_validate_json_file_rejects_empty_category_file(tmp_path):
+    data_file = tmp_path / "CSE.json"
+    _write_json(data_file, {})
+
+    is_valid, errors = _validate_json_file(data_file)
+
+    assert is_valid is False
+    assert errors == ["File contains no papers"]
+
+
 def test_validate_json_file_reports_record_errors(tmp_path):
     data_file = tmp_path / "CSE.json"
     _write_json(
@@ -54,6 +74,27 @@ def test_validate_json_file_reports_record_errors(tmp_path):
     assert "CSE101[0]: invalid semester 11" in errors
 
 
+def test_validate_json_file_reports_non_object_paper_entries(tmp_path):
+    data_file = tmp_path / "CSE.json"
+    _write_json(data_file, {"CSE101": ["bad item", _paper()]})
+
+    is_valid, errors = _validate_json_file(data_file)
+
+    assert is_valid is False
+    assert "CSE101[0]: paper must be an object, got str" in errors
+    assert "File contains no papers" not in errors
+
+
+def test_validate_all_counts_only_object_papers(tmp_path):
+    _write_json(tmp_path / "CSE.json", {"CSE101": ["bad item", _paper()]})
+
+    report = _validate_all(tmp_path)
+
+    assert report["valid"] is False
+    assert report["total_papers"] == 1
+    assert len(report["all_urls"]) == 1
+
+
 def test_validate_all_counts_files_papers_and_cross_file_duplicates(tmp_path):
     _write_json(tmp_path / "branches" / "CSE.json", {"CSE101": [_paper()]})
     _write_json(
@@ -63,7 +104,7 @@ def test_validate_all_counts_files_papers_and_cross_file_duplicates(tmp_path):
 
     report = _validate_all(tmp_path)
 
-    assert report["valid"] is True
+    assert report["valid"] is False
     assert report["files_checked"] == 2
     assert report["files_valid"] == 2
     assert report["files_invalid"] == 0

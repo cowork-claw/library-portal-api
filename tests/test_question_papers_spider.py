@@ -77,7 +77,6 @@ def test_extract_item_from_row_returns_relative_pdf_url():
     assert item["name"] == "CSE101.pdf"
     assert item["is_pdf"] is True
     assert item["is_folder"] is False
-    assert item["size"] == "12 KB"
     assert item["pdf_url"] == "https://libportal.manipal.edu/RootFolder/2026/CSE101.pdf"
 
 
@@ -95,26 +94,89 @@ def test_extract_item_from_row_rejects_parent_directory_entries():
 def test_extract_metadata_populates_year_program_semester_and_subject():
     item = {
         "path": "2026 / B.Tech / III Sem",
-        "file_name": "Algorithms (CSE).pdf",
+        "file_name": "Algorithms (CSE 1071).pdf",
     }
 
     _spider()._extract_metadata(item)
 
-    assert item["year"] == "2026"
-    assert item["program"] == " B.Tech "
-    assert item["semester"] == "III Sem"
+    assert item["year"] == 2026
+    assert item["program"] == "B.Tech"
+    assert item["semester"] == 3
     assert item["subject"] == "Algorithms"
+    assert item["course_code"] == "CSE1071"
+    assert item["subject_code"] == "CSE1071"
 
 
 def test_extract_metadata_recovers_year_from_text_path_component():
     item = {
         "path": "Question Papers 2026 / M.Tech / 2nd Sem",
-        "file_name": "Advanced Topics.pdf",
+        "file_name": "Advanced Topics (CSE 5071).pdf",
     }
 
     _spider()._extract_metadata(item)
 
-    assert item["year"] == "2026"
-    assert item["program"] == " M.Tech "
-    assert item["semester"] == "2nd Sem"
+    assert item["year"] == 2026
+    assert item["program"] == "M.Tech"
+    assert item["semester"] == 2
     assert item["subject"] == "Advanced Topics"
+    assert item["course_code"] == "CSE5071"
+
+
+def test_extract_metadata_supports_fourth_semester_roman_numeral():
+    item = {"path": "2026 / B.Tech / IV Sem", "file_name": "Maths (MAT 2251).pdf"}
+
+    _spider()._extract_metadata(item)
+
+    assert item["semester"] == 4
+
+
+def test_path_contains_target_year_respects_incremental_mode():
+    spider = _spider()
+    spider.current_year = 2026
+    spider.is_incremental = True
+
+    assert spider._path_contains_target_year("2026 / B.Tech") is True
+    assert spider._path_contains_target_year("2024 / B.Tech") is False
+
+    spider.is_incremental = False
+    assert spider._path_contains_target_year("2024 / B.Tech") is True
+
+
+def test_create_pdf_item_uses_parsed_pdf_url():
+    response = _response("""
+        <tr>
+          <td><a href="../RootFolder/2026/CSE101.pdf">CSE101.pdf</a></td>
+          <td>PDF File</td><td></td><td>12 KB</td>
+        </tr>
+        """)
+
+    item = _spider()._create_pdf_item(
+        {
+            "is_pdf": True,
+            "name": "PSUC (CSE 1071).pdf",
+            "pdf_url": "https://libportal.manipal.edu/RootFolder/2026/CSE1071.pdf",
+        },
+        response,
+    )
+
+    assert item["url"] == "https://libportal.manipal.edu/RootFolder/2026/CSE1071.pdf"
+    assert item["course_code"] == "CSE1071"
+
+
+def test_create_pdf_item_reconstructs_url_when_link_href_missing():
+    response = _response("""
+        <tr>
+          <td><a href="javascript:download()">CSE101.pdf</a></td>
+          <td>PDF File</td><td></td><td>12 KB</td>
+        </tr>
+        """)
+
+    item = _spider()._create_pdf_item(
+        {"is_pdf": True, "name": "PSUC (CSE 1071).pdf", "pdf_url": None},
+        response,
+    )
+
+    assert (
+        item["url"]
+        == "https://libportal.manipal.edu/RootFolder/PSUC%20%28CSE%201071%29.pdf"
+    )

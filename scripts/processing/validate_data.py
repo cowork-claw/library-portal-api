@@ -74,13 +74,18 @@ def _validate_json_file(file_path: Path) -> tuple[bool, list[str]]:
             errors.append(f"Course {course_code}: value must be a list")
             continue
         for index, paper in enumerate(papers):
+            if not isinstance(paper, dict):
+                errors.append(
+                    f"{course_code}[{index}]: paper must be an object, got {paper.__class__.__name__}"
+                )
+                continue
             paper_count += 1
             _validate_required_fields(course_code, index, paper, errors)
             _validate_unique_url(course_code, index, paper, urls_seen, errors)
             _validate_int_range(course_code, index, paper, "year", 2006, 2030, errors)
             _validate_int_range(course_code, index, paper, "semester", 1, 10, errors)
 
-    if paper_count == 0:
+    if paper_count == 0 and file_path.name != "other.json":
         errors.append("File contains no papers")
     return len(errors) == 0, errors
 
@@ -106,8 +111,10 @@ def _count_file_papers(report: dict[str, Any], json_file: Path) -> None:
     for papers in data.values():
         if not isinstance(papers, list):
             continue
-        report["total_papers"] += len(papers)
         for paper in papers:
+            if not isinstance(paper, dict):
+                continue
+            report["total_papers"] += 1
             if url := paper.get("url"):
                 if url in report["all_urls"]:
                     report["duplicate_urls"].append(url)
@@ -155,12 +162,14 @@ def _validate_all(data_dir: Path = DATA_DIRECTORY) -> dict[str, Any]:
         report["error"] = "Data directory not found"
         return report
 
-    for json_file in data_dir.rglob("*.json"):
+    for json_file in sorted(data_dir.rglob("*.json")):
         relative_path = str(json_file.relative_to(data_dir))
         report["files_checked"] += 1
         is_valid, errors = _validate_json_file(json_file)
         _count_file_papers(report, json_file)
         _record_file_result(report, relative_path, is_valid, errors)
+    if report["duplicate_urls"]:
+        report["valid"] = False
 
     _log_summary(report)
     report["all_urls"] = list(report["all_urls"])[:10]

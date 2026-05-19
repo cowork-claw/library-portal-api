@@ -38,7 +38,7 @@ class DataLoader:
             self.stats.errors.append("Data directory not found")
             return []
 
-        for json_file in self.data_directory.rglob("*.json"):
+        for json_file in sorted(self.data_directory.rglob("*.json")):
             self._load_file(json_file)
 
         self.stats.total_papers = len(self.papers)
@@ -66,7 +66,12 @@ class DataLoader:
                 continue
 
             course_count += 1
-            for paper in papers_list:
+            for index, paper in enumerate(papers_list):
+                if not isinstance(paper, dict):
+                    self.stats.errors.append(
+                        f"Invalid paper in {file_path.name} {course_code}[{index}]: {paper.__class__.__name__}"
+                    )
+                    continue
                 if (url := paper.get("url")) and url not in self.seen_urls:
                     self.papers.append(paper)
                     self.seen_urls.add(url)

@@ -7,28 +7,45 @@ from typing import Any
 logger = logging.getLogger(__name__)
 
 
+def _normalize_scrape_log_data(data: Any) -> dict[str, Any]:
+    data = data if isinstance(data, dict) else {}
+    data.setdefault("created_at", datetime.now().isoformat())
+    data.setdefault("description", "Persistent log tracking scraped paper URLs")
+    scraped_urls = data.get("scraped_urls")
+    data["scraped_urls"] = (
+        [url for url in scraped_urls if isinstance(url, str)]
+        if isinstance(scraped_urls, list)
+        else []
+    )
+    runs = data.get("runs")
+    data["runs"] = (
+        [run for run in runs if isinstance(run, dict)] if isinstance(runs, list) else []
+    )
+    if not isinstance(data.get("stats"), dict):
+        data["stats"] = {}
+    stats = data["stats"]
+    for key in ("total_scraped", "total_skipped", "total_errors"):
+        if not isinstance(stats.get(key), int):
+            stats[key] = 0
+    return data
+
+
 class ScrapeLog:
     def __init__(self, log_file: Path):
         self.log_file = log_file
         self.data = self._load()
-        self._scraped_urls_set = set(self.data.setdefault("scraped_urls", []))
+        self._scraped_urls_set = set(self.data["scraped_urls"])
         self._dirty = False
 
     def _load(self) -> dict[str, Any]:
         if self.log_file.exists():
             try:
                 data = json.loads(self.log_file.read_text(encoding="utf-8"))
-                return data
+                return _normalize_scrape_log_data(data)
             except (OSError, json.JSONDecodeError) as e:
                 logger.warning(f"Error loading scrape log, creating new: {e}")
 
-        return {
-            "created_at": datetime.now().isoformat(),
-            "description": "Persistent log tracking scraped paper URLs",
-            "scraped_urls": [],
-            "runs": [],
-            "stats": {"total_scraped": 0, "total_skipped": 0, "total_errors": 0},
-        }
+        return _normalize_scrape_log_data({})
 
     def _save(self) -> None:
         if not self._dirty:
@@ -81,12 +98,17 @@ def _load_existing_urls_from_organized_data(data_directory: Path) -> set[str]:
     for json_file in data_directory.rglob("*.json"):
         try:
             data = json.loads(json_file.read_text(encoding="utf-8"))
+            if not isinstance(data, dict):
+                continue
 
             for papers_list in data.values():
-                if isinstance(papers_list, list):
-                    urls.update(
-                        paper["url"] for paper in papers_list if paper.get("url")
-                    )
+                if not isinstance(papers_list, list):
+                    continue
+                urls.update(
+                    paper["url"]
+                    for paper in papers_list
+                    if isinstance(paper, dict) and paper.get("url")
+                )
         except Exception as e:
             logger.error(f"Error loading {json_file}: {e}")
 
