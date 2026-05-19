@@ -96,10 +96,8 @@ def _write_paper_to_file(paper: dict[str, Any], target_file: Path) -> bool:
 
 
 class PaperCategorizer:
-    def __init__(self, data_directory: Path, staging_directory: Path) -> None:
+    def __init__(self, data_directory: Path) -> None:
         self.data_dir = data_directory
-        self.staging_dir = staging_directory
-        self.staging_dir.mkdir(parents=True, exist_ok=True)
 
     def _normalized_course_code(self, paper: dict[str, Any]) -> str:
         course_code = str(

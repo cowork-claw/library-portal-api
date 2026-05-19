@@ -188,7 +188,7 @@ def _run_categorizer(input_file: Path, dry_run: bool = False) -> dict:
 
     logger.info("Loaded %d papers to categorize", len(papers))
 
-    categorizer = PaperCategorizer(settings.DATA_DIRECTORY, STAGING_FILE.parent)
+    categorizer = PaperCategorizer(settings.DATA_DIRECTORY)
     staging_handler = StagingHandler(STAGING_FILE)
     stats = {
         "total": len(papers),
