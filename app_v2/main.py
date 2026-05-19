@@ -56,8 +56,7 @@ async def _lifespan(app: FastAPI):
     logger.info(f"Loading data from: {settings.DATA_DIRECTORY}")
 
     try:
-        loader = DataLoader(settings.DATA_DIRECTORY)
-        paper_index._load_from_directory(loader)
+        paper_index._load_from_directory(DataLoader(settings.DATA_DIRECTORY))
     except Exception:
         logger.exception("Failed to load data — starting with empty index")
         # paper_index remains empty; API will serve zero-paper responses

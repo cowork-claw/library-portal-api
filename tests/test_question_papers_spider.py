@@ -162,3 +162,22 @@ def test_create_pdf_item_uses_parsed_pdf_url():
 
     assert item["url"] == "https://libportal.manipal.edu/RootFolder/2026/CSE1071.pdf"
     assert item["course_code"] == "CSE1071"
+
+
+def test_create_pdf_item_reconstructs_url_when_link_href_missing():
+    response = _response("""
+        <tr>
+          <td><a href="javascript:download()">CSE101.pdf</a></td>
+          <td>PDF File</td><td></td><td>12 KB</td>
+        </tr>
+        """)
+
+    item = _spider()._create_pdf_item(
+        {"is_pdf": True, "name": "PSUC (CSE 1071).pdf", "pdf_url": None},
+        response,
+    )
+
+    assert (
+        item["url"]
+        == "https://libportal.manipal.edu/RootFolder/PSUC%20%28CSE%201071%29.pdf"
+    )

@@ -20,13 +20,10 @@ SCRAPE_LOG_FILE = settings.SCRAPE_LOG_FILE
 TARGET_YEAR_THRESHOLD = settings.TARGET_YEAR_THRESHOLD
 PROGRAM_NAME_PATTERN = re.compile(r"[BM][.]Tech|[BM][.]Sc|MBA|MCA|[BM][.]Com|BBA|BCA")
 COURSE_CODE_PATTERN = re.compile(r"\(([A-Z]{2,4})\s*([0-9]{3,5})\)")
-ROMAN_SEMESTERS = dict(
-    zip(
-        ("I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"),
-        range(1, 11),
-        strict=True,
-    )
-)
+ROMAN_SEMESTERS = {
+    roman: index
+    for index, roman in enumerate("I II III IV V VI VII VIII IX X".split(), 1)
+}
 
 
 from .question_paper_row_parsing import QuestionPaperRowParsingMixin
@@ -103,15 +100,12 @@ class QuestionPapersEnhancedSpider(QuestionPaperRowParsingMixin, scrapy.Spider):
             item["semester"] = semester
         item["subject"] = self._extract_subject(file_name)
         if course_code := self._extract_course_code(file_name):
-            item["course_code"] = course_code
-            item["subject_code"] = course_code
+            item["course_code"] = item["subject_code"] = course_code
 
     def _extract_year(self, path_parts, file_name):
-        if not path_parts:
-            return None
-
-        year_match = re.search(r"\b(20\d{2})\b", path_parts[0])
-        if not year_match:
+        if not (
+            path_parts and (year_match := re.search(r"\b(20\d{2})\b", path_parts[0]))
+        ):
             return None
 
         year_text = year_match.group(1)
@@ -228,10 +222,10 @@ class QuestionPapersEnhancedSpider(QuestionPaperRowParsingMixin, scrapy.Spider):
         if not self._should_visit_folder(folder_name, current_path):
             return None
 
-        if "event_target" not in folder or "event_argument" not in folder:
+        event_target = folder.get("event_target")
+        event_argument = folder.get("event_argument")
+        if event_target is None or event_argument is None:
             return None
-
-        event_target, event_argument = folder["event_target"], folder["event_argument"]
         folder_signature = (event_target, event_argument)
         if folder_signature in self.seen_folders:
             self.logger.debug(f"Skipping already visited folder: {folder_name}")
@@ -279,6 +273,16 @@ class QuestionPapersEnhancedSpider(QuestionPaperRowParsingMixin, scrapy.Spider):
 
         return "Root"
 
+    def _fallback_pdf_url(self, file_name, current_path):
+        root_url = "https://libportal.manipal.edu/RootFolder"
+        encoded_filename = quote(file_name, safe="")
+        if not current_path or current_path == "Root":
+            return f"{root_url}/{encoded_filename}"
+        encoded_path = "/".join(
+            quote(part.strip(), safe="") for part in current_path.split("/")
+        )
+        return f"{root_url}/{encoded_path}/{encoded_filename}"
+
     def _create_pdf_item(self, item_data, response):
         if not item_data.get("is_pdf"):
             return None
@@ -288,19 +292,9 @@ class QuestionPapersEnhancedSpider(QuestionPaperRowParsingMixin, scrapy.Spider):
             "path": self._get_current_path(response),
             "scraped_at": datetime.now().isoformat(),
         }
-        if item_data.get("pdf_url"):
-            item["url"] = item_data["pdf_url"]
-        else:
-            current_path = item["path"]
-            encoded_filename = quote(item["file_name"], safe="")
-            root_url = "https://libportal.manipal.edu/RootFolder"
-
-            if current_path and current_path != "Root":
-                path_parts = [part.strip() for part in current_path.split("/")]
-                encoded_path = "/".join(quote(part, safe="") for part in path_parts)
-                item["url"] = f"{root_url}/{encoded_path}/{encoded_filename}"
-            else:
-                item["url"] = f"{root_url}/{encoded_filename}"
+        item["url"] = item_data.get("pdf_url") or self._fallback_pdf_url(
+            item["file_name"], item["path"]
+        )
 
         self._extract_metadata(item)
         return item
@@ -324,4 +318,3 @@ class QuestionPapersEnhancedSpider(QuestionPaperRowParsingMixin, scrapy.Spider):
                 year_threshold=TARGET_YEAR_THRESHOLD,
                 notes=f"Reason: {reason}",
             )
-            self.logger.info("Run recorded in scrape log")
