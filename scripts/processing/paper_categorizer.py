@@ -66,15 +66,16 @@ def _write_paper_to_file(paper: dict[str, Any], target_file: Path) -> bool:
             data = {}
 
         course_code = paper.get("course_code", "UNKNOWN")
-        if course_code not in data:
-            data[course_code] = []
+        papers = data.get(course_code)
+        if not isinstance(papers, list):
+            papers = data[course_code] = []
 
-        existing_urls = {p.get("url") for p in data[course_code]}
+        existing_urls = {p.get("url") for p in papers if isinstance(p, dict)}
         if paper.get("url") in existing_urls:
             logger.debug(f"Paper already exists in {target_file}: {paper.get('url')}")
             return False
 
-        data[course_code].append(paper)
+        papers.append(paper)
         with open(target_file, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=2, ensure_ascii=False, sort_keys=True)
 
