@@ -36,7 +36,6 @@ def _search_papers(
     return [paper for paper, score in results]
 
 
-
 def _calculate_relevance(
     paper: dict[str, Any], query: str, query_words: set[str]
 ) -> float:
