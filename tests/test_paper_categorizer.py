@@ -121,6 +121,17 @@ def test_categorize_missing_branch_file_falls_back_to_other(tmp_path):
     assert _relative_target(result, categorizer.data_dir) == "other.json"
     assert "Branch file not found: CSE.json" in result.reasoning
 
+def test_write_paper_replaces_wrong_shaped_target_file(tmp_path):
+    target = tmp_path / "target.json"
+    target.write_text("[]", encoding="utf-8")
+
+    assert _write_paper_to_file(
+        {"course_code": "CSE101", "url": "https://example.test/new.pdf"}, target
+    )
+
+    assert '"CSE101"' in target.read_text(encoding="utf-8")
+
+
 
 def test_write_paper_replaces_malformed_course_bucket(tmp_path):
     target = tmp_path / "target.json"

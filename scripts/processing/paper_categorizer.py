@@ -64,6 +64,9 @@ def _write_paper_to_file(paper: dict[str, Any], target_file: Path) -> bool:
                 data = json.load(f)
         else:
             data = {}
+        if not isinstance(data, dict):
+            data = {}
+
 
         course_code = paper.get("course_code", "UNKNOWN")
         papers = data.get(course_code)
