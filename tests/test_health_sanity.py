@@ -1,9 +1,11 @@
+from time import perf_counter
 from unittest.mock import patch
 
 import pytest
 from fastapi.testclient import TestClient
 
 from app_v2.main import app
+from app_v2.routes import health
 
 
 @pytest.fixture
@@ -29,3 +31,13 @@ def test_health_check_staging_error_sanitization(client):
         # Check that the message contains the exception type but NOT the path
         assert "PermissionError" in staging["message"]
         assert "/secret/path" not in staging["message"]
+
+
+def test_health_uptime_uses_monotonic_counter(client, monkeypatch):
+    monkeypatch.setattr(health, "APP_START_MONOTONIC", perf_counter() - 12.3)
+
+    response = client.get("/health")
+
+    assert response.status_code == 200
+    uptime = response.json()["uptime_seconds"]
+    assert 12.0 <= uptime <= 13.0

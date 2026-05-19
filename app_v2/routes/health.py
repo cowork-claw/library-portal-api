@@ -4,6 +4,7 @@ import os
 import uuid
 from datetime import datetime
 from pathlib import Path
+from time import perf_counter
 
 from fastapi import APIRouter, BackgroundTasks, status
 from fastapi.concurrency import run_in_threadpool
@@ -25,8 +26,8 @@ logger = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/health", tags=["Health"])
 
-# Track application start time
-APP_START_TIME = datetime.now()
+# Track application start time with a monotonic clock for stable uptime.
+APP_START_MONOTONIC = perf_counter()
 DATA_HEALTH_OPERATION_ID = "data_health_health_data_get"
 SCRAPER_HEALTH_OPERATION_ID = "scraper_health_health_scraper_get"
 
@@ -65,7 +66,7 @@ async def _health_check() -> HealthResponse:
         status=overall,
         timestamp=datetime.now().isoformat(),
         version=settings.APP_VERSION,
-        uptime_seconds=round((datetime.now() - APP_START_TIME).total_seconds(), 2),
+        uptime_seconds=round(perf_counter() - APP_START_MONOTONIC, 2),
         components={
             "data": data_status,
             "scraper": scraper_status,
