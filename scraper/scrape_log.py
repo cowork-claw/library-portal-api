@@ -92,10 +92,13 @@ def _load_existing_urls_from_organized_data(data_directory: Path) -> set[str]:
             data = json.loads(json_file.read_text(encoding="utf-8"))
 
             for papers_list in data.values():
-                if isinstance(papers_list, list):
-                    urls.update(
-                        paper["url"] for paper in papers_list if paper.get("url")
-                    )
+                if not isinstance(papers_list, list):
+                    continue
+                urls.update(
+                    paper["url"]
+                    for paper in papers_list
+                    if isinstance(paper, dict) and paper.get("url")
+                )
         except Exception as e:
             logger.error(f"Error loading {json_file}: {e}")
 

@@ -4,7 +4,7 @@ from pathlib import Path
 
 import pytest
 
-from scraper.scrape_log import ScrapeLog
+from scraper.scrape_log import ScrapeLog, _load_existing_urls_from_organized_data
 
 
 @pytest.fixture
@@ -101,3 +101,20 @@ def test_health_scraper_status_tolerates_wrong_shaped_log(tmp_log_path, monkeypa
 
     assert status.status == "healthy"
     assert status.details == {"total_runs": 0}
+
+
+def test_existing_url_loader_skips_malformed_paper_items(tmp_path):
+    data_file = tmp_path / "organized.json"
+    data_file.write_text(
+        json.dumps(
+            {
+                "BAD101": ["bad item", {"url": "https://example.com/good.pdf"}],
+                "BAD102": "not a list",
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    assert _load_existing_urls_from_organized_data(tmp_path) == {
+        "https://example.com/good.pdf"
+    }
