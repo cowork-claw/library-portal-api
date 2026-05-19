@@ -170,7 +170,7 @@ def test_staging_handler_recovers_from_wrong_shaped_file(tmp_path):
 def test_staging_handler_drops_malformed_staged_entries(tmp_path):
     staging_file = tmp_path / "pending_review.json"
     staging_file.write_text(
-        '{"papers": ["bad", {"paper": {"url": "old"}}]}', encoding="utf-8"
+        '{"papers": ["bad", {"paper": "bad nested"}, {"paper": {"url": "old"}}]}', encoding="utf-8"
     )
 
     handler = StagingHandler(staging_file)

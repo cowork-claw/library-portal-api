@@ -51,7 +51,12 @@ class StagingHandler:
         data.setdefault("description", STAGING_DESCRIPTION)
         papers = data.get("papers")
         data["papers"] = (
-            [paper for paper in papers if isinstance(paper, dict)]
+            [
+                paper
+                for paper in papers
+                if isinstance(paper, dict)
+                and isinstance(paper.get("paper", {}), dict)
+            ]
             if isinstance(papers, list)
             else []
         )
@@ -71,7 +76,8 @@ class StagingHandler:
         suggested_target: str | None = None,
     ) -> None:
         if (url := paper.get("url")) and any(
-            existing.get("paper", {}).get("url") == url
+            isinstance(existing_paper := existing.get("paper"), dict)
+            and existing_paper.get("url") == url
             for existing in self.data["papers"]
         ):
             logger.debug(f"Paper already staged: {url}")
