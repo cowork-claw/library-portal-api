@@ -59,7 +59,6 @@ class QuestionPaperRowParsingMixin:
             "size": size,
             "is_folder": is_folder,
             "is_pdf": is_pdf,
-            "href": href,
             "event_target": event_target,
             "event_argument": event_argument,
             "pdf_url": pdf_url,
