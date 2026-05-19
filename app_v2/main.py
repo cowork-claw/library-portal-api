@@ -110,15 +110,11 @@ app.add_middleware(
 )
 
 # Add Rate Limiting middleware (wraps APIKey so failed auth counts toward limit)
-rate_limit_valid_keys = [
-    key
-    for key in (
-        settings.API_SECRET_KEY,
-        os.getenv(API_KEY_ENV),
-        os.getenv(OPENCLAW_BOT_API_KEY_ENV),
-    )
-    if key
-]
+rate_limit_valid_keys = (
+    settings.API_SECRET_KEY,
+    os.getenv(API_KEY_ENV),
+    os.getenv(OPENCLAW_BOT_API_KEY_ENV),
+)
 app.add_middleware(RateLimitMiddleware, valid_api_keys=rate_limit_valid_keys)
 
 # Add Security Headers middleware
