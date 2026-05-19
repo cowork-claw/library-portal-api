@@ -8,14 +8,12 @@ logger = logging.getLogger(__name__)
 
 
 def _normalize_scrape_log_data(data: Any) -> dict[str, Any]:
-    if not isinstance(data, dict):
-        data = {}
+    data = data if isinstance(data, dict) else {}
     data.setdefault("created_at", datetime.now().isoformat())
     data.setdefault("description", "Persistent log tracking scraped paper URLs")
-    if not isinstance(data.get("scraped_urls"), list):
-        data["scraped_urls"] = []
-    if not isinstance(data.get("runs"), list):
-        data["runs"] = []
+    for field in ("scraped_urls", "runs"):
+        if not isinstance(data.get(field), list):
+            data[field] = []
     if not isinstance(data.get("stats"), dict):
         data["stats"] = {}
     stats = data["stats"]
