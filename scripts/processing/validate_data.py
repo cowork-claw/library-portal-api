@@ -74,6 +74,11 @@ def _validate_json_file(file_path: Path) -> tuple[bool, list[str]]:
             errors.append(f"Course {course_code}: value must be a list")
             continue
         for index, paper in enumerate(papers):
+            if not isinstance(paper, dict):
+                errors.append(
+                    f"{course_code}[{index}]: paper must be an object, got {paper.__class__.__name__}"
+                )
+                continue
             paper_count += 1
             _validate_required_fields(course_code, index, paper, errors)
             _validate_unique_url(course_code, index, paper, urls_seen, errors)
@@ -108,7 +113,7 @@ def _count_file_papers(report: dict[str, Any], json_file: Path) -> None:
             continue
         report["total_papers"] += len(papers)
         for paper in papers:
-            if url := paper.get("url"):
+            if isinstance(paper, dict) and (url := paper.get("url")):
                 if url in report["all_urls"]:
                     report["duplicate_urls"].append(url)
                 report["all_urls"].add(url)

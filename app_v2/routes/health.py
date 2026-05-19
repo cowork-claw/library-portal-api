@@ -8,6 +8,7 @@ from pathlib import Path
 from fastapi import APIRouter, BackgroundTasks, status
 from fastapi.concurrency import run_in_threadpool
 
+from scraper.scrape_log import _normalize_scrape_log_data
 from config.config_v2 import settings
 
 from ..data_loader import DataLoader
@@ -197,6 +198,8 @@ def _check_staging_health() -> ComponentHealth:
 
 def _load_scrape_log() -> dict:
     try:
-        return json.loads(settings.SCRAPE_LOG_FILE.read_text())
+        return _normalize_scrape_log_data(
+            json.loads(settings.SCRAPE_LOG_FILE.read_text())
+        )
     except Exception:
         return {}

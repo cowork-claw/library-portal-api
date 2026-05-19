@@ -37,7 +37,7 @@ PREFIX_TO_BRANCH = {
 FIRST_YEAR_PREFIX_PATTERN = re.compile(
     r"^(MAT|PHY|CHM|HUM|CIE|MME|IPE|BIO|EEE|ELE|CIV|CSS|ECE)$"
 )
-CS_STREAM_PATTERN = re.compile(r"^[A-Z]{2,3}1[0-2]0[0-9]$")
+CS_STREAM_PATTERN = re.compile(r"^[A-Z]{2,3}1[0-2]02$")
 CSS_PREFIX_PATTERN = re.compile(r"^CSS\d{4}$")
 CORE_STREAM_PATTERN = re.compile(r"^[A-Z]{2,3}1[0-2]7[12]$")
 ICAS_PREFIXES = {"ICS", "IMA", "IPH", "ICH", "IBI"}

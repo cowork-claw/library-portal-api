@@ -7,28 +7,39 @@ from typing import Any
 logger = logging.getLogger(__name__)
 
 
+def _normalize_scrape_log_data(data: Any) -> dict[str, Any]:
+    if not isinstance(data, dict):
+        data = {}
+    data.setdefault("created_at", datetime.now().isoformat())
+    data.setdefault("description", "Persistent log tracking scraped paper URLs")
+    if not isinstance(data.get("scraped_urls"), list):
+        data["scraped_urls"] = []
+    if not isinstance(data.get("runs"), list):
+        data["runs"] = []
+    if not isinstance(data.get("stats"), dict):
+        data["stats"] = {}
+    stats = data["stats"]
+    for key in ("total_scraped", "total_skipped", "total_errors"):
+        stats.setdefault(key, 0)
+    return data
+
+
 class ScrapeLog:
     def __init__(self, log_file: Path):
         self.log_file = log_file
         self.data = self._load()
-        self._scraped_urls_set = set(self.data.setdefault("scraped_urls", []))
+        self._scraped_urls_set = set(self.data["scraped_urls"])
         self._dirty = False
 
     def _load(self) -> dict[str, Any]:
         if self.log_file.exists():
             try:
                 data = json.loads(self.log_file.read_text(encoding="utf-8"))
-                return data
+                return _normalize_scrape_log_data(data)
             except (OSError, json.JSONDecodeError) as e:
                 logger.warning(f"Error loading scrape log, creating new: {e}")
 
-        return {
-            "created_at": datetime.now().isoformat(),
-            "description": "Persistent log tracking scraped paper URLs",
-            "scraped_urls": [],
-            "runs": [],
-            "stats": {"total_scraped": 0, "total_skipped": 0, "total_errors": 0},
-        }
+        return _normalize_scrape_log_data({})
 
     def _save(self) -> None:
         if not self._dirty:

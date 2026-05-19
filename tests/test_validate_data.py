@@ -74,6 +74,17 @@ def test_validate_json_file_reports_record_errors(tmp_path):
     assert "CSE101[0]: invalid semester 11" in errors
 
 
+def test_validate_json_file_reports_non_object_paper_entries(tmp_path):
+    data_file = tmp_path / "CSE.json"
+    _write_json(data_file, {"CSE101": ["bad item", _paper()]})
+
+    is_valid, errors = _validate_json_file(data_file)
+
+    assert is_valid is False
+    assert "CSE101[0]: paper must be an object, got str" in errors
+    assert "File contains no papers" not in errors
+
+
 def test_validate_all_counts_files_papers_and_cross_file_duplicates(tmp_path):
     _write_json(tmp_path / "branches" / "CSE.json", {"CSE101": [_paper()]})
     _write_json(

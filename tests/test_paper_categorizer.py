@@ -91,6 +91,16 @@ def test_categorize_first_year_streams(tmp_path):
     assert core_result.metadata_filled == {"degree_type": "B.Tech", "streams": ["core"]}
 
 
+def test_first_year_cs_stream_requires_02_suffix(tmp_path):
+    categorizer = _categorizer(tmp_path)
+
+    cs_result = categorizer._categorize({"course_code": "MAT1102"})
+    non_cs_result = categorizer._categorize({"course_code": "MAT1109"})
+
+    assert cs_result.category == "first_year_cs"
+    assert non_cs_result.category != "first_year_cs"
+
+
 def test_categorize_malformed_course_code_is_uncertain(tmp_path):
     categorizer = _categorizer(tmp_path)
 
