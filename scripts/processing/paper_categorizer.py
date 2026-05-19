@@ -40,6 +40,9 @@ FIRST_YEAR_PREFIX_PATTERN = re.compile(
 CS_STREAM_PATTERN = re.compile(r"^[A-Z]{2,3}1[0-2]02$")
 CSS_PREFIX_PATTERN = re.compile(r"^CSS\d{4}$")
 CORE_STREAM_PATTERN = re.compile(r"^[A-Z]{2,3}1[0-2]7[12]$")
+FIRST_YEAR_CSS_RESULT = ("cs_stream.json", 0.95, "first_year_cs", "cs", "CSS prefix = CS Stream (2024+)")
+FIRST_YEAR_CS_RESULT = ("cs_stream.json", 0.9, "first_year_cs", "cs")
+FIRST_YEAR_CORE_RESULT = ("non_cs_stream.json", 0.9, "first_year_core", "core")
 ICAS_PREFIXES = {"ICS", "IMA", "IPH", "ICH", "IBI"}
 MASTERS_PATTERN = re.compile(
     r"\b(m\s*\.?\s*tech|mtech|m\s*\.?\s*e\.?|mca|m\s*\.?\s*sc|msc)\b",
@@ -210,29 +213,11 @@ class PaperCategorizer:
         self, course_code: str, prefix: str, reasoning: list[str]
     ) -> CategorizationResult | None:
         if CSS_PREFIX_PATTERN.match(course_code) or prefix == "CSS":
-            result_args = (
-                "cs_stream.json",
-                0.95,
-                "first_year_cs",
-                "cs",
-                "CSS prefix = CS Stream (2024+)",
-            )
+            result_args = FIRST_YEAR_CSS_RESULT
         elif CS_STREAM_PATTERN.match(course_code):
-            result_args = (
-                "cs_stream.json",
-                0.9,
-                "first_year_cs",
-                "cs",
-                f"CS Stream pattern matched: {course_code}",
-            )
+            result_args = (*FIRST_YEAR_CS_RESULT, f"CS Stream pattern matched: {course_code}")
         elif CORE_STREAM_PATTERN.match(course_code):
-            result_args = (
-                "non_cs_stream.json",
-                0.9,
-                "first_year_core",
-                "core",
-                f"Core Stream pattern matched: {course_code}",
-            )
+            result_args = (*FIRST_YEAR_CORE_RESULT, f"Core Stream pattern matched: {course_code}")
         else:
             if FIRST_YEAR_PREFIX_PATTERN.match(prefix):
                 reasoning.append(f"First year prefix ({prefix}) but unclear pattern")
