@@ -75,3 +75,18 @@ def test_staging_health_rejects_non_object_paper_entries(tmp_path, monkeypatch):
     assert status.status == "degraded"
     assert "ValueError" in status.message
     assert str(staging_dir) not in status.message
+
+
+def test_staging_health_rejects_malformed_nested_paper(tmp_path, monkeypatch):
+    staging_dir = tmp_path / "staging"
+    staging_dir.mkdir()
+    (staging_dir / "pending_review.json").write_text(
+        '{"papers": [{"paper": "bad nested"}]}', encoding="utf-8"
+    )
+    monkeypatch.setattr(health.settings, "STAGING_DIRECTORY", staging_dir)
+
+    status = health._check_staging_health()
+
+    assert status.status == "degraded"
+    assert "ValueError" in status.message
+    assert str(staging_dir) not in status.message
