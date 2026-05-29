@@ -16,7 +16,7 @@ thefuzz==0.22.1
 python-Levenshtein==0.27.3
 
 # Upload dependencies
-requests==2.33.1
+requests==2.34.2
 python-dotenv==1.2.2
 
 # Observability
