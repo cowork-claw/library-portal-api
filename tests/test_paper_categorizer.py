@@ -9,7 +9,7 @@ def _categorizer(tmp_path: Path) -> PaperCategorizer:
     (data_dir / "btech" / "branches").mkdir(parents=True)
     (data_dir / "btech" / "first_year").mkdir(parents=True)
     (data_dir / "bsc").mkdir(parents=True)
-    return PaperCategorizer(data_dir, tmp_path / "staging")
+    return PaperCategorizer(data_dir)
 
 
 def _relative_target(result, data_dir: Path) -> str:

@@ -36,16 +36,6 @@ def _search_papers(
     return [paper for paper, score in results]
 
 
-def _field_search_data(
-    paper: dict[str, Any], search_meta: dict[str, Any] | None, field_name: str
-) -> tuple[str, set[str] | None] | None:
-    if search_meta and (meta := search_meta.get(field_name)):
-        return meta["lower"], meta["words"]
-
-    value = paper.get(field_name)
-    return (str(value).lower(), None) if value else None
-
-
 def _calculate_relevance(
     paper: dict[str, Any], query: str, query_words: set[str]
 ) -> float:
@@ -56,11 +46,12 @@ def _calculate_relevance(
         if max_score >= weight:
             break
 
-        field_data = _field_search_data(paper, search_meta, field_name)
-        if field_data is None:
+        if search_meta and (meta := search_meta.get(field_name)):
+            value_lower, value_words = meta["lower"], meta["words"]
+        elif value := paper.get(field_name):
+            value_lower, value_words = str(value).lower(), None
+        else:
             continue
-
-        value_lower, value_words = field_data
         if query == value_lower:
             return weight
         if query in value_lower:

@@ -13,7 +13,6 @@ import ast
 import importlib
 import os
 import sys
-import tempfile
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Iterable
@@ -416,27 +415,26 @@ def exercise_categorizer_contract(suite: CheckSuite) -> None:
         ),
     )
 
-    with tempfile.TemporaryDirectory(prefix="autoresearch-staging-") as staging_dir:
-        categorizer = PaperCategorizer(DATA_DIR, Path(staging_dir))
-        for paper, expected_suffix, expected_category in fixtures:
-            result = categorizer._categorize(paper)
-            target = (
-                result.target_file.relative_to(DATA_DIR).as_posix()
-                if result.target_file
-                else ""
-            )
-            suite.require(
-                target == expected_suffix,
-                f"categorizer target for {paper['course_code']} was {target}",
-            )
-            suite.require(
-                result.category == expected_category,
-                f"categorizer category for {paper['course_code']} was {result.category}",
-            )
-            suite.require(
-                result.confidence >= 0.5,
-                f"categorizer confidence too low for {paper['course_code']}",
-            )
+    categorizer = PaperCategorizer(DATA_DIR)
+    for paper, expected_suffix, expected_category in fixtures:
+        result = categorizer._categorize(paper)
+        target = (
+            result.target_file.relative_to(DATA_DIR).as_posix()
+            if result.target_file
+            else ""
+        )
+        suite.require(
+            target == expected_suffix,
+            f"categorizer target for {paper['course_code']} was {target}",
+        )
+        suite.require(
+            result.category == expected_category,
+            f"categorizer category for {paper['course_code']} was {result.category}",
+        )
+        suite.require(
+            result.confidence >= 0.5,
+            f"categorizer confidence too low for {paper['course_code']}",
+        )
 
 
 def main() -> int:
