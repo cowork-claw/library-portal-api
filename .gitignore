@@ -51,3 +51,6 @@ node_modules/
 
 # Local research notes (not for CI)
 .research/
+
+# desloppify local state (not for commit)
+.desloppify/
