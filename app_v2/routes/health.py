@@ -10,7 +10,7 @@ from fastapi import APIRouter, BackgroundTasks, status
 from fastapi.concurrency import run_in_threadpool
 
 from config.config_v2 import settings
-from scraper.scrape_log import _normalize_scrape_log_data
+from scraper.scrape_log import normalize_scrape_log_data
 
 from ..data_loader import DataLoader
 from ..models import (
@@ -204,7 +204,7 @@ def _check_staging_health() -> ComponentHealth:
 
 def _load_scrape_log() -> dict:
     try:
-        return _normalize_scrape_log_data(
+        return normalize_scrape_log_data(
             json.loads(settings.SCRAPE_LOG_FILE.read_text(encoding="utf-8"))
         )
     except Exception:
