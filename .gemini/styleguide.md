@@ -35,7 +35,7 @@ current stack from outermost to innermost is:
    failed auth counts toward the rate limit
 5. **APIKeyMiddleware** — validates `X-API-Key` on protected routes
 6. **CORSMiddleware** — standard CORS handling
-7. **CompressionMiddleware** (innermost) — only compresses successful route responses;
+7. **GZipMiddleware** (innermost) — only compresses successful route responses;
    auth/rate-limit errors are generated further out and never reach this layer
 
 **Do NOT suggest reordering middleware.** Each layer's position is documented and
