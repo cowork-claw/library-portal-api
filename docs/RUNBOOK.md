@@ -9,8 +9,22 @@ uvicorn app_v2.main:app --reload --port 8000
 ```
 
 ### Health Checks
-- `GET /health` for basic status
+- `GET /health` for basic status (public — no API key)
 - `GET /health/data` for data integrity (requires API key)
+- `GET /health/scraper` for scraper run history and config status (requires API key)
+
+> `/health` is the only public health endpoint. `/health/data`, `/health/scraper`,
+> `/metrics`, and all `/api/*` routes require the `X-API-Key` header.
+
+### Reload data without restart (admin)
+Reload the organized JSON into a freshly built index and atomically swap it in, with no
+service restart:
+```bash
+curl -X POST -H "X-API-Key: your-key" http://localhost:8000/health/data/reload
+```
+Returns `202 Accepted` with `{"reload_id": "...", "message": "Reload started"}`. The
+reload runs in the background; check `/health/data` afterward to confirm the new paper
+count.
 
 ### Metrics (optional)
 Set `LIBRARY_PORTAL_METRICS_ENABLED=true`, then:
@@ -31,10 +45,13 @@ Set `LIBRARY_PORTAL_SENTRY_DSN` and restart the API.
 
 ### Missing papers
 1. Check `staging/pending_review.json`.
-2. Run categorizer if needed:
+2. Run the categorizer if needed. The runnable entry point is `run_categorizer.py`
+   (`paper_categorizer.py` is an importable library module with no CLI). It takes the
+   scraped papers JSON as a required positional argument:
    ```bash
-   python scripts/processing/paper_categorizer.py
+   python scripts/processing/run_categorizer.py scraper/scraped_output.json
    ```
+   Add `--dry-run` to preview categorization without writing any files.
 
 ## Deployment (Render)
 
