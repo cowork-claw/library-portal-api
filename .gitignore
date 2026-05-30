@@ -54,6 +54,7 @@ node_modules/
 
 # desloppify local state (not for commit)
 .desloppify/
+scorecard.png
 
 # Local agent skills & scratch data (NOT for commit).
 # Bots read tracked configs instead: AGENTS.md, review.md, .coderabbit.yaml,
