@@ -54,3 +54,11 @@ node_modules/
 
 # desloppify local state (not for commit)
 .desloppify/
+
+# Local agent skills & scratch data (NOT for commit).
+# Bots read tracked configs instead: AGENTS.md, review.md, .coderabbit.yaml,
+# greptile.json, .pr_agent.toml, .gemini/{config.yaml,styleguide.md},
+# .github/copilot-instructions.md.
+.gemini/skills/
+.github/skills/
+.kiro/
