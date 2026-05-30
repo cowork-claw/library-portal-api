@@ -22,7 +22,7 @@ flowchart TD
 
     subgraph RoutesG["API routes"]
         Papers["papers routes<br/>/api/papers · /lookup · /year · /course · /semester"]
-        Health["health routes<br/>/health · /health/data · /health/scraper · /data/reload"]
+        Health["health routes<br/>/health · /health/data · /health/scraper · /health/data/reload"]
     end
 
     Papers --> Index
