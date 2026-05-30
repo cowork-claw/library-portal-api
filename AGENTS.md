@@ -2,7 +2,7 @@
 
 Guidance for AI coding agents and reviewers that operate on this repo (Jules, Codex,
 Devin, Kilo, Pullfrog, plus the PR reviewers CodeRabbit, Gemini, Copilot, Qodo, and
-Greptile). Review standards are centralized in [review.md](review.md).
+Greptile). Review standards are centralized in [REVIEW.md](REVIEW.md).
 
 ## Project Overview
 FastAPI service (Python 3.12+) serving MIT Library question papers from organized JSON
@@ -40,7 +40,7 @@ black . && ruff check .                   # format + lint
 
 ## Code Review & Automation
 Several bots review PRs here; each reads a specific config. Keep all of them
-consistent with [review.md](review.md) (the shared standard):
+consistent with [REVIEW.md](REVIEW.md) (the shared standard):
 
 | Reviewer | Config file(s) |
 |----------|----------------|
@@ -49,7 +49,7 @@ consistent with [review.md](review.md) (the shared standard):
 | Gemini Code Assist (`gemini-code-assist[bot]`) | `.gemini/config.yaml`, `.gemini/styleguide.md` |
 | GitHub Copilot (`copilot-pull-request-reviewer[bot]`) | `.github/copilot-instructions.md` |
 | Greptile (`greptile-apps[bot]`) | `greptile.json` |
-| Kilo Code Reviews (`kilo-code-bot[bot]`) | `review.md` |
+| Kilo Code Reviews (`kilo-code-bot[bot]`) | `REVIEW.md` |
 | Jules / Codex / Devin / Pullfrog | `AGENTS.md` (+ each tool's dashboard settings) |
 
 Jules automations: `.github/workflows/jules-*.yml` (`bug-fixer`, `ci-failure-fixer`,
@@ -57,7 +57,7 @@ Jules automations: `.github/workflows/jules-*.yml` (`bug-fixer`, `ci-failure-fix
 They include mechanical pre-check guardrails to avoid duplicate PRs, are scoped to
 high-confidence changes only, and do not enforce mandatory doc updates (that caused
 merge conflicts). Pullfrog and Devin are configured via their dashboards (no committed
-file) but honor `AGENTS.md`/`review.md` when they run.
+file) but honor `AGENTS.md`/`REVIEW.md` when they run.
 
 ## Environment Variables
 See `.env.example`. Production must set `LIBRARY_PORTAL_API_KEY`.
