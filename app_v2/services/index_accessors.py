@@ -104,7 +104,7 @@ class PaperIndexAccessors:
         # split across multiple code variants (e.g. MAT2251..MAT2262 all map to
         # "Engineering Mathematics IV"). Exact-code matching alone hides papers
         # that exist in the data, so union in every code sharing the same name.
-        code = course_code.upper()
+        code = str(course_code).upper()
         urls = set(self._by_course.get(code, set()))
         for name_key in self._code_to_name_keys.get(code, ()):
             urls |= self._by_course_name.get(name_key, set())

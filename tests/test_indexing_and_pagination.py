@@ -75,6 +75,21 @@ def test_course_filter_groups_fragmented_code_variants():
     assert index._get_urls_by_course("HUM305") == {"u3"}
 
 
+def test_course_filter_robust_to_case_and_int_codes():
+    # Raw data may carry lowercase or numeric course codes; lookups must still
+    # resolve regardless of case/type (index and query both normalize).
+    index = PaperIndex()
+    index.papers = [
+        {"file_name": "a.pdf", "url": "u1", "course_code": "cs101"},
+        {"file_name": "b.pdf", "url": "u2", "course_code": 202},
+    ]
+    index._build_indexes()
+
+    assert index._get_urls_by_course("CS101") == {"u1"}
+    assert index._get_urls_by_course("cs101") == {"u1"}
+    assert index._get_urls_by_course("202") == {"u2"}
+
+
 def test_indexing_urls_and_program_abbrevs():
     index = PaperIndex()
     index.papers = _sample_papers()
