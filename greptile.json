@@ -1,12 +1,12 @@
 {
   "strictness": 2,
   "commentTypes": ["logic", "syntax"],
-  "instructions": "Follow review.md. FastAPI service; focus on app_v2/, config/, and tests/. Prioritize security, correctness, and error handling at I/O boundaries. Respect architecture invariants: do not suggest reordering the main.py middleware stack; pagination is limit/offset (not page/page_size); only auth.PUBLIC_PATHS (/, /docs, /redoc, /openapi.json, /health) are public and every other route requires X-API-Key. Do not flag dependency versions (Dependabot-managed), Black/ruff formatting, or speculative refactors.",
+  "instructions": "Follow REVIEW.md. FastAPI service; focus on app_v2/, config/, and tests/. Prioritize security, correctness, and error handling at I/O boundaries. Respect architecture invariants: do not suggest reordering the main.py middleware stack; pagination is limit/offset (not page/page_size); only auth.PUBLIC_PATHS (/, /docs, /redoc, /openapi.json, /health) are public and every other route requires X-API-Key. Do not flag dependency versions (Dependabot-managed), Black/ruff formatting, or speculative refactors.",
   "ignorePatterns": "data/**\nstaging/**\nscraper/**\nscripts/**\ndocs/**\n*.md",
   "excludeAuthors": ["dependabot[bot]"],
   "customContext": {
     "files": [
-      { "path": "review.md", "description": "Shared code review standard and architecture invariants" },
+      { "path": "REVIEW.md", "description": "Shared code review standard and architecture invariants" },
       { "path": "AGENTS.md", "description": "Repo architecture and reviewer/config map" }
     ]
   }

@@ -1,7 +1,7 @@
 # Library Portal API - Copilot Instructions
 
-> Review standards for this repo are centralized in [review.md](../review.md) and
-> [AGENTS.md](../AGENTS.md). When reviewing pull requests, follow review.md — in
+> Review standards for this repo are centralized in [REVIEW.md](../REVIEW.md) and
+> [AGENTS.md](../AGENTS.md). When reviewing pull requests, follow REVIEW.md — in
 > particular the architecture invariants and the "Do NOT flag" list.
 
 ## Project Overview
