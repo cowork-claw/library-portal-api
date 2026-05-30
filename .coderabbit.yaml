@@ -1,0 +1,40 @@
+# CodeRabbit configuration — https://docs.coderabbit.ai/reference/configuration
+# Shared review standards live in review.md and AGENTS.md, which CodeRabbit also
+# ingests as code guidelines (see knowledge_base.code_guidelines below).
+language: en-US
+tone_instructions: "Only flag issues introduced by this PR. Be concise and concrete; skip nitpicks, formatting, and speculative refactors. Follow review.md."
+reviews:
+  profile: chill
+  request_changes_workflow: false
+  high_level_summary: true
+  poem: false
+  auto_review:
+    enabled: true
+    drafts: false
+  path_filters:
+    - "!data/**"
+    - "!staging/**"
+    - "!scraper/**"
+    - "!scripts/**"
+    - "!docs/**"
+    - "!**/*.md"
+  path_instructions:
+    - path: "app_v2/**"
+      instructions: >-
+        Apply review.md. Enforce architecture invariants: never suggest reordering the
+        middleware stack in main.py; pagination is limit/offset (not page/page_size);
+        only auth.PUBLIC_PATHS are public and every other route requires X-API-Key.
+        Prioritize security, correctness, error handling at I/O boundaries, and type
+        honesty on public route/service signatures. Do not flag dependency versions,
+        Black/ruff formatting, or speculative refactors.
+    - path: "tests/**"
+      instructions: >-
+        Verify tests assert real behavior and cover new code paths. Do not require
+        snapshot tests or flag intentionally loose typing in fixtures.
+knowledge_base:
+  code_guidelines:
+    enabled: true
+    filePatterns:
+      - "review.md"
+      - "AGENTS.md"
+      - ".github/copilot-instructions.md"

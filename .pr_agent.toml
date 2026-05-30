@@ -7,6 +7,9 @@
 [pr_reviewer]
 # Extra instructions for the review agent
 extra_instructions = """
+## Shared Standard
+The canonical review guide is review.md at the repo root — follow it. Key points below.
+
 ## Project Context
 This is a FastAPI service (Python 3.12+) serving library question papers from JSON data.
 The app uses a layered architecture: routes → services → middleware → data_loader.

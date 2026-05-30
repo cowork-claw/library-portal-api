@@ -1,5 +1,9 @@
 # Library Portal API - Copilot Instructions
 
+> Review standards for this repo are centralized in [review.md](../review.md) and
+> [AGENTS.md](../AGENTS.md). When reviewing pull requests, follow review.md — in
+> particular the architecture invariants and the "Do NOT flag" list.
+
 ## Project Overview
 
 This is a FastAPI-based REST API for serving MIT Library Question Papers. The API provides organized access to question papers with filtering, search, and metadata capabilities. It includes an automated scraper that runs weekly to fetch new papers.
@@ -24,14 +28,16 @@ library-portal-api/
 │   ├── data_loader.py         # Multi-file JSON data loader
 │   ├── models.py              # Pydantic models (Paper, CurriculumContext, responses)
 │   ├── routes/                # API endpoint routers
-│   │   ├── papers.py          # GET /api/papers with filtering & pagination
-│   │   ├── metadata.py        # GET /api/metadata, /api/statistics
-│   │   └── health.py          # Health check endpoints
+│   │   ├── papers.py          # /api/papers (filter/search/sort/paginate), lookup, year/course/semester
+│   │   └── health.py          # /health, /health/data, /health/scraper, POST /health/data/reload
+│   │   # NOTE: /api/metadata and /api/statistics are defined in main.py, not a routes module
 │   ├── services/              # Business logic
-│   │   └── indexing.py        # PaperIndex and fuzzy search helpers
-│   └── middleware/            # Authentication & Security middleware
-│       ├── auth.py            # APIKeyMiddleware - validates X-API-Key
-│       └── security.py        # SecurityHeadersMiddleware - adds CSP, HSTS, etc.
+│   │   ├── indexing.py        # PaperIndex: URL-set indexes, atomic RLock reload
+│   │   └── index_accessors.py # PaperIndexAccessors: read accessors + thefuzz fuzzy search
+│   └── middleware/            # Auth, rate limiting, structured logging, security headers
+│       ├── auth.py            # APIKeyMiddleware + SecurityHeadersMiddleware
+│       ├── rate_limit.py      # RateLimitMiddleware (fixed-window limiter)
+│       └── structured_logging.py  # RequestIDMiddleware + StructuredLoggingMiddleware
 ├── config/                    # Configuration and settings
 │   └── config_v2.py           # Pydantic settings (LIBRARY_PORTAL_ env prefix)
 ├── data/classified/organized/ # Categorized paper data (JSON)
@@ -64,7 +70,10 @@ library-portal-api/
     ├── jules-weekly-cleanup.yml    # Weekly code cleanup (Monday 3 AM UTC, Jules)
     ├── jules-bug-fixer.yml         # Auto-fix bugs from issues (Jules)
     ├── jules-performance-agent.yml # Performance optimization (Wednesday 4 AM UTC, Jules)
-    └── keep-alive.yml              # Keep Render API alive
+    ├── ci.yml                       # CI: pytest + ruff/black checks on PRs and pushes
+    ├── cleanup-deployments.yml      # Remove stale PR deployment records
+    ├── gitleaks.yml                 # Secret scanning
+    └── label-sync.yml               # Sync issue labels from .github/labels.yml
 ```
 
 ## Development Setup
