@@ -9,6 +9,16 @@ known_first_party = [
 ]
 
 [tool.deptry.per_rule_ignores]
+# Optional dependency: normalize_course_names.py imports spellchecker
+# (pyspellchecker) inside a try/except and falls back gracefully, so it is not
+# a required runtime/CI dependency. Ignore both "missing" (CI, not installed)
+# and "transitive" (local, installed but undeclared).
+DEP001 = [
+  "spellchecker",
+]
+DEP003 = [
+  "spellchecker",
+]
 DEP002 = [
   "black",
   "deptry",

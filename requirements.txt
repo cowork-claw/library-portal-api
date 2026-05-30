@@ -9,7 +9,7 @@ psutil==7.2.2
 orjson==3.11.9
 
 # Scraping dependencies
-scrapy==2.15.2
+scrapy==2.16.0
 
 # Search dependencies
 thefuzz==0.22.1

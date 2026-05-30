@@ -10,7 +10,7 @@ on:
 
 jobs:
   classify-papers:
-    name: Auto-Classify Pending Papers
+    name: Auto-Normalize & Classify Pending Papers
     runs-on: ubuntu-latest
     # Only run if scraper succeeded on main
     if: |
@@ -94,17 +94,18 @@ jobs:
             echo "✅ No staging file found"
           fi
       
-      - name: Invoke Jules Paper Classifier
+      - name: Invoke Jules Paper Normalizer & Classifier
         if: steps.summary.outputs.has_new == 'true' && steps.check_pending.outputs.has_pending == 'true'
         uses: google-labs-code/jules-invoke@v1.0.0
         with:
           prompt: |
-            Classify pending papers from staging into the correct data files.
+            Normalize and classify pending papers from staging into the correct data files.
 
             ## Task
 
-            Read `staging/pending_review.json` and categorize each paper with `reviewed: false`
-            into the correct target JSON file in `data/classified/organized/`.
+            Read `staging/pending_review.json` and, for each paper with `reviewed: false`,
+            first **normalize** its fields (see Normalization), then categorize it into the
+            correct target JSON file in `data/classified/organized/`.
 
             ## Data Structure
 
@@ -151,6 +152,29 @@ jobs:
                - Course codes 5XXX pattern
                - VLS/VL prefix → M.Tech VLSI
 
+            ## Normalization (reason over every paper before placing it)
+
+            The scraped `course_name` is noisy: it often contains the course code,
+            `(Makeup)`, `PART A/B`, `Set N`, stray brackets, typos and inconsistent
+            casing. Produce one clean, human-readable course name per paper:
+
+            1. **Strip junk**: remove embedded course codes and `(...)` groups,
+               `PART A/B`, `Set N`, `Makeup`, trailing `RCS`, and collapse whitespace.
+               e.g. `"Thermodynamics ( AAE-2158) Set 4"` -> `"Thermodynamics"`.
+            2. **Fix obvious spelling typos** by reasoning about the intended words,
+               e.g. `"Finacial"` -> `"Financial"`, `"Deisgn"` -> `"Design"`,
+               `"Enviornmental"` -> `"Environmental"`. Use Title Case, but keep
+               acronyms and roman numerals (e.g. `IV`, `DSP`) as-is.
+            3. **Reuse the existing canonical name (most important).** Before writing,
+               look at papers already stored under the same `course_code` in the target
+               file. If that code already exists, set `course_name` to the EXACT spelling
+               already used there instead of introducing a new variant. This keeps every
+               paper for a course under one name so filtering/search stays consistent.
+            4. **Never merge distinct courses.** If a paper's name is clearly a different
+               subject than what the code already holds (not just a typo), leave it as its
+               own cleaned name and add it to `staging/pending_review.json` notes for human
+               review rather than forcing a match.
+
             ## Paper Schema (required fields)
 
             ```json
@@ -172,6 +196,7 @@ jobs:
 
             1. Read `staging/pending_review.json`
             2. For each paper with `reviewed: false`:
+               - Normalize `course_name` per the Normalization section above
                - Analyze course_code and program fields
                - Determine target file using rules above
                - Add to correct JSON file (append to course_code key)
@@ -183,7 +208,7 @@ jobs:
             ## Rules and Constraints
 
             - Ensure no duplicate URLs in target files
-            - Ensure no duplicate URLs in target files
+            - Reuse the existing `course_name` for a `course_code` that already exists
             - Preserve existing data in target files
             - Use 2-space JSON indentation
             - Only classify papers with `reviewed: false`

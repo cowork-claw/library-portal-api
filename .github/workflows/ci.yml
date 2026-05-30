@@ -6,6 +6,16 @@ on:
   pull_request:
     branches: ["main"]
 
+# Cancel superseded runs on the same ref (saves minutes when bots push updates
+# to automated PRs).
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+# Least-privilege: CI only needs to read the checked-out code.
+permissions:
+  contents: read
+
 jobs:
   tests:
     runs-on: ubuntu-latest

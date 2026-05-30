@@ -72,7 +72,7 @@
       "program_category": null,
       "session": "Odd (Nov/Dec)",
       "course_code": "HUM3051",
-      "course_name": "Engineering Economics and Finacial Management",
+      "course_name": "Engineering Economics and Financial Management",
       "subject_name": "Engineering Economics and Finacial Management",
       "curriculum_context": {
         "curriculum_id": "cse_year3_2024",
@@ -125,7 +125,7 @@
       "program_category": null,
       "session": "Even (May/Jun)",
       "course_code": "HUM3051",
-      "course_name": "Engineering Economics and Finacial Management",
+      "course_name": "Engineering Economics and Financial Management",
       "subject_name": "Engineering Economics and Finacial Management",
       "curriculum_context": {
         "curriculum_id": "first_year_unified_2022",
@@ -180,7 +180,7 @@
       "program_category": null,
       "session": "Odd (Nov/Dec)",
       "course_code": "HUM3051",
-      "course_name": "Engineering Economics and Finacial Management",
+      "course_name": "Engineering Economics and Financial Management",
       "subject_name": "Engineering Economics and Finacial Management",
       "curriculum_context": {
         "curriculum_id": "cse_year3_2024",
@@ -233,7 +233,7 @@
       "program_category": null,
       "session": "Even (May/Jun)",
       "course_code": "HUM3051",
-      "course_name": "Engineering Economics and Finacial Management",
+      "course_name": "Engineering Economics and Financial Management",
       "subject_name": "Engineering Economics and Finacial Management",
       "curriculum_context": {
         "curriculum_id": "first_year_unified_2022",
@@ -288,7 +288,7 @@
       "program_category": null,
       "session": "Odd (Nov/Dec)",
       "course_code": "HUM3051",
-      "course_name": "Engineering Economics and Financial Managemenet",
+      "course_name": "Engineering Economics and Financial Management",
       "subject_name": "Engineering Economics and Financial Managemenet",
       "curriculum_context": {
         "curriculum_id": "cse_year3_2024",
@@ -341,7 +341,7 @@
       "program_category": null,
       "session": "Odd (Nov/Dec)",
       "course_code": "HUM3051",
-      "course_name": "Engineering Economics and Financial Managemenet",
+      "course_name": "Engineering Economics and Financial Management",
       "subject_name": "Engineering Economics and Financial Managemenet",
       "curriculum_context": {
         "curriculum_id": "cse_year3_2024",
@@ -447,7 +447,7 @@
       "program_category": "Undergraduate",
       "session": "Odd (Nov/Dec)",
       "course_code": "HUM3051",
-      "course_name": "Engineering Economics n Financial Management",
+      "course_name": "Engineering Economics and Financial Management",
       "subject_name": "Engineering Economics n Financial Management",
       "curriculum_context": {
         "curriculum_id": "cse_year3_2024",
@@ -1897,7 +1897,7 @@
       "program_category": null,
       "session": "Even (May/Jun)",
       "course_code": "MAT2213",
-      "course_name": "Mathematical Foundation for Data Science  - II",
+      "course_name": "Mathematical Foundation for Data Science - II",
       "subject_name": "Mathematical Foundation for Data Science  - II",
       "curriculum_context": {
         "curriculum_id": "cse_year2_legacy",
@@ -1950,7 +1950,7 @@
       "program_category": null,
       "session": "Even (May/Jun)",
       "course_code": "MAT2213",
-      "course_name": "Mathematical Foundation for Data Science  -II",
+      "course_name": "Mathematical Foundation for Data Science - II",
       "subject_name": "Mathematical Foundation for Data Science  -II",
       "curriculum_context": {
         "curriculum_id": "cse_year2_legacy",
@@ -2043,7 +2043,7 @@
       "program_category": "Undergraduate",
       "session": "Odd (Nov/Dec)",
       "course_code": "MAT3151",
-      "course_name": "Mathematical Foundations for Data Science -III",
+      "course_name": "Mathematical Foundations for Data Science",
       "subject_name": "Mathematical Foundations for Data Science -III",
       "curriculum_context": {
         "curriculum_id": "cse_year3_2024",
@@ -2509,7 +2509,7 @@
       "program_category": "Undergraduate",
       "session": "Odd (Nov/Dec)",
       "course_code": "MAT2151",
-      "course_name": "Engineering Mathematics- IV (",
+      "course_name": "Engineering Mathematics -III",
       "subject_name": "Engineering Mathematics- IV (",
       "curriculum_context": {
         "curriculum_id": "first_year_unified_2022",

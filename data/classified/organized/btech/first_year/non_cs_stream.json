@@ -224,7 +224,7 @@
       "program_category": "Undergraduate",
       "session": "Odd (Nov/Dec)",
       "course_code": "MAT1171",
-      "course_name": "Engineering Mathematics - 1 (MAT-1171)(Makeup)",
+      "course_name": "Engineering Mathematics",
       "subject_name": "Engineering Mathematics - 1 (MAT-1171)(Makeup)",
       "curriculum_context": {
         "curriculum_id": null,
@@ -260,7 +260,7 @@
       "program_category": "Undergraduate",
       "session": "Odd (Nov/Dec)",
       "course_code": "MAT1171",
-      "course_name": "Engineering Mathematics - 1 (MAT-1171)",
+      "course_name": "Engineering Mathematics",
       "subject_name": "Engineering Mathematics - 1 (MAT-1171)",
       "curriculum_context": {
         "curriculum_id": null,
@@ -296,7 +296,7 @@
       "program_category": "Undergraduate",
       "session": "Odd (Nov/Dec)",
       "course_code": "MAT1171",
-      "course_name": "Engineering Mathematics -I",
+      "course_name": "Engineering Mathematics",
       "subject_name": "Engineering Mathematics -I",
       "curriculum_context": {
         "curriculum_id": "first_year_core_2024",
@@ -350,7 +350,7 @@
       "program_category": "Undergraduate",
       "session": "Odd (Nov/Dec)",
       "course_code": "MAT1171",
-      "course_name": "Engineering Mathematics -I",
+      "course_name": "Engineering Mathematics",
       "subject_name": "Engineering Mathematics -I",
       "curriculum_context": {
         "curriculum_id": "first_year_core_2024",
@@ -547,7 +547,7 @@
       "program_category": "Undergraduate",
       "session": "Odd (Nov/Dec)",
       "course_code": "PHY1071",
-      "course_name": "Enginnering Physics",
+      "course_name": "Engineering Physics",
       "subject_name": "Enginnering Physics",
       "curriculum_context": {
         "curriculum_id": "first_year_core_2024",
@@ -601,7 +601,7 @@
       "program_category": "Undergraduate",
       "session": "Odd (Nov/Dec)",
       "course_code": "PHY1071",
-      "course_name": "Enginnering Physics",
+      "course_name": "Engineering Physics",
       "subject_name": "Enginnering Physics",
       "curriculum_context": {
         "curriculum_id": "first_year_core_2024",
@@ -699,7 +699,7 @@
       "program_category": "Undergraduate",
       "session": "Even (May/Jun)",
       "course_code": "PHY1071",
-      "course_name": "Engineering Physics (",
+      "course_name": "Engineering Physics",
       "subject_name": "Engineering Physics (",
       "curriculum_context": {
         "curriculum_id": "first_year_unified_2022",
@@ -1007,7 +1007,7 @@
       "program_category": "Undergraduate",
       "session": "Odd (Nov/Dec)",
       "course_code": "CHM1071",
-      "course_name": "Engineering Chemistry (CHM-1071) (Makeup)",
+      "course_name": "Engineering Chemistry",
       "subject_name": "Engineering Chemistry (CHM-1071) (Makeup)",
       "curriculum_context": {
         "curriculum_id": null,
@@ -1043,7 +1043,7 @@
       "program_category": "Undergraduate",
       "session": "Odd (Nov/Dec)",
       "course_code": "CHM1071",
-      "course_name": "Engineering Chemistry (CHM-1071)",
+      "course_name": "Engineering Chemistry",
       "subject_name": "Engineering Chemistry (CHM-1071)",
       "curriculum_context": {
         "curriculum_id": null,
@@ -1179,7 +1179,7 @@
       "program_category": "Undergraduate",
       "session": "Even (May/Jun)",
       "course_code": "MAT1271",
-      "course_name": "Engineering Mathematics -II",
+      "course_name": "Engineering Mathematics",
       "subject_name": "Engineering Mathematics -II",
       "curriculum_context": {
         "curriculum_id": "first_year_core_2024",
@@ -1228,7 +1228,7 @@
       "program_category": "Undergraduate",
       "session": "Even (May/Jun)",
       "course_code": "MAT1271",
-      "course_name": "Engineering Mathematics II",
+      "course_name": "Engineering Mathematics",
       "subject_name": "Engineering Mathematics II",
       "curriculum_context": {
         "curriculum_id": "first_year_core_2024",
@@ -1279,7 +1279,7 @@
       "program_category": null,
       "session": "Even (May/Jun)",
       "course_code": "HUM1053",
-      "course_name": "Communication skills in English",
+      "course_name": "communication Skills in English and Human Values",
       "subject_name": "Communication skills in English",
       "curriculum_context": {
         "curriculum_id": "first_year_unified_2022",
@@ -1317,7 +1317,7 @@
       "program_category": "Undergraduate",
       "session": "Even (May/Jun)",
       "course_code": "HUM1053",
-      "course_name": "Communication skills in English",
+      "course_name": "communication Skills in English and Human Values",
       "subject_name": "Communication skills in English",
       "curriculum_context": {
         "curriculum_id": "first_year_unified_2022",
@@ -1739,7 +1739,7 @@
       "program_category": null,
       "session": "Even (May/Jun)",
       "course_code": "MAT1251",
-      "course_name": "Engineering Mathematics-II",
+      "course_name": "Engineering Mathematics -II",
       "subject_name": "Engineering Mathematics-II",
       "curriculum_context": {
         "curriculum_id": "first_year_unified_2022",
@@ -1777,7 +1777,7 @@
       "program_category": "Undergraduate",
       "session": "Even (May/Jun)",
       "course_code": "MAT1251",
-      "course_name": "Engineering Mathematics-II",
+      "course_name": "Engineering Mathematics -II",
       "subject_name": "Engineering Mathematics-II",
       "curriculum_context": {
         "curriculum_id": "first_year_unified_2022",

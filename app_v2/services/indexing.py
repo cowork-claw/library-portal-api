@@ -19,6 +19,15 @@ SEARCH_META_FIELDS = (
 )
 
 
+def _course_name_key(name: Any) -> str:
+    """Normalize a course name into a grouping key (lowercase word tokens).
+
+    Used to unify a single real-world course that appears under several
+    course-code variants (curriculum revisions, cross-listed departments).
+    """
+    return " ".join(WORD_TOKEN_PATTERN.findall(str(name).lower()))
+
+
 def _build_search_meta(
     paper: dict[str, Any], field_meta_cache: dict[str, dict[str, Any]]
 ) -> dict[str, dict[str, Any]]:
@@ -47,6 +56,10 @@ class PaperIndex(PaperIndexAccessors):
         self._by_year: dict[int, set[str]] = defaultdict(set)
         self._by_semester: dict[int, set[str]] = defaultdict(set)
         self._by_course: dict[str, set[str]] = defaultdict(set)
+        # Course-name family: group fragmented course-code variants of the
+        # same real-world course so filtering by any code returns them all.
+        self._by_course_name: dict[str, set[str]] = defaultdict(set)
+        self._code_to_name_keys: dict[str, set[str]] = defaultdict(set)
         self._by_program: dict[str, set[str]] = defaultdict(set)
         self._by_stream: dict[str, set[str]] = defaultdict(set)
         self._by_paper_type: dict[str, set[str]] = defaultdict(set)
@@ -128,6 +141,8 @@ class PaperIndex(PaperIndexAccessors):
         self._by_year.clear()
         self._by_semester.clear()
         self._by_course.clear()
+        self._by_course_name.clear()
+        self._code_to_name_keys.clear()
         self._by_program.clear()
         self._by_stream.clear()
         self._by_paper_type.clear()
@@ -183,6 +198,10 @@ class PaperIndex(PaperIndexAccessors):
             return
 
         self._by_url[url] = paper
+        # Normalize course code so lookups are robust to case/type in raw data
+        # (e.g. "cs101", 101) -- both index and query use str(code).upper().
+        raw_course = paper.get("course_code")
+        norm_course = str(raw_course).upper() if raw_course else None
         for index, unique_values, value, counts in (
             (self._by_year, self._unique_years, paper.get("year"), self._count_by_year),
             (
@@ -194,7 +213,7 @@ class PaperIndex(PaperIndexAccessors):
             (
                 self._by_course,
                 self._unique_course_codes,
-                paper.get("course_code"),
+                norm_course,
                 None,
             ),
             (
@@ -205,6 +224,14 @@ class PaperIndex(PaperIndexAccessors):
             ),
         ):
             self._add_index_value(index, unique_values, url, value, counts)
+
+        if (
+            norm_course
+            and (course_name := paper.get("course_name"))
+            and (name_key := _course_name_key(course_name))
+        ):
+            self._by_course_name[name_key].add(url)
+            self._code_to_name_keys[norm_course].add(name_key)
 
         if program_abbrev := paper.get("program_abbrev"):
             self._add_index_value(

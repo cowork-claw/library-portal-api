@@ -2,10 +2,14 @@ name: Jules Weekly Cleanup
 
 # Run weekly maintenance on the codebase
 on:
-  schedule:
-    # Run every Monday at 3 AM UTC
-    - cron: '0 3 * * 1'
+  # Scheduled runs are disabled: automated code-quality cleanup produced
+  # low-signal, frequently stale changes (e.g. editing files that no longer
+  # exist) and piled up parked sessions. Run on demand instead.
   workflow_dispatch:
+
+concurrency:
+  group: jules-cleanup
+  cancel-in-progress: false
 
 jobs:
   pre-check:

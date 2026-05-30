@@ -204,7 +204,7 @@ async def _get_metadata() -> MetadataResponse:
         semesters=list(paper_index._unique_semester_values),
         paper_types=list(paper_index._unique_paper_type_values),
         degree_types=list(paper_index._unique_degree_type_values),
-        course_codes=list(paper_index._unique_course_code_values[:100]),
+        course_codes=list(paper_index._unique_course_code_values),
         streams=list(paper_index._unique_stream_values),
         total_papers=paper_index._paper_count,
     )

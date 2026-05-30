@@ -18,7 +18,7 @@
       "program_category": null,
       "session": "Odd (Nov/Dec)",
       "course_code": "AAE2154",
-      "course_name": "Aerospace Materials and Manufacturing  (AAE-2154)RCS",
+      "course_name": "Aerospace Materials and Manufacturing",
       "subject_name": "Aerospace Materials and Manufacturing  (AAE-2154)RCS",
       "curriculum_context": {
         "curriculum_id": null,
@@ -280,7 +280,7 @@
       "program_category": "Undergraduate",
       "session": "Even (May/Jun)",
       "course_code": "AAE4040",
-      "course_name": "Autotronics",
+      "course_name": "Auto Tronics",
       "subject_name": "Autotronics",
       "curriculum_context": {
         "curriculum_id": "first_year_unified_2022",
@@ -780,7 +780,7 @@
       "program_category": null,
       "session": "Odd (Nov/Dec)",
       "course_code": "AAE2157",
-      "course_name": "Introduction to Aerospace Engineering(AAE-2157) RCS",
+      "course_name": "Introduction to Aerospace Engineering",
       "subject_name": "Introduction to Aerospace Engineering(AAE-2157) RCS",
       "curriculum_context": {
         "curriculum_id": null,
@@ -858,7 +858,7 @@
       "program_category": "Undergraduate",
       "session": "Odd (Nov/Dec)",
       "course_code": "AAE2158",
-      "course_name": "Thermodynamics ( AAE-2158) Set 4",
+      "course_name": "Thermodynamics",
       "subject_name": "Thermodynamics ( AAE-2158) Set 4",
       "curriculum_context": {
         "curriculum_id": null,
@@ -1046,7 +1046,7 @@
       "program_category": null,
       "session": "Odd (Nov/Dec)",
       "course_code": "AAE2158",
-      "course_name": "Thermodynamics( AAE-2158) Set 1",
+      "course_name": "Thermodynamics",
       "subject_name": "Thermodynamics( AAE-2158) Set 1",
       "curriculum_context": {
         "curriculum_id": null,

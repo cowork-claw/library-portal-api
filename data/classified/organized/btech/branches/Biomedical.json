@@ -136,7 +136,7 @@
       "program_category": "Undergraduate",
       "session": "Even (May/Jun)",
       "course_code": "BME3251",
-      "course_name": "Basic Clinical Science -II",
+      "course_name": "Basic Clinical Science",
       "subject_name": "Basic Clinical Science -II",
       "curriculum_context": {
         "curriculum_id": "first_year_unified_2022",
@@ -554,7 +554,7 @@
       "program_category": "Undergraduate",
       "session": "Even (May/Jun)",
       "course_code": "BME2253",
-      "course_name": "Digital System Deisgn",
+      "course_name": "Digital System Design",
       "subject_name": "Digital System Deisgn",
       "curriculum_context": {
         "curriculum_id": "cse_year2_legacy",
@@ -742,7 +742,7 @@
       "program_category": "Undergraduate",
       "session": "Even (May/Jun)",
       "course_code": "BME4305",
-      "course_name": "Introduction to Nanootechnology and Characterization Techniques",
+      "course_name": "Introduction to Nanotechnology and Characterization Techniques",
       "subject_name": "Introduction to Nanootechnology and Characterization Techniques",
       "curriculum_context": {
         "curriculum_id": "first_year_unified_2022",

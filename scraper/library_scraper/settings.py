@@ -14,6 +14,12 @@ DOWNLOAD_DELAY = 1
 
 CONCURRENT_REQUESTS_PER_DOMAIN = 2
 
+# Cap per-response size to bound memory use (defense-in-depth for the Scrapy
+# memory-exhaustion DoS, CVE-2017-14158). Listing pages are small HTML; 32 MB
+# is ample while preventing an oversized response from exhausting memory.
+DOWNLOAD_MAXSIZE = 32 * 1024 * 1024
+DOWNLOAD_WARNSIZE = 16 * 1024 * 1024
+
 # Disable cookies (enabled by default)
 COOKIES_ENABLED = True
 
