@@ -96,7 +96,7 @@
       "program_category": "Undergraduate",
       "session": "Odd (Nov/Dec)",
       "course_code": "ELE3151",
-      "course_name": "Communication Systems",
+      "course_name": "Communications Systems",
       "subject_name": "Communication Systems",
       "curriculum_context": {
         "curriculum_id": "mechanical_year3",
@@ -206,7 +206,7 @@
       "program_category": "Undergraduate",
       "session": "Odd (Nov/Dec)",
       "course_code": "ELE4077",
-      "course_name": "Data Anlytics",
+      "course_name": "Data Analytics",
       "subject_name": "Data Anlytics",
       "curriculum_context": {
         "curriculum_id": "first_year_unified_2022",
@@ -590,7 +590,7 @@
       "program_category": "Undergraduate",
       "session": "Odd (Nov/Dec)",
       "course_code": "ELE2154",
-      "course_name": "Electrical Machinery-1",
+      "course_name": "Electrical Machinery -I",
       "subject_name": "Electrical Machinery-1",
       "curriculum_context": {
         "curriculum_id": "first_year_unified_2022",
@@ -668,7 +668,7 @@
       "program_category": "Undergraduate",
       "session": "Odd (Nov/Dec)",
       "course_code": "ELE2155",
-      "course_name": "Electromagnetic Thoery",
+      "course_name": "Electromagnetic Theory",
       "subject_name": "Electromagnetic Thoery",
       "curriculum_context": {
         "curriculum_id": "first_year_unified_2022",
@@ -786,7 +786,7 @@
       "program_category": "Undergraduate",
       "session": "Odd (Nov/Dec)",
       "course_code": "ELE4302",
-      "course_name": "Introduction to Design",
+      "course_name": "Introduction to Lighting Design",
       "subject_name": "Introduction to Design",
       "curriculum_context": {
         "curriculum_id": "mechanical_year3",
@@ -936,7 +936,7 @@
       "program_category": "Undergraduate",
       "session": "Odd (Nov/Dec)",
       "course_code": "ELE3153",
-      "course_name": "Measurement and Instrumentation",
+      "course_name": "Measurements and Instrumentation",
       "subject_name": "Measurement and Instrumentation",
       "curriculum_context": {
         "curriculum_id": "mechanical_year3",
@@ -1046,7 +1046,7 @@
       "program_category": "Undergraduate",
       "session": "Odd (Nov/Dec)",
       "course_code": "ELE4085",
-      "course_name": "Modern Pwer Converter",
+      "course_name": "Modern Power Converter",
       "subject_name": "Modern Pwer Converter",
       "curriculum_context": {
         "curriculum_id": "first_year_unified_2022",
@@ -1467,7 +1467,7 @@
       "program_category": "Undergraduate",
       "session": "Odd (Nov/Dec)",
       "course_code": "ELE4304",
-      "course_name": "Solar Photovoltaics",
+      "course_name": "Solar Photo Volastics",
       "subject_name": "Solar Photovoltaics",
       "curriculum_context": {
         "curriculum_id": "mechanical_year3",

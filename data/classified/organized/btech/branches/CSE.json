@@ -216,7 +216,7 @@
       "program_category": null,
       "session": "Odd (Nov/Dec)",
       "course_code": "CSE4051",
-      "course_name": "Augumented and Virual Reality",
+      "course_name": "Augumented and Virtual Reality",
       "subject_name": "Augumented and Virual Reality",
       "curriculum_context": {
         "curriculum_id": "first_year_unified_2022",
@@ -488,7 +488,7 @@
       "program_category": null,
       "session": "Odd (Nov/Dec)",
       "course_code": "CSE4064",
-      "course_name": "Deep Learning (CSE-4064) (Makeup)",
+      "course_name": "Deep Learning B",
       "subject_name": "Deep Learning (CSE-4064) (Makeup)",
       "curriculum_context": {
         "curriculum_id": null,
@@ -524,7 +524,7 @@
       "program_category": null,
       "session": "Odd (Nov/Dec)",
       "course_code": "CSE4064",
-      "course_name": "Deep Learning (CSE-4064)B",
+      "course_name": "Deep Learning B",
       "subject_name": "Deep Learning (CSE-4064)B",
       "curriculum_context": {
         "curriculum_id": null,
@@ -600,7 +600,7 @@
       "program_category": null,
       "session": "Odd (Nov/Dec)",
       "course_code": "CSE4301",
-      "course_name": "Essentials of Industrail computing",
+      "course_name": "Essentials of Industrail Computing",
       "subject_name": "Essentials of Industrail computing",
       "curriculum_context": {
         "curriculum_id": "first_year_unified_2022",
@@ -876,7 +876,7 @@
       "program_category": null,
       "session": "Odd (Nov/Dec)",
       "course_code": "CSE4303",
-      "course_name": "Linux Programing",
+      "course_name": "Linux Programming",
       "subject_name": "Linux Programing",
       "curriculum_context": {
         "curriculum_id": "cse_year3_2024",
@@ -2070,7 +2070,7 @@
       "program_category": null,
       "session": "Odd (Nov/Dec)",
       "course_code": "ICT2153",
-      "course_name": "Data Structurs",
+      "course_name": "Data Structures",
       "subject_name": "Data Structurs",
       "curriculum_context": {
         "curriculum_id": "first_year_unified_2022",
@@ -2125,7 +2125,7 @@
       "program_category": null,
       "session": "Odd (Nov/Dec)",
       "course_code": "ICT2153",
-      "course_name": "Data structures",
+      "course_name": "Data Structures",
       "subject_name": "Data structures",
       "curriculum_context": {
         "curriculum_id": "first_year_unified_2022",
@@ -2677,7 +2677,7 @@
       "program_category": null,
       "session": "Odd (Nov/Dec)",
       "course_code": "ICT2155",
-      "course_name": "Object Oriented Programming",
+      "course_name": "Object Oriented Programing",
       "subject_name": "Object Oriented Programming",
       "curriculum_context": {
         "curriculum_id": "first_year_unified_2022",

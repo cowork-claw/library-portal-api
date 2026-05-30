@@ -58,7 +58,7 @@
       "program_category": "Undergraduate",
       "session": "Odd (Nov/Dec)",
       "course_code": "ICE2151",
-      "course_name": "Analog Elctronic Circuits",
+      "course_name": "Analog Electronic Circits",
       "subject_name": "Analog Elctronic Circuits",
       "curriculum_context": {
         "curriculum_id": "first_year_unified_2022",
@@ -630,7 +630,7 @@
       "program_category": "Undergraduate",
       "session": "Odd (Nov/Dec)",
       "course_code": "ICE2152",
-      "course_name": "Digital Electronic Circuits",
+      "course_name": "Digital Electronic Circuit",
       "subject_name": "Digital Electronic Circuits",
       "curriculum_context": {
         "curriculum_id": "first_year_unified_2022",
@@ -864,7 +864,7 @@
       "program_category": "Undergraduate",
       "session": "Odd (Nov/Dec)",
       "course_code": "ICE4307",
-      "course_name": "Farm Automation (ICE-4307) (Makeup)",
+      "course_name": "Farm Automation",
       "subject_name": "Farm Automation (ICE-4307) (Makeup)",
       "curriculum_context": {
         "curriculum_id": null,
@@ -900,7 +900,7 @@
       "program_category": "Undergraduate",
       "session": "Odd (Nov/Dec)",
       "course_code": "ICE4307",
-      "course_name": "Farm Automation (ICE-4307)",
+      "course_name": "Farm Automation",
       "subject_name": "Farm Automation (ICE-4307)",
       "curriculum_context": {
         "curriculum_id": null,
@@ -978,7 +978,7 @@
       "program_category": "Undergraduate",
       "session": "Even (May/Jun)",
       "course_code": "ICE4302",
-      "course_name": "Industrail Automation OE",
+      "course_name": "Industrial Automation",
       "subject_name": "Industrail Automation OE",
       "curriculum_context": {
         "curriculum_id": "first_year_unified_2022",
@@ -1768,7 +1768,7 @@
       "program_category": "Undergraduate",
       "session": "Odd (Nov/Dec)",
       "course_code": "ICE2154",
-      "course_name": "Network Analysis and Signals (",
+      "course_name": "Network Analysis and Signals",
       "subject_name": "Network Analysis and Signals (",
       "curriculum_context": {
         "curriculum_id": "first_year_unified_2022",
@@ -1806,7 +1806,7 @@
       "program_category": "Undergraduate",
       "session": "Odd (Nov/Dec)",
       "course_code": "ICE2154",
-      "course_name": "Network Analysys and signals",
+      "course_name": "Network Analysis and Signals",
       "subject_name": "Network Analysys and signals",
       "curriculum_context": {
         "curriculum_id": "first_year_unified_2022",
@@ -1844,7 +1844,7 @@
       "program_category": "Undergraduate",
       "session": "Odd (Nov/Dec)",
       "course_code": "ICE2154",
-      "course_name": "Network Analysys and signals",
+      "course_name": "Network Analysis and Signals",
       "subject_name": "Network Analysys and signals",
       "curriculum_context": {
         "curriculum_id": "first_year_unified_2022",
