@@ -8,6 +8,13 @@ logger = logging.getLogger(__name__)
 
 
 def normalize_scrape_log_data(data: Any) -> dict[str, Any]:
+    """Coerce raw scrape-log JSON into the canonical shape.
+
+    Guarantees the returned dict has ``created_at``, ``description``, a list
+    of string ``scraped_urls``, a list of dict ``runs``, and a ``stats`` dict
+    whose ``total_scraped``/``total_skipped``/``total_errors`` are ints.
+    Non-dict input yields a fresh log populated with defaults.
+    """
     data = data if isinstance(data, dict) else {}
     data.setdefault("created_at", datetime.now().isoformat())
     data.setdefault("description", "Persistent log tracking scraped paper URLs")
