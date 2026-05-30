@@ -19,6 +19,15 @@ SEARCH_META_FIELDS = (
 )
 
 
+def _course_name_key(name: Any) -> str:
+    """Normalize a course name into a grouping key (lowercase word tokens).
+
+    Used to unify a single real-world course that appears under several
+    course-code variants (curriculum revisions, cross-listed departments).
+    """
+    return " ".join(WORD_TOKEN_PATTERN.findall(str(name).lower()))
+
+
 def _build_search_meta(
     paper: dict[str, Any], field_meta_cache: dict[str, dict[str, Any]]
 ) -> dict[str, dict[str, Any]]:
@@ -47,6 +56,10 @@ class PaperIndex(PaperIndexAccessors):
         self._by_year: dict[int, set[str]] = defaultdict(set)
         self._by_semester: dict[int, set[str]] = defaultdict(set)
         self._by_course: dict[str, set[str]] = defaultdict(set)
+        # Course-name family: group fragmented course-code variants of the
+        # same real-world course so filtering by any code returns them all.
+        self._by_course_name: dict[str, set[str]] = defaultdict(set)
+        self._code_to_name_keys: dict[str, set[str]] = defaultdict(set)
         self._by_program: dict[str, set[str]] = defaultdict(set)
         self._by_stream: dict[str, set[str]] = defaultdict(set)
         self._by_paper_type: dict[str, set[str]] = defaultdict(set)
@@ -128,6 +141,8 @@ class PaperIndex(PaperIndexAccessors):
         self._by_year.clear()
         self._by_semester.clear()
         self._by_course.clear()
+        self._by_course_name.clear()
+        self._code_to_name_keys.clear()
         self._by_program.clear()
         self._by_stream.clear()
         self._by_paper_type.clear()
@@ -205,6 +220,15 @@ class PaperIndex(PaperIndexAccessors):
             ),
         ):
             self._add_index_value(index, unique_values, url, value, counts)
+
+        if (
+            (course_code := paper.get("course_code"))
+            and (course_name := paper.get("course_name"))
+            and (name_key := _course_name_key(course_name))
+        ):
+            code_key = str(course_code).upper()
+            self._by_course_name[name_key].add(url)
+            self._code_to_name_keys[code_key].add(name_key)
 
         if program_abbrev := paper.get("program_abbrev"):
             self._add_index_value(

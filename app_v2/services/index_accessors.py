@@ -100,7 +100,15 @@ class PaperIndexAccessors:
         return self._by_semester.get(semester, set())
 
     def _get_urls_by_course(self, course_code: str) -> set[str]:
-        return self._by_course.get(course_code.upper(), set())
+        # Expand to the full course family: a single real-world course is often
+        # split across multiple code variants (e.g. MAT2251..MAT2262 all map to
+        # "Engineering Mathematics IV"). Exact-code matching alone hides papers
+        # that exist in the data, so union in every code sharing the same name.
+        code = course_code.upper()
+        urls = set(self._by_course.get(code, set()))
+        for name_key in self._code_to_name_keys.get(code, ()):
+            urls |= self._by_course_name.get(name_key, set())
+        return urls
 
     def _get_papers_by_course(self, course_code: str) -> list[dict[str, Any]]:
         return self._get_by_urls(self._get_urls_by_course(course_code))
