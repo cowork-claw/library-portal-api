@@ -206,8 +206,6 @@ To measure the performance of key endpoints and optimizations:
 # Run year filter benchmark
 python scripts/benchmarks/benchmark_year_filter.py
 
-
-
 # Run scraper log benchmark
 python scripts/benchmarks/benchmark_scrape_log.py
 
@@ -226,4 +224,4 @@ These scripts measure the performance of key filtering and search logic.
 
 ## License
 
-Private repository - internal use only.
+MIT. See [LICENSE](LICENSE).
