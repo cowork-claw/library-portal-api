@@ -2,6 +2,10 @@ name: Close Superseded Dependabot PRs
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/close-superseded-prs.yml
 
 permissions:
   pull-requests: write
