@@ -1,0 +1,25 @@
+name: Close Superseded Dependabot PRs
+
+on:
+  workflow_dispatch:
+
+permissions:
+  pull-requests: write
+
+jobs:
+  close:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Close PRs superseded by #167
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          for pr in 161 162 163 164 165 166; do
+            if gh pr view "$pr" --json state --jq '.state' | grep -q OPEN; then
+              gh pr close "$pr" \
+                --comment "Superseded by #167 (merged), which consolidates all pending dependency bumps and security fixes."
+              echo "Closed #$pr"
+            else
+              echo "Skipped #$pr (not open)"
+            fi
+          done
